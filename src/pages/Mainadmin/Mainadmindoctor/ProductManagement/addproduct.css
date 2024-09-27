@@ -1,0 +1,248 @@
+.manageprotop{
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .manageprotop-left input{
+       background-color: #DADCFF;
+       border-radius:3px;
+       width:200px;
+  }
+  
+  .manageprotop-left{
+    gap:20px;
+  }
+  
+  .manageprotop-right button{
+    background-color: #7E83FF;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0px 16px;
+    height:35px;
+    cursor: pointer;
+    align-items: center;
+    gap:8px;
+  }
+  
+  .manageprotop-right i{
+    font-size:16px;
+  }
+  
+  .manageprotop-right {
+    gap:8px;
+  }
+  
+  
+  .productlistadmin{
+    margin-top:20px;
+
+   
+  }
+  .multiselector{
+    z-index: 99999999;
+  }
+  
+  .productlistInput{
+    input{
+      background-color: #DADCFF;
+      border-radius:6px;
+      width:100%;
+      height:40px;
+      padding:0px 10px;
+      margin-top: 10px;
+     }
+
+  }
+  
+ 
+  
+   .addproductadmin-input-box input:focus {
+    border:2px solid #91a9ff;
+    outline: none; 
+  
+  }
+  
+  .addproductadmin-input{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 5 equal columns */
+    gap:25px; /* space between the cards */
+    width: 100%; 
+    margin-top: 20px;
+  }
+  
+  .addimagediscription{
+    width:100%;
+    justify-content: space-between;
+    margin-top:20px;
+  }
+  
+  .addimage-images-new{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:25px;
+    margin-top:10px;
+  }
+  
+  .newdtwt{
+    width:60%;
+  }
+  
+  .addimage-discription-new{
+    width:37%;
+  }
+  
+  .addimage-ima {
+    height:200px;
+    background-color: #DADCFF;
+    border-radius:8px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:10px;
+    color: #7E83FF;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  
+
+  .delete-product-img{
+    width:28px;
+    height:28px;
+    border-radius:50px;
+    color:white;
+    background-color:red;
+    position: absolute;
+    top: 10px;
+    right:10px;
+    z-index: 99;
+  }
+  
+  .addimage-discription-new textarea{
+    width: 100%;
+    height: 200px;
+    background-color: #DADCFF;
+    border-radius:8px;
+    margin-top:10px;
+    padding:10px;
+    resize:none;
+    text-align: justify;
+  }
+  
+  .addproductbutton{
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .addproductbutton button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 16px;
+    height:35px;
+    cursor: pointer;
+  }
+  
+  
+  .detailssectionpro{
+    padding-top:20px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:8vw;
+  }
+  
+  .detailssectionprolefttop{
+    background-color: #F3F3F8;
+    border:1px solid #DADCFF;
+    width:100%;
+  
+   
+  }
+  
+  .detailssectionproleftbottom{
+      display:grid;
+      grid-template-rows: repeat(4, 1fr);
+      gap:2vw;
+      margin-right:2vw;
+  }
+  
+  .detailssectionproleft{
+    height:30vw;
+  }
+  
+  .allimagespro{
+    width:100px;
+  
+    background-color: #7E83FF;
+  }
+  
+  .detailssectionpro{
+    margin-top:20px;
+  }
+  
+  .detailssectionproleft{
+    display:flex;
+  }
+  
+  .detailssectionprorightdis{
+    margin-top: 20px;
+  }
+  .detailssectionproright h3{
+    font-size:30px;
+  }
+  .detailssectionprorightdis h4{
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .detailssectionprolefttop{
+    align-items: center;
+    justify-content: center;  
+  }
+  
+  .detailssectionprolefttop img{
+       width:100%;
+       object-fit: cover;
+  }
+  
+  .detailssectionprolefttop{
+    padding:50px;
+    border-radius:12px;
+  }
+  
+  .allimagespro{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    background-color: #F3F3F8;
+    border:1px solid #DADCFF;
+    border-radius:12px;
+    transition:200ms ease-in-out;
+  }
+  
+  .allimagespro img{
+    width:60%;
+  }
+  .allimagespro:hover{
+    border:3px solid #91a9ff;
+  }
+  .allimagesproselect{
+    background-color: #F3F3F8;
+    border:3px solid #007bff;
+  }
+
+  .categoryadmin_show{
+    background-color: #047857;
+    padding:6px 16px;
+    font-size:12px;
+    width:fit-content;
+    font-weight: 300;
+    color: white;
+    border-radius:5px;
+    margin-top:20px;
+  }

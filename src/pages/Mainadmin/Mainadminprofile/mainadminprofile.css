@@ -1,0 +1,82 @@
+.mainadminprofilecard{
+    width: 300px;
+    border: 1px solid #a4b7fc94;
+    padding-bottom:10px;
+    background-color: white;
+}
+
+.mainadminprofilenamecard{
+    padding:20px;
+}
+
+.mainadminprofilecontactcard{
+    padding:10px 20px;
+    background-color: #e4eaff;
+
+}
+
+.mainadminprofilenamecardleft img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.adminmenuprofile{
+    padding:10px 20px;
+    align-items: center;
+    transition: 600ms ease-in-out;
+}
+
+.adminmenuprofile:hover{
+    background-color: #e4eaff;
+
+}
+
+
+
+.adminmenuprofile i{
+    font-weight:100;
+    font-size:20px;
+    height: 20px;
+    
+}
+
+.editadminprofile{
+    background-color: #e4eaff;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    justify-content: center;align-items: center;
+}
+
+.editadminprofile i{
+    font-size:16px;
+    font-weight:100;
+    height:16px;
+    color: #7E83FF;
+}
+
+.mainadminprofilenamecard{
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.admintype{
+    background-color: #F35454;
+    color: white;
+    font-size:1rem;
+    padding:0px 10px;
+    border-radius:50px;
+}
+
+
+
+
+.mainadminprofilecard{
+    position: relative;
+    top: 66px;
+    left:1220px;
+    border-radius:10px;
+}

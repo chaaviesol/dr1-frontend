@@ -1,0 +1,37 @@
+.feedbackcardnew {
+    border:1px solid #ccc;
+    padding:20px;
+  }
+  
+  .feedbackcardnewright{
+      margin-left:20px;
+  }
+  .feedbackcardnew img{
+      height:60px;
+      width:60px;
+      object-fit: cover;
+      border-radius:50%;
+  }
+  .feedbackcardnew h3{
+      font-size: 16px;
+  }
+  .feedbackcardnew h4{
+  color: #3a65fd;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top:6px;
+  }
+  
+  .feedbackcardnewstar{
+      gap:10px;
+      padding:10px 0px;
+      color: coral;
+  }
+  
+  .feedbackcardnew p{
+      font-family: "Raleway", sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 22.5px;
+      color: #424242;
+  }

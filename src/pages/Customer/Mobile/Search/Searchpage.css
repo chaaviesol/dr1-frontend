@@ -1,0 +1,129 @@
+.doctor-search-container {
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .location-wrap {
+    display: flex;
+    align-items: center;
+  }
+  
+  .location-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  
+  .location-text {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.63px;
+    letter-spacing: 8%;
+  }
+  
+  .location-name {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 12.19px;
+    letter-spacing: 8%;
+    color: red;
+  }
+  
+  .profile-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+  }
+  
+  .search-wrap {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .search-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+  
+  .search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+  }
+  .scrollablerow{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  
+  .filter-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .filter-item {
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .doctor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .doctor-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+    text-align: start;
+  }
+  
+  .doctor-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .doctor-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 10px 0 5px;
+    letter-spacing: 2%;
+  }
+  
+  .doctor-specialty {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: rgba(58, 101, 253, 1);
+    letter-spacing: 2%;
+  }
+  

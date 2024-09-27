@@ -1,0 +1,43 @@
+.cardContainer {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  background-color: white;
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  gap: 10px;
+  height: 200px;
+  border-radius: 23px;
+  width: calc(100% - 0px);
+  box-sizing: border-box;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(58, 101, 253, 0.5) 0px 0px 0px 1px;
+  }
+}
+
+.cardContainer > :nth-child(1) {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  & > span {
+    font-weight: 200;
+  }
+}
+.cardContainer > :nth-child(2) {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.docImage {
+
+  height: 95%;
+  width: 90%;
+  max-width: 100%;
+  border-radius: 5%;
+  object-fit: cover;
+}

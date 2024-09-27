@@ -1,0 +1,32 @@
+/* CartControl.css */
+.cart-control {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+}
+
+.cart-button {
+  font-size: 24px;
+  width: 20px;
+  height: 20px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart-count {
+  font-size: 14px;
+  width: 20px;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+}

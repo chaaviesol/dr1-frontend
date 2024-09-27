@@ -1,0 +1,42 @@
+.AnalyzeLabAdmin {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 40px;
+}
+
+.AnalyzeLabAdminHeadding span {
+    color: #3A65FD;
+}
+
+.AnalyzeLabAdminHeadding{
+    font-weight: 600;
+}
+.AnalyzeLabAdminAlign {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    font-weight: 600;
+}
+
+.AnalyzeLabAdminChart {
+    height: 50vh;
+}
+
+.AnalyzeLabAdminTable {
+    width: 100%;
+
+}
+
+.AnalyzeLabAdminTableTr th {
+    padding: 5px;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 0, 0.57);
+}
+
+.AnalyzeLabAdminTableTr td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.637);
+    font-weight: 300;
+}

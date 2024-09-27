@@ -1,0 +1,17 @@
+.ConnectWeb {
+    display: block;
+}
+
+.ConnectMob {
+    display: none;
+}
+
+@media screen and (max-width: 769px) {
+    .ConnectWeb {
+        display: none;
+    }
+
+    .ConnectMob {
+        display: block;
+    }
+}

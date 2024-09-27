@@ -1,0 +1,30 @@
+.mainContainer {
+  font-family: "Montserrat";
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.flexCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon {
+  color: #e63333;
+}
+.location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .3rem;
+}
+.location span:first-of-type {
+  opacity: .7;
+  font-weight: 400;
+  font-size: 1.6rem;
+}
+.location span:last-of-type {
+  font-weight: 600;
+  color: #e63333;
+  font-size: 1.3rem;
+}

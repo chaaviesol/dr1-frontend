@@ -1,0 +1,316 @@
+.LabAdminProfile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.LabAdminProfileTop {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #3A65FD;
+    padding: 50px;
+
+}
+
+.LabAdminProfileTopManage {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.LabAdminProfileTopPtag {
+    color: rgba(255, 255, 255, 0.627);
+    font-size: 50px;
+    letter-spacing: 3px;
+}
+
+.LabAdminProfileTopPtag span {
+    color: white;
+}
+
+.LabAdminProfileTopSecondSec {
+    width: 40%;
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+}
+
+.LabAdminProfileTopSecondSecCounter {
+    width: 100%;
+    height: 150px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+}
+
+.LabAdminProfileTopSecondCounter p {
+    font-size: 20px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.557);
+}
+
+
+.LabAdminProfileTopIconDiv {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: #3A65FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#LabAdminProfileTopIconDivIcon {
+    font-size: 30px;
+    color: white;
+
+}
+
+.LabAdminProfileTopSecondCounter {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 60%;
+    cursor: pointer;
+}
+
+.LabAdminProfileTopSecondCounter h4 {
+    font-size: 25px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.544);
+
+}
+
+.LabAdminProButtonSec {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 20px;
+    padding: 50px;
+}
+
+.LabAdminProfileLogoutSec {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.LabAdminProfileLogoutSec p {
+    font-size: 17px;
+    font-weight: 300;
+    color: white;
+    letter-spacing: 2px;
+}
+
+#LabAdminProfileLogoutSecIcon {
+    color: white;
+}
+
+.LabAdminProButton {
+    background-color: #3A65FD;
+    color: white;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+    font-weight: 300;
+    gap: 10px;
+    display: flex;
+}
+
+.LabAdminProMainSec {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.LabAdminProMainImageSec {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.LabAdminProMainImageSec img {
+    height: 170px;
+    border-radius: 15px;
+}
+
+.LabAdminProMainSecImgOther {
+    display: flex;
+    gap: 20px;
+
+}
+
+.LabAdminProMainSecImg {
+    height: 150px;
+    border-radius: 15px;
+}
+
+.LabAdminProMainFontSec {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.LabAdminProMainFont {
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.687);
+    font-size: 25px;
+}
+
+.LabAdminProMainTimeSec {
+    padding: 5px 15px;
+    background-color: #3A65FD;
+    border-radius: 15px;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+.LabAdminProMainTimeSec p {
+    color: rgba(255, 255, 255, 0.819);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.LabAdminProMainLocNDTime {
+    display: flex;
+    gap: 20px;
+}
+
+.LabAdminProMainLocNDTimeSet {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#LabAdminProMainLocIcon {
+    color: #3A65FD;
+    font-size: 20px;
+}
+
+.LabAdminProMainLocNDTimeSet p {
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.LabAdminProMainAbout {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.LabAdminProMainAbout h3 {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.633);
+}
+
+.LabAdminProMainAbout p {
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.743);
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.LabAdminProMainAboutIconNdFont {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 40%;
+}
+
+.LabAdminProMainAboutIconNdFont2divs {
+    display: flex;
+    gap: 20px;
+
+}
+
+.LabAdminProMainDivPin {
+    background-color: #3A65FD;
+    color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 5px 15px;
+}
+
+.LabAdminProMainDivPin p {
+    font-size: 12px;
+    color: white;
+}
+
+.LabAdminProMainAboutIconNdFont p {
+    font-size: 15px;
+}
+
+#LabAdminProMainAboutIcon {
+    font-size: 30px;
+    color: #3A65FD;
+}
+
+.LabAdminProMainLoc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.LabAdminProMainServicesAndFeatures {
+    display: flex;
+    width: 70%;
+}
+
+.LabAdminProMainLocAlignLogondLoc {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.LabAdminProMainServicesAndFeatures {
+    display: flex;
+    width: 100%;
+}
+
+.LabAdminProMainSerNDFeaInner {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.LabAdminProMainServiceCnts {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#LabAdminProMainServiceCntsIcon {
+    font-size: 25px;
+    color: #3A65FD;
+}
+
+.LabAdminProMainServiceCnts {
+    font-size: 18px;
+    font-weight: 400;
+    color: #3A65FD;
+
+}
+
+.LabAdminProMainSerNDFeaInner h3 {
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.743);
+}

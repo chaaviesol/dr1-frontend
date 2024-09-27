@@ -1,0 +1,122 @@
+
+.admincard{
+    width:400px;
+    padding:20px;
+    background-color: #e4eaff;
+    border: 1px solid #a4b7fc94;
+    border-radius: 5px;
+}
+
+.adminlistnamesection img{
+  width:50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius:50%;
+}
+
+
+
+.adminlistbuttonsection {
+    justify-content: space-between;
+}
+
+.adminlistbuttonsection button{
+    width:120px;
+    border-radius:5px;
+    background-color: beige;
+    border:0px ;
+    height:30px;
+    justify-content: center;
+    align-items: center;
+    color:white;
+
+}
+
+.adminlistdatasection{
+    padding:20px 0px;
+}
+
+
+.admindetailsinput{
+   gap:20px;
+   justify-content: space-between;
+}
+.admindetailspassword{
+   justify-content: start;
+   gap:35px
+
+}
+.admindetailspassword input{
+    background-color: #e4eaff;
+    height:35px;
+    margin-top:10px;
+    width:20vw;
+    padding-left:10px;
+    border-radius:5px;
+
+}
+
+
+.admindetailsinput input,select{
+    background-color: #e4eaff;
+    height:35px;
+    margin-top:10px;
+    width:20vw;
+    padding-left:10px;
+    border-radius:5px;
+}
+.admindetailsinput p{
+    position:absolute;
+    font-size: 14px;
+    color:red;
+}
+.addadmin-inputdiv{
+    position:relative
+}
+
+.admindetailsinput2{
+    gap:20px;
+   
+ }
+
+ .adminhide{
+    visibility: hidden;
+ }
+
+ .addadminimage img{
+    height:150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius:50%;
+ }
+
+ .addadminsavebutton{
+    width:120px;
+    border-radius:5px;
+    background-color: #2A9D8F;
+    border:0px ;
+    height:30px;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    margin-top:30px;
+ }
+
+ .admin2 h3{
+    font-weight:300;
+    letter-spacing:1px;
+ }
+
+ .checkboxsection{
+    margin-top:10px;
+    align-items: center;
+ }
+
+ /* .checkboxsection h3 {
+     margin-left:10px;
+     
+ } */
+
+
+
+

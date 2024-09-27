@@ -1,0 +1,421 @@
+.main-login {
+    height: 100vh;
+}
+
+
+.pngdiv {
+    width: 14vw;
+
+}
+
+.login-form {
+    background-color: var(--color-primary);
+    border-radius: 30px;
+    width: 30vw;
+    padding: 2vw;
+    height: fit-content;
+    color: var(--color-white);
+    flex-direction: column;
+}
+
+.login-form input {
+    width: 100%;
+    height: 3vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    padding: 1vw;
+    color: white;
+}
+
+
+
+
+.login-image-section {
+    width: 28vw;
+}
+
+.login-modal-Align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-box-section {
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.login-pass-con-Inp {
+    width: 100%;
+    height: 3vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(95, 95, 255, 0.447);
+    padding: 1vw;
+    color: white;
+}
+
+.login-button-section {
+    justify-content: space-between;
+    margin-top: 2vw;
+
+
+}
+
+.login-button-section button {
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 48%;
+    border-radius: 10px;
+    height: 3vw;
+}
+
+.pngdiv1 {
+    padding-top: 170px;
+}
+
+.pngdiv2 {
+    padding-top: 500px;
+    padding-left: 2vw;
+}
+
+.pngdiv3 {
+    padding-top: 400px;
+    justify-content: flex-end;
+}
+
+.pngdiv3 img {
+    width: 6vw;
+    height: auto;
+}
+
+.login-image-section {
+    align-items: center;
+    justify-content: space-around;
+}
+
+.login-first-image {
+    width: 40%;
+}
+
+.login-second-image {
+    width: 40%;
+    flex-direction: column;
+    gap: 4vw;
+}
+
+
+.login-first-image img {
+    width: 11vw;
+    height: 11vw;
+    object-fit: cover;
+    border-radius: 1vw;
+}
+
+.login-second-image img {
+    width: 11vw;
+    height: 11vw;
+    object-fit: cover;
+    border-radius: 1vw;
+}
+
+.login-button-section {
+    color: var(--color-primary);
+}
+
+.forgot-password {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+
+.forgot-password a {
+    color: white;
+    cursor: pointer;
+}
+
+.login-InnerModal {
+    padding: 30px;
+    width: 35%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.loginBUttonStyle {
+    background-color: blue;
+    border-radius: 10px;
+    width: 120px;
+    padding: 10px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.login-pass-con-Change-pwd {
+    width: 100%;
+    height: 3vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    /* background-color: rgba(95, 95, 255, 0.447); */
+    padding: 1vw;
+    color: white;
+    background-color: transparent;
+}
+
+.login-InnerModal-Button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-InnerModal p {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.651);
+}
+
+.LoginPageGoogleAuthBtn {
+    max-width: 320px;
+    display: flex;
+    width: 70%;
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    gap: 0.75rem;
+    color: rgb(65, 63, 63);
+    background-color: #fff;
+    cursor: pointer;
+    justify-content: center;
+    transition: all .6s ease;
+}
+
+.LoginPageGoogleAuthBtnAlignDiv label {
+    font-size: 15px;
+}
+
+.LoginPageGoogleAuthBtnAlignDiv h4 {
+    cursor: pointer;
+}
+
+.LoginPageGoogleAuthBtnAlignDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.LoginPageGoogleAuthBtn svg {
+    height: 24px;
+}
+
+.LoginPageGoogleAuthBtn:hover {
+    transform: scale(1.02);
+}
+
+.login-InnerModal-close {
+    width: 100%;
+}
+
+#login-InnerModal-closeIcon {
+    font-size: 30px;
+}
+
+.login-InnerModal-H3 {
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 30px;
+}
+
+.login-InnerModal-Inputs {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-InnerModal-Inputs-Align {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.login-InnerModal-Inputs-Ptag {
+    font-size: 15px;
+}
+
+.login-InnerModal-Inputs-Ptag a {
+    color: blue;
+    cursor: pointer;
+}
+
+.login-InnerModal-Change-pwd {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.loginpwdErrorSetting {
+    height: 40px;
+}
+
+.loginpwdErrorSetting p {
+    font-size: 13px;
+    color: blue;
+    letter-spacing: 1px;
+}
+
+.ogin-InnerModal-resetPass {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.ogin-InnerModal-resetPass input {
+    height: 3vw;
+    border-radius: 10px;
+    border: 1px solid blue;
+    padding-left: 5px;
+    font-size: 17px;
+}
+
+.ogin-InnerModal-resetPass-NextDiv {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (max-width:780px) {
+    .main-login {
+        flex-direction: column;
+    }
+
+    .main-login {
+        background-color: var(--color-primary);
+        height: 100vh;
+    }
+
+    .loginpwdErrorSetting p {
+        font-size: 10px ;
+    }
+
+    .pngdiv {
+        display: none;
+    }
+
+    .login-image-section {
+        width: 100%;
+    }
+
+    .login-pass-con-Change-pwd {
+        height: 10vw;
+    }
+
+    .login-form {
+        width: 85%;
+        padding: 0vw;
+        border-radius: 5vw;
+        justify-content: space-between;
+    }
+
+    .LoginPageGoogleAuthBtn {
+        width: 100%;
+    }
+
+    .login-InnerModal {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .ogin-InnerModal-resetPass {
+        gap: 5vw;
+    }
+
+    .login-modal-Align {
+        padding: 10px;
+    }
+
+    .ogin-InnerModal-resetPass input {
+        height: 10vw;
+    }
+
+    .login-InnerModal-H3 {
+        font-size: 25px;
+    }
+
+    .login-InnerModal-Inputs-Align {
+        width: 70%;
+    }
+
+    /* 
+    .login-form:last-child{
+        justify-content:flex-end; 
+    } */
+
+    .input-box-section input {
+        height: 11vw;
+        padding-left: 4 vw;
+    }
+
+    .input-box-section {
+        gap: 2vw;
+    }
+
+    .login-pass-con-Inp {
+        height: 11vw;
+    }
+
+    .login-button-section button {
+        height: 11vw;
+        border-radius: 2vw;
+    }
+
+
+
+    .login-button-section {
+        margin-top: 5vw;
+    }
+
+    .login-image-section {
+        width: 100%;
+    }
+
+    .login-first-image {
+        width: 100%;
+        padding: 8vw;
+
+    }
+
+    .login-image-section img {
+        width: 100%;
+        height: 30vw;
+        border-radius: 5vw;
+    }
+
+    .login-second-image {
+        display: none;
+    }
+
+
+}

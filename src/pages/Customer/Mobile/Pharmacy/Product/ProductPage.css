@@ -1,0 +1,121 @@
+/* @media (max-width: 576px) and (min-width: 200px) { */
+  .productPageBg {
+    margin: 0;
+    min-height: 100vh;
+    background-color: rgba(243, 243, 248, 1);
+  }
+
+  .product-page {
+    padding: 20px;
+  }
+
+  .product-details {
+    /* text-align: center; */
+  }
+
+  .product-details h1 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.41px;
+  }
+
+  .product-details h2 {
+    font-size: 20px;
+    color: gray;
+  }
+
+  .product-image {
+    width: 40%;
+    max-width: 200px;
+    margin: 20px auto;
+  }
+
+  /* Change the background color of the dots */
+  .carousel .control-dots .dot {
+    background: rgba(217, 217, 217, 1);
+    /* Color for unselected dots */
+  }
+
+  /* Change the background color of the selected dot */
+  .carousel .control-dots .dot.selected {
+    background: rgba(72, 150, 243, 1);
+    /* Color for the selected dot */
+  }
+
+  /* Position the dots at the bottom */
+  .carousel .control-dots {
+    position: absolute;
+    bottom: -10px; /* Adjust this value to control the vertical position of the dots */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .price-add-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+    border-radius: 17px;
+    border: 0.5px solid rgba(0, 0, 0, 0.12);
+    margin: 20px 0;
+  }
+
+  .price {
+    padding: 10px;
+    font-size: 14px;
+
+    font-weight: bold;
+  }
+
+  .add-button {
+    width: 70px;
+    height: 30px;
+    padding: 10px 20px;
+    background-color: rgba(72, 150, 243, 1);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 10px;
+    letter-spacing: -0.41px;
+    line-height: 13px;
+    font-weight: 600;
+  }
+
+  .description-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 17px;
+    border: 0.5px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .description-section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 13px;
+    letter-spacing: -0.4px;
+  }
+
+  .description-section p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.6);
+    letter-spacing: -0.4px;
+  }
+
+  .bullet_icon {
+    height: 18px;
+    width: 18px;
+  }
+
+  .desc_points {
+    display: flex;
+    align-items: center;
+  }
+  .desc_points p {
+    margin: 6px;
+  }
+/* } */

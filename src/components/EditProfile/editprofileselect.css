@@ -1,0 +1,62 @@
+.custom-select {
+    position: relative;
+    display: inline-block;
+    width:100%;
+    margin-top:10px;
+  }
+  
+  .select-selected {
+    background-color:white;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;  border-radius:5px;
+    height:40px;
+    width:100%;
+    display: flex;
+    align-items: center;
+    padding:0px 10px;
+    background-color: white;
+  }
+
+
+  
+  .select-selected::after {
+    content: "\25BC"; /* Down arrow */
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    color: #91a9ff;
+  }
+  
+  .select-items {
+    position: absolute;
+    background-color:white;
+    border:1px solid #d5deff;
+   
+    z-index: 99;
+    width: 100%;
+    display: block;
+    margin-top:10px;
+ 
+  }
+  
+  .select-items div {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .select-items div:hover,
+  .same-as-selected {
+    background-color: #d5deff;
+  
+  }
+  
+  .select-selected.active + .select-items {
+    display: block;
+  }

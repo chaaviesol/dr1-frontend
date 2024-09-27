@@ -1,0 +1,151 @@
+.hospitaladmin-main{
+    height:100vh;
+}
+
+
+.hospitaladmin_left {
+    background-color: #3A65FD;
+    width: 25vw;
+    /* height: 100%; */
+    height: 100vh;
+    color:white;
+    flex-direction: column;
+    justify-content: space-between;
+    padding:2vw; 
+}
+
+.hospitaladmin_image_title img{
+
+    height:10vw;
+    width: 10vw;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+
+
+
+.hospitaladmin_right{
+    padding:2vw;
+    width:75vw; 
+}
+
+.goodday{
+ 
+    justify-content: space-between;
+}
+
+.manage{
+    justify-content: space-between;
+    margin-top:2vw;
+   
+} 
+.hospitaladmin_title{
+    flex-direction: column;
+    justify-content: space-around;
+}
+.hospitaladmin_title h1{
+    font-weight:500; 
+
+}
+
+
+.hospitaladmin_cards{
+    gap:2vw;
+}
+.hospitaladmin_number{
+    background-color: #3A65FD;
+    width:  3.5vw;
+    height: 3.5vw;
+    justify-content: center;
+    align-items: center;
+    border-radius:50%;
+   
+}
+
+.hospitaladmin_number h2{
+    color: white;
+}
+.hospitaladmin_images{
+    gap: 2vw;
+    margin-top:2vw;
+}
+.hospitaladmin_images img{
+    width:6vw;
+    height:6vw;
+    border-radius:1.2vw;
+    object-fit: cover;
+    transition: transform .2s;
+}
+
+.hospitaladmin_images img:hover {
+  transform: scale(1.2); 
+}
+
+.hospitaladmin_card{
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+   
+    width:14vw;
+    padding:1.2vw;
+    border-radius:2vw ;
+    height:9vw;
+    flex-direction: column;
+    justify-content: space-between;
+    border:1px solid rgba(0, 0, 0,0.1);
+    transition:500ms ease-in-out;
+}
+
+.hospitaladmin_card1{
+    background-color:#D9EDEB; 
+}
+
+.hospitaladmin_card1:hover{
+    border:1px solid #2A9D8F;  
+    box-shadow:none;
+}
+
+.hospitaladmin_number1{
+    background-color:#2A9D8F;
+}
+
+.hospitaladmin_card2{
+    background-color:#FAE1DA; 
+}
+
+.hospitaladmin_card2:hover{
+    border:1px solid #E76F51; 
+    box-shadow:none;
+   
+}
+
+
+.hospitaladmin_number2{
+    background-color:#E76F51;
+}
+
+.hospitaladmin_card3{
+    background-color:#DFD1F0; 
+}
+
+
+.hospitaladmin_card3:hover{
+    border:1px solid #6F2DBD;  
+    box-shadow:none;
+}
+
+
+.hospitaladmin_number3{
+    background-color:#6F2DBD;
+}
+
+.hospitaladmin_image_title{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:2vw;
+    color: white;
+}
+
+.hospitaladmin_image_title h2{
+    color: white;
+}

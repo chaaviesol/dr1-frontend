@@ -1,0 +1,37 @@
+.container {
+  border-radius: 10px;
+  position: relative; /* Ensure the container is positioned relative */
+}
+
+.container img {
+  height: 173px;
+  width: 159px;
+  object-fit: cover; /* Maintains aspect ratio and covers the container */
+  border-radius: 10px;
+}
+
+.glassEffect {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+  height: 62px;
+  border-radius: 8px;
+  background: rgba(17, 17, 17, 0.3); /* Darker semi-transparent background */
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.glassEffect span {
+  text-align: left;
+  color: white;
+  font-weight: 500;
+  font-family: "Poppins";
+  font-size: 12px;
+}

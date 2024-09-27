@@ -1,0 +1,73 @@
+.container {
+  position: relative;
+  padding: 1rem 1rem 1rem 2rem;
+  display: flex;
+  height: 55px;
+  gap: 1rem;
+  background: white;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.modalContainer {
+  background-color: white;
+  overflow: auto;
+  border-radius: 10px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: -165px;
+  left: 0px;
+  height: 160px;
+gap: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+z-index: 99999;
+  width: 50%;
+}
+
+.modalContainer span{
+  font-weight: 500;
+  font-size :14px;
+}
+
+.modalContainer div {
+  padding-bottom: .3rem;
+  border-bottom: 1px solid rgb(128, 128, 128,0.1);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.modalContainer i {
+  color: rgb(31, 31, 31,0.6);
+  font-size: 20px;
+  height: 20px;
+}
+.modalContainer span {
+  color: rgb(31, 31, 31,0.6);
+}
+.icons {
+  /* border: 1px solid black; */
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.icon {
+  font-size: 20px;
+  color: #999999;
+}
+
+.search {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.search input {
+  padding: 0.4rem;
+}
+.searchIcon {
+  color: #999999;
+}

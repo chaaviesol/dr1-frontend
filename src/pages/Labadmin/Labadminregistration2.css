@@ -1,0 +1,372 @@
+.labadminregistration {
+    background-color: #3A65FD;
+    flex-direction: column;
+    padding: 2vw;
+}
+
+.labadminregistration h1 {
+    color: white;
+}
+
+.labadminregistration_input2,
+.labadminregistration_input3 {
+    justify-content: space-between;
+}
+
+
+
+.hospital-second-section-Div:focus,
+.hospital-second-section-Div:active {
+    background-color: rgba(246, 246, 249, .4);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.hospitalRegTypeList:focus,
+.hospitalRegTypeList:active {
+    background-color: rgba(246, 246, 249, .4);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+
+.labadminregistration_input h4 {
+    color: white;
+
+
+}
+
+
+.labadminregistration_input1 {
+    gap: 2vw;
+}
+
+.labadminregistration_input1 img {
+    height: 8vw;
+    width: 8vw;
+    object-fit: cover;
+    border-radius: 1.2vw;
+}
+
+.hospitalAdminPinInput {
+    height: 100%;
+    width: 100%;
+}
+
+.hospitalAdminInput {
+    background-color: rgba(246, 246, 249, .4);
+    border-radius: .5vw;
+    width: 100%;
+    height: 3vw;
+    margin-top: 1vw;
+    color: white;
+    padding: 1vw;
+    letter-spacing: 2px;
+}
+
+
+.labadminregistration_input {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 68vh;
+}
+
+.hospitalAdminPinTimePic {
+    width: 100%;
+    height: 2vw;
+    color: white;
+    background-color: rgba(246, 246, 249, .4);
+    border-radius: .5vw;
+    border: none;
+}
+
+.hospitalAdminPinTimePic input {
+    color: white;
+    border-radius: .5vw;
+    border: 0px solid black;
+}
+
+.LabFileName-div {
+    width: 18vw;
+    overflow: scroll;
+}
+
+.LabAdminPin .css-i4bv87-MuiSvgIcon-root {
+    color: white;
+}
+
+.LabAdminPin {
+    display: flex;
+    width: 43vw;
+    gap: 30px;
+}
+
+.Labregistration_second {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.Labregistration_second input {
+    background-color: rgba(246, 246, 249, .4);
+    border-radius: .5vw;
+    width: 100%;
+    color: white;
+    padding: 1vw;
+    letter-spacing: 2px;
+}
+
+.LabPinTypeDiv textarea {
+    width: 44vw;
+    height: 7vw;
+    border-radius: 1vw;
+    resize: none;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    color: white;
+    padding: 1vw;
+    letter-spacing: 2px;
+}
+
+
+
+.LabAdminPinTimePic {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.pass-con {
+    margin-bottom: 1vw;
+}
+
+
+.LabPinType {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.LabPinTypeDiv {
+    width: 43vw;
+}
+
+.hospitalAdminPinTimePic {
+    height: 3vw;
+    color: white;
+}
+
+/* .hospitalAdminPinTimePic .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    color: rgb(255, 255, 255) !important;
+} */
+
+
+.labadminregistration_input input {
+    background-color: rgba(246, 246, 249, .4);
+    border-radius: .5vw;
+    height: 3vw;
+    color: white;
+    padding: 1vw;
+    letter-spacing: 2px;
+    width: 30vw;
+    margin-top: 1vw;
+}
+
+.labadminregistration_input textarea {
+
+    height: 23.3vh;
+    border-radius: 1vw;
+    resize: none;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    color: white;
+    padding: 1vw;
+    letter-spacing: 2px;
+    width: 46vw;
+}
+
+
+
+
+.labadminregistration_button {
+
+    justify-content: flex-end;
+}
+
+.labadminregistration_button h4 {
+    background-color: white;
+    width: fit-content;
+    padding: .5vw 3vw;
+    border-radius: .5vw;
+    color: #3A65FD;
+    margin-left: 2vw;
+    border: 1px solid white;
+}
+
+
+.demo1 h4 {
+    border: 1px solid white;
+    background-color: #3A65FD;
+    color: white;
+}
+
+.lab-left-section {
+    width: 48%;
+}
+
+.lab-left-section div {
+    margin-top: 2vw;
+}
+
+.lab-left-section input {
+    width: 100%;
+    height: 3vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    padding: 1vw;
+    color: white;
+}
+
+.LabAdminPin {
+    width: 44vw;
+    height: 3vw;
+    justify-content: space-between;
+}
+
+.LabAdminPinTimePic {
+    width: 20vw;
+    height: 3vw;
+}
+
+.hospitalAdminPinTimePic {
+    height: 3vw;
+}
+
+.hospitalAdminPinTimePic .css-1bn53lx {
+    color: white;
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 3vw;
+    /* border: 1px solid white; */
+    color: white;
+}
+
+.pin-lo input {
+    background-color: rgba(246, 246, 249, .4);
+    border-radius: .5vw;
+    width: 16vw;
+    height: 3vw;
+    color: white;
+    padding: 1vw;
+    letter-spacing: 2px;
+    margin-top: 1vw;
+}
+
+
+.LabImageAb {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.LabImageAbRemIcon {
+    position: absolute;
+    margin: -10px;
+    width: 20px;
+    color: rgb(255, 255, 255);
+    height: 20px;
+    background: rgba(255, 255, 255, 0.557);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@media only screen and (max-width:980px) {
+    .LabPinType {
+        flex-direction: column;
+    }
+
+    .LabPinTypeDiv {
+        width: 100%;
+    }
+
+    .ho_ad_re_button button {
+        height: 30px;
+    }
+
+    .LabAdminPin {
+        width: 100%;
+    }
+
+    .lab-left-section {
+        width: 100%;
+    }
+
+    .LabName_input {
+        margin: 10px 00px;
+    }
+
+    #hospitalname_inputId {
+        margin-top: 50px;
+    }
+
+    .LabPinTypeDiv textarea {
+        width: 100%;
+        height: 100px;
+    }
+
+    .hospitalAdminPinTimePic .css-1bn53lx {
+        height: 10vw;
+    }
+
+    .hospitalAdminPinTimePic {
+        height: 10vw;
+        border-radius: 6px;
+
+    }
+
+    .LabFileName-div {
+        width: 100%;
+    }
+
+    .Labregistration_second input {
+        height: 10vw;
+    }
+
+    .css-z3c6am-MuiFormControl-root-MuiTextField-root {
+        height: 100%;
+        background-color: #3a64fd7b;
+    }
+
+    .lab-left-section input {
+        height: 9vw;
+        padding-left: 10px;
+    }
+
+    .pin-lo input {
+        height: 10vw;
+        width: 35vw;
+        border-radius: 1vw;
+    }
+
+
+
+    .LabAdminPinTimePic {
+        height: 10vw;
+        margin-top: 3vw;
+        width: 100%;
+    }
+
+    .LabAdminPin {
+        flex-direction: column;
+        height: fit-content;
+    }
+
+
+}

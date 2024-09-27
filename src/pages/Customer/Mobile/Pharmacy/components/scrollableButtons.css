@@ -1,0 +1,28 @@
+
+  .scrollablerow{
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  .styled_button{
+    padding: 10px 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    /* background-color: ${(props) => (props.isSelected ? '#f' : 'white')}; */
+    /* color: ${(props) => (props.isSelected ? 'blue' : 'black')}; */
+    margin-right: 10px;
+    cursor: pointer;
+  
+    &:focus {
+      outline: none;
+    }
+  
+    & > span {
+      margin-left: 5px;
+    }
+  }

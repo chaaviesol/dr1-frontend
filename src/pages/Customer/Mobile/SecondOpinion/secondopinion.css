@@ -1,0 +1,377 @@
+.secop{
+    padding-top:20px;
+    background-color: #F3F3F8;
+    /* height:100vh; */
+    h3{
+        letter-spacing:1px;
+        font-size:18px;
+    }
+
+    h4{
+        font-size:15px;
+       }
+}
+
+.secoptitle{
+    padding-top:20px;
+    h2{
+        font-size:28px;
+        font-weight: 900;
+        letter-spacing:1px;
+    }
+}
+.secopmobcontainer {
+    /* border: 1px solid red; */
+    height: 100%;
+    max-width: 96%;
+    margin-inline: auto;
+    padding-inline:10px;
+  }
+.secopimg{
+    align-items: center;
+    justify-content: center;
+    padding:30px 0px;
+}
+
+.secopdipartmentoption{
+    cursor: pointer;
+    width:100%;
+    height:50px;
+    background-color: white;
+    align-items: center;
+    padding-left:20px;
+    border-radius:8px;
+    margin-top:20px;
+    h4{
+        font-size:16px;
+    }
+}
+
+.secopdipartmentoptionselected{
+    color: white;
+    background-color: #3A65FD;
+}
+
+
+
+.secopdipartmentbutton{
+    align-items: center;
+    justify-content: center;
+    background-color: #3A65FD;
+    color: white;
+    height:50px;
+    width:50px;
+    border-radius:50px;
+    i{
+        font-size:28px;
+        height: 28px;
+    }
+}
+
+.secopdipartmentbuttonsec{
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top:30px;
+}
+
+
+/* Page 2 */
+
+.secop2{
+    padding-top:20px;
+    height:100vh;
+    h3{
+        letter-spacing:1px;
+        font-size:18px;
+    }
+
+    h4{
+        font-size:15px;
+       }
+}
+
+
+.secopinput {
+  margin-top: 20px;
+  button{
+    width:100%;
+    height:50px;
+    margin-top:15px;
+    background-color:#000000;
+    color: white;
+    border-radius:8px;
+    border: 0px;
+    
+  }
+input{
+    width:100%;
+    height:50px;
+    margin-top:15px;
+    background-color: #f3f3f8;
+    border-radius:8px;
+    padding:0px 15px;
+}
+input:focus {
+    border:2px solid #91a9ff;
+    outline: none; 
+}
+textarea{
+    width:100%;
+    height:80px;
+    margin-top:15px;
+    background-color: #EEF1FF;
+    border-radius:8px;
+    padding:10px 15px;
+    resize: vertical;
+}
+textarea:focus{
+    border: 2px solid #91a9ff;
+}
+} 
+
+.AttachAnyFile{
+    padding-top:10px;
+}
+
+.secopsubbutton button{
+    width:100%;
+    height: 50px;
+    border-radius:8px;
+    align-items: center;
+    background-color:#3A65FD;
+    color: white;
+    margin-top:30px;
+}
+
+
+
+
+/*End Page 2 */
+
+
+
+
+
+
+/* Pharmacy */
+
+.modalContainer {
+    background-color: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem;
+  
+    width: 90%;
+    h3{
+        letter-spacing: 1px;
+    }
+  }
+
+
+
+
+/* .pharmacysection{
+  
+} */
+
+.uploadprescriptionsection{
+    
+    width:100%;
+    height:50vw;
+    background: rgb(42,60,168);
+background: linear-gradient(90deg, rgba(42,60,168,1) 0%, rgba(68,91,221,1) 100%);
+    padding:20px;
+    color: white;
+    border-radius: 8px;
+    justify-content: space-between;
+
+    h4{
+        font-size: 13px;
+    }
+}
+
+.ploadprescriptionfe{
+    gap:8px;
+    align-items: center;
+    i{
+        font-size:16px;
+        font-weight: 100;
+    }
+    h4{
+        font-size: 13px;
+    }
+}
+
+
+.uploadprescriptionbutton{
+    border-radius:50px;
+    background-color: rgba(0, 0, 0,0);
+    color: white;
+    border: 0.5px solid white;
+    align-items: center;
+    padding:2px 15px;
+}
+
+.uploadprescriptionsecright{
+   width:35%;
+   align-items: center;
+   justify-content: center;
+    img{
+      height:70%;
+      
+    }
+}
+
+.uploadprescriptionsecleft{
+    flex-direction:column;
+    justify-content: space-between;
+
+}
+
+.pharmacyshopproduct{
+    flex-direction: column;
+    background-color: white;
+    width:28vw;
+    padding:12px 20px;
+    border-radius: 8px;
+    justify-content: center;
+    
+
+}
+
+.pharmacyshopproductimg{
+    height:20vw;
+    width: 100%;
+
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    img{
+        max-width:100%;
+        max-height:90%;
+        object-fit: cover;
+    }
+}
+.pharmacyshopproducttitle{
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height:10vw;
+    h4{
+        line-height:20px;
+        font-size:14px;
+    }
+}
+
+.pharmacyshopcatemobile{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+
+.upload-buttonsecond {
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    justify-content: center
+  }
+
+  .consentSectionmodal {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .consentSectionmodal input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .consentSectionmodal label {
+    font-size: 14px;
+  }
+
+  .closeButtoncross2 {
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-top: 10px;
+
+}
+
+.closeButtoncross2:hover {
+  color: #d32f2f;
+}
+/*End Pharmacy */
+
+
+.backbuttonsecondopinion{
+    border-radius: 50px;
+    width:50px;
+    height:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:black;
+    color:white;
+}
+
+.backbuttonsecondopinion i{
+    font-weight: 100;
+}
+
+/* prescription_upload */
+
+.secopinputprescription {
+    margin-top: 20px;
+    button{
+      width:100%;
+      height:50px;
+      margin-top:15px;
+      background-color:#000000;
+      color: white;
+      border-radius:8px;
+      border: 0px;
+      
+    }
+  input{
+      width:100%;
+      height:50px;
+      margin-top:15px;
+      background-color: #EEF1FF;
+      border-radius:8px;
+      padding:0px 15px;
+  }
+  input:focus {
+      border:2px solid #91a9ff;
+      outline: none; 
+  }
+  textarea{
+      width:100%;
+      height:80px;
+      margin-top:15px;
+      background-color: #EEF1FF;
+      border-radius:8px;
+      padding:10px 15px;
+      resize: vertical;
+  }
+  textarea:focus{
+      border: 2px solid #91a9ff;
+  }
+  } 

@@ -1,0 +1,44 @@
+.AnlzAdminTop {
+    width: 100%;
+    padding: 10px 30px;
+    display: flex;
+    background-color: #3A65FD;
+    align-items: center;
+}
+
+.AnlzAdminTopHomeBtn {
+    display: flex;
+    gap: 5px;
+    font-size: 17px;
+    background-color: white;
+    align-items: center;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 0px 20px;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.667);
+}
+
+.AnlzAdminTopHomeBtn p {
+    letter-spacing: 1px;
+}
+
+#AnlzAdminTopHomeBtnIcon {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.632);
+}
+
+.AnlzAdminTopSecondSec {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.AnlzAdminTopSecondSec p {
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}

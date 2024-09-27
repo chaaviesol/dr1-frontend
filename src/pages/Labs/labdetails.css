@@ -1,0 +1,258 @@
+.lab-details-about {
+    gap: 3vw;
+    margin-top: 3vw;
+}
+
+.lab-deatials-left {
+    /* width:1vw; */
+}
+
+.lab-deatials-left img {
+    width: 14vw;
+    height: 14vw;
+    object-fit: cover;
+    border-radius: 1vw;
+}
+
+.lab-deatials-right {
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.lab-details-imges {
+    display: grid;
+    gap: 2vw;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+}
+
+.lab-deatails-Services {
+    min-height: 200px;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    /* width of vertical scrollbar */
+    height: 0px;
+    /* height of horizontal scrollbar */
+}
+
+/* Track styles */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* color of the track */
+}
+
+/* Handle styles */
+::-webkit-scrollbar-thumb {
+    background: #3A65FD;
+    /* color of the thumb */
+    /* roundness of the thumb */
+    border: 1px solid rgba(255, 255, 255, 0.488);
+}
+
+/* Handle hover styles */
+::-webkit-scrollbar-thumb:hover {
+    background: #3A65FD;
+    /* color of the thumb on hover */
+}
+
+.lab-details-imges img {
+    width: 20vw;
+    height: 12vw;
+    object-fit: cover;
+    border-radius: 1vw;
+    /* margin-bottom: 2vw; */
+
+}
+
+.lab-details-buttons a {
+    height: 3vw;
+    border-radius: 5px;
+    /* background-color: var(--color-white); */
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.lab-deatails-star {
+    gap: 1vw;
+}
+
+
+.lab-details-buttons {
+    gap: 2vw;
+}
+
+
+.lab-details-buttons1 {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    transition: 500ms ease-in-out;
+}
+
+/* .lab-details-buttons1:hover{
+    border:1px solid #DAE2FF ;
+    background-color:#DAE2FF ;
+} */
+
+.lab-details-buttons2 {
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    cursor: pointer;
+}
+
+/* .lab-details-buttons2:hover{
+    background-color: white;
+    color:var(--color-primary);
+}
+.lab-details-buttons2 h4:hover{
+    color:var(--color-primary);
+} */
+
+.lab-details-buttons2 h4 {
+    /* background-color:var(--color-primary); */
+    color: var(--color-white);
+
+}
+
+
+
+
+#style-2::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar {
+    height: 8px;
+    background-color: #F5F5F5;
+}
+
+#style-2::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+    background-color: var(--color-primary);
+}
+
+
+.lab-details-heading {
+    padding: 2vw 0vw;
+}
+
+.lab-deatails-star {
+    color: #FA8D0D;
+}
+
+.lab-details-location i {
+    color: #3A65FD;
+}
+
+.lab-details-location {
+    gap: 1.2vw;
+}
+
+.sevice-list {
+    align-items: center;
+    gap: 1.2vw;
+    padding-bottom: 1vw;
+}
+
+.sevice-list i {
+    color: #3A65FD;
+}
+
+
+.Lab_details_mobile {
+    display: none;
+}
+
+.Lab_details_Laptop {
+    display: block;
+}
+
+
+
+
+
+@media screen and (max-width:780px) {
+
+    .Lab_details_mobile {
+        display: block;
+    }
+
+    .Lab_details_Laptop {
+        display: none;
+    }
+
+
+    .lab_type {
+        border: 1px solid #3A65FD;
+        width: fit-content;
+        padding: 0vw 3vw;
+        border-radius: 50px;
+        margin-top: 4vw;
+    }
+
+    .lab_type h4 {
+        color: #3A65FD;
+    }
+
+
+    .lab_about {
+        margin-top: 4vw;
+    }
+
+
+    .lab_location_mobile {
+        background-color: #e1e8ff;
+        padding: 3vw;
+        margin-top: 4vw;
+        border-radius: 2vw;
+
+    }
+
+
+    .lab_location_mobile i {
+        color: #3A65FD;
+    }
+
+    .lab_time_button_mobile {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #3A65FD;
+        color: #3A65FD;
+        border-radius: 2vw;
+        padding: 2vw;
+        margin-top: 4vw;
+    }
+
+
+
+    .lab_time_button_mobile2 {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        background-color: #3A65FD;
+        color: #ffffff;
+        border-radius: 2vw;
+        padding: 2vw;
+        margin-top: 3vw;
+    }
+
+    .lab_Pha_Mob_img img {
+        object-fit: cover;
+        width: 100%;
+        margin-top: 4vw;
+        border-radius: 2vw;
+        height: 50vw;
+    }
+
+
+}

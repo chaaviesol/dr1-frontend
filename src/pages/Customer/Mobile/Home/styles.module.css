@@ -1,0 +1,57 @@
+.ad1 {
+  width: 100%;
+  border-radius: 10px;
+}
+.expertOpinion {
+  overflow: hidden;
+  height: 165px;
+  position: relative;
+  background: #d90c0c;
+  border-radius: 9px;
+}
+.expertOpinion span {
+  position: absolute;
+  letter-spacing: 3px;
+  top: 12%;
+  left: 8%;
+  font-size: 21px;
+  font-family: "Figtree";
+  color: white;
+  font-weight: 900;
+}
+.expertOpinion button {
+  cursor: pointer;
+  position: absolute;
+  letter-spacing: 3px;
+  border-radius: 26px;
+  padding: 1rem 3rem 1rem 3rem;
+  top: 67%;
+  height: 34px;
+  left: 8%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-family: "Poppins";
+  background: transparent;
+  border: 1px solid #f3f3f8;
+  font-weight: 300;
+}
+.img1 {
+  position: absolute;
+  left: -15px;
+  top: -35px;
+}
+.img2 {
+  position: absolute;
+  top: -12px;
+  right: 10%;
+}
+
+.margin {
+  margin: 1.8rem 0;
+}
+.margin2 {
+  margin-top: 3rem;
+}

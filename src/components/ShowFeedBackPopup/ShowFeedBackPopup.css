@@ -1,0 +1,240 @@
+.ShowFeedBackPopupIn {
+    width: 32%;
+    background-color: white;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+@media (max-width: 768px) {
+    .ShowFeedBackPopupIn {
+        width: 92%;
+     
+    
+    }
+  }
+
+
+.ShowFeedBackPopupInImg {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+
+}
+
+.ShowFeedBackPopupInImg img {
+    height: 100px;
+    border-radius: 50%;
+}
+
+.ShowFeedBackPopup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ShowFeedBackPopupText {
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ShowFeedBackPopupTextLater button {
+    font-size: 15px;
+    font-weight: 300;
+    color: #7E83FF;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+
+.ShowFeedBackPopupTextLater {
+    display: flex;
+    justify-content: center;
+}
+
+.ShowFeedBackPopupText p {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.858);
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.ShowFeedBackPopupText button {
+    width: 100%;
+    height: 50px;
+    background-color: #2A9D8F;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: white;
+    border: none;
+    justify-content: center;
+}
+
+
+.ShowFeedBackPopupText button {
+    width: 100%;
+    height: 50px;
+    background-color: #2A9D8F;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: white;
+    border: none;
+}
+
+.ShowFeedBackPopupButtons {
+    width: 100%;
+    gap: 20px;
+    display: flex;
+}
+
+.ShowFeedBackPopupButton1 {
+    width: 100%;
+    background-color: #FA8D0D;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    height: 50px;
+
+}
+
+.ShowFeedBackPopupButton2 {
+    width: 100%;
+    background-color: #7E83FF;
+    font-size: 15px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    height: 50px;
+
+}
+
+.ShowFeedBackPopupInButtinsGap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ShowFeedBackPopupReview {
+    display: flex;
+    gap: 10px;
+}
+
+.ShowFeedBackPopupReview img {
+    height: 50px;
+    border-radius: 50%;
+
+}
+
+.ShowFeedBackPopupRevieName {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ShowFeedBackPopupRevieName h5 {
+    font-size: 20px;
+    color: black;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.ShowFeedBackPopupRevieName p {
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.ShowFeedBackPopupReviewMainText {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+
+}
+
+.ShowFeedBackPopupReviewMainText img {
+    height: 200px;
+    object-fit: cover;
+
+}
+
+.ShowFeedBackPopupReviewMainText p {
+    font-weight: 400;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.767);
+}
+
+.ShowFeedBackPopupReviewMainTextRating {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ShowFeedBackPopupReviewMainTextRating p {
+    font-weight: 400;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.ShowFeedBackPopupRatingIcons {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+}
+
+.ShowFeedBackPopupRatingIcons textarea {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #E7E8FF;
+    min-height: 100px;
+    max-height: 150px;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 10px;
+
+}
+
+.ShowFeedBackPopupRatingIcons i {
+    color: rgb(211, 209, 209);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.ShowFeedBackPopupReviewMainTextRating button {
+    width: 100%;
+    letter-spacing: 1px;
+    color: white;
+    background-color: #2A9D8F;
+    border-radius: 10px;
+    font-size: 16px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

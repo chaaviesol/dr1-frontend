@@ -1,0 +1,36 @@
+.about-us{
+    gap:4vw;
+    margin-top:5vw;
+}
+
+.about-us-image img{
+    width:25vw;
+    height:40vw;
+    object-fit: cover;
+    border-radius:2vw;
+}
+
+.about-para h1{
+    margin-bottom:1.4vw;
+    color:rgba(0, 0, 0,0.7);
+}
+ 
+
+
+.about-para h4{
+    margin-bottom:1.4vw;
+    color:rgba(0, 0, 0,0.7);
+}
+
+@media screen and (max-width: 780px){
+    .about-us{
+        flex-direction: column;
+    }
+
+
+    .container-third{
+        max-width:85%;
+    }
+
+}
+    

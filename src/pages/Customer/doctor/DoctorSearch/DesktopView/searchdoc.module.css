@@ -1,0 +1,156 @@
+.container {
+  padding: 2.5rem;
+  min-height: 100dvh;
+  font-family: "Outfit", sans-serif;
+  background-color: rgba(231, 236, 253, 0.4);
+  /* border: 1px solid red; */
+}
+
+.section1 {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  width: 35%;
+}
+
+.section2 {
+  /* border: 1px Solid grey; */
+  height: 2.5rem;
+}
+
+.section3 {
+  display: flex;
+  /* border: 1px solid red; */
+  width: 100%;
+}
+
+.leftSide {
+  background-color: white;
+  padding: 2rem;
+  /* margin-top: 5px; */
+  width: 300px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+
+  /* border: 1px solid #e7e5e4; */
+  border-radius: 23px;
+}
+
+.rightSide {
+  flex: 3;
+  /* border: 1px solid green; */
+}
+
+.leftHeadings {
+  font-weight: 400;
+}
+
+.types> :nth-child(1) {
+  padding-bottom: 1rem;
+}
+
+.types> :nth-child(2) {
+  padding-bottom: 2.5rem;
+  padding-left: 30px;
+}
+
+.specialization> :nth-child(2) {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  /* border: 1px solid red; */
+  height: 260px;
+  overflow-x: scroll;
+  padding-left: 30px;
+
+  padding-bottom: 2.5rem;
+}
+
+.gender> :nth-child(1) {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.gender> :nth-child(2) {
+  padding-bottom: 2.5rem;
+  padding-left: 30px;
+}
+
+.exp> :nth-child(1) {
+  padding-bottom: 2.5rem;
+}
+
+.cardMainContainer {
+  padding-left: 2rem;
+  padding-top: .1rem;
+  padding-bottom: .1rem;
+  padding-right: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  overflow-x: scroll;
+  max-height: 870px;
+}
+
+/* ----------------- Card */
+
+.cardContainer {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  background-color: white;
+  cursor: pointer;
+  padding: 1.5rem;
+  display: flex;
+  gap: 10px;
+  height: 200px;
+  /* border: 1px solid #e7e5e4; */
+  border-radius: 23px;
+  width: calc(49% - 10px);
+  /* margin-top: 2rem; */
+  box-sizing: border-box;
+
+  &:hover {
+    /* border: 1px solid rgba(58, 101, 253,0.5); */
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(58, 101, 253, 0.5) 0px 0px 0px 1px;
+
+  }
+}
+
+.cardContainer> :nth-child(1) {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &>span {
+    font-weight: 200;
+  }
+
+  /* border: 1px solid red; */
+}
+
+.cardContainer> :nth-child(2) {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  gap: 10px;
+  /* border: 1px solid red; */
+}
+
+.docImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+
+}
+
+@media screen and (max-width: 769px) {
+  .cardContainer{
+    width: 100%;
+  }
+}

@@ -1,0 +1,470 @@
+.main-register {
+    height: 100vh;
+    align-items: center;
+}
+
+
+.register-png-div {
+    width: 14vw;
+}
+
+.fileNameDisplay-div {
+
+    margin-left: 10px;
+    width: 100%;
+
+}
+
+.fileNameDisplay-div h4 {
+    display: flex;
+    height: 3vw;
+    align-items: center;
+    margin-left: 1vw;
+
+}
+
+.fileNameDisplay-div {
+    width: 50vw;
+}
+
+
+
+.registration-form {
+    width: 72vw;
+    background-color: var(--color-primary);
+    border-radius: 2vw;
+    padding: 2vw;
+    /* height: 80vh; */
+    color: var(--color-white);
+
+
+}
+
+
+#inputTag[type="file"] {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+
+/* .register-input-section{
+    justify-content: space-between;
+} */
+
+.register-left-section {
+
+    justify-content: space-between;
+}
+
+.register-right-section {
+    justify-content: space-between;
+}
+
+.register-right-section div {
+    margin-top: 0vw;
+}
+
+.register-left-section div {
+    margin-top: 1vw;
+}
+
+
+.register-right-section input {
+    width: 32vw;
+    height: 3vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    padding: 1vw;
+    color: white;
+
+    &:focus {
+        border: 1px solid white;
+    }
+}
+
+.register-left-section input {
+    width: 32vw;
+    height: 3vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    padding: 1vw;
+    color: white;
+
+    &:focus {
+        border: 1px solid white;
+    }
+}
+
+.register-button-section {
+    justify-content: end;
+    margin-top: 2vw;
+}
+
+.register-button-section button {
+    height: 3vw;
+    border-radius: 5px;
+    background-color: var(--color-white);
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: blue;
+    letter-spacing: 1px;
+    font-size: 17px;
+}
+
+.register-button-section button:hover {
+    background-color: rgb(240, 248, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+}
+
+.hospital-second-section-Div-Map button:hover {
+    background-color: rgb(240, 248, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+
+}
+
+.hospital-second-section-Div-Map button:focus,
+.hospital-second-section-Div-Map button:active {
+    background-color: rgb(240, 248, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.register-button-section button:focus,
+.register-button-section button:active {
+    background-color: rgb(240, 248, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.register-png-div2 {
+    justify-content: flex-end;
+}
+
+.register-button-section h4 {
+    color: var(--color-primary);
+}
+
+.main-waring-section {
+    height: 2.5vw;
+
+
+}
+
+
+
+.main-waring-section-pass {
+    width: 32vw;
+}
+
+.hospital-top {
+    justify-content: space-between;
+}
+
+
+
+
+.register-number-warning {
+    color: rgba(246, 246, 249, .6);
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 1.5px;
+    margin-top: 0.4vw;
+}
+
+
+.registration-form-edit {
+    /* height: fit-content; */
+    /* height: 150dvh; */
+    width: 72vw;
+    background-color: var(--color-primary);
+    border-radius: 2vw;
+    padding: 2vw;
+    /* height: 80vh; */
+    color: var(--color-white);
+    width: 100%;
+    padding: 5vw;
+    border-radius: 0vw;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+}
+
+
+.hospitalname_input input {
+    width: 54vw;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    padding: 1vw;
+    color: white;
+    height: 3vw;
+}
+
+
+.hospitalname_input_Hospital input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1vw;
+    background-color: rgba(246, 246, 249, .4);
+    padding: 1vw;
+    color: white;
+    height: 3vw;
+}
+
+
+
+.select-file {
+    background-color: white;
+    color: var(--color-primary);
+    width: 18vw;
+    height: 3vw;
+    border-radius: .4vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.select-file2 {
+    margin-top: 1vw;
+}
+
+.hospital-top {
+    margin-top: 1.5vw;
+}
+
+
+
+
+
+.pass-con-Inp {
+    width: 32vw;
+    height: 3vw;
+}
+
+
+/* .upload-image{
+    margin-top:1vw;
+} */
+.do-title {
+    margin-bottom: 1vw;
+}
+
+#fileNameDisplay {
+    width: 50%;
+    overflow-x: scroll;
+}
+
+.hospitalname_input input {
+    width: 46vw;
+}
+
+.main-waring-section4 {
+    width: 32vw;
+}
+
+
+@media screen and (max-width:1024px) {
+    .select-file {
+        width: 18vw;
+    }
+
+    .hospitalname_input input {
+        width: 46vw;
+    }
+}
+
+
+@media screen and (max-width: 780px) {
+
+    .main-waring-section4 {
+        width: 100%;
+    }
+
+    #fileNameDisplay {
+        padding-left: 0px;
+    }
+
+    .main-register {
+        height: fit-content;
+        align-items: center;
+    }
+
+
+    .pass-con-Inp {
+        width: 100%;
+        height: 10vw;
+
+    }
+
+    .pass-con-Inp input {
+        width: 100%;
+        height: 10vw;
+
+    }
+
+    #fileNameDisplay {
+        width: 100%;
+    }
+
+    .register-right-section input {
+        height: 10vw;
+    }
+
+    .fileNameDisplay-div {
+        max-width: 50%;
+        display: flex;
+        align-items: center;
+        overflow-x: scroll;
+    }
+
+    .fileNameDisplay-div h6 {
+        padding-left: 40px;
+        margin-left: 10px;
+    }
+
+    .registration-form {
+        min-height: 100vh;
+        /* height: fit-content; */
+        /* height: 150dvh; */
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:780px) {
+
+    .register-input-section {
+        flex-direction: column;
+    }
+
+    .register-png-div {
+        display: none;
+    }
+
+    .register-left-section {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+    .register-right-section {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .register-left-section input {
+        height: 9vw;
+        padding-left: 10px;
+        width: 100%;
+    }
+
+    .register-right-section input {
+        height: 9vw;
+        padding-left: 10px;
+        width: 100%;
+    }
+
+    .register-button-section button {
+        height: 9vw;
+        border-radius: 5px;
+        background-color: var(--color-white);
+        justify-content: center;
+        align-items: center;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .registration-form {
+        width: 100%;
+        padding: 5vw;
+        border-radius: 0vw;
+    }
+
+    /* .upload-image{
+    margin-top: 7vw;
+ } */
+    .register-button-section {
+        justify-content: end;
+        margin-top: 5vw;
+    }
+
+    .hospital-top {
+        flex-direction: column-reverse;
+    }
+
+    .hospital-top input {
+        width: 100%;
+    }
+
+
+    .select-file {
+        background-color: white;
+        color: var(--color-primary);
+        width: 100%;
+        height: 9vw;
+        border-radius: .4vw;
+        padding-left: 1vw;
+
+
+        margin-top: 1vw;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2vw;
+    }
+
+
+    .main-waring-section {
+        height: fit-content;
+    }
+
+    .main-waring-section-pass {
+        width: 100%;
+        height: fit-content;
+    }
+
+    .main-waring-section-image {
+        height: fit-content;
+    }
+
+    .pass-con {
+        margin-top: 2vw;
+    }
+
+
+
+
+}

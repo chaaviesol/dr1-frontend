@@ -1,0 +1,272 @@
+.category_page {
+  padding: 15px 20px;
+  background-color: white;
+}
+.pharamacyproductstopbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.selected_category {
+  height: 55px;
+  width: 100%; /* Adjusted to full width */
+  /* max-width: 371px;  */
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  /* background: rgba(243, 243, 248, 1); */
+}
+
+.category_image {
+  width: 26px;
+  height: 37px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.category_info {
+  flex-grow: 1;
+}
+
+.category_name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.41px;
+}
+
+.category_total_items {
+  margin: 0;
+  font-size: 8px;
+  color: rgba(0, 0, 0, 0.49);
+  line-height: 12px;
+  font-weight: 500;
+}
+
+.cart_icon {
+  width: 22px;
+  height: 22px;
+}
+
+.subcategory_section {
+  display: flex;
+
+  flex-direction: row; /* Ensuring horizontal alignment */
+}
+
+.subcategory_list {
+  display: flex;
+  width:80px;
+  flex-direction: column;
+  gap: 2rem;
+  overflow-y: auto;
+}
+
+.subcategory_item {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+  cursor: pointer;
+  gap: 10px;
+}
+.subcategory-item {
+  /* WebkitTapHighlightColor: 'transparent' ; */
+  /* width: 44px; */
+  /* height: 44px; */
+  padding: 15px;
+  background-color: #f3f3f8;
+  border: 2px solid #f3f3f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.subcategory-item span {
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.subcategory-item.selected {
+  background-color: #f0f8ff;
+  border: 2px solid #91a9ff;
+}
+
+.product_list_scroll {
+  width: 100% ;/* Adjust width considering padding and border */
+  padding-left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.product_tile {
+  background: rgba(243, 243, 248, 1);
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  align-items: center;
+  justify-content: space-between;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  padding: 10px;
+  gap: 1rem;
+  height: fit-content;
+}
+.product_image_main {
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+
+.product_image {
+  /* border: 1px solid red; */
+  height: 54px;
+  width: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product_image img {
+  height: 90%;
+  object-fit: cover;
+}
+
+.product_info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: 40px;
+}
+.pharmacy-category-addbutton {
+  border-radius: 15px;
+  background: #3a65fd;
+  color: white;
+  width: fit-content;
+  padding: 5px 20px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product_brand_name,
+.product_name,
+.product_qlty {
+  padding: 2px 0px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 13px;
+  letter-spacing: -0.41px;
+  text-align: left; /* Center text alignment */
+}
+
+.product_brand_name {
+  color: rgba(0, 0, 0, 0.49);
+}
+
+.product_name {
+  font-weight: 600;
+}
+
+.product_qlty {
+  color: rgba(0, 0, 0, 0.49);
+}
+
+.product_price {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.41px;
+  color: rgba(0, 0, 0, 1);
+}
+
+.add_button_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.add_button {
+  background-color: rgba(72, 150, 243, 1);
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.add_button:hover {
+  background-color: rgba(60, 130, 210, 1);
+}
+
+.searchProdContainer {
+  display: none;
+}
+
+@media only screen and (max-width: 400px) {
+  .product_tile {
+    width: 47%;
+  }
+  .pharmacy-category-addbutton {
+    padding: 2px 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product_tile {
+    width: 23%;
+  }
+
+  .searchProdContainer {
+    margin: 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .searchProdContainer-searchboxandcartcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+  }
+
+  .searchProdContainer-searchbox {
+    width: 80%;
+  }
+
+  .scsb {
+    display: none;
+  }
+  .selected_category {
+    display: none;
+  }
+
+  .product_list_scroll {
+    gap: 2rem;
+    justify-content: flex-start;
+    margin-left: 3rem;
+  }
+
+  .product_image {
+    cursor: pointer;
+    width: 90px;
+    height: 90px;
+  }
+}

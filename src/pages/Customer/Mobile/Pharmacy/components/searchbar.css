@@ -1,0 +1,23 @@
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(243, 243, 248, 1);
+    padding: 10px;
+    margin-bottom:10px;
+    border-radius: 7px;
+    i{
+        font-size: 16px;
+    }
+  }
+  
+  .search-input {
+    border: none;
+    outline: none;
+    background: none;
+    flex-grow: 1;
+    padding-left: 10px;
+    font-size: 16px;
+    color: rgba(153, 153, 153, 1);
+    border-radius: 7px;
+}

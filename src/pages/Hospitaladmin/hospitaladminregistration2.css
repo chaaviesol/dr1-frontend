@@ -1,0 +1,615 @@
+.hospitaladminregistration2 {
+  background-color: #3A65FD;
+  color: white;
+  padding: 1vw 5vw;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.hospitaladminregistration2 h1 {
+  color: white;
+}
+
+.hospitaladminregistration_first {
+  justify-content: space-between;
+  min-height: 15vw;
+  gap: 5px;
+}
+
+
+.ho_ad_re_button button {
+  background-color: white;
+  width: fit-content;
+  color: #3A65FD;
+  padding: .5vw 3vw;
+  border-radius: .6vw;
+  cursor: pointer;
+}
+
+.ho_ad_re_button {
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+
+
+.hospitaladminregistration_second textarea {
+  width: 44vw;
+  height: 7vw;
+  border-radius: 1vw;
+  resize: none;
+  margin-top: 1vw;
+  background-color: rgba(246, 246, 249, .4);
+  color: white;
+  padding: 1vw;
+  letter-spacing: 2px;
+}
+
+.Specialties_card_ho_ad {
+  width: 26vw;
+  height: 13vw;
+  background-color: rgba(246, 246, 249, .4);
+  border-radius: 1vw;
+  margin-top: 1vw;
+  padding: 1vw;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Features_card_ho_ad {
+  width: 480px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1vw;
+  /* margin-top: 1vw; */
+  padding: 1vw 2vw 2vw 2vw;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  align-items: center;
+
+}
+
+.image_card_ho_ad {
+  flex-direction: column;
+  width: 26vw;
+}
+
+.image_card_ho_ad input {
+  background-color: rgba(246, 246, 249, .4);
+  border-radius: .5vw;
+  width: 100%;
+  height: 3vw;
+  margin-top: 1vw;
+  color: white;
+  padding: 1vw;
+  letter-spacing: 2px;
+}
+
+
+
+.hospitalAdminPinType {
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.Toastify__toast-body>div:last-child {
+  font-weight: 200;
+  font-size: 17px;
+}
+
+.hospitalAdminPinType div {
+  width: 44vw;
+}
+
+.image_card_ho_ad_section {
+  margin-top: 1vw;
+  gap: 10px;
+}
+
+.image_card_ho_ad_section img {
+  width: 5vw;
+  height: 5vw;
+  border-radius: .5vw;
+  object-fit: cover;
+}
+
+.image_card_ho_ad_add_image {
+  width: 5vw;
+  height: 5vw;
+  border-radius: .5vw;
+  background-color: rgba(246, 246, 249, .4);
+  justify-content: center;
+  align-items: center;
+  font-size: 46px;
+}
+
+.image_card_ho_ad2 {
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+:root {
+  --form-control-color: rebeccapurple;
+  --form-control-disabled: #959495;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.Features_card_ho_Modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.hospital-second-section-Div {
+  background-color: rgba(246, 246, 249, .4);
+  border-radius: .5vw;
+  width: 28vw;
+  height: 3vw;
+  color: white;
+  padding-left: 1vw;
+  letter-spacing: 2px;
+  margin-top: 1vw;
+  align-items: center;
+  overflow-y: scroll;
+  white-space: nowrap;
+  /* Ensure text doesn't wrap */
+  text-overflow: ellipsis;
+  /* Show ellipsis for overflow text */
+}
+
+.hospital-second-section-Div h4 {
+  font-weight: 200;
+
+}
+
+.form-control {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: flex;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+
+.form-control--disabled {
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1em;
+  height: 1em;
+  border: 0.8px solid currentColor;
+  border-radius: 50px;
+  transform: translateY(-0.075em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em white;
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+/* input[type="checkbox"]:focus {
+    outline: max(2px, 0.15em) solid currentColor;
+    outline-offset: max(2px, 0.15em);
+  } */
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
+
+.hospital-second-section-Div-Map {
+  display: flex;
+
+}
+
+.hospital-second-section-Div-Map p {
+  font-size: 15px;
+  font-weight: 400;
+  overflow: hidden;
+  /* Hide overflowing content */
+  white-space: nowrap;
+  /* Ensure text doesn't wrap */
+  text-overflow: ellipsis;
+}
+
+.Features_card_ho_ad_check {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: space-between;
+  height: 40vh;
+  overflow: scroll;
+}
+
+.Features_card_ho_ad_check input {
+  background-color: #3A65FD;
+}
+
+.Features_card_ho_ad_check label {
+  align-items: center;
+  padding: .2vw;
+  border-radius: 50px;
+}
+
+.hospitalRegTypeList {
+  background-color: rgba(246, 246, 249, .4);
+  border-radius: .5vw;
+  width: 26vw;
+  height: 3vw;
+  margin-top: 1vw;
+  color: white;
+  /* padding: 1vw; */
+  padding-left: 1vw;
+  letter-spacing: 2px;
+  color: white;
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+
+
+
+/* Changes */
+
+.hospital-adress-about {
+  justify-content: space-between;
+}
+
+.hospital-adress-about textarea {
+  width: 44vw;
+  height: 7vw;
+  border-radius: 1vw;
+  resize: none;
+  margin-top: 1vw;
+  background-color: rgba(246, 246, 249, .4);
+  color: white;
+  padding: 1vw;
+  letter-spacing: 2px;
+}
+
+
+
+
+
+
+.hospitaladminregistration_second {
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.hospital-second-section {
+  justify-content: space-between;
+}
+
+.hospital-second-section input {
+  background-color: rgba(246, 246, 249, .4);
+  border-radius: .5vw;
+  width: 28vw;
+  height: 3vw;
+  color: white;
+  padding: 1vw;
+  letter-spacing: 2px;
+  margin-top: 1vw;
+}
+
+.hospital-second-section input::placeholder {
+  color: white;
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+
+.main-waring-section4 {
+  align-items: center;
+}
+
+.pin-lo {
+  justify-content: space-between;
+  width: 44vw;
+  overflow: hidden;
+}
+
+
+
+.pin-input {
+  width: 16vw;
+}
+
+.lo-input select {
+  width: 26vw;
+}
+
+
+.select-new {
+  width: 140px;
+}
+
+
+.Features_card_ho_ad_button {
+  background-color: #3A65FD;
+  width: 100%;
+  padding: 10px;
+  margin-top: 24px;
+  border-radius: 10px;
+  color: white;
+}
+
+
+.name-progrss {
+  justify-content: space-between;
+}
+
+
+
+.License input {
+  background-color: rgba(246, 246, 249, .4);
+  border-radius: .5vw;
+  width: 44vw;
+  height: 3vw;
+  color: white;
+  padding: 1vw;
+  letter-spacing: 2px;
+  margin-top: 1vw;
+}
+.hospitalreg-focusarea{
+  height:200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.hospitalreg-focusarea span{
+font-weight: 300;
+}
+.focusarea-yesbtn{
+width:7rem;
+border-radius: 5px;
+padding: .5rem 1rem;
+background-color: #06D001;
+color:white
+
+}
+
+
+.focusarea-nobtn{
+width:7rem;
+border-radius: 5px;
+padding: .5rem 1rem;
+background-color: #F5004F;
+color:white
+}
+
+
+
+@media only screen and (max-width:1024px) {
+  .pin-lo input {
+    width: 16vw;
+  }
+}
+
+@media only screen and (max-width:980px) {
+  .Features_card_ho_ad {
+    width: 100%;
+  }
+
+  .License {
+    width: 100%;
+  }
+
+  .margin-about {
+    margin-top: 5vw;
+  }
+
+  .hospitaladminregistration_second input {
+    width: 100%;
+  }
+
+  .hospitalRegTypeList {
+    width: 100%;
+  }
+
+  .hospitalAdminPinType div {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lo-input select {
+    width: 46vw;
+  }
+
+  .hospitaladminregistration2 {
+    height: auto;
+    gap: 30px;
+  }
+
+  .hospitaladminregistration_first {
+    flex-direction: column;
+  }
+
+  .Features_card_ho_ad_check label {
+    width: 40%;
+  }
+
+  .Features_card_ho_ad {
+    height: 120px;
+    padding: 10px;
+  }
+
+  .image_card_ho_ad {
+    width: 100%;
+  }
+
+  .image_card_ho_ad input {
+    height: 10vw;
+  }
+
+  .image_card_ho_ad_section {
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .image_card_ho_ad_section img {
+    width: 18vw;
+    height: 18vw;
+    border-radius: 2vw;
+  }
+
+  .image_card_ho_ad_add_image {
+    width: 18vw;
+    height: 18vw;
+    border-radius: 2vw;
+  }
+
+  .hospitaladminregistration_second input {
+    height: 10vw;
+    border-radius: 1vw;
+  }
+
+  .hospitalRegTypeList {
+    height: 10vw;
+  }
+
+  .hospitaladminregistration_second textarea {
+    height: 100px;
+  }
+
+  .Features_card_ho_ad_media {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+
+  .hospital-adress-about {
+    flex-direction: column;
+  }
+
+  .hospital-adress-about textarea {
+    width: 100%;
+    height: 30vw;
+    border-radius: 1vw;
+  }
+
+  .hospital-second-section {
+    flex-direction: column;
+    gap: 2vw;
+  }
+
+  .hospital-second-section input {
+    width: 100%;
+    height: 10vw;
+    border-radius: 1vw;
+  }
+
+  .pin-lo {
+
+    width: 100%;
+  }
+
+  .pin-input input {
+    width: 36vw;
+  }
+
+  .pin-input {
+    width: 100%;
+  }
+
+  .lo-input input {
+    width: 48vw;
+  }
+
+  .Features_card_ho_ad {
+    width: fit-content;
+    height: fit-content;
+    border-radius: 10px;
+  }
+
+  .hospital-second-section-Div {
+    width: 100%;
+    height: 10vw;
+  }
+
+  .Features_card_ho_ad_check {
+    width: 200px;
+
+  }
+
+  .Features_card_ho_ad_check label {
+    width: 100%;
+  }
+
+  .Features_card_ho_ad_button {
+    padding: 6px;
+  }
+
+
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 408px) {
+  .hospitalAdminPinType {
+    flex-direction: column;
+  }
+
+  .hospitalAdminPinType div {
+    width: 100%;
+  }
+
+  .hospitaladminregistration_second {
+    flex-direction: column;
+  }
+
+  .hospitaladminregistration_second textarea {
+    width: 100%;
+  }
+}

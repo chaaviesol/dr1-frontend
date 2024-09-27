@@ -1,0 +1,307 @@
+.ChatBotAlignBotIcon {
+    display: flex;
+    flex-direction: column;
+}
+
+.ChatBotAlignBotShape {
+    padding: 10px;
+    height: 40px;
+    width: 230px;
+    background-color: #3A65FD;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    gap: 10px;
+    z-index: 99;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    border: 1px solid white;
+}
+
+.annimation {
+    animation: heartbeat 0.5s infinite alternate;
+}
+
+.ChatBotChatHeaderClose {
+    margin-left: auto;
+    background-color: transparent;
+}
+
+#ChatBotChatHeaderCloseIcon {
+    font-size: 30px;
+    color: white;
+}
+
+.ChatBotAlignBotShape svg {
+    color: white;
+    height: 25px;
+    width: 25px;
+}
+
+.ChatBotAlignBotShape p {
+    font-size: 13px;
+    font-weight: 400;
+    color: white;
+    letter-spacing: 1px;
+}
+
+@keyframes heartbeat {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.ChatBotAlignBotChat {
+    height: 30vw;
+    width: 25%;
+    background-color: #ECF0FF;
+    position: fixed;
+    bottom: 130px;
+    right: 50px;
+    z-index: 999999999999;
+    border-radius: 20px;
+}
+
+.ChatBotAlignBotChatModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ChatBotChatHeader {
+    height: 15%;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    background-color: #3A65FD;
+    border-radius: 20px 20px 00px 00px;
+    align-items: center;
+}
+
+.ChatBotChatHeaderImg {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.ChatBotChatHeaderText {
+    display: flex;
+    flex-direction: column;
+}
+
+.ChatBotChatHeaderTextPtag1 {
+    font-size: 15px;
+    font-weight: 200;
+    color: rgb(255, 255, 255);
+}
+
+.ChatBotChatHeaderTextPtag2 {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.871);
+}
+
+.ChatBotChatsSec {
+    padding: 10px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-x: scroll;
+}
+
+.ChatBotChatsSecUserBot {
+    margin-left: auto;
+    padding: 7px;
+    max-width: 70%;
+    height: auto;
+    background-color: #3A65FD;
+    border-radius: 15px 15px 1px 15px
+}
+
+.ChatBotChatsSecUserBot p {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.ChatBotChatsSecChatBot {
+    padding: 7px;
+    width: fit-content;
+    max-width: 70%;
+    height: auto;
+    background-color: #CED9FF;
+    letter-spacing: 1px;
+    border-radius: 15px 15px 15px 1px;
+}
+
+
+.ChatBotChatsSecChatBot p {
+    color: #3A65FD;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.ChatBotInputSec {
+    height: 15%;
+    padding: 10px;
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.ChatBotInputSec input {
+    height: 90%;
+    width: 85%;
+    border-radius: 10px;
+    background-color: #CED9FF;
+    color: #3A65FD;
+    padding-left: 20px;
+}
+
+.ChatBotInputSecIcon {
+    border-radius: 50%;
+    padding: 10px;
+    height: 45px;
+    width: 45px;
+    background-color: #3A65FD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ChatBotInputSecIcon:disabled {
+    background-color: #A9A9A9;
+    cursor: not-allowed;
+}
+
+#ChatBotInputSecOrgIcon {
+    font-size: 30px;
+    color: white;
+}
+
+.ChatBotChatsSecSuggetions {
+    display: flex;
+    gap: 5px;
+
+}
+
+.ChatBotChatsSecAlign {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.ChatBotChatsSecSuggetionsBtn {
+    padding: 5px;
+    color: #3A65FD;
+    border: 1px solid #3A65FD;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background-color: white;
+    width: 100px;
+}
+
+.ChatBotChatsSec3QnmBtn {
+    padding: 5px;
+    color: #3A65FD;
+    border: 1px solid #3A65FD;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background-color: white;
+    width: 150px;
+}
+
+.ChatBotChatsSecSuggetionsLong {
+    padding: 5px;
+    color: #3A65FD;
+    border: 1px solid #3A65FD;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background-color: white;
+    width: 100px;
+}
+
+.ChatBotAlignBotChatModal {
+    /* Set initial properties */
+    opacity: 0;
+    transform: translateY(50%);
+    transition: 10s ease-in-out;
+}
+
+/* Add class to show the modal */
+.ChatBotAlignBotChatModal.open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add keyframes for custom animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromBottom {
+    from {
+        transform: translateY(50%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 979px) {
+    .ChatBotAlignBotChat {
+        width: 100%;
+    }
+
+    .ChatBotAlignBotShape {
+        height: 40px;
+        width: 250px;
+    }
+
+    .ChatBotAlignBotShape svg {
+        height: 30px;
+        width: 30px;
+    }
+
+    .ChatBotAlignBotChat {
+        height: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 0px;
+    }
+
+    .ChatBotChatHeader {
+        border-radius: 0px;
+    }
+
+    .ChatBotInputSec {
+        height: 10%;
+    }
+
+    .ChatBotChatsSec {
+        height: 75%;
+    }
+
+    .ChatBotChatsSecChatBot p {
+        font-size: 17px;
+    }
+}

@@ -1,0 +1,82 @@
+.HospitalFilteringAlign {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.HospitalFilteringAlignSearch {
+    width: 50%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.HospitalFilteringAlignSec {
+    width: 100%;
+    display: flex;
+    padding: 30px;
+}
+
+.HospitalFilteringAlignSec1 {
+    width: 25%;
+    display: flex;
+    border: 1px solid black;
+    border-radius: 20px;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    gap: 30px;
+}
+
+.HospitalFiInputB {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.HospitalFilteringAlignSpeciaGap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.HospitalFilteringAlignSpePtag {
+    font-weight: 200;
+    font-size: 20px;
+
+}
+
+.HospitalNotfound {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.HospitalFilterHosSec {
+    width: 100%;
+}
+
+.searchdoc_section3__U4p2y {
+    width: 100%;
+}
+
+.HospitalFiInputField {
+    margin: 3px 00px;
+}
+
+.HospitalFilteringAlignSpecia {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: start;
+}
+
+.HosFilteringSpeciHeight {
+    height: 400px;
+    overflow: scroll;
+    
+}

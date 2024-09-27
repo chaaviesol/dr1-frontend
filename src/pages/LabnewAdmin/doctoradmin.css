@@ -1,0 +1,372 @@
+.availability {
+    background-color: #3A65FD;
+    border-radius: 1vw;
+    min-height: 10vw;
+    margin-top: 3vw;
+    padding: 2vw;
+    color: white;
+}
+
+.available {
+    background-color: rgb(194, 207, 255);
+    padding: 0.6vw;
+    border-radius: 0.6vw;
+    margin-top: 1.5vw;
+    width: 100%;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.hospitalname h4 {
+    background-color: white;
+    width: fit-content;
+    color: #3A65FD;
+    padding: 0.3vw 1vw;
+    border-radius: .3vw;
+    width: 100%;
+}
+
+.availabilityDays {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.availabilityDaysPtag {
+    font-size: 15px;
+    color: #3A65FD;
+    letter-spacing: 1px;
+
+}
+
+.availabilityDaysPtag2 {
+    font-size: 15px;
+    color: #3A65FD;
+    letter-spacing: 1px;
+}
+
+.hospitalname {
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.hospitalname_button button {
+    background-color: #3A65FD;
+    width: fit-content;
+    padding: 0.3vw 1vw;
+    border-radius: .3vw;
+    cursor: pointer;
+    color: white;
+}
+
+.available_flexData {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.hospitalname_button {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.DltPopupAlign {
+    height: 200px;
+    background-color: white;
+    width: 30%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    gap: 20px;
+}
+
+.DltPopupAlignButtons {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: center;
+}
+
+.DltPopupAlignButton {
+    border: 1px solid red;
+    background-color: transparent;
+    color: red;
+    border-radius: 6px;
+    padding: 5px;
+    width: 100px;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.DltPopupAlignButton2 {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    width: 100px;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.DltPopupAlign h3 {
+    text-align: center;
+    letter-spacing: 1px;
+
+}
+
+#DltPopupAlignIcon {
+    font-size: 50px;
+    color: red;
+}
+
+.dltPopupAlignModal {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.DltPopupAlignIconDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.available_add_button h4 {
+    background-color: white;
+    width: fit-content;
+    color: #3A65FD;
+    margin-top: 1.5vw;
+    padding: .5vw 1.2vw;
+    border-radius: .5vw;
+}
+
+.available_add_button_align {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 50px;
+}
+
+.available_add_button {
+    justify-content: flex-end;
+}
+
+
+.viewdetails {
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1vw;
+    background-color: white;
+    width: 50%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 90vh;
+    overflow-x: scroll;
+}
+
+.viewdataTimePickerDuelAlign {
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.viewdetails label {
+    font-size: 17px;
+    font-weight: 200;
+}
+
+.modalInputdiv input {
+    border: 1px solid black;
+    height: 40px;
+    border-radius: 6px;
+}
+
+.viewdetails h2 {
+    font-weight: bold;
+}
+
+.viewdataTimeSec label {
+    font-size: 20px;
+
+}
+
+.modalInputdivlabel {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+
+.modalInputOpenDiv {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.214);
+    height: 40px;
+    border-radius: 6px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    letter-spacing: 2px;
+
+}
+
+.modalInputPtag {
+    font-size: 13px;
+    font-weight: 300;
+    color: #3A65FD;
+}
+
+.viewdataTimeAddEx {
+    background-color: #3A65FD;
+    color: white;
+    height: 2.5vw;
+    width: 2.5vw;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.viewdataTimeRemo {
+    background-color: transparent;
+    color: white;
+    height: 2.5vw;
+    width: 2.5vw;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #3A65FD;
+}
+
+.viewdataTimePickerDuelAlign .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+    height: 2.5vw;
+}
+
+.viewdataTimePickerDuelAlign .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-error {
+    font-size: 17px;
+
+}
+
+#viewdataTimeAddExIcon {
+    font-size: 30px;
+
+}
+
+#viewdataTimeAddREmove {
+    font-size: 30px;
+    color: #3A65FD;
+}
+
+.viewdataTimeAddGap {
+    width: 50px;
+}
+
+.modalInputPtag span {
+    font-size: 20px;
+    color: #3A65FD;
+}
+
+.viewdetailsInput {
+    width: 100%;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    height: 40px;
+}
+
+.modalInputdiv {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.viewdataTimePicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.viewdataTimeSec {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #3A65FD;
+    width: 45%;
+}
+
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-error {
+    background-color: white;
+    margin: 1px -4px;
+}
+
+.viewdataTimePickerCompo {
+    width: 100%;
+}
+
+.viewdataTimePickerCompo_hospital {
+    width: 100%;
+}
+
+
+.viewdataFinalSaveButton {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.viewdataFinalSaveButton button {
+    width: 100px;
+    color: white;
+    background-color: #3A65FD;
+    font-size: 17px;
+    letter-spacing: 1px;
+    height: 30px;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
+    background-color: white;
+    margin: -2px -4px;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list {
+    height: 200px;
+}
+
+.availabilityFixedSize {
+    height: 40vh;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+.viewdataTimePickerScroll {
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+}

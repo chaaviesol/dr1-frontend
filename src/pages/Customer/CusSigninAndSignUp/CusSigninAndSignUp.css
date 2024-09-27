@@ -1,0 +1,190 @@
+.CusSigninAndSignUpModal {
+    display: flex;
+    justify-content: end;
+    margin-top: 80px;
+    overflow: scroll;
+}
+
+.CusSigninAndSignUpModalAdjst {
+    height: fit-content;
+    background-color: white;
+    width: 45vw;
+    padding: 2.5vw;
+    border-radius: 15px;
+}
+
+.toploginnav {
+    justify-content: space-between;
+}
+
+.toplogindatainput input {
+    height: 30px;
+    width: 100%;
+    background-color: #EEF1FF;
+    border-radius: 6px;
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.toplogindatainput input:focus{
+    border:2px solid #91a9ff;
+}
+
+.toplogindatainput {
+    flex-direction: column;
+
+}
+
+.toplogindatabutton {
+    background-color: #3A65FD;
+    color: white;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+
+
+.toplogindata {
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.toplogindataimg img {
+    width: 16vw;
+    object-fit: cover;
+}
+
+.toplogindatainput {
+    width: 50%;
+}
+
+.smallh4 {
+    color: #0000005e;
+    letter-spacing: 2px;
+}
+
+.smallh3 {
+    font-weight: 700;
+}
+
+.toplogindataimg {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+
+.registerpopup {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.registerpopup input {
+    height: 30px;
+    width: 100%;
+    background-color: #EEF1FF;
+    border-radius: 6px;
+    height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.registerpopup input:focus {
+    border:2px solid #91a9ff;
+
+}
+
+
+
+
+.registerpopupleftright {
+    justify-content: space-between;
+}
+
+.registerpopupright {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.registerpopupleft {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.registerpopuinputs {
+    width: 48%;
+}
+
+.registerpopuinputsErrorSec {
+    width: 100%;
+    background-color: rgba(248, 19, 19, 0.118);
+    padding: 15px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.registerpopuinputsErrorSecFlex {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.registerpopuinputsErrorSecFlex p {
+    color: rgba(255, 0, 0, 0.805);
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+#registerpopuinputsErrorSecFlexIcon {
+    font-size: 20px;
+    color: rgba(255, 0, 0, 0.805)
+}
+
+@media screen and (max-width: 979px) {
+    .toplogindata {
+        flex-direction: column;
+    }
+
+    .toplogindataimg {
+        width: 100%;
+    }
+
+    .CusSigninAndSignUpModalAdjst {
+        width: 100%;
+    }
+
+    .toplogindatainput {
+        width: 100%;
+    }
+
+    .toplogindataimg img {
+        width: fit-content;
+        height: 200px;
+    }
+
+    .smallh4 {
+        font-size: 12px;
+    }
+
+    .toploginnav {
+        flex-direction: column;
+
+    }
+
+    .toploginnavlogo {
+        width: 100%;
+
+    }
+}

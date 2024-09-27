@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+/* Pharmacy */
+.pharmacy-hero{
+    align-items: center;
+    padding:3vw 0px;
+}
+.color-blue {
+    color: var(--color-primary);
+  }
+  
+ 
+  
+  .pharmacy-image {
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pharmacy-image img {
+    width: 60%;
+  }
+  
+  .pharmacy-upload-section {
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .priscriptionpara{
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    margin-top:15px;
+    font-size:15px;
+    line-height: 22.5px;
+    color: #424242;  
+
+    /* text-align: justify; */
+  }
+
+
+  .pharmacynewupload{
+    width: fit-content;
+    background-color: var(--color-primary);
+    color: white;
+    padding:15px 40px;
+    border-radius:50px;
+    margin-top:25px;
+    border: 1px solid var(--color-primary);
+    transition:700ms ease-in-out;
+  }
+
+  .pharmacynewupload:hover{
+    color: var(--color-primary);
+    background-color:white;
+    border: 1px solid var(--color-primary);
+  }
+
+
+
+  /* MarketPlace */
+
+  .product-section {
+    margin-top:2vw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    gap:25px; /* space between the cards */
+    width: 100%; /* make the section 100% width */
+}
+
+.product-card {
+    background-color: #f0f0f0; /* example background */
+    padding: 20px;
+    text-align: center;
+}
+
+
+.web-pharmacyshopproduct{
+  flex-direction: column;
+  background-color:#f3f3f8;
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding:12px 20px;
+  border-radius: 8px;
+  justify-content: center;
+ 
+}
+.web-pharmacyshopproduct:hover{
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px; 
+ 
+}
+
+.webpharmacyshopproductimg{
+  height:8vw;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img{
+      max-width:100%;
+      max-height:90%;
+  }
+}
+.webpharmacyshopproducttitle{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height:5vw;
+  h4{
+      line-height:20px;
+      font-size:14px;
+  }
+}
+
+.pharmacyshopcate{
+  justify-content: space-between;
+  margin-bottom:15px;
+}
+
+.web-pharmacyshopproduct{
+  position: relative;
+
+}
+
+
+.iconboxnew {
+  background-color:#3a65fd;
+  color: white;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  height:40px;
+  width:40px;
+  border-radius:50px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:400ms ease-in-out;
+}
+
+.web-pharmacyshopproduct:hover .iconboxnew {
+  opacity: 1;
+  top: 50%;
+}
+
+
+
+
+
+
+
+/* Upload Priscription */
+
+.modalContainernew{
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  h3{
+      letter-spacing: 1px;
+  }
+}
+
+.UploadPrescriptiontop{
+  justify-content: space-between;
+  gap:10px;
+}
+
+
+
+
+
+
+/*End Upload Priscription */
+
+
+  /*End Pharmacy */

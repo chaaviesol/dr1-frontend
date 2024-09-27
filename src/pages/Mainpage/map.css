@@ -1,0 +1,12 @@
+.roadmap h2{
+       padding: 1vw 0vw;
+}
+
+.roadmap h4{
+    margin-top:1vw;
+    background-color:#3A65FD ;
+    width:fit-content;
+    color: white;
+    padding: .2vw 1vw;
+    border-radius:.3vw;
+}

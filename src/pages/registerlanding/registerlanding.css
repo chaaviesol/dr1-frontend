@@ -1,0 +1,101 @@
+.container10 {
+    max-width: 80%;
+    margin-inline: auto;
+    padding-inline: 20px;
+}
+
+.registerlanding {
+    background-color: #3A65FD;
+    height: 100vh;
+}
+
+.maintitle {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 4vw;
+
+}
+
+.maintitle h1 {
+    color: white;
+}
+
+.registerlanding_main {
+    justify-content: center;
+    gap: 10vw;
+}
+
+.registerlanding_image img {
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+    border-radius: 1vw;
+    box-shadow: rgba(255, 255, 255, 0.3) 0px 25px 50px -12px;
+}
+
+.registerlanding_button h2 {
+    width: 15vw;
+    text-align: center;
+    color: #3A65FD;
+}
+
+.registerlanding_left {
+    cursor: pointer;
+}
+
+.registerlanding_button {
+    height: 3vw;
+    align-items: center;
+    background-color: white;
+    border-radius: .7vw;
+    margin-top: 1vw;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+}
+
+@media screen and (max-width:780px) {
+    .registerlanding_main {
+        flex-direction: column;
+    }
+
+    .registerlanding_image {
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .registerlanding_image img {
+        width: 100%;
+        height: 55vw;
+        border-radius: 4vw;
+    }
+
+    .registerlanding_button {
+        height: 12vw;
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2vw;
+    }
+
+
+    .registerlanding_button h2 {
+        width: 35vw;
+
+    }
+
+    .maintitle {
+        margin-bottom: 4vw;
+    }
+
+    .registerlanding {
+        height: auto;
+        padding: 30px;
+    }
+}

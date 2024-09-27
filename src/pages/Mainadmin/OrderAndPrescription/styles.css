@@ -1,0 +1,179 @@
+.adpha-topcontainer {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the items */
+    align-items: center; /* Center items vertically */
+    margin-top:20px;
+  }
+  
+  .adpha-left {
+    display: flex;
+    align-items: center;
+  }
+  .adpha-back-button{
+    height:35px;
+    width:35px;
+    border-radius:50px;
+    background-color:#DADCFF;
+  }
+  .adpha-save-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0px 16px;
+    height:35px;
+    cursor: pointer;
+  }
+  
+  .adpha-back-button:hover, .adpha-save-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .adpha-title {
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+ 
+  .adpha-seccontainer{
+    gap:50px;
+    margin-top:20px;
+
+  }
+
+  
+  .adpha-seccontainer h4{
+    font-weight: 600;
+  }
+
+  .adpha-thirdcontainer h4{
+    font-weight: 600;
+    margin-top:20px;
+  }
+
+
+  .adpha-seccontainer h2{
+    font-weight:300;
+   
+  }
+
+  .adpha-thirdcontainer-images{
+    margin-top:10px;
+    gap:20px;
+  }
+
+  .adpha-thirdcontainer-images img{
+      height:300px;
+      width:240px; /* changed from 240 */      
+      object-fit: cover;
+      border:1px solid #7E83FF;
+      border-radius: 10px;
+  }
+
+  .adpha-thirdcontainer-button{
+    background-color: #7E83FF;
+    padding:0px 16px;
+    height:35px;
+    color:white;
+    font-weight: 300;
+    border-radius:3px;
+    margin-top: 5px;
+  }
+
+  .adpha-remarks-para{
+    width:70%;
+  }
+.adpha-remarks{
+  margin-top:20px;
+}
+
+.adpha-orders{
+  margin-top:20px;
+}
+
+/* Order */
+
+
+.admin-order-section {
+  margin-top:2vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 5 equal columns */
+  gap:25px; /* space between the cards */
+  width: 100%; /* make the section 100% width */
+}
+
+.product-card {
+  background-color: #f0f0f0; /* example background */
+  padding: 20px;
+  text-align: center;
+}
+
+
+.admin-pharmacyshopproduct{
+background-color:#f3f3f8;
+padding:12px 20px;
+border-radius: 8px;
+justify-content:space-between;
+align-items: center;
+}
+.web-pharmacyshopproduct:hover{
+box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}
+
+.adminpharmacyshopproductimg{
+height:100px;
+width: 100%;
+align-items: center;
+overflow: hidden;
+img{
+    max-width:100%;
+    max-height:90%;
+}
+}
+
+
+.adminpharmacyshopproducttitle{
+justify-content: center;
+text-align: center;
+align-items: center;
+height:5vw;
+h4{
+    line-height:20px;
+    font-size:14px;
+}
+}
+
+.pharmacyshopcate{
+justify-content: space-between;
+margin-bottom:15px;
+}
+
+
+/* second_op */
+
+.second-opinion-discription-new textarea{
+  width: 100%;
+  height: 150px;
+  background-color: #DADCFF;
+  border-radius:8px;
+  margin-top:10px;
+  padding:10px;
+  resize:none;
+  text-align: justify;
+}
+
+
+.second-opiniondt-save-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 16px;
+  height:35px;
+  cursor: pointer;
+}
+
+.second-opiniondt-save-button:hover, .second-opiniondt-save-button:hover {
+  background-color: #0056b3;
+}

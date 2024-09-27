@@ -1,0 +1,33 @@
+.hospital_admin_details_image img {
+    height: 15vw;
+    width: 15vw;
+    object-fit: cover;
+    border-radius: 1vw;
+}
+
+.hospital_admin_details_section {
+    gap: 2vw;
+    margin-top: 3vw;
+}
+
+.hospital_admin_details_data h4 {
+    margin-top: 1.3vw;
+}
+
+.hospital-right-admin {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hospital_admin_details_contact {
+    gap: 2vw;
+    margin-bottom: .4vw;
+}
+
+.hospital_admin_details_contact h4 {
+    background-color: #3A65FD;
+    width: fit-content;
+    color: white;
+    border-radius: .4vw;
+    padding: .4vw 1vw;
+}

@@ -1,0 +1,241 @@
+.mobiledoctordiv {
+  background-color: #3a65fd;
+  width: 100%;
+}
+.mobcontainer {
+    max-width: 96%;
+    margin-inline: auto;
+    padding-inline:10px;
+}
+
+.mobiledoctordiv {
+  h3 {
+    letter-spacing: 1px;
+    font-size: 18px;
+  }
+
+  h4 {
+    font-size: 15px;
+  }
+}
+
+.mobiledoctorprofileback,
+.mobiledoctorprofileshare {
+  width: 10vw;
+  height: 10vw;
+  background-color: #5f82fd;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+
+  i {
+    font-weight: 100;
+  }
+}
+
+.mobiledoctorprofiletop {
+  height: 20vw;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+}
+
+.mobiledoctorprofiletopback {
+  background-color: #3a65fd;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.mobiledoctorprofiledata {
+  background-color: white;
+  width: 100%;
+  min-height: 100vh;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.mobdoprodetails img {
+  height: 16vw;
+  width: 16vw;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.mobdoprodetails {
+  gap: 20px;
+  padding-top: 6vw;
+  align-items: center;
+}
+
+.mobiledetailssection {
+  gap: 10px;
+  h4 {
+    padding: 3px 10px;
+    border: 1px solid #793afd;
+    border-radius: 50px;
+    color: #793afd;
+  }
+}
+
+.mobdoprodetails h4 {
+  margin-top: 10px;
+}
+
+.mobilestartsection {
+  margin: 15px 0px;
+  gap: 8px;
+  color: #ff8a00;
+}
+
+.mobileavailabitysection {
+  background-color: #f3f6ff;
+}
+.mobileavailabityhospital {
+  padding-bottom: 5vw;
+  justify-content: space-between;
+}
+
+.mobileavailabityhospitalmore {
+  width: 10vw;
+  height: 10vw;
+  background-color: #7e83ff;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  i {
+    font-weight: 100;
+  }
+}
+
+.mobiledoctorprofilereview {
+  gap: 5px;
+  h3 {
+    padding: 8px 15px;
+    background-color: #7e83ff;
+    border-radius: 6px;
+    font-weight: 100;
+    color: white;
+  }
+}
+
+.mobiledoctorprofiletitle {
+  padding: 5vw 0px;
+}
+
+.mobiledoctorprofilesummery {
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  color: #5f82fd;
+  margin: 20px 0px;
+  i {
+    font-weight: 100;
+    margin-right: 12px;
+  }
+}
+
+.mobiledoctorprofilefeedbacktop {
+  align-items: center;
+  gap: 20px;
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+}
+
+.mobilestartsection2 {
+  gap: 8px;
+  color: #ff8a00;
+}
+
+.mobiledoctorprofilefeedback {
+  padding-bottom: 20px;
+}
+
+.mobiledoctorprofilefeedbackname {
+  align-items: center;
+  gap: 10px;
+  i {
+    font-size: 20px;
+    height: 20px;
+    color: #3a65fd;
+  }
+}
+
+
+/* doctor timing */
+
+.mobiletiming{
+  justify-content: space-between;
+  padding-top:10px;
+}
+
+.mobilecontactbuttonnew{
+  width: 100%;
+    padding:12px;
+    border-radius: 8px;
+    margin-top:20px;
+    background-color: #7E83FF;
+    color:white;
+    font-weight: 200;
+}
+
+.mobiletimingtime{
+  width:50%;
+}
+.mobiletiminglocation{
+  background-color: #E6E7FF;
+  padding: 10px;
+  border-radius:8px;
+  margin: 20px 0px;
+}
+
+
+
+/* End doctor timing */
+
+
+.closeButtonmodal2 {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.closeButtonmodal2:hover {
+  color: #d32f2f;
+}
+
+/* mobilecontactnowwbutton */
+
+.mobilecontactbuttonafter{
+  justify-content: space-between;
+  border-radius: 8px;
+  margin-top:20px;
+  padding:5px 5px 5px 14px;
+  background-color: #FEF2E4;
+  border:  1px solid #FA8D0D;
+  align-items: center;
+}
+
+.mobilecontactbuttonafter h3{
+  font-size: 14px;
+  color: #636363;
+}
+.mobilecontactbuttonafter button{
+  background-color: #FA8D0D;
+  color: white;
+  font-size:14px;
+  border-radius:4px;
+  padding:8px 15px;
+font-weight: 200;
+}
+

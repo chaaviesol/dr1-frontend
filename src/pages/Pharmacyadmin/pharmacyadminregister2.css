@@ -1,0 +1,24 @@
+.pharmacyinput{
+  justify-content: space-between;
+}
+
+
+.pharmacyinput input{
+    background-color: rgba(246, 246, 249, .4);
+    border-radius:.5vw;
+    width:28vw;
+    height:3vw;
+    margin-top:1vw ;
+
+    color:white;
+    padding: 1vw;
+    letter-spacing:2px;
+}
+
+
+.hospitaladminregistration_first2{
+    justify-content: space-between;
+    height:8vw;
+}
+
+

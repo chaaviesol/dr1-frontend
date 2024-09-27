@@ -1,0 +1,310 @@
+.adpha-categ-button {
+    background-color: #7E83FF;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0px 16px;
+    height:35px;
+    cursor: pointer;
+    align-items: center;
+    gap:8px;
+  }
+  
+  .adpha-categ-button i{
+    font-size:16px;
+  }
+  
+    
+  .category-admin-section {
+    margin-top:3vw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    gap:25px; /* space between the cards */
+    width: 100%; 
+  
+  }
+  
+  .product-card {
+    background-color: #f0f0f0; /* example background */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  .admin2-pharmacyshopproduct{
+  flex-direction: column;
+  background-color:#f3f3f8;
+  border: 1px solid rgba(234, 88,10,.4);
+  
+  padding:12px 20px;
+  border-radius: 8px;
+  justify-content: center;
+  position: relative;
+  }
+  
+  
+  .admin2pharmacyshopproductimg{
+  height:8vw;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img{
+      max-width:100%;
+      max-height:90%;
+  }
+  }
+  .admin2pharmacyshopproducttitle{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  height:5vw;
+  h4{
+      line-height:20px;
+      font-size:14px;
+  }
+  }
+  
+  .admin2pharmacyshopcate{
+  justify-content: space-between;
+  margin-bottom:15px;
+  }
+  
+  
+  /* .admineditecategory{
+    background-color: rgb(234, 88, 12);
+    height:35px;
+    width: 35px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:-18px;
+    right:15px;
+    border-radius:50%;
+    color: white;
+    cursor: pointer;
+  } */
+  
+  /* .admineditecategory {
+    font-size:16px;
+    font-weight: 100;
+  } */
+
+  
+  
+  
+  
+  
+  .addcategorymodal {
+    width:400px;
+    background-color: #7E83FF;
+    color: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  
+  
+  .productcategoryadmintitle{
+    justify-content: space-between;
+    width:100%;
+  }
+  
+  .productcategoryadmin{
+    height:250px;
+    width:210px;
+    background-color:white;
+    margin:2vw;
+  }
+  .productcategoryadminsave{
+    width:100%;
+    justify-content: flex-end;
+  }
+  
+  .productcategoryadminsave button{
+     background-color:white;
+     padding:12px 22px;
+     border-radius:50px;
+  }
+  
+  .productcategoryadmintitle button{
+     width:36px;
+     height:36px;
+     border-radius:50px;
+  }
+  
+  .productcategoryadmin{
+    padding:20px;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: column;
+    border-radius:10px;
+  }
+  
+  .productcategoryadmin input{
+    background-color: #DADCFF;
+    border-radius:50px;
+    width:100%;
+    height:40px;
+    padding:0px 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .productcategoryadmin button{
+     background-color: #7E83FF;
+     color:white;
+     padding:6px 18px;
+     border-radius:50px;
+  }
+  
+  .productcategoryadmin h4{
+    color: #7E83FF;
+    text-align: center;
+  }
+  
+  .productcategoryadmin2{
+    align-items: center;
+    flex-direction:column;
+  }
+  
+  .addcategorymodal2 {
+    width:400px;
+    background-color: #7E83FF;
+    color: white;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2rem 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .productcategoryadmin img{
+     width:75%;
+  }
+
+
+  /* added */
+  .admineditecategory{
+    background-color: rgb(225, 29, 72);
+    height:35px;
+    width: 35px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:-18px;
+    right:15px;
+    border-radius:50%;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .admineditecategory i{
+    font-size:16px;
+    font-weight: 100;
+  }
+  
+  .admineditecategory2{
+    background-color: rgb(234, 88, 12);
+    height:35px;
+    width: 35px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top:-18px;
+    right:55px;
+    border-radius:50%;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .admineditecategory2 i{
+    font-size:16px;
+    font-weight: 100;
+  }
+
+
+  /* Delete Modal */
+
+.addcategorymodaldelete{
+  width:400px;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem 3rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.addcategorymodaldelete h2{
+  font-size:24px;
+  font-weight: 600;
+}
+
+.addcategorymodaldelete iframe{
+  width:100px;
+}
+
+.addcategorymodaldeletebutton{
+  font-size:16px;
+  padding:6px 20px;
+  margin-top:20px;
+  border-radius:8px;
+  background-color: #7E83FF;
+  color:white;
+}
+.addcategorymodaldelete p{
+  text-align: center;
+}
+
+.addcategorymodaldeleteclose2{
+  position: absolute;
+  top:-10px;
+  right:-10px;
+  height:35px;
+  width:35px;
+  border-radius:50%;
+  background-color: rgb(234, 88, 12);
+  color: white;
+}
+
+
+.addcategorymodaldelete2{
+  width:400px;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem 3rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.addcategorymodaldelete2buttonnew{ 
+  padding:8px 20px;
+  margin:0px 10px;
+  border-radius:6px;
+  border:1px solid rgb(225, 29, 72);
+}
+
+/*End Delete Modal */

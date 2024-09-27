@@ -1,0 +1,301 @@
+.MainAdminCategoryEdit {
+    padding: 50px;
+    width: 100%;
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+
+}
+
+.MainAdminCategoryEditHeader p {
+    font-size: 25px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.722);
+    letter-spacing: 1px;
+
+}
+
+.MainAdminCategoryContentPtag {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.722);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.MainAdminCategoryContent {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.MainAdminCatSetSec {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.MainAdminCatSetFirstSec {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.MainAdminCatSetSecondSec {
+    width: 75%;
+    height: fit-content;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 255, 0.065);
+    overflow: scroll;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.MainAdminCatSetFirstTileBefore {
+    display: flex;
+    justify-content: center;
+    border-radius: 00px 20px 20px 00px;
+    background-color: rgba(0, 0, 255, 0.07);
+    width: 90%;
+    height: 40px;
+    align-items: center;
+
+}
+
+.MainAdminCatSetFirstTileBefore p {
+    font-size: 17px;
+    font-weight: 300;
+    color: rgba(0, 0, 255, 0.51);
+
+}
+
+.MainAdminCatSetFirstTile {
+    display: flex;
+    justify-content: center;
+    border-radius: 00px 20px 20px 00px;
+    background-color: rgba(128, 128, 128, 0.161);
+    width: 90%;
+    height: 40px;
+    align-items: center;
+
+}
+
+.MainAdminCatSetFirstTile p {
+    font-size: 17px;
+    font-weight: 300;
+    color: grey;
+
+}
+
+.MainAdminCatSetSecondSePtag p {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 255, 0.99);
+    letter-spacing: 1px;
+}
+
+.MainAdminCatSetSecondSePtag {
+    display: flex;
+
+}
+
+.MainAdminCatSetSecondSecAlignItem {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-height: 300px;
+    overflow: scroll;
+    padding: 20px;
+}
+
+.MainAdminCatSetSecondSecDiv {
+    width: fit-content;
+    padding: 10px;
+    background-color: rgba(0, 0, 255, 0.076);
+    border-radius: 20px;
+    height: fit-content;
+    color: rgba(0, 0, 255, 0.458);
+    width: fit-content;
+    display: flex;
+    font-size: 16px;
+}
+
+.MainAdminCatSetSecondSecDiv p {
+    font-size: 16px;
+    color: rgb(0 0 255 / 76%);
+    font-weight: 400;
+}
+
+.MainAdminCatEditSec {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+
+}
+
+.MainAdminCatEditSecbtn2 {
+    background-color:#166534;
+    color: white;
+    border: none;
+    padding:10px 20px;
+    border-radius:50px;
+    font-weight: 200;
+}
+
+.MainAdminCatEditSecbtn3 {
+    background-color: #d97706;
+    color: white;
+    border: none;
+    padding:10px 20px;
+    border-radius:50px;
+    font-weight: 200;
+}
+
+.MainAdminCatEditSecbtn1 {
+    background-color: rgba(12, 45, 194, 0.755);
+    color: white;
+    border: none;
+    padding:10px 20px;
+    border-radius:50px;
+    font-weight: 200;
+}
+
+.MainAdminCatSetSecondSecDiv i {
+    color: black;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 2px;
+    background-color: white;
+    margin-top: -10;
+
+}
+
+.MainAdminCatSetSecondSecAlignItem i {
+    margin: -10px 00px;
+    position: absolute;
+    padding: 2px;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+
+.MainAdminCatSetSecondSecDivIcon {
+    display: flex;
+    justify-content: end;
+    position: relative;
+}
+
+.MainAdminCatEditSecModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MainAdminCatEditSecModalDiv {
+    height: 200px;
+    width: 25%;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.MainAdminCatEditSecModalDiv p {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.MainAdminCatEditSecModalDiv input {
+    font-size: 15px;
+    font-weight: 400;
+    border-bottom: 1px solid black;
+    height: 40px;
+}
+
+.MainAdminCatEditSecModalButton {
+    display: flex;
+    justify-content: end;
+}
+
+.MainAdminCatEditSecModalButton button {
+    font-size: 15px;
+    background-color: rgb(20, 168, 20);
+    color: white;
+    border: none;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-radius:50px;
+}
+
+.EditQuestionsModalSec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.EditQuestionsModal {
+    width: 25%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: white;
+    align-items: center;
+    padding: 20px;
+}
+
+.EditQuestionsModal p {
+    color: rgba(0, 0, 0, 0.713);
+    font-size: 20px;
+    text-align: center;
+    font-weight: 400;
+}
+
+.EditQuestionsModalFlex {
+    display: flex;
+    gap: 20px;
+}
+
+.EditQuestionsModalFlex1 {
+    background-color: rgba(255, 0, 0, 0.692);
+    border: none;
+    letter-spacing: 1px;
+    color: white;
+    width: 100px;
+    border-radius:50px;
+    font-weight: 200;
+    padding:10px 20px;
+    border-radius:50px;
+
+}
+
+.EditQuestionsModalFlex2 {
+    background-color: #166534;
+    border: none;
+    letter-spacing: 1px;
+    color: white;
+    width: 100px;
+    font-weight: 200;
+    padding:10px 20px;
+    border-radius:50px;
+}
+
+#EditQuestionsDeleteIcon {
+    font-size: 40px;
+    color: white;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    background-color: red;
+    padding: 10px;
+}

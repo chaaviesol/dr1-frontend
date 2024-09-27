@@ -1,0 +1,727 @@
+@import url("https://cdn-uicons.flaticon.com/2.4.0/uicons-bold-rounded/css/uicons-bold-rounded.css");
+@import url("https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-straight/css/uicons-solid-straight.css");
+
+.doctoradminnavbar {
+  height: 64px;
+  /* background-color: #f5f3ff;
+    border: 1px solid #ede9fe; */
+  background-color: #e4eaff;
+  border-bottom: 1px solid #a4b7fc94;
+}
+
+.containeradmin {
+  max-width: 100vw;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.doctoradminnavbar2 {
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.adminnotification {
+  height: 40px;
+  width: 40px;
+  background-color: #6b8cfe;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.adminnotification i {
+  font-size: 18px;
+  font-weight: 100;
+}
+
+.adminonboarding {
+  height: 40px;
+  width: fit-content;
+  background-color: #6b8cfe;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 0vw 1.2vw;
+  color: white;
+}
+
+.adminlogodiv {
+  align-items: center;
+}
+
+.doctoradminnavbar2 img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.adminonboarding i {
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
+}
+
+/* Sidebar */
+
+.mainadminsidebar {
+  width: 10vw;
+  padding-inline: 20px;
+  height:90vh;
+  overflow: scroll;
+  border-right: 1px solid #a4b7fca2;
+}
+
+.admimmenuicon {
+  /* height:calc(10vw - 40px); */
+  height: 70px;
+  width: 100%;
+  background-color: #6b8cfe;
+  border-radius: 8px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admimmenuicon {
+  background-color: #ffffff;
+  border: 1px solid rgb(255, 255, 255);
+  color: #6b8cfe;
+  transition: ease-in-out 200ms;
+}
+.admimmenuicon h4{
+  text-align: center;
+}
+
+.admimmenuicon:hover {
+  background-color: #e4eaff;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.admimmenuicon i {
+  font-size: 18px;
+}
+
+.admimmenuicon2 {
+  background-color: #e4eaff;
+  border: 1px solid #a4b7fc;
+  color: #6b8cfe;
+}
+
+.admimmenuicon h4 {
+  font-size: 1rem;
+
+  line-height: 1rem;
+  margin-top: 6px;
+}
+
+.mainadminsection {
+  height: 100vh;
+}
+
+.scroll {
+  overflow-y: scroll;
+  height: calc(100vh - 64px);
+}
+
+.table_2 {
+  height: 500px;
+  background-color: #6b8cfe;
+}
+
+.mainadmindoctordatas h2 {
+  font-weight: 600;
+}
+
+.mainadmindoctorsection {
+  overflow: hidden;
+}
+
+.mainadmincontainer {
+  max-width: 90vw;
+  margin-inline: auto;
+  padding-inline: 20px;
+  overflow: hidden;
+}
+
+.mainadmindoctordatas {
+  justify-content: space-between;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+
+.mainadmindoctordatas_profile_data {
+  margin-left: 2vw;
+}
+
+.mainadmindoctordatas_profile_photo {
+  height: 10vw;
+  width: 10vw;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.mainadmindoctordatas_chart1 {
+  height: fit-content;
+  width: 16vw;
+  background-color: #d8e0ff93;
+  border: 0.6px solid #02061615;
+  border-radius: 10px;
+  padding: 1.5vw;
+  align-items: center;
+}
+
+.mainadmindoctordatas_chart_icon {
+  width: 4vw;
+  background-color: #3a65fd;
+  height: 4vw;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainadmindoctordatas_chart10 {
+  background-color: #c0e2de;
+}
+
+.mainadmindoctordatas_chart11 {
+  background-color: #fed8ad;
+}
+
+.mainadmindoctordatas_chart12 {
+  background-color: #fcd9d9;
+}
+
+.mainadmindoctordatas_chart_icon10 {
+  background-color: #2a9d8f;
+}
+
+.mainadmindoctordatas_chart_icon11 {
+  background-color: #fb8500;
+}
+
+.mainadmindoctordatas_chart_icon12 {
+  background-color: #f35454;
+}
+
+.mainadmindoctordatas_chart_icon i {
+  color: white;
+  height: 24px;
+  font-size: 24px;
+  font-weight: 100;
+}
+
+.mainadmindoctordatas_chart h2 {
+  font-weight: 700;
+}
+
+.mainadmindoctordatas_chart2 {
+  margin-left: 20px;
+}
+
+.mainadmindoctoraboutavail {
+  justify-content: space-between;
+}
+
+.highlight_data {
+  padding: 0.2vw 1vw;
+  border-radius: 50px;
+  width: fit-content;
+}
+
+.mainadmindoctordatas_profile_data {
+  flex-direction: column;
+  height: 10vw;
+  justify-content: space-between;
+}
+
+.texticonset i {
+  font-size: 16px;
+  color: #3a65fd;
+}
+
+.texticonset {
+  align-items: center;
+}
+
+.mainadmindoctoravilability {
+  width: 50%;
+  height: fit-content;
+  background-color: #f5f3ff;
+  border: 1px solid #ede9fe;
+  border-radius: 1vw;
+  padding: 1.5vw 1.5vw 1.5vw 1.5vw;
+}
+
+.mainadmindoctorabout {
+  width: 45%;
+}
+
+.admin_disable_section {
+  width: 100%;
+  background-color: #f5f3ff;
+  border: 1px solid #ede9fe;
+  padding: 1.4vw;
+  border-radius: 1vw;
+  margin: 2vw 0vw;
+}
+
+.admin_disable_section i {
+  color: #6b8cfe;
+}
+
+.admin_disable_section {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewdataTimePickerDuelAlignStartTIme {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.viewdataTimePickerDuelAlignStartTIme input {
+  border: 1px solid rgba(0, 0, 0, 0.481);
+  border-radius: 15px;
+  font-size: 17px;
+  width: 100%;
+  height: 30px;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0.501);
+}
+
+.admin_disable_button2 h4 {
+  background-color: #f35454;
+  color: white;
+  padding: 0.2vw 1.5vw;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.admin_disable_button2 {
+  display: flex;
+  gap: 10px;
+}
+
+.admin_disable_button2 button {
+  background-color: #23a01c;
+  color: white;
+  padding: 0.2vw 1.5vw;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.admin_disable_button {
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+
+.admin_disable_button button {
+  background-color: #23a01c;
+  color: white;
+  padding: 0.2vw 1.5vw;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.admin_disable_button button {
+  display: flex;
+  gap: 10px;
+}
+
+.admin_disable_button h4 {
+  background-color: #23a01c;
+  color: white;
+  padding: 0.2vw 1.5vw;
+  border-radius: 5px;
+  display: flex;
+}
+
+.admin_disable_section_left {
+  align-items: center;
+}
+
+.admin_disable_section_left h2 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.admin_disable_section_left h4 {
+  margin-top: 0.3vw;
+  color: #6b8cfe;
+}
+
+.hospitaltime {
+  justify-content: space-between;
+  margin-bottom: 1.5vw;
+}
+
+.hospitaltimebutton h4 {
+  background-color: #6b8cfe;
+  color: white;
+  border-radius: 50px;
+  padding: 0.4vw 1vw;
+  height: fit-content;
+  font-size: 1rem;
+}
+
+.hospitaltime_name h3 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.hospitaltime_name h4 {
+  color: #6b8cfe;
+}
+
+.adimindoctorpin h4 {
+  padding: 0.3vw 1.2vw;
+}
+
+.mainadmindoctoraddress {
+  width: 50%;
+}
+
+.photosdivadminsection {
+  gap: 1vw;
+  margin-bottom: 1.3vw;
+}
+
+.photosdivadminsection img {
+  height: 10vw;
+  width: 16vw;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.admin_fea_avai {
+  justify-content: space-between;
+}
+
+.admin_fea_avai i {
+  margin-right: 8px;
+  color: #3a65fd;
+}
+
+.admin_fea_avai_left {
+  width: 48%;
+}
+
+.admin_fea_avai_right {
+  width: 48%;
+}
+
+.mainadmindoctoravilability2 {
+  width: 35%;
+}
+
+.admin_disable_section2 {
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+}
+
+.admin_view_more {
+  justify-content: space-between;
+  margin-bottom: 1vw;
+}
+
+.admin_view_more h4 {
+  background-color: #3a65fd;
+  color: white;
+  padding: 0.2vw 0.6vw;
+  border-radius: 5px;
+}
+
+/* Doctor List */
+
+.mainadmindoctordatas_chart_doctor {
+  margin-top: 1.3vw;
+  margin-bottom: 1.3vw;
+}
+
+.doctortable {
+  width: 100%;
+  border-collapse: collapse;
+  /* margin: 30px 0; */
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.doctortable input {
+  height: 25px;
+  border-radius: 3px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+
+/* Table header styling */
+th,
+td {
+  border: 1px solid #a4b7fc;
+  text-align: left;
+  padding: 8px;
+}
+
+/* Header row background color */
+th {
+  background-color: #e4eaff;
+  font-weight: 600;
+}
+
+/* Zebra stripe rows */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Doctor Views List */
+
+/* Onboarding table */
+
+.onboardingtable {
+  width: 100%;
+  border-collapse: collapse;
+  /* margin: 30px 0; */
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* Table header styling */
+th,
+td {
+  border: 1px solid #a4b7fc;
+  text-align: left;
+  padding: 8px;
+}
+
+/* Header row background color */
+th {
+  background-color: #e4eaff;
+  font-weight: 600;
+}
+
+/* Zebra stripe rows */
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Customer Activity */
+
+.customer_view {
+  width: 60%;
+  justify-content: space-between;
+}
+
+.customer_view_type {
+  width: 100px;
+  border-right: 4px solid #a5b7fa;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  color: rgb(107, 107, 107);
+}
+
+.customer_view_contact {
+  background-color: #6b8cfe;
+  color: white;
+  height: fit-content;
+  padding: 0px 10px;
+  border-radius: 50px;
+  font-size: 1rem;
+  margin-left: 1.3vw;
+}
+
+.customer_view_time {
+  color: #3a65fd;
+  font-size: 1rem;
+}
+
+.customer_view_contact2 {
+  background-color: #2a9d8f;
+}
+
+/*End Customer Activity */
+
+/*End Customer */
+
+/*Feedback section */
+
+.feedbacksectioncard {
+  width: 28vw;
+  border: 1px solid #a4b7fc;
+  padding: 1.3vw;
+  border-radius: 6px;
+}
+
+.feedbacksection {
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 1.3vw;
+}
+
+.feedbacksectioncardtop img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.feedbacksectioncardtop {
+  align-items: center;
+}
+
+.photoandtitle img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.feedbacksectioncardbutton {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1vw;
+  background-color: #d3dcfd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.photoandtitle {
+  align-items: center;
+}
+
+.photoandtitle h4 {
+  padding: 3px 10px;
+  border-radius: 5px;
+  color: white;
+  margin-left: 5px;
+  font-size: 1rem;
+}
+
+.photoandtitle h3 {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.feedbacksectioncardrewiewpara {
+  height: 200px;
+  overflow: scroll;
+}
+
+.feedbacksectioncardrewiewpara2 {
+  width: 100%;
+}
+
+.feedbacksectioncardrewiewpara h4 {
+  width: 100%;
+}
+
+.feedbacksectioncardrewiewstar {
+  gap: 10px;
+  padding: 1vw 0px;
+}
+
+.feedbacksectioncardrewiewstar i {
+  color: #fb8500;
+  font-size: 16px;
+}
+
+.feedbacksectiondoctorcard {
+  border-bottom: 1px solid #cbd6fd;
+  padding-bottom: 1.3vw;
+  margin-bottom: 1.3vw;
+}
+
+.feedbacksectiondoctorcard img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.feedbacksectiondoctorcardstar {
+  gap: 10px;
+  color: #cdcccc;
+  font-size: 16px;
+}
+
+.feedbacksectiondoctorcarddata {
+  gap: 1vw;
+  margin-left: 1.3vw;
+  flex-direction: column;
+}
+
+.feedbacksectiondoctorcardname {
+  align-items: center;
+}
+
+.feedbacksectiondoctorcardname i {
+  font-size: 16px;
+  height: 16px;
+  color: #6b8cfe;
+}
+
+.feedbacksectiondoctorcardname h3 {
+  font-size: 16px;
+}
+
+.OnBoardingtableTh {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/*End Feedback section */
+.mainadmindoctoraboutFlexEnd {
+  display: flex;
+  justify-content: end;
+}
+
+.mainadmindoctoraboutFlexEnd button {
+  background-color: #2a9d8f;
+  color: white;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border: none;
+}
+
+.admin_disable_sectionFlex {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+/* FEEDBACKS */
+.admin-feedback-buttons-container {
+  gap: 10px;
+}
+.admin-feedback-buttons-container button {
+  width: 80px;
+  border: none;
+  color: white;
+  padding:8px 0px;
+  border-radius:6px;
+}
+.admin-feedback-buttons-container button:nth-child(1){
+    background-color: #F35454;
+}
+.admin-feedback-buttons-container button:nth-child(2){
+    background-color: #2A9D8F;
+}

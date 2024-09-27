@@ -1,0 +1,28 @@
+.LabCardSpan {
+  font-size: 16px;
+  font-weight: 300;
+  color: blue;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.labCardDiv {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column; /* or row, depending on layout */
+  overflow: hidden;
+}
+
+.LabCardSpanHeader {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 769px) {
+  .LabCardSpanHeader {
+    font-size: 17px;
+  }
+
+  .LabCardSpan {
+    font-size: 13px;
+  }
+}

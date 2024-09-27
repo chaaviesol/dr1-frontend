@@ -1,0 +1,402 @@
+.doctor-profile-section {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 4vw;
+    padding-top: 5vw;
+    border-radius: 2vw;
+    margin-top: 7vw;
+    width: 100%;
+}
+
+.doctor-profile-left {
+    width: 40%;
+    flex-direction: column;
+    gap: 1vw;
+    justify-content: center;
+}
+
+.doctor-profile-left-right {
+    margin-top: 30px;
+}
+
+.doctor-profile-right {
+    width: 60%;
+}
+
+.doctor-profile-right h4 {
+    line-height: 2.5vw;
+}
+
+.doctor-profile-section {
+    position: relative;
+}
+
+.doctor-profile-photo img {
+    top: -80px;
+    position: absolute;
+    width: 10vw;
+    height: 10vw;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.doctor-profile-contact {
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: .5vw;
+    border-radius: .5vw;
+    margin-top: 2vw;
+
+}
+
+.doctorprofilestar {
+    gap: 1.2vw;
+}
+
+.doctor-time {
+    align-items: center;
+    padding-left: 2vw;
+}
+
+.doctor-contact-button h4 {
+    background-color: white;
+    color: var(--color-primary);
+    padding: 0.6vw 1.2vw;
+    border-radius: .4vw;
+    gap: .6vw;
+}
+
+.doctor-contact-button i {
+    font-size: 20px;
+}
+
+.DoctorAvailableSec {
+    width: 100%;
+    border-radius: 2vw;
+    padding: 20px;
+    background-color: #3A65FD0F;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: fit-content;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.DoctorAvailableAvailableSec {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 30px;
+    height: fit-content;
+    overflow: scroll;
+}
+
+.DoctorAvailableAvailableTag p {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.737);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.DoctorAvailableSecSettingSec {
+    width: 46%;
+    display: flex;
+    height: fit-content;
+    justify-content: space-between;
+
+}
+
+
+.DoctorAvailableSecSettingSec button {
+    border-radius: 2vw;
+    padding: 10px;
+    background-color: #7E83FF;
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.DoctorAvailableTiming p {
+    color: rgba(0, 0, 0, 0.737);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.DoctorAvailableTimingDays {
+    display: flex;
+    gap: 6px;
+
+}
+
+.DoctorAvailableTiming {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.DoctorAvailableTimingDays p {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 255, 0.863);
+}
+
+.Doctor_profileAlign {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.Doctor_profileAlignCenter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    width: 80%;
+}
+
+.doc_profileModal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.doc_profileSec {
+    width: 40%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.doc_profileModalLocTimingSec {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    row-gap: 20px;
+    flex-wrap: wrap;
+}
+
+.doc_profileModalLocTimging {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 46%;
+}
+
+.doc_profileModalAlignCont {
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.doc_profileModalAlignCont button {
+    border: none;
+    background-color: #7E83FF;
+    color: rgba(255, 255, 255, 0.879);
+    font-size: 17px;
+    letter-spacing: 1px;
+    border-radius: 2vw;
+    font-weight: 400;
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+#doc_profileModalBtnIcon {
+    font-size: 23px;
+    color: rgba(255, 255, 255, 0.818);
+}
+
+.doc_profileModalLocTimgingGap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.doc_profileModalLocTimging button {
+    border: none;
+    background-color: #2A9D8F;
+    color: white;
+    letter-spacing: 1px;
+    width: 50px;
+
+}
+
+.doc_profileModalLocTimging p {
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.604);
+    font-weight: 400;
+}
+
+.doc_profileFirstTag p {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.644);
+    font-weight: 400;
+}
+
+.doc_profileModalLocSec {
+    display: flex;
+    gap: 10px;
+    background-color: #7E83FF30;
+    padding: 10px;
+    align-items: center;
+    border-radius: 0.5vw;
+
+
+}
+
+#doc_profileModalLocSecIcon {
+    font-size: 40px;
+    color: #7E83FF;
+}
+
+.doc_profileModalLocSec p {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.543);
+    letter-spacing: 1px;
+
+}
+
+.doc_profileSecFeedBack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.doc_profileSecFeedBack h2 {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.603);
+}
+
+.doc_profileSecFeedBackAndRatingBox {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    height: 200px;
+    border-radius: 20px;
+    border: 1px solid #7E83FF;
+    background-color: #7e82ff1d;
+}
+
+.doc_profileSecFeedBackAndRatingBoxFlex {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.doc_profileSecFeedBackAndRatingBoxFlex h1 {
+    color: #7E83FF;
+    text-align: center;
+    font-weight: 700;
+}
+
+.doc_profileSecFeedBackAndRatingBoxFlex p {
+    color: #7e82ffa8;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.doc_profileSecFeedBackStart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.doc_profileSecFeedBItem {
+    display: flex;
+    width: 100%;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 20px;
+    gap: 40px;
+}
+
+.doc_profileSecFeedBItemImgSecFlex i {
+    font-size: 30px;
+    color: rgb(225, 225, 225);
+}
+
+.doc_profileSecFeedBItemImgSecFlex {
+    display: flex;
+    gap: 33px;
+
+}
+
+.doc_profileSecFeedBIFlexName {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.doc_profileSecFeedBIFlexName h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.721);
+    letter-spacing: 2px;
+}
+
+.doc_profileSecFeedBIFlexName i {
+    color: #7E83FF;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.doc_profileSecFeedBItemImgSec img {
+    height: 60px;
+    border-radius: 50%;
+}
+
+.doc_profileSecFeedBItemImgSec {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    line-height: 30px;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.63);
+}
+
+.doc_profileSecFeedBItemImgSec p {
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+@media screen and (max-width:1100px) {
+    .doctor-profile-photo img {
+        top: -60px;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .doctor-profile-photo img {
+        top: -60px;
+    }
+}

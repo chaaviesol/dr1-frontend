@@ -1,0 +1,281 @@
+.ProfileViewAlign {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 80px;
+    padding: 30px;
+}
+.ProfileViewAlignCard-activity{
+    border-radius: 16px;
+    padding: .5rem 4rem;
+    cursor: pointer;
+    border:1px solid  var(--color-primary);
+    font-size: 12px;
+}
+
+.ProfileViewAlignCard {
+    width: 30%;
+    background-color: white;
+    height: fit-content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.ProfileAlignCardImg img {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+
+}
+
+.ProfileViewAlignCardEditBtnAlign {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+}
+
+#ProfileViewAlignCardEditBtnAlignEditIcon {
+    font-size: 20px;
+    color: white;
+}
+
+.ProfileViewAlignCardEditBtnAlign button {
+    background-color: #7E83FF;
+    border-radius: 6px;
+    color: white;
+    display: flex;
+    gap: 5px;
+    font-size: 17px;
+    align-items: center;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Shadow for material design effect */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transition */
+  }
+  
+  .ProfileViewAlignCardEditBtnAlign button:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    transform: translateY(-.4px); /* Slight lift effect on hover */
+  }
+  
+  .ProfileViewAlignCardEditBtnAlign button:active {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
+    transform: translateY(0); /* Return to normal position on click */
+  }
+
+.ProfileAlignCardImg {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProfileAlignCardPInCode {
+    background-color: #3A65FD;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+}
+
+.ProfileAlignCardPInCode p {
+    color: rgba(255, 255, 255, 0.761);
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.ProfileAlignCardImg p {
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.ProfileAlignCardDetailSec {
+    display: flex;
+    gap: 20px;
+
+}
+
+.ProfileAlignCardDetGender {
+    display: flex;
+    gap: 2px;
+    background-color: #FB8500;
+    border-radius: 17px;
+    padding: 5px;
+    align-items: center;
+}
+
+#ProfileAlignCardDetGenderIcon {
+    color: white;
+    font-size: 20px;
+}
+
+#ProfileAlignCardDetPhoneIcon {
+    color: #3A65FD;
+    font-size: 20px;
+}
+
+.ProfileAlignCardAge {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+}
+
+.ProfileAlignLogoutSec {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+}
+
+.ProfileAlignCardAge img {
+    height: 25px;
+    width: 25px;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.ProfileAlignCardDetGender p {
+    text-transform: capitalize;
+    font-weight: 400;
+    color: white;
+    font-size: 12px;
+}
+
+.ProfileAlignCardAge p {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+#ProfileAlignCardDetLogoutIcon {
+    color: rgba(255, 0, 0, 0.634);
+    font-size: 25px;
+}
+
+.ProfileAlignLogoutSec p {
+    color: rgba(255, 0, 0, 0.634);
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+@media screen and (max-width: 979px) {
+    .ProfileViewAlignCard {
+        width: 100%;
+    }
+}
+
+
+
+/* new */
+
+
+.customerprofilecard{
+    width: 300px;
+    border: 1px solid #a4b7fc94;
+    padding-bottom:10px;
+    background-color: white;
+}
+
+.customerprofilenamecard{
+    padding:20px;
+}
+
+.customerprofilecontactcard{
+    padding:10px 20px;
+    background-color: #e4eaff;
+
+}
+
+.customerprofilenamecardleft img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+}
+.customerprofilenamecardleft {
+    align-items: center;
+}
+
+.cpadminmenuprofile{
+    padding:10px 20px;
+    align-items: center;
+    transition: 600ms ease-in-out;
+}
+
+.cpadminmenuprofile:hover{
+    background-color: #e4eaff;
+
+}
+
+
+
+.cpadminmenuprofile i{
+    font-weight:100;
+    font-size:20px;
+    height: 20px;
+    
+}
+
+.cpeditadminprofile{
+    background-color: #e4eaff;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    justify-content: center;align-items: center;
+}
+
+.cpeditadminprofile i{
+    font-size:16px;
+    font-weight:100;
+    height:16px;
+    color: #7E83FF;
+}
+
+.customerprofilenamecard{
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.cpadmintype{
+    background-color: #F35454;
+    color: white;
+    font-size:1rem;
+    padding:2px 10px;
+    border-radius:50px;
+    margin-top:4px;
+    font-weight: 200;
+    width: fit-content;
+}
+
+.texticonset{
+    align-items: center;
+    margin-top:.4vw;
+}
+.texticonset i{
+   height: 16px;
+   font-weight:100;
+}
+
+.texticonset h4{
+    font-size: 14px;
+    font-weight:300;
+ }
+
+
+
+.customerprofilecard{
+    position:absolute;
+    top: 66px;
+    right:30px;
+    border-radius:10px;
+}

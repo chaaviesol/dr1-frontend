@@ -1,0 +1,221 @@
+.EditLaboratory {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.EditLaboratoryH1 span {
+    color: #3A65FD;
+}
+
+.EditLaboratoryH1 {
+    font-weight: 600;
+
+}
+
+.EditLaboratoryImagesSec {
+    display: flex;
+    gap: 80px;
+}
+
+.EditLabProfileImg {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+
+}
+
+.EditLabProfileImgRela {
+    position: relative;
+
+}
+
+.EditLabProfileImgCloseicn {
+    position: absolute;
+    z-index: 9;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+}
+
+#EditLabProfileImgicn {
+    font-size: 30px;
+    color: #3A65FD;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    margin: -15px -10px;
+}
+
+.EditLabProfileImg p {
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    letter-spacing: 1px;
+}
+
+.EditLabProfileImg img {
+    height: 150px;
+    border-radius: 15px;
+}
+
+.EditLabSubImg {
+    display: flex;
+    gap: 20px;
+
+}
+
+.EditLabSubImg img {
+    height: 150px;
+
+}
+
+.EditLabInputsSec1 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.EditLabInputsSec2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.EditLabInputsSec1InnerSec {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.EditLabInputsSec1InnerSec2 {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.EditLabInputsSec1InnerSec p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.EditLabInputsSec1InnerSec2 p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.EditLabInputsSec1InnerSec3 p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.EditLabInputsSec1InnerSec input {
+    border-radius: 15px;
+    background-color: #DBE3FF;
+    height: 40px;
+    padding-left: 10px;
+}
+
+
+
+.EditLabInputsSec1InnerTime {
+    border-radius: 15px;
+    background-color: #DBE3FF;
+    height: 40px;
+    padding-left: 10px;
+}
+
+.EditLabInputsSec1InnerTime .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+    border: 0px;
+    align-items: center;
+}
+
+.EditLabInputsSec1InnerTime .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    height: 100%;
+    padding: 5px;
+}
+
+.EditLabInputsSec1InnerSec2AddIcn {
+    display: flex;
+    justify-content: space-between;
+}
+
+.EditLabInputAlignSections {
+    width: 47%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.EditLabInputsSec1InnerSec3 textarea {
+    width: 100%;
+    border-radius: 15px;
+    background-color: #DBE3FF;
+    min-height: 100px;
+    padding: 10px;
+    max-width: 100%;
+}
+
+.EditLabInputsSec1InnerSec3 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.Edit_card_ho_ad_add_image {
+    height: 150px;
+    border-radius: 20px;
+    background-color: #3A65FD;
+    width: 150px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.ri-add-line {
+    color: white;
+    /* width: 100px;
+    height: 100px; */
+    font-size: 50px;
+}
+
+.EditLabInputsSec1InnerSec2Button {
+    border-radius: 15px;
+    background-color: #DBE3FF;
+    height: 40px;
+    width: 100%;
+    border: none;
+    overflow: scroll;
+    text-align: start;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.EditLabInputsSec1InnerSec2Button p {
+    font-size: 15px;
+    width: max-content;
+}
+
+.EditLabSubCan {
+    display: flex;
+    justify-content: end;
+}
+
+.EditLabSubCanSec {
+    display: flex;
+    gap: 20px;
+}
+
+.EditLabSubCanSec button {
+    width: 150px;
+    background-color: #3A65FD;
+    color: #DBE3FF;
+}

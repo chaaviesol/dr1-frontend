@@ -1,0 +1,33 @@
+.HospitalDetailedPadding {
+  padding: 50px;
+}
+
+.texticonsetAlign a {
+  display: flex;
+  gap: 10px;
+  background-color: #2a9d8f;
+  color: white;
+  letter-spacing: 1px;
+  font-size: 17px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.hospital-doctor-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5vw;
+}
+
+.texticonsetAlign {
+  align-items: center;
+}
+
+.texticonsetAlign i {
+  color: white;
+  height: 15px;
+  font-weight: 100;
+}

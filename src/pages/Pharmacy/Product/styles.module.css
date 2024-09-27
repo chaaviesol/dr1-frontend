@@ -1,0 +1,35 @@
+.searchContainer {
+  margin: 4rem 4rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.searchContainer > div {
+  width: 40%;
+}
+
+/* cart desktop */
+
+.cartItemTileWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.productTile {
+  flex: 0 1 calc(33.333% - 10px);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+.cartDesktop {
+  bottom: 0;
+  height: 59px;
+  width: 20%;
+  background-color: #fff;
+  border-radius: 44px;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}

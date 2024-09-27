@@ -1,0 +1,123 @@
+.container {
+    border: 1px solid var(--color-primary);
+    border-radius: 60px;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    position: relative
+  }
+  
+  .left {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    flex-direction: row;
+    background-color: var(--color-primary);
+    border-radius: 40px;
+    padding: 1rem;
+    /* padding-right: 2rem; */
+  }
+  
+  .left i {
+    font-weight: 100;
+  }
+  
+  .left input {
+    width: 90%;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 300;
+    font-size: 14px;
+  
+    &::placeholder {
+      color: white;
+      letter-spacing: 1.2px;
+    }
+  }
+  
+  .center {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .center input {
+    padding: 0.5rem;
+    color: black;
+    background-color: transparent;
+    width: 100%;
+    letter-spacing: 2px;
+    &::placeholder {
+      color: Black;
+      letter-spacing: 1px;
+    }
+  }
+  
+  .right {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  
+  .right div {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+  }
+  
+  .right i {
+    font-weight: 100;
+    cursor: pointer;
+  }
+  
+  .placeContainer {
+    padding: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -325px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  
+  .data {
+    overflow-x: scroll;
+    height: 300px;
+  }
+  
+  .places {
+    color: black;
+    font-weight: 400;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 18px;
+  
+    &:hover {
+      background-color: #fafaf9;
+    }
+  }
+  
+  /* Laptop------------------------------------------------ */
+  @media screen and (min-width: 769px) {
+  
+    /* For desktop and larger screens */
+    .center input {
+      font-size: 14px;
+      padding-left: 1rem;
+      letter-spacing: 1px;
+    }
+  }

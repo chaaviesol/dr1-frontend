@@ -1,0 +1,113 @@
+/* Product Management */
+
+
+
+
+
+.product-section-pro {
+    margin-top:3vw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    gap:25px; /* space between the cards */
+    width: 100%; 
+  }
+  
+  .product-card {
+    background-color: #f0f0f0; /* example background */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  .pharmacyshopproduct-pro{
+  flex-direction: column;
+  background-color:#f3f3f8;
+  border: 1px solid rgba(234, 88,10,.4);
+  
+  padding:16px 20px;
+  border-radius: 18px;
+  justify-content: center;
+  position: relative;
+  }
+  
+  
+  .pharmacyshopproductimg-pro{
+  height:8vw;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img{
+      max-width:100%;
+      max-height:90%;
+  }
+  }
+  .pharmacyshopproducttitle-pro{
+  height:5vw;
+  margin:6px 0px;
+  }
+  
+  .pharmacyshopproducttitle-pro h4{
+    line-height:20px;
+    font-size:14px;
+  }
+  
+  .pharmacyshopproducttitle-pro h3{
+    font-size:18px;
+  }
+  
+  .admin2pharmacyshopcate{
+  justify-content: space-between;
+  margin-bottom:15px;
+  }
+  
+  
+  .price-section-pro{
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .price-section-pro h2{
+    font-weight:600;
+  }
+  
+  .price-section-pro button{
+    background-color: #007bff;
+    padding:7px 16px;
+    color: white;
+    border-radius:50px;
+  }
+  
+  .manageprotop-left-select{
+    width:200px;
+  }
+  
+  
+   .manageprotop-left-select .custom-select{
+    margin-top:0px;
+   }
+
+  .input_search_box_adminP{
+     position: relative;
+  }
+  
+  .input_search_box_adminP input{
+      width:100%;
+      height:100%;
+      padding-left:30px;
+
+  }
+
+  .input_search_box_adminPICn{
+    position: absolute;
+    left:15px;
+    top:50%;
+    transform: translate(-50%,-50%);
+  }
+  .input_search_box_adminPICn i{
+    font-weight: 100;
+  }
+  
+  
+  
+  /*End Product Management */
