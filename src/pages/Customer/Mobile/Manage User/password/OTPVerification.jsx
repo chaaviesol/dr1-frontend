@@ -29,7 +29,6 @@ const OTPVerification = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
 
     const allFieldsFilled = otp.every((digit) => digit !== "");
 
@@ -53,6 +52,29 @@ const OTPVerification = () => {
           state: { email: form?.email },
         });
       }
+    }
+  };
+
+  const resentOtp = async () => {
+    setLoader(true);
+    try {
+      const response = await axios.post(`${BASE_URL}/user/userforgotpwd`, {
+        emailid: form.email,
+      });
+      console.log("Response:==========================", response);
+
+      if (response?.status === 200) {
+        toast.success(response?.data?.message);
+
+        console.log("OTP sent to email:", response);
+      } else {
+        toast.error(response?.data?.message || "Something went wrong");
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      toast.error("An error occurred while sending OTP. Please try again.");
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -89,12 +111,16 @@ const OTPVerification = () => {
         <span>
           Wrong email ID?{" "}
           <a href="/forgotpwd" className="otp_page_link">
-            Back
+            Edit
           </a>
         </span>
         <span>
-          Don't get the OTP?{" "}
-          <a href="/forgotpwd" className="otp_page_link">
+          Didn't get the OTP?{" "}
+          <a
+            onClick={resentOtp}
+            className="otp_page_link"
+            style={{ cursor: "pointer" }}
+          >
             Resend
           </a>
         </span>
