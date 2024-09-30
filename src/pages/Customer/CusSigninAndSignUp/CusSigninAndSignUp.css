@@ -16,7 +16,10 @@
 .toploginnav {
     justify-content: space-between;
 }
-
+.loginPopupSignupbtn:hover{
+    text-decoration: underline;
+    text-decoration-color: #3a65fd;
+}
 .toplogindatainput input {
     height: 30px;
     width: 100%;

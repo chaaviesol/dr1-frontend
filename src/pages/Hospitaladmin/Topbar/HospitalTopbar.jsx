@@ -13,7 +13,7 @@ function HospitalTopbar({ data: { SentData, selected } }) {
       <div className="containeradmin doctoradminnavbar2 flex">
         <div className="adminlogodiv flex">
           <img src="/images/doc.jpg" alt="" />
-          <h2 style={{ marginLeft: "18px" }}>DOCONE</h2>
+          <h2 style={{ marginLeft: "18px" }}>Dr ONE</h2>
         </div>
 
         <div className="adminlogodiv flex">

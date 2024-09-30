@@ -206,7 +206,7 @@ export const CusSigninAndSignUp = ({
             <>
               <div className="toploginnav flex">
                 <div className="toploginnavlogo">
-                  <h3>DOCONE</h3>
+                  <h3>Dr ONE</h3>
                 </div>
 
                 <div
@@ -216,7 +216,7 @@ export const CusSigninAndSignUp = ({
                   className="toploginnavlogo flex"
                 >
                   <h4 className="smallh4">Don't have an account?</h4>
-                  <h4 style={{ color: "#3a65fd", cursor: "pointer" }}>
+                  <h4 style={{ color: "#3a65fd", cursor: "pointer" }} className="loginPopupSignupbtn">
                     Sign up{" "}
                   </h4>
                 </div>
@@ -227,12 +227,12 @@ export const CusSigninAndSignUp = ({
                 </div>
 
                 <div className="toplogindatainput flex">
-                  <h3 className="smallh3">Welcome Back</h3>
+                  <h3 className="smallh3" style={{marginBottom:".5rem"}}>Welcome Back</h3>
                   <h4 className="smallh4">Login your account</h4>
-                  <h4 className="toplogindatatext">Email</h4>
-                  <input onChange={handlechanges} name="email" type="text" />
+                  <h4 className="toplogindatatext" style={{marginTop:"1rem"}}>Email</h4>
+                  <input onChange={handlechanges} name="email" type="text"  />
 
-                  <h4 className="toplogindatatext">Password</h4>
+                  <h4 className="toplogindatatext" style={{marginTop:"1rem"}}>Password</h4>
                   <div
                     style={{
                       position: "relative",
@@ -271,7 +271,7 @@ export const CusSigninAndSignUp = ({
                     </IconButton>
                   </div>
                   <h4
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: "pointer",marginTop:"1rem", }}
                     className="forgot-password flex"
                     onClick={() => navigate("/forgotpwd")}
                   >
@@ -302,7 +302,7 @@ export const CusSigninAndSignUp = ({
 
               <div className="toploginnav flex">
                 <div className="toploginnavlogo">
-                  <h3>DOCONE</h3>
+                  <h3>Dr ONE</h3>
                 </div>
 
                 <div

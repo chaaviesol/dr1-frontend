@@ -78,7 +78,7 @@ export default function Navbar() {
                 className="dr_one_logo"
                 alt=""
               />
-              <h2>DR ONE</h2>
+              <h2>Dr ONE</h2>
             </a>
           </div>
           <div className="nav-links flex">
