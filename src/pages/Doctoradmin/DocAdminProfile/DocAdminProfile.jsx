@@ -407,7 +407,7 @@ export const DocAdminProfile = () => {
           <div className="mainadmindoctordatas_profile flex">
             <img
               className="mainadmindoctordatas_profile_photo"
-              src="/images/doc.jpg"
+              src={DoctorData?.image || "/images/doc.jpg"}
               alt=""
             />
             <div className="mainadmindoctordatas_profile_data flex">

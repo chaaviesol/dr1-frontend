@@ -67,7 +67,7 @@ import SecondOpinion2ndpage from "./pages/Customer/Mobile/SecondOpinion/SecondOp
 import Searchpage from "./pages/Customer/Mobile/Search/Searchpage";
 import Profile from "./pages/Customer/Mobile/Profile/Profile";
 
-import ResetPassword_1 from "./pages/Customer/Mobile/Manage User/password/resetpassword1";
+import ResetPassword from "./pages/Customer/Mobile/Manage User/password/resetpassword1";
 import EmailInputPage from "./pages/Customer/Mobile/Manage User/password/EmailInputPage";
 import OTPVerification from "./pages/Customer/Mobile/Manage User/password/OTPVerification";
 import AllProductsView from "./pages/Pharmacy/Product/AllProductsView";
@@ -150,7 +150,7 @@ export const publicRoutes = [
   { path: "/hospitaldetailed", element: <HospitalDetailed /> },
 
   { path: "/forgotpwd", element: <EmailInputPage /> },
-  { path: "/resetpassword", element: <ResetPassword_1 /> },
+  { path: "/resetpassword", element: <ResetPassword/> },
   { path: "/otpverification", element: <OTPVerification /> },
 ];
 

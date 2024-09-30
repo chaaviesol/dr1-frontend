@@ -29,7 +29,7 @@ const OTPVerification = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoader(true);
+  
 
     const allFieldsFilled = otp.every((digit) => digit !== "");
 
