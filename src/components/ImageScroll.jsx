@@ -1,26 +1,17 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-// Import local images
-import image1 from "..\\public\\images\\sp1.jpg";
-import image2 from "..\\public\\images\\sp2.jpg";
-import image3 from "..\\public\\images\\sp3.jpg";
-import image4 from "..\\public\\images\\sp4.jpg";
-import image6 from "..\\public\\images\\sp6.jpg";
-import image7 from "..\\public\\images\\sp7.jpg";
-import image8 from "..\\public\\images\\sp8.jpg";
-import image9 from "..\\public\\images\\sp9.jpg";
-// Add more imports as needed
+
 
 // Array of imported images
 const allImages = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image6,
-  image7,
-  image8,
-  image9,
+  "/images/sp1.jpg",
+  "/images/sp2.jpg",
+  "/images/sp3.jpg",
+  "/images/sp4.jpg",
+  "/images/sp5.jpg",
+  "/images/sp6.jpg",
+  "/images/sp7.jpg",
+  "/images/sp8.jpg",
   // Add more images here
 ];
 const speciality = [

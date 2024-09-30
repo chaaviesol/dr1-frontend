@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 // Import local images
-import pic1 from '..\\public\\images\\hohero.jpg';
-import pic2 from '..\\public\\images\\hos2.jpg';
-import pic3 from '..\\public\\images\\hos3.jpg';
 
-const imageList = [pic1, pic2, pic3];
+const imageList = [
+  "/images/hohero.jpg",
+  "/images/hos2.jpg",
+  "/images/hos2.jpg",
+];
 const AUTO_PLAY_INTERVAL = 3000; // Change this value to adjust the speed (in milliseconds)
 
 const MyCarousel = () => {
@@ -33,7 +34,11 @@ const MyCarousel = () => {
       <button className="my-carousel-button" onClick={showPreviousImage}>
         &#10094;
       </button>
-      <img src={imageList[activeIndex]} alt="carousel" className="my-carousel-image" />
+      <img
+        src={imageList[activeIndex]}
+        alt="carousel"
+        className="my-carousel-image"
+      />
       <button className="my-carousel-button" onClick={showNextImage}>
         &#10095;
       </button>
