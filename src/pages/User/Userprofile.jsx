@@ -196,7 +196,7 @@ export default function Userprofile() {
                   onChange={handleFileChange}
                   multiple
                   style={{ display: "none" }}
-                  accept=".png"
+                 accept=".png, .jpg, .jpeg"
                 />
               </div>
             </div>
@@ -266,6 +266,7 @@ export default function Userprofile() {
                 <button
                   className="cancel-edit cancel-edit2"
                   onClick={savebutton}
+                  style={{cursor:"pointer"}}
                 >
                   Save
                 </button>

@@ -326,6 +326,7 @@ export const CusSigninAndSignUp = ({
                     onChange={handlechanges}
                     name="name"
                     type="text"
+                    maxLength={50}
                   />
                 </div>
 
@@ -349,6 +350,7 @@ export const CusSigninAndSignUp = ({
                       onChange={handlechanges}
                       name="email"
                       type="email"
+                      maxLength={50}
                     />
                   </div>
                 </div>
@@ -369,6 +371,7 @@ export const CusSigninAndSignUp = ({
                           margin: 0,
                           paddingRight: "33px", 
                         }}
+                        maxLength={12}
                         onChange={handlechanges}
                         name="password"
                         type={

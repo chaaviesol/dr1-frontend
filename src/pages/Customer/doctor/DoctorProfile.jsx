@@ -17,6 +17,7 @@ import { Loader } from "../../../components/Loader/Loader";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { toast } from "react-toastify";
 import useAuth from "../../../hooks/useAuth";
+import Feedback from "../../../components/Feedback/Feedback";
 export default function DoctorProfile() {
   const [ViewAvailabilityData, setViewAvailabilityData] = useState();
   const [open, setopen] = useState(false);
@@ -276,35 +277,7 @@ export default function DoctorProfile() {
             {feedbacks &&
               feedbacks.data &&
               feedbacks.data.map((ele, index) => (
-                <div key={index} className="doc_profileSecFeedBackStart">
-                  <div className="doc_profileSecFeedBItem">
-                    <Fragment>
-                      <div className="doc_profileSecFeedBItemImgSec">
-                        <img src="./images/TempDocImg.jpg" alt="" />
-                      </div>
-                      <div className="doc_profileSecFeedBItemImgSec">
-                        <div className="doc_profileSecFeedBItemImgSecFlex">
-                          {[1, 2, 3, 4, 5].map((num) => (
-                            <i
-                              key={num}
-                              style={{
-                                color:
-                                  ele?.rating >= num ? "#FA8D0D" : undefined,
-                              }}
-                              className="ri-star-fill"
-                            />
-                          ))}
-                        </div>
-                        <p> {moment(ele?.created_date).format("DD/MM/YYYY")}</p>
-                        <p>{ele?.message}</p>
-                        <div className="doc_profileSecFeedBIFlexName">
-                          <i className="ri-checkbox-circle-line"></i>
-                          <h4>{ele?.userid?.name}</h4>
-                        </div>
-                      </div>
-                    </Fragment>
-                  </div>
-                </div>
+               <Feedback key={ele.id} feedbackData={ele}/>
               ))}
           </div>
         </div>

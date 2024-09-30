@@ -183,7 +183,7 @@ export default function Navbar() {
                 </div>
               ) : (
                 <button onClick={toggleSignInModal}>
-                  <h3 className="nav-button1">Login</h3>
+                  <h3 className="nav-button1" style={{cursor:"pointer"}}>Login</h3>
                 </button>
               )}
             </div>
