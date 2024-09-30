@@ -1,7 +1,9 @@
 name: Build and Deploy React to S3
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
