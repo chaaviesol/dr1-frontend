@@ -73,9 +73,9 @@ export default function Hospitaladmindoctordetails() {
             </div>
 
             <div className="hospital_admin_data_section_button flex">
-              <a href="">
+         
                 <h4>Edit</h4>
-              </a>
+        
             </div>
           </div>
         </div>

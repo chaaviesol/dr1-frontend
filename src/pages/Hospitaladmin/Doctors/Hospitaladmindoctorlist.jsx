@@ -49,13 +49,12 @@ export default function Hospitaladmindoctorlist({ setChangeDashboards }) {
             </div>
             <div className="flex-center">
               <div className="hospitaladmin_doctor_list_button ">
-                <a
+                <div
                   className="pointer"
-                  href=""
                   onClick={() => navigate("/hospitaladminadddoctor")}
                 >
                   <h4>Add Doctor</h4>
-                </a>
+                </div>
               </div>
             </div>
           </div>

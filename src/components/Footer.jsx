@@ -1,87 +1,78 @@
-import React from 'react'
-import '../pages/Mainpage/main.css'
-import 'remixicon/fonts/remixicon.css'
+import React from "react";
+import "../pages/Mainpage/main.css";
+import "remixicon/fonts/remixicon.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <div>
-
       <>
         {/* Footer */}
         <div className="footer">
           <div className="container footer-container flex">
-            <div className="footer-logo flex"><h2 style={{ color: 'white' }}>DOCTOR ONE</h2></div>
+            <div className="footer-logo flex">
+              <h2 style={{ color: "white" }}>DOCTOR ONE</h2>
+            </div>
             <div className="footer-nav flex">
               <div>
                 <h4 className="footer-head">Know Us</h4>
-                <a href="/about">
+                <Link to="/about">
                   <h4>About Us</h4>
-                </a>
-                <a href="">
-                  <h4>Contact Us</h4>
-                </a>
-                <a href="/login">
+                </Link>
+
+                <h4>Contact Us</h4>
+
+                <Link to="/login">
                   <h4>Health Partner Login</h4>
-                </a>
+                </Link>
               </div>
               <div>
                 <h4 className="footer-head">Our Policies</h4>
-                <a href="">
-                  <h4>PrivacyPolicy</h4>
-                </a>
-                <a href="">
-                  <h4>Terms and Conditions</h4>
-                </a>
+
+                <h4>PrivacyPolicy</h4>
+
+                <h4>Terms and Conditions</h4>
               </div>
               <div>
                 <h4 className="footer-head">Our Services</h4>
-                <a href="/doctor">
+                <Link to="/doctor">
                   <h4>Doctor</h4>
-                </a>
-                <a href="/labs">
+                </Link>
+                <Link to="/labs">
                   <h4>Labs</h4>
-                </a>
-                {/* <a href="/">
+                </Link>
+                {/* <Link to="/">
             <h4>Pharmacy</h4>
-          </a> */}
-                <a href="/hospital">
+          </Link> */}
+                <Link to="/hospital">
                   <h4>Hospital</h4>
-                </a>
+                </Link>
               </div>
             </div>
             <div className="footer-social-icon flex">
-              <a href="">
-                <div className="footer-icon flex">
-                  <i className="ri-instagram-line" />
-                </div>
-              </a>
-              <a href="">
-                <div className="footer-icon flex">
-                  <i className="ri-whatsapp-line" />
-                </div>
-              </a>
-              <a href="">
-                <div className="footer-icon flex">
-                  <i className="ri-facebook-fill" />
-                </div>
-              </a>
-              <a href="">
-                <div className="footer-icon flex">
-                  <i className="ri-linkedin-fill" />
-                </div>
-              </a>
+              <div className="footer-icon flex">
+                <i className="ri-instagram-line" />
+              </div>
+
+              <div className="footer-icon flex">
+                <i className="ri-whatsapp-line" />
+              </div>
+
+              <div className="footer-icon flex">
+                <i className="ri-facebook-fill" />
+              </div>
+
+              <div className="footer-icon flex">
+                <i className="ri-linkedin-fill" />
+              </div>
             </div>
           </div>
           <div className="footer-Copyright">
             <h4>Copyright © 2023, Doctor one. All rights reserved.</h4>
-            <h4></h4>
           </div>
         </div>
         {/*End Footer */}
       </>
-
-
-
     </div>
-  )
+  );
 }

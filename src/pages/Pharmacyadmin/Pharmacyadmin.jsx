@@ -7,7 +7,7 @@ export default function Pharmacyadmin() {
     <div>
 
 
-<div className="hospitaladmin-main flex">
+{/* <div className="hospitaladmin-main flex">
 
 
 
@@ -77,7 +77,7 @@ export default function Pharmacyadmin() {
 </div>
 
 
-</div>
+</div> */}
 
 
     </div>

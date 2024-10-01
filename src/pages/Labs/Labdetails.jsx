@@ -14,11 +14,12 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import Feedback from "../../components/Feedback/Feedback";
 
 export default function Labdetails() {
   const [isShowCompleteUsrProfileModal, setIsShowCompleteUsrProfileModal] =
     useState(false);
-    const [contactNumber, setContactNumber] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const tempImg = "images/LabTempimg.jpg";
   const location = useLocation();
   const axiosPrivate = useAxiosPrivate();
@@ -95,13 +96,9 @@ export default function Labdetails() {
         status: "P",
       };
       markConsultMutation(payload);
-     
     }
-    
-  }
-  
+  };
 
- 
   const markConsult = async (data) => {
     console.log(data);
     const response = await axiosPrivate.post(`${port}/user/consultcount`, data);
@@ -141,7 +138,7 @@ export default function Labdetails() {
     }
 
     return <div>{stars}</div>;
-  };
+  };
 
   if (labDetails) {
     return (
@@ -159,19 +156,19 @@ export default function Labdetails() {
               <div className="lab-deatials-right flex">
                 <h2>{labDetails?.name}</h2>
                 <div className="lab-deatails-star flex">
-                <StarRating rating={labDetails?.rating} />
+                  <StarRating rating={labDetails?.rating} />
                 </div>
                 <div className="lab-details-location flex">
                   <i className="ri-map-pin-fill" />
                   <h4>{labDetails?.address}</h4>
                 </div>
                 <div className="lab-details-buttons flex">
-                  <a className="flex lab-details-buttons1" href>
+                  <div className="flex lab-details-buttons1">
                     <h4>
                       {labDetails?.timing.opening_time} to{" "}
                       {labDetails?.timing.closing_time}
                     </h4>
-                  </a>
+                  </div>
 
                   <div className="doc_profileModalAlignCont">
                     <button
@@ -215,41 +212,38 @@ export default function Labdetails() {
                 <h2>About</h2>
               </div>
               <h4 style={{ marginBottom: "1.3vw" }}>{labDetails?.about}</h4>
-              </div>
-        
-            <div style={{display:"flex",gap:"80px"}}>
-
-            <div className="lab-deatails-Services">
-              <div className="lab-details-heading">
-                <h2>Services</h2>
-              </div>
-              <div>
-                {labDetails.services.map((services) => (
-                  <div className="sevice-list flex">
-                    <i className="ri-arrow-right-circle-fill" />
-                    <h4>{services}</h4>
-                  </div>
-                ))}
-               
-              </div>
-            </div>
-            <div className="lab-deatails-Services">
-              <div className="lab-details-heading">
-                <h2>Features</h2>
-              </div>
-              <div>
-              {labDetails.features.map((feature) => (
-                  <div className="sevice-list flex">
-                    <i className="ri-arrow-right-circle-fill" />
-                    <h4>{feature}</h4>
-                  </div>
-                ))}
-               
-              </div>
-            </div>
             </div>
 
-            <h2 style={{marginBottom:"1rem"}}>Rating & Reviews</h2>
+            <div style={{ display: "flex", gap: "80px" }}>
+              <div className="lab-deatails-Services">
+                <div className="lab-details-heading">
+                  <h2>Services</h2>
+                </div>
+                <div>
+                  {labDetails.services.map((services) => (
+                    <div className="sevice-list flex">
+                      <i className="ri-arrow-right-circle-fill" />
+                      <h4>{services}</h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="lab-deatails-Services">
+                <div className="lab-details-heading">
+                  <h2>Features</h2>
+                </div>
+                <div>
+                  {labDetails.features.map((feature) => (
+                    <div className="sevice-list flex">
+                      <i className="ri-arrow-right-circle-fill" />
+                      <h4>{feature}</h4>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <h2 style={{ marginBottom: "1rem" }}>Rating & Reviews</h2>
             <div className="doc_profileSecFeedBackAndRatingBox">
               <div className="doc_profileSecFeedBackAndRatingBoxFlex">
                 <h1>{feedbacks?.data?.length || "0"}</h1>
@@ -260,40 +254,13 @@ export default function Labdetails() {
                 <p>Average Rating</p>
               </div>
             </div>
-
-            {feedbacks &&
-              feedbacks.data &&
-              feedbacks.data.map((ele, index) => (
-                <div className="doc_profileSecFeedBackStart">
-                  <div className="doc_profileSecFeedBItem">
-                    <Fragment key={index}>
-                      <div className="doc_profileSecFeedBItemImgSec">
-                        <img src="./images/TempDocImg.jpg" alt="" />
-                      </div>
-                      <div className="doc_profileSecFeedBItemImgSec">
-                        <div className="doc_profileSecFeedBItemImgSecFlex">
-                          {[1, 2, 3, 4, 5].map((num) => (
-                            <i
-                              key={num}
-                              style={{
-                                color:
-                                  ele?.rating >= num ? "#FA8D0D" : undefined,
-                              }}
-                              className="ri-star-fill"
-                            />
-                          ))}
-                        </div>
-                        <p> {moment(ele?.created_date).format("DD/MM/YYYY")}</p>
-                        <p>{ele?.message}</p>
-                        <div className="doc_profileSecFeedBIFlexName">
-                          <i class="ri-checkbox-circle-line"></i>
-                          <h4>{ele?.userid?.name}</h4>
-                        </div>
-                      </div>
-                    </Fragment>
-                  </div>
-                </div>
-              ))}
+            <div style={{ marginTop: "2rem" }}>
+              {feedbacks &&
+                feedbacks.data &&
+                feedbacks.data.map((ele, index) => (
+                  <Feedback key={ele.index} feedbackData={ele} />
+                ))}
+            </div>
           </div>
         </div>
 
@@ -326,12 +293,10 @@ export default function Labdetails() {
             <h4>{labDetails?.address}</h4>
           </div>
 
-          <a href="">
-            <h4 className="lab_time_button_mobile flex">
-              {labDetails?.timing?.opening_time} to{" "}
-              {labDetails?.timing?.closing_time}
-            </h4>
-          </a>
+          <h4 className="lab_time_button_mobile flex">
+            {labDetails?.timing?.opening_time} to{" "}
+            {labDetails?.timing?.closing_time}
+          </h4>
 
           <a href={`tel:${labDetails?.phone_no}`}>
             <h4 className="lab_time_button_mobile2 flex">Contact now</h4>

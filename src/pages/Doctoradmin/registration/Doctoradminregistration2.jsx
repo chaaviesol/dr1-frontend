@@ -559,19 +559,17 @@ export default function Doctoradminregistration2() {
           </div>
         </div>
         <div className="doctoradminregistration_button flex">
-          <a
-            href=""
-            className="demo1"
+          <h4
+            style={{backgroundColor:"rgb(58, 101, 253)",color:"white"}}
             onClick={(event) => {
               event.preventDefault();
               navigate(-1);
             }}
           >
-            <h4>Back</h4>
-          </a>
-          <a href="" onClick={handleSubmit}>
-            <h4>Submit</h4>
-          </a>
+            Back
+          </h4>
+
+          <h4 onClick={handleSubmit}>Submit</h4>
         </div>
       </div>
 
@@ -867,19 +865,17 @@ export default function Doctoradminregistration2() {
               </div>
             </div>
             <div className="doctoradminregistration_button">
-              <a
-                href=""
-                className="demo2"
+              <h4
+             style={{backgroundColor:"rgb(58, 101, 253)",color:"white"}}
                 onClick={(event) => {
                   event.preventDefault();
                   navigate(-1);
                 }}
               >
-                <h4>Back</h4>
-              </a>
-              <a href="" onClick={handleSubmit}>
-                <h4>Submit</h4>
-              </a>
+                Back
+              </h4>
+
+              <h4 onClick={handleSubmit}>Submit</h4>
             </div>
           </div>
         </div>

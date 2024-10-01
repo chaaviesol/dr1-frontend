@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./OTPVerification.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../../../../config";
 import { toast } from "react-toastify";
@@ -84,10 +84,9 @@ const OTPVerification = () => {
       <img src="/images/doconelogo.jpg" alt="Logo" className="otp_page_logo" />
       <p className="otp_page_instructions">
         Enter the OTP that we will send to your email ID
-        <a href="" className="otp_email">
-          {" "}
+        <h3 className="otp_email">
           {form?.email}
-        </a>
+        </h3>
       </p>
       <form onSubmit={handleSubmit} className="otp_page_form">
         <div className="otp_inputs">
@@ -110,19 +109,19 @@ const OTPVerification = () => {
       <div className="otp_page_links">
         <span>
           Wrong email ID?{" "}
-          <a href="/forgotpwd" className="otp_page_link">
+          <Link to="/forgotpwd" className="otp_page_link">
             Edit
-          </a>
+          </Link>
         </span>
         <span>
           Didn't get the OTP?{" "}
-          <a
+          <span
             onClick={resentOtp}
             className="otp_page_link"
             style={{ cursor: "pointer" }}
           >
-            Resend
-          </a>
+            Resent
+          </span>
         </span>
       </div>
     </div>

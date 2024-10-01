@@ -419,6 +419,11 @@ export const CusSigninAndSignUp = ({
                       }}
                     >
                       <input
+                        type={
+                          togglePasswordVisibility.signUp.confirmPwd
+                            ? "text"
+                            : "password"
+                        }
                         value={FormData?.repassword}
                         style={{
                           border: Errors.repassword ? "1px solid red" : "",
@@ -427,7 +432,6 @@ export const CusSigninAndSignUp = ({
                         }}
                         onChange={handlechanges}
                         name="repassword"
-                        type="Password"
                       />
 
                       <IconButton

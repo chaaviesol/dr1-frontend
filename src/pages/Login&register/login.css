@@ -133,7 +133,7 @@
   text-decoration-color: #3a65fd;
 }
 
-.forgot-password a {
+.forgot-password h4 {
   color: white;
   cursor: pointer;
 }
@@ -249,7 +249,7 @@
 
 .login-InnerModal-Inputs-Align {
   display: flex;
-  width: 50%;
+  width: 70%;
   justify-content: center;
 }
 

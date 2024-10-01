@@ -1,6 +1,5 @@
 import HomePage from "./pages/Home/Home";
 import { LoginSignin } from "./pages/Login&register/LoginSignin";
-import Register1 from "./pages/Login&register/Register1";
 import DoctorProfile from "./pages/Customer/doctor/DoctorProfile";
 import Labdetails from "./pages/Labs/Labdetails";
 import About from "./pages/Aboutus/About";
@@ -10,7 +9,7 @@ import Hospitaladmin from "./pages/Hospitaladmin/Hospitaladmin";
 import Hospitaldetails from "./pages/Hospitaladmin/Hospitaldetails";
 import Hospitaladminnotification from "./components/Hospitaladminnotification";
 import Hospitaladmindoctorlist from "./pages/Hospitaladmin/Doctors/Hospitaladmindoctorlist";
-import Hospitaladmin_doctor_card from "./components/Hospitaladmin_doctor_card";
+import Hospitaladmindoctorcard from "./components/Hospitaladmin_doctor_card";
 import Hospitaladminregistration2 from "./pages/Hospitaladmin/Hospitaladminregistration2";
 import Hospitaladmindoctordetails from "./pages/Hospitaladmin/Hospitaladmindoctordetails";
 import Hospitaladminadddoctor from "./pages/Hospitaladmin/Doctors/AddDoctor/Hospitaladminadddoctor";
@@ -27,6 +26,7 @@ import SearchDoc from "./pages/Customer/doctor/DoctorSearch/Index";
 import Registerlanding from "./pages/registerlanding/Registerlanding";
 import { Connect } from "./pages/Labs/LabFIltering/WebMobileConnect/Connect";
 import { Hosconnect } from "./pages/Customer/HospitalFiltering/WebMobileConnect/Hosconnect";
+
 import Mainadmindoctordetails from "./pages/Mainadmin/Mainadmindoctor/Mainadmindoctordetails";
 import Mainadmindoctorapprove from "./pages/Mainadmin/Mainadmindoctor/Mainadmindoctorapprove";
 import Mainadmindoctorlist from "./pages/Mainadmin/Mainadmindoctor/Mainadmindoctorlist";
@@ -107,7 +107,6 @@ export const publicRoutes = [
   { path: "/unauthorized", element: <Unauthorized /> },
 
   { path: "/login", element: <LoginSignin /> },
-  { path: "/register", element: <Register1 /> },
   { path: "/doctorprofile", element: <DoctorProfile /> },
   { path: "/labdetails", element: <Labdetails /> },
   { path: "/about", element: <About /> },
@@ -120,7 +119,7 @@ export const publicRoutes = [
   },
   { path: "/hospitaladmindoctorlist", element: <Hospitaladmindoctorlist /> },
   { path: "/hospitaldetails", element: <Hospitaldetails /> },
-  { path: "/hospitaladmindoctorcard", element: <Hospitaladmin_doctor_card /> },
+  { path: "/hospitaladmindoctorcard", element: <Hospitaladmindoctorcard /> },
   {
     path: "/hospitaladmindoctordetails",
     element: <Hospitaladmindoctordetails />,
@@ -150,8 +149,11 @@ export const publicRoutes = [
   { path: "/hospitaldetailed", element: <HospitalDetailed /> },
 
   { path: "/forgotpwd", element: <EmailInputPage /> },
-  { path: "/resetpassword", element: <ResetPassword/> },
+  { path: "/resetpassword", element: <ResetPassword /> },
   { path: "/otpverification", element: <OTPVerification /> },
+
+  { path: "/services", element: <Services /> },
+  { path: "/community", element: <Community /> },
 ];
 
 export const doctorAdminRoutes = [
@@ -180,8 +182,6 @@ export const superAdminRoutes = [
   { path: "/mainadmin", element: <Mainadmin /> },
   { path: "/addadmin", element: <Addadmins /> },
   { path: "/adminlist", element: <Adminlist /> },
-  { path: "/services", element: <Services /> },
-  { path: "/community", element: <Community /> },
   { path: "/mainadmindoctordetails", element: <Mainadmindoctordetails /> },
   { path: "/mainadmindoctorapprove", element: <Mainadmindoctorapprove /> },
   { path: "/mainadmindoctorlist", element: <Mainadmindoctorlist /> },

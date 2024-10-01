@@ -3,7 +3,7 @@ import "./EmailInputPage.css";
 import axios from "axios";
 import { BASE_URL } from "../../../../../config";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Loader } from "../../../../../components/Loader/Loader";
 const EmailInputPage = () => {
   const [form, setform] = useState({
@@ -61,9 +61,8 @@ const EmailInputPage = () => {
   };
 
   return (
-   
     <div className="email-input-container">
-       {loader ? <Loader /> : ""}
+      {loader ? <Loader /> : ""}
       <img
         src="/images/doconelogo.jpg"
         alt="Logo"
@@ -90,15 +89,15 @@ const EmailInputPage = () => {
       <div className="email_page_links">
         <span>
           Back to{" "}
-          <a href="/" className="email_page_link">
+          <Link to="/" className="email_page_link">
             Login page
-          </a>
+          </Link>
         </span>
-        <span>
+        <span style={{marginTop:".4rem"}}>
           Don't have an account?{" "}
-          <a href="/" className="email_page_link">
+          <Link to="/" className="email_page_link">
             Sign up
-          </a>
+          </Link>
         </span>
       </div>
     </div>

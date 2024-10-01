@@ -222,13 +222,13 @@ export const LoginSignin = () => {
     }
   };
 
-//enter key login
+  //enter key login
 
-const handleEnterKeyPress = (event) => {
-  if (event.key === "Enter") {
-    loginNow(event);
-  }
-};
+  const handleEnterKeyPress = (event) => {
+    if (event.key === "Enter") {
+      loginNow(event);
+    }
+  };
 
   const updatePassword = (e) => {
     const { name, value } = e?.target;
@@ -392,9 +392,7 @@ const handleEnterKeyPress = (event) => {
                 </div>
 
                 <div className="forgot-password flex">
-                  <a onClick={openModal}>
-                    <h4>Forgot Password ?</h4>{" "}
-                  </a>
+                  <h4 onClick={openModal}>Forgot Password ?</h4>{" "}
                 </div>
               </div>
               <div className="login-button-section flex">
@@ -563,21 +561,24 @@ const handleEnterKeyPress = (event) => {
                     <label className="login-InnerModal-H3">
                       Check your email for OTP
                     </label>
-                    <p>
-                      Kindly input the 6-digit code that has been dispatched to
-                      your email.
-                    </p>
+                    <p>Please enter the 5-digit code sent to your email</p>
                     <div className="login-InnerModal-Inputs">
                       <div className="login-InnerModal-Inputs-Align">
                         <MuiOtpInput
                           value={otp?.userOtp}
                           onChange={handleChange}
+                          length={5}
                         />
                       </div>
                     </div>
-                    <p className="login-InnerModal-Inputs-Ptag">
+                    <p
+                      className="login-InnerModal-Inputs-Ptag"
+                      style={{ display: "flex", gap: "10px" }}
+                    >
                       Didin't receive a code?{" "}
-                      <a onClick={nextVerification}>Resent</a>
+                      <h4 onClick={nextVerification} className="underlinenav">
+                        Resent
+                      </h4>
                     </p>
                     <div className="login-InnerModal-Button">
                       <button className="loginBUttonStyle" onClick={VerifyOtp}>

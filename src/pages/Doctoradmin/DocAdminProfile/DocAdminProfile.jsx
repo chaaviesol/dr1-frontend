@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
-import "./DocAdminProfile.css";
+import "../doctoradmin.css";
 import dayjs from "dayjs";
 import { toast } from "react-toastify";
 import { IconButton, Modal } from "@mui/material";

@@ -36,8 +36,8 @@ export default function Pharmacydetails() {
                    <h4>Shop No 3, Empire House, Irla, S V Road, Vile Parle West, Mumbai - 400056 (Opposite Irla Petrol Pump)</h4>
                  </div>
                  <div className="pharmacy-details-buttons flex">
-                   <a className="flex pharmacy-details-buttons1" href><h4>9.00 am to 5 pm</h4></a>
-                   <a className="flex pharmacy-details-buttons2" href><h4>Contact Now</h4></a>
+                   {/* <a className="flex pharmacy-details-buttons1" href><h4>9.00 am to 5 pm</h4></a> */}
+                   {/* <a className="flex pharmacy-details-buttons2" href><h4>Contact Now</h4></a> */}
                  </div>
                </div>
              </div>
@@ -130,13 +130,13 @@ export default function Pharmacydetails() {
    <h4>Shop No 3, Empire House, Irla, S V Road, Vile Parle West, Mumbai - 400056 (Opposite Irla Petrol Pump)</h4>
 </div>
 
-<a href=''>
+{/* <a href=''>
 <h4 className="time_button_mobile flex">9.00 am to 5 pm</h4>
 </a>
 
 <a href=''>
 <h4 className="time_button_mobile2 flex">Contact now</h4>
-</a>
+</a> */}
 
 
 {/*End Datas */}

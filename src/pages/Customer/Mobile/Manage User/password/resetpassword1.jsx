@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./resetpassword1.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../../../../config";
 import { toast } from "react-toastify";
@@ -177,15 +177,15 @@ const ResetPassword = () => {
       <div className="password_page_links">
         <span>
           Back to{" "}
-          <a href="/" className="password_page_link">
+          <Link to="/" className="password_page_link">
             Login page
-          </a>
+          </Link>
         </span>
         <span>
           Don't have an account?{" "}
-          <a href="/" className="password_page_link">
+          <Link to="/" className="password_page_link">
             Sign up
-          </a>
+          </Link>
         </span>
       </div>
     </div>

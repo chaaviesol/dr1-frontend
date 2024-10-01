@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "@mui/material";
 
 export const DocProfileTopbar = () => {
@@ -14,8 +14,8 @@ export const DocProfileTopbar = () => {
       <div className="doctoradminnavbar">
         <div className="containeradmin doctoradminnavbar2 flex">
           <div className="nav-logo">
-            <a
-              href="/"
+            <Link
+              to="/"
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
               <img
@@ -24,7 +24,7 @@ export const DocProfileTopbar = () => {
                 alt=""
               />
               <h2>DR ONE</h2>
-            </a>
+            </Link>
           </div>
 
           <div className="adminlogodiv flex">

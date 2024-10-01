@@ -37,9 +37,10 @@
 .nav-links h3 {
   font-size:17px;
   font-weight: 400;
+  cursor:pointer
 }
 
-.nav-links a:hover {
+.nav-links h3:hover {
   color: var(--color-primary);
 }
 

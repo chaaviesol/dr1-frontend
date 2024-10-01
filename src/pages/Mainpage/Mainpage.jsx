@@ -6,7 +6,7 @@ import "../Labs/labdetails.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CircularProgress, FormControlLabel, Modal } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ChatBot from "../../components/ChatBot/ChatBot";
@@ -47,7 +47,7 @@ export default function Mainpage() {
   const homeoDept = Categories?.homeopathySpecs;
   const ayurSpec = Categories?.ayurvedicSpecs;
   const types = Categories?.types;
-  const missingImg="./images/mainImgForLandingpage.jpg"
+  const missingImg = "./images/mainImgForLandingpage.jpg";
   // const Features = Categories?.hospitalFeatures
 
   useEffect(() => {
@@ -275,7 +275,7 @@ export default function Mainpage() {
               </div>
 
               <div className="main_bts flex">
-                <a href="/doctor" className="main_btns flex">
+                <Link to="/doctor" className="main_btns flex">
                   <h4>Find Doctor</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -284,8 +284,8 @@ export default function Mainpage() {
                   >
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
-                </a>
-                <a href="/hospital" className="main_btns flex">
+                </Link>
+                <Link to="/hospital" className="main_btns flex">
                   <h4>Find Hospital</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -294,8 +294,8 @@ export default function Mainpage() {
                   >
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
-                </a>
-                <a href="/labs" className="main_btns flex">
+                </Link>
+                <Link to="/labs" className="main_btns flex">
                   <h4>Find Labs</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -304,8 +304,8 @@ export default function Mainpage() {
                   >
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
-                </a>
-                <a href="/pharmacy" className="main_btns flex">
+                </Link>
+                <Link to="/pharmacy" className="main_btns flex">
                   <h4>Find Medicines</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -314,7 +314,7 @@ export default function Mainpage() {
                   >
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -323,106 +323,73 @@ export default function Mainpage() {
             </div>
           </div>
 
-{/* Service Section */}
+          {/* Service Section */}
 
+          <div className="container-second grid-container-service">
+            <div>
+              <h2>Explore</h2>
+              <h2>Our Services</h2>
+            </div>
+            <div className="mainservicecard">
+              <h2>200 + </h2>
+              <h2> Openings For</h2>
 
-<div className="container-second grid-container-service">
+              <div className="mainservicecardlist">
+                <h3>Nurse</h3>
+                <h3>Doctor</h3>
+                <h3>Doctor</h3>
+                <h3>Doctor</h3>
+                <h3>&More</h3>
+              </div>
 
-  <div>
-    <h2>Explore</h2>
-    <h2>Our Services</h2>
-  </div>
-<div className="mainservicecard">
+              <img src="../images/job.png" alt="" />
+              <h4 className="servicecardtitle">Careers</h4>
+            </div>
 
-<h2>200 + </h2>
-<h2> Openings  For</h2>
+            <div className="mainservicecard mainservicecard2">
+              <h2>Clear Your</h2>
+              <h2>Medical Doubts</h2>
 
-<div className="mainservicecardlist">
-<h3>Nurse</h3>
-<h3>Doctor</h3>
-<h3>Doctor</h3>
-<h3>Doctor</h3>
-<h3>&More</h3>
-</div>
+              <div className="mainservicecardlist">
+                <h3>Ask a Question</h3>
+                <h3>Second Opinion</h3>
+              </div>
 
+              <img src="../images/ex.png" alt="" />
+              <h4 className="servicecardtitle servicecardtitle2">
+                Second Opinion
+              </h4>
+            </div>
 
-<img src="../images/job.png" alt="" />
-<h4 className="servicecardtitle">
-Careers
-</h4>
-</div>
+            <div className="mainservicecard mainservicecard3">
+              <h2>Home</h2>
+              <h2>Services</h2>
 
-<div className="mainservicecard mainservicecard2">
+              <div className="mainservicecardlist">
+                <h3>Nurse</h3>
+                <h3>Doctor</h3>
+                <h3>Doctor</h3>
+                <h3>Doctor</h3>
+                <h3>&More</h3>
+              </div>
 
-<h2>Clear Your</h2>
-<h2>Medical Doubts</h2>
+              <img src="../images/ser.png" alt="" />
+              <h4 className="servicecardtitle servicecardtitle3">Services</h4>
+            </div>
 
-<div className="mainservicecardlist">
-<h3>Ask a Question</h3>
-<h3>Second Opinion</h3>
-</div>
+            <div className="mainservicecard mainservicecard4">
+              <h2>Medicine </h2>
+              <h2>At Home </h2>
 
+              <div className="mainservicecardlist">
+                <h3 style={{ width: "80%" }}>Medicine Through Prescription</h3>
+                <h3>Medical Products Through Market</h3>
+              </div>
 
-<img src="../images/ex.png" alt="" />
-<h4 className="servicecardtitle servicecardtitle2">
-Second Opinion
-</h4>
-</div>
-
-<div className="mainservicecard mainservicecard3">
-
-<h2>Home
-</h2>
-<h2>Services</h2>
-
-<div className="mainservicecardlist">
-<h3>Nurse</h3>
-<h3>Doctor</h3>
-<h3>Doctor</h3>
-<h3>Doctor</h3>
-<h3>&More</h3>
-</div>
-
-
-<img src="../images/ser.png" alt="" />
-<h4 className="servicecardtitle servicecardtitle3">
-Services
-</h4>
-</div>
-
-<div className="mainservicecard mainservicecard4">
-
-<h2>Medicine  </h2>
-<h2>
-At Home </h2>
-
-<div className="mainservicecardlist">
-<h3 style={{width:"80%"}}>Medicine
-Through Prescription</h3>
-<h3>Medical Products
-Through Market</h3>
-
-</div>
-
-
-<img src="../images/medmain.png" alt="" />
-<h4 className="servicecardtitle4 servicecardtitle">
-Medicine
-</h4>
-</div>
-
-      
-</div>
-     
-
-
-
-
-
-
-
-
-
+              <img src="../images/medmain.png" alt="" />
+              <h4 className="servicecardtitle4 servicecardtitle">Medicine</h4>
+            </div>
+          </div>
 
           {/* <div className="hero_images wrapper">
             <div class="track">
@@ -457,9 +424,9 @@ Medicine
               </h1>
 
               <div className="explore-more">
-                <a href="/searchdoctor">
+                <Link to="/searchdoctor">
                   <h4>Explore More</h4>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -702,19 +669,15 @@ Medicine
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>CBC(Complete Blood Count)</a>
-                    </h4>
+
+                    <h4>CBC(Complete Blood Count)</h4>
                   </div>
                   <div className="lab-data-right flex">
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>Thyroid Profile Total(T3, T4 &amp; TSH)</a>
-                    </h4>
+
+                    <h4>Thyroid Profile Total(T3, T4 &amp; TSH)</h4>
                   </div>
                 </div>
                 <div className="lab-datas flex">
@@ -722,19 +685,15 @@ Medicine
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>LFT (Liver Function Test)</a>
-                    </h4>
+
+                    <h4>LFT (Liver Function Test)</h4>
                   </div>
                   <div className="lab-data-right flex">
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>Diabetes Screening (HbA1C &amp; Fasting Sugar)</a>
-                    </h4>
+
+                    <h4>Diabetes Screening (HbA1C &amp; Fasting Sugar)</h4>
                   </div>
                 </div>
                 <div className="lab-datas flex">
@@ -742,19 +701,15 @@ Medicine
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>Lipid Profile</a>
-                    </h4>
+
+                    <h4>Lipid Profile</h4>
                   </div>
                   <div className="lab-data-right flex">
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>COVID-RTPCR</a>
-                    </h4>
+
+                    <h4>COVID-RTPCR</h4>
                   </div>
                 </div>
               </div>
@@ -767,19 +722,15 @@ Medicine
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>Ultrasound Whole Abdomen</a>
-                    </h4>
+
+                    <h4>Ultrasound Whole Abdomen</h4>
                   </div>
                   <div className="lab-data-right flex">
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>Electrocardiography</a>
-                    </h4>
+
+                    <h4>Electrocardiography</h4>
                   </div>
                 </div>
                 <div className="lab-datas flex">
@@ -787,19 +738,15 @@ Medicine
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>X-Ray Chest PA View</a>
-                    </h4>
+
+                    <h4>X-Ray Chest PA View</h4>
                   </div>
                   <div className="lab-data-right flex">
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>MRI Brain</a>
-                    </h4>
+
+                    <h4>MRI Brain</h4>
                   </div>
                 </div>
                 <div className="lab-datas flex">
@@ -807,19 +754,15 @@ Medicine
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>NCCT Scan Brain</a>
-                    </h4>
+
+                    <h4>NCCT Scan Brain</h4>
                   </div>
                   <div className="lab-data-right flex">
                     <div>
                       <i className="ri-arrow-right-circle-line" />
                     </div>
-                    <a href></a>
-                    <h4>
-                      <a href>MRI Cervical Spine</a>
-                    </h4>
+
+                    <h4>MRI Cervical Spine</h4>
                   </div>
                 </div>
               </div>
@@ -834,9 +777,9 @@ Medicine
                 Top Booked <span> Diagnostic</span> Tests
               </h1>
               <div className="explore-more">
-                <a href="/labfiltering">
+                <Link to="/labfiltering">
                   <h4>Explore More</h4>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -860,9 +803,6 @@ Medicine
                     </div>
                     <div className="flex price-section">
                       <h2>₹ 456</h2>
-                      {/* <a href>
-                    <h4 className="diagnostic-button">Add</h4>
-                  </a> */}
                     </div>
                   </div>
                 ) : (
@@ -875,14 +815,11 @@ Medicine
           {/* Footer */}
 
           {/*End Footer */}
-      <Footer />
+          <Footer />
         </div>
 
         {/* Mobile Screen */}
-
-       
       </div>
-
     </div>
   );
 }

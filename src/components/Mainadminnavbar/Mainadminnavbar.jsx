@@ -1,5 +1,6 @@
 import { Modal } from "@mui/material";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Mainadminnavbar({ data: { SentData, selected } }) {
   const [ProfilePopup, setProfilePopup] = useState(false);
@@ -14,18 +15,13 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
     <div className="doctoradminnavbar">
       <div className="containeradmin doctoradminnavbar2 flex">
         <div className="adminlogodiv flex">
-        <a
-              href="/"
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              <img
-                src="/images/doconelogo.jpg"
-                className="dr_one_logo"
-                alt=""
-              />
-              <h2>DR ONE</h2>
-            </a>
-          
+          <Link
+            to="/"
+            style={{ display: "flex", alignItems: "center", gap: "10px" }}
+          >
+            <img src="/images/doconelogo.jpg" className="dr_one_logo" alt="" />
+            <h2>DR ONE</h2>
+          </Link>
         </div>
 
         <div className="adminlogodiv flex">
@@ -92,7 +88,13 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
               </div>
             </div>
 
-            <div className="adminmenuprofile flex" onClick={()=>{SentData("manageadmin");setProfilePopup(false)}}>
+            <div
+              className="adminmenuprofile flex"
+              onClick={() => {
+                SentData("manageadmin");
+                setProfilePopup(false);
+              }}
+            >
               <i class="ri-vip-crown-line"></i>
               <h4 style={{ marginLeft: "10px" }}>Admins</h4>
             </div>

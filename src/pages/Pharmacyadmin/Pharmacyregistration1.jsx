@@ -82,7 +82,7 @@ export default function Pharmacyregistration1() {
               </div>
             </div>
             <div className="register-button-section flex">
-              <a className="flex" href="/"><h4>Next</h4></a>
+              <div className="flex" href="/"><h4>Next</h4></div>
             </div>
           </div>
           <div className="register-png-div2 register-png-div flex">

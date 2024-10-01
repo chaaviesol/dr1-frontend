@@ -8,7 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import Navbar from "../../components/Navbar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { services } from "./LabFIltering/constatnts/Filter";
 import axios from "axios";
 import { port } from "../../config";
@@ -249,9 +249,6 @@ export default function Labs() {
                         </div>
                         <div className="flex lab-price-section">
                           <h2>₹ 456</h2>
-                          {/* <a href>
-                        <h4 className="lab-diagnostic-button">Add</h4>
-                      </a> */}
                         </div>
                       </div>
                     </div>
@@ -281,26 +278,24 @@ export default function Labs() {
           <div className="featured-doctor flex">
             <div className="featured-doctor-card flex">
               <div className="featured-doctor-card-photo">
-              <img src="images/la (3).jpg" alt="" />
+                <img src="images/la (3).jpg" alt="" />
               </div>
 
               <div className="featured-doctor-card-datas flex">
                 <h2>Dr Lal PathLabs</h2>
-                <h4 style={{ color: "#3A65FD" }}>
-                  Medical Microbiology
-                </h4>
+                <h4 style={{ color: "#3A65FD" }}>Medical Microbiology</h4>
               </div>
 
               <div className="featured-doctor-card-button">
-                <a href="/labfiltering">
+                <Link to="/labfiltering">
                   <h4>View Profile</h4>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="featured-doctor-card flex">
               <div className="featured-doctor-card-photo">
-              <img src="images/la (3).jpg" alt="" />
+                <img src="images/la (3).jpg" alt="" />
               </div>
 
               <div className="featured-doctor-card-datas flex">
@@ -309,9 +304,9 @@ export default function Labs() {
               </div>
 
               <div className="featured-doctor-card-button">
-              <a href="/labfiltering">
+                <Link to="/labfiltering">
                   <h4>View Profile</h4>
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -326,15 +321,15 @@ export default function Labs() {
               </div>
 
               <div className="featured-doctor-card-button">
-              <a href="/labfiltering">
+                <Link to="/labfiltering">
                   <h4>View Profile</h4>
-                </a>
+                </Link>
               </div>
             </div>
 
             <div className="featured-doctor-card flex">
               <div className="featured-doctor-card-photo">
-              <img src="images/la (3).jpg" alt="" />
+                <img src="images/la (3).jpg" alt="" />
               </div>
 
               <div className="featured-doctor-card-datas flex">
@@ -343,168 +338,44 @@ export default function Labs() {
               </div>
 
               <div className="featured-doctor-card-button">
-                <a href="/labfiltering">
+                <Link to="/labfiltering">
                   <h4>View Profile</h4>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="container webshopsection" style={{marginTop:"3vw"}}>
-            <h1>
-              Explore Our <span className="color-blue">Marketplace</span>
-            </h1>
-
-            <div class="product-section">
-              {marketplaceProducts.length > 0 &&
-                marketplaceProducts.map((product, index) => (
-                  <div
-                    key={index}
-                    onClick={() => navigate("/pharmacyproducts")}
-                    className="web-pharmacyshopproduct flex"
-                  >
-                    <div className="webpharmacyshopproductimg flex">
-                      <img src={product?.image} alt="" />
-                    </div>
-                    <div className="webpharmacyshopproducttitle flex">
-                      <h4>{product?.category}</h4>
-                    </div>
-
-                    <button class="iconboxnew">
-                      <i class="ri-search-line"></i>
-                    </button>
-                  </div>
-                ))}
-            </div>
-          </div>
-      </div>
-
-      <div className="container mobilelab">
-        <div className="labs-banner flex">
-          <div>
-            <h1 style={{ color: "white" }}>
-              Find Your <span className="color-blue"> Labs From</span>{" "}
-            </h1>
-            <h1 style={{ color: "white" }}> Your Location </h1>
-          </div>
-
-          {/* Search Box */}
-        </div>
-
-        <div
-          onClick={() => navigate("/labfiltering")}
-          className="hospital-search-box flex"
-        >
-          <div className="Hospital-container-search flex">
-            <div className="Hospital-Search-box flex">
-              <div className="Hospital-location-section flex">
-                <i className="ri-map-pin-2-line" />
-                <input
-                  className="Hospital-Location-input"
-                  type="text"
-                  placeholder="Select location"
-                />
-              </div>
-              <input
-                className="Hospital-search-input"
-                type="text"
-                placeholder="Search Labs"
-              />
-              <div className="Hospital-search-section flex">
-                <i className="ri-search-2-line" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mobile-doctor-specialties">
-          <div className="mobile-second-heading">
-            <h1>
-              Find Test by<span className="color-blue ">Health Concern</span>
-            </h1>
-          </div>
-
-          <div className="mobile-specialties-card mobile-specialties-card flex">
-            <div className="mobile-specialties-image">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile-specialties-data flex">
-              <h4>Period doubts or</h4>
-              <h4> Pregnancy</h4>
-              <a href="">
-                <h4 className="mobile-specialties-button">Consult Now</h4>
-              </a>
-            </div>
-          </div>
-
-          <div className="mobile-specialties-card2 mobile-specialties-card flex">
-            <div className="mobile-specialties-image">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile-specialties-data flex">
-              <h4>Period doubts or</h4>
-              <h4> Pregnancy</h4>
-              <a href="">
-                <h4 className="mobile-specialties-button">Consult Now</h4>
-              </a>
-            </div>
-          </div>
-
-          <div className="mobile-specialties-card2 mobile-specialties-card flex">
-            <div className="mobile-specialties-image">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile-specialties-data flex">
-              <h4>Period doubts or</h4>
-              <h4> Pregnancy</h4>
-              <a href="">
-                <h4 className="mobile-specialties-button">Consult Now</h4>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="mobile-second-heading">
+        <div className="container webshopsection" style={{ marginTop: "3vw" }}>
           <h1>
-            Top Booked<span className="color-blue ">Diagnostic Tests</span>
+            Explore Our <span className="color-blue">Marketplace</span>
           </h1>
-        </div>
 
-        <div className="diagnostic-card">
-          <h2>Gastroscopy</h2>
-          <div className="diagnostic-paragraph">
-            <h4>
-              Generate Lorem Ipsum favorite writing, design and blogging tools.
-              Explore the origins, history and meaning of the famous pa
-            </h4>
-          </div>
-          <div className="flex price-section">
-            <h2>₹ 456</h2>
-            <a href>
-              <h4 className="diagnostic-button">Add</h4>
-            </a>
-          </div>
-        </div>
+          <div class="product-section">
+            {marketplaceProducts.length > 0 &&
+              marketplaceProducts.map((product, index) => (
+                <div
+                  key={index}
+                  onClick={() => navigate("/pharmacyproducts")}
+                  className="web-pharmacyshopproduct flex"
+                >
+                  <div className="webpharmacyshopproductimg flex">
+                    <img src={product?.image} alt="" />
+                  </div>
+                  <div className="webpharmacyshopproducttitle flex">
+                    <h4>{product?.category}</h4>
+                  </div>
 
-        <div className="diagnostic-card diagnostic-card2 ">
-          <h2>Gastroscopy</h2>
-          <div className="diagnostic-paragraph">
-            <h4>
-              Generate Lorem Ipsum favorite writing, design and blogging tools.
-              Explore the origins, history and meaning of the famous pa
-            </h4>
-          </div>
-          <div className="flex price-section">
-            <h2>₹ 456</h2>
-            <a href>
-              <h4 className="diagnostic-button">Add</h4>
-            </a>
+                  <button class="iconboxnew">
+                    <i class="ri-search-line"></i>
+                  </button>
+                </div>
+              ))}
           </div>
         </div>
       </div>
+
+  
       <Footer />
     </div>
   );

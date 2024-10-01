@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../components/Navbar.css";
 import { CircularProgress, Modal } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CusSigninAndSignUp } from "../pages/Customer/CusSigninAndSignUp/CusSigninAndSignUp";
 import { ProfileView } from "../pages/Customer/ProfileView/ProfileView";
 import useAuth from "../hooks/useAuth";
@@ -69,8 +69,8 @@ export default function Navbar() {
       <div className="nav-background">
         <nav className="nav-bar container flex ">
           <div className="nav-logo">
-            <a
-              href="/"
+            <Link
+              to="/"
               style={{ display: "flex", alignItems: "center", gap: "10px" }}
             >
               <img
@@ -78,96 +78,86 @@ export default function Navbar() {
                 className="dr_one_logo"
                 alt=""
               />
-              <h2>Dr ONE</h2>
-            </a>
+              <h2>DR ONE</h2>
+            </Link>
           </div>
           <div className="nav-links flex">
-            <a href="/">
-              <h3 style={{ color: path === "/" ? "#3a65fd" : "" }}>Home</h3>
-            </a>
-            <a onClick={() => handleRoute("doctor")}>
-              <h3
-                style={{
-                  color:
-                    path === "/doctor" ||
-                    path === "/searchdoctor" ||
-                    path === "/doctorprofile"
-                      ? "#3a65fd"
-                      : "",
-                }}
-              >
-                Doctor
-              </h3>
-            </a>
-            <a onClick={() => handleRoute("labs")}>
-              <h3
-                style={{
-                  color:
-                    path === "/labs" ||
-                    path === "/labfiltering" ||
-                    path === "/labdetails"
-                      ? "#3a65fd"
-                      : "",
-                }}
-              >
-                Labs
-              </h3>
-            </a>
-            <a onClick={() => handleRoute("hospital")}>
-              <h3
-                style={{
-                  color:
-                    path === "/hospital" ||
-                    path === "/hospitalfilter" ||
-                    path === "/hospitaldetailed"
-                      ? "#3a65fd"
-                      : "",
-                }}
-              >
-                Hospital
-              </h3>
-            </a>
-            <a onClick={() => handleRoute("pharmacy")}>
-              <h3
-                style={{
-                  color:
-                    path === "/pharmacy" ||
-                    path === "/productdetails" ||
-                    path === "/cart" ||
-                    path==="/pharmacyproducts"
-                      ? "#3a65fd"
-                      : "",
-                }}
-              >
-                Pharmacy
-              </h3>
-            </a>
-            <a onClick={() => handleRoute("services")}>
-              <h3
-                style={{
-                  color:
-                    path === "/services" 
-                   
-                      ? "#3a65fd"
-                      : "",
-                }}
-              >
-                Services
-              </h3>
-            </a>
-            <a onClick={() => handleRoute("community")}>
-              <h3
-                style={{
-                  color:
-                    path === "/community" 
-                   
-                      ? "#3a65fd"
-                      : "",
-                }}
-              >
-                Community
-              </h3>
-            </a>
+            <h3 style={{ color: path === "/" ? "#3a65fd" : "" }} onClick={()=>navigate("/")}>Home</h3>
+
+            <h3
+              onClick={() => handleRoute("doctor")}
+              style={{
+                color:
+                  path === "/doctor" ||
+                  path === "/searchdoctor" ||
+                  path === "/doctorprofile"
+                    ? "#3a65fd"
+                    : "",
+              }}
+            >
+              Doctor
+            </h3>
+
+            <h3
+              onClick={() => handleRoute("labs")}
+              style={{
+                color:
+                  path === "/labs" ||
+                  path === "/labfiltering" ||
+                  path === "/labdetails"
+                    ? "#3a65fd"
+                    : "",
+              }}
+            >
+              Labs
+            </h3>
+
+            <h3
+              onClick={() => handleRoute("hospital")}
+              style={{
+                color:
+                  path === "/hospital" ||
+                  path === "/hospitalfilter" ||
+                  path === "/hospitaldetailed"
+                    ? "#3a65fd"
+                    : "",
+              }}
+            >
+              Hospital
+            </h3>
+
+            <h3
+              onClick={() => handleRoute("pharmacy")}
+              style={{
+                color:
+                  path === "/pharmacy" ||
+                  path === "/productdetails" ||
+                  path === "/cart" ||
+                  path === "/pharmacyproducts"
+                    ? "#3a65fd"
+                    : "",
+              }}
+            >
+              Pharmacy
+            </h3>
+
+            <h3
+              onClick={() => handleRoute("services")}
+              style={{
+                color: path === "/services" ? "#3a65fd" : "",
+              }}
+            >
+              Services
+            </h3>
+
+            <h3
+              onClick={() => handleRoute("community")}
+              style={{
+                color: path === "/community" ? "#3a65fd" : "",
+              }}
+            >
+              Community
+            </h3>
           </div>
 
           <div className="nav-buttons flex">
@@ -183,7 +173,7 @@ export default function Navbar() {
                 </div>
               ) : (
                 <button onClick={toggleSignInModal}>
-                  <h3 className="nav-button1" style={{cursor:"pointer"}}>Login</h3>
+                  <h3 className="nav-button1">Login</h3>
                 </button>
               )}
             </div>
@@ -210,21 +200,21 @@ export default function Navbar() {
           >
             <>
               <div className="menubuttonNavModalSec flex ">
-                <a onClick={() => handleMobileVavigation("home")}>
+                <buton onClick={() => handleMobileVavigation("home")}>
                   <h3>Home</h3>
-                </a>
-                <a onClick={() => handleMobileVavigation("doctor")}>
+                </buton>
+                <buton onClick={() => handleMobileVavigation("doctor")}>
                   <h3>Doctor</h3>
-                </a>
-                <a onClick={() => handleMobileVavigation("laboratory")}>
+                </buton>
+                <buton onClick={() => handleMobileVavigation("laboratory")}>
                   <h3>Lab</h3>
-                </a>
-                <a onClick={() => handleMobileVavigation("hospital")}>
+                </buton>
+                <buton onClick={() => handleMobileVavigation("hospital")}>
                   <h3>Hospital</h3>
-                </a>
-                <a onClick={() => handleMobileVavigation("pharmacy")}>
+                </buton>
+                <buton onClick={() => handleMobileVavigation("pharmacy")}>
                   <h3>Pharmacy</h3>
-                </a>
+                </buton>
               </div>
             </>
           </Modal>

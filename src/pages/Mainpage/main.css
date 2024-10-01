@@ -140,8 +140,14 @@ small {
 .nav-logo {
   width: 20%;
 }
-
-.nav-links {
+.underlinenav{
+  color:var(--color-primary)
+}
+.underlinenav:hover{
+  text-decoration: underline;
+  text-decoration-color: #3a65fd;
+}
+/* .nav-links {
   gap: 3vw;
 }
 
@@ -160,7 +166,7 @@ small {
 
 .nav-links a.active {
   color: var(--color-primary);
-}
+} */
 
 .nav-buttons {
   width: 20%;

@@ -43,7 +43,7 @@ export default function Notification() {
 
     <div className="notification-main-card-right flex">
        <h4>Our Price : $45 </h4>
-       <a href=""><h4>Contact Now</h4> </a>
+       {/* <a href=""><h4>Contact Now</h4> </a> */}
         
     </div>
 </div>
@@ -73,38 +73,7 @@ export default function Notification() {
 
     <div className="notification-main-card-right flex">
        <h4>Our Price : $45 </h4>
-       <a href=""><h4>Contact Now</h4> </a>
-        
-    </div>
-</div>
-
-</div>
-
-
-<div className="notification-card">
-        <div className='notification-time flex'><h4>2.40 pm</h4></div>
-
-
-
-    
-
-<div className="notification-main-card flex">
-    <div className="notification-main-card-left flex">
-         <div>
-            <img src="images/doc.jpg" alt="" />
-         </div>
-          <div className='notification-lab-details flex'>
-              <h2>New Emprire Chemists</h2>
-              <h4>Prescription No : 245</h4>
-          </div>
-
-    </div>
-
-    
-
-    <div className="notification-main-card-right flex">
-       <h4>Our Price : $45 </h4>
-       <a href=""><h4>Contact Now</h4> </a>
+       {/* <a href=""><h4>Contact Now</h4> </a> */}
         
     </div>
 </div>
@@ -135,7 +104,38 @@ export default function Notification() {
 
     <div className="notification-main-card-right flex">
        <h4>Our Price : $45 </h4>
-       <a href=""><h4>Contact Now</h4> </a>
+       {/* <a href=""><h4>Contact Now</h4> </a> */}
+        
+    </div>
+</div>
+
+</div>
+
+
+<div className="notification-card">
+        <div className='notification-time flex'><h4>2.40 pm</h4></div>
+
+
+
+    
+
+<div className="notification-main-card flex">
+    <div className="notification-main-card-left flex">
+         <div>
+            <img src="images/doc.jpg" alt="" />
+         </div>
+          <div className='notification-lab-details flex'>
+              <h2>New Emprire Chemists</h2>
+              <h4>Prescription No : 245</h4>
+          </div>
+
+    </div>
+
+    
+
+    <div className="notification-main-card-right flex">
+       <h4>Our Price : $45 </h4>
+       {/* <a href=""><h4>Contact Now</h4> </a> */}
         
     </div>
 </div>
@@ -164,7 +164,7 @@ export default function Notification() {
 
     <div className="notification-main-card-right flex">
        <h4>Our Price : $45 </h4>
-       <a href=""><h4>Contact Now</h4> </a>
+       {/* <a href=""><h4>Contact Now</h4> </a> */}
         
     </div>
 </div>

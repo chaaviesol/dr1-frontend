@@ -23,7 +23,7 @@ export default function Doctor() {
   const [visibleContent, setVisibleContent] = useState(2);
   const [SpecialisationBatch, setSpecialisationBatch] = useState([]);
   const [FullSpecialisation, setFullSpecialisation] = useState([]);
-  const { Categories} = useContext(MyContext);
+  const { Categories } = useContext(MyContext);
   const {
     setFilters,
     setFilteredDoctors,
@@ -31,7 +31,7 @@ export default function Doctor() {
     setAllDocsBySearch,
   } = useContext(SearchDocContext);
   const navigate = useNavigate();
-  const {auth}=useAuth()
+  const { auth } = useAuth();
   const content = [
     $(document).ready(function () {
       $(".content").slice(0, 2).show();
@@ -120,18 +120,17 @@ export default function Doctor() {
     }
   };
 
-
-
-  const speacializationNames = Categories?.allopathySpecs
-  const homeoDept = Categories?.homeopathySpecs
-  const ayurSpec = Categories?.ayurvedicSpecs
+  const speacializationNames = Categories?.allopathySpecs;
+  const homeoDept = Categories?.homeopathySpecs;
+  const ayurSpec = Categories?.ayurvedicSpecs;
   // const type = Categories?.types
 
-
   useEffect(() => {
-    const Data = [...speacializationNames || [],
-    ...homeoDept || [],
-    ...ayurSpec || []]
+    const Data = [
+      ...(speacializationNames || []),
+      ...(homeoDept || []),
+      ...(ayurSpec || []),
+    ];
     let settingAllopathy = 0;
     let AllopathyUpdatingBatch = [];
     Data.forEach((ele, index) => {
@@ -149,9 +148,8 @@ export default function Doctor() {
       }
       setSpecialisationBatch(AllopathyUpdatingBatch);
     });
-    setFullSpecialisation(Data)
-  }, [Categories])
-
+    setFullSpecialisation(Data);
+  }, [Categories]);
 
   const SearchSpeciality = (e) => {
     const query = e?.target?.value.toLowerCase();
@@ -565,9 +563,7 @@ export default function Doctor() {
               </div>
 
               <div className="featured-doctor-card-button">
-                <a href="">
-                  <h4>View Profile</h4>
-                </a>
+                <h4>View Profile</h4>
               </div>
             </div>
 
@@ -582,9 +578,7 @@ export default function Doctor() {
               </div>
 
               <div className="featured-doctor-card-button">
-                <a href="">
-                  <h4>View Profile</h4>
-                </a>
+                <h4>View Profile</h4>
               </div>
             </div>
 
@@ -599,9 +593,7 @@ export default function Doctor() {
               </div>
 
               <div className="featured-doctor-card-button">
-                <a href="">
-                  <h4>View Profile</h4>
-                </a>
+                <h4>View Profile</h4>
               </div>
             </div>
 
@@ -616,204 +608,8 @@ export default function Doctor() {
               </div>
 
               <div className="featured-doctor-card-button">
-                <a href="">
-                  <h4>View Profile</h4>
-                </a>
+                <h4>View Profile</h4>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="mobile-screen container">
-        <div className="mobile-second-heading">
-          <h1>
-            Find <span className="color-blue "> Doctors</span> From Your
-            Location
-          </h1>
-        </div>
-
-        <div className="doctor-banner-image flex">
-          <img src="images/doc-main.png" alt="" />
-        </div>
-
-        <div className="doctor-mobile-content">
-          <div className="doctor-details flex">
-            <div className="just flex" style={{ gap: "40px" }}>
-              <div>
-                <div>
-                  <h1 style={{ color: "white" }}>30 +</h1>
-                </div>
-                <div>
-                  <h4>Consultations</h4>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <h1 style={{ color: "white" }}>34 +</h1>
-                </div>
-                <div>
-                  <h4>Specialities</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          onClick={() => navigate("/searchdoctor")}
-          className="hospital-search-box flex"
-        >
-          <div className="Hospital-container-search flex">
-            <div className="Hospital-Search-box flex">
-              <div className="Hospital-location-section flex">
-                <i className="ri-map-pin-2-line" />
-
-                <input
-                  className="Hospital-Location-input"
-                  type="text"
-                  placeholder="Kozhikode"
-                />
-              </div>
-              <input
-                className="Hospital-search-input"
-                type="text"
-                placeholder="Search Doctor"
-              />
-              <div className="Hospital-search-section flex">
-                <i className="ri-search-2-line" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mobile-doctor-specialties">
-          <div className="mobile-second-heading">
-            <h1>
-              Find Doctor by<span className="color-blue ">Health Concern</span>
-            </h1>
-          </div>
-
-          <div className="mobile-specialties-card mobile-specialties-card flex">
-            <div className="mobile-specialties-image">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile-specialties-data flex">
-              <h4>Period doubts or</h4>
-              <h4> Pregnancy</h4>
-              <a href="">
-                <h4 className="mobile-specialties-button">Consult Now</h4>
-              </a>
-            </div>
-          </div>
-
-          <div className="mobile-specialties-card2 mobile-specialties-card flex">
-            <div className="mobile-specialties-image">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile-specialties-data flex">
-              <h4>Period doubts or</h4>
-              <h4> Pregnancy</h4>
-              <a href="">
-                <h4 className="mobile-specialties-button">Consult Now</h4>
-              </a>
-            </div>
-          </div>
-
-          <div className="mobile-specialties-card2 mobile-specialties-card flex">
-            <div className="mobile-specialties-image">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile-specialties-data flex">
-              <h4>Period doubts or</h4>
-              <h4> Pregnancy</h4>
-              <a href="">
-                <h4 className="mobile-specialties-button">Consult Now</h4>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="mobile-second-heading">
-          <h1>Find Hospitals by </h1>
-          <h1>
-            <span className="color-blue ">Specialties</span>
-          </h1>
-        </div>
-
-        <div className="spec_main_card flex">
-          <h4>Neurology</h4>
-
-          <div className="spec_main_card_button flex">
-            <i className="ri-arrow-right-line"></i>
-          </div>
-        </div>
-        <div className="spec_main_card flex">
-          <h4>Neurology</h4>
-
-          <div className="spec_main_card_button flex">
-            <i className="ri-arrow-right-line"></i>
-          </div>
-        </div>
-        <div className="spec_main_card flex">
-          <h4>Neurology</h4>
-
-          <div className="spec_main_card_button flex">
-            <i className="ri-arrow-right-line"></i>
-          </div>
-        </div>
-
-        <div className="mobile-Our-Featured-Partners">
-          <div className="mobile-second-heading">
-            <h1>
-              Our <span className="color-blue ">Featured</span> Partner
-            </h1>
-          </div>
-
-          <div className="mobile_partner_card mobile_partner_card1 flex">
-            <div className="mobile_partner_card_img flex">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile_partner_card_data flex">
-              <h3>Dr.Rohith Raj</h3>
-              <h4>Dentist, Cosmetic</h4>
-            </div>
-          </div>
-
-          <div className="mobile_partner_card flex">
-            <div className="mobile_partner_card_img flex">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile_partner_card_data flex">
-              <h3>Dr.Rohith Raj</h3>
-              <h4>Dentist, Cosmetic</h4>
-            </div>
-          </div>
-
-          <div className="mobile_partner_card flex">
-            <div className="mobile_partner_card_img flex">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile_partner_card_data flex">
-              <h3>Dr.Rohith Raj</h3>
-              <h4>Dentist, Cosmetic</h4>
-            </div>
-          </div>
-
-          <div className="mobile_partner_card flex">
-            <div className="mobile_partner_card_img flex">
-              <img src="images/lab2.jpg" alt="" />
-            </div>
-
-            <div className="mobile_partner_card_data flex">
-              <h3>Dr.Rohith Raj</h3>
-              <h4>Dentist, Cosmetic</h4>
             </div>
           </div>
         </div>
