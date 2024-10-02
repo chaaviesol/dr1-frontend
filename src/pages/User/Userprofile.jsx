@@ -20,7 +20,7 @@ export default function Userprofile() {
   const [loader, setLoader] = useState(false);
  
   const navigate = useNavigate();
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -153,6 +153,7 @@ export default function Userprofile() {
           <div>
             <div className="photo-section flex">
               <img
+              alt=""
                 src={
                   state.image &&
                   typeof state.image === "object" &&

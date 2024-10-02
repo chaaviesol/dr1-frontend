@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./addproduct.css";
 import axios from "axios";
 import { BASE_URL } from "../../../../config";
-import moment from "moment/moment";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../../components/Loader/Loader";
 export default function Productdetail({
   updateState: { setChangeDashboards, setDetailData },
@@ -24,8 +22,6 @@ export default function Productdetail({
 
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const navigate = useNavigate();
-  const tempImg = "./images/TempDocImg.jpg";
 
   const publishbutton = async () => {
     setIsLoading(true);
@@ -110,7 +106,7 @@ export default function Productdetail({
       if (response.status === 200) {
         setIsLoading(false);
         toast.success(response?.data?.message);
-        setChangeDashboards({productmanagement:true})
+        setChangeDashboards({ productmanagement: true });
       }
       console.log("Product disabled successfully:", response.data);
     } catch (error) {
@@ -243,7 +239,9 @@ export default function Productdetail({
                 {" "}
                 <img
                   src={datastate?.images?.image1}
-                  onClick={() => {setSelectedImageIndex(0)}}
+                  onClick={() => {
+                    setSelectedImageIndex(0);
+                  }}
                   alt=""
                 />{" "}
               </div>
@@ -251,7 +249,9 @@ export default function Productdetail({
                 {" "}
                 <img
                   src={datastate?.images?.image2}
-                  onClick={() => {setSelectedImageIndex(1)}}
+                  onClick={() => {
+                    setSelectedImageIndex(1);
+                  }}
                   alt=""
                 />{" "}
               </div>
@@ -259,7 +259,9 @@ export default function Productdetail({
                 {" "}
                 <img
                   src={datastate?.images?.image3}
-                  onClick={() => {setSelectedImageIndex(2)}}
+                  onClick={() => {
+                    setSelectedImageIndex(2);
+                  }}
                   alt=""
                 />{" "}
               </div>
@@ -267,7 +269,9 @@ export default function Productdetail({
                 {" "}
                 <img
                   src={datastate?.images?.image4}
-                  onClick={() => {setSelectedImageIndex(3)}}
+                  onClick={() => {
+                    setSelectedImageIndex(3);
+                  }}
                   alt=""
                 />
               </div>

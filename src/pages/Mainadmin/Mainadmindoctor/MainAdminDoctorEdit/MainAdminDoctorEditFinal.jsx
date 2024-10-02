@@ -4,16 +4,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../../../contexts/Contexts";
-import { port } from "../../../../config.js";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs, { Dayjs } from "dayjs";
-import { Loader } from "../../../../components/Loader/Loader.jsx";
+import dayjs from "dayjs";
 import { toast } from "react-toastify";
 export const MainAdminDoctorEditFinal = () => {
   const navigate = useNavigate();
-
   const { editDoc, seteditDoc, Categories } = useContext(MyContext);
   const [postalError, setPostalError] = useState("");
   const [addressdata, setAddressdata] = useState({});
@@ -24,13 +21,10 @@ export const MainAdminDoctorEditFinal = () => {
   const ayurSpec = Categories?.ayurvedicSpecs;
   const types = Categories?.types;
   useEffect(() => {
-    //     const names = ["confirmPassword", "email", "name", "password", "phone", "secondname"];
-    //     if (names.some((ele) => !editDoc[ele])) {
-    //         // navigate('/doctoradminregistration1')
-    //     }
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, [editDoc, navigate]);
 
+  console.log(loader);
   const handleKeyPress = (event) => {
     if ([".", "-", "e", "+", "E"].includes(event?.key)) {
       event.preventDefault();

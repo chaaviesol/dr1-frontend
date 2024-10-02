@@ -2,7 +2,6 @@ import { useLocation, Navigate, Outlet } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import { useQuery } from "@tanstack/react-query";
 
 const RequireAuth = ({ allowedRoles }) => {
   const { auth, setAuth } = useAuth();

@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "../Mainadmindoctor/mainadmindoctordetails.css";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { port } from "../../../config";
-import { TimePicker } from "@mui/x-date-pickers";
 import { Modal } from "@mui/material";
-import dayjs from "dayjs";
-import { startTransition } from "react";
 import moment from "moment";
 import { toast } from "react-toastify";
 import { Loader } from "../../../components/Loader/Loader";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 
 export default function Mainadmindoctordetails({ Data: { DetailData } }) {
-  const location = useLocation();
   const [open, setOpen] = React.useState({});
   const [EditValues, setEditValues] = useState({});
   const [isLoading, setisLoading] = useState(false);
@@ -21,8 +17,7 @@ export default function Mainadmindoctordetails({ Data: { DetailData } }) {
   const [currentAvailability, setcurrentAvailability] = useState([]);
 
   const [FeedbackCustomers, setFeedbackCustomers] = useState([]);
-  const [Viewers, setViewers] = useState([]);
-  console.log("DoctorDetails>>>>", DoctorDetails);
+  // const [Viewers, setViewers] = useState([]);
 
   const navigate = useNavigate();
   const consultAndViewData = useFetchViewsAndContacts(
@@ -73,7 +68,7 @@ export default function Mainadmindoctordetails({ Data: { DetailData } }) {
       axios
         .post(`${port}/user/allcount`, CountSentingBody)
         .then((res) => {
-          setViewers(res.data.data);
+          // setViewers(res.data.data);
           LoadingFn(false);
           console.log(res);
         })

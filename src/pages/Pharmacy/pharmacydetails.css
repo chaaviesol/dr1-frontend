@@ -158,7 +158,7 @@
 
 .wrapper .track {
 	display: flex;
-	width: calc(14 0px * 10);
+	width: calc(140px * 10);
     gap:2vw;
 	animation: scroll 17s 0.5s linear infinite;
 }

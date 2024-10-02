@@ -11,7 +11,6 @@ export default function Productlist({
   const [state, setState] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [filteredState, setFilteredState] = useState([]);
-  const [searchTerm, setSearchTerm] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   console.log({ state });
   useEffect(() => {
@@ -83,9 +82,8 @@ export default function Productlist({
 
   return (
     <div>
-      <h3 style={{marginTop:"15px"}}>Product Management</h3>
-{isLoading&&
-<Loader/>}
+      <h3 style={{ marginTop: "15px" }}>Product Management</h3>
+      {isLoading && <Loader />}
       <div className="manageprotop flex">
         <div className="manageprotop-left flex">
           <div className="input_search_box_adminP">
@@ -95,7 +93,7 @@ export default function Productlist({
               onChange={(e) => handleSearchChange(e.target.value)}
             />
             <div className="input_search_box_adminPICn">
-            <i className="ri-search-2-line"></i>
+              <i className="ri-search-2-line"></i>
             </div>
           </div>
 
@@ -121,14 +119,19 @@ export default function Productlist({
       <div className="productlistadmin">
         <div class="product-section-pro">
           {filteredState?.map((key, index) => (
-            <div onClick={() => navigateAddP(key)} className="pharmacyshopproduct-pro flex">
+            <div
+              onClick={() => navigateAddP(key)}
+              className="pharmacyshopproduct-pro flex"
+            >
               <div className="pharmacyshopproductimg-pro flex">
                 <img src={key?.images?.image1} alt="" />
               </div>
               <div className="pharmacyshopproducttitle-pro">
                 <h4>{key?.brand}</h4>
                 <h3>
-                {key?.name.length > 20 ? `${key?.name.substring(0, 20)}...` : key?.name}
+                  {key?.name.length > 20
+                    ? `${key?.name.substring(0, 20)}...`
+                    : key?.name}
                 </h3>
               </div>
 

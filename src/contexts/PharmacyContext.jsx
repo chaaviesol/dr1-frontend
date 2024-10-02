@@ -1,6 +1,5 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import axios from "axios";
 import { BASE_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";

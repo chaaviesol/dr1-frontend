@@ -74,7 +74,7 @@ const ImageScroll = () => {
             <img
               key={index}
               src={src}
-              alt={`Image ${index}`}
+              alt=""
               className="scroll-image-item"
               onClick={() => {
                 handleFilterBySpeciality(duplicatespecialities[index]);

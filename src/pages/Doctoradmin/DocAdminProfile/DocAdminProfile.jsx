@@ -100,6 +100,7 @@ export const DocAdminProfile = () => {
     }
   };
   console.log("FormValues>>>>", FormValues);
+  console.log("loading>>>>", loading);
   const changeValues = (id) => {
     const findData = currentAvailability.find((ele) => ele?.hospital_id === id);
     setEditValues(findData);

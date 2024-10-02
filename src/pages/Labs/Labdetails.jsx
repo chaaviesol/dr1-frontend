@@ -1,13 +1,13 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Headroom from "react-headroom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
-import axios from "axios";
+// import axios from "axios";
 import { BASE_URL, port } from "../../config";
 import useFetchFeedbacksAndRating from "../../hooks/useFetchFeedbacksAndRating";
-import moment from "moment";
+// import moment from "moment";
 import useAuth from "../../hooks/useAuth";
 import UserProfileCompleteModal from "../Customer/HaveUComProfile/UserProfileCompleteModal";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -65,9 +65,7 @@ export default function Labdetails() {
     return response.data.profilecompleted;
   };
   const {
-    data: status,
     refetch: refetchCustomerProfileCompletionStatus,
-    isError,
     isLoading: isCustomerProfileCheckLoading,
   } = useQuery({
     queryKey: ["fetchCustomerProfileStatus", auth.userId],

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import {
-  Button,
-  Input,
   MenuItem,
   Modal,
   Select,
@@ -11,7 +9,6 @@ import {
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import axios from "axios";
 import { BASE_URL } from "../../../config";
 import { ToastContainer, toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -22,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 function UserProfileCompleteModal({ open, onClose }) {
   const [fileName, setFileName] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
   const queryClient = useQueryClient()

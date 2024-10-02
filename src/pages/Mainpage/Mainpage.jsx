@@ -3,30 +3,30 @@ import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Headroom from "react-headroom";
 import "../Labs/labdetails.css";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { CircularProgress, FormControlLabel, Modal } from "@mui/material";
+// import { CircularProgress, FormControlLabel, Modal } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ChatBot from "../../components/ChatBot/ChatBot";
 import { services } from "../Labs/LabFIltering/constatnts/Filter";
 import ArrowCircleRightOutlinedIcon from "@mui/icons-material/ArrowCircleRightOutlined";
-import axios from "axios";
+// import axios from "axios";
 import { SearchDocContext } from "../../contexts/Doctor/SearchDoctorProvider";
 import ChatBotAfterLogin from "../../components/ChatBotAfterLogin/ChatBotAfterLogin";
 import { MyContext } from "../../contexts/Contexts";
 import { InnerLoader } from "../../components/Loader/InnerLoader";
 import useAuth from "../../hooks/useAuth";
-import { Loader } from "../../components/Loader/Loader";
-import { BASE_URL, port } from "../../config";
+// import { Loader } from "../../components/Loader/Loader";
+// import { BASE_URL, port } from "../../config";
 
-import { axiosPrivate } from "../../api/PrivateAxios/axios";
+// import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import SecondopinionBanner from "./SecondopinionBanner/SecondopinionBanner";
 export default function Mainpage() {
-  const [latitude, setLatitude] = useState(null);
-  const [longitude, setLongitude] = useState(null);
-  const [error, setError] = useState(null);
+  // const [latitude, setLatitude] = useState(null);
+  // const [longitude, setLongitude] = useState(null);
+  // const [error, setError] = useState(null);
   const { Categories } = useContext(MyContext);
 
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ export default function Mainpage() {
     setAllDocsBySearch,
   } = useContext(SearchDocContext);
 
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
 
   const { auth } = useAuth();
   const speacializationNames = Categories?.allopathySpecs;
@@ -133,22 +133,22 @@ export default function Mainpage() {
       }
     }
   }, [selectTypes]);
-  const renderHosFilteringBYSpeciality = (Value) => {
-    if (speacializationNames.includes(Value?.speciality)) {
-      navigate("/hospitalfilter", {
-        state: { speciality: Value?.speciality, type: "Allopathy" },
-      });
-    } else if (ayurSpec.includes(Value?.speciality)) {
-      navigate("/hospitalfilter", {
-        state: { speciality: Value?.speciality, type: "Ayurvedic" },
-      });
-    } else if (homeoDept.includes(Value?.speciality)) {
-      navigate("/hospitalfilter", {
-        state: { speciality: Value?.speciality, type: "Homeopathy" },
-      });
-    }
-  };
-  console.log("SpecialisationBatch>>>>>", SpecialisationBatch);
+  // const renderHosFilteringBYSpeciality = (Value) => {
+  //   if (speacializationNames.includes(Value?.speciality)) {
+  //     navigate("/hospitalfilter", {
+  //       state: { speciality: Value?.speciality, type: "Allopathy" },
+  //     });
+  //   } else if (ayurSpec.includes(Value?.speciality)) {
+  //     navigate("/hospitalfilter", {
+  //       state: { speciality: Value?.speciality, type: "Ayurvedic" },
+  //     });
+  //   } else if (homeoDept.includes(Value?.speciality)) {
+  //     navigate("/hospitalfilter", {
+  //       state: { speciality: Value?.speciality, type: "Homeopathy" },
+  //     });
+  //   }
+  // };
+  // console.log("SpecialisationBatch>>>>>", SpecialisationBatch);
 
   // Measure page render time
   useEffect(() => {

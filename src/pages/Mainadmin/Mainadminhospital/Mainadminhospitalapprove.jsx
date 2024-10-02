@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'

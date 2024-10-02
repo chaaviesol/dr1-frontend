@@ -10,18 +10,18 @@ export default function LabEdit1() {
   const navigate = useNavigate();
   const { LabAdminRg, setLabAdminRg } = useContext(MyContext);
   const [Errors, setErrors] = useState({});
-  const handleFileChange = (event) => {
-    const selectedFile = event.target?.files[0];
-    if (selectedFile) {
-      const isImage = selectedFile.type.startsWith("image/");
-      if (isImage) {
-        setLabAdminRg({ ...LabAdminRg, image: [selectedFile] });
-      } else {
-        alert("Please select a valid image file.");
-        event.target.value = null;
-      }
-    }
-  };
+  // const handleFileChange = (event) => {
+  //   const selectedFile = event.target?.files[0];
+  //   if (selectedFile) {
+  //     const isImage = selectedFile.type.startsWith("image/");
+  //     if (isImage) {
+  //       setLabAdminRg({ ...LabAdminRg, image: [selectedFile] });
+  //     } else {
+  //       alert("Please select a valid image file.");
+  //       event.target.value = null;
+  //     }
+  //   }
+  // };
   const toastifyFun = (value) => {
     toast.info(value, {
       position: "top-right",
@@ -85,19 +85,19 @@ export default function LabEdit1() {
 
     setErrors(errors);
   };
-  const handleKeyPress = (event) => {
-    // Check if the pressed key is '.' or '-'
-    if (
-      event?.key === "." ||
-      event?.key === "-" ||
-      event?.key === "e" ||
-      event?.key === "+" ||
-      event?.key === "E"
-    ) {
-      // Prevent the default behavior for these keys
-      event.preventDefault();
-    }
-  };
+  // const handleKeyPress = (event) => {
+  //   // Check if the pressed key is '.' or '-'
+  //   if (
+  //     event?.key === "." ||
+  //     event?.key === "-" ||
+  //     event?.key === "e" ||
+  //     event?.key === "+" ||
+  //     event?.key === "E"
+  //   ) {
+  //     // Prevent the default behavior for these keys
+  //     event.preventDefault();
+  //   }
+  // };
   return (
     <div>
       <ToastContainer />

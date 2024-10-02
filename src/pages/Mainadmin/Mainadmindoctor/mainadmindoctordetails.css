@@ -691,7 +691,7 @@ tr:hover {
 /*End Feedback section */
 .mainadmindoctoraboutFlexEnd {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .mainadmindoctoraboutFlexEnd button {

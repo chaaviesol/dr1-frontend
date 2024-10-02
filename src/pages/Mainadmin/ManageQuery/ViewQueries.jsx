@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { BASE_URL, port } from "../../../config";
+import { port } from "../../../config";
 import moment from "moment-timezone";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "../OrderAndPrescription/listtablestyle.css";
 import { Loader } from "../../../components/Loader/Loader";
 import axios from "axios";
@@ -11,7 +11,7 @@ function ViewQueries({ setChangeDashboards, setQueryId }) {
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+ 
   console.log(datalist);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import { MyContext } from "../../../contexts/Contexts";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 
 export default function Mainadminlabsdetails({ labData }) {
-  const { LabAdminRg, setLabAdminRg } = useContext(MyContext);
+  const { setLabAdminRg } = useContext(MyContext);
   const navigate = useNavigate();
   const consultAndViewData = useFetchViewsAndContacts(labData?.id, "Lab");
 

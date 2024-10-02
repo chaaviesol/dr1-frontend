@@ -1,14 +1,11 @@
-import axios from "axios";
-import React, { useEffect } from "react";
-import { useTabBarContext } from "../contexts/MobileScreen/TabBarProvider";
-import { useQuery } from "@tanstack/react-query";
+import React from "react";
+
 import { useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
-import { BASE_URL } from "../config";
+
 import { usePharmacyContext } from "../contexts/PharmacyContext";
 
 function CartIcon() {
-  const { cartItems, refetch } = usePharmacyContext();
+  const { cartItems} = usePharmacyContext();
   const navigate = useNavigate();
 
   return (

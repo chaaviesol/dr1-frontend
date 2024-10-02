@@ -2,15 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import "./addproduct.css";
 import axios from "axios";
 import { BASE_URL } from "../../../../config";
-import moment from "moment/moment";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
 
 const ITEM_HEIGHT = 30;
@@ -48,7 +45,7 @@ export default function Addproduct({
   console.log(selectedCategory);
   const fileInputRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -122,11 +119,11 @@ export default function Addproduct({
   };
 
   useEffect(() => {
-    setIsLoading(true);
+    // setIsLoading(true);
     axios.get(`${BASE_URL}/product/getcategory`).then((res) => {
       console.log(res?.data);
       if (res?.status === 200) {
-        setIsLoading(false);
+        // setIsLoading(false);
         setSelectedCategory(res?.data?.data);
       }
     });
@@ -151,7 +148,7 @@ export default function Addproduct({
 
     setproduct((prevdata) => ({
       ...prevdata,
-      category: value
+      category: value,
     }));
   };
   return (
@@ -206,7 +203,10 @@ export default function Addproduct({
                   {selectedCategory.map((category) => (
                     <MenuItem key={category.category} value={category.category}>
                       <Checkbox
-                       checked={Array.isArray(product?.category) && product.category.includes(category.category)}
+                        checked={
+                          Array.isArray(product?.category) &&
+                          product.category.includes(category.category)
+                        }
                       />
                       <ListItemText primary={category.category} />
                     </MenuItem>

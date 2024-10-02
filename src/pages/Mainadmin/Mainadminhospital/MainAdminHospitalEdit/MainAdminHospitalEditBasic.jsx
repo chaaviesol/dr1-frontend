@@ -4,12 +4,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { MyContext } from "../../../../contexts/Contexts";
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import { IconButton } from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 
 export const MainAdminHospitalEditBasic = () => {
-    const [fileName, setFileName] = useState("No file selected");
     const navigate = useNavigate()
     const { editHos, seteditHos } = useContext(MyContext)
     const [Errors, setErrors] = useState({
@@ -19,28 +16,26 @@ export const MainAdminHospitalEditBasic = () => {
     const location = useLocation()
     const currentData = location?.state?.data
 
-    const [showPassword, setShowPassword] = useState(false);
+  
 
-    const [showRePassword, setShowRePassword] = useState(false);
+    // const handleFileChange = (event) => {
+    //     const selectedFile = event.target?.files[0];
 
-    const handleFileChange = (event) => {
-        const selectedFile = event.target?.files[0];
-
-        if (selectedFile) {
-            const isImage = selectedFile.type.startsWith("image/");
-            if (isImage) {
-                setFileName(selectedFile.name);
-                seteditHos({ ...editHos, image: [selectedFile] });
-            } else {
-                alert("Please select a valid image file.");
-                // Optionally, you can clear the file input
-                event.target.value = null;
-            }
-        } else {
-            setFileName("No file selected");
-            // setLabAdminRg("No file selected");
-        }
-    };
+    //     if (selectedFile) {
+    //         const isImage = selectedFile.type.startsWith("image/");
+    //         if (isImage) {
+    //             setFileName(selectedFile.name);
+    //             seteditHos({ ...editHos, image: [selectedFile] });
+    //         } else {
+    //             alert("Please select a valid image file.");
+    //             // Optionally, you can clear the file input
+    //             event.target.value = null;
+    //         }
+    //     } else {
+    //         setFileName("No file selected");
+    //         // setLabAdminRg("No file selected");
+    //     }
+    // };
 
     // toast
     console.log("editHos>>>>", editHos)

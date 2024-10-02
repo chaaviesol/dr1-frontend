@@ -2,23 +2,22 @@ import React, { useEffect, useState } from "react";
 import { port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import "./listtablestyle.css";
-import { Loader } from "../../../components/Loader/Loader";
 export default function Orderslist({
     updateState: { setChangeDashboards, setDetailData },
   })  {
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
   const [completed,setcompleted]=useState([])
-  const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  // const [isLoading, setIsLoading] = useState(false);
+  // const navigate = useNavigate();
   console.log(datalist);
   useEffect(() => {
-    setIsLoading(true)
+    // setIsLoading(true)
     axios.get(`${port}/pharmacy/allsalelist`).then((res) => {
     if(res?.status===200){
-        setIsLoading(false)
+        // setIsLoading(false)
         setdatalist(res?.data?.data);
         setcompleted(res?.data);
         setinitialData(res?.data?.data);

@@ -167,7 +167,7 @@
   .category > div {
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: left;
   }
   
@@ -195,7 +195,7 @@
   .subcategories > div {
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: left;
   }
   .product {
@@ -216,7 +216,7 @@
   .product > div {
     width: 100%;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: left;
   }
   .color {

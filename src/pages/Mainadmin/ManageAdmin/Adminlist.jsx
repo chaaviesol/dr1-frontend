@@ -4,7 +4,6 @@ import AdminCard from "./AdminCard";
 import axios from "axios";
 import { port } from "../../../config";
 import { useQuery } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 
 export default function Adminlist({ setChangeDashboards }) {
   const fetchAdmins = async () => {
@@ -15,7 +14,7 @@ export default function Adminlist({ setChangeDashboards }) {
     queryKey: ["fetchAdmins"],
     queryFn: fetchAdmins,
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleButtonClick = () => {
     setChangeDashboards({

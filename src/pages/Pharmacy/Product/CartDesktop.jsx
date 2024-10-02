@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CartItemTile from "../../Customer/Mobile/Pharmacy/cart/CartItemTIle";
 import Footer from "../../../components/Footer";

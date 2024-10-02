@@ -1,6 +1,6 @@
 import React from 'react'
-import Hospitaladminnotification from '../../components/Hospitaladminnotification'
-import Rightnavbar from '../../components/Rightnavbar'
+// import Hospitaladminnotification from '../../components/Hospitaladminnotification'
+// import Rightnavbar from '../../components/Rightnavbar'
 
 export default function Pharmacyadmin() {
   return (

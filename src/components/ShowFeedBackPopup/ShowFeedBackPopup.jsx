@@ -1,5 +1,4 @@
 import { Modal } from "@mui/material";
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { PopupContext } from "./ShowFeedBackPopupContext";

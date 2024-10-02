@@ -16,10 +16,7 @@ import CountingEffect from "../../../components/CountingEffect";
 export default function Hospital() {
   const navigate = useNavigate();
   const [SpecialisationBatch, setSpecialisationBatch] = useState([]);
-  const [position, setPosition] = useState({});
-  const [ayurvedic, setayruvedic] = useState([]);
   const [FullSpecialisation, setFullSpecialisation] = useState([]);
-  const [Homeo, setHomeo] = useState([]);
   const { Categories, setCategories } = useContext(MyContext);
   const { auth } = useAuth;
   const axiosPrivate = useAxiosPrivate();

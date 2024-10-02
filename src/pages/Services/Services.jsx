@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState} from "react";
 import "../Services/services.css";
 import Navbar from "../../components/Navbar";
 import Headroom from "react-headroom";
 import Footer from "../../components/Footer";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Modal } from "@mui/material";
+import {  useNavigate } from "react-router-dom";
+// import { Modal } from "@mui/material";
 import Secopmodal from "../../components/SecOpAndQuery/Secopmodal";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -73,17 +73,17 @@ export default function Services() {
           <div className="services_image services_image1 flex">
             <div className="custom-image-grid">
               <div className="custom-grid-item">
-                <img src="../images/serdo1.jpg" alt="Image 1" />
+                <img src="../images/serdo1.jpg" alt="" />
               </div>
               <div className="custom-grid-item">
-                <img src="../images/serdo2.jpg" alt="Image 2" />
+                <img src="../images/serdo2.jpg" alt="" />
               </div>
               <div className="custom-grid-item">
-                <img src="../images/dr (3).jpg" alt="Image 3" />
+                <img src="../images/dr (3).jpg" alt="" />
                 <div className="backdesign"></div>
               </div>
               <div className="custom-grid-item">
-                <img src="../images/dr20.png" alt="Image 4" />
+                <img src="../images/dr20.png" alt="" />
               </div>
 
              
@@ -205,7 +205,7 @@ export default function Services() {
           {/* Second Column */}
           <div className="services_image services_image_top flex">
             <div className="toplevel-sr-img">
-              <img src="../images/homeser.jpg" alt="Service" />
+              <img src="../images/homeser.jpg" alt="" />
               <div className="toplevel-sr-img2"></div>
             </div>
           </div>

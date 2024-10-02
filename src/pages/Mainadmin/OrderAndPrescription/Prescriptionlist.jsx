@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
 import "./listtablestyle.css";
-import { Loader } from "../../../components/Loader/Loader";
 
 export default function Prescriptionlist({
   updateState: { setChangeDashboards, setDetailData },
@@ -13,8 +11,8 @@ export default function Prescriptionlist({
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  console.log(datalist);
+
+  console.log(datalist,isLoading);
   useEffect(() => {
     setIsLoading(true);
     axios.get(`${port}/pharmacy/prescriptionlist`).then((res) => {

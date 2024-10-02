@@ -12,9 +12,8 @@ import { Loader } from "../../../components/Loader/Loader.jsx";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 import { Checkbox, FormControlLabel, Modal } from "@mui/material";
-import { CheckBox } from "@mui/icons-material";
 
 export default function Doctoradminregistration2() {
   const navigate = useNavigate();
@@ -23,7 +22,7 @@ export default function Doctoradminregistration2() {
   const [isConsentModalVisible, setIsConsentModalVisible] = useState(false);
   const [addressdata, setAddressdata] = useState({});
   const [loader, setloader] = useState(false);
-  const { Categories, setCategories } = useContext(MyContext);
+  const { Categories} = useContext(MyContext);
 
   const speacializationNames = Categories?.allopathySpecs;
   const homeoDept = Categories?.homeopathySpecs;

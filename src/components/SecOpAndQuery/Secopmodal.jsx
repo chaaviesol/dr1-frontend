@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect,  useContext } from "react";
 import "../../pages/Services/services.css";
 import { toast } from "react-toastify";
 import Checkbox from "@mui/material/Checkbox";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Loader } from "../../components/Loader/Loader";
-import { BASE_URL, port } from "../../config";
+import { BASE_URL} from "../../config";
 import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import { MyContext } from "../../contexts/Contexts";
 import {
-  CircularProgress,
+
   FormControlLabel,
   IconButton,
   Modal,
@@ -23,7 +23,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     secop: false,
     secop2: false,
   });
-  const { Categories, setCategories } = useContext(MyContext);
+  const { Categories } = useContext(MyContext);
   console.log("allopathySpecs", Categories.allopathySpecs);
   const navigate = useNavigate();
   const { auth } = useAuth();

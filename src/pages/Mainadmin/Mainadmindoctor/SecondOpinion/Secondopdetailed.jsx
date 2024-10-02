@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "../../OrderAndPrescription/styles.css";
 import axios from "axios";
 import { BASE_URL } from "../../../../config";
 import moment from "moment/moment";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
 import { Loader } from "../../../../components/Loader/Loader";
 
 export default function Secondopdetailed({ Details,setChangeDashboards }) {
@@ -12,7 +11,7 @@ export default function Secondopdetailed({ Details,setChangeDashboards }) {
   const [isLoading, setIsLoading] = useState(false);
 
   console.log({ datastate });
-  const navigate = useNavigate();
+  
 
   const handleDownload = (imageSrc) => {
     const link = document.createElement("a");
@@ -113,7 +112,7 @@ export default function Secondopdetailed({ Details,setChangeDashboards }) {
                 <img
                   key={imgIndex}
                   src={imageSrc}
-                  alt={`Report Image ${imgIndex + 1}`}
+                  alt=""
                 />
               )
             )}

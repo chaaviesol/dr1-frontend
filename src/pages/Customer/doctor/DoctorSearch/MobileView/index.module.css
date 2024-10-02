@@ -70,7 +70,7 @@
 .specSaveBtnContainer{
   margin-top: 10px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .specSaveBtnContainer button{
   border: 1px solid grey;

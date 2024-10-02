@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import React from "react";
 
 export const useOutsideClick = (callback, ref) => {
   const handleClick = (event) => {

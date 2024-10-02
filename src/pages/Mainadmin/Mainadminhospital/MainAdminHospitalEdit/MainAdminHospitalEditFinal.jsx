@@ -6,9 +6,8 @@ import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer, toast } from 'react-toastify'
 import { port } from '../../../../config'
-import { Backdrop, CircularProgress, Modal } from '@mui/material'
+import { Modal } from '@mui/material'
 import { Loader } from '../../../../components/Loader/Loader'
-import CloseIcon from '@mui/icons-material/Close';
 import { ayurSpec, homeoDept, speacializationNames, type } from '../../../Customer/HospitalFiltering/constants/Filter'
 import useAxiosPrivate from '../../../../hooks/useAxiosPrivate'
 
@@ -221,30 +220,30 @@ export const MainAdminHospitalEditFinal = () => {
         }
     };
     console.log("editHos>>>>", editHos)
-    const handleFileChange = (event) => {
-        const FilterImg = editHos?.subImages?.filter(ele => ele?.name === event?.target?.files[0]?.name)
-        if (!FilterImg?.length > 0) {
-            const selectedFile = event.target?.files[0];
-            if (selectedFile) {
-                const isImage = selectedFile.type.startsWith("image/");
-                if (isImage) {
-                    seteditHos({ ...editHos, subImages: [...(editHos?.subImages || []), selectedFile] });
-                } else {
-                    alert("Please select a valid image file.");
-                    event.target.value = null;
-                }
-            } else {
-            }
-        } else {
-            toast.info("Already image selected")
-        }
-    };
-    const imageSplicerFn = (index) => {
-        let images = editHos?.subImages
-        images?.splice(index, 1)
-        seteditHos({ ...editHos, subImages: images })
+    // const handleFileChange = (event) => {
+    //     const FilterImg = editHos?.subImages?.filter(ele => ele?.name === event?.target?.files[0]?.name)
+    //     if (!FilterImg?.length > 0) {
+    //         const selectedFile = event.target?.files[0];
+    //         if (selectedFile) {
+    //             const isImage = selectedFile.type.startsWith("image/");
+    //             if (isImage) {
+    //                 seteditHos({ ...editHos, subImages: [...(editHos?.subImages || []), selectedFile] });
+    //             } else {
+    //                 alert("Please select a valid image file.");
+    //                 event.target.value = null;
+    //             }
+    //         } else {
+    //         }
+    //     } else {
+    //         toast.info("Already image selected")
+    //     }
+    // };
+    // const imageSplicerFn = (index) => {
+    //     let images = editHos?.subImages
+    //     images?.splice(index, 1)
+    //     seteditHos({ ...editHos, subImages: images })
 
-    }
+    // }
     console.log("speciality>>>", speciality, "speciality edithos>>>>", editHos?.speciality)
     return (
         <>

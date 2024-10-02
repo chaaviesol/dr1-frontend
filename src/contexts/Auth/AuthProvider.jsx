@@ -1,6 +1,5 @@
 import { React, createContext, useContext, useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import { useQuery } from "@tanstack/react-query";
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {

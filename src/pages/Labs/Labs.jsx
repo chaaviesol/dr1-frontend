@@ -16,7 +16,6 @@ import useAuth from "../../hooks/useAuth";
 
 export default function Labs() {
   const navigate = useNavigate();
-  const [position, setPosition] = useState({});
   const [LabServicesData, setLabServicesData] = useState([]);
   const { auth } = useAuth();
   useEffect(() => {

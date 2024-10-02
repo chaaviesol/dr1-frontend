@@ -15,7 +15,7 @@ function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const isMobile = useIsMobileScreen();
-  const { cartItems, isCartLoading, setCartItems, refetchCart } =
+  const { cartItems,  refetchCart } =
     usePharmacyContext();
   const { auth } = useAuth();
   const { userId, userType } = auth;

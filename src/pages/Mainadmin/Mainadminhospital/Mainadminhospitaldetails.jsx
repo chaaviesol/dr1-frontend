@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
@@ -8,7 +8,6 @@ import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 export default function Mainadminhospitaldetails({ Data }) {
-  const location = useLocation();
 
   const [HospitalDetails, setHospitalDetails] = useState(Data?.DetailData);
   const [Feedbacks, setFeedbacks] = useState([]);
@@ -22,6 +21,7 @@ export default function Mainadminhospitaldetails({ Data }) {
   );
 
   console.log(HospitalDetails);
+  console.log(views);
 
   useEffect(() => {
     const Data = {

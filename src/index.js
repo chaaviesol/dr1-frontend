@@ -7,9 +7,6 @@ import Contexts from "./contexts/Contexts";
 import SearchDoctorProvider from "./contexts/Doctor/SearchDoctorProvider";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";

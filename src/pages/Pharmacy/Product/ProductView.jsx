@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Navbar from "../../../components/Navbar";
 import SelectCategory from "../../Customer/Mobile/Pharmacy/Category/SelectCategory";
-import SearchBox from "./SearchBox";
-import styles from "./styles.module.css";
+// import SearchBox from "./SearchBox";
+// import styles from "./styles.module.css";
 import { useIsMobileScreen } from "../../../hooks/useIsMobileScreen";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function ProductView({passedCategoryId}) {
 
@@ -12,7 +12,7 @@ function ProductView({passedCategoryId}) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
   const isMobile=useIsMobileScreen()
-  const navigate=useNavigate()
+  // const navigate=useNavigate()
 
   return (
     <div>

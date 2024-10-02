@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 import { port } from "../../config";
 import { useAuth } from "../../contexts/Auth/AuthProvider";
@@ -9,7 +8,7 @@ export const PopupContext = createContext();
 
 export const ShowFeedBackPopupContext = ({ children }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-  const [ContactData, setContactData] = useState([]);
+const [ContactData, setContactData] = useState([]);
   const [hospitalData, sethospitalData] = useState([]);
   const [LabData, setLabData] = useState([]);
   const { auth } = useAuth();

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Modal } from "@mui/material";
-import CircularProgress from "@mui/material/CircularProgress";
 import "./categorymanagement.css";
 import { BASE_URL } from "../../../../config";
 import axios from "axios";
@@ -388,7 +387,7 @@ export default function Categorymanagement({
         }}
       >
         <div className="addcategorymodaldelete flex">
-          <iframe src="https://lottie.host/embed/24e50e3a-d408-4e5f-baea-661be0b0d0fe/8A5dK3grdQ.json"></iframe>
+          <iframe title="1" src="https://lottie.host/embed/24e50e3a-d408-4e5f-baea-661be0b0d0fe/8A5dK3grdQ.json"></iframe>
           <h2>Deletion Unsuccessful</h2>
           <p className="priscriptionpara">
             Deletion failed because this field is used somewhere in your
@@ -423,7 +422,7 @@ export default function Categorymanagement({
         <>
           {isModalOpen4.state === "success" && (
             <div className="addcategorymodaldelete2 flex">
-              <iframe src="https://lottie.host/embed/a584aaf4-42a4-4825-85b5-cac794e58be5/qWn2gduyVl.json"></iframe>
+              <iframe title="2" src="https://lottie.host/embed/a584aaf4-42a4-4825-85b5-cac794e58be5/qWn2gduyVl.json"></iframe>
               <h2>Successfully Deleted</h2>
               <button
                 className="adpha-categ-button flex"

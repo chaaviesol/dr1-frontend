@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
 import moment from "moment/moment";
 import { toast } from "react-toastify";
-import { useLocation, useNavigate } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 function Prescriptions({ Details, setChangeDashboards }) {
-  const [datastate, Setdatastate] = useState(Details);
+
+   // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleDownload = (images) => {
     Object.values(images).forEach((imageSrc, imgIndex) => {
@@ -27,7 +28,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
     setIsLoading(true);
     const fetchData = async () => {
       const data = {
-        sales_id: datastate?.sales_id,
+        sales_id: Details?.sales_id,
         status: status,
       };
       try {
@@ -70,22 +71,22 @@ function Prescriptions({ Details, setChangeDashboards }) {
       <div class="adpha-seccontainer flex">
         <div className="adpha-seccontainer-datas">
           <h4>Patient Name</h4>
-          <h2>{datastate?.prescription_data[0]?.patient_name}</h2>
+          <h2>{Details?.prescription_data[0]?.patient_name}</h2>
         </div>
 
         <div className="adpha-seccontainer-datas">
           <h4>Date</h4>
-          <h2>{moment(datastate?.created_date).format("DD/MM/YY")}</h2>
+          <h2>{moment(Details?.created_date).format("DD/MM/YY")}</h2>
         </div>
 
         <div className="adpha-seccontainer-datas">
           <h4>Phone Number</h4>
-          <h2>{datastate?.contact_no}</h2>
+          <h2>{Details?.contact_no}</h2>
         </div>
 
         <div className="adpha-seccontainer-datas">
           <h4>Status</h4>
-          <h2>{datastate?.so_status}</h2>
+          <h2>{Details?.so_status}</h2>
         </div>
       </div>
 
@@ -93,13 +94,13 @@ function Prescriptions({ Details, setChangeDashboards }) {
         <h4>Prescription</h4>
 
         <div className="adpha-thirdcontainer-images flex">
-          {datastate?.prescription_data?.map((prescription, index) => {
+          {Details?.prescription_data?.map((prescription, index) => {
             const images = JSON.parse(prescription.prescription_image);
             return Object.values(images).map((imageSrc, imgIndex) => (
               <img
                 key={`${index}-${imgIndex}`}
                 src={imageSrc}
-                alt={`Prescription Image ${imgIndex + 1}`}
+                alt={""}
               />
             ));
           })}
@@ -109,7 +110,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
         style={{marginTop:"1rem"}}
           className="adpha-thirdcontainer-button"
           onClick={() => {
-            datastate?.prescription_data?.forEach((prescription) => {
+            Details?.prescription_data?.forEach((prescription) => {
               const images = JSON.parse(prescription.prescription_image);
               handleDownload(images);
             });
@@ -126,7 +127,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
           style={{ marginTop: "10px" }}
           className="adpha-remarks-para priscriptionpara"
         >
-          {datastate?.remarks}
+          {Details?.remarks}
         </h4>
       </div>
 
@@ -137,7 +138,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
           style={{ marginTop: "10px" }}
           className="adpha-remarks-para priscriptionpara"
         >
-          {datastate?.delivery_address},{datastate?.pincode}
+          {Details?.delivery_address},{Details?.pincode}
         </h4>
 
 
@@ -150,22 +151,22 @@ function Prescriptions({ Details, setChangeDashboards }) {
           <button style={{width:"12rem"}}
             onClick={() => {
               const status =
-                datastate?.so_status === "Placed"
+                Details?.so_status === "Placed"
                   ? "Out for delivery"
-                  : datastate?.so_status === "Out for delivery"
+                  : Details?.so_status === "Out for delivery"
                   ? "Delivered"
                   : "Out for delivery";
 
               updatebutton(status);
             }}
             class="adpha-save-button"
-            disabled={datastate?.so_status === "Delivered"}
+            disabled={Details?.so_status === "Delivered"}
           >
             {isLoading ? (
               <CircularProgress size="1.5rem" />
-            ) : datastate?.so_status === "Placed" ? (
+            ) : Details?.so_status === "Placed" ? (
               "Out for delivery"
-            ) : datastate?.so_status === "Out for delivery" ? (
+            ) : Details?.so_status === "Out for delivery" ? (
               "Delivered"
             ) : (
               "Completed"

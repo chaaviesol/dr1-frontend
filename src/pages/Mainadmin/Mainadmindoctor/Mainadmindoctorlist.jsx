@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
 import { getStatus } from "../utils";
 import { Loader } from "../../../components/Loader/Loader";
 
 export default function Mainadmindoctorlist({
   updateState: { setChangeDashboards, setDetailData },
 }) {
-  const navigate = useNavigate();
   const [Doctors, setDoctors] = useState([]);
   const [Count, setCount] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -169,7 +167,7 @@ export default function Mainadmindoctorlist({
             />
           </th>
           <th>View count</th>
-          <th>Counsult count</th>
+          <th>Consult count</th>
           <th>
             Join Date
             <input

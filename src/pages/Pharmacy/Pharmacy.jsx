@@ -28,7 +28,7 @@ export default function Pharmacy() {
   const [loader, setLoader] = useState(false);
   const [isCategoryFetching, setIsCategoryFetching] = useState(false);
   const [marketplaceCategories, setMarketplaceCategories] = useState([]);
-
+  console.log(loader);
   const fetchCategories = async () => {
     try {
       setIsCategoryFetching(true);
@@ -203,7 +203,7 @@ export default function Pharmacy() {
       setLoader(true);
       const submissionData = new FormData();
       const orderType = "prescription";
-      const user_id = 7;
+      // const user_id = 7;
       const so_status = "Placed";
       submissionData.append("name", formData.name);
       submissionData.append("remarks", formData.remarks);

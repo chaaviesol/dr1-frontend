@@ -9,8 +9,8 @@ import "../../../Labadmin/Labadminregistration2.css";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
 import { Modal } from "@mui/material";
-import { useMediaQuery } from "react-responsive";
-import CloseIcon from "@mui/icons-material/Close";
+// import { useMediaQuery } from "react-responsive";
+// import CloseIcon from "@mui/icons-material/Close";
 import { Loader } from "../../../../components/Loader/Loader";
 import { MyContext } from "../../../../contexts/Contexts";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
@@ -25,7 +25,7 @@ export default function LabEdit2() {
     services: false,
   });
   const axiosPrivate=useAxiosPrivate()
-  const isMobile = useMediaQuery({ maxWidth: 980 });
+  // const isMobile = useMediaQuery({ maxWidth: 980 });
   const services = [
     { name: "Blood Count Tests" },
     { name: "Genetic Testing" },
@@ -246,9 +246,9 @@ export default function LabEdit2() {
   const CloseModal = () => {
     setModalOpen({ services: false, features: false });
   };
-  const handleClose = () => {
-    setloader(false);
-  };
+  // const handleClose = () => {
+  //   setloader(false);
+  // };
   const PinCodeCheck = () => {
     if (!LabAdminRg?.pincode) {
       toast.info("Please input your pincode");
@@ -265,33 +265,33 @@ export default function LabEdit2() {
       event.preventDefault();
     }
   };
-  const handleFileChange = (event) => {
-    const FilterImg = LabAdminRg?.subImages?.filter(
-      (ele) => ele?.name === event?.target?.files[0]?.name
-    );
-    if (!FilterImg?.length > 0) {
-      const selectedFile = event.target?.files[0];
-      if (selectedFile) {
-        const isImage = selectedFile.type.startsWith("image/");
-        if (isImage) {
-          setLabAdminRg({
-            ...LabAdminRg,
-            subImages: [...(LabAdminRg?.subImages || []), selectedFile],
-          });
-        } else {
-          alert("Please select a valid image file.");
-          event.target.value = null;
-        }
-      }
-    } else {
-      toast.info("Already image selected");
-    }
-  };
-  const imageSplicerFn = (index) => {
-    let images = LabAdminRg?.subImages;
-    images?.splice(index, 1);
-    setLabAdminRg({ ...LabAdminRg, subImages: images });
-  };
+  // const handleFileChange = (event) => {
+  //   const FilterImg = LabAdminRg?.subImages?.filter(
+  //     (ele) => ele?.name === event?.target?.files[0]?.name
+  //   );
+  //   if (!FilterImg?.length > 0) {
+  //     const selectedFile = event.target?.files[0];
+  //     if (selectedFile) {
+  //       const isImage = selectedFile.type.startsWith("image/");
+  //       if (isImage) {
+  //         setLabAdminRg({
+  //           ...LabAdminRg,
+  //           subImages: [...(LabAdminRg?.subImages || []), selectedFile],
+  //         });
+  //       } else {
+  //         alert("Please select a valid image file.");
+  //         event.target.value = null;
+  //       }
+  //     }
+  //   } else {
+  //     toast.info("Already image selected");
+  //   }
+  // };
+  // const imageSplicerFn = (index) => {
+  //   let images = LabAdminRg?.subImages;
+  //   images?.splice(index, 1);
+  //   setLabAdminRg({ ...LabAdminRg, subImages: images });
+  // };
 
   return (
     <div>

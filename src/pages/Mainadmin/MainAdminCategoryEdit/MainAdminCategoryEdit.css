@@ -132,7 +132,7 @@
 
 .MainAdminCatEditSec {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     gap: 10px;
 
 }
@@ -187,7 +187,7 @@
 
 .MainAdminCatSetSecondSecDivIcon {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     position: relative;
 }
 
@@ -222,7 +222,7 @@
 
 .MainAdminCatEditSecModalButton {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .MainAdminCatEditSecModalButton button {

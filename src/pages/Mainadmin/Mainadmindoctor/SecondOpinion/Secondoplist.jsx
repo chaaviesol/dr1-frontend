@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { BASE_URL, port } from "../../../../config";
+import { port } from "../../../../config";
 import axios from "axios";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
-import '../../OrderAndPrescription/listtablestyle.css'
-import { Loader } from "../../../../components/Loader/Loader";
+import "../../OrderAndPrescription/listtablestyle.css";
 
 export default function Secondoplist({
   updateState: { setChangeDashboards, setDetailData },
@@ -13,13 +11,13 @@ export default function Secondoplist({
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
   console.log(datalist);
+  console.log(isLoading);
 
   useEffect(() => {
     setIsLoading(true);
     axios.get(`${port}/secondop/getallreport`).then((res) => {
-        console.log(res)
+      console.log(res);
       if (res?.status === 200) {
         setIsLoading(false);
         setdatalist(res?.data?.data);
@@ -89,7 +87,7 @@ export default function Secondoplist({
           </div>
         </div>
 
-          {/* <div style={{ marginLeft: "18px" }}>
+        {/* <div style={{ marginLeft: "18px" }}>
             <h2>{completed?.allrequest}</h2>
             <h4>Requested</h4>
           </div>
@@ -177,8 +175,7 @@ export default function Secondoplist({
             />
           </th>
         </tr>
-        {datalist
-          ?.map((ele, index) => (
+        {datalist?.map((ele, index) => (
           <tr
             onClick={() => {
               navigateFn(ele);
@@ -189,8 +186,12 @@ export default function Secondoplist({
             <td>{ele?.department}</td>
             <td>{ele?.alternative_number}</td>
             <td>{moment(ele?.created_date).subtract(10, "days").calendar()}</td>
-          
-            <td>{ele?.status=="Forwarded to expert team" ? "Forwarded to expert team" : ele?.status}</td>
+
+            <td>
+              {ele?.status === "Forwarded to expert team"
+                ? "Forwarded to expert team"
+                : ele?.status}
+            </td>
           </tr>
         ))}
       </table>

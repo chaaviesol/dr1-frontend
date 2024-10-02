@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import "../components/Navbar.css";
 import { CircularProgress, Modal } from "@mui/material";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -78,7 +78,7 @@ export default function Navbar() {
                 className="dr_one_logo"
                 alt=""
               />
-              <h2>DR ONE</h2>
+              <h2>Dr ONE</h2>
             </Link>
           </div>
           <div className="nav-links flex">

@@ -3,7 +3,6 @@ import { MyContext } from "../Contexts";
 import axios from "axios";
 import { port } from "../../config";
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { useLocation } from "react-router-dom";
 
 export const SearchDocContext = createContext();
 
@@ -26,7 +25,7 @@ export default function SearchDoctorProvider({ children }) {
     experience: 0,
     name: "",
   });
-  const { Categories, setCategories } = useContext(MyContext);
+  const { Categories } = useContext(MyContext);
 
   const types = Categories?.types;
   const speacializationNames = Categories?.allopathySpecs;
