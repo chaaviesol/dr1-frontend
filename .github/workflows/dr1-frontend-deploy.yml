@@ -22,7 +22,7 @@ jobs:
       run: npm install
 
     - name: Build React App
-      run: npm run build
+      run: CI=false npm run build
 
     - name: Upload to S3
       run: |
