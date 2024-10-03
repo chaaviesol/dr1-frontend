@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { port } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 import axios from "axios";
 import moment from "moment";
 import "../../OrderAndPrescription/listtablestyle.css";
+import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+import { Loader } from "../../../../components/Loader/Loader";
 
 export default function Secondoplist({
   updateState: { setChangeDashboards, setDetailData },
@@ -10,22 +13,29 @@ export default function Secondoplist({
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  console.log(datalist);
-  console.log(isLoading);
+
+  const fetchPrescriptionList = async () => {
+    const response = await axios.get(`${BASE_URL}/secondop/getallreport`);
+    return response.data;
+  };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["fetchPrescriptionList"],
+    queryFn: fetchPrescriptionList,
+    onError: (err) => {
+      console.error(err);
+      toast.error(err?.message || "An error occurred");
+    },
+    enabled: true,
+  });
 
   useEffect(() => {
-    setIsLoading(true);
-    axios.get(`${port}/secondop/getallreport`).then((res) => {
-      console.log(res);
-      if (res?.status === 200) {
-        setIsLoading(false);
-        setdatalist(res?.data?.data);
-        setcompleted(res?.data);
-        setinitialData(res?.data?.data);
-      }
-    });
-  }, []);
+    if (data) {
+      setdatalist(data?.data);
+      setcompleted(data);
+      setinitialData(data?.data);
+    }
+  }, [data]);
 
   const navigateFn = (data) => {
     setDetailData(data);
@@ -76,6 +86,7 @@ export default function Secondoplist({
 
   return (
     <div>
+      {isLoading && <Loader />}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">

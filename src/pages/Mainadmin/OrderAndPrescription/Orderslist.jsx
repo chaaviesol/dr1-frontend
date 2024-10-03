@@ -1,30 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { port } from "../../../config";
+import { BASE_URL, port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 // import { useNavigate } from "react-router-dom";
 import "./listtablestyle.css";
+import { toast } from "react-toastify";
+import { useQuery } from "@tanstack/react-query";
+import { Loader } from "../../../components/Loader/Loader";
 export default function Orderslist({
-    updateState: { setChangeDashboards, setDetailData },
-  })  {
+  updateState: { setChangeDashboards, setDetailData },
+}) {
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
-  const [completed,setcompleted]=useState([])
-  // const [isLoading, setIsLoading] = useState(false);
-  // const navigate = useNavigate();
-  console.log(datalist);
+  const [completed, setcompleted] = useState([]);
+
+  const fetchSalesList = async () => {
+    const response = await axios.get(`${BASE_URL}/pharmacy/allsalelist`);
+    return response.data;
+  };
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["fetchSalesList"],
+    queryFn: fetchSalesList,
+    onError: (err) => {
+      console.error(err);
+      toast.error(err?.message || "An error occurred");
+    },
+    enabled: true,
+  });
+
   useEffect(() => {
-    // setIsLoading(true)
-    axios.get(`${port}/pharmacy/allsalelist`).then((res) => {
-    if(res?.status===200){
-        // setIsLoading(false)
-        setdatalist(res?.data?.data);
-        setcompleted(res?.data);
-        setinitialData(res?.data?.data);
+    if (data) {
+      setdatalist(data?.data);
+      setcompleted(data);
+      setinitialData(data?.data);
     }
-  
-    });
-  }, []);
+  }, [data]);
 
   const navigateFn = (data) => {
     // navigate("/orderdetail", { state: data });
@@ -37,7 +48,7 @@ export default function Orderslist({
     let tempData = initialData;
     console.log(value);
     if (!value) {
-        setdatalist(initialData);
+      setdatalist(initialData);
       return;
     }
 
@@ -57,7 +68,6 @@ export default function Orderslist({
   const filterDate = (e) => {
     const { value } = e.target;
     const inputDate = moment(value).startOf("day");
- 
 
     if (!inputDate.isValid()) {
       console.error("Invalid date input");
@@ -77,10 +87,9 @@ export default function Orderslist({
     setdatalist(filteredData);
   };
 
-
   return (
     <div>
-    
+      {isLoading && <Loader />}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">

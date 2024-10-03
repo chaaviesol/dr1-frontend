@@ -4,6 +4,7 @@ import axios from "axios";
 import moment from "moment";
 import "./listtablestyle.css";
 import { toast } from "react-toastify";
+import { Loader } from "../../../components/Loader/Loader";
 
 export default function Prescriptionlist({
   updateState: { setChangeDashboards, setDetailData },
@@ -13,7 +14,6 @@ export default function Prescriptionlist({
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(datalist, isLoading);
 
   const fetchPrescriptionList = async () => {
     try {
@@ -24,7 +24,7 @@ export default function Prescriptionlist({
       setinitialData(response?.data?.data);
     } catch (err) {
       console.error(err);
-      toast.error(err.error);
+      toast.error(err.error|| "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -89,6 +89,8 @@ export default function Prescriptionlist({
 
   return (
     <div>
+
+      {isLoading&&<Loader/>}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">
