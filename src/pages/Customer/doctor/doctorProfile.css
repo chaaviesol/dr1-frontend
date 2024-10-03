@@ -9,9 +9,8 @@
 }
 
 .doctor-profile-left {
-    width: 40%;
+    width: 30%;
     flex-direction: column;
-    gap: 1vw;
     justify-content: center;
 }
 
@@ -20,7 +19,7 @@
 }
 
 .doctor-profile-right {
-    width: 60%;
+    width: 70%;
 }
 
 .doctor-profile-right h4 {

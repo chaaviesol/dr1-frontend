@@ -54,7 +54,7 @@
 
 .types> :nth-child(2) {
   padding-bottom: 2.5rem;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 
 .specialization> :nth-child(2) {
@@ -63,7 +63,7 @@
   /* border: 1px solid red; */
   height: 260px;
   overflow-x: scroll;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 
   padding-bottom: 2.5rem;
 }
@@ -75,7 +75,7 @@
 
 .gender> :nth-child(2) {
   padding-bottom: 2.5rem;
-  padding-left: 30px;
+  /* padding-left: 30px; */
 }
 
 .exp> :nth-child(1) {

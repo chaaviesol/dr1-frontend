@@ -68,7 +68,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-Copyright">
-            <h4>Copyright © 2023, Doctor one. All rights reserved.</h4>
+            <h4>Copyright © 2024, Doctor one. All rights reserved.</h4>
           </div>
         </div>
         {/*End Footer */}

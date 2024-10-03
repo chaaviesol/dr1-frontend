@@ -37,7 +37,6 @@ export default function DoctorProfile() {
   const { auth } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const[loader,setloader]=useState(false)
   const doctor = location?.state;
 
   useEffect(() => {
@@ -176,7 +175,7 @@ export default function DoctorProfile() {
     }
 
     return <div>{stars}</div>;
-  };
+  };
   return (
     <div>
       <Navbar />
@@ -188,13 +187,13 @@ export default function DoctorProfile() {
               <img src={doctor?.image || `images/dr (4).jpg`} alt="" />
             </div>
             <div className="doctor-profile-left-right flex">
-              <div className="doctor-profile-left flex">
+              <div className="doctor-profile-left">
                 <h2 style={{ color: "white" }}>{doctor?.name}</h2>
                 <div className="doctorprofilestar flex">
-                <StarRating rating={doctor?.rating} />
+                  <StarRating rating={doctor?.rating} />
                 </div>
 
-                <h4>
+                <h4 style={{ marginTop: "1vw" }}>
                   {" "}
                   {doctor?.education_qualification ||
                     `BDS.MDS-Prosthodontist`}{" "}
@@ -208,10 +207,10 @@ export default function DoctorProfile() {
                 <h4> {doctor?.specialization || `Dentist,Cosmetic`}</h4>
               </div>
               <div className="doctor-profile-right">
-                <h4>
-                  {doctor?.about ||
-                    "Dr. Rohith Rajashekhar is a Dentist,Restorative Dentist and Cosmetic/Aesthetic Dentist in T Dasarahalli, Bangalore and has an experience of 6 years in these fields. Dr. Rohith Rajashekhar practices at Partha Dental Skin Hair in T Dasarahalli, Bangalore. He completed BDS from Rajiv Gandhi University of Health Sciences in 2017 and MDS - Prosthodontist And Crown Bridge from Rajiv Gandhi University of Health Sciences in 2022"}
-                </h4>
+                <h5>About</h5>
+                <p className="priscriptionpara" style={{ color: "white" ,letterSpacing:"1px"}}>
+                  {doctor?.about}
+                </p>
               </div>
             </div>
           </div>
@@ -277,7 +276,7 @@ export default function DoctorProfile() {
             {feedbacks &&
               feedbacks.data &&
               feedbacks.data.map((ele, index) => (
-               <Feedback key={ele.id} feedbackData={ele}/>
+                <Feedback key={ele.id} feedbackData={ele} />
               ))}
           </div>
         </div>
@@ -333,9 +332,9 @@ export default function DoctorProfile() {
                   View Contact
                 </button>
                 {isShowContact && (
-                  <button type="button"> 
+                  <button type="button">
                     <CallIcon id="doc_profileModalBtnIcon" />
-                    {doctor?.phone_office ||`+91 9495949494`}
+                    {doctor?.phone_office || `+91 9495949494`}
                   </button>
                 )}
               </div>
