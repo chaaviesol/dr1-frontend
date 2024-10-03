@@ -3,6 +3,7 @@ import { port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 import "./listtablestyle.css";
+import { toast } from "react-toastify";
 
 export default function Prescriptionlist({
   updateState: { setChangeDashboards, setDetailData },
@@ -12,17 +13,25 @@ export default function Prescriptionlist({
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(datalist,isLoading);
+  console.log(datalist, isLoading);
+
+  const fetchPrescriptionList = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(`${port}/pharmacy/prescriptionlist`);
+      setdatalist(response?.data?.data);
+      setcompleted(response?.data);
+      setinitialData(response?.data?.data);
+    } catch (err) {
+      console.error(err);
+      toast.error(err.error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
-    setIsLoading(true);
-    axios.get(`${port}/pharmacy/prescriptionlist`).then((res) => {
-      if (res?.status === 200) {
-        setIsLoading(false);
-        setdatalist(res?.data?.data);
-        setcompleted(res?.data);
-        setinitialData(res?.data?.data);
-      }
-    });
+    fetchPrescriptionList();
   }, []);
 
   const navigateFn = (data) => {
@@ -172,21 +181,25 @@ export default function Prescriptionlist({
             />
           </th>
         </tr>
-        {datalist.map((ele, index) => (
-          <tr
-            onClick={() => {
-              navigateFn(ele);
-            }}
-          >
-            <td>{index + 1}</td>
-            <td>{ele?.prescription_data[0]?.patient_name}</td>
-            <td>{ele?.contact_no}</td>
-            <td>{ele?.pincode}</td>
+        {datalist &&
+          datalist.length > 0 &&
+          datalist.map((ele, index) => (
+            <tr
+              onClick={() => {
+                navigateFn(ele);
+              }}
+            >
+              <td>{index + 1}</td>
+              <td>{ele?.patient_name}</td>
+              <td>{ele?.contact_no}</td>
+              <td>{ele?.pincode}</td>
 
-            <td>{moment(ele?.created_date).subtract(10, "days").calendar()}</td>
-            <td>{ele?.so_status}</td>
-          </tr>
-        ))}
+              <td>
+                {moment(ele?.created_date).subtract(10, "days").calendar()}
+              </td>
+              <td>{ele?.so_status}</td>
+            </tr>
+          ))}
       </table>
     </div>
   );

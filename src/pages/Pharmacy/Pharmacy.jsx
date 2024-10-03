@@ -49,9 +49,6 @@ export default function Pharmacy() {
       setIsModalOpen(!isModalOpen);
     } else {
       toast.info("Please login as a customer!");
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
     }
   };
   const navigate = useNavigate();
@@ -83,20 +80,20 @@ export default function Pharmacy() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-    // if (value) {
-    //   console.log("heyy")
-    //   const filtered = addressArray.filter((addressObj) =>
-    //     addressObj.delivery_address.toLowerCase().includes(value.toLowerCase())
-    //   );
-    //   setFilteredAddresses(filtered);
-    //   setShowDropdown(true);
-    // } else {
-    //   setShowDropdown(false);
-    // }
+    if (name === "contact_no") {
+      //making mobile num limited to 10
+      const sanitizedValue = value.replace(/[.-]/g, "");
+      const truncatedValue = sanitizedValue.slice(0, 10);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: truncatedValue,
+      }));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
   };
 
   useEffect(() => {

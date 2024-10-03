@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { BASE_URL } from "../../../config";
@@ -7,22 +7,32 @@ import { toast } from "react-toastify";
 // import {  useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 function Prescriptions({ Details, setChangeDashboards }) {
-
-   // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(Details);
   // const navigate = useNavigate();
 
-  const handleDownload = (images) => {
-    Object.values(images).forEach((imageSrc, imgIndex) => {
-      const link = document.createElement("a");
-      link.href = imageSrc;
-      link.download = `Prescription_Image_${imgIndex + 1}.jpg`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
+  const handleDownload = () => {
+    if (Details?.prescription_image) {
+      Object.values(Details.prescription_image).forEach((imageSrc, imgIndex) => {
+        setTimeout(() => {
+          const link = document.createElement("a");
+          link.href = imageSrc;
+  
+          // Dynamically get the file extension from the URL (if available)
+          const fileExtension = imageSrc.split('.').pop().split(/\#|\?/)[0] || 'jpg';
+          link.download = `Prescription_Image_${imgIndex + 1}.${fileExtension}`;
+  
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, imgIndex * 500); // Delay increases with each image (500ms)
+      });
+    } else {
+      console.error("No prescription images available.");
+    }
   };
+  
 
   const updatebutton = (status) => {
     setIsLoading(true);
@@ -51,7 +61,13 @@ function Prescriptions({ Details, setChangeDashboards }) {
     fetchData();
   };
   return (
-    <div style={{position:"relative",paddingTop:"1rem",paddingBottom:"1rem"}}>
+    <div
+      style={{
+        position: "relative",
+        paddingTop: "1rem",
+        paddingBottom: "1rem",
+      }}
+    >
       {/* Get Prescription */}
 
       <div class="adpha-topcontainer">
@@ -66,12 +82,11 @@ function Prescriptions({ Details, setChangeDashboards }) {
           </button>
           <span class="adpha-title">Prescription Details</span>
         </div>
-       
       </div>
       <div class="adpha-seccontainer flex">
         <div className="adpha-seccontainer-datas">
           <h4>Patient Name</h4>
-          <h2>{Details?.prescription_data[0]?.patient_name}</h2>
+          <h2>{Details?.patient_name}</h2>
         </div>
 
         <div className="adpha-seccontainer-datas">
@@ -94,27 +109,17 @@ function Prescriptions({ Details, setChangeDashboards }) {
         <h4>Prescription</h4>
 
         <div className="adpha-thirdcontainer-images flex">
-          {Details?.prescription_data?.map((prescription, index) => {
-            const images = JSON.parse(prescription.prescription_image);
-            return Object.values(images).map((imageSrc, imgIndex) => (
-              <img
-                key={`${index}-${imgIndex}`}
-                src={imageSrc}
-                alt={""}
-              />
-            ));
-          })}
+          {Object.values(Details.prescription_image).map(
+            (imageSrc, imgIndex) => (
+              <img key={imgIndex} src={imageSrc} alt={""} />
+            )
+          )}
         </div>
 
         <button
-        style={{marginTop:"1rem"}}
+          style={{ marginTop: "1rem" }}
           className="adpha-thirdcontainer-button"
-          onClick={() => {
-            Details?.prescription_data?.forEach((prescription) => {
-              const images = JSON.parse(prescription.prescription_image);
-              handleDownload(images);
-            });
-          }}
+          onClick={handleDownload}
         >
           Download
         </button>
@@ -140,41 +145,46 @@ function Prescriptions({ Details, setChangeDashboards }) {
         >
           {Details?.delivery_address},{Details?.pincode}
         </h4>
-
-
-      
-
       </div>
 
-      <div class="adpha-right flex" style={{marginTop:"2rem",position:"sticky",top:"0px",width:"100%",justifyContent:"space-between",alignItems:"center"}}>
-          {/* <h5>Update status</h5> */}
-          <button style={{width:"12rem"}}
-            onClick={() => {
-              const status =
-                Details?.so_status === "Placed"
-                  ? "Out for delivery"
-                  : Details?.so_status === "Out for delivery"
-                  ? "Delivered"
-                  : "Out for delivery";
+      <div
+        class="adpha-right flex"
+        style={{
+          marginTop: "2rem",
+          position: "sticky",
+          top: "0px",
+          width: "100%",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        {/* <h5>Update status</h5> */}
+        <button
+          style={{ width: "12rem" }}
+          onClick={() => {
+            const status =
+              Details?.so_status === "Placed"
+                ? "Out for delivery"
+                : Details?.so_status === "Out for delivery"
+                ? "Delivered"
+                : "Out for delivery";
 
-              updatebutton(status);
-            }}
-            class="adpha-save-button"
-            disabled={Details?.so_status === "Delivered"}
-          >
-            {isLoading ? (
-              <CircularProgress size="1.5rem" />
-            ) : Details?.so_status === "Placed" ? (
-              "Out for delivery"
-            ) : Details?.so_status === "Out for delivery" ? (
-              "Delivered"
-            ) : (
-              "Completed"
-            )}
-          </button>
-
-        </div>
-
+            updatebutton(status);
+          }}
+          class="adpha-save-button"
+          disabled={Details?.so_status === "Delivered"}
+        >
+          {isLoading ? (
+            <CircularProgress size="1.5rem" />
+          ) : Details?.so_status === "Placed" ? (
+            "Out for delivery"
+          ) : Details?.so_status === "Out for delivery" ? (
+            "Delivered"
+          ) : (
+            "Completed"
+          )}
+        </button>
+      </div>
     </div>
   );
 }
