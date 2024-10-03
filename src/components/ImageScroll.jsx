@@ -8,10 +8,10 @@ const allImages = [
   "/images/sp2.jpg",
   "/images/sp3.jpg",
   "/images/sp4.jpg",
-  "/images/sp5.jpg",
   "/images/sp6.jpg",
   "/images/sp7.jpg",
   "/images/sp8.jpg",
+  "/images/sp9.jpg",
   // Add more images here
 ];
 const speciality = [

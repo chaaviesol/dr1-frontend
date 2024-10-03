@@ -263,9 +263,9 @@ export const CusSigninAndSignUp = ({
                       onClick={handleShowLoginPassword}
                     >
                       {togglePasswordVisibility.isShowLoginPwd ? (
-                        <VisibilityOff sx={{ fontSize: "20px" }} titleAccess="Show password" />
+                        <VisibilityOff sx={{ fontSize: "20px" }} titleAccess="Hide password" />
                       ) : (
-                        <Visibility sx={{ fontSize: "20px" }} titleAccess="Hide password" />
+                        <Visibility sx={{ fontSize: "20px" }} titleAccess="Show password" />
                       )}
                     </IconButton>
                   </div>
