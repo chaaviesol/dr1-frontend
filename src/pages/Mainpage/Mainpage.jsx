@@ -802,7 +802,7 @@ export default function Mainpage() {
                       </h4>
                     </div>
                     <div className="flex price-section">
-                      <h2>₹ 456</h2>
+                      {/* <h2>₹ 456</h2> */}
                     </div>
                   </div>
                 ) : (

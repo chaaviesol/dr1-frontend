@@ -42,6 +42,14 @@ export default function Labs() {
     console.log("value>>>>>", value);
     navigate("/labfiltering", { state: { services: value } });
   };
+
+  const handleNavigation = (categoryId) => {
+
+    navigate("/pharmacyproducts", {
+      state: { passedCategoryId: categoryId },
+    })
+
+};
   // useEffect(() => {
   //   if ("geolocation" in navigator) {
   //     navigator.geolocation.getCurrentPosition(
@@ -247,7 +255,7 @@ export default function Labs() {
                           </h4>
                         </div>
                         <div className="flex lab-price-section">
-                          <h2>₹ 456</h2>
+                          {/* <h2>₹ 456</h2> */}
                         </div>
                       </div>
                     </div>
@@ -355,7 +363,7 @@ export default function Labs() {
               marketplaceProducts.map((product, index) => (
                 <div
                   key={index}
-                  onClick={() => navigate("/pharmacyproducts")}
+                  onClick={() => handleNavigation(product.id)}
                   className="web-pharmacyshopproduct flex"
                 >
                   <div className="webpharmacyshopproductimg flex">
