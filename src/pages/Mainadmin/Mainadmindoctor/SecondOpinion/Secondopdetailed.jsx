@@ -13,14 +13,31 @@ export default function Secondopdetailed({ Details,setChangeDashboards }) {
   console.log({ datastate });
   
 
-  const handleDownload = (imageSrc) => {
-    const link = document.createElement("a");
-    link.href = imageSrc;
-    link.download = imageSrc.split("/").pop();
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = () => {
+    if (Details?.report_image) {
+      Object.values(Details.report_image).forEach((imageSrc, imgIndex) => {
+        setTimeout(() => {
+          const link = document.createElement("a");
+          link.href = imageSrc;
+  
+          // Dynamically get the file extension from the URL (if available)
+          const fileExtension = imageSrc.split('.').pop().split(/\#|\?/)[0] || 'jpg';
+          link.download = `report_image${imgIndex + 1}.${fileExtension}`;
+  
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }, imgIndex * 500); // Delay increases with each image (500ms)
+      });
+    } else {
+      console.error("No prescription images available.");
+    }
   };
+
+
+
+
+ 
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -106,8 +123,7 @@ export default function Secondopdetailed({ Details,setChangeDashboards }) {
 
         <div className="adpha-thirdcontainer-images flex">
           {datastate?.report_image &&
-            JSON.parse(datastate.report_image) &&
-            Object.values(JSON.parse(datastate.report_image)).map(
+            Object.values(datastate.report_image).map(
               (imageSrc, imgIndex) => (
                 <img
                   key={imgIndex}
@@ -120,12 +136,7 @@ export default function Secondopdetailed({ Details,setChangeDashboards }) {
 
         <button
           className="adpha-thirdcontainer-button"
-          onClick={() => {
-            const images = JSON.parse(datastate?.report_image || "{}");
-            Object.values(images).forEach((imageSrc) => {
-              handleDownload(imageSrc);
-            });
-          }}
+          onClick={handleDownload}
         >
           Download
         </button>

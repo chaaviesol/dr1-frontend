@@ -1,17 +1,18 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect, useRef, useContext } from "react";
 import styles from "./index.module.css";
 import { useOutsideClick } from "../../../../../../hooks/useOutsideClick";
 import { port } from "../../../../../../config";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Divider } from "@mui/material";
+import { SearchDocContext } from "../../../../../../contexts/Doctor/SearchDoctorProvider";
 
 const Box = ({ updateDocs, docNames }) => {
   const [showSearchList, setShowSearchList] = useState(false);
   const [placeLists, setplaceLists] = useState([]);
   const [searchPlace, setSearchPlace] = useState("");
   const [selectedPlace, setSelectedPlace] = useState("");
-  const [loading, setLoading] = useState(false);
+  const {setLoading} = useContext(SearchDocContext);
 
   const boxRef = useRef();
 
