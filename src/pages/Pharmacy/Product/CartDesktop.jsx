@@ -9,6 +9,7 @@ import { usePharmacyContext } from "../../../contexts/PharmacyContext";
 import { Loader } from "../../../components/Loader/Loader";
 import CartTopbarWithBackButton from "../../../components/CartTopbarWithBackButton";
 import Headroom from "react-headroom";
+import { useNavigate } from "react-router-dom";
 
 export default function CartDesktop({
   selectedItemId,
@@ -19,21 +20,38 @@ export default function CartDesktop({
 }) {
   const { cartItems, isCartLoading } = usePharmacyContext();
 
+  const navigate = useNavigate();
+
   if (cartItems?.length === 0) {
     return (
       <>
         <Navbar />
         <div
           style={{
-          height: "88vh",
+            height: "88vh",
             display: "flex",
             padding: "1rem",
             flexDirection: "column",
           }}
         >
-          <div style={{    paddingLeft: "7rem",
-          paddingRight: "7rem",}}>
-            <CartTopbarWithBackButton />
+          <div style={{ paddingLeft: "7rem", paddingRight: "7rem" }}>
+            <div
+              className="pharamacyproductstopbar"
+              style={{ WebkitTapHighlightColor: "transparent" }}
+            >
+              <div
+                className="backbuttoncarttop"
+                style={{
+                  backgroundColor: "#f3f3f8",
+                  color: "black",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate(-1)}
+              >
+                <i class="ri-arrow-left-line"></i>
+              </div>
+              <div>Cart</div>
+            </div>
           </div>
           <div
             style={{
@@ -63,7 +81,23 @@ export default function CartDesktop({
       {isCartLoading && <Loader />}
       <div className="cart" style={{ padding: "2rem 6rem" }}>
         <div style={{ padding: "0rem 2rem" }}>
-          <CartTopbarWithBackButton />
+          <div
+            className="pharamacyproductstopbar"
+            style={{ WebkitTapHighlightColor: "transparent" }}
+          >
+            <div
+              className="backbuttoncarttop"
+              style={{
+                backgroundColor: "#f3f3f8",
+                color: "black",
+                cursor: "pointer",
+              }}
+              onClick={() => navigate(-1)}
+            >
+              <i class="ri-arrow-left-line"></i>
+            </div>
+            <div>Cart</div>
+          </div>
         </div>
         <div className={styles.cartItemTileWrapper}>
           {cartItems &&

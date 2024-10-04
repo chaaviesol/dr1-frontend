@@ -1,19 +1,14 @@
-import React, { useState, useEffect,  useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../pages/Services/services.css";
 import { toast } from "react-toastify";
 import Checkbox from "@mui/material/Checkbox";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Loader } from "../../components/Loader/Loader";
-import { BASE_URL} from "../../config";
+import { BASE_URL } from "../../config";
 import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import { MyContext } from "../../contexts/Contexts";
-import {
-
-  FormControlLabel,
-  IconButton,
-  Modal,
-} from "@mui/material";
+import { FormControlLabel, IconButton, Modal } from "@mui/material";
 import { Close } from "@mui/icons-material";
 export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   const [isModalall, setIsModalAll] = useState({
@@ -33,7 +28,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     doctor_name: "",
     contact_no: "",
     image: [],
-    remarks:"",
+    remarks: "",
     department: selectedDepartment,
   });
   const [querydata, Setquerydata] = useState({
@@ -62,10 +57,20 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    const updateFormData = (newValue) => {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: newValue,
+      }));
+    };
+
+    if (name === "contact_no") {
+      const sanitizedValue = value.replace(/[.-]/g, "");
+      const truncatedValue = sanitizedValue.slice(0, 10);
+      updateFormData(truncatedValue);
+    } else {
+      updateFormData(value);
+    }
   };
   const handlequerychange = (e) => {
     const { name, value } = e.target;
@@ -165,7 +170,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
             contact_no: "",
             image: [],
             department: "",
-            remarks:""
+            remarks: "",
           });
 
           setIsModalAll({ ...isModalall, secop2: false, all: false });
@@ -199,7 +204,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
       contact_no: "",
       image: [],
       department: "",
-      remarks:""
+      remarks: "",
     });
     setSelectedDepartment("");
   };
@@ -537,6 +542,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       placeholder="Enter your queries"
                       value={formData?.remarks}
                       id=""
+                      style={{ maxHeight: "200px" }}
                       onChange={handleChange}
                       maxLength={1000}
                     ></textarea>

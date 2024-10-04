@@ -82,6 +82,7 @@ import DoctorPage from "./pages/Home/DoctorPage";
 import HospitalPage from "./pages/Home/HospitalPage";
 import LabPage from "./pages/Home/LabPage";
 import PharmacyPage from "./pages/Home/PharmacyPage";
+import SecondOpinions from "./pages/Customer/Second Opinion/SecondOpinions";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
@@ -154,6 +155,7 @@ export const publicRoutes = [
 
   { path: "/services", element: <Services /> },
   { path: "/community", element: <Community /> },
+  { path: "/mysecondopinions", element: <SecondOpinions /> },
 ];
 
 export const doctorAdminRoutes = [

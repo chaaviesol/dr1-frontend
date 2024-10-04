@@ -400,9 +400,9 @@ export const CusSigninAndSignUp = ({
                         }
                       >
                         {togglePasswordVisibility.signUp.pwd ? (
-                          <VisibilityOff sx={{ fontSize: "20px" }} />
+                          <VisibilityOff sx={{ fontSize: "20px" }} titleAccess="Hide password"   />
                         ) : (
-                          <Visibility sx={{ fontSize: "20px" }} />
+                          <Visibility sx={{ fontSize: "20px" }} titleAccess="Show password"  />
                         )}
                       </IconButton>
                     </div>
@@ -454,9 +454,9 @@ export const CusSigninAndSignUp = ({
                         }
                       >
                         {togglePasswordVisibility.signUp.confirmPwd ? (
-                          <VisibilityOff sx={{ fontSize: "20px" }} />
+                          <VisibilityOff sx={{ fontSize: "20px" }} titleAccess="Hide password"  />
                         ) : (
-                          <Visibility sx={{ fontSize: "20px" }} />
+                          <Visibility sx={{ fontSize: "20px" }} titleAccess="Show password"  />
                         )}
                       </IconButton>
                     </div>

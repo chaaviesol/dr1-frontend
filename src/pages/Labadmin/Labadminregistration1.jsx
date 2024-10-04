@@ -319,7 +319,7 @@ export default function Labadminregistration1() {
                       onClick={handleClickShowRePassword}
                       onMouseDown={handleMouseDownPassword}
                     >
-                      {showRePassword ? <VisibilityOff /> : <Visibility />}
+                      {showRePassword ? <VisibilityOff titleAccess="Hide password"  /> : <Visibility titleAccess="Show password"  />}
                     </IconButton>
                   </div>
                   <div className="main-waring-section">

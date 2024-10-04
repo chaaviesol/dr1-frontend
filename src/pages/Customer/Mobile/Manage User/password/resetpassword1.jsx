@@ -158,9 +158,9 @@ const ResetPassword = () => {
             }
           >
             {showPassword.reEnterPassword ? (
-              <VisibilityOff sx={{ fontSize: "20px" }} />
+              <VisibilityOff sx={{ fontSize: "20px" }} titleAccess="Hide password"  />
             ) : (
-              <Visibility sx={{ fontSize: "20px" }} />
+              <Visibility sx={{ fontSize: "20px" }} titleAccess="Show password"  />
             )}
           </IconButton>
         </div>

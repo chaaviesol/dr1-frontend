@@ -331,7 +331,7 @@ export default function Doctoradminregistration1() {
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPassword ? <VisibilityOff titleAccess="Hide password"  /> : <Visibility titleAccess="Show password"  />}
                     </IconButton>
                   </div>
                   {validationErrors.password && (
@@ -383,7 +383,7 @@ export default function Doctoradminregistration1() {
                       onClick={handleClickShowRePassword}
                       onMouseDown={handleMouseDownRePassword}
                     >
-                      {ShowRePassword ? <VisibilityOff /> : <Visibility />}
+                      {ShowRePassword ? <VisibilityOff titleAccess="Hide password"  /> : <Visibility titleAccess="Show password"  />}
                     </IconButton>
                   </div>
                   <div className="main-waring-section">

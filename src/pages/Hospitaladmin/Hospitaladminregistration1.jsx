@@ -321,7 +321,7 @@ export default function Hospitaladminregistration1() {
                       onClick={handleClickShowRePassword}
                       onMouseDown={handleMouseDownRePassword}
                     >
-                      {showRePassword ? <VisibilityOff /> : <Visibility />}
+                      {showRePassword ? <VisibilityOff titleAccess="Hide password"  /> : <Visibility titleAccess="Show password"  />}
                     </IconButton>
                   </div>
                   <div className="main-waring-section">

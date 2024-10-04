@@ -386,7 +386,7 @@ export const LoginSignin = () => {
                       onClick={handleClickShowPassword}
                       onMouseDown={handleMouseDownPassword}
                     >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                      {showPassword ? <VisibilityOff titleAccess="Hide password"  /> : <Visibility titleAccess="Show password"  />}
                     </IconButton>
                   </div>
                 </div>
@@ -484,9 +484,9 @@ export const LoginSignin = () => {
                           onMouseDown={handleMouseDownResetPassword}
                         >
                           {showResetPassword ? (
-                            <VisibilityOff />
+                            <VisibilityOff titleAccess="Hide password"  />
                           ) : (
-                            <Visibility />
+                            <Visibility titleAccess="Show password"  />
                           )}
                         </IconButton>
                       </div>
@@ -533,7 +533,7 @@ export const LoginSignin = () => {
                           onClick={handleClickShowPassword}
                           onMouseDown={handleMouseDownPassword}
                         >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword ? <VisibilityOff titleAccess="Hide password"  /> : <Visibility titleAccess="Show password"  />}
                         </IconButton>
                       </div>
                       <div className="loginpwdErrorSetting">
