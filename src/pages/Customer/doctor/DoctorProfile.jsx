@@ -208,57 +208,64 @@ export default function DoctorProfile() {
               </div>
               <div className="doctor-profile-right">
                 <h5>About</h5>
-                <p className="priscriptionpara" style={{ color: "white" ,letterSpacing:"1px"}}>
+                <p
+                  className="priscriptionpara"
+                  style={{ color: "white", letterSpacing: "1px" }}
+                >
                   {doctor?.about}
                 </p>
               </div>
             </div>
           </div>
-          <div className="DoctorAvailableSec">
-            <div className="DoctorAvailableAvailableTag">
-              <p>Available</p>
-            </div>
-            <div className="DoctorAvailableAvailableSec">
-              {currentAvailability?.length > 0 &&
-                currentAvailability?.map((ele, index) => (
-                  <div key={index} className="DoctorAvailableSecSettingSec">
-                    <div className="DoctorAvailableTiming">
-                      <p>{ele?.hospital_name}</p>
-                      <div className="DoctorAvailableTimingDays">
-                        {days.map((day, index) => (
-                          <p
-                            key={index}
-                            style={{
-                              color: ele?.days_timing?.find(
-                                (mapday) =>
-                                  mapday?.day === day &&
-                                  mapday?.availableTimes?.find(
-                                    (data) =>
-                                      data?.startTime !== "" &&
-                                      data?.endTime !== ""
-                                  )
-                              )
-                                ? "blue"
-                                : "grey",
-                            }}
-                          >
-                            {day.slice(0, 3)}
-                            <span>{index === days?.length - 1 ? "" : ","}</span>
-                          </p>
-                        ))}
+          {currentAvailability?.length > 0 && (
+            <div className="DoctorAvailableSec">
+              <div className="DoctorAvailableAvailableTag">
+                <p>Available</p>
+              </div>
+              <div className="DoctorAvailableAvailableSec">
+                {currentAvailability?.length > 0 &&
+                  currentAvailability?.map((ele, index) => (
+                    <div key={index} className="DoctorAvailableSecSettingSec">
+                      <div className="DoctorAvailableTiming">
+                        <p>{ele?.hospital_name}</p>
+                        <div className="DoctorAvailableTimingDays">
+                          {days.map((day, index) => (
+                            <p
+                              key={index}
+                              style={{
+                                color: ele?.days_timing?.find(
+                                  (mapday) =>
+                                    mapday?.day === day &&
+                                    mapday?.availableTimes?.find(
+                                      (data) =>
+                                        data?.startTime !== "" &&
+                                        data?.endTime !== ""
+                                    )
+                                )
+                                  ? "blue"
+                                  : "grey",
+                              }}
+                            >
+                              {day.slice(0, 3)}
+                              <span>
+                                {index === days?.length - 1 ? "" : ","}
+                              </span>
+                            </p>
+                          ))}
+                        </div>
                       </div>
+                      <button
+                        onClick={() => {
+                          viewDetailedData(ele?.id);
+                        }}
+                      >
+                        View Details
+                      </button>
                     </div>
-                    <button
-                      onClick={() => {
-                        viewDetailedData(ele?.id);
-                      }}
-                    >
-                      View Details
-                    </button>
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="doc_profileSecFeedBack">
             <h2 clas>Rating & Reviews</h2>

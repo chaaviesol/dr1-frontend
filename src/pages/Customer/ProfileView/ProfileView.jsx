@@ -182,7 +182,7 @@ export const ProfileView = ({
             <h4 style={{ marginLeft: "10px" }}>Activity</h4>
           </div>
 
-          <div className="cpadminmenuprofile flex">
+          <div className="cpadminmenuprofile flex" onClick={()=>navigate("/mysecondopinions")}>
             <i class="ri-settings-line"></i>
             <h4 style={{ marginLeft: "10px" }}>Second opinion</h4>
           </div>

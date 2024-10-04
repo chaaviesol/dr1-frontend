@@ -7,36 +7,42 @@ import { BASE_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 function SecondOpinions() {
   const axiosPrivate = useAxiosPrivate();
+  const navigate = useNavigate();
   const { auth } = useAuth();
   const { userId, userType } = auth;
 
   const fetchCustomerSecondOpinions = async () => {
-    const response = await axiosPrivate.get(`${BASE_URL}/secondop/getcusquery`);
+    const response = await axiosPrivate.get(
+      `${BASE_URL}/secondop/getcussecondop`
+    );
     return response.data.data;
   };
 
-  const {
-    data: customerQueries,
-    isLoading,
-    refetch,
-  } = useQuery({
+  const { data: customerSecondOpinions, isLoading } = useQuery({
     queryKey: ["fetchCustomerSecondOpinions", userId],
     queryFn: fetchCustomerSecondOpinions,
     enabled: !!userId && userType === "customer",
   });
 
-
   const toggleAnswers = (id) => {
     // setShowAnswers(!showAnswers);
-
     // setCustomerQueryData((prevItems) =>
     //   prevItems.map((item) =>
     //     item.id === id ? { ...item, isShowAnswers: !item.isShowAnswers } : item
     //   )
     // );
+  };
+
+  const handleNavigate = (id) => {
+    navigate("/mysecondopinions/detailed", {
+      state: {
+        id: id,
+      },
+    });
   };
 
   return (
@@ -52,13 +58,24 @@ function SecondOpinions() {
             <h3>My Expert opinion queries</h3>
           </div>
 
-          {customerQueries &&
-            customerQueries.length > 0 &&
-            customerQueries.map((query, index) => (
-              <div key={query.id} className="myquestionsection flex">
+          {customerSecondOpinions &&
+            customerSecondOpinions.length > 0 &&
+            customerSecondOpinions.map((query, index) => (
+              <div
+                key={query.id}
+                className="myquestionsection flex"
+                style={{ marginTop: "2rem", cursor: "pointer" }}
+                onClick={() => handleNavigate(query.id)}
+              >
                 <div className="myquestionlistboxdata">
                   <div className="myquestionlistboxdataname flex">
                     <div className="myquestionlistboxdatanamesec">
+                      <h3
+                        className="myquestiontitle"
+                        style={{ marginTop: ".6vw" }}
+                      >
+                        {query?.patient_name}
+                      </h3>
                       <h4 className="myquestiondate">
                         {" "}
                         {moment
@@ -67,16 +84,18 @@ function SecondOpinions() {
                           .format("DD/MM/YYYY hh:mm A")}
                       </h4>
                     </div>
-                    <div className="myquestionlistboxdatanamebutton">
-                    </div>
+                    <div className="myquestionlistboxdatanamebutton"></div>
                   </div>
                   <div className="myquestionlistboxdataquestion">
                     <h3
                       className="myquestiontitle"
                       style={{ marginTop: ".6vw" }}
                     >
-                      Question
+                      Remarks
                     </h3>
+                    <p className="myquestionpara myquestionparasec">
+                      {query?.remarks}
+                    </p>
                     <p
                       className="myquestionpara myquestionparasec"
                       style={{
@@ -90,77 +109,7 @@ function SecondOpinions() {
                     <p className="myquestionpara myquestionparasec">
                       {query?.query}
                     </p>
-
-                    {/* Button to toggle answers */}
-                    <button
-                      className="flex firstbuttonanswer"
-                      onClick={() => toggleAnswers(query.id)}
-                    >
-                      <i className="ri-chat-quote-line"></i>
-                      <h4>{query.doctor_remarks.length} Answers</h4>
-                      <i
-                        className={
-                          query.isShowAnswers
-                            ? "ri-arrow-down-s-fill"
-                            : "ri-arrow-right-s-fill"
-                        }
-                      ></i>
-                    </button>
-
-                    {/* Conditionally render answers based on showAnswers state */}
-                    {query.doctor_remarks.length > 0 &&
-                      query.doctor_remarks.map(
-                        (answer, answerIndex) =>
-                          query.isShowAnswers && (
-                            <div key={answer.id} className="myanswerssection">
-                              <div className="myallanswers flex">
-                                <div className="myquestionlistboximg">
-                                  <img
-                                    src={
-                                      answer?.doctorid?.image ||
-                                      "/images/dr (4).jpg"
-                                    }
-                                    alt=""
-                                  />
-                                </div>
-                                <div className="myquestionlistboxdata">
-                                  {answer.id === query.doctor_remarksid && (
-                                    <>
-                                      <h4 className="bestanswerstop">
-                                        <i class="ri-medal-2-line"></i>
-                                        <span>BEST ANSWER</span>
-                                      </h4>
-                                    </>
-                                  )}
-                                  <h3 className="myquestiontitle">
-                                    {answer?.doctorid?.name}
-                                  </h3>
-                                  <h4 className="myquestiondate">
-                                    {answer?.doctorid?.education_qualification}{" "}
-                                    ,
-                                    {moment
-                                      .utc(answer?.created_date)
-                                      .tz("UTC-12")
-                                      .format("DD/MM/YYYY hh:mm A")}
-                                  </h4>
-                                  <p className="myquestionpara questionparasec">
-                                    {answer?.doctor_remarks}
-                                  </p>
-                                </div>
-                              </div>
-
-                              {/* {answer} */}
-                              {query.doctor_remarks.length - 1 ===
-                                answerIndex && (
-                                <button className="loadmoreanswers">
-                                  More Answers
-                                </button>
-                              )}
-                            </div>
-                          )
-                      )}
                   </div>
-                  {/* )} */}
                 </div>
               </div>
             ))}

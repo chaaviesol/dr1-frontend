@@ -83,6 +83,7 @@ import HospitalPage from "./pages/Home/HospitalPage";
 import LabPage from "./pages/Home/LabPage";
 import PharmacyPage from "./pages/Home/PharmacyPage";
 import SecondOpinions from "./pages/Customer/Second Opinion/SecondOpinions";
+import DetailedOpinion from "./pages/Customer/Second Opinion/DetailedOpinion";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
@@ -155,7 +156,7 @@ export const publicRoutes = [
 
   { path: "/services", element: <Services /> },
   { path: "/community", element: <Community /> },
-  { path: "/mysecondopinions", element: <SecondOpinions /> },
+ 
 ];
 
 export const doctorAdminRoutes = [
@@ -165,6 +166,8 @@ export const doctorAdminRoutes = [
 export const protectedCustomerRoutes = [
   { path: "/userprofile", element: <Userprofile /> },
   { path: "/myqueries", element: <MyQueries /> },
+  { path: "/mysecondopinions", element: <SecondOpinions /> },
+  { path: "/mysecondopinions/detailed", element: <DetailedOpinion /> }
 ];
 export const hospitalAdminRoutes = [
   {

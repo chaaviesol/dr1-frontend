@@ -168,12 +168,14 @@ const HospitalDetailed = () => {
                 {" "}
                 <h2>{HospitalData?.name}</h2>{" "}
               </div>
+            
               <h4
                 className="highlight_data"
                 style={{ background: "#3A65FD", color: "white" }}
               >
                 {HospitalData?.type}
               </h4>
+              <StarRating rating={HospitalData?.rating}/>
               <div className="flex"></div>
               <div className="doc_profileModalAlignCont">
                 <button
