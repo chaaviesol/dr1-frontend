@@ -410,7 +410,7 @@ export default function Doctoradminregistration2() {
               />
             </div>
             <div>
-              <h4>Department</h4>
+              <h4>Discipline</h4>
               <select
                 type="text"
                 name="specialization"
@@ -717,7 +717,7 @@ export default function Doctoradminregistration2() {
               />
             </div>
             <div>
-              <h4>Department</h4>
+              <h4>Discipline</h4>
               <select
                 type="text"
                 name="specialization"

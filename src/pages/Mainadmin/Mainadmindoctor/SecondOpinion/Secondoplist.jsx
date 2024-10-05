@@ -147,12 +147,12 @@ export default function Secondoplist({
 
           <th className="orderlisttableTh">
             {" "}
-            <h4>Department</h4>
+            <h4>Discipline</h4>
             <input
               type="text"
               onChange={SearchData}
               name="department"
-              placeholder="Search department"
+              placeholder="Search Discipline"
             />
           </th>
 

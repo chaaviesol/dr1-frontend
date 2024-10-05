@@ -34,7 +34,7 @@ export default function SecondOpinion() {
         </div>
         <div className="secoptitle">
           <h2>We help you to get a second opinion</h2>
-          {/* <h4>Select Department</h4> */}
+          {/* <h4>Select Discipline</h4> */}
         </div>
        
         <div className="secopimg flex">
@@ -42,7 +42,7 @@ export default function SecondOpinion() {
         </div>
 
         <div className="secopdipartment">
-          <h3>Select Department</h3>
+          <h3>Select Discipline</h3>
 
           <div className={`secopdipartmentoption flex ${selectedDepartment === "Cardiology" ? "secopdipartmentoptionselected" : ""}`}
             onClick={() => handleDepartmentSelect("Cardiology")}>

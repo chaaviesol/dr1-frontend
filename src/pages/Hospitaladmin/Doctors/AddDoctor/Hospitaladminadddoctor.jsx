@@ -392,7 +392,7 @@ export default function Hospitaladminadddoctor() {
               </div>
 
               <h2>
-                Department <span style={{ color: "red" }}>*</span>
+                Discipline <span style={{ color: "red" }}>*</span>
               </h2>
               <div style={{ position: "relative" }}>
                 <select

@@ -353,7 +353,7 @@ export const MainAdminDoctorEditFinal = () => {
             />
           </div>
           <div>
-            <h4>Department</h4>
+            <h4>Discipline</h4>
             <select
               type="text"
               name="specialization"

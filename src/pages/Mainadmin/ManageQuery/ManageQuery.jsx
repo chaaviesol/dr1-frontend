@@ -110,7 +110,7 @@ function ManageQuery({ queryId, setChangeDashboards }) {
               className="questionpara questionparasec"
               style={{ color: "#059669", fontSize: "14px", marginTop: ".4vw" }}
             >
-              Department : {queryData?.department}
+              Discipline : {queryData?.department}
             </p>
             <p className="questionpara questionparasec">{queryData?.query}</p>
           </div>

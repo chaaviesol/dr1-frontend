@@ -241,7 +241,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
 
   const handlequerySubmit = async () => {
     if (!querydata.department || querydata.department === "") {
-      toast.info("Department is missing");
+      toast.info("Discipline is missing");
       return;
     }
     if (!querydata.query) {
@@ -383,7 +383,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                   </button>
                   <h3>We help you to get a second opinion</h3>
                 </div>
-                {/* <h4>Select Department</h4> */}
+                {/* <h4>Select Discipline</h4> */}
               </div>
               <div className="closeButtonmodal2" onClick={handleClose}>
                 <IconButton className="closeButtonmodal2">
@@ -400,7 +400,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 </div>
 
                 <div className="secopdipartment2">
-                  <h3>Select Department</h3>
+                  <h3>Select Discipline</h3>
                   <div
                     className={`secopdipartmentoption flex ${
                       selectedDepartment === "Cardiology"
@@ -599,7 +599,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 <h3>Get Your Answer Now</h3>
               </div>
 
-              <h4>Select Your Department</h4>
+              <h4>Select Your Discipline</h4>
               <select
                 className="department-select"
                 value={querydata.department}
@@ -607,7 +607,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 name="department"
               >
                 <option value="" disabled selected>
-                  Select Your Department
+                  Select Your Discipline
                 </option>
                 {Categories.allopathySpecs.map((department, index) => (
                   <option key={index} value={department}>

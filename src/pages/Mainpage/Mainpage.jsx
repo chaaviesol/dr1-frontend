@@ -582,7 +582,7 @@ export default function Mainpage() {
             <div className="MainPageTypeAndSpecialityImgSec">
               <div className="second-main-head second-main-head2 flex">
                 <h1>
-                  Select our <span>Types</span> and <span>Specialities</span>
+                  Select Your <span>Types</span> and <span>Specialities</span>
                 </h1>
               </div>
 

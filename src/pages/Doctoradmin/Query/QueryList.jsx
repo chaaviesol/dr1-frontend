@@ -239,7 +239,7 @@ function QueryList({ docId, userType }) {
                         marginTop: ".4vw",
                       }}
                     >
-                      Department : {question.department}
+                      Discipline : {question.department}
                     </p>
                     <p className="questionpara questionparasec">
                       {question?.query}

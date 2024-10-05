@@ -90,7 +90,7 @@ function MyQueries() {
                       marginTop: ".4vw",
                     }}
                   >
-                    Department: {query?.department}
+                    Discipline: {query?.department}
                   </p>
                   <p className="myquestionpara myquestionparasec">
                     {query?.query}
