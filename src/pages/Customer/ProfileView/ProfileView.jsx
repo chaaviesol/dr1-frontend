@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProfileView.css";
-import { Modal } from "@mui/material";
+import { IconButton, Modal } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import MaleIcon from "@mui/icons-material/Male";
 import FemaleIcon from "@mui/icons-material/Female";
@@ -144,7 +144,10 @@ export const ProfileView = ({
                 onClick={() => navigate("/userprofile")}
                 className="cpeditadminprofile flex"
               >
+                <IconButton>
+
                 <i class="ri-pencil-line"></i>
+                </IconButton>
               </div>
             </div>
           </div>

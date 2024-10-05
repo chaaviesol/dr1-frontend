@@ -206,6 +206,7 @@
 }
 
 .cpadminmenuprofile{
+    cursor: pointer;
     padding:10px 20px;
     align-items: center;
     transition: 600ms ease-in-out;
@@ -231,6 +232,7 @@
     width:30px;
     border-radius:50%;
     justify-content: center;align-items: center;
+    cursor: pointer;
 }
 
 .cpeditadminprofile i{
