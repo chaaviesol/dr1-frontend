@@ -106,7 +106,7 @@ function UserProfileCompleteModal({ open, onClose }) {
                 alt=""
               />
               {/* <div className={styles.logo}></div> */}
-              <h6>DR ONE</h6>
+              <h6>Dr ONE</h6>
             </div>
             <div className={styles.flexRow}>
               <h6>Would you like to edit your profile?</h6>

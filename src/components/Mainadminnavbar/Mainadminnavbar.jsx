@@ -20,7 +20,7 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
             style={{ display: "flex", alignItems: "center", gap: "10px" }}
           >
             <img src="/images/doconelogo.jpg" className="dr_one_logo" alt="" />
-            <h2>DR ONE</h2>
+            <h2>Dr ONE</h2>
           </Link>
         </div>
 

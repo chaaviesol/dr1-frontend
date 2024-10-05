@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import "./labadminprofile.css";
-import dayjs from "dayjs";
 import { toast } from "react-toastify";
-import { IconButton, Modal } from "@mui/material";
-import { TimePicker } from "@mui/x-date-pickers";
-import axios from "axios";
-import AddIcon from "@mui/icons-material/Add";
-import DeleteIcon from "@mui/icons-material/Delete";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { port } from "../../../config";
+import { IconButton } from "@mui/material";
+
+import { BASE_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
-import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import useAuth from "../../../hooks/useAuth";
-export const Labadminprofile = () => {
+export const Labadminprofile = ({
+  consultAndViewData,
+  LabData,
+  setLabData,
+  isLabDataFetching,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [LabData, setLabData] = useState();
 
   const [isAboutEditable, setIsAboutEditable] = useState(false);
   const [about, setAbout] = useState({
     about: LabData?.about,
   });
   const axiosPrivate = useAxiosPrivate();
-  const { auth } = useAuth();
+
   const toastConfig = {
     position: "top-right",
     autoClose: 3000,
@@ -35,26 +32,10 @@ export const Labadminprofile = () => {
     draggable: true,
     pauseOnHover: true,
   };
-  const consultAndViewData = useFetchViewsAndContacts(LabData?.id, "Lab");
-  console.log(consultAndViewData);
+
   const handleAboutEditToggle = () => {
     setIsAboutEditable(!isAboutEditable);
   };
-
-  useEffect(() => {
-    const data = {
-      id: auth.userId,
-    };
-    axios
-      .post(`${port}/lab/labdetails`, data)
-      .then((res) => {
-        setLabData(res.data.data);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const handleAboutEdit = (e) => {
     const { name, value } = e.target;
@@ -74,7 +55,10 @@ export const Labadminprofile = () => {
         lab_id: LabData.id,
         about: about?.about,
       };
-      const response = await axiosPrivate.post(`${port}/lab/editlab`, payload);
+      const response = await axiosPrivate.post(
+        `${BASE_URL}/lab/editlab`,
+        payload
+      );
       setIsAboutEditable(isAboutEditable);
       toast.success(response.data.message, toastConfig);
     } catch (err) {
@@ -87,7 +71,7 @@ export const Labadminprofile = () => {
   if (LabData?.name) {
     return (
       <>
-        {isLoading && <Loader />}
+        {(isLoading || isLabDataFetching) && <Loader />}
         <div className="mainadmindoctordatas flex">
           <div className="mainadmindoctordatas_profile flex">
             <img
@@ -194,7 +178,7 @@ export const Labadminprofile = () => {
               <textarea
                 onChange={handleAboutEdit}
                 className="adimindoctorpinAbout"
-                value={ about?.about || LabData?.about}
+                value={about?.about || LabData?.about}
                 name="about"
               ></textarea>
             ) : (

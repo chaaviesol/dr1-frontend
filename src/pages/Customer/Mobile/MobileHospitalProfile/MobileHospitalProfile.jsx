@@ -69,9 +69,6 @@ export default function MobileHospitalProfile() {
   const consultNow = async () => {
     if (!auth.userId) {
       toast.info("please login to view contact number");
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
       return;
     }
 

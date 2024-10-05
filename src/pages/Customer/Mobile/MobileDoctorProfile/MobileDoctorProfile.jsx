@@ -121,9 +121,6 @@ export default function MobileDoctorProfile() {
   const contactnowbutton = async () => {
     if (!auth.userId || !auth.userType === "customer") {
       toast.info("please login to view contact number");
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
       return;
     }
 
