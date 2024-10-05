@@ -1,6 +1,6 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import "./SecondopinionBanner.css";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Secopmodal from "../../../components/SecOpAndQuery/Secopmodal";
@@ -17,7 +17,14 @@ export default function SecondopinionBanner() {
 
   return (
     <div>
-      <Secopmodal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      {isModalOpen && (
+        <>
+          <Secopmodal
+            isModalOpen={isModalOpen}
+            setIsModalOpen={setIsModalOpen}
+          />
+        </>
+      )}
       <div className="expert-container" id="expert-box">
         <div className="expert-column">
           <div className="expert-title">Do You Want a Expert Opinion?</div>

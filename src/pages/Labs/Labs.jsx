@@ -148,7 +148,7 @@ export default function Labs() {
           <div className="health-concern flex">
             <div
               onClick={() => {
-                handleSearchData("Allopathy", "General medicine");
+                handleSearchData("Fever", "Fever");
                 navigate("/labfiltering");
               }}
               className="home-specialties-card flex"

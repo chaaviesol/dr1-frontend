@@ -8,7 +8,12 @@ import { Loader } from "../../components/Loader/Loader";
 import { BASE_URL } from "../../config";
 import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import { MyContext } from "../../contexts/Contexts";
-import { FormControlLabel, IconButton, Modal } from "@mui/material";
+import {
+  CircularProgress,
+  FormControlLabel,
+  IconButton,
+  Modal,
+} from "@mui/material";
 import { Close } from "@mui/icons-material";
 export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   const [isModalall, setIsModalAll] = useState({
@@ -143,6 +148,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
       submissionData.append("patient_name", formData.patient_name);
       submissionData.append("doctor_name", formData.doctor_name);
       submissionData.append("contact_no", formData.contact_no);
+      submissionData.append("remarks", formData.remarks);
       submissionData.append("department", selectedDepartment);
 
       formData.image.forEach((image, index) => {
@@ -163,19 +169,23 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
           autoClose: 3000,
         });
         setChecked(false);
-        setTimeout(() => {
-          setFormData({
-            patient_name: "",
-            doctor_name: "",
-            contact_no: "",
-            image: [],
-            department: "",
-            remarks: "",
-          });
+        setIsModalOpen(false);
+        setFormData({
+          patient_name: "",
+          doctor_name: "",
+          contact_no: "",
+          image: [],
+          department: "",
+          remarks: "",
+        });
 
-          setIsModalAll({ ...isModalall, secop2: false, all: false });
-          navigate("/");
-        }, 3000);
+        setIsModalAll({
+          all: false,
+          options: false,
+          query: false,
+          secop: false,
+          secop2: false,
+        });
       } else if (response.status === 400) {
         toast.error(response.data.message);
         setLoader(false);
@@ -262,20 +272,19 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
           autoClose: 3000,
         });
         setChecked(false);
-        setTimeout(() => {
-          Setquerydata({
-            query: "",
-            department: "",
-          });
+        Setquerydata({
+          query: "",
+          department: "",
+        });
+        setIsModalOpen(false);
 
-          setIsModalAll({
-            ...isModalall,
-            query: false,
-            options: false,
-            all: false,
-          });
-          navigate("/");
-        }, 3000);
+        setIsModalAll({
+          all: false,
+          options: false,
+          query: false,
+          secop: false,
+          secop2: false,
+        });
       } else if (response.status === 400) {
         toast.error(response.data.message);
         setLoader(false);
@@ -291,7 +300,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
 
   return (
     <div>
-      <Modal open={isModalall.all} onClose={() => setIsModalAll(false)}>
+      <Modal open={isModalall.all} onClose={handleClose}>
         <>
           {isModalall.options && (
             <div className="expertopinionfirstmodal">
@@ -626,7 +635,11 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 placeholder="Type your query here"
               ></textarea>
               <button onClick={handlequerySubmit} className="queryformbutton">
-                Submit
+                {loader ? (
+                  <CircularProgress sx={{ color: "white" }} size="1.5rem" />
+                ) : (
+                  <h4>Submit</h4>
+                )}
               </button>
               <button
                 onClick={handleClose}
