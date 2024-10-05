@@ -12,6 +12,7 @@ import useFetchFeedbacksAndRating from "../../../../hooks/useFetchFeedbacksAndRa
 import { useNavigate } from "react-router-dom";
 import UserProfileCompleteModal from "../../../Customer/HaveUComProfile/UserProfileCompleteModal";
 import { CircularProgress, FormControlLabel, Modal } from "@mui/material";
+import { Loader } from "../../../../components/Loader/Loader";
 export default function MobileDoctorProfile() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -183,6 +184,7 @@ export default function MobileDoctorProfile() {
   return (
     <div>
       <div className="mobiledoctordiv">
+        {isDoctorAvailabilityPending && <Loader />}
         <div className="mobcontainer">
           <div className="mobiledoctorprofiletop flex">
             <div

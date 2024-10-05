@@ -237,7 +237,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                       style={{ textAlign: "left", width: "100%" }}
                     >
                       <h2 className="product_brand_name">{product?.brand}</h2>
-                      <h2 className="product_name">{product?.name}</h2>
+                      <h2 className="product_name">  {product?.name?.length > 18 ? `${product.name.slice(0, 18)}...` : product.name}</h2>
                       {/* <h2 className="product_qlty">{product?.quantity}</h2> */}
                     </div>
 
