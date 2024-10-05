@@ -243,17 +243,14 @@ export default function MobileDoctorProfile() {
                 <h4>{doctor?.about}</h4>
               </div>
             </div>
-
-            <div className="mobileavailabitysection">
-              {currentAvailability?.length > 0 &&
-                currentAvailability?.map((ele, index) => (
+            {currentAvailability?.length > 0 && (
+              <div className="mobileavailabitysection">
+                {currentAvailability?.map((ele, index) => (
                   <>
                     <div className="mobcontainer">
-                      {currentAvailability?.length - 1 !== index && (
-                        <div className="mobiledoctorprofiletitle">
-                          <h3>Available</h3>
-                        </div>
-                      )}
+                      <div className="mobiledoctorprofiletitle">
+                        <h3>Available</h3>
+                      </div>
 
                       <div className="mobileavailabityhospital flex">
                         <div key={index}>
@@ -364,7 +361,8 @@ export default function MobileDoctorProfile() {
                     </div>
                   </>
                 ))}
-            </div>
+              </div>
+            )}
 
             <div className="mobcontainer">
               <div className="mobiledoctorprofiletitle">
