@@ -120,7 +120,10 @@ function DetailedOpinion() {
         <div className="adpha-thirdcontainer">
           <h4>Report</h4>
 
-          <div className="adpha-thirdcontainer-images flex" style={{overflow:"scroll"}}>
+          <div
+            className="adpha-thirdcontainer-images flex"
+            style={{ overflow: "scroll" }}
+          >
             {secondOpinionData?.report_image &&
               Object.values(secondOpinionData.report_image).map(
                 (imageSrc, imgIndex) => (
@@ -128,16 +131,16 @@ function DetailedOpinion() {
                 )
               )}
           </div>
-
-          <button
-            className="adpha-thirdcontainer-button"
-            onClick={handleDownload}
-            style={{ marginTop: "2rem" }}
-          >
-            Download
-          </button>
+          {secondOpinionData?.report_image && (
+            <button
+              className="adpha-thirdcontainer-button"
+              onClick={handleDownload}
+              style={{ marginTop: "2rem" }}
+            >
+              Download
+            </button>
+          )}
         </div>
-   
       </div>
     </>
   );

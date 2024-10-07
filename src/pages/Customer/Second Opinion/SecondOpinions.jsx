@@ -64,9 +64,31 @@ function SecondOpinions() {
               <div
                 key={query.id}
                 className="myquestionsection flex"
-                style={{ marginTop: "2rem", cursor: "pointer" }}
+                style={{
+                  marginTop: "2rem",
+                  cursor: "pointer",
+                  position: "relative",
+                }}
                 onClick={() => handleNavigate(query.id)}
               >
+                <div
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    color: "white",
+                    fontWeight: 400,
+                    fontSize: "14px",
+                    textTransform: "capitalize",
+                    backgroundColor:
+                      query.status === "submitted" ? "#7e83ff" : "#2a9d8f",
+                    padding: ".5rem",
+                    paddingLeft: "1.2rem",
+                    borderTopLeftRadius: "50px",
+                    borderBottomLeftRadius: "50px",
+                  }}
+                >
+                  {query.status}
+                </div>
                 <div className="myquestionlistboxdata">
                   <div className="myquestionlistboxdataname flex">
                     <div className="myquestionlistboxdatanamesec">
@@ -87,15 +109,6 @@ function SecondOpinions() {
                     <div className="myquestionlistboxdatanamebutton"></div>
                   </div>
                   <div className="myquestionlistboxdataquestion">
-                    <h3
-                      className="myquestiontitle"
-                      style={{ marginTop: ".6vw" }}
-                    >
-                      Remarks
-                    </h3>
-                    <p className="myquestionpara myquestionparasec">
-                      {query?.remarks}
-                    </p>
                     <p
                       className="myquestionpara myquestionparasec"
                       style={{
@@ -108,6 +121,15 @@ function SecondOpinions() {
                     </p>
                     <p className="myquestionpara myquestionparasec">
                       {query?.query}
+                    </p>
+                    <h3
+                      className="myquestiontitle"
+                      style={{ marginTop: ".6vw" }}
+                    >
+                      Remarks
+                    </h3>
+                    <p className="myquestionpara myquestionparasec">
+                      {query?.remarks}
                     </p>
                   </div>
                 </div>

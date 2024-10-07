@@ -1,16 +1,21 @@
 import axios from "axios";
 import React from "react";
 import { port } from "../../../config";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import { toast } from "react-toastify";
+import { Loader } from "../../../components/Loader/Loader";
 
 export default function Mainadminfeedback() {
   const fetchFeedbacks = async () => {
     const response = await axios.get(`${port}/admin/alltypefeedback`);
     return response.data.data;
   };
-  const { data: allFeedbacks } = useQuery({
+  const {
+    data: allFeedbacks,
+    isLoading: isFeedbacksLoading,
+    refetch: refetchFeedbacks,
+  } = useQuery({
     queryKey: ["fetchFeedbacks"],
     queryFn: fetchFeedbacks,
   });
@@ -38,33 +43,32 @@ export default function Mainadminfeedback() {
     return <div>{stars}</div>;
   };
 
-  console.log({ allFeedbacks });
   const sendStatusUpdate = async (id, status, type) => {
     console.log({ id, status, type });
-    try {
-      const response = await axios.post(`${port}/admin/feedbackapproval`, {
-        id,
-        status,
-        type,
-      });
-      if (response.status === 200) {
-        toast.success(response?.data?.message);
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      } else {
-        toast.error(response?.data?.message);
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-    }
+
+    const response = await axios.post(`${port}/admin/feedbackapproval`, {
+      id,
+      status,
+      type,
+    });
+    return response.data;
   };
+  const statusUpdateMutation = useMutation({
+    mutationFn: ({ id, status, type }) => sendStatusUpdate(id, status, type),
+    mutationKey: ["sendStatusUpdate"],
+    onSuccess: (data) => {
+      console.log("success", data);
+      toast.success(data.message);
+      refetchFeedbacks();
+    },
+    onError: (error) => {
+      console.error("Error", error); // Error handling
+    },
+  });
 
   return (
     <div>
+      {isFeedbacksLoading && <Loader />}
       <div style={{ marginTop: "1.3vw" }} className="flex admin_view_more">
         <h3>Feedbacks</h3>
         <h4>
@@ -104,17 +108,27 @@ export default function Mainadminfeedback() {
 
                 <div className="photoandtitle admin-feedback-buttons-container  flex">
                   <button
+                    disabled={statusUpdateMutation.isPending}
                     type="button"
                     onClick={() =>
-                      sendStatusUpdate(ele.id, "rejected", ele.type)
+                      statusUpdateMutation.mutate({
+                        id: ele.id,
+                        status: "rejected",
+                        type: ele.type,
+                      })
                     }
                   >
                     Reject
                   </button>
                   <button
                     type="button"
+                    disabled={statusUpdateMutation.isPending}
                     onClick={() =>
-                      sendStatusUpdate(ele.id, "accepted", ele.type)
+                      statusUpdateMutation.mutate({
+                        id: ele.id,
+                        status: "accepted",
+                        type: ele.type,
+                      })
                     }
                   >
                     Approve

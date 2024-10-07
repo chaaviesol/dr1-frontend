@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { port } from "../../../config";
 import moment from "moment";
 import { getStatus } from "../utils";
+import { Loader } from "../../../components/Loader/Loader";
 
 export default function Mainadminlabslist({ updateState, setLabDetails }) {
   const [Count, setCount] = useState({});
@@ -37,6 +38,7 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
     services: "",
     feature: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchAllLabDetails();
@@ -55,6 +57,7 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
 
   const fetchAllLabDetails = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.post(`${port}/admin/getalldatas`, {
         type: "Lab",
       });
@@ -64,6 +67,7 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
     } catch (err) {
       console.error(err);
     } finally {
+      setIsLoading(false);
     }
   };
 
@@ -117,6 +121,7 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
 
   return (
     <div>
+      {isLoading && <Loader />}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">
