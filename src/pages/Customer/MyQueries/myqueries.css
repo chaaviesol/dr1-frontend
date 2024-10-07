@@ -7,7 +7,8 @@
 .myquestionsection{
     padding:1.2vw;
     background-color: #f2f5ff;
-    margin-bottom: 0.6vw;
+    /* margin-bottom: 0.6vw; */
+    margin:0
   }
 
   .myquestionlistboximg img {

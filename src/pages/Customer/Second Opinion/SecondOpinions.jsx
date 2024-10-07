@@ -54,7 +54,7 @@ function SecondOpinions() {
 
         <div className="container Myquestions">
           {isLoading && <Loader />}
-          <div className="myquestionmaintitle">
+          <div className="myquestionmaintitle" style={{ marginBottom: "2rem" }}>
             <h3>My Expert opinion queries</h3>
           </div>
 
@@ -65,7 +65,8 @@ function SecondOpinions() {
                 key={query.id}
                 className="myquestionsection flex"
                 style={{
-                  marginTop: "2rem",
+                  // marginTop: "2rem",
+                  marginBottom: ".5rem",
                   cursor: "pointer",
                   position: "relative",
                 }}
