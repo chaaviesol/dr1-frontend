@@ -105,10 +105,18 @@ function DetailedOpinion() {
           </div>
         </div>
 
-        <div className="adpha-thirdcontainer">
-          <h4>Remarks</h4>
-          {secondOpinionData?.remark}
-        </div>
+        {secondOpinionData?.remarks && (
+          <div className="adpha-remarks">
+            <h4 style={{ fontWeight: "600" }}>Remarks</h4>
+
+            <h4
+              style={{ marginTop: "10px" }}
+              className="adpha-remarks-para priscriptionpara"
+            >
+              {secondOpinionData?.remarks}
+            </h4>
+          </div>
+        )}
         <div className="adpha-thirdcontainer">
           <h4>Report</h4>
 
@@ -129,18 +137,7 @@ function DetailedOpinion() {
             Download
           </button>
         </div>
-        {secondOpinionData?.remarks && (
-          <div className="adpha-remarks">
-            <h4 style={{ fontWeight: "600" }}>Remarks</h4>
-
-            <h4
-              style={{ marginTop: "10px" }}
-              className="adpha-remarks-para priscriptionpara"
-            >
-              {secondOpinionData?.remarks}
-            </h4>
-          </div>
-        )}
+   
       </div>
     </>
   );

@@ -84,6 +84,7 @@ import LabPage from "./pages/Home/LabPage";
 import PharmacyPage from "./pages/Home/PharmacyPage";
 import SecondOpinions from "./pages/Customer/Second Opinion/SecondOpinions";
 import DetailedOpinion from "./pages/Customer/Second Opinion/DetailedOpinion";
+import { CreateCampaign } from "./pages/Mainadmin/Campaign/CreateCampaign";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
@@ -99,6 +100,8 @@ export const publicRoutes = [
   { path: "/pharmacyproducts", element: <AllProductsView /> },
   { path: "/productdetails", element: <SingleProdDetails /> },
   { path: "/cart", element: <Cart /> },
+  { path: "/createcampaign", element: <CreateCampaign /> },
+
 
   { path: "/mobiledoctorprofile", element: <MobileDoctorProfile /> },
   { path: "/mobilehospitalprofile", element: <MobileHospitalProfile /> },
