@@ -58,7 +58,7 @@ export default function Careersform() {
             </div>
             <div className="careerslocation flex">
               <i class="ri-map-pin-line"></i>
-              <h4>Malapuram</h4>
+              <h4>Kozhikode</h4>
             </div>
             <div className="careerslocation flex">
               <i class="ri-map-pin-line"></i>
