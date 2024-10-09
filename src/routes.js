@@ -85,6 +85,7 @@ import PharmacyPage from "./pages/Home/PharmacyPage";
 import SecondOpinions from "./pages/Customer/Second Opinion/SecondOpinions";
 import DetailedOpinion from "./pages/Customer/Second Opinion/DetailedOpinion";
 import { CreateCampaign } from "./pages/Mainadmin/Campaign/CreateCampaign";
+import Careersform from "./pages/Career/Careerform";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
@@ -159,6 +160,7 @@ export const publicRoutes = [
 
   { path: "/services", element: <Services /> },
   { path: "/community", element: <Community /> },
+  { path: "/careers", element: <Careersform /> },
  
 ];
 

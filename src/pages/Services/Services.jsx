@@ -1,15 +1,16 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "../Services/services.css";
 import Navbar from "../../components/Navbar";
 import Headroom from "react-headroom";
 import Footer from "../../components/Footer";
-import {  useNavigate } from "react-router-dom";
-// import { Modal } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import Secopmodal from "../../components/SecOpAndQuery/Secopmodal";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { Modal } from "@mui/material";
 export default function Services() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShowHomeserviceModal, setIsShowHomeserviceModal] = useState(false);
   const { auth } = useAuth();
   const navigate = useNavigate();
   return (
@@ -38,8 +39,8 @@ export default function Services() {
             </p>
 
             <div className="doctor-top-list flex">
-            <h2>10+ </h2>
-            {/* <div className="doctor-top-doc1-data ">
+              <h2>10+ </h2>
+              {/* <div className="doctor-top-doc1-data ">
                 <h2>10+ </h2>
               
               </div> */}
@@ -51,7 +52,6 @@ export default function Services() {
                 <img src="../images/dr20.png" alt="" />
                 <img src="../images/serdo1.jpg" alt="" />
               </div> */}
-           
             </div>
             <button
               onClick={() => {
@@ -59,13 +59,12 @@ export default function Services() {
                   setIsModalOpen(true);
                 } else {
                   toast.info("Please login as a customer!");
-                  
                 }
               }}
               className="services_button"
               style={{ backgroundColor: "#15803D" }}
             >
-              Get Now <i class="ri-arrow-right-up-line"></i>
+              Get Now <i className="ri-arrow-right-up-line"></i>
             </button>
           </div>
 
@@ -86,8 +85,6 @@ export default function Services() {
                 <img src="../images/dr20.png" alt="" />
               </div>
 
-             
-
               <div className="backdesign2"></div>
             </div>
           </div>
@@ -102,7 +99,7 @@ export default function Services() {
                     className="services_image_section4_img_data2 flex"
                     style={{ backgroundColor: "#B9D9C5", color: "#15803D" }}
                   >
-                    <i class="ri-upload-line"></i>
+                    <i className="ri-upload-line"></i>
                   </div>
                   <div className="services_image_section4_img_data3">
                     <h4>Upload</h4>
@@ -118,7 +115,7 @@ export default function Services() {
                     className="services_image_section4_img_data2 flex"
                     style={{ backgroundColor: "#FDD5B9", color: "#F97316" }}
                   >
-                    <i class="ri-file-list-line"></i>
+                    <i className="ri-file-list-line"></i>
                   </div>
                   <div className="services_image_section4_img_data3">
                     <h4>Enter</h4>
@@ -134,7 +131,7 @@ export default function Services() {
                     className="services_image_section4_img_data2 flex"
                     style={{ backgroundColor: "#DCCEFC", color: "#8B5CF6" }}
                   >
-                    <i class="ri-hand-coin-line"></i>
+                    <i className="ri-hand-coin-line"></i>
                   </div>
                   <div className="services_image_section4_img_data3">
                     <h4>Get</h4>
@@ -164,9 +161,9 @@ export default function Services() {
             <button
               className="drone_red services_button"
               style={{ backgroundColor: "#F59E0B" }}
-              onClick={()=>navigate("/pharmacy")}
+              onClick={() => navigate("/pharmacy")}
             >
-              Learn More <i class="ri-arrow-right-up-line"></i>
+              Learn More <i className="ri-arrow-right-up-line"></i>
             </button>
           </div>
 
@@ -197,8 +194,9 @@ export default function Services() {
             <button
               className="drone_red services_button"
               style={{ backgroundColor: "#8B5CF6" }}
+              // onClick={() => setIsShowHomeserviceModal(true)}
             >
-              Request Now <i class="ri-arrow-right-up-line"></i>
+              Request Now <i className="ri-arrow-right-up-line"></i>
             </button>
           </div>
 
@@ -235,12 +233,75 @@ export default function Services() {
               <h4>Home Nurse</h4> <h4>Technician</h4> <h4>Physiotherapist</h4>{" "}
               <h4>&More</h4>
             </div>
-            <button className="drone_red services_button">
-              Apply Now <i class="ri-arrow-right-up-line"></i>
+            <button className="drone_red services_button" type="button">
+              Apply Now <i className="ri-arrow-right-up-line"></i>
             </button>
           </div>
         </div>
       </div>
+
+      {
+        <Modal
+          open={isShowHomeserviceModal}
+          onClose={() => setIsShowHomeserviceModal(false)}
+        >
+          <div className="modalhomeservices">
+            <div
+              className="modalhomeservicesclose flex"
+              onClick={() => setIsShowHomeserviceModal(false)}
+            >
+              <i class="ri-close-line"></i>
+            </div>
+
+            <div className="servicesheadsection">
+              <span style={{ fontWeight: "400" }}>Enquiry For</span>{" "}
+              <span style={{ color: "rgb(139, 92, 246)" }}> Services</span>
+              <h4>
+                Enter your details carefully. Dr1 team contact you for
+                verification
+              </h4>
+            </div>
+
+            <div className="homeserviceform">
+              <h4 className="typehomeservices">What is you looking for</h4>
+              <div className="homeserviceformtype flex">
+                <div className="homeserviceformtypecard flex">
+                  <img src="../images/ambulance.png" alt="" />
+                  <h4>Ambulance</h4>
+                </div>
+                <div className="homeserviceformtypecard homeserviceformtypecardselect flex">
+                  <img src="../images/nurse.png" alt="" />
+                  <h4>Nurse</h4>
+                </div>
+                <div className="homeserviceformtypecard flex">
+                  <img src="../images/physiotherapy.png" alt="" />
+                  <h4>Physiotherapist</h4>
+                </div>
+
+                <div className="homeserviceformtypecard flex">
+                  <img src="../images/medical-team.png" alt="" />
+                  <h4>Other</h4>
+                </div>
+              </div>
+
+              <div className="careersforminputs flex">
+                <div className="careersforminput">
+                  <h4>Name</h4>
+                  <input type="text" placeholder="Enter Your Name" />
+                </div>
+                <div className="careersforminput">
+                  <h4>Phone Number</h4>
+                  <input type="text" placeholder="Enter Your Phone Number" />
+                </div>
+              </div>
+
+              <div className="servicesformsectionbutton flex">
+                <button>Submit</button>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      }
 
       <Footer />
     </div>
