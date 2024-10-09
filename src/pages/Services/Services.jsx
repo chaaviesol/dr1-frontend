@@ -8,11 +8,83 @@ import Secopmodal from "../../components/SecOpAndQuery/Secopmodal";
 import useAuth from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 import { Modal } from "@mui/material";
+import axios from "axios";
+import { BASE_URL } from "../../config";
 export default function Services() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShowHomeserviceModal, setIsShowHomeserviceModal] = useState(false);
+  const [formData, setFormData] = useState({
+    selectedService: "",
+    name: "",
+    phone_no: "",
+  });
+  console.log({ formData });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleServiceSelect = (service) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      selectedService: service,
+    }));
+  };
   const { auth } = useAuth();
   const navigate = useNavigate();
+  const handleServiceSubmit = async () => {
+    try {
+      if (!formData.name || formData.type === "") {
+        toast.error("Enter your name!");
+        return;
+      }
+      if (!formData.selectedService || formData.selectedService === "") {
+        toast.error("Select your role!");
+        return;
+      }
+      if (!formData.phone_no || formData.phone_no.trim() === "") {
+        toast.error("Enter your phone number!");
+        return;
+      }
+      const phoneRegex = /^[789]\d{9}$/;
+      if (!phoneRegex.test(formData.phone_no)) {
+        toast.error("Enter a valid phone number!");
+        return;
+      }
+      const response = await axios.post(
+        `${BASE_URL}/career/homeserviceupload`,
+        {
+          department: formData.selectedService,
+          name: formData.name,
+          phone_no: formData.phone_no,
+          status: "submitted",
+        }
+      );
+      if (response.status === 200) {
+        toast.success("Details submitted successfully!", {
+          autoClose: 3000,
+        });
+        setTimeout(() => {
+          setFormData({
+            selectedService: "",
+            name: "",
+            phone_no: "",
+          });
+          navigate("/services");
+        }, 3000);
+      } else if (response.status === 400) {
+        toast.error(response.data.message);
+      } else {
+        toast.error("Failed to submit details.");
+      }
+      setIsShowHomeserviceModal(false);
+    } catch (error) {
+      console.error("Error submitting the form:", error);
+    }
+  };
+
   return (
     <div>
       <Headroom>
@@ -265,20 +337,48 @@ export default function Services() {
             <div className="homeserviceform">
               <h4 className="typehomeservices">What is you looking for</h4>
               <div className="homeserviceformtype flex">
-                <div className="homeserviceformtypecard flex">
+                <div
+                  className={`homeserviceformtypecard flex ${
+                    formData.selectedService === "Ambulance"
+                      ? "homeserviceformtypecardselect"
+                      : ""
+                  }`}
+                  onClick={() => handleServiceSelect("Ambulance")}
+                >
                   <img src="../images/ambulance.png" alt="" />
                   <h4>Ambulance</h4>
                 </div>
-                <div className="homeserviceformtypecard homeserviceformtypecardselect flex">
+                <div
+                  className={`homeserviceformtypecard flex ${
+                    formData.selectedService === "Nurse"
+                      ? "homeserviceformtypecardselect"
+                      : ""
+                  }`}
+                  onClick={() => handleServiceSelect("Nurse")}
+                >
                   <img src="../images/nurse.png" alt="" />
                   <h4>Nurse</h4>
                 </div>
-                <div className="homeserviceformtypecard flex">
+                <div
+                  className={`homeserviceformtypecard flex ${
+                    formData.selectedService === "Physiotherapist"
+                      ? "homeserviceformtypecardselect"
+                      : ""
+                  }`}
+                  onClick={() => handleServiceSelect("Physiotherapist")}
+                >
                   <img src="../images/physiotherapy.png" alt="" />
                   <h4>Physiotherapist</h4>
                 </div>
 
-                <div className="homeserviceformtypecard flex">
+                <div
+                  className={`homeserviceformtypecard flex ${
+                    formData.selectedService === "Other"
+                      ? "homeserviceformtypecardselect"
+                      : ""
+                  }`}
+                  onClick={() => handleServiceSelect("Other")}
+                >
                   <img src="../images/medical-team.png" alt="" />
                   <h4>Other</h4>
                 </div>
@@ -287,16 +387,30 @@ export default function Services() {
               <div className="careersforminputs flex">
                 <div className="careersforminput">
                   <h4>Name</h4>
-                  <input type="text" placeholder="Enter Your Name" />
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter Your Name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    maxLength={40}
+                  />
                 </div>
                 <div className="careersforminput">
                   <h4>Phone Number</h4>
-                  <input type="text" placeholder="Enter Your Phone Number" />
+                  <input
+                    type="text"
+                    name="phone_no"
+                    maxLength={10}
+                    placeholder="Enter Your Phone Number"
+                    value={formData.phone_no}
+                    onChange={handleInputChange}
+                  />
                 </div>
               </div>
 
               <div className="servicesformsectionbutton flex">
-                <button>Submit</button>
+                <button onClick={handleServiceSubmit}>Submit</button>
               </div>
             </div>
           </div>

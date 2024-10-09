@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./customdropdown.css"; // Custom styles
 
-const CustomDropdown = ({ options, placeholder }) => {
+const CustomDropdown = ({ options, placeholder,onChange ,selectedValues }) => {
   const [isOpen, setIsOpen] = useState(false); // Toggle dropdown
   const [selected, setSelected] = useState(null); // Track selected option
   const dropdownRef = useRef(null); // For closing dropdown when clicked outside
@@ -12,9 +12,14 @@ const CustomDropdown = ({ options, placeholder }) => {
   // Handle selecting an option
   const handleOptionClick = (option) => {
     setSelected(option);
-    setIsOpen(false); // Close dropdown after selection
+    setIsOpen(false); 
+    if (onChange) {
+      onChange(option); 
+       
+    }
   };
-
+  const filteredOptions = options?.filter(option => !selectedValues?.includes(option));
+  console.log({filteredOptions})
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -36,7 +41,7 @@ const CustomDropdown = ({ options, placeholder }) => {
       </div>
       {isOpen && (
         <ul className="dropdown-list">
-          {options.map((option, index) => (
+          {filteredOptions.map((option, index) => (
             <li
               key={index}
               className="dropdown-list-item4"
