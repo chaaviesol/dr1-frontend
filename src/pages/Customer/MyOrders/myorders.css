@@ -32,7 +32,9 @@
 
 
 
-
+.isFullfilled{
+    background-color: #3A65FD;
+}
 .progresscardmark{
     height:25px;
     width:25px;
@@ -101,6 +103,8 @@
     max-height: 0;
     transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
     padding:0px 20px;
+    gap:1rem;
+    display: flex;
 }
 .orderlistmore.expanded2{
     max-height:500px;

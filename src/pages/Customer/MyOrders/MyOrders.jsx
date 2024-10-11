@@ -5,6 +5,7 @@ import "./myorders.css";
 import Footer from "../../../components/Footer";
 import { axiosPrivate } from "../../../api/PrivateAxios/axios";
 import { BASE_URL } from "../../../config";
+import { Loader } from "../../../components/Loader/Loader";
 
 function MyOrders() {
   const [myOrder, setMyOrder] = useState([]);
@@ -13,6 +14,7 @@ function MyOrders() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isExpanded, setIsExpanded] = useState(null);
+  const [isOrdersLoading, setIsOrdersLoading] = useState(false);
   console.log({ myOrder });
   const handleMouseDown = (e) => {
     setIsDown(true);
@@ -42,6 +44,7 @@ function MyOrders() {
   //     setIsExpanded(!isExpanded);
   //   };
   useEffect(() => {
+    setIsOrdersLoading(true);
     const fetchOrders = async () => {
       try {
         const response = await axiosPrivate.get(
@@ -50,6 +53,8 @@ function MyOrders() {
         setMyOrder(response.data.data);
       } catch (error) {
         console.error("Error fetching orders:", error);
+      } finally {
+        setIsOrdersLoading(false);
       }
     };
 
@@ -84,11 +89,11 @@ function MyOrders() {
   return (
     <div>
       {/* <OrderProgress /> */}
-      <Headroom>
+      {/* <Headroom> */}
         <Navbar />
-      </Headroom>
-
-      <div style={{ backgroundColor: "#f8f9fe" }}>
+      {/* </Headroom> */}
+      {isOrdersLoading && <Loader />}
+      <div style={{ backgroundColor: "#f8f9fe",minHeight:"80vh" }}>
         <div className="container">
           <div className="orderlisttitle">
             <h2>My Orders</h2>
@@ -121,7 +126,7 @@ function MyOrders() {
 
                   <div className="listcardprogress flex">
                     <div className="progresscard flex">
-                      <div className="progresscardmark flex">
+                      <div className="progresscardmark isFullfilled flex" style={{}}>
                         <i class="ri-check-line"></i>
                         <div className="progresscardmarkline"></div>
                       </div>
@@ -202,6 +207,8 @@ function MyOrders() {
                         {/* <div className="orderproductcard "></div> */}
                       </div>
                     ))}
+                </div>
+                {isExpanded === index && (
                   <div className="orderaddress_price flex">
                     <div className="orderaddress">
                       <h3>Address</h3>
@@ -229,11 +236,9 @@ function MyOrders() {
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             ))}
-
-      
         </div>
       </div>
       <Footer />
