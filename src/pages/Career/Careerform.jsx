@@ -4,6 +4,7 @@ import Headroom from "react-headroom";
 import CustomDropdown from "./CustomDropdown/CustomDropdown";
 import Navbar from "../../components/Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,22 +29,31 @@ export default function Careersform() {
       [name]: value,
     }));
   };
+  const navigate = useNavigate();
 
   const handleDropdownChange = (name, selectedValue) => {
     setFormData((prevData) => {
-      const currentLocations = prevData[name] || []; 
-      const newLocations = currentLocations.includes(selectedValue)
-        ? currentLocations.filter((loc) => loc !== selectedValue) 
-        : [...currentLocations, selectedValue];
+      if (name === "preferred_location") {
+        const currentLocations = prevData[name] || [];
+        const newLocations = currentLocations.includes(selectedValue)
+          ? currentLocations.filter((loc) => loc !== selectedValue)
+          : [...currentLocations, selectedValue];
 
-      return {
-        ...prevData,
-        [name]: newLocations,
-      };
+        return {
+          ...prevData,
+          [name]: newLocations,
+        };
+      } else {
+        return {
+          ...prevData,
+          [name]: selectedValue,
+        };
+      }
     });
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       if (!formData.type || formData.type === "") {
         toast.error("Select your role!");
@@ -53,10 +63,79 @@ export default function Careersform() {
         toast.error("Enter your name!");
         return;
       }
+      if (
+        !formData.preferred_location ||
+        formData.preferred_location.length === 0
+      ) {
+        toast.error("Select your preferred location!");
+        return;
+      }
+      if (!formData.phone_no || formData.phone_no.trim() === "") {
+        toast.error("Enter your phone number!");
+        return;
+      }
+      const phoneRegex = /^[789]\d{9}$/;
+      if (!phoneRegex.test(formData.phone_no)) {
+        toast.error("Enter a valid phone number!");
+        return;
+      }
+      if (!formData.experience || formData.experience === "") {
+        toast.error("Enter your experience!");
+        return;
+      }
+      if (!formData.qualification || formData.qualification === "") {
+        toast.error("Enter your qualification!");
+        return;
+      }
+      if (!formData.gender || formData.gender === "") {
+        toast.error("Select your gender!");
+        return;
+      }
+
+      if (!formData.year_of_passout || formData.year_of_passout.trim() === "") {
+        toast.error("Enter your pass out year!");
+        return;
+      }
+      const currentYear = new Date().getFullYear();
+      const yearRegex = /^(19|20)\d{2}$/;
+
+      if (
+        !yearRegex.test(formData.year_of_passout) ||
+        formData.year_of_passout < 1900 ||
+        formData.year_of_passout > currentYear
+      ) {
+        toast.error("Enter a valid year !");
+        return;
+      }
+
       const response = await axios.post(
         `${BASE_URL}/career/careerupload`,
         formData
       );
+      if (response.status === 200) {
+        toast.success("Details submitted successfully!", {
+          autoClose: 3000,
+        });
+        setTimeout(() => {
+          setFormData({
+            type: "",
+            name: "",
+            preferred_location: [],
+            phone_no: "",
+            experience: "",
+            qualification: "",
+            gender: "",
+            year_of_passout: "",
+            department: "",
+            specialization: "",
+          });
+          navigate("/services");
+        }, 3000);
+      } else if (response.status === 400) {
+        toast.error(response.data.message);
+      } else {
+        toast.error("Failed to submit details.");
+      }
       console.log("Form submitted successfully:", response.data);
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -113,6 +192,7 @@ export default function Careersform() {
                 name="name"
                 placeholder="Enter your name"
                 onChange={handleChange}
+                maxLength={30}
               />
             </div>
           </div>
@@ -136,6 +216,7 @@ export default function Careersform() {
                 name="phone_no"
                 placeholder="Enter Your Phone Number"
                 onChange={handleChange}
+                maxLength={10}
               />
             </div>
           </div>
@@ -185,9 +266,11 @@ export default function Careersform() {
             <div className="careersforminput">
               <h4>Year of passout</h4>
               <input
-                type="text"
+                type="number"
                 name="year_of_passout"
-                placeholder="Enter Your Phone Number"
+                placeholder="Enter pass out year"
+                maxLength={4}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -198,7 +281,7 @@ export default function Careersform() {
               <input
                 name="department"
                 type="text"
-                placeholder="Enter Your Name"
+                placeholder="Enter Your department"
               />
             </div>
             <div className="careersforminput">
@@ -212,7 +295,7 @@ export default function Careersform() {
           </div>
 
           <div className="careersformsectionbutton flex">
-            <button>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </div>
         </div>
       </div>
