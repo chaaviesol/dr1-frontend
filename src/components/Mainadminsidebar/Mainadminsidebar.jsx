@@ -180,8 +180,34 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
             : "admimmenuicon flex"
         }
       >
-        <i class="fi fi-sr-feedback-review"></i>
+        <i class="ri-discount-percent-fill"></i>
         <h4>Campaign</h4>
+      </div>
+      <div
+        onClick={() => {
+          FindButtonValue("homeservicelist");
+        }}
+        className={
+          (selected?.homeservicelist  )
+            ? "admimmenuicon admimmenuicon2 flex"
+            : "admimmenuicon flex"
+        }
+      >
+        <i class="ri-service-fill"></i>
+        <h4>Home Services</h4>
+      </div>
+      <div
+        onClick={() => {
+          FindButtonValue("careerlist");
+        }}
+        className={
+          (selected?.careerlist  )
+            ? "admimmenuicon admimmenuicon2 flex"
+            : "admimmenuicon flex"
+        }
+      >
+       <i class="ri-nurse-fill"></i>
+        <h4>Career</h4>
       </div>
     </div>
   );
