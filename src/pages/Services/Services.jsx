@@ -56,7 +56,7 @@ export default function Services() {
       const response = await axios.post(
         `${BASE_URL}/career/homeserviceupload`,
         {
-          department: formData.selectedService,
+          type: formData.selectedService,
           name: formData.name,
           phone_no: formData.phone_no,
           status: "submitted",
