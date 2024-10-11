@@ -29,7 +29,7 @@ export default function Services() {
   const handleServiceSelect = (service) => {
     setFormData((prevData) => ({
       ...prevData,
-      selectedService: service,
+      selectedService: prevData.selectedService === service ? "" : service,
     }));
   };
   const { auth } = useAuth();
@@ -266,7 +266,14 @@ export default function Services() {
             <button
               className="drone_red services_button"
               style={{ backgroundColor: "#8B5CF6" }}
-              // onClick={() => setIsShowHomeserviceModal(true)}
+              onClick={() => {
+                setIsShowHomeserviceModal(true);
+                setFormData({
+                  selectedService: "",
+                  name: "",
+                  phone_no: "",
+                });
+              }}
             >
               Request Now <i className="ri-arrow-right-up-line"></i>
             </button>
