@@ -318,9 +318,9 @@ export default function Mainpage() {
               </div>
             </div>
 
-            <div className="hero2right flex">
+            {/* <div className="hero2right flex">
               <img src={missingImg} alt="" />
-            </div>
+            </div> */}
           </div>
 
           {/* Service Section */}
