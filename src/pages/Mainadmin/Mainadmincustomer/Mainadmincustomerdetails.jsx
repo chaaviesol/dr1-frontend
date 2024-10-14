@@ -80,7 +80,7 @@ export default function Mainadmincustomerdetails({ Details }) {
                   marginLeft: "10px",
                 }}
               >
-                {customerDetails?.gender}
+                {customerDetails?.gender || "gender"}
               </h4>
             </div>
 

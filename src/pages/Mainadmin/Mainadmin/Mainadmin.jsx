@@ -115,6 +115,11 @@ export default function Mainadmin() {
                 />
               </>
             )}
+              {ChangeDashboards?.customerDetail && (
+              <>
+                <Mainadmincustomerdetails Details={DetailData} />
+              </>
+            )}
             {ChangeDashboards?.feedback && (
               <>
                 <Mainadminfeedback />
@@ -130,11 +135,7 @@ export default function Mainadmin() {
                 <MainAdminCategoryEdit />
               </>
             )}
-            {ChangeDashboards?.customerDetail && (
-              <>
-                <Mainadmincustomerdetails Details={DetailData} />
-              </>
-            )}
+          
             {ChangeDashboards?.manageadmin && (
               <>
                 <Adminlist setChangeDashboards={setChangeDashboards} />

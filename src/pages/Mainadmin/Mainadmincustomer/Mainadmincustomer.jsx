@@ -9,7 +9,7 @@ import { Loader } from "../../../components/Loader/Loader";
 export default function Mainadmincustomer({
   updateState: { setChangeDashboards, setDetailData },
 }) {
-  const navigate = useNavigate();
+
   const [Customer, setCustomer] = useState([]);
   const [initialData, setinitialData] = useState([]);
 
@@ -150,7 +150,7 @@ export default function Mainadmincustomer({
               type="date"
               onChange={filterDate}
               name="datetime"
-              placeholder="Search by date"
+              placeholder="dd/mm/yyyy"
             />
           </th>
           <th>
@@ -173,7 +173,7 @@ export default function Mainadmincustomer({
               }}
             >
               <td>{index + 1}</td>
-              <td>{ele?.name}</td>
+              <td style={{ textTransform: "capitalize" }}>{ele?.name}</td>
               <td>{ele?.phone_no}</td>
               <td>{ele?.pincode}</td>
               <td>{ele?.ageGroup}</td>
