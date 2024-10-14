@@ -10,32 +10,38 @@ export default function Mainadminhospitallist({
   const [Hospital, setHospital] = useState([]);
   const [Count, setCount] = useState({});
   const [initialData, setinitialData] = useState([]);
-  const [isLoading,setIsLoading]=useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   const navigateFn = (data) => {
     // navigate("/mainadminhospitaldetails", { state: { data: data } })
     setChangeDashboards({ hospitaldetails: true });
     setDetailData(data);
   };
- 
+
   const fetchData = async () => {
     const requestData = { type: "Hospital" };
-    setIsLoading(true);  // Set loading state to true before starting API requests
+    setIsLoading(true); // Set loading state to true before starting API requests
 
     try {
       // Fetch hospital data
-      const hospitalResponse = await axios.post(`${port}/admin/getalldatas`, requestData);
+      const hospitalResponse = await axios.post(
+        `${port}/admin/getalldatas`,
+        requestData
+      );
       console.log(hospitalResponse);
       setHospital(hospitalResponse?.data?.data);
       setinitialData(hospitalResponse?.data?.data);
 
       // Fetch hospital count
-      const countResponse = await axios.post(`${port}/admin/total_count`, requestData);
+      const countResponse = await axios.post(
+        `${port}/admin/total_count`,
+        requestData
+      );
       console.log("countesss", countResponse);
       setCount(countResponse?.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
-      setIsLoading(false);  // Set loading state to false after data has been fetched or error occurs
+      setIsLoading(false); // Set loading state to false after data has been fetched or error occurs
     }
   };
 
@@ -109,7 +115,7 @@ export default function Mainadminhospitallist({
 
   return (
     <div>
-      {isLoading&&<Loader/>}
+      {isLoading && <Loader />}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">
@@ -231,9 +237,19 @@ export default function Mainadminhospitallist({
             <td>
               {ele.feature !== null &&
                 ele.feature.length > 0 &&
-                ele?.feature?.map((ele) => ele && `${ele}, `)}
+                ele?.feature?.map((feature, featureIndex) =>
+                  feature && featureIndex === ele.feature.length - 1
+                    ? feature
+                    : `${feature}, `
+                )}
             </td>
-            <td>{ele?.speciality?.map((ele) => `${ele}, `)}</td>
+            <td>
+              {ele?.speciality?.map((speciality, specIndex) =>
+                speciality && specIndex === ele.speciality.length - 1
+                  ? speciality
+                  : `${speciality}, `
+              )}
+            </td>
             <td>{ele?.view_count}</td>
             <td>{ele?.consult_count}</td>
             <td>{moment(ele?.datetime).subtract(10, "days").calendar()}</td>
