@@ -12,8 +12,6 @@ function HomeServicelist() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(datalist);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -91,7 +89,7 @@ function HomeServicelist() {
             <i class="ri-user-shared-line"></i>
           </div>
           <div style={{ marginLeft: "18px" }}>
-            <h2>{datalist?.length}</h2>
+            <h2>{initialData?.length}</h2>
             <h4>Requested</h4>
           </div>
         </div>
