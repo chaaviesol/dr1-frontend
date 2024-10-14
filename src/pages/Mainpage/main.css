@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap");
-
+@import url('satoshi.css');
 * {
   margin: 0;
   padding: 0;
@@ -9,7 +9,8 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  font-family: "Outfit", sans-serif;
+  /* font-family: "Outfit", sans-serif; */
+  font-family: "Satoshi-Variable", sans-serif;
 }
 
 .debug {
@@ -106,7 +107,7 @@ h3 {
 
 h4 {
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 h1 {
