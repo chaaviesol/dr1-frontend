@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "@mui/material";
 import useAuth from "../../../../../hooks/useAuth";
+import axios from "axios";
+import { port } from "../../../../../config";
 
-export const DocProfileTopbar = ({ userProfile }) => {
+export const DocProfileTopbar = () => {
+  const [DoctorData, setDoctorData] = useState();
   const [ProfilePopup, setProfilePopup] = useState(false);
   const navigate = useNavigate();
   const { authLogout } = useAuth();
-
+  const { auth } = useAuth();
   const openPopups = () => {
     setProfilePopup(!ProfilePopup);
   };
+  useEffect(() => {
+    const data = {
+      id: auth.userId,
+    };
+    axios
+      .post(`${port}/doctor/doctordetails`, data)
+      .then((res) => {
+        setDoctorData(res.data.data);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
@@ -40,7 +57,7 @@ export const DocProfileTopbar = ({ userProfile }) => {
             <img
               onClick={openPopups}
               style={{ marginLeft: "18px" }}
-              src={userProfile?.photo.image1}
+              src={DoctorData?.image}
               alt=""
             />
           </div>
@@ -50,15 +67,9 @@ export const DocProfileTopbar = ({ userProfile }) => {
         <div className="customerprofilecard">
           <div className="customerprofilenamecard flex">
             <div className="customerprofilenamecardleft flex">
-              <img
-                src={userProfile?.photo.image1 || "/images/avatarmale.png"}
-                alt=""
-              />
+              <img src={DoctorData?.image || "/images/avatarmale.png"} alt="" />
               <div style={{ marginLeft: "20px" }}>
-                <h4>{userProfile?.name}</h4>
-                {userProfile?.ageGroup ? (
-                  <h4 className="cpadmintype">{userProfile?.ageGroup}</h4>
-                ) : null}
+                <h4>{DoctorData?.name}</h4>
               </div>
             </div>
 
@@ -80,18 +91,18 @@ export const DocProfileTopbar = ({ userProfile }) => {
               <h4 style={{ marginLeft: "10px" }}>
                 {" "}
                 +91
-                {userProfile?.phone_no}
+                {DoctorData?.phone_office}
               </h4>
             </div>
 
             <div className="flex texticonset">
               <i class="ri-mail-fill"></i>
-              <h4 style={{ marginLeft: "10px" }}>{userProfile?.email}</h4>
+              <h4 style={{ marginLeft: "10px" }}>{DoctorData?.email}</h4>
             </div>
-            {userProfile?.pincode ? (
+            {DoctorData?.pincode ? (
               <div className="flex texticonset">
                 <i class="ri-map-pin-fill"></i>
-                <h4 style={{ marginLeft: "10px" }}>{userProfile?.pincode}</h4>
+                <h4 style={{ marginLeft: "10px" }}>{DoctorData?.pincode}</h4>
               </div>
             ) : null}
           </div>

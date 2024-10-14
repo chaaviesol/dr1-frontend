@@ -19,6 +19,7 @@ export const DocProfileMainSec = () => {
   const SentData = (data) => {
     setChangeDashboards({ [data]: true });
   };
+
   return (
     <>
       <div className="mainadminsection">
