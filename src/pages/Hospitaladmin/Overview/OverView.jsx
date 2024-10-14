@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import { IconButton } from "@mui/material";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { port } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
@@ -14,7 +13,9 @@ function Overview({ hospital, consultAndViewData }) {
     about: hospital.about,
   });
   const axiosPrivate = useAxiosPrivate();
-
+  const TemPImg = "./images/TempHosImg.jpg";
+  const TemPImg2 = "./images/hos.jpeg";
+  const TemPImg3 = "./images/hos3.jpg";
   const toastConfig = {
     position: "top-right",
     autoClose: 3000,
@@ -49,7 +50,7 @@ function Overview({ hospital, consultAndViewData }) {
         hospital_id: hospital.id,
         about: about?.about,
       };
-      console.log(about)
+      console.log(about);
       const response = await axiosPrivate.post(
         `${port}/hospital/edit`,
         payload
@@ -69,7 +70,7 @@ function Overview({ hospital, consultAndViewData }) {
         <div className="mainadmindoctordatas_profile flex">
           <img
             className="mainadmindoctordatas_profile_photo"
-            src={hospital?.photo?.image1}
+            src={hospital?.photo?.image1 || TemPImg}
             alt=""
           />
 
@@ -137,8 +138,8 @@ function Overview({ hospital, consultAndViewData }) {
       <div className="photosdivadmin">
         <h3 style={{ marginBottom: "1.3vw" }}>Images</h3>
         <div className="photosdivadminsection flex">
-          <img src={hospital?.photo?.image1} alt="" />
-          <img src={hospital?.photo?.image2} alt="" />
+          <img src={hospital?.photo?.image1 || TemPImg2} alt="" />
+          <img src={hospital?.photo?.image2 || TemPImg3} alt="" />
           <img src="/images/doc.jpg" alt="" />
         </div>
       </div>
@@ -173,9 +174,7 @@ function Overview({ hospital, consultAndViewData }) {
               name="about"
             ></textarea>
           ) : (
-            <h4 style={{ marginBottom: "1.3vw" }}>
-              {about?.about}
-            </h4>
+            <h4 style={{ marginBottom: "1.3vw" }}>{about?.about}</h4>
           )}
           {isAboutEditable && (
             <div className="mainadmindoctoraboutConfirmBtn">
@@ -190,7 +189,7 @@ function Overview({ hospital, consultAndViewData }) {
               {hospital?.pincode}
             </h4>
             <h4 style={{ background: "#F3F6FF", color: "#6B8CFE" }}>
-              Kozhikode
+              {hospital?.district || "Kozhikode"}
             </h4>
           </div>
         </div>

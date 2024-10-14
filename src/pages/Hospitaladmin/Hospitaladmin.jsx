@@ -66,7 +66,7 @@ export default function Hospitaladmin() {
       {isLoading && <Loader />}
       <div className="mainadminsection">
         <HospitalTopbar
-          data={{ SentData: SentData, selected: ChangeDashboards }}
+          data={{ SentData: SentData, selected: ChangeDashboards, HospitalData:hospital }}
         />
         <div className="mainadmindoctorsection flex">
           <Sidebar data={{ SentData: SentData, selected: ChangeDashboards }} />

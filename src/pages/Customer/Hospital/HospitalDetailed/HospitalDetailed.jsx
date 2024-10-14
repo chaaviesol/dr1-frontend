@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
 import "./HospitalDetailed.css";
 import { useEffect } from "react";
-import axios from "axios";
 import { BASE_URL, port } from "../../../../config";
 import { useLocation, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
@@ -17,7 +16,7 @@ import { toast } from "react-toastify";
 const HospitalDetailed = () => {
   const [isShowCompleteUsrProfileModal, setIsShowCompleteUsrProfileModal] =
     useState(false);
-    const [contactNumber, setContactNumber] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const location = useLocation();
@@ -30,7 +29,7 @@ const HospitalDetailed = () => {
   });
   const TemPImg = "./images/TempHosImg.jpg";
   const TemPImg2 = "./images/hos.jpeg";
-  const TemPImg3 = "./images/hospital.jpg";
+  const TemPImg3 = "./images/hos3.jpg";
   const updateViewCount = async (payload) => {
     const response = await axiosPrivate.post(
       `${BASE_URL}/user/viewcount`,
@@ -149,6 +148,7 @@ const HospitalDetailed = () => {
 
     return <div>{stars}</div>;
   };
+
   return (
     <>
       <Navbar />
@@ -165,14 +165,14 @@ const HospitalDetailed = () => {
                 {" "}
                 <h2>{HospitalData?.name}</h2>{" "}
               </div>
-            
+
               <h4
                 className="highlight_data"
                 style={{ background: "#3A65FD", color: "white" }}
               >
                 {HospitalData?.type}
               </h4>
-              <StarRating rating={HospitalData?.rating}/>
+              <StarRating rating={HospitalData?.rating} />
               <div className="flex"></div>
               <div className="doc_profileModalAlignCont">
                 <button
@@ -269,7 +269,9 @@ const HospitalDetailed = () => {
                   <div className="featured-doctor-card-button">
                     <div
                       style={{ cursor: "pointer" }}
-                      onClick={() => navigate("/doctorprofile", { state: ele.doctorId })}
+                      onClick={() =>
+                        navigate("/doctorprofile", { state: ele.doctorId })
+                      }
                     >
                       <h4>View Profile</h4>
                     </div>
