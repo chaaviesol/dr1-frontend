@@ -17,7 +17,7 @@ export default function Mainadmincustomer({
 
   const fetchCustomerList = async () => {
     const response = await axios.get(`${port}/user/getusers`);
-    return response.data.data;
+    return response.data;
   };
 
   const { data: customers, isLoading: isUserListFetching } = useQuery({
@@ -27,8 +27,8 @@ export default function Mainadmincustomer({
 
   useEffect(() => {
     if (!isUserListFetching && customers) {
-      setCustomer(customers);
-      setinitialData(customers);
+      setCustomer(customers.data);
+      setinitialData(customers.data);
     }
   }, [customers]);
 
@@ -55,6 +55,8 @@ export default function Mainadmincustomer({
       }
       return false;
     });
+
+    console.log("tempData =>", tempData);
 
     setCustomer(tempData);
   };
@@ -96,7 +98,7 @@ export default function Mainadmincustomer({
           </div>
 
           <div style={{ marginLeft: "18px" }}>
-            <h2>200</h2>
+            <h2>{customers?.allregisteredcount || 0}</h2>
             <h4>Registered</h4>
           </div>
         </div>
@@ -107,7 +109,7 @@ export default function Mainadmincustomer({
           </div>
 
           <div style={{ marginLeft: "18px" }}>
-            <h2>80</h2>
+            <h2>{customers?.allcompletedcount || 0}</h2>
             <h4>Completed</h4>
           </div>
         </div>
@@ -117,7 +119,10 @@ export default function Mainadmincustomer({
       <table className="doctortable">
         <tr className="doctortableTr">
           <th>No</th>
-          <th className="doctortableTh">
+          <th
+            className="doctortableTh"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
             {" "}
             Name
             <input
@@ -128,7 +133,7 @@ export default function Mainadmincustomer({
             />
           </th>
           <th>Mobile Number</th>
-          <th>
+          <th style={{ display: "flex", flexDirection: "column" }}>
             PIN & Location
             <input
               type="text"
@@ -138,16 +143,8 @@ export default function Mainadmincustomer({
             />
           </th>
 
-          <th>
-            Age group
-            <input
-              type="text"
-              onChange={SearchData}
-              name="contacted"
-              placeholder="Search by Contacts"
-            />
-          </th>
-          <th>
+          <th>Age group</th>
+          <th style={{ display: "flex", flexDirection: "column" }}>
             Join Date
             <input
               type="date"
@@ -158,18 +155,18 @@ export default function Mainadmincustomer({
           </th>
           <th>
             Status
-            <input
+            {/* <input
               type="text"
               onChange={SearchData}
               name="status"
-              placeholder="Search by Contacts"
-            />
+              placeholder="Search by status"
+            /> */}
           </th>
         </tr>
         {!isUserListFetching &&
-          customers &&
-          customers.length > 0 &&
-          customers.map((ele, index) => (
+          Customer &&
+          Customer.length > 0 &&
+          Customer.map((ele, index) => (
             <tr
               onClick={() => {
                 navigateFn(ele);

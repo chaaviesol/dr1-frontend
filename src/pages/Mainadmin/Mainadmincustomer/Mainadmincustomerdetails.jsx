@@ -64,7 +64,7 @@ export default function Mainadmincustomerdetails({ Details }) {
         <div className="mainadmindoctordatas_profile flex">
           <img
             className="mainadmindoctordatas_profile_photo"
-            src="/images/doc.jpg"
+            src={customerDetails?.image || "/images/avatarmale.png"}
             alt=""
           />
 
