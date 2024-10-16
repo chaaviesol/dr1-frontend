@@ -9,14 +9,14 @@ export default function Productlist({
   updateState: { setChangeDashboards, setDetailData },
 }) {
   const [state, setState] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [filteredState, setFilteredState] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   console.log({ state });
   useEffect(() => {
     setIsLoading(true);
     axios.get(`${BASE_URL}/pharmacy/getproducts`).then((res) => {
-      //   console.log(res?.data);
       if (res?.status === 200) {
         setIsLoading(false);
         setState(res?.data?.data);
@@ -33,11 +33,11 @@ export default function Productlist({
   };
   const handleSelectChange = (field, value) => {
     if (field === "category") {
+      setSelectedCategory(value); 
       if (value) {
         const filtered = state.filter((item) =>
           item.category.some((cat) => cat.toLowerCase() === value.toLowerCase())
         );
-
         setFilteredState(filtered);
       } else {
         setFilteredState(state);
@@ -46,8 +46,16 @@ export default function Productlist({
   };
   //  => NOT WORKING
   const handleSearchChange = (searchTerm) => {
+    let filtered = state; 
+
+    if (selectedCategory) {
+      filtered = filtered.filter((item) =>
+        item.category.some((cat) => cat.toLowerCase() === selectedCategory.toLowerCase())
+      );
+    }
+
     if (searchTerm) {
-      const filtered = filteredState.filter((item) => {
+      filtered = filtered.filter((item) => {
         const name = item.name ? item.name.toLowerCase() : "";
         const brand = item.brand ? item.brand.toLowerCase() : "";
         return (
@@ -55,11 +63,11 @@ export default function Productlist({
           brand.includes(searchTerm.toLowerCase())
         );
       });
-      setFilteredState(filtered);
-    } else {
-      setFilteredState(state);
     }
+
+    setFilteredState(filtered);
   };
+
   const navigateAddP = (data) => {
     console.log(data);
 
@@ -77,8 +85,8 @@ export default function Productlist({
       console.log(res?.data?.data);
       if (res?.status === 200) {
         setIsLoading(false);
-        const categories = res.data.data.map((item) => item.category);
-        setSelectedCategory(categories);
+        const categoriesData = res.data.data.map((item) => item.category);
+        setCategories(categoriesData);
       }
     });
   }, []);
@@ -102,10 +110,10 @@ export default function Productlist({
 
           <div className="manageprotop-left-select">
             <CustomSelect
-              value={state?.category}
+              value={selectedCategory}
               onChange={(value) => handleSelectChange("category", value)}
               placeholder="Select category"
-              options={selectedCategory}
+              options={categories}
             />
           </div>
         </div>
