@@ -165,6 +165,7 @@ export default function Categorymanagement({
         toast.error(response.data.message);
       }
     } catch (err) {
+      console.log(err)
       if (err.response) {
         const { status, data } = err.response;
 

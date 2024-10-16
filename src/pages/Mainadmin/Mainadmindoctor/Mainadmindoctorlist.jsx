@@ -138,7 +138,7 @@ export default function Mainadmindoctorlist({
       <table className="doctortable">
         <tr className="doctortableTr">
           <th>No</th>
-          <th className="doctortableTh">
+          <th className="doctortableTh" style={{display:"flex",flexDirection:"column"}}>
             Doctor Name
             <input
               type="text"
@@ -148,7 +148,7 @@ export default function Mainadmindoctorlist({
             />
           </th>
           <th>Mobile Number</th>
-          <th>
+          <th  style={{display:"flex",flexDirection:"column"}}>
             PIN & Location
             <input
               type="text"
@@ -158,8 +158,10 @@ export default function Mainadmindoctorlist({
             />
           </th>
           <th>
-            Specialized
+            Specialization
+            <br />
             <input
+            style={{width:"100%"}}
               type="text"
               onChange={SearchData}
               name="specialization"
@@ -168,7 +170,7 @@ export default function Mainadmindoctorlist({
           </th>
           <th>View count</th>
           <th>Consult count</th>
-          <th>
+          <th  style={{display:"flex",flexDirection:"column"}}>
             Join Date
             <input
               type="date"
@@ -199,7 +201,7 @@ export default function Mainadmindoctorlist({
               <td>{ele?.name}</td>
               <td>{ele?.phone_no}</td>
               <td>{ele?.pincode}</td>
-              <td>{ele?.specialization}</td>
+              <td style={{textTransform:"Capitalize"}}>{ele?.specialization}</td>
               <td>{ele?.view_count}</td>
               <td>{ele?.consult_count}</td>
               <td>{moment(ele?.datetime).subtract(10, "days").calendar()}</td>

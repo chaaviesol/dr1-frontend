@@ -30,9 +30,9 @@ const Index = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   const { selectedDoc } = useContext(HospitalAdminContext);
-   const axiosPrivate=useAxiosPrivate()
+  const axiosPrivate = useAxiosPrivate();
   const doctor_id = selectedDoc?.id;
-  const tempImg = "./images/TempDocImg.jpg"
+  const tempImg = "./images/TempDocImg.jpg";
 
   const ResetTimePicker = () => {
     setTimePickers([
@@ -367,10 +367,17 @@ const Index = () => {
   console.log(DoctorData);
   console.log(TimePickers);
   console.log(currentAvailability);
+
+  const handleBack=()=>{
+
+  }
   return (
     <>
       {isLoading && <Loader />}
 
+      <button onClick={{handleBack}} className="adpha-back-button" style={{ marginTop: "1rem" }}>
+        <i className="ri-arrow-left-line"></i>
+      </button>
       <div className="mainadmindoctordatas flex">
         <div className="mainadmindoctordatas_profile flex">
           <img
@@ -402,7 +409,10 @@ const Index = () => {
             </h4>
 
             <div className="flex">
-              <div className="flex texticonset" style={{alignItems:"center",display:"flex"}}>
+              <div
+                className="flex texticonset"
+                style={{ alignItems: "center", display: "flex" }}
+              >
                 <i class="fi fi-sr-city"></i>{" "}
                 <h4 style={{ marginLeft: "10px" }}>
                   {DoctorData?.phone_office}
@@ -443,12 +453,16 @@ const Index = () => {
       <div className="mainadmindoctoraboutavail flex">
         <div className="mainadmindoctorabout ">
           <div
-            style={{ marginBottom: "1.3vw" ,display:"flex",alignItems:"center"}}
+            style={{
+              marginBottom: "1.3vw",
+              display: "flex",
+              alignItems: "center",
+            }}
             className="mainadmindoctoraboutDiv"
           >
             <h3>About</h3>
             <div onClick={editAbout}>
-              <IconButton sx={{padding:".8rem"}}>
+              <IconButton sx={{ padding: ".8rem" }}>
                 <EditIcon
                   style={{ color: editAboutProfile ? "blue" : "black" }}
                   id="mainadmindoctoraboutDivIcon"
@@ -529,7 +543,7 @@ const Index = () => {
                 </div>
               ))
             ) : (
-              <h3>Data not found</h3>
+             null
             )}
           </div>
           {currentAvailability?.length > 0 ? (
