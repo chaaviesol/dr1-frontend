@@ -298,6 +298,7 @@ export const CreateCampaign = () => {
             <div className={styles.discountMain}>
               <div className={styles.discountContainer}>
                 <select
+                style={{marginTop:"0"}}
                   value={form?.discount_type || ""}
                   name="discount_type"
                   className={styles.selectB}

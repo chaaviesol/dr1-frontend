@@ -34,17 +34,20 @@ export default function Productlist({
   const handleSelectChange = (field, value) => {
     if (field === "category") {
       if (value) {
-        const filtered = state.filter((item) => item.category === value);
+        const filtered = state.filter((item) =>
+          item.category.some((cat) => cat.toLowerCase() === value.toLowerCase())
+        );
+
         setFilteredState(filtered);
       } else {
         setFilteredState(state);
       }
     }
   };
-
+  //  => NOT WORKING
   const handleSearchChange = (searchTerm) => {
     if (searchTerm) {
-      const filtered = state.filter((item) => {
+      const filtered = filteredState.filter((item) => {
         const name = item.name ? item.name.toLowerCase() : "";
         const brand = item.brand ? item.brand.toLowerCase() : "";
         return (
