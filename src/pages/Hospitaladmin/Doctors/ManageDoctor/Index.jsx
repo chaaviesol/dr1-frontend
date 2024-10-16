@@ -17,7 +17,7 @@ import ConfirmationModal from "../../../../components/Confirmation/Index";
 import useFetchViewsAndContacts from "../../../../hooks/useFetchViewsAndContacts";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
-const Index = () => {
+const Index = ({setChangeDashboards}) => {
   const [open, setOpen] = React.useState({});
   const [FormValues, setFormValues] = useState({});
   const [DoctorData, setDoctorData] = useState();
@@ -88,7 +88,7 @@ const Index = () => {
       setFormValues("");
     }
   };
-  console.log("FormValues>>>>", FormValues);
+  // console.log("FormValues>>>>", FormValues);
   const changeValues = (id) => {
     const findData = currentAvailability.find((ele) => ele?.hospital_id === id);
     setEditValues(findData);
@@ -100,21 +100,21 @@ const Index = () => {
 
   const PickTime = (e, day) => {
     const values = dayjs(e).$d; // Convert Day.js object to JavaScript Date object
-    console.log(values);
+    // console.log(values);
     const name = day?.name;
     let mainind = day?.mainInd;
-    console.log(name);
-    console.log(mainind);
+    // console.log(name);
+    // console.log(mainind);
     let timingArray = [...(TimePickers[mainind].availableTimes || [])];
-    console.log(timingArray);
+    // console.log(timingArray);
     timingArray[day?.index] = { ...timingArray[day?.index], [name]: values };
-    console.log(timingArray);
+    // console.log(timingArray);
     let tempData = [...(TimePickers || [])];
     tempData[day?.mainInd] = {
       ...tempData[day?.mainInd],
       availableTimes: timingArray,
     };
-    console.log(tempData);
+    // console.log(tempData);
     setTimePickers(tempData);
   };
   const edittime = (e, day) => {
@@ -149,7 +149,7 @@ const Index = () => {
         }
       );
       const responseData = response.data.data;
-      console.log(responseData);
+      // console.log(responseData);
       setDoctorData(responseData.doctorId);
       if (!responseData.days_timing) {
         ResetTimePicker();
@@ -159,7 +159,7 @@ const Index = () => {
       }
       setEditingId(responseData.id);
 
-      console.log(responseData);
+      // console.log(responseData);
     } catch (err) {
       console.error(err);
     } finally {
@@ -184,7 +184,7 @@ const Index = () => {
     setTimePickers(tempPicker);
   };
 
-  console.log("EditValues>>>>", EditValues);
+  // console.log("EditValues>>>>", EditValues);
   const incrementBox = (id) => {
     const find = TimePickers?.filter((ele) => ele.id === id);
     const index = TimePickers?.findIndex((ele) => ele.id === id);
@@ -201,7 +201,6 @@ const Index = () => {
     }
   };
   const EditIncrement = (id) => {
-    alert("phhh");
     const find = EditValues?.days_timing?.filter((ele) => ele.id === id);
     const index = EditValues?.days_timing?.findIndex((ele) => ele.id === id);
     if (find.length > 0) {
@@ -213,11 +212,9 @@ const Index = () => {
           { startTime: "", endTime: "" },
         ],
       };
-      console.log("temp>>>", temp);
       setEditValues({ ...EditValues, days_timing: temp });
     }
   };
-  console.log("FormValues>>>", FormValues);
 
   const SaveData = () => {
     const data = {
@@ -266,7 +263,7 @@ const Index = () => {
         `${port}/hospital/edit_consultation`,
         data
       );
-      console.log(response);
+      // console.log(response);
       if (response?.data?.success) {
         toastify({ msg: "successfully updated availabilty", success: true });
         handleClose();
@@ -291,7 +288,7 @@ const Index = () => {
       );
       return checkEndPoint?.length === CheckStartPoint?.length;
     });
-    console.log("checkingValues>>>", checkingValues);
+    // console.log("checkingValues>>>", checkingValues);
     if (checkingValues.length === 7) {
       setIsLoading(true);
       axiosPrivate
@@ -319,7 +316,7 @@ const Index = () => {
       setdeletePopUp({ id: check.id, condition: true, index: check.index });
     }
   };
-  console.log("deletePopup>>>>", deletePopup);
+  // console.log("deletePopup>>>>", deletePopup);
   const ConfirmDelete = () => {
     const data = {
       id: deletePopup?.id,
@@ -329,7 +326,7 @@ const Index = () => {
     axiosPrivate
       .post(`${port}/hospital/delete_availability`, data)
       .then((res) => {
-        console.log("res>>>", res);
+        // console.log("res>>>", res);
         if (res?.data?.success) {
           let allAvailblity = [...currentAvailability];
           allAvailblity.splice(deletePopup.index, 1);
@@ -354,7 +351,7 @@ const Index = () => {
       about: DoctorData?.about,
     };
     axios.post(`${port}/doctor/edit`, data).then((res) => {
-      console.log(res);
+      // console.log(res);
       toast.success(res?.data?.message);
       editAbout();
     });
@@ -364,18 +361,18 @@ const Index = () => {
     const { name, value } = e?.target;
     setDoctorData({ ...DoctorData, [name]: value });
   };
-  console.log(DoctorData);
-  console.log(TimePickers);
-  console.log(currentAvailability);
+  // console.log(DoctorData);
+  // console.log(TimePickers);
+  // console.log(currentAvailability);
 
   const handleBack=()=>{
-
+    setChangeDashboards({doctor:true})
   }
   return (
     <>
       {isLoading && <Loader />}
 
-      <button onClick={{handleBack}} className="adpha-back-button" style={{ marginTop: "1rem" }}>
+      <button onClick={handleBack} className="adpha-back-button" style={{ marginTop: "1rem" }}>
         <i className="ri-arrow-left-line"></i>
       </button>
       <div className="mainadmindoctordatas flex">

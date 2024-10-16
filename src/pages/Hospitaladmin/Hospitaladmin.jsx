@@ -86,7 +86,7 @@ export default function Hospitaladmin() {
               {ChangeDashboards?.viewers && (
                 <Viewers consultAndViewData={consultAndViewData} />
               )}
-              {ChangeDashboards?.manageDoc && <ManageDoc />}
+              {ChangeDashboards?.manageDoc && <ManageDoc setChangeDashboards={setChangeDashboards} />}
               {ChangeDashboards?.feedbacks && (
                 <Feedbacks hospitalId={hospital?.id} />
               )}

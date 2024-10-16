@@ -55,6 +55,7 @@ function Overview({ hospital, consultAndViewData }) {
         `${port}/hospital/edit`,
         payload
       );
+      setIsAboutEditable(false)
       toast.success(response.data.message, toastConfig);
     } catch (err) {
       console.error("Error updating hospital info:", err);

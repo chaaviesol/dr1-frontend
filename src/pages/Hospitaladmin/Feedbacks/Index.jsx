@@ -36,7 +36,7 @@ function Index({ hospitalId }) {
 
   return (
     <>
-      <div className="doc_profileSecFeedBack">
+      <div className="doc_profileSecFeedBack" style={{marginTop:"1rem"}}>
         {isLoading && (
           <>
             <Loader />

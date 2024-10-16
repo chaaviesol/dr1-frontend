@@ -57,7 +57,7 @@ function HospitalSidebar({ data: { SentData, selected } }) {
         }
       >
         <i class="fi fi-sr-hospital"></i>
-        <h4>Feedback</h4>
+        <h4>Feedbacks</h4>
       </div>
     </div>
   );

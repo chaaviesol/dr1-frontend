@@ -59,7 +59,7 @@ export const Labadminprofile = ({
         `${BASE_URL}/lab/editlab`,
         payload
       );
-      setIsAboutEditable(isAboutEditable);
+      setIsAboutEditable(false);
       toast.success(response.data.message, toastConfig);
     } catch (err) {
       console.error("Error updating hospital info:", err);
