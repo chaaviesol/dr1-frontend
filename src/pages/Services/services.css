@@ -72,13 +72,6 @@
   margin-left: 5px;
 }
 
-.services_button:hover {
-  background-color: #0056b3;
-}
-
-.services_image_section4 {
-}
-
 .services_image_section4_img {
   background-image: url("../../../public/images/pham.jpg");
   height: 30vw;
@@ -667,4 +660,51 @@
   font-size: 1rem;
   color: #333; /* Text color for options */
   background-color: #f2f5ff; /* Ensure options have the same background */
+}
+
+.suboptions {
+  gap: 8px;
+  align-items: center;
+  min-width: 160px;
+}
+
+.suboptions i {
+  font-weight: 300;
+  color: #5b21b6;
+  background-color: #f2f5ff;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.suboptions h4 {
+  color: rgb(66, 66, 66);
+  font-weight: 800;
+}
+.serviceslist {
+  flex-wrap: wrap;
+}
+
+.servicepara {
+  font-size: calc(0.3rem + 0.8vw);
+  line-height: 1.6vw;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  margin-top: 15px;
+  color: #424242;
+}
+
+@media only screen and (max-width: 1140px) {
+  .container_ser {
+    max-width: 90%;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .container_ser {
+    max-width: 95%;
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
 }

@@ -54,7 +54,7 @@ export default function Services() {
         return;
       }
       const response = await axios.post(
-        `${BASE_URL}/career/homeserviceupload`,
+        ` ${BASE_URL}/career/homeserviceupload`,
         {
           type: formData.selectedService,
           name: formData.name,
@@ -98,32 +98,37 @@ export default function Services() {
             <h4 className="services_subtitle" style={{ color: "#FF4D4D" }}>
               Expert Opinion
             </h4>
-            <h2 className="services_main_title1">Opinion From</h2>
-            <h2 className="services_main_title" style={{ color: "#15803D" }}>
-              Experts
+            <h2 className="services_main_title1" style={{ marginTop: "10px" }}>
+              Expert Insight for
             </h2>
-            <p className="priscriptionpara">
-              The beauty of nature lies in its simplicity, offering tranquility
-              to those who take the time to appreciate it. Whether it's a calm
-              sunset or the gentle rustle of leaves, nature has a way of
-              soothing the soul. In a world filled with noise, these quiet
-              moments remind us of the peace that still exists around us
+            <h2 className="services_main_title" style={{ color: "#15803D" }}>
+              Your Health
+            </h2>
+            <p className="servicepara">
+              Confused about your diagnosis and next steps? Get your queries
+              answered by our expert panel consisting of eminent experts. We
+              ensure your easy access to specialists, online or offline.
             </p>
 
-            <div className="doctor-top-list flex">
-              <h2>10+ </h2>
-              {/* <div className="doctor-top-doc1-data ">
-                <h2>10+ </h2>
-              
-              </div> */}
-              <h4>Expert Doctors</h4>
-              {/* <div className="doctor-top-doc1 flex">
-                <img src="../images/serdo1.jpg" alt="" />
-                <img src="../images/serdo2.jpg" alt="" />
-                <img src="../images/dr20.jpg" alt="" />
-                <img src="../images/dr20.png" alt="" />
-                <img src="../images/serdo1.jpg" alt="" />
-              </div> */}
+            <div className="serviceslist flex">
+              <div className="flex suboptions">
+                <i class="ri-medal-line"></i>
+                <h4>Best Doctors</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-customer-service-2-line"></i>
+                <h4>Dedicated Support</h4>{" "}
+              </div>
+            </div>
+            <div className="serviceslist flex">
+              <div className="flex suboptions">
+                <i class="ri-contract-line"></i>
+                <h4>Thorough Assessment</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-shake-hands-line"></i>
+                <h4>Convenient Consultation</h4>{" "}
+              </div>
             </div>
             <button
               onClick={() => {
@@ -219,17 +224,36 @@ export default function Services() {
             <h4 className="services_subtitle" style={{ color: "#FF4D4D" }}>
               Online Medicine
             </h4>
-            <h2 className="services_main_title1">Get Your</h2>
-            <h2 className="services_main_title" style={{ color: "#F59E0B" }}>
-              Medicine At Home
+            <h2 className="services_main_title1" style={{ marginTop: "10px" }}>
+              Medicine at
             </h2>
-            <p className="priscriptionpara">
-              The beauty of nature lies in its simplicity, offering tranquility
-              to those who take the time to appreciate it. Whether it's a calm
-              sunset or the gentle rustle of leaves, nature has a way of
-              soothing the soul. In a world filled with noise, these quiet
-              moments remind us of the peace that still exists around us
+            <h2 className="services_main_title" style={{ color: "#F59E0B" }}>
+              Your Doorstep
+            </h2>
+            <p className="servicepara">
+              Whether it's from a pharmacy near you or far, all you have to do
+              is upload the doctor's prescription, and the Medicine will reach
+              your doorstep.
             </p>
+            <div className="serviceslist flex">
+              <div className="flex suboptions">
+                <i class="ri-shield-check-line"></i>
+                <h4>Secure</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-speed-up-line"></i> <h4>Fast Delivery</h4>{" "}
+              </div>
+            </div>
+            <div className="serviceslist flex">
+              <div className="flex suboptions">
+                <i class="ri-medal-2-line"></i>
+                <h4>Assured Quality</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-money-rupee-circle-line"></i>
+                <h4>Flexible Payment</h4>{" "}
+              </div>
+            </div>
             <button
               className="drone_red services_button"
               style={{ backgroundColor: "#F59E0B" }}
@@ -248,20 +272,34 @@ export default function Services() {
             <h4 className="services_subtitle" style={{ color: "#FF4D4D" }}>
               Services
             </h4>
-            <h2 className="services_main_title1">Top Level</h2>
+            <h2 className="services_main_title1">Your Smile,</h2>
             <h2 className="services_main_title" style={{ color: "#8B5CF6" }}>
-              Home Services
+              Our Priority
             </h2>
-            <p className="priscriptionpara">
-              The beauty of nature lies in its simplicity, offering tranquility
-              to those who take the time to appreciate it. Whether it's a calm
-              sunset or the gentle rustle of leaves, nature has a way of
-              soothing the soul. In a world filled with noise, these quiet
-              moments remind us of the peace that still exists around us
+            <p className="servicepara">
+              When it comes to home care services, we provide you with the best
+              and with utmost care. Whether it be nursing assistance or medical
+              equipment assistance, we offer you the best.
             </p>
             <div className="serviceslist flex">
-              <h4>Home Nurse</h4> <h4>Technician</h4> <h4>Physiotherapist</h4>{" "}
-              <h4>&More</h4>
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4> Home Nurse</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4>Technician</h4>{" "}
+              </div>
+            </div>
+            <div className="serviceslist flex">
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4>Physiotherapist</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4>Medical Equipments &More</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-hand-coin-line"></i>
+                <h4>& Many More</h4>{" "}
+              </div>
             </div>
             <button
               className="drone_red services_button"
@@ -299,26 +337,42 @@ export default function Services() {
             <h4 className="services_subtitle" style={{ color: "#FF4D4D" }}>
               Careers
             </h4>
-            <h2 className="services_main_title1">Find Your</h2>
-            <h2 className="services_main_title">Dream Job </h2>
-            <p className="priscriptionpara">
-              The beauty of nature lies in its simplicity, offering tranquility
-              to those who take the time to appreciate it. Whether it's a calm
-              sunset or the gentle rustle of leaves, nature has a way of
-              soothing the soul. In a world filled with noise, these quiet
-              moments remind us of the peace that still exists around us
+            <h2 className="services_main_title1">Opportunities Towards</h2>
+            <h2 className="services_main_title">Your Dream</h2>
+            <p className="servicepara">
+              Let us be your guide to finding the right place for you. We help
+              you connect to the right recruiters in your specialization and
+              help you realize that dream career.
             </p>
             <div className="serviceslist flex">
-              <h4>Home Nurse</h4> <h4>Technician</h4> <h4>Physiotherapist</h4>{" "}
-              <h4>&More</h4>
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4>Doctors</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4> Home Nurse</h4>{" "}
+              </div>
             </div>
+            <div className="serviceslist flex">
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4>Technician</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-check-line"></i> <h4>Physiotherapist</h4>{" "}
+              </div>
+              <div className="flex suboptions">
+                <i class="ri-hand-coin-line"></i>
+                <h4>& Many More</h4>{" "}
+              </div>
+            </div>
+            <p className="priscriptionpara" style={{ marginLeft: "15px" }}>
+              & Many More
+            </p>
             <button className="drone_red services_button" type="button">
               Apply Now <i className="ri-arrow-right-up-line"></i>
             </button>
           </div>
         </div>
       </div>
-
       {
         <Modal
           open={isShowHomeserviceModal}
@@ -423,8 +477,8 @@ export default function Services() {
           </div>
         </Modal>
       }
-
       <Footer />
+         
     </div>
   );
 }
