@@ -224,12 +224,20 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
             <td>{`${ele?.pincode} , ${ele?.address}`}</td>
             <td>
               {ele?.services?.length > 0 &&
-                ele.services.map((service) => `${service} ,`)}
+                ele.services.map((service, serviceIndex) =>
+                  service && serviceIndex === ele.services.length - 1
+                    ? service
+                    : `${service}, `
+                )}
             </td>
             <td>
               {" "}
               {ele?.features?.length > 0 &&
-                ele.features.map((feature) => `${feature} ,`)}
+                ele.features.map((feature, featureIndex) =>
+                  feature && featureIndex === ele.features.length - 1
+                    ? feature
+                    : `${feature}, `
+                )}
             </td>
             <td>{ele?.view_count}</td>
             <td>{ele?.consult_count}</td>

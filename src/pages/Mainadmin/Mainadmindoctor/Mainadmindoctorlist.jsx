@@ -179,12 +179,12 @@ export default function Mainadmindoctorlist({
           </th>
           <th>
             Status
-            <input
+            {/* <input
               type="text"
               onChange={SearchData}
               name="status"
               placeholder="Search by Contacts"
-            />
+            /> */}
           </th>
         </tr>
         {Doctors &&

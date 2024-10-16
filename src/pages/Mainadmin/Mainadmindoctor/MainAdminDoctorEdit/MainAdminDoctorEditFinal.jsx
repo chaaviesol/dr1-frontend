@@ -65,7 +65,6 @@ export const MainAdminDoctorEditFinal = () => {
       !editDoc?.name ||
       !editDoc?.phone_no ||
       !editDoc?.email ||
-      !editDoc?.password ||
       !editDoc?.education_qualification ||
       !editDoc?.specialization ||
       !editDoc?.type ||
@@ -77,7 +76,8 @@ export const MainAdminDoctorEditFinal = () => {
       !editDoc?.pincode ||
       !editDoc?.sector ||
       !editDoc?.phone_office;
-    console.log("checkFields>>>>", checkFields);
+    // console.log("checkFields>>>>", checkFields);
+    console.log("editDoc=>", editDoc);
     if (checkFields) {
       // setloader(false);
       alert("Please fill in all fields.");
@@ -507,11 +507,12 @@ export const MainAdminDoctorEditFinal = () => {
             event.preventDefault();
             navigate(-1);
           }}
+          style={{cursor:"pointer"}}
         >
           Back
         </h4>
 
-        <h4 onClick={handleSubmit}>Submit</h4>
+        <h4 onClick={handleSubmit}   style={{cursor:"pointer"}}>Submit</h4>
       </div>
     </div>
   );
