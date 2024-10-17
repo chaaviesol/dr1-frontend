@@ -421,6 +421,8 @@ export const DocAdminProfile = () => {
                     background: "#2A9D8F",
                     color: "white",
                     marginLeft: "10px",
+                    display:"flex",
+                    alignItems:"center"
                   }}
                 >
                   {DoctorData?.sector?.slice(0, 3).toUpperCase()}
@@ -609,7 +611,7 @@ export const DocAdminProfile = () => {
             </div>
 
             <div className="mainadmindoctoravilabilityAddmore">
-              <button onClick={handleOpen}>Add more</button>
+              <button disabled={loading} onClick={handleOpen}>Add more</button>
             </div>
           </div>
         </div>
