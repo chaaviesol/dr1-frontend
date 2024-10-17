@@ -5,7 +5,10 @@ import { toast } from "react-toastify";
 import { port } from "../../../config";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
-export default function Mainadmincustomerdetails({ Details }) {
+export default function Mainadmincustomerdetails({
+  Details,
+  setChangeDashboards,
+}) {
   const [customerDetails, setcustomerDetails] = useState(Details);
   const [customerActivity, setCustomerActivity] = useState([]);
   const axiosPrivate = useAxiosPrivate();
@@ -58,9 +61,20 @@ export default function Mainadmincustomerdetails({ Details }) {
   };
   // const timeAgo = ;
   // }
+
+  const handleBack = () => {
+    setChangeDashboards({ customer: true });
+  };
   return (
     <div>
-      <div className="mainadmindoctordatas flex">
+      <button
+        onClick={handleBack}
+        className="adpha-back-button"
+        style={{ marginTop: "1rem" }}
+      >
+        <i className="ri-arrow-left-line"></i>
+      </button>
+      <div className="mainadmindoctordatas flex" style={{ paddingTop: 0 }}>
         <div className="mainadmindoctordatas_profile flex">
           <img
             className="mainadmindoctordatas_profile_photo"

@@ -117,7 +117,7 @@ export default function Mainadmin() {
             )}
               {ChangeDashboards?.customerDetail && (
               <>
-                <Mainadmincustomerdetails Details={DetailData} />
+                <Mainadmincustomerdetails Details={DetailData} setChangeDashboards={setChangeDashboards} />
               </>
             )}
             {ChangeDashboards?.feedback && (
