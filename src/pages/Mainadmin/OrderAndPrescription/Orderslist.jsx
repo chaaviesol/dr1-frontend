@@ -153,7 +153,7 @@ export default function Orderslist({
           </th>
 
           <th className="">
-            <h4>PINCODE</h4>
+            <h4>Pincode</h4>
             <input
               type="text"
               onChange={SearchData}
@@ -173,12 +173,7 @@ export default function Orderslist({
           </th>
           <th className="">
             <h4>Status</h4>
-            <input
-              type="text"
-              onChange={SearchData}
-              name="so_status"
-              placeholder="Search by status"
-            />
+           
           </th>
         </tr>
         {datalist.map((ele, index) => (

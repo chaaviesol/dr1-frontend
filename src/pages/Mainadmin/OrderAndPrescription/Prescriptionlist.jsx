@@ -175,12 +175,12 @@ export default function Prescriptionlist({
           </th>
           <th className="">
             <h4>Status</h4>
-            <input
+            {/* <input
               type="text"
               onChange={SearchData}
               name="so_status"
               placeholder="Search by status"
-            />
+            /> */}
           </th>
         </tr>
         {datalist &&

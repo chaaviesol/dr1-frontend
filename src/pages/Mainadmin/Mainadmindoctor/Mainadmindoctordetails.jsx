@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { Loader } from "../../../components/Loader/Loader";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 
-export default function Mainadmindoctordetails({ Data: { DetailData } }) {
+export default function Mainadmindoctordetails({ Data: { DetailData },setChangeDashboards }) {
   const [open, setOpen] = React.useState({});
   const [EditValues, setEditValues] = useState({});
   const [isLoading, setisLoading] = useState(false);
@@ -138,12 +138,23 @@ export default function Mainadmindoctordetails({ Data: { DetailData } }) {
     navigate("/mainadmindoctorEditbasic", { state: { data: DoctorDetails } });
   };
 
+  const handleBack = () => {
+    setChangeDashboards({ doctor: true });
+  };
+
   if (isLoading) {
     return <Loader />;
   } else {
     return (
       <>
-        <div style={{ padding: "50px" }}>
+        <button
+        onClick={handleBack}
+        className="adpha-back-button"
+        style={{ marginTop: "1rem" }}
+      >
+        <i className="ri-arrow-left-line"></i>
+      </button>
+        <div style={{ padding: "20px",paddingTop:"0" }}>
           <div className="mainadmindoctordatas flex">
             <div className="mainadmindoctordatas_profile flex">
               <img

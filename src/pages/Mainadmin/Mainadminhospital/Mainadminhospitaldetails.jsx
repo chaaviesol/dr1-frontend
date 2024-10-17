@@ -7,14 +7,16 @@ import { toast } from "react-toastify";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
-export default function Mainadminhospitaldetails({ Data }) {
-
+export default function Mainadminhospitaldetails({
+  Data,
+  setChangeDashboards,
+}) {
   const [HospitalDetails, setHospitalDetails] = useState(Data?.DetailData);
   const [Feedbacks, setFeedbacks] = useState([]);
   const [views, setviews] = useState([]);
 
   const navigate = useNavigate();
-  const axiosPrivate=useAxiosPrivate();
+  const axiosPrivate = useAxiosPrivate();
   const consultAndViewData = useFetchViewsAndContacts(
     HospitalDetails?.id,
     "Hospital"
@@ -70,8 +72,19 @@ export default function Mainadminhospitaldetails({ Data }) {
     console.log(temp);
     setHospitalDetails(temp);
   };
+
+  const handleBack = () => {
+    setChangeDashboards({ hospital: true });
+  };
   return (
     <>
+      <button
+        onClick={handleBack}
+        className="adpha-back-button"
+        style={{ marginTop: "1rem" }}
+      >
+        <i className="ri-arrow-left-line"></i>
+      </button>
       <div className="mainadmindoctordatas flex">
         <div className="mainadmindoctordatas_profile flex">
           <img
@@ -152,7 +165,9 @@ export default function Mainadminhospitaldetails({ Data }) {
         <div className="mainadmindoctorabout ">
           <h3 style={{ marginBottom: "1.3vw" }}>About</h3>
 
-          <h4 style={{ marginBottom: "1.3vw" }} className="priscriptionpara">{HospitalDetails?.about}</h4>
+          <h4 style={{ marginBottom: "1.3vw" }} className="priscriptionpara">
+            {HospitalDetails?.about}
+          </h4>
           <h3 style={{ marginBottom: "1.3vw" }}>Address</h3>
 
           <h4 style={{ marginBottom: "1vw" }}>{HospitalDetails?.address}</h4>
@@ -297,8 +312,20 @@ export default function Mainadminhospitaldetails({ Data }) {
               : ""
           }
         >
-          <button style={{backgroundColor:"#3A65FD"}} onClick={EditDetailsCondition} >Edit Profile</button>
-          <h4 onClick={UpdateStatus} style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+          <button
+            style={{ backgroundColor: "#3A65FD" }}
+            onClick={EditDetailsCondition}
+          >
+            Edit Profile
+          </button>
+          <h4
+            onClick={UpdateStatus}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             {HospitalDetails?.status === "N"
               ? "Disabled"
               : HospitalDetails?.status === "Y" ||

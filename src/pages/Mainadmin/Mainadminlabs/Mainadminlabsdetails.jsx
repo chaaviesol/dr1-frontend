@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../../contexts/Contexts";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 
-export default function Mainadminlabsdetails({ labData }) {
+export default function Mainadminlabsdetails({ labData ,setChangeDashboards}) {
   const { setLabAdminRg } = useContext(MyContext);
   const navigate = useNavigate();
   const consultAndViewData = useFetchViewsAndContacts(labData?.id, "Lab");
@@ -13,8 +13,19 @@ export default function Mainadminlabsdetails({ labData }) {
     setLabAdminRg(labData);
     navigate("/mainadminlabeditlab1");
   };
+
+  const handleBack = () => {
+    setChangeDashboards({ hospital: true });
+  };
   return (
     <>
+      <button
+        onClick={handleBack}
+        className="adpha-back-button"
+        style={{ marginTop: "1rem" }}
+      >
+        <i className="ri-arrow-left-line"></i>
+      </button>
       <div className="mainadmindoctordatas flex">
         <div className="mainadmindoctordatas_profile flex">
           <img

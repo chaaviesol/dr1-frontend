@@ -154,12 +154,12 @@ function Careerlist() {
 
           <th className="">
             <h4>Status</h4>
-            <input
+            {/* <input
               type="text"
               onChange={SearchData}
               name="status"
               placeholder="Search by status"
-            />
+            /> */}
           </th>
         </tr>
         {datalist?.map((ele, index) => (

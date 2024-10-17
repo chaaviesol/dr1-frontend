@@ -28,7 +28,7 @@ import Productlist from "../Mainadmindoctor/ProductManagement/Productlist";
 import Categorymanagement from "../Mainadmindoctor/ProductCategory/Categorymanagement";
 import ManageQuery from "../ManageQuery/ManageQuery";
 import ViewQueries from "../ManageQuery/ViewQueries";
-import {CreateCampaign} from "../Campaign/CreateCampaign";
+import { CreateCampaign } from "../Campaign/CreateCampaign";
 import Careerlist from "../CareerManage/Careerlist";
 import HomeServicelist from "../HomeServiceManage/HomeServicelist";
 
@@ -78,7 +78,10 @@ export default function Mainadmin() {
             )}
             {ChangeDashboards?.doctorDetail && (
               <>
-                <Mainadmindoctordetails Data={{ DetailData }} />
+                <Mainadmindoctordetails
+                  Data={{ DetailData }}
+                  setChangeDashboards={setChangeDashboards}
+                />
               </>
             )}
 
@@ -91,7 +94,10 @@ export default function Mainadmin() {
             )}
             {ChangeDashboards?.hospitaldetails && (
               <>
-                <Mainadminhospitaldetails Data={{ DetailData }} />
+                <Mainadminhospitaldetails
+                  Data={{ DetailData }}
+                  setChangeDashboards={setChangeDashboards}
+                />
               </>
             )}
 
@@ -105,7 +111,10 @@ export default function Mainadmin() {
             )}
             {ChangeDashboards?.singleLabDetails && (
               <>
-                <Mainadminlabsdetails labData={DetailData} />
+                <Mainadminlabsdetails
+                  labData={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
               </>
             )}
             {ChangeDashboards?.customer && (
@@ -115,9 +124,12 @@ export default function Mainadmin() {
                 />
               </>
             )}
-              {ChangeDashboards?.customerDetail && (
+            {ChangeDashboards?.customerDetail && (
               <>
-                <Mainadmincustomerdetails Details={DetailData} setChangeDashboards={setChangeDashboards} />
+                <Mainadmincustomerdetails
+                  Details={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
               </>
             )}
             {ChangeDashboards?.feedback && (
@@ -135,7 +147,7 @@ export default function Mainadmin() {
                 <MainAdminCategoryEdit />
               </>
             )}
-          
+
             {ChangeDashboards?.manageadmin && (
               <>
                 <Adminlist setChangeDashboards={setChangeDashboards} />
