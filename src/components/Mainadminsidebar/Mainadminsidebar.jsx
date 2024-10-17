@@ -26,7 +26,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
           FindButtonValue("customer");
         }}
         className={
-          selected?.customer
+          selected?.customer || selected?.customerDetail
             ? "admimmenuicon admimmenuicon2 flex"
             : "admimmenuicon flex"
         }
@@ -40,7 +40,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
           FindButtonValue("doctor");
         }}
         className={
-          selected?.doctor
+          selected?.doctor ||  selected?.doctorDetail
             ? "admimmenuicon admimmenuicon2 flex"
             : "admimmenuicon flex"
         }

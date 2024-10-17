@@ -215,12 +215,12 @@ export default function Mainadminhospitallist({
           </th>
           <th>
             Status
-            <input
+            {/* <input
               type="text"
               onChange={SearchData}
               name="status"
               placeholder="Search by Contacts"
-            />
+            /> */}
           </th>
         </tr>
         {Hospital.map((ele, index) => (

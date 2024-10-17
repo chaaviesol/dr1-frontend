@@ -192,7 +192,7 @@ export const labAdminRoutes = [
   { path: "/labprofile", element: <LabProfileMainSec /> },
 ];
 export const superAdminRoutes = [
-  { path: "/mainadmin", element: <Mainadmin /> },
+{ path: "/mainadmin", element: <Mainadmin /> },
   { path: "/addadmin", element: <Addadmins /> },
   { path: "/adminlist", element: <Adminlist /> },
   { path: "/mainadmindoctordetails", element: <Mainadmindoctordetails /> },

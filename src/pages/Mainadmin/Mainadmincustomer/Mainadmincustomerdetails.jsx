@@ -72,24 +72,31 @@ export default function Mainadmincustomerdetails({ Details }) {
             <div className="flex">
               {" "}
               <h2>{customerDetails?.name}</h2>{" "}
-              <h4
-                className="highlight_data"
-                style={{
-                  background: "#2A9D8F",
-                  color: "white",
-                  marginLeft: "10px",
-                }}
-              >
-                {customerDetails?.gender || "gender"}
-              </h4>
+              {customerDetails?.gender && (
+                <h4
+                  className="highlight_data"
+                  style={{
+                    background: "#2A9D8F",
+                    color: "white",
+                    marginLeft: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {customerDetails?.gender}
+                </h4>
+              )}
             </div>
 
-            <div className="flex texticonset">
-              <i style={{ color: "#FB8500" }} class="fi fi-br-age"></i>
-              <h4 style={{ marginLeft: "10px" }}>
-                {customerDetails?.ageGroup} Years
-              </h4>
-            </div>
+            {customerDetails?.ageGroup && (
+              <div className="flex texticonset">
+                <i style={{ color: "#FB8500" }} class="fi fi-br-age"></i>
+
+                <h4 style={{ marginLeft: "10px" }}>
+                  {customerDetails?.ageGroup} Years
+                </h4>
+              </div>
+            )}
 
             <div className="flex">
               <div className="flex texticonset">
