@@ -55,7 +55,7 @@ function Overview({ hospital, consultAndViewData }) {
         `${port}/hospital/edit`,
         payload
       );
-      setIsAboutEditable(false)
+      setIsAboutEditable(false);
       toast.success(response.data.message, toastConfig);
     } catch (err) {
       console.error("Error updating hospital info:", err);
@@ -79,16 +79,20 @@ function Overview({ hospital, consultAndViewData }) {
             <div className="flex">
               {" "}
               <h2> {hospital?.name}</h2>{" "}
-              <h4
-                className="highlight_data"
-                style={{
-                  background: "#2A9D8F",
-                  color: "white",
-                  marginLeft: "10px",
-                }}
-              >
-                {hospital?.type}
-              </h4>
+              {hospital?.type && (
+                <h4
+                  className="highlight_data"
+                  style={{
+                    background: "#2A9D8F",
+                    color: "white",
+                    marginLeft: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {hospital?.type}
+                </h4>
+              )}
             </div>
 
             <h4

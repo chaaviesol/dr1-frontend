@@ -22,6 +22,8 @@ export const DoctorCard = ({ data, setChangeDashboards }) => {
             className={styles.docImage}
             src={data?.image || tempImage}
             alt=""
+            style={{objectFit:"contain"}}
+
           />
         </div>
         <div>

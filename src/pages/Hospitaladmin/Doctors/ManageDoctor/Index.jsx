@@ -17,7 +17,7 @@ import ConfirmationModal from "../../../../components/Confirmation/Index";
 import useFetchViewsAndContacts from "../../../../hooks/useFetchViewsAndContacts";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
-const Index = ({setChangeDashboards}) => {
+const Index = ({ setChangeDashboards }) => {
   const [open, setOpen] = React.useState({});
   const [FormValues, setFormValues] = useState({});
   const [DoctorData, setDoctorData] = useState();
@@ -365,14 +365,18 @@ const Index = ({setChangeDashboards}) => {
   // console.log(TimePickers);
   // console.log(currentAvailability);
 
-  const handleBack=()=>{
-    setChangeDashboards({doctor:true})
-  }
+  const handleBack = () => {
+    setChangeDashboards({ doctor: true });
+  };
   return (
     <>
       {isLoading && <Loader />}
 
-      <button onClick={handleBack} className="adpha-back-button" style={{ marginTop: "1rem" }}>
+      <button
+        onClick={handleBack}
+        className="adpha-back-button"
+        style={{ marginTop: "1rem" }}
+      >
         <i className="ri-arrow-left-line"></i>
       </button>
       <div className="mainadmindoctordatas flex">
@@ -386,36 +390,45 @@ const Index = ({setChangeDashboards}) => {
             <div className="flex">
               {" "}
               <h2>{DoctorData?.name}</h2>{" "}
-              <h4
-                className="highlight_data"
-                style={{
-                  background: "#2A9D8F",
-                  color: "white",
-                  marginLeft: "10px",
-                }}
-              >
-                {DoctorData?.sector?.slice(0, 3).toUpperCase()}
-              </h4>
+              {DoctorData?.sector && (
+                <h4
+                  className="highlight_data"
+                  style={{
+                    background: "#2A9D8F",
+                    color: "white",
+                    marginLeft: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {DoctorData?.sector==="government" ? "Gov" : "Pvt"}
+                </h4>
+              )}
             </div>
 
             <h4
               className="highlight_data"
-              style={{ background: "#3A65FD", color: "white" }}
+              style={{ background: "#3A65FD", color: "white",textTransform:"uppercase" }}
             >
               {DoctorData?.education_qualification}
             </h4>
-
+            {    DoctorData?.phone_office
+                
+                &&
             <div className="flex">
               <div
                 className="flex texticonset"
                 style={{ alignItems: "center", display: "flex" }}
               >
                 <i class="fi fi-sr-city"></i>{" "}
+               
+                
                 <h4 style={{ marginLeft: "10px" }}>
                   {DoctorData?.phone_office}
                 </h4>
               </div>
             </div>
+                }
 
             <div className="flex texticonset">
               <i class="fi fi-sr-envelope"></i>
@@ -521,27 +534,25 @@ const Index = ({setChangeDashboards}) => {
           </div>
 
           <div style={{ display: "flex", gap: ".5rem" }}>
-            {currentAvailability?.length > 0 ? (
-              currentAvailability?.map((ele, index) => (
-                <div className="availabilityDays" style={{ width: "50px" }}>
-                  <>
-                    <p
-                      className={styles.date}
-                      style={{
-                        color: ele.availableTimes[0]?.startTime
-                          ? "blue"
-                          : "rgb(128 128 128 / 91%)",
-                      }}
-                    >
-                      {ele?.day.slice(0, 3)}{" "}
-                    </p>
-                    &nbsp;
-                  </>
-                </div>
-              ))
-            ) : (
-             null
-            )}
+            {currentAvailability?.length > 0
+              ? currentAvailability?.map((ele, index) => (
+                  <div className="availabilityDays" style={{ width: "50px" }}>
+                    <>
+                      <p
+                        className={styles.date}
+                        style={{
+                          color: ele.availableTimes[0]?.startTime
+                            ? "blue"
+                            : "rgb(128 128 128 / 91%)",
+                        }}
+                      >
+                        {ele?.day.slice(0, 3)}{" "}
+                      </p>
+                      &nbsp;
+                    </>
+                  </div>
+                ))
+              : null}
           </div>
           {currentAvailability?.length > 0 ? (
             <div className="mainadmindoctoravilabilityAdd">
