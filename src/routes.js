@@ -87,6 +87,7 @@ import DetailedOpinion from "./pages/Customer/Second Opinion/DetailedOpinion";
 import { CreateCampaign } from "./pages/Mainadmin/Campaign/CreateCampaign";
 import Careersform from "./pages/Career/Careerform";
 import MyOrders from "./pages/Customer/MyOrders/MyOrders";
+import Billing from "./pages/Mainadmin/Billing/Billing";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
@@ -224,5 +225,9 @@ export const superAdminRoutes = [
   {
     path: "/categoryedit",
     element: <Categorymanagement />,
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
   },
 ];
