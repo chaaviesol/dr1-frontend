@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./productlist.css";
 import CustomSelect from "../../../../components/EditProfile/Editps";
 import { BASE_URL } from "../../../../config";
@@ -13,6 +13,7 @@ export default function Productlist({
   const [filteredState, setFilteredState] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const searchRef = useRef();
   console.log({ state });
   useEffect(() => {
     setIsLoading(true);
@@ -31,26 +32,40 @@ export default function Productlist({
     setChangeDashboards({ addproduct: true });
     setDetailData("");
   };
+
   const handleSelectChange = (field, value) => {
+    let searchValue = searchRef.current.value?.toLowerCase() || "";
+
     if (field === "category") {
-      setSelectedCategory(value); 
-      if (value) {
-        const filtered = state.filter((item) =>
-          item.category.some((cat) => cat.toLowerCase() === value.toLowerCase())
-        );
-        setFilteredState(filtered);
-      } else {
-        setFilteredState(state);
-      }
+      setSelectedCategory(value);
+
+      const filtered = state.filter((item) => {
+        const categoryMatch = value
+          ? item.category.some(
+              (cat) => cat.toLowerCase() === value.toLowerCase()
+            )
+          : true;
+
+        const searchMatch = searchValue
+          ? item.name.toLowerCase().includes(searchValue)
+          : true;
+
+        return categoryMatch && searchMatch;
+      });
+
+      setFilteredState(filtered); 
     }
   };
+
   //  => NOT WORKING
   const handleSearchChange = (searchTerm) => {
-    let filtered = state; 
+    let filtered = state;
 
     if (selectedCategory) {
       filtered = filtered.filter((item) =>
-        item.category.some((cat) => cat.toLowerCase() === selectedCategory.toLowerCase())
+        item.category.some(
+          (cat) => cat.toLowerCase() === selectedCategory.toLowerCase()
+        )
       );
     }
 
@@ -99,6 +114,7 @@ export default function Productlist({
         <div className="manageprotop-left flex">
           <div className="input_search_box_adminP">
             <input
+              ref={searchRef}
               type="text"
               placeholder="Search products..."
               onChange={(e) => handleSearchChange(e.target.value)}

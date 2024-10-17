@@ -1,0 +1,159 @@
+.billing-container {
+  width: 95%;
+  margin-inline: auto;
+}
+.billing-container h1 {
+  padding: 20px 0px;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.billingsection {
+  gap: 20px;
+}
+
+.billingleft {
+  height: 80vh;
+  background-color: #eef1ff;
+  transition: width 0.5s ease;
+  position: relative;
+  align-items: center;
+  /* border-radius:10px; */
+  border: 2px solid #b1c2ff;
+  overflow: hidden;
+}
+
+.billingleft img {
+  width: 100%;
+}
+
+.billingrighttop {
+  gap: 10px;
+}
+.billingright {
+  width: 100%;
+}
+.billinginput {
+  flex: 1;
+}
+
+.billinginput input {
+  margin-top: 10px;
+  background-color: #eef1ff;
+  height: 40px;
+  width: 100%;
+  padding: 0px 15px;
+  font-weight: 600;
+  border: 2px solid #eef1ff;
+}
+
+.billinginput input:focus {
+  border: 2px solid #3a65fd;
+}
+
+.billingaddress input {
+  background-color: #eef1ff;
+  height: 40px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 0px 15px;
+  font-weight: 600;
+  border: 2px solid #eef1ff;
+}
+.billingaddress input:focus {
+  border: 2px solid #3a65fd;
+}
+
+.billingaddress {
+  margin-top: 20px;
+}
+
+.medmini {
+  height: 35px;
+  width: 35px;
+  border-radius: 50px;
+  background-color: #3a65fd;
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.billingimagenumber {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.billingimagenumber button {
+  background-color: #3a65fd;
+  color: white;
+  height: 35px;
+  width: 35px;
+}
+
+.billingimagenumberdata {
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0px 10px;
+  background-color: #b4c2ff;
+  color: #3a65fd;
+}
+
+.billingmed {
+  margin-top: 20px;
+}
+
+.billing-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.billing-table th {
+  background-color: #eef1ff;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+  border: 1px solid #ccd5fa;
+  text-align: center;
+}
+
+.billing-table td {
+  padding: 0;
+  font-weight: 700;
+  font-size: 0px;
+  align-items: start;
+  height: fit-content;
+}
+
+/* Style for input boxes */
+.billing-input {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box; /* Ensure input fills the cell without overflowing */
+  border: 2px solid white;
+  font-size: 15px;
+  font-weight: 600;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effect */
+}
+
+/* Focus state for input */
+.billing-input:focus {
+  outline: none;
+  border: 2px solid #3a65fd; /* Remove the default outline */
+}
+
+.billingbutton {
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.billingbutton button {
+  background-color: #3a65fd;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+}
