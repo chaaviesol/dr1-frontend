@@ -534,7 +534,7 @@ export default function Doctor() {
                     >
                       <h4>{speciality}</h4>
                       <div className="spec_main_card_button flex">
-                        <i class="ri-arrow-right-line"></i>
+                        <i className="ri-arrow-right-line"></i>
                       </div>
                     </div>
                   ))}

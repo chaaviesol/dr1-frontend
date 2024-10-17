@@ -163,7 +163,7 @@ export default function MobileHospitalProfile() {
             className="mobilehospitalprofileback flex"
             onClick={() => navigate(-1)}
           >
-            <i class="ri-arrow-left-line"></i>
+            <i className="ri-arrow-left-line"></i>
           </div>
           <div className="mobilehospitalprofiletitle flex">
             <h3> Hospital Profile </h3>
@@ -172,7 +172,7 @@ export default function MobileHospitalProfile() {
             className="mobilehospitalprofileshare flex"
             onClick={handleShare}
           >
-            <i class="ri-share-fill"></i>
+            <i className="ri-share-fill"></i>
           </div>
         </div>
 
@@ -194,7 +194,7 @@ export default function MobileHospitalProfile() {
                 <h3>{HospitalData?.name}</h3>
               </div>
               <div className="mobilehospitalprofileheroloca flex">
-                <i class="ri-map-pin-fill"></i>
+                <i className="ri-map-pin-fill"></i>
                 <h4>{HospitalData?.pincode}</h4>
               </div>
             </div>
@@ -204,7 +204,7 @@ export default function MobileHospitalProfile() {
               onClick={consultNow}
               disable={isCustomerProfileCheckLoading}
             >
-              <i class="ri-phone-fill"></i>
+              <i className="ri-phone-fill"></i>
             </button>
           </div>
         </div>
@@ -235,7 +235,7 @@ export default function MobileHospitalProfile() {
         <div className="mobilehospitalprofilespec flex">
           {HospitalData?.speciality?.map((ele) => (
             <div className="mobilehospitalprofilespec1 flex">
-              <i class="ri-arrow-right-line"></i>
+              <i className="ri-arrow-right-line"></i>
               <h4> {ele}</h4>
             </div>
           ))}
@@ -248,7 +248,7 @@ export default function MobileHospitalProfile() {
         <div className="mobilehospitalprofilespec flex">
           {HospitalData?.feature?.map((ele) => (
             <div className="mobilehospitalprofilespec1 flex">
-              <i class="ri-arrow-right-line"></i>
+              <i className="ri-arrow-right-line"></i>
               <h4>{ele}</h4>
             </div>
           ))}
@@ -263,7 +263,7 @@ export default function MobileHospitalProfile() {
             {" "}
             <h3 style={{ background: "#FF8440" }}>
               {" "}
-              <i class="ri-star-fill"></i>
+              <i className="ri-star-fill"></i>
               {feedbacks?.averageRating || 0} +
             </h3>
           </div>
@@ -278,7 +278,7 @@ export default function MobileHospitalProfile() {
 
         <div style={{marginTop:"20px"}}>
           {/* <div className="flex">
-            <i class="ri-bard-fill"></i> <h3>Review Summary</h3>
+            <i className="ri-bard-fill"></i> <h3>Review Summary</h3>
           </div>
 
           <h4 style={{ marginTop: "10px" }}>
@@ -313,7 +313,7 @@ export default function MobileHospitalProfile() {
                   </h4>
                 </div>
                 <div className="mobiledoctorprofilefeedbackname flex">
-                  <i class="ri-arrow-right-circle-fill"></i>
+                  <i className="ri-arrow-right-circle-fill"></i>
                   <h3>{ele?.userid?.name}</h3>
                 </div>
               </Fragment>

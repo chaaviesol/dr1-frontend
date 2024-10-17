@@ -19,7 +19,7 @@ function CartTopbarWithBackButton() {
           }}
           onClick={() => navigate(-1)}
         >
-          <i class="ri-arrow-left-line"></i>
+          <i className="ri-arrow-left-line"></i>
         </div>
         <CartIcon />
       </div>

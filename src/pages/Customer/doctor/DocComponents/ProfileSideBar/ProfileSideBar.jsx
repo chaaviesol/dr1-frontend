@@ -20,7 +20,7 @@ export const ProfileSideBar = ({ data: { SentData, selected } }) => {
               : "admimmenuicon flex"
           }
         >
-          <i class="ri-file-chart-fill"></i>
+          <i className="ri-file-chart-fill"></i>
           <h4>Profile</h4>
         </div>
 
@@ -34,7 +34,7 @@ export const ProfileSideBar = ({ data: { SentData, selected } }) => {
               : "admimmenuicon flex"
           }
         >
-          <i class="fi fi-sr-stethoscope"></i>
+          <i className="fi fi-sr-stethoscope"></i>
           <h4>Views</h4>
         </div>
         <div
@@ -47,7 +47,7 @@ export const ProfileSideBar = ({ data: { SentData, selected } }) => {
               : "admimmenuicon flex"
           }
         >
-          <i class="fi fi-sr-users-alt"></i>
+          <i className="fi fi-sr-users-alt"></i>
           <h4>Feedbacks</h4>
         </div>
 
@@ -62,7 +62,7 @@ export const ProfileSideBar = ({ data: { SentData, selected } }) => {
                 : "admimmenuicon flex"
             }
           >
-            <i class="ri-message-2-fill"></i>
+            <i className="ri-message-2-fill"></i>
             <h4>Queries</h4>
           </div>
         )}

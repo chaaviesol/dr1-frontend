@@ -224,7 +224,7 @@ export default function Careersform() {
           <div className="selectedlocation flex">
             {formData.preferred_location.map((location, index) => (
               <div key={index} className="careerslocation flex">
-                <i class="ri-map-pin-line"></i>
+                <i className="ri-map-pin-line"></i>
                 <h4>{location}</h4>
               </div>
             ))}

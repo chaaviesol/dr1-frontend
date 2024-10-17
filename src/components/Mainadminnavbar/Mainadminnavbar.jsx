@@ -36,14 +36,14 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
                 : "adminonboarding flex"
             }
           >
-            <i class="fi fi-sr-introduction-handshake"></i>
+            <i className="fi fi-sr-introduction-handshake"></i>
             <h4 style={{ marginLeft: "10px" }}>Onboarding</h4>
           </div>
           <div
             style={{ marginLeft: "18px" }}
             className="adminnotification flex"
           >
-            <i class="ri-notification-2-line"></i>
+            <i className="ri-notification-2-line"></i>
           </div>
 
           <img
@@ -71,19 +71,19 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
 
               <div className="mainadminprofilenamecardright flex">
                 <div className="editadminprofile flex">
-                  <i class="ri-pencil-line"></i>
+                  <i className="ri-pencil-line"></i>
                 </div>
               </div>
             </div>
 
             <div className="mainadminprofilecontactcard">
               <div className="flex texticonset">
-                <i class="fi fi-sr-call-outgoing"></i>
+                <i className="fi fi-sr-call-outgoing"></i>
                 <h4 style={{ marginLeft: "10px" }}>+91 9878898346</h4>
               </div>
 
               <div className="flex texticonset">
-                <i class="fi fi-sr-envelope"></i>
+                <i className="fi fi-sr-envelope"></i>
                 <h4 style={{ marginLeft: "10px" }}>anilyadhav@gmail.com</h4>
               </div>
             </div>
@@ -95,22 +95,22 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
                 setProfilePopup(false);
               }}
             >
-              <i class="ri-vip-crown-line"></i>
+              <i className="ri-vip-crown-line"></i>
               <h4 style={{ marginLeft: "10px" }}>Admins</h4>
             </div>
 
             <div className="adminmenuprofile flex">
-              <i class="ri-settings-line"></i>
+              <i className="ri-settings-line"></i>
               <h4 style={{ marginLeft: "10px" }}>Settings</h4>
             </div>
 
             <div className="adminmenuprofile flex">
-              <i class="ri-edit-2-line"></i>
+              <i className="ri-edit-2-line"></i>
               <h4 style={{ marginLeft: "10px" }}>Edit Category</h4>
             </div>
 
             <div style={{ color: "#C45050" }} className="adminmenuprofile flex">
-              <i class="ri-logout-box-line"></i>
+              <i className="ri-logout-box-line"></i>
               <h4 style={{ marginLeft: "10px" }}>Logout</h4>
             </div>
           </div>

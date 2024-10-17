@@ -291,11 +291,11 @@ function Pharmacy() {
 
             <div className="ploadprescriptionfesec">
               <div className="ploadprescriptionfe flex">
-                <i class="ri-calendar-schedule-line"></i>
+                <i className="ri-calendar-schedule-line"></i>
                 <h4>Fast Delivery</h4>
               </div>
               <div className="ploadprescriptionfe flex">
-                <i class="ri-cash-line"></i>
+                <i className="ri-cash-line"></i>
                 <h4>Cash On Delivery</h4>
               </div>
             </div>
@@ -306,7 +306,7 @@ function Pharmacy() {
                   onClick={handleBackButton}
                   style={{ marginBottom: "10px" }}
                 >
-                  <i class="ri-arrow-left-line"></i>
+                  <i className="ri-arrow-left-line"></i>
                 </div>
                 <h3 >Upload Prescription</h3>
 

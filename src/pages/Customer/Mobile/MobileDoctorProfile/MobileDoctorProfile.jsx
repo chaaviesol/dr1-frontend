@@ -193,7 +193,7 @@ export default function MobileDoctorProfile() {
                 navigate(-1);
               }}
             >
-              <i class="ri-arrow-left-line"></i>
+              <i className="ri-arrow-left-line"></i>
             </div>
             <div className="mobiledoctorprofiletitle flex">
               <h3> Doctor Profile </h3>
@@ -202,7 +202,7 @@ export default function MobileDoctorProfile() {
               className="mobiledoctorprofileshare flex"
               onClick={handleShare}
             >
-              <i class="ri-share-fill"></i>
+              <i className="ri-share-fill"></i>
             </div>
           </div>
         </div>
@@ -355,7 +355,7 @@ export default function MobileDoctorProfile() {
                         </Modal>
                         <div className="mobileavailabityhospitalmore flex">
                           <i
-                            class="ri-arrow-right-up-line"
+                            className="ri-arrow-right-up-line"
                             onClick={modalopen}
                           ></i>
                         </div>
@@ -376,7 +376,7 @@ export default function MobileDoctorProfile() {
                   {" "}
                   <h3 style={{ background: "#FF8440" }}>
                     {" "}
-                    <i class="ri-star-fill"></i>
+                    <i className="ri-star-fill"></i>
                     {feedbacks?.averageRating || 0} +
                   </h3>
                 </div>
@@ -391,7 +391,7 @@ export default function MobileDoctorProfile() {
 
               {/* <div className="mobiledoctorprofilesummery"> */}
               {/* <div className="flex">
-                  <i class="ri-bard-fill"></i> <h3>Review Summary</h3>
+                  <i className="ri-bard-fill"></i> <h3>Review Summary</h3>
                 </div>
 
                 <h4 style={{ marginTop: "10px" }}>
@@ -444,7 +444,7 @@ export default function MobileDoctorProfile() {
                         </h4>
                       </div>
                       {/* <div className="mobiledoctorprofilefeedbackname flex">
-                        <i class="ri-arrow-right-circle-fill"></i>
+                        <i className="ri-arrow-right-circle-fill"></i>
                         <h3>{ele?.userid?.name}</h3>
                       </div> */}
                     </Fragment>

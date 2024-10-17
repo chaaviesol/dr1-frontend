@@ -18,25 +18,25 @@ function CusDoctor() {
       <div className={styles.mobiletopdoctor}>
 
       <div className={styles.doctorcardfirst}>
-        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" class="doctor-image"/>
-        <h3 class="doctor-name">Dr. Brooklyn Simmons</h3>
-        <p class="doctor-specialty">Dentist, Cosmetic</p>
+        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" className="doctor-image"/>
+        <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+        <p className="doctor-specialty">Dentist, Cosmetic</p>
       </div>
 
       <div className={styles.doctorcardfirst}>
-        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" class="doctor-image"/>
-        <h3 class="doctor-name">Dr. Brooklyn Simmons</h3>
-        <p class="doctor-specialty">Dentist, Cosmetic</p>
+        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" className="doctor-image"/>
+        <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+        <p className="doctor-specialty">Dentist, Cosmetic</p>
       </div>
       <div className={styles.doctorcardfirst}>
-        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" class="doctor-image"/>
-        <h3 class="doctor-name">Dr. Brooklyn Simmons</h3>
-        <p class="doctor-specialty">Dentist, Cosmetic</p>
+        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" className="doctor-image"/>
+        <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+        <p className="doctor-specialty">Dentist, Cosmetic</p>
       </div>
       <div className={styles.doctorcardfirst}>
-        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" class="doctor-image"/>
-        <h3 class="doctor-name">Dr. Brooklyn Simmons</h3>
-        <p class="doctor-specialty">Dentist, Cosmetic</p>
+        <img src="/images/mobile/musthu/images/user.png" alt="Dr. Brooklyn Simmons" className="doctor-image"/>
+        <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+        <p className="doctor-specialty">Dentist, Cosmetic</p>
       </div>
      
 

@@ -179,7 +179,7 @@ export default function Navbar() {
             </div>
 
             <div onClick={SelectOpen} className="menubutton flex">
-              <i class="ri-menu-2-fill"></i>
+              <i className="ri-menu-2-fill"></i>
             </div>
           </div>
           <CusSigninAndSignUp

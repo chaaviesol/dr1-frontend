@@ -216,7 +216,7 @@ const HospitalDetailed = () => {
                 {HospitalData?.feature?.map((ele) => (
                   <>
                     <h4 style={{ marginBottom: "1.3vw" }}>
-                      <i class="ri-arrow-right-circle-fill"></i>
+                      <i className="ri-arrow-right-circle-fill"></i>
                       {ele}
                     </h4>
                   </>
@@ -228,7 +228,7 @@ const HospitalDetailed = () => {
                 {HospitalData?.speciality?.map((ele) => (
                   <>
                     <h4 style={{ marginBottom: "1.3vw" }}>
-                      <i class="ri-arrow-right-circle-fill"></i>
+                      <i className="ri-arrow-right-circle-fill"></i>
                       {ele}
                     </h4>
                   </>
@@ -310,7 +310,7 @@ const HospitalDetailed = () => {
                       <p> {moment(ele?.created_date).format("DD/MM/YYYY")}</p>
                       <p>{ele?.message}</p>
                       <div className="doc_profileSecFeedBIFlexName">
-                        <i class="ri-checkbox-circle-line"></i>
+                        <i className="ri-checkbox-circle-line"></i>
                         <h4>{ele?.userid?.name}</h4>
                       </div>
                     </div>

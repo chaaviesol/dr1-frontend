@@ -166,7 +166,7 @@ const ResetPassword = () => {
         </div>
         {error && (
           <div className="password_error-message">
-            <i class="ri-error-warning-fill"></i>
+            <i className="ri-error-warning-fill"></i>
             {error}
           </div>
         )}

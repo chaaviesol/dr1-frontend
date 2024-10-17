@@ -308,7 +308,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 onClick={handleClose}
                 className="flex closeexpertopinionfirstmodal"
               >
-                <i class="ri-close-line"></i>
+                <i className="ri-close-line"></i>
               </button>
 
               <div className="secoptitle2">
@@ -329,7 +329,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
               >
                 <div className="askaquestionlogosection flex">
                   <div className="askaquestionlogo flex">
-                    <i class="ri-chat-smile-line"></i>
+                    <i className="ri-chat-smile-line"></i>
                   </div>
                 </div>
                 <div className="askaquestiondata">
@@ -349,7 +349,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                     className="askaquestionlogo flex"
                     style={{ backgroundColor: "#28992D" }}
                   >
-                    <i class="ri-nurse-line"></i>
+                    <i className="ri-nurse-line"></i>
                   </div>
                 </div>
                 <div
@@ -388,7 +388,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       });
                     }}
                   >
-                    <i class="ri-arrow-left-line"></i>
+                    <i className="ri-arrow-left-line"></i>
                   </button>
                   <h3>We help you to get a second opinion</h3>
                 </div>
@@ -461,7 +461,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                   className="secopdipartmentbutton flex"
                   onClick={handleNext}
                 >
-                  <i class="ri-arrow-right-s-line"></i>
+                  <i className="ri-arrow-right-s-line"></i>
                 </button>
               </div>
             </div>
@@ -603,7 +603,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                     });
                   }}
                 >
-                  <i class="ri-arrow-left-line"></i>
+                  <i className="ri-arrow-left-line"></i>
                 </button>
                 <h3>Get Your Answer Now</h3>
               </div>
@@ -645,7 +645,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 onClick={handleClose}
                 className="flex closeexpertopinionfirstmodal"
               >
-                <i class="ri-close-line"></i>
+                <i className="ri-close-line"></i>
               </button>
             </div>
           )}

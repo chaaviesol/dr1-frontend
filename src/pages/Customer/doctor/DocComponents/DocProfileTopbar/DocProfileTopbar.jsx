@@ -52,7 +52,7 @@ export const DocProfileTopbar = () => {
               style={{ marginLeft: "18px" }}
               className="adminnotification flex"
             >
-              <i class="ri-notification-2-line"></i>
+              <i className="ri-notification-2-line"></i>
             </div>
             <img
               onClick={openPopups}
@@ -79,7 +79,7 @@ export const DocProfileTopbar = () => {
                   className="cpeditadminprofile flex"
                 >
                   <IconButton>
-                    <i class="ri-pencil-line"></i>
+                    <i className="ri-pencil-line"></i>
                   </IconButton>
                 </div>
               </div> */}
@@ -87,7 +87,7 @@ export const DocProfileTopbar = () => {
 
           <div className="customerprofilecontactcard">
             <div className="flex texticonset">
-              <i class="ri-phone-fill"></i>
+              <i className="ri-phone-fill"></i>
               <h4 style={{ marginLeft: "10px" }}>
                 {" "}
                 +91
@@ -96,12 +96,12 @@ export const DocProfileTopbar = () => {
             </div>
 
             <div className="flex texticonset">
-              <i class="ri-mail-fill"></i>
+              <i className="ri-mail-fill"></i>
               <h4 style={{ marginLeft: "10px" }}>{DoctorData?.email}</h4>
             </div>
             {DoctorData?.pincode ? (
               <div className="flex texticonset">
-                <i class="ri-map-pin-fill"></i>
+                <i className="ri-map-pin-fill"></i>
                 <h4 style={{ marginLeft: "10px" }}>{DoctorData?.pincode}</h4>
               </div>
             ) : null}
@@ -116,7 +116,7 @@ export const DocProfileTopbar = () => {
               navigate("/", { replace: true });
             }}
           >
-            <i class="ri-logout-box-line"></i>
+            <i className="ri-logout-box-line"></i>
             <h4 style={{ marginLeft: "10px" }}>Logout</h4>
           </div>
         </div>

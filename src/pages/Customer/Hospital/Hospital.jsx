@@ -215,8 +215,8 @@ export default function Hospital() {
 
             {/* Hospital Hero New */}
 
-            <div class="hospital-hero-container">
-              <div class="hospital-hero-containerfirst">
+            <div className="hospital-hero-container">
+              <div className="hospital-hero-containerfirst">
                 <div>
                   <h1>
                     Find <span className="color-blue">Hospitals</span> From
@@ -259,11 +259,11 @@ export default function Hospital() {
                     </div>
                   </div>
                   <button onClick={SearchHostpital}>
-                    Search Hospitals <i class="ri-arrow-right-up-line"></i>
+                    Search Hospitals <i className="ri-arrow-right-up-line"></i>
                   </button>
                 </div>
               </div>
-              <div class="hospital-hero-containersecond">
+              <div className="hospital-hero-containersecond">
                 <MyCarousel />
                 {/* <img src="../images/hohero.jpg" alt="" /> */}
               </div>
@@ -298,7 +298,7 @@ export default function Hospital() {
                   >
                     <div className="flex new">
                       <h4>Allopathy</h4>
-                      <i class="ri-arrow-right-circle-line"></i>
+                      <i className="ri-arrow-right-circle-line"></i>
                     </div>
                   </div>
                 </div>
@@ -313,7 +313,7 @@ export default function Hospital() {
                       className="flex new"
                     >
                       <h4>Homeopathy</h4>
-                      <i class="ri-arrow-right-circle-line"></i>
+                      <i className="ri-arrow-right-circle-line"></i>
                     </div>
                   </div>
                 </div>
@@ -335,7 +335,7 @@ export default function Hospital() {
                   >
                     <div className="flex new">
                       <h4>Unani</h4>
-                      <i class="ri-arrow-right-circle-line"></i>
+                      <i className="ri-arrow-right-circle-line"></i>
                     </div>
                   </div>
                 </div>
@@ -351,7 +351,7 @@ export default function Hospital() {
                   >
                     <div className="flex new">
                       <h4>Ayurvedic</h4>
-                      <i class="ri-arrow-right-circle-line"></i>
+                      <i className="ri-arrow-right-circle-line"></i>
                     </div>
                   </div>
                 </div>
@@ -367,7 +367,7 @@ export default function Hospital() {
                   >
                     <div className="flex new">
                       <h4>Other</h4>
-                      <i class="ri-arrow-right-circle-line"></i>
+                      <i className="ri-arrow-right-circle-line"></i>
                     </div>
                   </div>
                 </div>
@@ -415,7 +415,7 @@ export default function Hospital() {
                         >
                           <h4>{speciality}</h4>
                           <div className="spec_main_card_button flex">
-                            <i class="ri-arrow-right-line"></i>
+                            <i className="ri-arrow-right-line"></i>
                           </div>
                         </div>
                       ))}

@@ -84,8 +84,8 @@ const ImageScroll = () => {
             <div className="scroll-image-item-div2">
               <div key={index}>{duplicatespecialities[index]}</div>
             </div>
-            <button class="iconboxnew2">
-              <i class="ri-search-line"></i>
+            <button className="iconboxnew2">
+              <i className="ri-search-line"></i>
             </button>
           </div>
         ))}
