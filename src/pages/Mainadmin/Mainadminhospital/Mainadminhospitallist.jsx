@@ -69,30 +69,18 @@ export default function Mainadminhospitallist({
 
     setHospital(tempData);
   };
+
+  const reformatDate = (dateString) => {
+    return moment(dateString).format("DD-MM-YYYY");
+  };
+
   const filterDate = (e) => {
     const { value } = e.target;
-    console.log("Input value:", value);
-
-    const inputDate = moment(value).startOf("day");
-    console.log("Parsed input date:", inputDate);
-
-    if (!inputDate.isValid()) {
-      console.error("Invalid date input");
-      return; // Handle invalid date input (optional)
-    }
-
+    const formattedDate = reformatDate(value);
     const filteredData = initialData.filter((item) => {
-      const itemDate = moment(item?.datetime).startOf("day");
-      console.log("Item date:", itemDate);
-
-      if (itemDate.isValid()) {
-        // Compare only the date part
-        return itemDate.isSame(inputDate, "day");
-      }
-      return false;
+      const dateMatch = reformatDate(item.datetime) === formattedDate;
+      return dateMatch;
     });
-
-    console.log("Filtered data:", filteredData);
     setHospital(filteredData);
   };
   const SearchSpeFe = (e) => {
@@ -210,6 +198,7 @@ export default function Mainadminhospitallist({
               type="date"
               onChange={filterDate}
               name="datetime"
+              max={new Date().toISOString().split("T")[0]}
               placeholder="Search by date"
             />
           </th>
@@ -252,7 +241,7 @@ export default function Mainadminhospitallist({
             </td>
             <td>{ele?.view_count}</td>
             <td>{ele?.consult_count}</td>
-            <td>{moment(ele?.datetime).subtract(10, "days").calendar()}</td>
+            <td>{moment(ele?.datetime).format("DD-MM-YYYY")}</td>
             <td>{getStatus(ele.status)}</td>
           </tr>
         ))}

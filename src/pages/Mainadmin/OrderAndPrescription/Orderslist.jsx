@@ -65,25 +65,17 @@ export default function Orderslist({
     setdatalist(tempData);
   };
 
+  const reformatDate = (dateString) => {
+    return moment(dateString).format("DD-MM-YYYY");
+  };
+
   const filterDate = (e) => {
     const { value } = e.target;
-    const inputDate = moment(value).startOf("day");
-
-    if (!inputDate.isValid()) {
-      console.error("Invalid date input");
-      return; // Handle invalid date input (optional)
-    }
-
+    const formattedDate = reformatDate(value);
     const filteredData = initialData.filter((item) => {
-      const itemDate = moment(item?.created_date).startOf("day");
-
-      if (itemDate.isValid()) {
-        // Compare only the date part
-        return itemDate.isSame(inputDate, "day");
-      }
-      return false;
+      const dateMatch = reformatDate(item.created_date) === formattedDate;
+      return dateMatch;
     });
-
     setdatalist(filteredData);
   };
 
@@ -166,6 +158,7 @@ export default function Orderslist({
             <h4>Date</h4>
             <input
               type="date"
+              max={new Date().toISOString().split("T")[0]}
               onChange={filterDate}
               name="created_date"
               placeholder="Search by date"
@@ -173,7 +166,6 @@ export default function Orderslist({
           </th>
           <th className="">
             <h4>Status</h4>
-           
           </th>
         </tr>
         {datalist.map((ele, index) => (
@@ -186,8 +178,7 @@ export default function Orderslist({
             <td>{ele?.users}</td>
             <td>{ele?.contact_no}</td>
             <td>{ele?.pincode}</td>
-
-            <td>{moment(ele?.created_date).subtract(10, "days").calendar()}</td>
+            <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
             <td>{ele?.so_status}</td>
           </tr>
         ))}

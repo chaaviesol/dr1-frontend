@@ -9,7 +9,6 @@ import { Loader } from "../../../components/Loader/Loader";
 export default function Mainadmincustomer({
   updateState: { setChangeDashboards, setDetailData },
 }) {
-
   const [Customer, setCustomer] = useState([]);
   const [initialData, setinitialData] = useState([]);
 
@@ -61,30 +60,21 @@ export default function Mainadmincustomer({
     setCustomer(tempData);
   };
 
+  const reformatDate = (dateString) => {
+    return moment(dateString).format("DD-MM-YYYY");
+  };
+
+
   const filterDate = (e) => {
     const { value } = e.target;
-    console.log("Input value:", value);
-
-    const inputDate = moment(value).startOf("day");
-    console.log("Parsed input date:", inputDate);
-
-    if (!inputDate.isValid()) {
-      console.error("Invalid date input");
-      return; // Handle invalid date input (optional)
-    }
-
+    // console.log("initialData", initialData);
+    const formattedDate = reformatDate(value);
     const filteredData = initialData.filter((item) => {
-      const itemDate = moment(item?.datetime).startOf("day");
-      console.log("Item date:", itemDate);
-
-      if (itemDate.isValid()) {
-        // Compare only the date part
-        return itemDate.isSame(inputDate, "day");
-      }
-      return false;
+      const dateMatch = reformatDate(item.datetime) === formattedDate;
+      return dateMatch;
     });
 
-    console.log("Filtered data:", filteredData);
+    // console.log("Filtered data:", filteredData);
     setCustomer(filteredData);
   };
 
@@ -150,6 +140,7 @@ export default function Mainadmincustomer({
               type="date"
               onChange={filterDate}
               name="datetime"
+              max={new Date().toISOString().split("T")[0]}
               placeholder="dd/mm/yyyy"
             />
           </th>
@@ -177,7 +168,7 @@ export default function Mainadmincustomer({
               <td>{ele?.phone_no}</td>
               <td>{ele?.pincode}</td>
               <td>{ele?.ageGroup}</td>
-              <td>{moment(ele?.datetime).subtract(10, "days").calendar()}</td>
+              <td>{moment(ele?.datetime).format("DD-MM-YYYY")}</td>
               <td>{ele?.status === "Y" ? "Active" : "inActive"}</td>
             </tr>
           ))}

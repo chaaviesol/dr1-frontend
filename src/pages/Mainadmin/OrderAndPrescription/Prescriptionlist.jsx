@@ -14,7 +14,6 @@ export default function Prescriptionlist({
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-
   const fetchPrescriptionList = async () => {
     try {
       setIsLoading(true);
@@ -24,7 +23,7 @@ export default function Prescriptionlist({
       setinitialData(response?.data?.data);
     } catch (err) {
       console.error(err);
-      toast.error(err.error|| "An error occurred");
+      toast.error(err.error || "An error occurred");
     } finally {
       setIsLoading(false);
     }
@@ -64,33 +63,23 @@ export default function Prescriptionlist({
 
     setdatalist(tempData);
   };
-
+  const reformatDate = (dateString) => {
+    return moment(dateString).format("DD-MM-YYYY");
+  };
   const filterDate = (e) => {
     const { value } = e.target;
-    const inputDate = moment(value).startOf("day");
 
-    if (!inputDate.isValid()) {
-      console.error("Invalid date input");
-      return; // Handle invalid date input (optional)
-    }
-
+    const formattedDate = reformatDate(value);
     const filteredData = initialData.filter((item) => {
-      const itemDate = moment(item?.created_date).startOf("day");
-
-      if (itemDate.isValid()) {
-        // Compare only the date part
-        return itemDate.isSame(inputDate, "day");
-      }
-      return false;
+      const dateMatch = reformatDate(item.created_date) === formattedDate;
+      return dateMatch;
     });
-
     setdatalist(filteredData);
   };
 
   return (
     <div>
-
-      {isLoading&&<Loader/>}
+      {isLoading && <Loader />}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">
@@ -167,6 +156,7 @@ export default function Prescriptionlist({
           <th className="">
             <h4>Date</h4>
             <input
+              max={new Date().toISOString().split("T")[0]}
               type="date"
               onChange={filterDate}
               name="created_date"
@@ -196,9 +186,8 @@ export default function Prescriptionlist({
               <td>{ele?.contact_no}</td>
               <td>{ele?.pincode}</td>
 
-              <td>
-                {moment(ele?.created_date).subtract(10, "days").calendar()}
-              </td>
+              <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
+
               <td>{ele?.so_status}</td>
             </tr>
           ))}

@@ -205,7 +205,7 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
             Join Date <br />
             <input
               type="date"
-              max={new Date()}
+              max={new Date().toISOString().split("T")[0]} 
               onChange={handleFilterChange}
               name="date"
             />
