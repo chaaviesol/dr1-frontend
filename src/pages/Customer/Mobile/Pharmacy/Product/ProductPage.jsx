@@ -1,9 +1,7 @@
-import React from "react";
-import "./ProductPage.css"; // Import the CSS file for styling
+import React, { useState, useEffect } from "react";
+import "./ProductPage.css";
 import AddButton from "../components/AddButton";
-
 import CartControl from "../Category/CartControl";
-
 import { usePharmacyContext } from "../../../../../contexts/PharmacyContext";
 import { useNavigate } from "react-router-dom";
 import CartTopbarWithBackButton from "../../../../../components/CartTopbarWithBackButton";
@@ -14,8 +12,75 @@ const ProductPage = ({
   productInCart,
   isAddingToCart,
 }) => {
-  const { cartItems } = usePharmacyContext();
-  const navigate = useNavigate();
+  const images = [
+    product?.images.image1,
+    product?.images.image2,
+    product?.images.image3,
+    product?.images.image4,
+  ];
+  const [currentImage, setCurrentImage] = useState(0);
+  const [startX, setStartX] = useState(null);
+
+  const handleMouseMove = (e) => {
+    const { clientX, target } = e;
+    const { width } = target.getBoundingClientRect();
+    const offsetX = clientX / width;
+
+    // Calculate the index based on mouse position (for visual feedback)
+    const newIndex = Math.floor(offsetX * images.length);
+    if (newIndex !== currentImage) {
+      setCurrentImage(Math.min(newIndex, images.length - 1));
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setCurrentImage(currentImage); // Reset to current image on mouse leave
+  };
+
+  const handleDotClick = (index) => {
+    setCurrentImage(index);
+  };
+
+  const handleImageClick = (e) => {
+    const { clientX, target } = e;
+    const { width } = target.getBoundingClientRect();
+    const offsetX = clientX / width;
+
+    // Change image based on click position
+    const newIndex = Math.floor(offsetX * images.length);
+    setCurrentImage(Math.min(newIndex, images.length - 1));
+  };
+
+  // Handle touch start event
+  const handleTouchStart = (e) => {
+    setStartX(e.touches[0].clientX);
+  };
+
+  // Handle touch move event
+  const handleTouchMove = (e) => {
+    if (!startX) return;
+
+    const currentX = e.touches[0].clientX;
+    const diffX = startX - currentX;
+
+    if (diffX > 50) {
+      // Swipe left
+      setCurrentImage((prev) => Math.min(prev + 1, images.length - 1));
+      setStartX(null); // Reset startX after swipe
+    } else if (diffX < -50) {
+      // Swipe right
+      setCurrentImage((prev) => Math.max(prev - 1, 0));
+      setStartX(null); // Reset startX after swipe
+    }
+  };
+
+  useEffect(() => {
+    // Set up mousemove listener
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
     <div className="product-page productPageBg">
@@ -32,35 +97,35 @@ const ProductPage = ({
           >
             <h1>{product?.name}</h1>
             <h3 style={{ fontSize: "12px", opacity: ".6" }}>
-              {product?.brand_name}
+              {product?.brand}
             </h3>
           </div>
         </div>
+
+        {/* carousel */}
         <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingTop: "20px",
-          }}
+          className="carousel-container"
+          onMouseLeave={handleMouseLeave}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
         >
           <img
-            src={product?.images.image1}
-            alt="Seda Shampoo 1"
-            className="product-image"
-            height="110px"
-            width="20px"
-            style={{ objectFit: "contain" }}
+            src={images[currentImage]} // Show the current image
+            alt="carousel"
+            className="carousel-image"
+            onClick={handleImageClick} // Change image on click
           />
+          <div className="dots-container">
+            {images.map((_, index) => (
+              <div
+                key={index}
+                className={`dot ${currentImage === index ? "active" : ""}`}
+                onClick={() => handleDotClick(index)}
+              />
+            ))}
+          </div>
         </div>
-        {/* <Carousel showThumbs={false} showStatus={false}>
-          <div>
-            <img src="Mobile images/Icons/pngwing.com.png" alt="Seda Shampoo 2" className="product-image" />
-          </div>
-          <div>
-            <img src="Mobile images/Icons/pngwing.com.png" alt="Seda Shampoo 3" className="product-image" />
-          </div>
-        </Carousel> */}
+        {/* carousel */}
       </div>
 
       <div className="price-add-section">

@@ -94,11 +94,12 @@
 .mobileavailabityhospital {
   padding-bottom: 5vw;
   justify-content: space-between;
+
 }
 
 .mobileavailabityhospitalmore {
-  width: 10vw;
-  height: 10vw;
+  width: 30px;
+  height: 30px;
   background-color: #7e83ff;
   color: white;
   align-items: center;

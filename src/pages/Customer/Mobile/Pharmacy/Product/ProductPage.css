@@ -119,3 +119,43 @@
     margin: 6px;
   }
 /* } */
+
+/* carousel_css */
+.carousel-container {
+  width: 100%;
+  height: 400px; 
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  transition: opacity 0.5s ease; 
+}
+
+.dots-container {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px; /* Space between dots */
+}
+
+.dot {
+  width: 10px; /* Size of the dot */
+  height: 10px;
+  background-color: gray; /* Inactive dot color */
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: blue; /* Active dot color */
+}
+
+
+/* carousel_css */

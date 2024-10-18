@@ -70,8 +70,8 @@ export default function MobileDoctorProfile() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Check out this amazing site!",
-          text: "Take a look at this awesome content.",
+          title: "Check out !",
+          text: "Take a look at this content.",
           url: window.location.href,
         });
         console.log("Share was successful.");
@@ -181,6 +181,7 @@ export default function MobileDoctorProfile() {
     return <div>{stars}</div>;
   };
 
+
   return (
     <div>
       <div className="mobiledoctordiv">
@@ -211,7 +212,7 @@ export default function MobileDoctorProfile() {
           <div className="mobiledoctorprofiledata">
             <div className="mobcontainer">
               <div className="mobdoprodetails flex">
-                <img src={doctor.image} alt="" />
+                <img src={doctor?.image} alt="" />
 
                 <div>
                   <h3>{doctor?.name}</h3>
@@ -247,122 +248,119 @@ export default function MobileDoctorProfile() {
             </div>
             {currentAvailability?.length > 0 && (
               <div className="mobileavailabitysection">
-                {currentAvailability?.map((ele, index) => (
-                  <>
-                    <div className="mobcontainer">
-                      <div className="mobiledoctorprofiletitle">
-                        <h3>Available</h3>
-                      </div>
-
-                      <div className="mobileavailabityhospital flex">
-                        <div key={index}>
-                          <h3>{ele?.hospital_name}</h3>
-                          <div className="flex">
-                            {days.map((day, index) => (
-                              <h4
-                                key={index}
-                                style={{
-                                  color: ele?.days_timing?.find(
-                                    (mapday) =>
-                                      mapday?.day === day &&
-                                      mapday?.availableTimes?.find(
-                                        (data) =>
-                                          data?.startTime !== "" &&
-                                          data?.endTime !== ""
-                                      )
-                                  )
-                                    ? "blue"
-                                    : "grey",
-                                }}
-                              >
-                                {day.slice(0, 3)}
-                                <span>
-                                  {index === days?.length - 1 ? "" : ","}
-                                </span>
-                              </h4>
-                            ))}
-                          </div>
-                        </div>
-                        <Modal
-                          open={isModalOpen}
-                          onClose={() => setIsModalOpen(false)}
-                        >
-                          <div className="modalContainer">
-                            <h3>{ele?.hospital_name}</h3>
-                            <div className="mobiletiminglocation">
-                              <h4>{ele?.hospitaladdrress}</h4>
-                            </div>
-                            <button
-                              className="closeButtonmodal2"
-                              onClick={handleClose}
-                            >
-                              &times;
-                            </button>
-                            {ele?.days_timing.map(
-                              (dayObj, index) =>
-                                dayObj.availableTimes.some(
-                                  (time) => time.startTime && time.endTime
-                                ) && (
-                                  <>
-                                    <div
-                                      className="mobiletiming flex"
-                                      key={index}
-                                    >
-                                      <div>
-                                        <h3>{dayObj.day}</h3>
-                                      </div>
-
-                                      <div className="mobiletimingtime">
-                                        {dayObj.availableTimes.map(
-                                          (time, timeIndex) =>
-                                            time.startTime &&
-                                            time.endTime && (
-                                              <h4 key={timeIndex}>
-                                                {moment(time.startTime).format(
-                                                  "hh:mm A"
-                                                )}{" "}
-                                                -
-                                                {moment(time.endTime).format(
-                                                  "hh:mm A"
-                                                )}
-                                              </h4>
-                                            )
-                                        )}
-                                      </div>
-                                    </div>
-                                  </>
+                <div className="mobcontainer">
+                  <div className="mobiledoctorprofiletitle">
+                    <h3>Available</h3>
+                  </div>
+                  {currentAvailability?.map((ele, index) => (
+                    <div className="mobileavailabityhospital flex">
+                      <div style={{  width: "80%"}} key={index}>
+                        <h3>{ele?.hospital_name}</h3>
+                        <div className="flex">
+                          {days.map((day, index) => (
+                            <h4
+                              key={index}
+                              style={{
+                                color: ele?.days_timing?.find(
+                                  (mapday) =>
+                                    mapday?.day === day &&
+                                    mapday?.availableTimes?.find(
+                                      (data) =>
+                                        data?.startTime !== "" &&
+                                        data?.endTime !== ""
+                                    )
                                 )
-                            )}
-                            <button
-                              className="mobilecontactbuttonnew"
-                              onClick={contactnowbutton}
+                                  ? "blue"
+                                  : "grey",
+                              }}
                             >
-                              Contact Now
-                            </button>
-                            {contactstate && (
-                              <div className="mobilecontactbuttonafter flex">
-                                <h3> +91 {ele?.contactNumber}</h3>
-                                <button
-                                  onClick={() =>
-                                    window.open(`tel:+91${ele?.contactNumber}`)
-                                  }
-                                >
-                                  Call Now
-                                </button>
-                              </div>
-                            )}
-                          </div>
-                        </Modal>
-                        <div className="mobileavailabityhospitalmore flex">
-                          <i
-                            className="ri-arrow-right-up-line"
-                            onClick={modalopen}
-                          ></i>
+                              {day.slice(0, 3)}
+                              <span>
+                                {index === days?.length - 1 ? "" : ","}
+                              </span>
+                            </h4>
+                          ))}
                         </div>
+                      </div>
+                      <Modal
+                        open={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                      >
+                        <div className="modalContainer">
+                          <h3>{ele?.hospital_name}</h3>
+                          <div className="mobiletiminglocation">
+                            <h4>{ele?.hospitaladdrress}</h4>
+                          </div>
+                          <button
+                            className="closeButtonmodal2"
+                            onClick={handleClose}
+                          >
+                            &times;
+                          </button>
+                          {ele?.days_timing.map(
+                            (dayObj, index) =>
+                              dayObj.availableTimes.some(
+                                (time) => time.startTime && time.endTime
+                              ) && (
+                                <>
+                                  <div
+                                    className="mobiletiming flex"
+                                    key={index}
+                                  >
+                                    <div>
+                                      <h3>{dayObj.day}</h3>
+                                    </div>
+
+                                    <div className="mobiletimingtime">
+                                      {dayObj.availableTimes.map(
+                                        (time, timeIndex) =>
+                                          time.startTime &&
+                                          time.endTime && (
+                                            <h4 key={timeIndex}>
+                                              {moment(time.startTime).format(
+                                                "hh:mm A"
+                                              )}{" "}
+                                              -
+                                              {moment(time.endTime).format(
+                                                "hh:mm A"
+                                              )}
+                                            </h4>
+                                          )
+                                      )}
+                                    </div>
+                                  </div>
+                                </>
+                              )
+                          )}
+                          <button
+                            className="mobilecontactbuttonnew"
+                            onClick={contactnowbutton}
+                          >
+                            Contact Now
+                          </button>
+                          {contactstate && (
+                            <div className="mobilecontactbuttonafter flex">
+                              <h3> +91 {ele?.contactNumber}</h3>
+                              <button
+                                onClick={() =>
+                                  window.open(`tel:+91${ele?.contactNumber}`)
+                                }
+                              >
+                                Call Now
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </Modal>
+                      <div className="mobileavailabityhospitalmore flex">
+                        <i
+                          className="ri-arrow-right-up-line"
+                          onClick={modalopen}
+                        ></i>
                       </div>
                     </div>
-                  </>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
 
@@ -420,16 +418,7 @@ export default function MobileDoctorProfile() {
                         <div>
                           <h3>{ele?.userid?.name}</h3>
                           <div className="mobilestartsection2 flex">
-                            {[1, 2, 3, 4, 5].map((num) => (
-                              <i
-                                key={num}
-                                style={{
-                                  color:
-                                    ele?.rating >= num ? "#FA8D0D" : undefined,
-                                }}
-                                className="ri-star-fill"
-                              />
-                            ))}
+                            <StarRating rating={ele?.rating} />
                           </div>
 
                           <h4 style={{ marginTop: "2px" }}>

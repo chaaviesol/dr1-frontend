@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import AddButton from "../../Customer/Mobile/Pharmacy/components/AddButton";
 import CartControl from "../../Customer/Mobile/Pharmacy/Category/CartControl";
@@ -11,6 +11,7 @@ const SingleProductDetailsPC = ({
   productInCart,
   isAddingToCart,
 }) => {
+  const [currentImage, setCurrentImage] = useState(product?.images.image1);
   return (
     <>
       <Navbar />
@@ -63,7 +64,8 @@ const SingleProductDetailsPC = ({
                 }}
               >
                 <img
-                  src={product?.images.image1}
+                  // src={product?.images.image1}
+                  src={currentImage}
                   alt="Seda Shampoo 1"
                   className="product-image"
                   height="210px"
@@ -94,6 +96,7 @@ const SingleProductDetailsPC = ({
                     alignItems: "center",
                     justifyContent: "center",
                   }}
+                  onClick={()=>setCurrentImage(product?.images[img])}
                 >
                   <img
                     src={product?.images[img]}
@@ -126,7 +129,7 @@ const SingleProductDetailsPC = ({
                 }}
               >
                 <h3 style={{ fontSize: "12px", opacity: ".6" }}>
-                  {product?.brand_name}
+                  {product?.brand}
                 </h3>
                 <h1>{product?.name}</h1>
               </div>
