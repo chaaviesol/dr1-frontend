@@ -44,15 +44,19 @@ function Cart() {
 
   console.log(cartItems);
 
-  const placeOrder = async () => {
+  const placeOrder = async (address) => { 
+  
     const payload = {
       order_type: "salesorder",
       products: cartItems,
       total_amount: totalPrice(),
+      delivery_address:address.delivery_details,
+      contact_no:address?.contact_no,
+      pincode:address?.pincode
     };
 
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/salesorder`,
+      `${BASE_URL}/pharmacy//salesorder`,
       payload
     );
     return response;
@@ -60,21 +64,22 @@ function Cart() {
 
   const placeOrderMutation = useMutation({
     mutationKey: ["placeOrder", userId],
-    mutationFn: () => placeOrder(),
+    mutationFn: (address) => placeOrder(address),
     onSuccess: (res) => {
       toast.success(res.data.message);
       refetchCart();
       navigate(-1);
     },
   });
-  const handleCheckout = async () => {
+  const handleCheckout = async (address) => {
+   
     if (!userId && userType !== "customer") {
       toast.info("Please login as a customer!");
       return;
     }
 
     try {
-      await placeOrderMutation.mutateAsync();
+      await placeOrderMutation.mutateAsync(address);
     } catch (err) {
       toast.error("Error in order placing");
     }

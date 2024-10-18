@@ -1,0 +1,120 @@
+/* Check Out  Modal */
+
+.checkoutmodal {
+  width: 40vw;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 10px;
+}
+.checkoutmodal h4 {
+  font-weight: 600;
+}
+.checkoutmodalhead {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* .checkoutmodal input{
+    background-color: #EEF1FF;
+    height:40px;
+    margin-top: 10px;
+    width: 100%;
+    padding:0px 15px;
+    font-weight:600;
+    border:2px solid  #EEF1FF;
+    border-radius: 4px;
+  } */
+
+.checkoutmodalcontact input {
+  background-color: #eef1ff;
+  height: 40px;
+  margin-top: 10px;
+  width: 100%;
+  /* flex: 1; */
+  padding: 0px 15px;
+  font-weight: 600;
+  border: 2px solid #eef1ff;
+  border-radius: 4px;
+}
+.checkoutmodalcontact {
+  flex: 1;
+}
+
+.checkoutmodal input:focus {
+  border: 2px solid #3a65fd;
+}
+.checkoutmodal textarea {
+  background-color: #eef1ff;
+  height: 100px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 15px;
+  font-weight: 600;
+  border: 2px solid #eef1ff;
+  border-radius: 4px;
+  resize: none;
+}
+.checkoutmodal textarea:focus {
+  border: 2px solid #3a65fd;
+}
+.checkoutmodalbutton {
+  gap: 10px;
+}
+.checkoutmodalbutton button {
+  flex: 1;
+  height: 40px;
+  border-radius: 4px;
+}
+.checkoutmodaladdress {
+  margin-top: 20px;
+}
+.checkoutmodaladdressget {
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.checkoutmodaladdressget button {
+  color: white;
+  background-color: #7e83ff;
+  height: 35px;
+  padding: 0px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+}
+
+.checkoutmodaladdressget button i {
+  margin-right: 6px;
+}
+
+.checkoutmodalbutton button:nth-child(1) {
+  background-color: #f44336; /* Red background for Cancel button */
+  color: white; /* White text */
+  border: none;
+  cursor: pointer;
+}
+
+.checkoutmodalbutton button:nth-child(2) {
+  background-color: #4caf50; /* Green background for Submit button */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Add hover effects */
+.checkoutmodalbutton button:nth-child(1):hover {
+  background-color: #d32f2f; /* Darker red on hover */
+}
+
+.checkoutmodalbutton button:nth-child(2):hover {
+  background-color: #388e3c; /* Darker green on hover */
+}
+
+.codcheckout {
+  font-size: 14px;
+  padding: 5px 0px 15px 0px;
+  color: #3b82f6;
+}
