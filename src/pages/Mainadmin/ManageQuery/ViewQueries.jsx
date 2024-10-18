@@ -11,7 +11,7 @@ function ViewQueries({ setChangeDashboards, setQueryId }) {
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
- 
+
   console.log(datalist);
 
   useEffect(() => {
@@ -61,25 +61,17 @@ function ViewQueries({ setChangeDashboards, setQueryId }) {
 
     setdatalist(tempData);
   };
-
+  const reformatDate = (dateString) => {
+    return moment(dateString).format("DD-MM-YYYY");
+  };
   const filterDate = (e) => {
     const { value } = e.target;
-    const inputDate = moment(value).startOf("day");
 
-    if (!inputDate.isValid()) {
-      console.error("Invalid date input");
-      return;
-    }
-
+    const formattedDate = reformatDate(value);
     const filteredData = initialData.filter((item) => {
-      const itemDate = moment(item?.created_date).startOf("day");
-
-      if (itemDate.isValid()) {
-        return itemDate.isSame(inputDate, "day");
-      }
-      return false;
+      const dateMatch = reformatDate(item.created_date) === formattedDate;
+      return dateMatch;
     });
-
     setdatalist(filteredData);
   };
 
@@ -157,6 +149,7 @@ function ViewQueries({ setChangeDashboards, setQueryId }) {
             <h4>Date</h4>
             <input
               type="date"
+              max={new Date().toISOString().split("T")[0]}
               onChange={filterDate}
               name="created_date"
               placeholder="Search by date"
@@ -184,12 +177,7 @@ function ViewQueries({ setChangeDashboards, setQueryId }) {
             <td>{ele?.username}</td>
             <td>{ele?.department}</td>
 
-            <td>
-              {moment
-                .utc(ele?.created_date)
-                .tz("UTC-12")
-                .format("DD/MM/YYYY")}
-            </td>
+            <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
 
             <td>{ele?.status}</td>
           </tr>
