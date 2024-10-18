@@ -4,7 +4,7 @@ import CartItemTile from "../../Customer/Mobile/Pharmacy/cart/CartItemTIle";
 import Footer from "../../../components/Footer";
 import styles from "./styles.module.css";
 import Navbar from "../../../components/Navbar";
-import "./cartdesktop.css";
+import "./cartDesktop.css";
 import { usePharmacyContext } from "../../../contexts/PharmacyContext";
 import { Loader } from "../../../components/Loader/Loader";
 import { toast } from "react-toastify";
