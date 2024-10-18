@@ -24,7 +24,6 @@ export const MainAdminDoctorEditFinal = () => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, [editDoc, navigate]);
 
-  console.log(loader);
   const handleKeyPress = (event) => {
     if ([".", "-", "e", "+", "E"].includes(event?.key)) {
       event.preventDefault();
@@ -34,6 +33,15 @@ export const MainAdminDoctorEditFinal = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "phone_office" && value.length > 11) {
+      return;
+    }
+    if (name === "phone_no") {
+      const sanitizedValue = value.replace(/[.-]/g, "");
+      const truncatedValue = sanitizedValue.slice(0, 10);
+      seteditDoc({
+        ...editDoc,
+        [name]: truncatedValue,
+      });
       return;
     }
     seteditDoc({
@@ -76,8 +84,6 @@ export const MainAdminDoctorEditFinal = () => {
       !editDoc?.pincode ||
       !editDoc?.sector ||
       !editDoc?.phone_office;
-    // console.log("checkFields>>>>", checkFields);
-    console.log("editDoc=>", editDoc);
     if (checkFields) {
       // setloader(false);
       alert("Please fill in all fields.");
@@ -88,18 +94,15 @@ export const MainAdminDoctorEditFinal = () => {
       toast.error("Please fix the pincode error.");
       return;
     } else {
-      console.log(editDoc);
       axios
         .post(`https://test.apis.dr1.co.in/doctor/completeedit`, editDoc)
         .then((res) => {
-          console.log(res.data.message);
           if (res.data.success) {
             setloader(false);
             setTimeout(() => {
               seteditDoc({});
               navigate(-2);
             }, 2500);
-            // toast.success(res.data.message);
             alert(res.data.message);
           } else {
             toast.info(res.data.message);
@@ -221,6 +224,77 @@ export const MainAdminDoctorEditFinal = () => {
       </div>
       {/* {loader && <Loader />} */}
       <div className="doctoradminregistration_input flex">
+        <div className="doctoradminregistration_input1 flex">
+          <div>
+            <h4>First Name</h4>
+            <input
+              type="text"
+              className="doctoradminregistration_inputs"
+              name="name"
+              autoComplete="off"
+              value={editDoc?.name}
+              maxLength={100}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <h4>Second Name</h4>
+            <input
+              className="doctoradminregistration_inputs"
+              type="text"
+              name="second_name"
+              autoComplete="off"
+              value={editDoc?.second_name}
+              maxLength={50}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div>
+            <h4> Phone Number</h4>
+            <input
+              className="doctoradminregistration_inputs"
+              type="number"
+              maxLength={10}
+              name="phone_no"
+              autoComplete="off"
+              value={editDoc?.phone_no}
+              onChange={handleChange}
+              // style={{
+              //   border: validationErrors?.phone ? "2px solid red" : "",
+              // }}
+            />
+            {/* <div className="main-waring-section  main-waring-section4 ">
+                      {validationErrors.phone && (
+                      <p className="register-number-warning">
+                        {validationErrors.phone}
+                      </p>
+                    )}
+                    </div> */}
+          </div>
+          <div>
+            <h4>Email</h4>
+            <input
+              className="doctoradminregistration_inputs"
+              type="email"
+              name="email"
+              maxLength={50}
+              value={editDoc?.email}
+              autoComplete="off"
+              onChange={handleChange}
+              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+              // style={{
+              //   border: validationErrors?.email ? "2px solid red" : "",
+              // }}
+            />
+            {/* {validationErrors.email && (
+                      <p className="register-number-warning">
+                        {validationErrors.email}
+                      </p>
+                    )} */}
+          </div>
+        </div>
         <div className="doctoradminregistration_input1 flex">
           <div>
             <h4>Qualification</h4>
@@ -377,9 +451,9 @@ export const MainAdminDoctorEditFinal = () => {
               maxLength={50}
               type="text"
               autoComplete="off"
-              value={editDoc?.additionalSpeciality}
+              value={editDoc?.additional_speciality}
               onChange={handleChange}
-              name="additionalSpeciality"
+              name="additional_speciality"
             />
           </div>
         </div>
@@ -507,12 +581,14 @@ export const MainAdminDoctorEditFinal = () => {
             event.preventDefault();
             navigate(-1);
           }}
-          style={{cursor:"pointer"}}
+          style={{ cursor: "pointer" }}
         >
           Back
         </h4>
 
-        <h4 onClick={handleSubmit}   style={{cursor:"pointer"}}>Submit</h4>
+        <h4 onClick={handleSubmit} style={{ cursor: "pointer" }}>
+          Submit
+        </h4>
       </div>
     </div>
   );

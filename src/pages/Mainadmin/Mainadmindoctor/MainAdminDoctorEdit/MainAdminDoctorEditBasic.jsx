@@ -118,7 +118,7 @@ const MainAdminDoctorEditBasic = () => {
         <div>
           <div className="main-register flex">
             <div className="register-png-div">
-              <img src="images/Group 72.png" alt="" />
+              {/* <img src="images/Group 72.png" alt="" /> */}
             </div>
 
             <div className="registration-form">
@@ -160,7 +160,6 @@ const MainAdminDoctorEditBasic = () => {
                       maxLength={10}
                       name="phone_no"
                       autoComplete="off"
-                      onKeyPress={handleKeyPress}
                       value={editDoc?.phone_no}
                       onChange={handleChange}
                       style={{
@@ -212,7 +211,7 @@ const MainAdminDoctorEditBasic = () => {
             </div>
 
             <div className="register-png-div2 register-png-div flex">
-              <img src="images/Group 73.png" alt="" />
+              {/* <img src="images/Group 73.png" alt="" /> */}
             </div>
           </div>
         </div>

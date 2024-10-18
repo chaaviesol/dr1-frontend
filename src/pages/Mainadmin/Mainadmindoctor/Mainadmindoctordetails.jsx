@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Mainadmindoctor/mainadmindoctordetails.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -8,8 +8,12 @@ import moment from "moment";
 import { toast } from "react-toastify";
 import { Loader } from "../../../components/Loader/Loader";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
+import { MyContext } from "../../../contexts/Contexts";
 
-export default function Mainadmindoctordetails({ Data: { DetailData },setChangeDashboards }) {
+export default function Mainadmindoctordetails({
+  Data: { DetailData },
+  setChangeDashboards,
+}) {
   const [open, setOpen] = React.useState({});
   const [EditValues, setEditValues] = useState({});
   const [isLoading, setisLoading] = useState(false);
@@ -20,6 +24,8 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
   // const [Viewers, setViewers] = useState([]);
 
   const navigate = useNavigate();
+  const { seteditDoc } = useContext(MyContext);
+
   const consultAndViewData = useFetchViewsAndContacts(
     DoctorDetails?.id,
     "Doctor"
@@ -134,8 +140,10 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
   };
   console.log("DoctorDetails>>>>", DoctorDetails);
 
-  const EditDetailsCondition = () => {
-    navigate("/mainadmindoctorEditbasic", { state: { data: DoctorDetails } });
+  const editDoctorPage = () => {
+    seteditDoc(DoctorDetails);
+
+    navigate("/mainadmindoctoredit");
   };
 
   const handleBack = () => {
@@ -148,13 +156,13 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
     return (
       <>
         <button
-        onClick={handleBack}
-        className="adpha-back-button"
-        style={{ marginTop: "1rem" }}
-      >
-        <i className="ri-arrow-left-line"></i>
-      </button>
-        <div style={{ padding: "20px",paddingTop:"0" }}>
+          onClick={handleBack}
+          className="adpha-back-button"
+          style={{ marginTop: "1rem" }}
+        >
+          <i className="ri-arrow-left-line"></i>
+        </button>
+        <div style={{ padding: "20px", paddingTop: "0" }}>
           <div className="mainadmindoctordatas flex">
             <div className="mainadmindoctordatas_profile flex">
               <img
@@ -173,9 +181,11 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
                       background: "#2A9D8F",
                       color: "white",
                       marginLeft: "10px",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                 {DoctorDetails?.sector}
+                    {DoctorDetails?.sector === "government" ? "Govt" : "Pvt"}
                   </h4>
                 </div>
 
@@ -183,8 +193,7 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
                   className="highlight_data"
                   style={{ background: "#3A65FD", color: "white" }}
                 >
-                  {DoctorDetails?.education_qualification}({DoctorDetails?.type}
-                  )
+                  {DoctorDetails?.education_qualification}
                 </h4>
 
                 <div className="flex">
@@ -258,7 +267,7 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
                 </h4>
               </div>
               <h3 style={{ marginBottom: "1.3vw" }}>About</h3>
-              
+
               <h4 style={{ marginBottom: "1.3vw" }}>{DoctorDetails?.about}</h4>
 
               <h3 style={{ marginBottom: "1.3vw" }}>Address</h3>
@@ -439,7 +448,7 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
           )}
           {/* {Viewers?.cunsultData?.length > 0 && */}
           <>
-            <div className="flex admin_view_more">
+            <div className="flex admin_view_more" style={{marginTop:"1rem"}}>
               <h3>Views</h3>
               <h4>
                 View More
@@ -506,7 +515,12 @@ export default function Mainadmindoctordetails({ Data: { DetailData },setChangeD
                   : ""
               }
             >
-              <button style={{backgroundColor:"#3A65FD"}} onClick={EditDetailsCondition}>Edit Profile</button>
+              <button
+                style={{ backgroundColor: "#3A65FD" }}
+                onClick={editDoctorPage}
+              >
+                Edit Profile
+              </button>
               <h4
                 onClick={UpdateStatus}
                 style={{

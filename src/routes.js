@@ -46,7 +46,7 @@ import { DocProfileMainSec } from "./pages/Doctoradmin/Dashboard/DocProfileMainS
 import HospitalDetailed from "./pages/Customer/Hospital/HospitalDetailed/HospitalDetailed";
 import HospitalAdminProvider from "./contexts/Doctor/HospitalAdminProvider";
 import { DoctorFeedbackList } from "./pages/Mainadmin/Mainadmindoctor/DoctorFeedBacklist/DoctorFeedbackList";
-import MainAdminDoctorEditBasic from "./pages/Mainadmin/Mainadmindoctor/MainAdminDoctorEdit/MainAdminDoctorEditBasic";
+// import MainAdminDoctorEditBasic from "./pages/Mainadmin/Mainadmindoctor/MainAdminDoctorEdit/MainAdminDoctorEditBasic";
 import { MainAdminDoctorEditFinal } from "./pages/Mainadmin/Mainadmindoctor/MainAdminDoctorEdit/MainAdminDoctorEditFinal";
 import Mainadminlabeditlab1 from "./pages/Mainadmin/Mainadminlabs/edit data/LabEdit1";
 import Mainadminlabeditlab2 from "./pages/Mainadmin/Mainadminlabs/edit data/LabEdit2";
@@ -210,8 +210,7 @@ export const superAdminRoutes = [
   { path: "/mainadminfeedback", element: <Mainadminfeedback /> },
   { path: "/Mainadmincustomerdetails", element: <Mainadmincustomerdetails /> },
   { path: "/doctorfeedbacklist", element: <DoctorFeedbackList /> },
-  { path: "/mainadmindoctorEditbasic", element: <MainAdminDoctorEditBasic /> },
-  { path: "/mainadmindoctorEditFinal", element: <MainAdminDoctorEditFinal /> },
+  { path: "/mainadmindoctoredit", element: <MainAdminDoctorEditFinal /> },
   { path: "/mainadminlabeditlab1", element: <Mainadminlabeditlab1 /> },
   { path: "/mainadminlabeditlab2", element: <Mainadminlabeditlab2 /> },
   {
