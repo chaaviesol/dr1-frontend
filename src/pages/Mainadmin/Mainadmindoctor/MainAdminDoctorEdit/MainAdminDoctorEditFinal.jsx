@@ -23,6 +23,11 @@ export const MainAdminDoctorEditFinal = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page
   }, [editDoc, navigate]);
+  useEffect(() => {
+    if(editDoc.pincode){
+      updatePosts(editDoc.pincode)
+    }
+  }, [editDoc]);
 
   const handleKeyPress = (event) => {
     if ([".", "-", "e", "+", "E"].includes(event?.key)) {
@@ -86,7 +91,6 @@ export const MainAdminDoctorEditFinal = () => {
       !editDoc?.phone_office;
     if (checkFields) {
       // setloader(false);
-      alert("Please fill in all fields.");
       toast.info("Please fill in all fields.");
       return;
     } else if (postalError) {
@@ -99,11 +103,11 @@ export const MainAdminDoctorEditFinal = () => {
         .then((res) => {
           if (res.data.success) {
             setloader(false);
+            toast.success(res.data.message);
             setTimeout(() => {
               seteditDoc({});
-              navigate(-2);
+              navigate(-1);
             }, 2500);
-            alert(res.data.message);
           } else {
             toast.info(res.data.message);
             setloader(false);
@@ -220,7 +224,7 @@ export const MainAdminDoctorEditFinal = () => {
   return (
     <div className="doctoradminregistration flex desktop">
       <div>
-        <h1>Doctor Registration</h1>
+        <h1>Doctor Edit</h1>
       </div>
       {/* {loader && <Loader />} */}
       <div className="doctoradminregistration_input flex">

@@ -36,7 +36,7 @@ export default function AuthProvider({ children }) {
     sessionStorage.removeItem("accessToken"); //remove both tokens
     sessionStorage.removeItem("refreshToken");
   };
-  console.log("auth context =>", auth);
+  // console.log("auth context =>", auth);
   return (
     <AuthContext.Provider value={{ auth, setAuth, authLogout, isLoading }}>
       {children}

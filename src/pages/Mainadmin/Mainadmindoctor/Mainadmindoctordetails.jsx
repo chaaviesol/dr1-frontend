@@ -14,7 +14,7 @@ export default function Mainadmindoctordetails({
   Data: { DetailData },
   setChangeDashboards,
 }) {
-  const [open, setOpen] = React.useState({});
+  const [open, setOpen] = useState({});
   const [EditValues, setEditValues] = useState({});
   const [isLoading, setisLoading] = useState(false);
   const [DoctorDetails, setDoctorDetails] = useState(DetailData);
@@ -287,8 +287,8 @@ export default function Mainadmindoctordetails({
                   Availability
                 </h3>
               </div>
-              {currentAvailability.map((ele) => (
-                <div className="hospitaltime flex">
+              {currentAvailability.map((ele,index) => (
+                <div key={index} className="hospitaltime flex">
                   <div className="hospitaltime_name">
                     <h3>{ele?.hospital_name}</h3>
                     <div className="availabilityDays">
