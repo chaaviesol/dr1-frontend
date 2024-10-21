@@ -31,6 +31,7 @@ import ViewQueries from "../ManageQuery/ViewQueries";
 import { CreateCampaign } from "../Campaign/CreateCampaign";
 import Careerlist from "../CareerManage/Careerlist";
 import HomeServicelist from "../HomeServiceManage/HomeServicelist";
+import HealthPartners from "../HealthPartnerReg/HealthPartners";
 
 export default function Mainadmin() {
   const [ChangeDashboards, setChangeDashboards] = useState({
@@ -262,6 +263,11 @@ export default function Mainadmin() {
             {ChangeDashboards?.homeservicelist && (
               <>
                 <HomeServicelist setChangeDashboards={setChangeDashboards} />
+              </>
+            )}
+            {ChangeDashboards?.healthpartners && (
+              <>
+                <HealthPartners setChangeDashboards={setChangeDashboards} />
               </>
             )}
           </div>

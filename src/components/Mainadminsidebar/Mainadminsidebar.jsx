@@ -209,6 +209,19 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
        <i className="ri-nurse-fill"></i>
         <h4>Career</h4>
       </div>
+      <div
+        onClick={() => {
+          FindButtonValue("healthpartners");
+        }}
+        className={
+          (selected?.healthpartners  )
+            ? "admimmenuicon admimmenuicon2 flex"
+            : "admimmenuicon flex"
+        }
+      >
+       <i className="ri-nurse-fill"></i>
+        <h4>Health Partners </h4>
+      </div>
     </div>
   );
 }
