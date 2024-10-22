@@ -4,12 +4,15 @@ import AddButton from "../../Customer/Mobile/Pharmacy/components/AddButton";
 import CartControl from "../../Customer/Mobile/Pharmacy/Category/CartControl";
 import Navbar from "../../../components/Navbar";
 import CartTopbarWithBackButton from "../../../components/CartTopbarWithBackButton";
+import { LoginModal } from "../../../components/LoginModal/LoginModal";
 
 const SingleProductDetailsPC = ({
   handleAddToCart,
   product,
   productInCart,
   isAddingToCart,
+  isShowLoginModal,
+  setIsShowLoginModal
 }) => {
   const [currentImage, setCurrentImage] = useState(product?.images.image1);
   return (
@@ -198,6 +201,9 @@ const SingleProductDetailsPC = ({
           </div>
         </div>
       </div>
+      {isShowLoginModal&&
+      
+      <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal}/>}
     </>
   );
 };

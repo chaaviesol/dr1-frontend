@@ -10,9 +10,11 @@ import { toast } from "react-toastify";
 import { Modal } from "@mui/material";
 import axios from "axios";
 import { BASE_URL } from "../../config";
+import { LoginModal } from "../../components/LoginModal/LoginModal";
 export default function Services() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isShowHomeserviceModal, setIsShowHomeserviceModal] = useState(false);
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const [formData, setFormData] = useState({
     selectedService: "",
     name: "",
@@ -135,7 +137,7 @@ export default function Services() {
                 if (auth.userId && auth.userType === "customer") {
                   setIsModalOpen(true);
                 } else {
-                  toast.info("Please login as a customer!");
+                  setIsShowLoginModal(true);
                 }
               }}
               className="services_button"
@@ -477,7 +479,9 @@ export default function Services() {
         </Modal>
       }
       <Footer />
-         
+      {isShowLoginModal && (
+        <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />
+      )}
     </div>
   );
 }

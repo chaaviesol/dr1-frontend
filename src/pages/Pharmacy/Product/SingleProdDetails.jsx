@@ -13,6 +13,7 @@ import { useLocation } from "react-router-dom";
 
 function SingleProdDetails() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const { cartItems, setCartItems, refetchCart } = usePharmacyContext();
   const { auth } = useAuth();
   const isMobile = useIsMobileScreen();
@@ -65,7 +66,7 @@ function SingleProdDetails() {
       );
       await addTocartMutation.mutateAsync(data);
     } else {
-      toast.info("Please login as a customer!");
+      setIsShowLoginModal(true);
     }
   };
 
@@ -93,6 +94,8 @@ function SingleProdDetails() {
           productInCart={productInCart}
           product={product}
           isAddingToCart={addTocartMutation.isPending}
+          isShowLoginModal={isShowLoginModal}
+          setIsShowLoginModal={setIsShowLoginModal}
         />
       )}
     </>
