@@ -50,23 +50,7 @@ export default function Labs() {
     })
 
 };
-  // useEffect(() => {
-  //   if ("geolocation" in navigator) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (pos) => {
-  //         setPosition({
-  //           latitude: pos.coords.latitude,
-  //           longitude: pos.coords.longitude,
-  //         });
-  //       },
-  //       (error) => {
-  //         console.error("Error getting geolocation: ", error);
-  //       }
-  //     );
-  //   } else {
-  //     console.log("Geolocation is not available in your browser.");
-  //   }
-  // }, []);
+
 
   const handleSearchData = async (type, speciality) => {
     try {
@@ -384,6 +368,7 @@ export default function Labs() {
 
   
       <Footer />
+
     </div>
   );
 }

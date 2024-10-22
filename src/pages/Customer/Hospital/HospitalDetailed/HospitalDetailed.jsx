@@ -13,9 +13,11 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import useAuth from "../../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { LoginModal } from "../../../../components/LoginModal/LoginModal";
 const HospitalDetailed = () => {
   const [isShowCompleteUsrProfileModal, setIsShowCompleteUsrProfileModal] =
     useState(false);
+    const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const [contactNumber, setContactNumber] = useState("");
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
@@ -88,7 +90,7 @@ const HospitalDetailed = () => {
   });
   const consultNow = async () => {
     if (!auth.userId) {
-      toast.info("please login to view contact number");
+      setIsShowLoginModal(true)
       return;
     }
 
@@ -325,6 +327,9 @@ const HospitalDetailed = () => {
         open={isShowCompleteUsrProfileModal}
         onClose={setIsShowCompleteUsrProfileModal}
       />
+        {isShowLoginModal && (
+        <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />
+      )}
     </>
   );
 };

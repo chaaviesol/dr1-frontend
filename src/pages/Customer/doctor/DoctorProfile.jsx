@@ -3,7 +3,7 @@ import "./doctorProfile.css";
 import Footer from "../../../components/Footer";
 import Navbar from "../../../components/Navbar";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Modal } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CallIcon from "@mui/icons-material/Call";
 import axios from "axios";
@@ -18,10 +18,12 @@ import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { toast } from "react-toastify";
 import useAuth from "../../../hooks/useAuth";
 import Feedback from "../../../components/Feedback/Feedback";
+import { LoginModal } from "../../../components/LoginModal/LoginModal";
 export default function DoctorProfile() {
   const [ViewAvailabilityData, setViewAvailabilityData] = useState();
   const [open, setopen] = useState(false);
   const [isShowContact, setIsShowContact] = useState(false);
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const [isShowCompleteUsrProfileModal, setIsShowCompleteUsrProfileModal] =
     useState(false);
   const days = [
@@ -111,17 +113,19 @@ export default function DoctorProfile() {
   );
   const consultNow = async () => {
     if (!auth.userId) {
-      toast.info("please login to view contact number");
+      setIsShowLoginModal(true);
       return;
     }
     const completionStatus = await refetchCustomerProfileCompletionStatus();
+    console.log(completionStatus);
     const newCustomerProfileCompletionStatus = completionStatus.data;
     if (newCustomerProfileCompletionStatus === false) {
       setopen(false); //close opened modals,if any
       setIsShowCompleteUsrProfileModal(true); //for enterting user remaining profile details
     } else if (newCustomerProfileCompletionStatus === true) {
+      setIsShowContact(true);
       const data = {
-        userid: auth.userid,
+        userid: auth.userId,
         id: doctor?.id,
         type: "Doctor",
         status: "P",
@@ -143,12 +147,12 @@ export default function DoctorProfile() {
     },
     onError: (error) => {
       console.log(error);
-      alert(error.response.data);
+      toast.error(error.response.data);
     },
   });
 
   const isLoading =
-    isCustomerProfileCheckLoading || isDoctorAvailabilityPending;
+     isDoctorAvailabilityPending;
 
   console.log("ViewAvailabilityData>>>>", ViewAvailabilityData);
   const StarRating = ({ rating }) => {
@@ -329,24 +333,35 @@ export default function DoctorProfile() {
               <div className="doc_profileModalAlignCont">
                 <button
                   type="button"
-                  onClick={consultNow}
-                  disabled={isCustomerProfileCheckLoading}
+                  style={{width:"15rem"}}
+                  onClick={() => {
+                    consultNow();
+                  }}
+                  disabled={isCustomerProfileCheckLoading || isShowContact}
                 >
                   <CallIcon id="doc_profileModalBtnIcon" />
-                  View Contact
+                  {isCustomerProfileCheckLoading ? (
+                    <CircularProgress size="1.5rem" sx={{ color: "white" }} />
+                  ) : isShowContact &&
+                    auth.userId &&
+                    auth.userType === "customer" ? (
+                    doctor?.phone_office
+                  ) : (
+                    "View Contact"
+                  )}
                 </button>
-                {isShowContact && (
-                  <button type="button">
-                    <CallIcon id="doc_profileModalBtnIcon" />
-                    {doctor?.phone_office || `+91 9495949494`}
-                  </button>
-                )}
               </div>
             </div>
           </>
         </Modal>
       </div>
 
+      {isShowLoginModal && (
+        <LoginModal
+          show={isShowLoginModal}
+          setShow={setIsShowLoginModal}
+        />
+      )}
       <Footer />
     </div>
   );

@@ -13,6 +13,7 @@ import useAuth from "../../hooks/useAuth";
 import { BASE_URL } from "../../config";
 import { Close } from "@mui/icons-material";
 import { Loader } from "../../components/Loader/Loader";
+import { LoginModal } from "../../components/LoginModal/LoginModal";
 export default function Pharmacy() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [checked, setChecked] = useState(false);
@@ -27,6 +28,8 @@ export default function Pharmacy() {
   const { auth } = useAuth();
   const [loader, setLoader] = useState(false);
   const [isCategoryFetching, setIsCategoryFetching] = useState(false);
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
+
   const [marketplaceCategories, setMarketplaceCategories] = useState([]);
   console.log(loader);
   const fetchCategories = async () => {
@@ -48,7 +51,7 @@ export default function Pharmacy() {
     if (auth.userId && auth.userType === "customer") {
       setIsModalOpen(!isModalOpen);
     } else {
-      toast.info("Please login as a customer!");
+      setIsShowLoginModal(true);
     }
   };
   const navigate = useNavigate();
@@ -463,6 +466,9 @@ export default function Pharmacy() {
       </div>
 
       <Footer />
+      {isShowLoginModal && (
+        <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />
+      )}
     </div>
   );
 }

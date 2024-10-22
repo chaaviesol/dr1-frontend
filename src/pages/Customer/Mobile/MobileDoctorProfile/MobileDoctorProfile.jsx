@@ -131,7 +131,7 @@ export default function MobileDoctorProfile() {
       // setIsShowCompleteUsrProfileModal(true); //for enterting user remaining profile details
     } else if (newCustomerProfileCompletionStatus === true) {
       const data = {
-        userid: auth.userid,
+        userid: auth.userId,
         id: doctor?.id,
         type: "Doctor",
         status: "P",

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./categorys.css";
 import SearchBar from "../components/SearchBar";
 import { useNavigate } from "react-router-dom";
-import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 import CartControl from "./CartControl";
 import useAuth from "../../../../../hooks/useAuth";
 import { toast } from "react-toastify";
@@ -16,10 +15,12 @@ import { debounce } from "lodash";
 import { Loader } from "../../../../../components/Loader/Loader";
 import useAxiosPrivate from "../../../../../hooks/useAxiosPrivate";
 import CartTopbarWithBackButton from "../../../../../components/CartTopbarWithBackButton";
+import { LoginModal } from "../../../../../components/LoginModal/LoginModal";
 
 export default function SelectCategory({ isMobile, passedCategoryId }) {
   const [currentActiveCategoryIndex, setCurrentActiveCategoryIndex] =
     useState(0);
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const { cartItems, setCartItems, refetchCart } = usePharmacyContext();
@@ -97,7 +98,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
         console.error("Failed to update cart:", error);
       }
     } else {
-      toast.info("Please login as a customer!");
+     setIsShowLoginModal(true)
     }
   };
 
@@ -149,7 +150,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
       // alert(categoryIndex);
       handleUpdateSelectedCategory(categoryIndex);
     }
-  }, [passedCategoryId,products]);
+  }, [passedCategoryId, products]);
   console.log("cartItems =>", cartItems);
 
   return (
@@ -237,7 +238,12 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                       style={{ textAlign: "left", width: "100%" }}
                     >
                       <h2 className="product_brand_name">{product?.brand}</h2>
-                      <h2 className="product_name">  {product?.name?.length > 18 ? `${product.name.slice(0, 18)}...` : product.name}</h2>
+                      <h2 className="product_name">
+                        {" "}
+                        {product?.name?.length > 18
+                          ? `${product.name.slice(0, 18)}...`
+                          : product.name}
+                      </h2>
                       {/* <h2 className="product_qlty">{product?.quantity}</h2> */}
                     </div>
 
@@ -281,6 +287,9 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
             )}
         </div>
       </div>
+      {isShowLoginModal && (
+        <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />
+      )}
     </div>
   );
 }

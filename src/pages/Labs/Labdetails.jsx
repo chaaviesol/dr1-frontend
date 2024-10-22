@@ -15,11 +15,13 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Feedback from "../../components/Feedback/Feedback";
+import { LoginModal } from "../../components/LoginModal/LoginModal";
 
 export default function Labdetails() {
   const [isShowCompleteUsrProfileModal, setIsShowCompleteUsrProfileModal] =
     useState(false);
   const [contactNumber, setContactNumber] = useState("");
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const tempImg = "images/LabTempimg.jpg";
   const location = useLocation();
   const axiosPrivate = useAxiosPrivate();
@@ -75,7 +77,7 @@ export default function Labdetails() {
 
   const consultNow = async () => {
     if (!auth.userId) {
-      toast.info("please login to view contact number");
+      setIsShowLoginModal(true)
       return;
     }
     const completionStatus = await refetchCustomerProfileCompletionStatus();
@@ -333,6 +335,8 @@ export default function Labdetails() {
           onClose={setIsShowCompleteUsrProfileModal}
         />
         <Footer />
+        {isShowLoginModal && <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />}
+
       </div>
     );
   } else {

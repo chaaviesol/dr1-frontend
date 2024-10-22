@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import Secopmodal from "../../../components/SecOpAndQuery/Secopmodal";
+import { LoginModal } from "../../../components/LoginModal/LoginModal";
 export default function SecondopinionBanner() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isShowLoginModal, setIsShowLoginModal] = useState(false);
   const navigate = useNavigate();
   const { auth } = useAuth();
   const closeBox = () => {
@@ -39,10 +41,7 @@ export default function SecondopinionBanner() {
               if (auth.userId && auth.userType === "customer") {
                 setIsModalOpen(true);
               } else {
-                toast.info("Please login as a customer!");
-                setTimeout(() => {
-                  navigate("/");
-                }, 4000);
+                setIsShowLoginModal(true);
               }
             }}
           >
@@ -65,6 +64,10 @@ export default function SecondopinionBanner() {
         <span>Expert Opinion</span>
         <i className="ri-arrow-right-up-line"></i>
       </div>
+
+      {isShowLoginModal && (
+        <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />
+      )}
     </div>
   );
 }

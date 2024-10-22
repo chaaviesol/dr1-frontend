@@ -149,17 +149,18 @@ export default function Services() {
           <div className="services_image services_image1 flex">
             <div className="custom-image-grid">
               <div className="custom-grid-item">
-                <img src="../images/serdo1.jpg" alt="" />
+                <img src="../images/serdo1.webp" alt="" />
               </div>
               <div className="custom-grid-item">
-                <img src="../images/serdo2.jpg" alt="" />
+                <img src="../images/serdo2.webp" alt="" />
+                {/* <img src="../images/serdo1.webp" alt="" /> */}
               </div>
               <div className="custom-grid-item">
-                <img src="../images/dr (3).jpg" alt="" />
+                <img src="../images/dr (3).webp" alt="" />
                 <div className="backdesign"></div>
               </div>
               <div className="custom-grid-item">
-                <img src="../images/dr20.png" alt="" />
+                <img src="/images/dr20.webp" alt="gh" />
               </div>
 
               <div className="backdesign2"></div>
@@ -364,9 +365,7 @@ export default function Services() {
                 <h4>& Many More</h4>{" "}
               </div>
             </div>
-            <p className="priscriptionpara" style={{ marginLeft: "15px" }}>
-              & Many More
-            </p>
+           
             <button className="drone_red services_button" type="button">
               Apply Now <i className="ri-arrow-right-up-line"></i>
             </button>

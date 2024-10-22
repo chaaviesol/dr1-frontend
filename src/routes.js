@@ -102,7 +102,6 @@ export const publicRoutes = [
   { path: "/profile", element: <Profile /> },
   { path: "/pharmacyproducts", element: <AllProductsView /> },
   { path: "/productdetails", element: <SingleProdDetails /> },
-  { path: "/cart", element: <Cart /> },
   { path: "/createcampaign", element: <CreateCampaign /> },
 
 
@@ -175,7 +174,9 @@ export const protectedCustomerRoutes = [
   { path: "/userprofile", element: <Userprofile /> },
   { path: "/myqueries", element: <MyQueries /> },
   { path: "/mysecondopinions", element: <SecondOpinions /> },
-  { path: "/mysecondopinions/detailed", element: <DetailedOpinion /> }
+  { path: "/mysecondopinions/detailed", element: <DetailedOpinion /> },
+  { path: "/cart", element: <Cart /> },
+
 ];
 export const hospitalAdminRoutes = [
   {
