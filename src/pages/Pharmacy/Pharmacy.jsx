@@ -31,7 +31,7 @@ export default function Pharmacy() {
   const [isShowLoginModal, setIsShowLoginModal] = useState(false);
 
   const [marketplaceCategories, setMarketplaceCategories] = useState([]);
-  console.log(loader);
+  // console.log(loader);
   const fetchCategories = async () => {
     try {
       setIsCategoryFetching(true);

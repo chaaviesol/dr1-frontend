@@ -48,7 +48,6 @@ function Cart() {
     }
   };
 
-  console.log(cartItems);
 
   const placeOrder = async (address) => {
     const payload = {

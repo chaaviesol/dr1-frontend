@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function DocCard({ data }) {
   const details = data?.details;
+  console.log({details})
   const navigate = useNavigate();
   const tempImg = "./images/TempDocImg.jpg";
 

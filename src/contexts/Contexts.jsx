@@ -54,7 +54,6 @@ export default function Contexts({ children }) {
     fetchAllMedicalCategories();
   }, []);
 
-  console.log(speed);
 
   return (
     <>

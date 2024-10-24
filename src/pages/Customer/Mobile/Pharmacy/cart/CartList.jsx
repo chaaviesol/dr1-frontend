@@ -181,7 +181,7 @@ export default function Cart({
             >
               Cancel
             </button>
-            <button onClick={HandleOnclick}>Place Order</button>
+            <button onClick={HandleOnclick}>Confirm Order</button>
           </div>
         </div>
       </Modal>

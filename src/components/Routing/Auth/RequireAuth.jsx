@@ -30,11 +30,9 @@ const RequireAuth = ({ allowedRoles }) => {
     return auth?.userType === allowedRoles[0] ? (
       <Outlet />
     ) : auth?.userId ? (
-      // <Outlet />
       <Navigate to="/unauthorized" state={{ from: location }} replace />
     ) : (
       <Navigate to="/" state={{ from: location }} replace />
-      // <Outlet />
     );
   }
 };
