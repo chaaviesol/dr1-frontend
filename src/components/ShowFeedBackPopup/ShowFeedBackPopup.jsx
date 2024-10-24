@@ -41,10 +41,10 @@ export const ShowFeedBackPopup = () => {
         interactedid: ConstantData?.lastInteractionId,
       };
       const checkFields = !sentData.rating || !sentData?.message;
-      console.log("sentData>>>>", sentData);
+      // console.log("sentData>>>>", sentData);
       if (!checkFields) {
         axiosPrivate.post(`${port}/doctor/doctor_feedback`, sentData).then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res?.data) {
             toast.success(res?.data?.message);
             setFinalData((prevData) => ({ ...prevData, status: "success" }));
@@ -65,12 +65,12 @@ export const ShowFeedBackPopup = () => {
         interactedid: ConstantData?.lastInteractionId,
       };
       const checkFields = !sentData.rating || !sentData?.message;
-      console.log("sentData>>>>", sentData);
+      // console.log("sentData>>>>", sentData);
       if (!checkFields) {
         axiosPrivate
           .post(`${port}/hospital/hospital_feedback`, sentData)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             if (res?.data) {
               toast.success(res?.data?.message);
               setFinalData((prevData) => ({ ...prevData, status: "success" }));
@@ -91,10 +91,10 @@ export const ShowFeedBackPopup = () => {
         interactedid: ConstantData?.lastInteractionId,
       };
       const checkFields = !sentData.rating || !sentData?.message;
-      console.log("sentData>>>>", sentData);
+      // console.log("sentData>>>>", sentData);
       if (!checkFields) {
         axiosPrivate.post(`${port}/lab/lab_feedback`, sentData).then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res?.data) {
             toast.success(res?.data?.message);
             setFinalData((prevData) => ({ ...prevData, status: "success" }));
@@ -134,19 +134,19 @@ export const ShowFeedBackPopup = () => {
 
   const updateStatus = (e) => {
     const value = e?.target?.value;
-    console.log("value>>>>", value);
+    // console.log("value>>>>", value);
     const sentData = {
       status: value,
       user_id: auth.userId,
       type: ConstantData?.type,
       interactedid: ConstantData?.lastInteractionId,
     };
-    console.log("sentData>>>>", sentData);
+    // console.log("sentData>>>>", sentData);
     if (sentData?.status) {
         axiosPrivate
         .post(`${port}/user/afterconsultupdate`, sentData)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res?.data) {
             if (sentData?.status !== "L") {
               toast.success(res?.data?.message);
@@ -160,7 +160,7 @@ export const ShowFeedBackPopup = () => {
         });
     }
   };
-  console.log("ContactData>>>", ContactData);
+  // console.log("ContactData>>>", ContactData);
   return (
     <>
       <Modal

@@ -22,7 +22,7 @@ const ChatBotAfterLogin = () => {
       setChatSec(true);
     }
   };
-  console.log("Chats>>>", Chats);
+  // console.log("Chats>>>", Chats);
 
   const InputField = (e) => {
     const value = e?.target?.value; // Set to empty string if no value
@@ -35,13 +35,13 @@ const ChatBotAfterLogin = () => {
     }
   }, [Chats, TempUserInput]);
   const ConfirmInput = () => {
-    console.log("checkingggggg>>>>>");
+    // console.log("checkingggggg>>>>>");
     let TempChats = Chats;
     TempChats[TempChats?.length - 1] = {
       ...TempChats[TempChats?.length - 1],
       user: TempUserInput,
     };
-    console.log(TempChats);
+    // console.log(TempChats);
     setChats(TempChats);
     fetchBotCallResultMutation.mutateAsync(TempUserInput);
   };
@@ -60,7 +60,7 @@ const ChatBotAfterLogin = () => {
       BotRes(data.message);
     },
     onError:(error)=>{
-      console.log("popo")
+      // console.log("popo")
     }
   });
 

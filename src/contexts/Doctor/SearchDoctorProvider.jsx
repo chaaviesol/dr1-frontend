@@ -105,7 +105,7 @@ export default function SearchDoctorProvider({ children }) {
         // setAllDocsBySearch([])
         setEmptyResults(true);
       } else {
-        console.log({ filteredDocs });
+        // console.log({ filteredDocs });
         setDocsBySearch(filteredDocs);
         setEmptyResults(false);
       }
@@ -113,7 +113,7 @@ export default function SearchDoctorProvider({ children }) {
       if (filteredDocs.length === 0) {
         setEmptyResults(true);
       } else {
-        console.log({ filteredDocs });
+        // console.log({ filteredDocs });
         setFilteredDoctors(filteredDocs);
         setEmptyResults(false);
       }
@@ -150,9 +150,9 @@ export default function SearchDoctorProvider({ children }) {
     setFilteredDoctors(DoctorsDetails);
   };
 
-  console.log({ allDocData });
-  console.log({ filteredDoctors });
-  console.log({ filters });
+  // console.log({ allDocData });
+  // console.log({ filteredDoctors });
+  // console.log({ filters });
   //
 
   const handleExpChange = (event) => {
