@@ -455,11 +455,12 @@ function Pharmacy() {
           <h3>Explore Our Shop</h3>
         </div>
         <div className="pharmacyshop">
-          <div className="pharmacyshopcatemobile flex">
+          <div className="pharmacyshopcatemobile">
             {marketplaceProducts.length > 0 &&
               marketplaceProducts.map((product, index) => (
                 <div
                   key={index}
+                  style={{marginBottom:"10px"}}
                   onClick={() => handleNavigation(product.id)}
                   className="pharmacyshopproduct flex"
                 >

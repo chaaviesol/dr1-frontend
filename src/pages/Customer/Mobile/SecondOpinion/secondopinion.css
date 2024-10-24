@@ -235,7 +235,7 @@ background: linear-gradient(90deg, rgba(42,60,168,1) 0%, rgba(68,91,221,1) 100%)
 .pharmacyshopproduct{
     flex-direction: column;
     background-color: white;
-    width:28vw;
+    width:29vw;
     padding:12px 20px;
     border-radius: 8px;
     justify-content: center;
@@ -268,9 +268,12 @@ background: linear-gradient(90deg, rgba(42,60,168,1) 0%, rgba(68,91,221,1) 100%)
 }
 
 .pharmacyshopcatemobile{
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap:10px;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
     margin-bottom:15px;
 }
 
