@@ -1,0 +1,321 @@
+.querlistonboarding{
+    width:fit-content;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.querlistonboardingbutton{
+    background-color:#3A65FD;
+    color: white;
+    padding:8px 18px;
+    border-radius:50px;
+}
+
+.querlistonboarding input {
+    height: 30px;
+
+    
+    padding:10px;
+    margin-top: 5px;
+    width:100%;
+    background-color: white;
+    border: 1.8px solid white;
+  }
+  
+.querlistonboarding input:focus{
+    border: 1.8px solid #3a65fd;
+} 
+
+  .querlistonboarding th{
+    background-color: #e4eaff;
+    font-weight: 900;
+    text-align:start;
+    padding:10px;
+  } 
+
+
+  .querlistonboarding td{
+    padding-top:12px;
+    padding-left:10px;
+ }
+
+ 
+
+ .querlistonboarding tr:first-child{
+    border-radius:6px;
+ } 
+
+ .querlistonboarding tr:last-child td{
+    padding-bottom: 10px;
+}
+
+
+.querlistonboarding th:nth-child(1) {
+ width:30px;
+}
+.querlistonboarding th:nth-child(2) {
+    width:160px;
+}
+.querlistonboarding th:nth-child(3) {
+    width:160px;
+}
+.querlistonboarding th:nth-child(4) {
+    width:160px;
+}
+.querlistonboarding th:nth-child(5) {
+    width:160px;
+}
+.querlistonboarding th:nth-child(6) {
+    width:100px;
+}
+
+  
+  .querlistonboarding th h4{
+    font-weight: 600;
+  }
+
+
+  .orderlisttable tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Hover effect for rows */
+
+
+  .orderlisttable tr:hover {
+    background-color: #f1f1f1;
+  }
+
+.mainadmindoctordatas_chartschedule{
+  position: relative;
+}
+
+.mainadmindoctordatas_chartschedule:hover .scheduledbutton{
+  opacity:1;
+  top: 50%;
+}
+
+.scheduledbutton {
+  background-color: #3A65FD;
+  color: white;
+  width: fit-content;
+  padding: 10px 20px; /* Add some padding for better appearance */
+  border: none;
+  border-radius: 4px;
+  font-weight: 400;
+  cursor: pointer;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition:400ms ease-in-out;
+  opacity:0;
+}
+
+.scheduledbutton:hover {
+  background-color: #2a52cc; /* Darker blue on hover */
+}
+
+.scheduledbutton:active {
+  transform: translate(-50%, -50%) scale(0.95); /* Slight shrink effect on click */
+  background-color: #1f3fb3; /* Even darker blue on click */
+}
+
+
+
+
+
+
+
+
+
+
+/* Update Modal */
+
+.QueryListModal{
+  width: 40vw;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.QueryListModal textarea {
+  background-color: #eef1ff;
+  height: 100px;
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px 15px;
+  font-weight: 600;
+  border: 2px solid #eef1ff;
+  border-radius: 4px;
+  resize: none;
+}
+
+.QueryListModal textarea:focus {
+  border: 2px solid #3a65fd;
+}
+
+.QueryListModal input:focus {
+  border: 2px solid #3a65fd;
+}
+
+
+
+.QueryListModalhead{
+  justify-content: space-between;
+  align-items: center;
+}
+.QueryListModalhead h2{
+    font-weight: 700;
+}
+
+.removequeryupdate{
+  color: #f12f28;
+  margin-left: 10px;
+}
+
+.removequeryupdate:hover {
+  color: #ff0800;
+  text-decoration: underline;
+}
+
+.upadtestatusbotbtn{
+  align-items: center;
+  justify-content: flex-end;
+  gap:10px;
+}
+
+/* .upadtestatusbotbtn button{
+  height:32px;
+  padding:0px 25px;
+  background-color: #3A65FD;
+  color:white;
+  border-radius:4px;
+  font-weight: 600;
+  border: 1px solid #3A65Fd;
+}
+
+
+
+.upadtestatusbotbtn button:nth-child(1){
+  border: 1px solid #ff0800;
+  background-color: white;
+  color: #ff0800;
+
+} */
+
+.upadtestatusbotbtn button {
+  height: 32px;
+  padding: 0px 25px;
+  background-color: #3A65FD;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid #3A65FD;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+.upadtestatusbotbtn button:nth-child(1) {
+  border: 1px solid #ff0800;
+  background-color: white;
+  color: #ff0800;
+}
+
+.upadtestatusbotbtn button:hover {
+  background-color: #2a52cc; /* Darker blue on hover */
+}
+
+.upadtestatusbotbtn button:nth-child(1):hover {
+  background-color: #ff0800; /* Red background on hover for the first button */
+  color: white; /* Change text color to white */
+}
+
+.upadtestatusbotbtn button:active {
+  transform: scale(0.95); /* Slight shrink effect on click */
+  background-color: #1f3fb3; /* Even darker blue when clicked */
+}
+.upadtestatusbotbtn button:nth-child(1):active {
+  transform: scale(0.95); /* Shrink effect on click */
+  background-color: #d40700; /* Darker red when clicked */
+}
+
+
+.updatestatusremarks-top{
+  justify-content: space-between;
+  align-items: center;
+}
+
+.updatestatusremarks-top h4{
+      color: #3A65FD;
+}
+.updatestatusremarks-top h4:hover{
+  color: #3A65FD;
+  text-decoration: underline;
+}
+
+.updatestatus-section{
+ gap:10%;
+ padding:20px 0px;
+}
+
+.updatestatus-section-circle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:30px;
+  width:30px;
+  border-radius:50%;
+  border: 2px solid white;
+  background-color: #d40700;
+  position: relative;
+  i{
+    font-weight: 400;
+  }
+}
+
+
+.statusline{
+  position: absolute;
+  width:3px;
+  height: 65px;
+  background-color: #180908;
+  top:20px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
+
+.scheduledinput{
+  background-color: #e4eaff;
+  margin-top:8px;
+}
+
+.updatestatus-section-data{
+  align-items: center;
+  gap: 10px;
+}
+
+.scheduledinputtext{
+  position: relative;
+}
+.scheduledinput{
+ position: absolute;
+  background-color: #e4eaff;
+  margin-top:8px;
+  height:30px;
+  padding:0px 15px;
+  border-radius:35px;
+}
+
+.updatestatus-section-data2{
+  margin-top:50px;
+}
+
+/*End Update Modal */
