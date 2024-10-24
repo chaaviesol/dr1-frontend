@@ -10,7 +10,10 @@ import { Loader } from "../../../components/Loader/Loader";
 import { toast } from "react-toastify";
 import Headroom from "react-headroom";
 import { useNavigate } from "react-router-dom";
-import { Modal } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
+import { BASE_URL } from "../../../config";
+import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 
 export default function CartDesktop({
   selectedItemId,
@@ -94,6 +97,46 @@ export default function CartDesktop({
     }
   };
 
+  const fetchLocation = async (lat, lng) => {
+    const response = await axios.post(
+      `${BASE_URL}/googlemap/getcurrentlocation`,
+      {
+        lat,
+        lng,
+      }
+    );
+    return response.data;
+  };
+
+  const fetchLocationMutation = useMutation({
+    mutationKey: ["fetchLocationMutation"],
+    mutationFn: ({ lat, lng }) => fetchLocation(lat, lng),
+    onSuccess: (data) => {
+      console.log({data})
+      setDetails({ ...details, delivery_details: data.formattedAddress,pincode:data.postalCode });
+    },
+  });
+  // Get user's current position using the Geolocation API
+  function getCurrentLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+
+  function success(position) {
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
+    fetchLocationMutation.mutateAsync({ lat, lng });
+  }
+
+  function error() {
+    alert("Unable to retrieve your location.");
+  }
+
+  console.log(details);
+
   if (cartItems?.length === 0) {
     return (
       <>
@@ -120,7 +163,7 @@ export default function CartDesktop({
                 }}
                 onClick={() => navigate(-1)}
               >
-                <i class="ri-arrow-left-line"></i>
+                <i className="ri-arrow-left-line"></i>
               </div>
               <div>Cart</div>
             </div>
@@ -166,7 +209,7 @@ export default function CartDesktop({
               }}
               onClick={() => navigate(-1)}
             >
-              <i class="ri-arrow-left-line"></i>
+              <i className="ri-arrow-left-line"></i>
             </div>
             <div>Cart</div>
           </div>
@@ -174,8 +217,8 @@ export default function CartDesktop({
         <div className={styles.cartItemTileWrapper}>
           {cartItems &&
             cartItems.length > 0 &&
-            cartItems.map((ele) => (
-              <div key={ele.id} className={styles.productTile}>
+            cartItems.map((ele,index) => (
+              <div key={index} className={styles.productTile}>
                 <CartItemTile
                   key={ele.product_id}
                   product={ele}
@@ -253,9 +296,15 @@ export default function CartDesktop({
           <div className="checkoutmodaladdress">
             <div className="flex checkoutmodaladdressget">
               <h4>Address</h4>
-              <button>
+              <button onClick={getCurrentLocation} style={{width:"160px"}}>
                 {" "}
-                <i class="ri-map-pin-line"></i> Get Current Address
+                {fetchLocationMutation.isPending ? (
+                  <CircularProgress size="1.5rem" sx={{ color: "white" }} />
+                ) : (
+                  <>
+                    <i className="ri-map-pin-line"></i> Get current location
+                  </>
+                )}
               </button>
             </div>
             <textarea

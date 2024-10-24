@@ -8,33 +8,37 @@ export const PopupContext = createContext();
 
 export const ShowFeedBackPopupContext = ({ children }) => {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
-const [ContactData, setContactData] = useState([]);
+  const [ContactData, setContactData] = useState([]);
   const [hospitalData, sethospitalData] = useState([]);
   const [LabData, setLabData] = useState([]);
   const { auth } = useAuth();
-  const { userId,userType } = auth;
+  const { userId, userType } = auth;
   const axiosPrivate = useAxiosPrivate();
 
   const showPopup = () => {};
-  const fetchCustomerDoctorConsultData = async (userId) => {
-    const payload = {
-      user_id: userId,
-    };
-    const response = await axiosPrivate.post(
-      `${port}/user/doctorafterconsult`,
-      payload
-    );
-    return response.data;
+  const fetchCustomerDoctorConsultData = async () => {
+    const response = await axiosPrivate.post(`${port}/user/doctorafterconsult`);
+    return response;
   };
 
   const { data: docData } = useQuery({
     queryKey: ["fetchCustomerDoctorConsultData", userId],
     queryFn: async () => {
-      const data = await fetchCustomerDoctorConsultData(userId);
-      return data.interactions;
+      try {
+        const response = await fetchCustomerDoctorConsultData();
+        if (response.status === 204) {
+          return []; // No content, return an empty array
+        }
+        return response.data.interactions;
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          return []; // Return an empty array when 404
+        }
+        throw error; // Rethrow any other errors
+      }
     },
 
-    enabled: !!userId && userType==="customer",
+    enabled: !!userId && userType === "customer",
   });
   useEffect(() => {
     if (docData?.length) {
