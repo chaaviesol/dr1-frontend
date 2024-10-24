@@ -21,121 +21,19 @@ export default function CartDesktop({
   totalPrice,
   handleSelect,
   orderPending,
+  isModalOpen2,
+  setIsModalOpen2,
+  details,
+  setDetails,
+  handleOnchange,
+  HandleOnclick,
+  handleKeyPress,
+  getCurrentLocation,
+  fetchLocationMutation,
 }) {
   const { cartItems, isCartLoading } = usePharmacyContext();
-  const [details, setDetails] = useState({
-    delivery_details: "",
-    contact_no: "",
-    pincode: "",
-  });
-  console.log({ details });
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
+
   const navigate = useNavigate();
-
-  const handleOnchange = (e) => {
-    const { name, value } = e.target;
-    if (name === "contact_no") {
-      const sanitizedValue = value.replace(/[.-]/g, "");
-      const truncatedValue = sanitizedValue.slice(0, 10);
-      setDetails({ ...details, [name]: truncatedValue });
-    } else if (name === "pincode") {
-      const sanitizedValue = value.replace(/[.-]/g, "");
-      const truncatedValue = sanitizedValue.slice(0, 6);
-      setDetails({ ...details, [name]: truncatedValue });
-    } else {
-      setDetails((prevFormData) => ({
-        ...prevFormData,
-        [name]: value,
-      }));
-    }
-  };
-
-  const HandleOnclick = async (e) => {
-    if (!details.contact_no) {
-      toast.error("Contact Number is missing");
-      return;
-    }
-    if (!/^[6-9]\d{9}$/.test(details.contact_no)) {
-      toast.error(
-        "Invalid Contact Number. It should be a valid 10-digit number."
-      );
-      return;
-    }
-    if (!details.delivery_details || details.delivery_details === "") {
-      toast.error("Delivery details is missing");
-      return;
-    }
-    if (!details.pincode) {
-      toast.error("Pincode is missing");
-      return false;
-    }
-
-    const pincodeLength = details.pincode.toString().length;
-    if (!details.pincode) {
-      toast.error("Pincode is missing");
-      return false;
-    }
-    if (pincodeLength !== 6) {
-      toast.error("Pincode must be 6 digits long");
-      return false;
-    }
-
-    handleCheckout(details);
-  };
-
-  const handleKeyPress = (event) => {
-    // Check if the pressed key is '.' or '-'
-    if (
-      event?.key === "." ||
-      event?.key === "-" ||
-      event?.key === "e" ||
-      event?.key === "+" ||
-      event?.key === "E"
-    ) {
-      // Prevent the default behavior for these keys
-      event.preventDefault();
-    }
-  };
-
-  const fetchLocation = async (lat, lng) => {
-    const response = await axios.post(
-      `${BASE_URL}/googlemap/getcurrentlocation`,
-      {
-        lat,
-        lng,
-      }
-    );
-    return response.data;
-  };
-
-  const fetchLocationMutation = useMutation({
-    mutationKey: ["fetchLocationMutation"],
-    mutationFn: ({ lat, lng }) => fetchLocation(lat, lng),
-    onSuccess: (data) => {
-      console.log({data})
-      setDetails({ ...details, delivery_details: data.formattedAddress,pincode:data.postalCode });
-    },
-  });
-  // Get user's current position using the Geolocation API
-  function getCurrentLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
-
-  function success(position) {
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    fetchLocationMutation.mutateAsync({ lat, lng });
-  }
-
-  function error() {
-    alert("Unable to retrieve your location.");
-  }
-
-  console.log(details);
 
   if (cartItems?.length === 0) {
     return (
@@ -152,7 +50,7 @@ export default function CartDesktop({
           <div style={{ paddingLeft: "7rem", paddingRight: "7rem" }}>
             <div
               className="pharamacyproductstopbar"
-              style={{ WebkitTapHighlightColor: "transparent" }}
+              style={{ WebkitTapHighlightColor: "transparent",justifyContent:"inherit" }}
             >
               <div
                 className="backbuttoncarttop"
@@ -198,7 +96,7 @@ export default function CartDesktop({
         <div style={{ padding: "0rem 2rem" }}>
           <div
             className="pharamacyproductstopbar"
-            style={{ WebkitTapHighlightColor: "transparent" }}
+            style={{ WebkitTapHighlightColor: "transparent",justifyContent:"inherit" }}
           >
             <div
               className="backbuttoncarttop"
@@ -217,7 +115,7 @@ export default function CartDesktop({
         <div className={styles.cartItemTileWrapper}>
           {cartItems &&
             cartItems.length > 0 &&
-            cartItems.map((ele,index) => (
+            cartItems.map((ele, index) => (
               <div key={index} className={styles.productTile}>
                 <CartItemTile
                   key={ele.product_id}
@@ -296,7 +194,7 @@ export default function CartDesktop({
           <div className="checkoutmodaladdress">
             <div className="flex checkoutmodaladdressget">
               <h4>Address</h4>
-              <button onClick={getCurrentLocation} style={{width:"160px"}}>
+              <button onClick={getCurrentLocation} style={{ width: "160px" }}>
                 {" "}
                 {fetchLocationMutation.isPending ? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
