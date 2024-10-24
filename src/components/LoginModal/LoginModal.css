@@ -171,8 +171,8 @@
         width: 100%;
     }
 
-    .CusSigninAndSignUpModalAdjst {
-        width: 100%;
+    .loginModalContent {
+        width: 90%;
     }
 
     .toplogindatainput {

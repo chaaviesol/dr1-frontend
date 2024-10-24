@@ -118,3 +118,11 @@
   padding: 5px 0px 15px 0px;
   color: #3b82f6;
 }
+
+
+@media screen and (max-width: 979px) {
+
+  .checkoutmodal{
+    width: 95vw;
+  }
+}

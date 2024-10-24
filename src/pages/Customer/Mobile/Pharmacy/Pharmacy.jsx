@@ -242,9 +242,6 @@ function Pharmacy() {
       setIsModalOpen(!isModalOpen);
     } else {
       toast.info("Please login as a customer!");
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
     }
   };
 

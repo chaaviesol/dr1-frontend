@@ -507,7 +507,7 @@ const ChatBot = () => {
                     !Chats.find(
                       (ele) => ele.Qnm === 1 && ele.answer === "Doctor"
                     ))
-                    ? "Please select the Buttons..."
+                    ? "Choose a category"
                     : "Type your message here..."
                 }
                 type={Chats[Chats?.length - 1]?.Qnm === 3 ? "number" : "text"}

@@ -18,9 +18,7 @@ function Home() {
       navigate("/secondopinion");
     } else {
       toast.info("Please login as a customer!");
-      setTimeout(() => {
-        navigate("/");
-      }, 4000);
+  
     }
   };
   return (

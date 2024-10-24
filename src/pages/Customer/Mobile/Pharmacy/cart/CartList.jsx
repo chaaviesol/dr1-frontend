@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import CartItemTile from "./CartItemTIle";
 import "./cart.css";
 
@@ -165,7 +165,7 @@ export default function Cart({
               maxLength={100}
               placeholder="Enter Delivery Address"
             ></textarea>
-            <p className="codcheckout">Cash On Delivery</p>
+            <p className="codcheckout">Cash On Delivery Only</p>
           </div>
 
           <div className="checkoutmodalbutton flex">

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CartItemTile from "../../Customer/Mobile/Pharmacy/cart/CartItemTIle";
 import Footer from "../../../components/Footer";
@@ -7,17 +7,12 @@ import Navbar from "../../../components/Navbar";
 import "./cartDesktop.css";
 import { usePharmacyContext } from "../../../contexts/PharmacyContext";
 import { Loader } from "../../../components/Loader/Loader";
-import { toast } from "react-toastify";
 import Headroom from "react-headroom";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress, Modal } from "@mui/material";
-import { BASE_URL } from "../../../config";
-import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
 
 export default function CartDesktop({
   selectedItemId,
-  handleCheckout,
   totalPrice,
   handleSelect,
   orderPending,
@@ -50,7 +45,10 @@ export default function CartDesktop({
           <div style={{ paddingLeft: "7rem", paddingRight: "7rem" }}>
             <div
               className="pharamacyproductstopbar"
-              style={{ WebkitTapHighlightColor: "transparent",justifyContent:"inherit" }}
+              style={{
+                WebkitTapHighlightColor: "transparent",
+                justifyContent: "inherit",
+              }}
             >
               <div
                 className="backbuttoncarttop"
@@ -96,7 +94,10 @@ export default function CartDesktop({
         <div style={{ padding: "0rem 2rem" }}>
           <div
             className="pharamacyproductstopbar"
-            style={{ WebkitTapHighlightColor: "transparent",justifyContent:"inherit" }}
+            style={{
+              WebkitTapHighlightColor: "transparent",
+              justifyContent: "inherit",
+            }}
           >
             <div
               className="backbuttoncarttop"
@@ -212,7 +213,7 @@ export default function CartDesktop({
               maxLength={100}
               placeholder="Enter Delivery Address"
             ></textarea>
-            <p className="codcheckout">Cash On Delivery</p>
+            <p className="codcheckout">Cash On Delivery Only</p>
           </div>
 
           <div className="checkoutmodalbutton flex">
