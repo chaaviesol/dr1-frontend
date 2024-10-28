@@ -7,7 +7,7 @@
 }
 
 .cart_item_tile {
-  height: 112px;
+  height: 100px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -54,12 +54,21 @@
 
 .product_image_wrap2{
   height: 100%;
-  width: 100px;
+  width: 80%;
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
+  /* border: 1px solid red; */
   align-items: center;
+
+}
+.cartitem_img{
+  margin-right: 10px;
+  height: 100%;
+  width: 25%;
   img{
-    height:85%;
+    height:100%;
+    width: 100%;
+    border-radius: 10px;
   }
 }
 

@@ -18,11 +18,13 @@ export default function CartItemTile({
       style={{ WebkitTapHighlightColor: "transparent" }}
     >
       <div className="product_image_wrap2">
-        <img src={product?.images?.image1} alt={product?.product_id} />
-      </div>
-      <div className="">
-        <h3 className="product_name">{product?.product_name}</h3>
-        <p className="product_price">₹ {product?.mrp}</p>
+        <div className="cartitem_img">
+          <img src={product?.images?.image1} alt={product?.product_id} />
+        </div>
+        <div className="">
+          <h3 className="product_name">{product?.product_name}</h3>
+          <p className="product_price">₹ {product?.mrp}</p>
+        </div>
       </div>
       <div className="count_controls" onClick={(e) => e.stopPropagation()}>
         <CartControl isLoading={isLoading} product={product} />
