@@ -75,7 +75,7 @@
     position:absolute;
     background-color: #3A65FD;
     top:3vw;
-    left: calc(0px + 1vw);
+    left: calc(3px + 1vw);
     width:fit-content;
     margin:auto;
     color: white;
@@ -103,11 +103,21 @@
     opacity: 1;
     top: 50%;
   }
-  .scroll-image-item-div:hover .scroll-image-item{
-    opacity: .5;
+
+  .scroll-image-item-div .scroll-image-item{
+    border:3px solid white; 
   }
 
 
+  .scroll-image-item-div:hover .scroll-image-item{
+    opacity: .5;
+    border:3px solid white; 
+    box-shadow: #3A65FD 0px 0px 0px 3px;
+  }
+
+
+
+  
 
 .empty-scroll-state {
     display: flex;
@@ -441,4 +451,3 @@
 
 
 }
-

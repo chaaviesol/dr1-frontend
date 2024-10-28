@@ -161,9 +161,7 @@
   border: 2px solid #3a65fd;
 }
 
-.QueryListModal input:focus {
-  border: 2px solid #3a65fd;
-}
+
 
 
 
@@ -275,17 +273,24 @@
   border: 2px solid white;
   background-color: #d40700;
   position: relative;
+  cursor: pointer;
+ 
+  /* transition: background-color 0.3s ease, transform 0.1s ease; */
   i{
     font-weight: 400;
   }
 }
 
+.updatestatus-section-circle:active{
+  transform:scale(.90); 
+  
+}
 
 .statusline{
   position: absolute;
   width:3px;
   height: 65px;
-  background-color: #180908;
+  background-color: #34d399;
   top:20px;
   left:50%;
   transform: translateX(-50%);
@@ -303,19 +308,39 @@
 }
 
 .scheduledinputtext{
-  position: relative;
+position: relative;
 }
-.scheduledinput{
+
+.scheduledinput2{
+  position: absolute;
+  top:16px;
+}
+
+.updatestatus-section-left{
+  width:40%;
+}
+
+
+
+
+/* .scheduledinput{
  position: absolute;
   background-color: #e4eaff;
   margin-top:8px;
   height:30px;
   padding:0px 15px;
   border-radius:35px;
-}
+} */
 
 .updatestatus-section-data2{
   margin-top:50px;
 }
 
+
+
+
+
+
+
 /*End Update Modal */
+

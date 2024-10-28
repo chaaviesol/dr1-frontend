@@ -22,7 +22,7 @@ export const HospitalFiltering = () => {
     speciality: "",
     type: "",
     features: "",
-    focusArea:""
+    focusArea: "",
   });
   const location = useLocation();
   const [notFound, setnotFound] = useState(false);
@@ -71,11 +71,11 @@ export const HospitalFiltering = () => {
         hospital.name
           .toLowerCase()
           .includes(filters.CheckingName.toLowerCase());
-          const focusArea =
-          filters?.focusArea.length === 0 ||
-          filters?.focusArea?.some((area) => {
-            return hospital?.focusarea && hospital?.focusarea?.includes(area);
-          });
+      const focusArea =
+        filters?.focusArea.length === 0 ||
+        filters?.focusArea?.some((area) => {
+          return hospital?.focusarea && hospital?.focusarea?.includes(area);
+        });
       return typeMatch && speciality && nameMatch && features && focusArea;
     });
 
@@ -154,19 +154,22 @@ export const HospitalFiltering = () => {
       setFilters({ ...filters, [name]: value });
     }
   };
-  console.log("Filters>>>>>>", filters);
+
   useEffect(() => {
-    // Set initial filters based on location state
-    if (location?.state?.type || location?.state?.speciality || location?.state?.focusArea) {
+    if (
+      location?.state?.type ||
+      location?.state?.speciality ||
+      location?.state?.focusArea
+    ) {
       setFilters({
         type: location?.state?.type,
         speciality: location?.state?.speciality
           ? [location?.state?.speciality]
           : [],
-          focusArea: location?.state?.focusArea
+        focusArea: location?.state?.focusArea
           ? [location?.state?.focusArea]
           : [],
-        features: [], // You might want to set other properties here too
+        features: [],
       });
     }
   }, [location]);

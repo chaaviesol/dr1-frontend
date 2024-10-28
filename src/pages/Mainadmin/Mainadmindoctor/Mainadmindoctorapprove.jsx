@@ -41,7 +41,7 @@ export default function Mainadmindoctorapprove() {
           <div className="mainadmindoctordatas_profile flex">
             <img
               className="mainadmindoctordatas_profile_photo"
-              src="/images/doc.jpg"
+              src={DetailedData?.photo?.image1 || "/images/doc.jpg"}
               alt=""
             />
 
@@ -101,7 +101,6 @@ export default function Mainadmindoctorapprove() {
 
         <div className="mainadmindoctoraboutavail flex">
           <div className="mainadmindoctorabout">
-            <h3 style={{ marginBottom: "1.3vw" }}>About</h3>
             <div className="flex" style={{ marginBottom: "1vw" }}>
               <h4
                 className="highlight_data"
@@ -120,6 +119,7 @@ export default function Mainadmindoctorapprove() {
                 Epilepsy
               </h4>
             </div>
+            <h3 style={{ marginBottom: "1.3vw" }}>About</h3>
             <h4 style={{ marginBottom: "1.3vw" }}>{DetailedData?.about}</h4>
           </div>
 
@@ -134,26 +134,57 @@ export default function Mainadmindoctorapprove() {
             </div>
           </div>
         </div>
+        {DetailedData?.status === "N" || DetailedData?.status === "R" ? (
+          <div className="admin_disable_section admin_disable_section2 flex">
+            <div className="flex">
+              <i class="fi fi-sr-exclamation"></i>
+              <h4 style={{ marginLeft: "0.6vw" }}>
+                This user has been rejected.
+              </h4>
+            </div>
 
-        <div className="admin_disable_section admin_disable_section2 flex">
-          <div className="flex">
-            <i class="fi fi-sr-exclamation"></i>
-            <h4 style={{ marginLeft: "0.6vw" }}>Waiting for your response</h4>
+            <div className="admin_disable_button flex">
+              <h4
+                style={{
+                  marginLeft: "0.6vw",
+                  backgroundColor: "red",
+                  cursor: "not-allowed",
+                }}
+              >
+                Rejected
+              </h4>
+              <h4
+                onClick={() => ResponseAdmin("approve")}
+                style={{
+                  marginLeft: "0.6vw",
+                  backgroundColor: "rgb(42, 157, 143)",
+                }}
+              >
+                Approve
+              </h4>
+            </div>
           </div>
+        ) : (
+          <div className="admin_disable_section admin_disable_section2 flex">
+            <div className="flex">
+              <i class="fi fi-sr-exclamation"></i>
+              <h4 style={{ marginLeft: "0.6vw" }}>Waiting for your response</h4>
+            </div>
 
-          <div className="admin_disable_button flex">
-            <h4 onClick={() => ResponseAdmin("reject")}>Reject</h4>
-            <h4
-              onClick={() => ResponseAdmin("approve")}
-              style={{
-                marginLeft: "0.6vw",
-                backgroundColor: "rgb(42, 157, 143)",
-              }}
-            >
-              Approve
-            </h4>
+            <div className="admin_disable_button flex">
+              <h4 onClick={() => ResponseAdmin("reject")}>Reject</h4>
+              <h4
+                onClick={() => ResponseAdmin("approve")}
+                style={{
+                  marginLeft: "0.6vw",
+                  backgroundColor: "rgb(42, 157, 143)",
+                }}
+              >
+                Approve
+              </h4>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

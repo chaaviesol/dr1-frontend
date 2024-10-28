@@ -8,7 +8,7 @@ export default function Billing() {
       setWidth((prevWidth) => (prevWidth === '50%' ? '150px' : '50%'));
     };
 
-    const headings = ['Medicine Name', 'Bach Number', 'Frequncy', 'BF/AF', 'Dose', 'Qty', 'HSN', 'MRP', 'Price']; // Custom column names
+    const headings = ['Medicine Name', 'Batch Number', 'Frequency', 'BF/AF', 'Dose', 'Qty', 'HSN', 'MRP', 'Price']; // Custom column names
 
     const rows = Array.from({ length: 6 }, (_, rowIndex) => (
       <tr key={rowIndex}>

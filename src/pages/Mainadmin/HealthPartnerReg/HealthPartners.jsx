@@ -208,6 +208,7 @@ export default function HealthPartners() {
 
   return (
     <div>
+    
       {/* {isLoading && <Loader />} */}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
@@ -323,6 +324,11 @@ export default function HealthPartners() {
 
       <Modal open={isModalOpen2} onClose={() => setIsModalOpen2(false)}>
         <div className="QueryListModal">
+
+     
+
+
+
           <div className="QueryListModalhead flex">
             <h2>Update Status</h2>
             <div className="flex">
@@ -337,12 +343,22 @@ export default function HealthPartners() {
             </div>
           </div>
 
+
+
+
           <div className="updatestatus-section flex">
+
+
+
+            
             <div className="updatestatus-section-left">
               <div className="updatestatus-section-data flex">
                 <div
                   className="updatestatus-section-circle"
-                  style={{ cursor: "pointer" }}
+                  style={{backgroundColor:"#34d399",
+                    color:"#15803d"
+            }}
+                
                   onClick={() => handleCheck("scheduled")}
                 >
                   {modalData?.scheduled && <i className="ri-check-line"></i>}
@@ -351,39 +367,44 @@ export default function HealthPartners() {
 
                 <div>
                   <div className="scheduledinputtext">
-                    <LocalizationProvider
-                      className="scheduledinput"
-                      dateAdapter={AdapterDayjs}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
-                      >
-                        <Box sx={{ minWidth: "100px" }}>
-                          {" "}
-                          {/* Adjust the width as needed */}
-                          <DemoContainer components={["DateTimePicker"]}>
-                            <DateTimePicker
-                              label="Scheduled"
-                              value={modalData.scheduledDate}
-                              onChange={handleDateChange}
-                              fullWidth
-                            />
-                          </DemoContainer>
-                        </Box>
-                      </Box>
-                    </LocalizationProvider>
+
+                    <h4>Sheduled</h4>
+                    <div className="scheduledinput2">
+
+
+
+
+
+
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+  <DemoContainer components={['DateTimePicker']}>
+    <div style={{ width: '250px' }}> {/* Adjust the width as needed */}
+      <DateTimePicker
+        // Add your props here
+      />
+    </div>
+  </DemoContainer>
+</LocalizationProvider>
+
+
+
+
+
+
+
+
+                    </div>
                   </div>
                   {/* <input className="scheduledinput" type="text" /> */}
                 </div>
               </div>
-              <div>
+             <div>
                 <div className="updatestatus-section-data updatestatus-section-data2 flex">
                   <div
                     className="updatestatus-section-circle"
+                    style={{backgroundColor:"#34d399",
+                      color:"#15803d"
+              }}
                     onClick={() => handleCheck("onboarded")}
                   >
                     {" "}
@@ -395,10 +416,17 @@ export default function HealthPartners() {
                 </div>
               </div>
             </div>
+
+
+
+
             <div className="updatestatus-section-right">
               <div className="updatestatus-section-data flex">
                 <div
                   className="updatestatus-section-circle"
+                  style={{backgroundColor:"#fca5a5",
+                    color:"#dc2626"
+            }}
                   onClick={() => handleCheck("notAttended")}
                 >
                   {modalData?.notAttended && <i className="ri-check-line"></i>}
@@ -409,6 +437,10 @@ export default function HealthPartners() {
               <div className="updatestatus-section-data updatestatus-section-data2 flex">
                 <div
                   className="updatestatus-section-circle"
+                  style={{backgroundColor:"#fca5a5",
+                          color:"#dc2626"
+                  }}
+
                   onClick={() => handleCheck("notInterested")}
                 >
                   {" "}

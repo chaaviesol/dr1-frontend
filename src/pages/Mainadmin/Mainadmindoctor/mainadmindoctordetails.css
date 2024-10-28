@@ -463,26 +463,26 @@
 }
 
 /* Table header styling */
-th,
-td {
+.doctortable th,
+.doctortable td {
   border: 1px solid #a4b7fc;
   text-align: left;
   padding: 8px;
 }
 
 /* Header row background color */
-th {
+.doctortable th {
   background-color: #e4eaff;
   font-weight: 600;
 }
 
 /* Zebra stripe rows */
-tr:nth-child(even) {
+.doctortable tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
 /* Hover effect for rows */
-tr:hover {
+.doctortable tr:hover {
   background-color: #f1f1f1;
 }
 
@@ -499,26 +499,26 @@ tr:hover {
 }
 
 /* Table header styling */
-th,
-td {
+.onboardingtable th,
+.onboardingtable td {
   border: 1px solid #a4b7fc;
   text-align: left;
   padding: 8px;
 }
 
 /* Header row background color */
-th {
+.onboardingtable th {
   background-color: #e4eaff;
   font-weight: 600;
 }
 
 /* Zebra stripe rows */
-tr:nth-child(even) {
+.onboardingtable tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
 /* Hover effect for rows */
-tr:hover {
+.onboardingtable tr:hover {
   background-color: #f1f1f1;
 }
 

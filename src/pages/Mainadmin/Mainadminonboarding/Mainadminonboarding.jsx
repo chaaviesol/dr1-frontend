@@ -44,7 +44,7 @@ export default function Mainadminonboarding() {
       navigate("/mainadmindoctorapprove", { state: data });
     } else if (data?.type === "Hospital") {
       navigate("/mainadminhospitalapprove", { state: data });
-    } else if (data?.type === "Lab") {
+    } else if (data?.type === "Lab" || data?.type === "Laboratory") {
       navigate("/mainadminlabsapprove", { state: data });
     }
   };
