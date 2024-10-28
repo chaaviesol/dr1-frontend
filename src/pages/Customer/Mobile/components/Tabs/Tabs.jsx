@@ -24,9 +24,6 @@ function Tabs({ iconName, pageName }) {
         className={tabClass}
         type="button"
       >
-        <div className={styles.icon}>
-          <i className={iconName} style={{ color: iconColor }}></i>
-        </div>
         <span className={page}>{pageName}</span>
       </button>
     </>

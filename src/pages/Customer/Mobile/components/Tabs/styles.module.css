@@ -8,7 +8,7 @@
   height: 45px;
   cursor: pointer;
   border: none;
-  border-radius: 10px;
+  border-radius: 50px;
   transition: transform 0.1s ease, background 0.3s ease;
 }
 
@@ -24,7 +24,7 @@
   background: #3a65fd;
 }
 .inactive {
-  background: white;
+  background: #f3f3f8;
 }
 .container span {
   font-family: "Poppins";
@@ -43,7 +43,7 @@
   align-items: center;
 }
 .icon i {
- font-size: 16px;
- margin: 0;
- padding: 0;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
 }

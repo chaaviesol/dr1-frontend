@@ -8,10 +8,11 @@ import Lab from "../../Lab/Lab";
 import HospitalMob from "../../Hospital/HospitalMob";
 import CusDoctor from "../../Doctor/CusDoctor";
 import { useNavigate } from "react-router-dom";
+import BottomBar from "../BottomBar/BottomBar";
 
 function PageWrapper() {
   const { activeTab, setActiveTab } = useTabBarContext();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Push a new state into the history stack when the tab changes
@@ -49,6 +50,7 @@ function PageWrapper() {
         {activeTab === "laboratory" && <Lab />}
         {activeTab === "pharmacy" && <Pharmacy />}
       </MainContainer>
+      <BottomBar />
     </>
   );
 }

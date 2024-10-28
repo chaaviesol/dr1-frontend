@@ -23,11 +23,7 @@ function Home() {
   };
   return (
     <>
-      {auth.userId && auth.userType === "customer" ? (
-        <ChatBotAfterLogin />
-      ) : (
-        <ChatBot />
-      )}
+      
 
       <div className={styles.margin}>
         <img
