@@ -4,7 +4,9 @@ import { port } from "../../../config";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
 
-export default function Mainadminonboarding() {
+export default function Mainadminonboarding({
+  updateState: { setChangeDashboards, setDetailData },
+}) {
   const [PendingDatas, setPendingDatas] = useState([]);
   const [initialData, setinitialData] = useState([]);
   const [countdata, setcountdata] = useState([]);
@@ -41,11 +43,14 @@ export default function Mainadminonboarding() {
   const linkPage = (data) => {
     console.log("data>>>", data);
     if (data?.type === "Doctor") {
-      navigate("/mainadmindoctorapprove", { state: data });
+      setDetailData(data);
+      setChangeDashboards({ onboardingdoc: true });
     } else if (data?.type === "Hospital") {
-      navigate("/mainadminhospitalapprove", { state: data });
+      setDetailData(data);
+      setChangeDashboards({ onboardinghospital: true });
     } else if (data?.type === "Lab" || data?.type === "Laboratory") {
-      navigate("/mainadminlabsapprove", { state: data });
+      setDetailData(data);
+      setChangeDashboards({ onboardinglab: true });
     }
   };
   const reformatDate = (dateString) => {

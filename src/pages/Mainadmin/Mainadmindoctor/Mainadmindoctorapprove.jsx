@@ -4,9 +4,11 @@ import { useLocation } from "react-router-dom";
 import { port } from "../../../config";
 import { toast } from "react-toastify";
 
-export default function Mainadmindoctorapprove() {
-  const location = useLocation();
-  const DetailedData = location?.state;
+export default function Mainadmindoctorapprove({
+  Details,
+  setChangeDashboards,
+}) {
+  const DetailedData =Details
   console.log("DetailedData>>>>", DetailedData);
 
   const ResponseAdmin = (which) => {
@@ -34,9 +36,19 @@ export default function Mainadmindoctorapprove() {
         });
     }
   };
+  const handleBack = () => {
+    setChangeDashboards({ onboarding: true });
+  };
   return (
     <>
       <div style={{ padding: "20px" }}>
+      <button
+          onClick={handleBack}
+          className="adpha-back-button"
+          style={{ marginTop: "1rem" }}
+        >
+          <i className="ri-arrow-left-line"></i>
+        </button>
         <div className="mainadmindoctordatas flex">
           <div className="mainadmindoctordatas_profile flex">
             <img

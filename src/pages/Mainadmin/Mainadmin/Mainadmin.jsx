@@ -32,6 +32,9 @@ import { CreateCampaign } from "../Campaign/CreateCampaign";
 import Careerlist from "../CareerManage/Careerlist";
 import HomeServicelist from "../HomeServiceManage/HomeServicelist";
 import HealthPartners from "../HealthPartnerReg/HealthPartners";
+import Mainadminhospitalapprove from "../Mainadminhospital/Mainadminhospitalapprove";
+import Mainadminlabsapprove from "../Mainadminlabs/Mainadminlabsapprove";
+import Mainadmindoctorapprove from "../Mainadmindoctor/Mainadmindoctorapprove";
 
 export default function Mainadmin() {
   const [ChangeDashboards, setChangeDashboards] = useState({
@@ -140,7 +143,33 @@ export default function Mainadmin() {
             )}
             {ChangeDashboards?.onboarding && (
               <>
-                <Mainadminonboarding />
+                <Mainadminonboarding
+                  updateState={{ setChangeDashboards, setDetailData }}
+                />
+              </>
+            )}
+            {ChangeDashboards?.onboardinghospital && (
+              <>
+                <Mainadminhospitalapprove
+                  Details={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
+              </>
+            )}
+            {ChangeDashboards?.onboardinglab && (
+              <>
+                <Mainadminlabsapprove
+                  Details={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
+              </>
+            )}
+            {ChangeDashboards?.onboardingdoc && (
+              <>
+                <Mainadmindoctorapprove
+                  Details={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
               </>
             )}
             {ChangeDashboards?.category && (

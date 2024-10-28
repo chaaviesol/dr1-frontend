@@ -4,9 +4,11 @@ import { toast } from "react-toastify";
 import { port } from "../../../config";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
-export default function Mainadminhospitalapprove() {
-  const location = useLocation();
-  const Data = location?.state;
+export default function Mainadminhospitalapprove({
+  Details,
+  setChangeDashboards,
+}) {
+  const Data = Details;
   const axiosPrivate = useAxiosPrivate();
   console.log(Data);
   const ResponseAdmin = (which) => {
@@ -34,10 +36,20 @@ export default function Mainadminhospitalapprove() {
         });
     }
   };
+  const handleBack = () => {
+    setChangeDashboards({ onboarding: true });
+  };
 
   return (
     <>
       <div style={{ padding: "20px" }}>
+        <button
+          onClick={handleBack}
+          className="adpha-back-button"
+          style={{ marginTop: "1rem" }}
+        >
+          <i className="ri-arrow-left-line"></i>
+        </button>
         <div className="mainadmindoctordatas flex">
           <div className="mainadmindoctordatas_profile flex">
             <img

@@ -1,12 +1,11 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+
 import { toast } from "react-toastify";
 import { port } from "../../../config";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
-export default function Mainadminlabsapprove() {
-  const location = useLocation();
-  const Data = location?.state;
+export default function Mainadminlabsapprove({ Details, setChangeDashboards }) {
+  const Data = Details;
   const axiosPrivate = useAxiosPrivate();
   console.log(Data);
   const ResponseAdmin = (which) => {
@@ -34,8 +33,19 @@ export default function Mainadminlabsapprove() {
         });
     }
   };
+  const handleBack = () => {
+    setChangeDashboards({ onboarding: true });
+  };
+  
   return (
     <>
+      <button
+        onClick={handleBack}
+        className="adpha-back-button"
+        style={{ marginTop: "1rem" }}
+      >
+        <i className="ri-arrow-left-line"></i>
+      </button>
       <div className="mainadmindoctordatas flex">
         <div className="mainadmindoctordatas_profile flex">
           <img

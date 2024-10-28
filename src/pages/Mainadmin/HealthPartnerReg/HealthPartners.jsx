@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { port } from "../../../config";
 import moment from "moment-timezone";
-// import { useNavigate } from "react-router-dom";
 import "../OrderAndPrescription/listtablestyle.css";
 import "./healthpartner.css";
 import dayjs from "dayjs";
@@ -12,7 +11,6 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import { Box } from "@mui/material";
 import { toast } from "react-toastify";
 export default function HealthPartners() {
   const [isModalOpen2, setIsModalOpen2] = useState(false);
@@ -21,12 +19,12 @@ export default function HealthPartners() {
     // status: {
     scheduled: false,
     onboarded: false,
-    notAttended: false,
-    notInterested: false,
-    WrongNo: false,
+    notattended: false,
+    notinterested: false,
+    wrongnumber: false,
     // },
     remarks: "",
-    scheduledDate: null,
+    scheduled_Date: null,
   });
   console.log({ modalData });
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +34,8 @@ export default function HealthPartners() {
   const handleDateChange = (newDate) => {
     setModalData((prevData) => ({
       ...prevData,
-      scheduledDate: newDate,
+      scheduled_Date: newDate,
+      scheduled: !!newDate,
     }));
   };
 
@@ -50,61 +49,94 @@ export default function HealthPartners() {
   const openModal = (ele) => {
     setModalData({
       id: ele.id,
-      status: {
-        scheduled: ele.status?.scheduled || false,
-        onboarded: ele.status?.onboarded || false,
-        notAttended: ele.status?.notAttended || false,
-        notInterested: ele.status?.notInterested || false,
-        WrongNo: ele.status?.WrongNo || false,
-      },
+      scheduled:
+        ele.status === "scheduled" || ele.scheduled_Date ? true : false,
+      onboarded: ele.status === "onboarded" ? true : false,
+      notattended: ele.status === "notattended" ? true : false,
+      notinterested: ele.status === "notinterested" ? true : false,
+      wrongnumber: ele.status === "wrongnumber" ? true : false,
       remarks: ele.remarks || "",
-      scheduledDate: ele.scheduledDate || null,
+      scheduled_Date: ele.scheduled_Date ? dayjs(ele.scheduled_Date) : null,
     });
     setIsModalOpen2(true);
   };
 
-  const onClose = (ele) => {
+  const onClose = () => {
     setModalData({
       id: null,
-
       scheduled: false,
       onboarded: false,
-      notAttended: false,
-      notInterested: false,
-      WrongNo: false,
-
+      notattended: false,
+      notinterested: false,
+      wrongnumber: false,
       remarks: "",
-      scheduledDate: null,
+      scheduled_Date: null,
     });
     setIsModalOpen2(false);
   };
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get(`${port}/admin/getchatdata`);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(`${port}/admin/getchatdata`);
+      if (response?.status === 200) {
+        const data = response?.data?.data || [];
+        setdatalist(data);
 
-        if (response?.status === 200) {
-          const data = response?.data?.data || [];
-          setdatalist(data);
-
-          setinitialData(data);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setIsLoading(false);
+        setinitialData(data);
       }
-    };
-
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchData();
   }, []);
   const handleCheck = (field) => {
-    setModalData((prevState) => ({
-      ...prevState,
-      [field]: !prevState[field],
-    }));
+    if (field === "notinterested") {
+      setModalData((prevData) => ({
+        ...prevData,
+        notinterested: true,
+        onboarded: false,
+        notattended: false,
+        wrongnumber: false,
+        [field]: !prevData[field],
+      }));
+    } else if (field === "onboarded") {
+      setModalData((prevData) => ({
+        ...prevData,
+        notinterested: false,
+        onboarded: true,
+        notattended: false,
+        wrongnumber: false,
+        [field]: !prevData[field],
+      }));
+    } else if (field === "wrongnumber") {
+      setModalData((prevData) => ({
+        ...prevData,
+        notinterested: false,
+        onboarded: false,
+        notattended: false,
+        wrongnumber: true,
+        [field]: !prevData[field],
+      }));
+    } else if (field === "notattended") {
+      setModalData((prevData) => ({
+        ...prevData,
+        notinterested: false,
+        onboarded: false,
+        notattended: true,
+        wrongnumber: false,
+        [field]: !prevData[field],
+      }));
+    } else {
+      setModalData((prevState) => ({
+        ...prevState,
+        [field]: !prevState[field],
+      }));
+    }
   };
 
   const SearchData = (e) => {
@@ -127,6 +159,7 @@ export default function HealthPartners() {
 
     setdatalist(tempData);
   };
+
   const reformatDate = (dateString) => {
     return moment(dateString).format("DD-MM-YYYY");
   };
@@ -140,24 +173,25 @@ export default function HealthPartners() {
     });
     setdatalist(filteredData);
   };
+
   const OnSave = async () => {
     try {
-      const { id, scheduledDate, remarks } = modalData;
+      const { id, scheduled_Date, remarks } = modalData;
 
-      const formattedDate = scheduledDate
-        ? dayjs(scheduledDate).format("YYYY-MM-DDTHH:mm:ssZ")
+      const formattedDate = scheduled_Date
+        ? dayjs(scheduled_Date).format("YYYY-MM-DDTHH:mm:ssZ")
         : null;
-      // const formattedDate = scheduledDate ? dayjs(scheduledDate).format("YYYY-MM-DD HH:mm:ss.SSS") : null;
+      // const formattedDate = scheduled_Date ? dayjs(scheduled_Date).format("YYYY-MM-DD HH:mm:ss.SSS") : null;
 
       const data = {
         id: id,
         status: modalData.onboarded
           ? "onboarded"
-          : modalData.notAttended
+          : modalData.notattended
           ? "notattended"
-          : modalData.notInterested
+          : modalData.notinterested
           ? "notinterested"
-          : modalData.WrongNo
+          : modalData.wrongnumber
           ? "wrongnumber"
           : modalData.scheduled
           ? "scheduled"
@@ -165,7 +199,7 @@ export default function HealthPartners() {
         scheduled_Date: formattedDate,
         remarks: remarks,
       };
-      if (data.status === "scheduled" && scheduledDate === null) {
+      if (data.status === "scheduled" && scheduled_Date === null) {
         toast.error("Please select the schedule date");
         return;
       }
@@ -175,7 +209,6 @@ export default function HealthPartners() {
         return;
       }
 
-      console.log(data);
       const response = await axios.post(`${port}/admin/updatechatstatus`, data);
       if (response.status === 200) {
         toast.success("Updated successfully!", {
@@ -184,17 +217,16 @@ export default function HealthPartners() {
         setTimeout(() => {
           setModalData({
             id: null,
-
             scheduled: false,
             onboarded: false,
-            notAttended: false,
-            notInterested: false,
-            WrongNo: false,
-
+            notattended: false,
+            notinterested: false,
+            wrongnumber: false,
             remarks: "",
-            scheduledDate: null,
+            scheduled_Date: null,
           });
           setIsModalOpen2(false);
+          fetchData();
         }, 3000);
       } else if (response.status === 400) {
         toast.error(response.data.message);
@@ -206,10 +238,17 @@ export default function HealthPartners() {
     }
   };
 
+  const statusConfig = {
+    requested: { text: "Requested", color: "black" },
+    scheduled: { text: "Scheduled", color: "#34d399" },
+    notinterested: { text: "Not Interested", color: "#f43f5e" },
+    wrongnumber: { text: "Wrong Number", color: "red" },
+    notattended: { text: "Not Attended", color: "#f43f5e" },
+  };
+
   return (
     <div>
-    
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
       <div className="mainadmindoctordatas_chart mainadmindoctordatas_chart_doctor flex">
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart10 flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon10 flex">
@@ -293,15 +332,12 @@ export default function HealthPartners() {
               name="status"
               placeholder="Search by status"
             /> */}
-            <input type="text" />
+            {/* <input type="text" /> */}
           </th>
         </tr>
         {datalist?.map((ele, index) => (
           <tr
             key={index}
-            // onClick={() => {
-            //   navigateFn(ele.id);
-            // }}
           >
             <td>{index + 1}</td>
             <td>{ele?.name}</td>
@@ -309,7 +345,9 @@ export default function HealthPartners() {
             <td>{ele?.contact_no}</td>
             <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
 
-            <td>{ele?.status}</td>
+            <td style={{ color: statusConfig[ele?.status]?.color || "black" }}>
+              {statusConfig[ele?.status]?.text || ele?.status}
+            </td>
             <td>
               <button
                 onClick={() => openModal(ele)}
@@ -324,42 +362,33 @@ export default function HealthPartners() {
 
       <Modal open={isModalOpen2} onClose={() => setIsModalOpen2(false)}>
         <div className="QueryListModal">
-
-     
-
-
-
           <div className="QueryListModalhead flex">
             <h2>Update Status</h2>
             <div className="flex">
               <h4>Wrong Number?</h4>
               <h4
                 className="removequeryupdate"
-                checked={modalData?.WrongNo || false}
-                onChange={() => handleCheck("WrongNo")}
+                checked={modalData?.wrongnumber || false}
+                onChange={() => handleCheck("wrongnumber")}
               >
                 Remove
               </h4>
             </div>
           </div>
 
-
-
-
           <div className="updatestatus-section flex">
-
-
-
-            
             <div className="updatestatus-section-left">
               <div className="updatestatus-section-data flex">
                 <div
                   className="updatestatus-section-circle"
-                  style={{backgroundColor:"#34d399",
-                    color:"#15803d"
-            }}
-                
-                  onClick={() => handleCheck("scheduled")}
+                  style={{
+                    backgroundColor: "#34d399",
+                    color: "#15803d",
+                    cursor: modalData.onboarded ? "not-allowed" : "pointer",
+                  }}
+                  onClick={() =>
+                    !modalData.onboarded && handleCheck("scheduled")
+                  }
                 >
                   {modalData?.scheduled && <i className="ri-check-line"></i>}
                   <div className="statusline"></div>
@@ -367,44 +396,36 @@ export default function HealthPartners() {
 
                 <div>
                   <div className="scheduledinputtext">
-
                     <h4>Sheduled</h4>
                     <div className="scheduledinput2">
-
-
-
-
-
-
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-  <DemoContainer components={['DateTimePicker']}>
-    <div style={{ width: '250px' }}> {/* Adjust the width as needed */}
-      <DateTimePicker
-        // Add your props here
-      />
-    </div>
-  </DemoContainer>
-</LocalizationProvider>
-
-
-
-
-
-
-
-
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DemoContainer components={["DateTimePicker"]}>
+                          <div style={{ width: "250px" }}>
+                            {" "}
+                            {/* Adjust the width as needed */}
+                            <DateTimePicker
+                              value={modalData.scheduled_Date}
+                              onChange={handleDateChange}
+                              fullWidth
+                              minDateTime={dayjs()}
+                              disabled={modalData.onboarded}
+                            />
+                          </div>
+                        </DemoContainer>
+                      </LocalizationProvider>
                     </div>
                   </div>
-                  {/* <input className="scheduledinput" type="text" /> */}
                 </div>
               </div>
-             <div>
+              <div>
                 <div className="updatestatus-section-data updatestatus-section-data2 flex">
                   <div
                     className="updatestatus-section-circle"
-                    style={{backgroundColor:"#34d399",
-                      color:"#15803d"
-              }}
+                    style={{
+                      backgroundColor: "#34d399",
+                      color: "#15803d",
+                      cursor: "pointer",
+                    }}
                     onClick={() => handleCheck("onboarded")}
                   >
                     {" "}
@@ -417,19 +438,20 @@ export default function HealthPartners() {
               </div>
             </div>
 
-
-
-
             <div className="updatestatus-section-right">
               <div className="updatestatus-section-data flex">
                 <div
                   className="updatestatus-section-circle"
-                  style={{backgroundColor:"#fca5a5",
-                    color:"#dc2626"
-            }}
-                  onClick={() => handleCheck("notAttended")}
+                  style={{
+                    backgroundColor: "#fca5a5",
+                    color: "#dc2626",
+                    cursor: modalData.onboarded ? "not-allowed" : "pointer",
+                  }}
+                  onClick={() =>
+                    !modalData.onboarded && handleCheck("notattended")
+                  }
                 >
-                  {modalData?.notAttended && <i className="ri-check-line"></i>}
+                  {modalData?.notattended && <i className="ri-check-line"></i>}
                 </div>
                 <h4>Not Attended</h4>
               </div>
@@ -437,14 +459,17 @@ export default function HealthPartners() {
               <div className="updatestatus-section-data updatestatus-section-data2 flex">
                 <div
                   className="updatestatus-section-circle"
-                  style={{backgroundColor:"#fca5a5",
-                          color:"#dc2626"
+                  style={{
+                    backgroundColor: "#fca5a5",
+                    color: "#dc2626",
+                    cursor: modalData?.onboarded ? "not-allowed" : "pointer",
                   }}
-
-                  onClick={() => handleCheck("notInterested")}
+                  onClick={() =>
+                    !modalData.onboarded && handleCheck("notinterested")
+                  }
                 >
                   {" "}
-                  {modalData?.notInterested && (
+                  {modalData?.notinterested && (
                     <i className="ri-check-line"></i>
                   )}{" "}
                 </div>
@@ -455,7 +480,7 @@ export default function HealthPartners() {
 
           <div className="updatestatusremarks-section">
             <div className="updatestatusremarks-top flex">
-              <h3>Remarks</h3> <h4>Edit Remarks</h4>
+              <h3>Remarks</h3>
             </div>
             <textarea
               id="remarks"
