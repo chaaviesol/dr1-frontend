@@ -102,22 +102,26 @@ export default function Mainadmindoctorapprove() {
         <div className="mainadmindoctoraboutavail flex">
           <div className="mainadmindoctorabout">
             <div className="flex" style={{ marginBottom: "1vw" }}>
-              <h4
-                className="highlight_data"
-                style={{ background: "#2A9D8F", color: "white" }}
-              >
-                Allopathy
-              </h4>{" "}
-              <h4
-                className="highlight_data"
-                style={{
-                  marginLeft: "20px",
-                  background: "#FB8500",
-                  color: "white",
-                }}
-              >
-                Epilepsy
-              </h4>
+              {DetailedData?.doctor_type && (
+                <h4
+                  className="highlight_data"
+                  style={{ background: "#2A9D8F", color: "white" }}
+                >
+                  {DetailedData?.doctor_type}
+                </h4>
+              )}
+              {DetailedData?.specialization && (
+                <h4
+                  className="highlight_data"
+                  style={{
+                    marginLeft: "20px",
+                    background: "#FB8500",
+                    color: "white",
+                  }}
+                >
+                  {DetailedData?.specialization}
+                </h4>
+              )}
             </div>
             <h3 style={{ marginBottom: "1.3vw" }}>About</h3>
             <h4 style={{ marginBottom: "1.3vw" }}>{DetailedData?.about}</h4>
@@ -131,6 +135,11 @@ export default function Mainadmindoctorapprove() {
               <h4 style={{ background: "#3A65FD", color: "white" }}>
                 {DetailedData.pincode}
               </h4>
+              {DetailedData?.location && (
+                <h4 style={{ background: "#F3F6FF", color: "#6B8CFE" }}>
+                  {DetailedData?.location}
+                </h4>
+              )}
             </div>
           </div>
         </div>

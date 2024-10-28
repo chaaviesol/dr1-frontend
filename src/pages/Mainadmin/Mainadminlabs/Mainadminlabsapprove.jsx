@@ -40,7 +40,7 @@ export default function Mainadminlabsapprove() {
         <div className="mainadmindoctordatas_profile flex">
           <img
             className="mainadmindoctordatas_profile_photo"
-            src= {Data?.photo?.image1 || "/images/doc.jpg"}
+            src={Data?.photo?.image1 || "/images/doc.jpg"}
             alt="/images/doc.jpg"
           />
 
@@ -87,9 +87,9 @@ export default function Mainadminlabsapprove() {
         <div className="photosdivadminsection flex">
           {Data?.photo ? (
             <>
-              <img src={Data.photo.image1 || "/images/doc.jpg"} alt="" />
-              <img src={Data.photo.image2 || "/images/doc.jpg"} alt="" />
-              <img src={Data.photo.image3 || "/images/doc.jpg"} alt="" />
+              <img src={Data?.photo?.image1 || "/images/doc.jpg"} alt="" />
+              <img src={Data?.photo?.image2 || "/images/doc.jpg"} alt="" />
+              <img src={Data?.photo?.image3 || "/images/doc.jpg"} alt="" />
             </>
           ) : (
             <>
@@ -114,9 +114,11 @@ export default function Mainadminlabsapprove() {
             <h4 style={{ background: "#3A65FD", color: "white" }}>
               {Data?.pincode}
             </h4>
-            <h4 style={{ background: "#F3F6FF", color: "#6B8CFE" }}>
-            {Data?.location}
-            </h4>
+            {Data?.location && (
+              <h4 style={{ background: "#F3F6FF", color: "#6B8CFE" }}>
+                {Data?.location}
+              </h4>
+            )}
           </div>
         </div>
 
@@ -182,7 +184,7 @@ export default function Mainadminlabsapprove() {
           </div>
 
           <div className="admin_disable_button flex">
-            <h4  onClick={() => ResponseAdmin("reject")}>Reject</h4>
+            <h4 onClick={() => ResponseAdmin("reject")}>Reject</h4>
             <h4
               style={{
                 marginLeft: "0.6vw",

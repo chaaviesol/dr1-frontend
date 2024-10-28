@@ -42,7 +42,7 @@ export default function Mainadminhospitalapprove() {
           <div className="mainadmindoctordatas_profile flex">
             <img
               className="mainadmindoctordatas_profile_photo"
-              src={Data?.image|| "/images/doc.jpg"}
+              src={Data?.image || "/images/doc.jpg"}
               alt=""
             />
 
@@ -103,6 +103,11 @@ export default function Mainadminhospitalapprove() {
               <h4 style={{ background: "#3A65FD", color: "white" }}>
                 {Data?.pincode}
               </h4>
+              {Data?.location && (
+                <h4 style={{ background: "#F3F6FF", color: "#6B8CFE" }}>
+                  {Data?.location}
+                </h4>
+              )}
             </div>
           </div>
 
