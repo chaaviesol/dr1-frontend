@@ -1,11 +1,15 @@
+.main {
+  display: flex;
+  gap: 10px;
+}
 .container {
-  padding: 1rem 1rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  min-width: 130px;
-  height: 45px;
+  /* width: fit-content; */
+  height: 40px;
   cursor: pointer;
   border: none;
   border-radius: 50px;
@@ -22,9 +26,19 @@
 
 .active {
   background: #3a65fd;
+  color: white;
+  i {
+    font-size: 18px;
+    color: white;
+  }
 }
 .inactive {
+  color: #686868;
   background: #f3f3f8;
+  i {
+    font-size: 18px;
+    color: #686868;
+  }
 }
 .container span {
   font-family: "Poppins";
@@ -46,4 +60,10 @@
   font-size: 16px;
   margin: 0;
   padding: 0;
+}
+
+.homebtn {
+  border-radius: 50%;
+  padding: 1rem;
+  width: 40px;
 }

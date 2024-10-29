@@ -37,10 +37,10 @@ function CustomerAvatar({ image }) {
         <CircularProgress size="1.5rem" />
       ) : (
         <img
-          onClick={() => navigate("/profile")}
+          // onClick={() => navigate("/profile")}
           style={{
-            height: "40px",
-            width: "40px",
+            height: "100%",
+            width: "100%",
             borderRadius: "50%",
             objectFit: "cover",
           }}

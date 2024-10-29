@@ -22,13 +22,45 @@
   color: black;
   font-size: 12px;
 }
-.roundtab {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  /* background-color: #f2f5ff; */
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.active {
+
+  .tabtext {
+    color: #3a65fd;
+  }
+  .roundtab {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #f2f5ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  i{
+    color: #3a65fd;
+    font-size: 16px;
+  }
 }
+
+.inactive {
+  color: #686868;
+  .tabtext{
+    color: black;
+  }
+  .roundtab {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  i{
+    font-size: 20px;
+    color: #434343;
+  }
+}
+
+

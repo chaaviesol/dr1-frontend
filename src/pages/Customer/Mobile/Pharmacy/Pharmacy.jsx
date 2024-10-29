@@ -12,6 +12,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
 import Checkbox from "@mui/material/Checkbox";
+import SearchBox from "../components/SearchBox/SearchBox";
 function Pharmacy() {
   const [marketplaceProducts, setMarketplaceProducts] = useState([]);
   const [isCategoryFetching, setIsCategoryFetching] = useState(false);
@@ -34,11 +35,9 @@ function Pharmacy() {
   const navigate = useNavigate();
 
   const handleNavigation = (categoryId) => {
-
-      navigate("/pharmacyproducts", {
-        state: { passedCategoryId: categoryId },
-      })
-
+    navigate("/pharmacyproducts", {
+      state: { passedCategoryId: categoryId },
+    });
   };
 
   const handleChange = (e) => {
@@ -278,7 +277,35 @@ function Pharmacy() {
   return (
     <>
       <div className="pharmacysection">
-        {isCategoryFetching&& <Loader/>}
+        <div
+          style={{
+            marginTop: "1rem",
+            marginBottom: "1rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            height: "60px",
+          }}
+        >
+          <div>
+            <SearchBox />
+          </div>
+          <div
+            style={{
+              backgroundColor: "#F2F5FF",
+              borderRadius: "50%",
+              padding: "1rem",
+              height: "100%",
+              width: "60px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <i className="ri-shopping-cart-line"></i>
+          </div>
+        </div>
+        {isCategoryFetching && <Loader />}
         <div className="uploadprescriptionsection flex">
           <div className="uploadprescriptionsecleft flex">
             <h3>
@@ -305,7 +332,7 @@ function Pharmacy() {
                 >
                   <i className="ri-arrow-left-line"></i>
                 </div>
-                <h3 >Upload Prescription</h3>
+                <h3>Upload Prescription</h3>
 
                 <div className="secopinputprescription">
                   {/* <h4>Name</h4> */}
@@ -438,7 +465,7 @@ function Pharmacy() {
             </Modal>
 
             <button
-            style={{padding:"1rem 2rem"}}
+              style={{ padding: "1rem 2rem" }}
               onClick={handleOpen}
               className="uploadprescriptionbutton flex"
             >
@@ -460,12 +487,12 @@ function Pharmacy() {
               marketplaceProducts.map((product, index) => (
                 <div
                   key={index}
-                  style={{marginBottom:"10px"}}
+                  style={{ marginBottom: "10px" }}
                   onClick={() => handleNavigation(product.id)}
                   className="pharmacyshopproduct flex"
                 >
                   <div className="pharmacyshopproductimg flex">
-                  <img src={product?.image} alt="" />
+                    <img src={product?.image} alt="" />
                   </div>
                   <div className="pharmacyshopproducttitle flex">
                     <h4>{product?.category}</h4>

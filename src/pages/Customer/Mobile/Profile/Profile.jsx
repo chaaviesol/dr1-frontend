@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Profile.css";
 import useAuth from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../../config";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
+import { LoginModal } from "../../../../components/LoginModal/LoginModal";
 
 const Profile = () => {
+  const [signInModalOpen, setSignInModalOpen] = useState(false);
+
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
 
   const { auth, authLogout } = useAuth();
-  const { userId } = auth;
+  const { userId, userType } = auth;
 
   const fetchUserProfileDetails = async (userId) => {
     const payload = { id: userId };
@@ -30,21 +33,44 @@ const Profile = () => {
     },
     enabled: !!userId,
   });
-
+  const toggleSignInModal = () => {
+    setSignInModalOpen(true);
+  };
   const handleLogout = () => {
     authLogout();
     navigate("/");
   };
-  return (
-    <div style={{ height: "100dvh", backgroundColor: "#f3f3f8" }}>
-      <div className="profile-container">
-        <div
-          className="backbuttonsecondopinion bbkbtn"
-          style={{ backgroundColor: "white", color: "black" }}
-          onClick={() => navigate(-1)}
+  if (!userId || !userType || userType !== "customer") {
+    return (
+      <div
+        style={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {signInModalOpen && (
+          <LoginModal show={signInModalOpen} setShow={setSignInModalOpen} />
+        )}
+        <button
+          onClick={toggleSignInModal}
+          style={{
+            background: "#3a65fd",
+            borderRadius: "18px",
+            color: "white",
+            padding: "1rem 3rem",
+            WebkitTapHighlightColor: "transparent",
+          }}
         >
-          <i class="ri-arrow-left-line"></i>
-        </div>
+          Login
+        </button>
+      </div>
+    );
+  }
+  return (
+    <div style={{ backgroundColor: "#f3f3f8" }}>
+      <div className="profile-container">
         <div className="profile-card">
           <img
             className="profile-img"

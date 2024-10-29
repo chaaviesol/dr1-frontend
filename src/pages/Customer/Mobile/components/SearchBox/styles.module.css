@@ -4,8 +4,8 @@
   display: flex;
   height: 55px;
   gap: 1rem;
-  background: white;
-  border-radius: 10px;
+  background: #F2F5FF;
+  border-radius: 50px;
   align-items: center;
 }
 
