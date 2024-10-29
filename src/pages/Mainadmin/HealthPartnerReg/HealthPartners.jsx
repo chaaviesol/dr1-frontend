@@ -14,19 +14,19 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { toast } from "react-toastify";
 export default function HealthPartners() {
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
+  const [scheduledata, setScheduleData] = useState();
+  const [alldata, setAlldata] = useState();
   const [modalData, setModalData] = useState({
     id: null,
-    // status: {
     scheduled: false,
     onboarded: false,
     notattended: false,
     notinterested: false,
     wrongnumber: false,
-    // },
     remarks: "",
     scheduled_Date: null,
   });
-  console.log({ modalData });
   const [isLoading, setIsLoading] = useState(false);
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
@@ -73,7 +73,15 @@ export default function HealthPartners() {
       scheduled_Date: null,
     });
     setIsModalOpen2(false);
+    setIsModalOpen3(false);
   };
+  const onClose2 = () => {
+    setModalData({
+      wrongnumber: false,
+    });
+    setIsModalOpen3(false);
+  };
+
   const fetchData = async () => {
     try {
       setIsLoading(true);
@@ -81,8 +89,10 @@ export default function HealthPartners() {
 
       if (response?.status === 200) {
         const data = response?.data?.data || [];
-        setdatalist(data);
 
+        setdatalist(data);
+        setScheduleData(response?.data?.todayScheduled);
+        setAlldata(response?.data?.allgetdata);
         setinitialData(data);
       }
     } catch (error) {
@@ -142,7 +152,6 @@ export default function HealthPartners() {
   const SearchData = (e) => {
     const { name, value } = e?.target;
     let tempData = initialData;
-    console.log(value);
     if (!value) {
       setdatalist(initialData);
       return;
@@ -226,6 +235,7 @@ export default function HealthPartners() {
             scheduled_Date: null,
           });
           setIsModalOpen2(false);
+          setIsModalOpen3(false);
           fetchData();
         }, 3000);
       } else if (response.status === 400) {
@@ -245,6 +255,18 @@ export default function HealthPartners() {
     wrongnumber: { text: "Wrong Number", color: "red" },
     notattended: { text: "Not Attended", color: "#f43f5e" },
   };
+  const handleRemoveClick = () => {
+    setIsModalOpen3(true);
+    !modalData.onboarded && handleCheck("wrongnumber");
+  };
+  const showTodayScheduled = () => {
+    document.getElementsByName("name")[0].value = "";
+    document.getElementsByName("type")[0].value = "";
+    document.getElementsByName("contact_no")[0].value = "";
+    document.getElementsByName("created_date")[0].value = "";
+    setdatalist(scheduledata);
+    setinitialData(scheduledata);
+  };
 
   return (
     <div>
@@ -255,8 +277,8 @@ export default function HealthPartners() {
             <i class="ri-user-shared-line"></i>
           </div>
           <div style={{ marginLeft: "18px" }}>
-            <h2>{initialData?.length}</h2>
-            <h4>Requested</h4>
+            <h2>{alldata}</h2>
+            <h4>All</h4>
           </div>
         </div>
 
@@ -266,14 +288,20 @@ export default function HealthPartners() {
           </div>
 
           <div style={{ marginLeft: "18px" }}>
-            <h2>5</h2>
+            <h2>{scheduledata?.length}</h2>
             <h4>Scheduled today</h4>
-            <h4 className="scheduledbutton">Click to see </h4>
+            {scheduledata?.length > 0 && (
+              <h4 className="scheduledbutton" onClick={showTodayScheduled}>
+                Click to see{" "}
+              </h4>
+            )}
           </div>
         </div>
       </div>
 
-      <h3 style={{ marginBottom: "1.3vw", marginTop: "1.3vw" }}>Query List</h3>
+      <h3 style={{ marginBottom: "1.3vw", marginTop: "1.3vw" }}>
+        Health Partners
+      </h3>
       <table className="querlistonboarding">
         <tr className="querlistonboardingTr">
           <th className="querlistonboardingTh">
@@ -336,9 +364,7 @@ export default function HealthPartners() {
           </th>
         </tr>
         {datalist?.map((ele, index) => (
-          <tr
-            key={index}
-          >
+          <tr key={index}>
             <td>{index + 1}</td>
             <td>{ele?.name}</td>
             <td>{ele?.type}</td>
@@ -369,7 +395,7 @@ export default function HealthPartners() {
               <h4
                 className="removequeryupdate"
                 checked={modalData?.wrongnumber || false}
-                onChange={() => handleCheck("wrongnumber")}
+                onClick={handleRemoveClick}
               >
                 Remove
               </h4>
@@ -494,6 +520,21 @@ export default function HealthPartners() {
           <div className="upadtestatusbotbtn flex">
             <button onClick={onClose}>Close</button>{" "}
             <button onClick={OnSave}>Save</button>
+          </div>
+        </div>
+      </Modal>
+
+      <Modal open={isModalOpen3} onClose={() => setIsModalOpen3(false)}>
+        <div>
+          <div className="QueryListModal2">
+            <div className="QueryListModalhead">
+              <h4>Are you sure you want to mark this as "Wrong Number"?</h4>
+              <br />
+              <div className="upadtestatusbotbtn2 flex">
+                <button onClick={OnSave}>Yes</button>
+                <button onClick={onClose2}>No</button>
+              </div>
+            </div>
           </div>
         </div>
       </Modal>

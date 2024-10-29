@@ -219,7 +219,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
             : "admimmenuicon flex"
         }
       >
-       <i className="ri-nurse-fill"></i>
+      <i class="ri-shake-hands-fill"></i>
         <h4>Health Partners </h4>
       </div>
     </div>

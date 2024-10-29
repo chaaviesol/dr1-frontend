@@ -1,103 +1,95 @@
-.querlistonboarding{
-    width:fit-content;
-    border-collapse: collapse;
-    font-size: 1.2rem;
-    font-weight: 500;
+.querlistonboarding {
+  width: fit-content;
+  border-collapse: collapse;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
-.querlistonboardingbutton{
-    background-color:#3A65FD;
-    color: white;
-    padding:8px 18px;
-    border-radius:50px;
+.querlistonboardingbutton {
+  background-color: #3a65fd;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 50px;
 }
 
 .querlistonboarding input {
-    height: 30px;
+  height: 30px;
 
-    
-    padding:10px;
-    margin-top: 5px;
-    width:100%;
-    background-color: white;
-    border: 1.8px solid white;
-  }
-  
-.querlistonboarding input:focus{
-    border: 1.8px solid #3a65fd;
-} 
-
-  .querlistonboarding th{
-    background-color: #e4eaff;
-    font-weight: 900;
-    text-align:start;
-    padding:10px;
-  } 
-
-
-  .querlistonboarding td{
-    padding-top:12px;
-    padding-left:10px;
- }
-
- 
-
- .querlistonboarding tr:first-child{
-    border-radius:6px;
- } 
-
- .querlistonboarding tr:last-child td{
-    padding-bottom: 10px;
+  padding: 10px;
+  margin-top: 5px;
+  width: 100%;
+  background-color: white;
+  border: 1.8px solid white;
 }
 
+.querlistonboarding input:focus {
+  border: 1.8px solid #3a65fd;
+}
+
+.querlistonboarding th {
+  background-color: #e4eaff;
+  font-weight: 900;
+  text-align: start;
+  padding: 10px;
+}
+
+.querlistonboarding td {
+  padding-top: 12px;
+  padding-left: 10px;
+}
+
+.querlistonboarding tr:first-child {
+  border-radius: 6px;
+}
+
+.querlistonboarding tr:last-child td {
+  padding-bottom: 10px;
+}
 
 .querlistonboarding th:nth-child(1) {
- width:30px;
+  width: 30px;
 }
 .querlistonboarding th:nth-child(2) {
-    width:160px;
+  width: 160px;
 }
 .querlistonboarding th:nth-child(3) {
-    width:160px;
+  width: 160px;
 }
 .querlistonboarding th:nth-child(4) {
-    width:160px;
+  width: 160px;
 }
 .querlistonboarding th:nth-child(5) {
-    width:160px;
+  width: 160px;
 }
 .querlistonboarding th:nth-child(6) {
-    width:120px;
+  width: 120px;
 }
 
-  
-  .querlistonboarding th h4{
-    font-weight: 600;
-  }
+.querlistonboarding th h4 {
+  font-weight: 600;
+}
 
+.orderlisttable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
 
-  .orderlisttable tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  /* Hover effect for rows */
+/* Hover effect for rows */
 
+.orderlisttable tr:hover {
+  background-color: #f1f1f1;
+}
 
-  .orderlisttable tr:hover {
-    background-color: #f1f1f1;
-  }
-
-.mainadmindoctordatas_chartschedule{
+.mainadmindoctordatas_chartschedule {
   position: relative;
 }
 
-.mainadmindoctordatas_chartschedule:hover .scheduledbutton{
-  opacity:1;
+.mainadmindoctordatas_chartschedule:hover .scheduledbutton {
+  opacity: 1;
   top: 50%;
 }
 
 .scheduledbutton {
-  background-color: #3A65FD;
+  background-color: #3a65fd;
   color: white;
   width: fit-content;
   padding: 10px 20px; /* Add some padding for better appearance */
@@ -109,8 +101,8 @@
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition:400ms ease-in-out;
-  opacity:0;
+  transition: 400ms ease-in-out;
+  opacity: 0;
 }
 
 .scheduledbutton:hover {
@@ -122,18 +114,9 @@
   background-color: #1f3fb3; /* Even darker blue on click */
 }
 
-
-
-
-
-
-
-
-
-
 /* Update Modal */
 
-.QueryListModal{
+.QueryListModal {
   width: 40vw;
   background-color: white;
   border-radius: 2px;
@@ -161,19 +144,15 @@
   border: 2px solid #3a65fd;
 }
 
-
-
-
-
-.QueryListModalhead{
+.QueryListModalhead {
   justify-content: space-between;
   align-items: center;
 }
-.QueryListModalhead h2{
-    font-weight: 700;
+.QueryListModalhead h2 {
+  font-weight: 700;
 }
 
-.removequeryupdate{
+.removequeryupdate {
   color: #f12f28;
   margin-left: 10px;
 }
@@ -183,10 +162,10 @@
   text-decoration: underline;
 }
 
-.upadtestatusbotbtn{
+.upadtestatusbotbtn {
   align-items: center;
   justify-content: flex-end;
-  gap:10px;
+  gap: 10px;
 }
 
 /* .upadtestatusbotbtn button{
@@ -211,11 +190,11 @@
 .upadtestatusbotbtn button {
   height: 32px;
   padding: 0px 25px;
-  background-color: #3A65FD;
+  background-color: #3a65fd;
   color: white;
   border-radius: 4px;
   font-weight: 600;
-  border: 1px solid #3A65FD;
+  border: 1px solid #3a65fd;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
 }
@@ -244,84 +223,79 @@
   background-color: #d40700; /* Darker red when clicked */
 }
 
-
-.updatestatusremarks-top{
+.updatestatusremarks-top {
   justify-content: space-between;
   align-items: center;
 }
 
-.updatestatusremarks-top h4{
-      color: #3A65FD;
+.updatestatusremarks-top h4 {
+  color: #3a65fd;
 }
-.updatestatusremarks-top h4:hover{
-  color: #3A65FD;
+.updatestatusremarks-top h4:hover {
+  color: #3a65fd;
   text-decoration: underline;
 }
 
-.updatestatus-section{
- gap:10%;
- padding:20px 0px;
+.updatestatus-section {
+  gap: 10%;
+  padding: 20px 0px;
 }
 
-.updatestatus-section-circle{
+.updatestatus-section-circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  height:30px;
-  width:30px;
-  border-radius:50%;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
   border: 2px solid white;
   background-color: #d40700;
   position: relative;
   cursor: pointer;
- 
+
   /* transition: background-color 0.3s ease, transform 0.1s ease; */
-  i{
+  i {
     font-weight: 400;
   }
 }
 
-.updatestatus-section-circle:active{
-  transform:scale(.90); 
-  
+.updatestatus-section-circle:active {
+  transform: scale(0.9);
 }
 
-.statusline{
+.statusline {
   position: absolute;
-  width:3px;
+  width: 3px;
   height: 65px;
   background-color: #34d399;
-  top:20px;
-  left:50%;
+  top: 20px;
+  left: 50%;
   transform: translateX(-50%);
   z-index: -1;
 }
 
-.scheduledinput{
+.scheduledinput {
   background-color: #e4eaff;
-  margin-top:8px;
+  margin-top: 8px;
 }
 
-.updatestatus-section-data{
+.updatestatus-section-data {
   align-items: center;
   gap: 10px;
 }
 
-.scheduledinputtext{
-position: relative;
+.scheduledinputtext {
+  position: relative;
 }
 
-.scheduledinput2{
+.scheduledinput2 {
   position: absolute;
-  top:16px;
+  top: 16px;
 }
 
-.updatestatus-section-left{
-  width:40%;
+.updatestatus-section-left {
+  width: 40%;
 }
-
-
-
 
 /* .scheduledinput{
  position: absolute;
@@ -332,15 +306,69 @@ position: relative;
   border-radius:35px;
 } */
 
-.updatestatus-section-data2{
-  margin-top:50px;
+.updatestatus-section-data2 {
+  margin-top: 50px;
 }
 
+/* modal3 */
 
+.QueryListModal2 {
+  width: 20vw;
+  background-color: white;
+  border-radius: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
+  border-radius: 10px;
+}
 
+.QueryListModalhead h4 {
+  font-weight: 700;
+  text-align: center;
+}
 
+.upadtestatusbotbtn2 {
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
 
+.upadtestatusbotbtn2 button {
+  height: 32px;
+  padding: 0px 25px;
+  background-color: #3a65fd;
+  color: white;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid #3a65fd;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
+}
 
+.upadtestatusbotbtn2 button:nth-child(2) {
+  border: 1px solid #ff0800;
+  background-color: white;
+  color: #ff0800;
+}
+
+.upadtestatusbotbtn2 button:hover {
+  background-color: #2a52cc; /* Darker blue on hover */
+}
+
+.upadtestatusbotbtn2 button:nth-child(2):hover {
+  background-color: #ff0800; /* Red background on hover for the first button */
+  color: white; /* Change text color to white */
+}
+
+.upadtestatusbotbtn2 button:active {
+  transform: scale(0.95); /* Slight shrink effect on click */
+  background-color: #1f3fb3; /* Even darker blue when clicked */
+}
+.upadtestatusbotbtn2 button:nth-child(2):active {
+  transform: scale(0.95); /* Shrink effect on click */
+  background-color: #d40700; /* Darker red when clicked */
+}
 
 /*End Update Modal */
-
