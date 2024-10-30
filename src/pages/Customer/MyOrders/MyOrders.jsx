@@ -90,10 +90,10 @@ function MyOrders() {
     <div>
       {/* <OrderProgress /> */}
       {/* <Headroom> */}
-        <Navbar />
+      <Navbar />
       {/* </Headroom> */}
       {isOrdersLoading && <Loader />}
-      <div style={{ backgroundColor: "#f8f9fe",minHeight:"80vh" }}>
+      <div style={{ backgroundColor: "#f8f9fe", minHeight: "80vh" }}>
         <div className="container">
           <div className="orderlisttitle">
             <h2>My Orders</h2>
@@ -104,7 +104,8 @@ function MyOrders() {
                 <div className="oderlistcardtop flex">
                   <div className="oderlistcardleft">
                     <h4>ORDER ID #{data.so_number}</h4>
-                    <h3>₹ {data.total_amount}</h3>
+
+                    {data?.total_amount && <h3>₹ {data.total_amount}</h3>}
                     <button
                       onClick={() =>
                         setIsExpanded(isExpanded === index ? null : index)
@@ -126,9 +127,32 @@ function MyOrders() {
 
                   <div className="listcardprogress flex">
                     <div className="progresscard flex">
-                      <div className="progresscardmark isFullfilled flex" style={{}}>
-                        <i class="ri-check-line"></i>
-                        <div className="progresscardmarkline"></div>
+                      <div
+                        // className="progresscardmark isFullfilled flex"
+
+                        className={`flex ${
+                          data.so_status === "Placed" ||
+                          data.so_status === "Out for delivery" ||
+                          data.so_status === "Delivered"
+                            ? "progresscardmark"
+                            : "progresscardmarknotfilled"
+                        }`}
+                      >
+                        {data.so_status === "Placed" ||
+                        data.so_status === "Out for delivery" ||
+                        data.so_status === "Delivered" ? (
+                          <i className="ri-check-line"></i>
+                        ) : null}
+                        <div
+                          // className="progresscardmarkline"
+                          className={`${
+                            data.so_status === "Placed" ||
+                            data.so_status === "Out for delivery" ||
+                            data.so_status === "Delivered"
+                              ? "progresscardmarkline"
+                              : "progresscardmarklinenotfilled"
+                          }`}
+                        ></div>
                       </div>
 
                       <div className="progresscarddate">
@@ -138,37 +162,86 @@ function MyOrders() {
                     </div>
 
                     <div className="progresscard flex">
-                      <div className="progresscardmark flex">
-                        <i class="ri-check-line"></i>
-                        <div className="progresscardmarkline"></div>
+                      <div
+                        className={`flex ${
+                          data.so_status === "Out for delivery" ||
+                          data.so_status === "Delivered"
+                            ? "progresscardmark"
+                            : "progresscardmarknotfilled"
+                        }`}
+                      >
+                        <i className="ri-check-line"></i>
+
+                        <div
+                          className={`${
+                            data.so_status === "Out for delivery" ||
+                            data.so_status === "Delivered"
+                              ? "progresscardmarkline"
+                              : "progresscardmarklinenotfilled"
+                          }`}
+                        ></div>
                       </div>
 
                       <div className="progresscarddate">
                         <h2>Order Packed</h2>
-                        <h4>Thu 22 Aug</h4>
+                        <h4>
+                          {data.so_status === "Out for delivery" ||
+                          data.so_status === "Delivered"
+                            ? formatDate(data.updated_date)
+                            : "Processing"}
+                        </h4>
                       </div>
                     </div>
 
                     <div className="progresscard flex">
-                      <div className="progresscardmark flex">
+                      <div
+                        className={`flex ${
+                          data.so_status === "Out for delivery" ||
+                          data.so_status === "Delivered"
+                            ? "progresscardmark"
+                            : "progresscardmarknotfilled"
+                        }`}
+                      >
                         <i class="ri-check-line"></i>
-                        <div className="progresscardmarkline"></div>
+                        <div
+                          className={`${
+                            data.so_status === "Out for delivery" ||
+                            data.so_status === "Delivered"
+                              ? "progresscardmarkline"
+                              : "progresscardmarklinenotfilled"
+                          }`}
+                        ></div>
                       </div>
 
                       <div className="progresscarddate">
                         <h2>In Transit</h2>
-                        <h4>Thu 22 Aug</h4>
+                        <h4>
+                          {data.so_status === "Out for delivery" ||
+                          data.so_status === "Delivered"
+                            ? formatDate(data.updated_date)
+                            : "Processing"}
+                        </h4>
                       </div>
                     </div>
 
                     <div className="progresscard flex">
-                      <div className="progresscardmark flex">
+                      <div
+                        className={`flex ${
+                          data.so_status === "Delivered"
+                            ? "progresscardmark"
+                            : "progresscardmarknotfilled"
+                        }`}
+                      >
                         <i class="ri-check-line"></i>
                       </div>
 
                       <div className="progresscarddate">
                         <h2>Delivered</h2>
-                        <h4>Thu 22 Aug</h4>
+                        <h4>
+                          {data.so_status === "Delivered"
+                            ? formatDate(data.updated_date)
+                            : "Processing"}
+                        </h4>
                       </div>
                     </div>
                   </div>
@@ -217,24 +290,26 @@ function MyOrders() {
                         {data?.pinocode}, Phone Number{data?.contact_no}
                       </h4>
                     </div>
-                    <div className="orderprice">
-                      <div className="orderpriceitem flex">
-                        <h4>List Price :</h4>
-                        <h4>₹ 2000</h4>
+                    {data?.total_amount && (
+                      <div className="orderprice">
+                        <div className="orderpriceitem flex">
+                          <h4>List Price :</h4>
+                          <h4>₹ 2000</h4>
+                        </div>
+                        <div className="orderpriceitem flex">
+                          <h4>Selling Price :</h4>
+                          <h4>₹ 1900</h4>
+                        </div>
+                        <div className="orderpriceitem flex">
+                          <h4>Delivery Charge :</h4>
+                          <h4>₹ 50</h4>
+                        </div>
+                        <div className="orderpriceitemtotal flex">
+                          <h4>Total Price :</h4>
+                          <h4>₹ {data?.total_amount}</h4>
+                        </div>
                       </div>
-                      <div className="orderpriceitem flex">
-                        <h4>Selling Price :</h4>
-                        <h4>₹ 1900</h4>
-                      </div>
-                      <div className="orderpriceitem flex">
-                        <h4>Delivery Charge :</h4>
-                        <h4>₹ 50</h4>
-                      </div>
-                      <div className="orderpriceitemtotal flex">
-                        <h4>Total Price :</h4>
-                        <h4>₹ {data?.total_amount}</h4>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 )}
               </div>

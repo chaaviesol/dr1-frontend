@@ -35,6 +35,10 @@
 .isFullfilled{
     background-color: #3A65FD;
 }
+.isnotfullfilled{
+    background-color: #606060;
+}
+
 .progresscardmark{
     height:25px;
     width:25px;
@@ -48,9 +52,33 @@
     z-index:1;
     border:2px solid white;
 }
+
+.progresscardmarknotfilled{
+    height:25px;
+    width:25px;
+    background-color:#606060;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius:50px;
+    font-weight: 100;
+    position: relative;
+    z-index:1;
+    border:2px solid white;
+}
+
 .progresscardmarkline{
     position: absolute;
     background-color: #3A65FD;
+    height:2px;
+    width:140px;
+    left:24px;
+    z-index:-1;
+}
+
+.progresscardmarklinenotfilled{
+    position: absolute;
+    background-color: #606060;
     height:2px;
     width:140px;
     left:24px;
