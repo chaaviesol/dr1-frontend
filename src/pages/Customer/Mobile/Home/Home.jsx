@@ -10,9 +10,10 @@ import ChatBot from "../../../../components/ChatBot/ChatBot";
 import PagePicker from "./PagePicker/PagePicker";
 import HomePage from "./HomePage/HomePage";
 import Doctors from "./Doctors/Doctors";
-import Hospitals from "./Hospitals/Hospitals";
+import Hospitals from "./Hospitals/HospitalMob";
 import Labs from "./Labs/Labs";
 import AvatarWithLocation from "../components/AvatarWithLocation/AvatarWithLocation";
+import RoundedCart from "../Pharmacy/components/RoundedCart";
 
 function Home() {
   const [activePage, setActivePage] = useState("home");
@@ -28,8 +29,9 @@ function Home() {
   return (
     <>
       <div className={styles.margin}>
-        <div className={styles.margin}>
+        <div className={`${styles.margin} ${styles.top}`}>
           <AvatarWithLocation />
+          <RoundedCart/>
         </div>
         <PagePicker activePage={activePage} setActivePage={setActivePage} />
         <div className={styles.page}>

@@ -48,11 +48,18 @@ function BottomBar({ activeTab, setActiveTab }) {
         }`}
       >
         <div
-          // className={activeTab === "profile" ? styles.activeprofile : styles.inactiveprofile}
+        // className={activeTab === "profile" ? styles.activeprofile : styles.inactiveprofile}
         >
-          <div style={{width:"40px",height:"40px",border:"1px solid blue",boxSizing:"border-box",borderRadius:"50%"}}>
-
-          <CustomerAvatar />
+          <div
+            style={{
+              width: "40px",
+              height: "40px",
+              border: activeTab === "profile" ? "1px solid blue" : "",
+              boxSizing: "border-box",
+              borderRadius: "50%",
+            }}
+          >
+            <CustomerAvatar />
           </div>
         </div>
         <div className={styles.tabtext}>Profile</div>

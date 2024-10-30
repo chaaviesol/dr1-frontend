@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MainContainer from "../MainContainer/MainContainer";
 import Home from "../../Home/Home";
 import Pharmacy from "../../Pharmacy/Pharmacy";
@@ -6,9 +6,10 @@ import { useNavigate } from "react-router-dom";
 import BottomBar from "../BottomBar/BottomBar";
 import Community from "../../Community/Community";
 import Profile from "../../Profile/Profile";
+import { TabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 
 function PageWrapper() {
-  const [activeTab, setActiveTab] = useState("home");
+  const { activeTab, setActiveTab } = useContext(TabBarContext);
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -36,15 +37,15 @@ function PageWrapper() {
   //     window.removeEventListener("popstate", handlePopState);
   //   };
   // }, [activeTab]);
-
+  const tabComponents = {
+    home: <Home />,
+    community: <Community />,
+    medicine: <Pharmacy />,
+    profile: <Profile />,
+  };
   return (
     <>
-      <MainContainer>
-        {activeTab === "home" && <Home />}
-        {activeTab === "community" && <Community />}
-        {activeTab === "medicine" && <Pharmacy />}
-        {activeTab === "profile" && <Profile />}
-      </MainContainer>
+      <MainContainer>{tabComponents[activeTab]}</MainContainer>
       <BottomBar activeTab={activeTab} setActiveTab={setActiveTab} />
     </>
   );

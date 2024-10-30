@@ -22,7 +22,8 @@ export default function Cart({
   HandleOnclick,
   handleKeyPress,
   getCurrentLocation,
-  fetchLocationMutation
+  fetchLocationMutation,
+  gettingLocationLoading
 }) {
   const { cartItems, isCartLoading } = usePharmacyContext();
   const navigate = useNavigate();
@@ -149,7 +150,7 @@ export default function Cart({
               <h4>Address</h4>
               <button onClick={getCurrentLocation} style={{width:"160px"}}>
                 {" "}
-                {fetchLocationMutation.isPending ? (
+                {gettingLocationLoading ? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>

@@ -1,0 +1,36 @@
+.container {
+  position: relative;
+  padding: 1rem 1rem 1rem 2rem;
+  display: flex;
+  height: 55px;
+  gap: 1rem;
+  background: #f2f5ff;
+  border-radius: 50px;
+  align-items: center;
+}
+
+.icons {
+  /* border: 1px solid black; */
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.icon {
+  font-size: 20px;
+  color: #999999;
+}
+
+.search {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.search input {
+  padding: 0.4rem;
+}
+.searchIcon {
+  color: #999999;
+}

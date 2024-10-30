@@ -16,6 +16,7 @@ function Cart() {
   const [isLoading, setIsLoading] = useState(true);
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
+  const [gettingLocationLoading, setGettingLocationLoading] = useState(false);
   const [details, setDetails] = useState({
     delivery_details: "",
     contact_no: "",
@@ -170,10 +171,13 @@ function Cart() {
   const fetchLocationMutation = useMutation({
     mutationKey: ["fetchLocationMutation"],
     mutationFn: ({ lat, lng }) => fetchLocation(lat, lng),
+    onMutate: () => setGettingLocationLoading(true),
     onSuccess: (data) => {
       console.log({data})
       setDetails({ ...details, delivery_details: data.formattedAddress,pincode:data.postalCode });
+      setGettingLocationLoading(false);
     },
+    onError: () => setGettingLocationLoading(false), 
   });
   // Get user's current position using the Geolocation API
   function getCurrentLocation() {
@@ -192,6 +196,7 @@ function Cart() {
 
   function error() {
     alert("Unable to retrieve your location.");
+    setGettingLocationLoading(false);
   }
 
 
@@ -213,7 +218,8 @@ function Cart() {
     HandleOnclick,
     handleKeyPress,
     getCurrentLocation,
-    fetchLocationMutation
+    fetchLocationMutation,
+    gettingLocationLoading
   };
 
   return (

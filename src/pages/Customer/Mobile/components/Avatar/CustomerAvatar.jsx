@@ -33,21 +33,21 @@ function CustomerAvatar({ image }) {
 
   return (
     <>
-      {isLoading===true ? (
-        <CircularProgress size="1.5rem" />
-      ) : (
-        <img
-          // onClick={() => navigate("/profile")}
-          style={{
-            height: "100%",
-            width: "100%",
-            borderRadius: "50%",
-            objectFit: "cover",
-          }}
-          src={userProfile?.image || "/images/avatarmale.png"}
-          alt=""
-        />
-      )}
+      <img
+        // onClick={() => navigate("/profile")}
+        style={{
+          height: "100%",
+          width: "100%",
+          borderRadius: "50%",
+          objectFit: "cover",
+        }}
+        src={
+          isLoading === true || !userProfile?.image
+            ? "/images/avatarmale.png"
+            : userProfile?.image
+        }
+        alt=""
+      />
     </>
   );
 }

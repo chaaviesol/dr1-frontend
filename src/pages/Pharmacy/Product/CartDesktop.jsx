@@ -25,6 +25,7 @@ export default function CartDesktop({
   handleKeyPress,
   getCurrentLocation,
   fetchLocationMutation,
+  gettingLocationLoading
 }) {
   const { cartItems, isCartLoading } = usePharmacyContext();
 
@@ -197,7 +198,7 @@ export default function CartDesktop({
               <h4>Address</h4>
               <button onClick={getCurrentLocation} style={{ width: "160px" }}>
                 {" "}
-                {fetchLocationMutation.isPending ? (
+                {gettingLocationLoading? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>

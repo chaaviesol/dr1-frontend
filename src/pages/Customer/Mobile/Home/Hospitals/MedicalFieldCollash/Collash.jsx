@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import Item from "./items/Item";
-import { SearchDocContext } from "../../../../../contexts/Doctor/SearchDoctorProvider";
+import { SearchDocContext } from "../../../../../../contexts/Doctor/SearchDoctorProvider";
 import { useNavigate } from "react-router-dom";
 const img1 = "./images/mobile/field4.jpg";
 const img2 = "./images/mobile/field2.jpg";

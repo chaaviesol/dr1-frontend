@@ -14,7 +14,6 @@ import { port } from "../../../../config";
 import SearchBox from "./SearchBox/Index";
 import { HospitalCard } from "../HospitalCard/HospitalCard";
 import { Loader } from "../../../../components/Loader/Loader";
-import Navbar from "../../../../components/Navbar";
 import { useLocation } from "react-router-dom";
 import { MyContext } from "../../../../contexts/Contexts";
 
@@ -216,7 +215,6 @@ export const MobileHosFiltering = () => {
   return (
     <>
       <div className="MobileLabAlign">
-        <Navbar />
         <div className="MobileLabAlignFilter">
           <div className="MobileLabAlignFilterSearch">
             <SearchBox

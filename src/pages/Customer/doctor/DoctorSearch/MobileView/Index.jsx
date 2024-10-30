@@ -122,7 +122,6 @@ const { Categories } = useContext(MyContext);
 
   return (
     <>
-      <Navbar />
       <div className={styles.mainContainer}>
         <div className={styles.searchBox}>
           <SearchBox

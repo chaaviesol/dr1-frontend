@@ -56,8 +56,7 @@ import Addadmins from "./pages/Mainadmin/ManageAdmin/Addadmins";
 import Adminlist from "./pages/Mainadmin/ManageAdmin/Adminlist";
 import Unauthorized from "./components/Routing/UnAuthorized/UnAuthorized";
 import CustomerLabMobile from "./pages/Customer/Mobile/Lab/Lab";
-import CustomerHospitalMobile from "./pages/Customer/Mobile/Hospital/HospitalMob";
-import CustomerDoctorMobile from "./pages/Customer/Mobile/Doctor/CusDoctor";
+// import CustomerHospitalMobile from "./pages/Customer/Mobile/Hospital/HospitalMob";
 import CustomerPharamcyMobile from "./pages/Customer/Mobile/Pharmacy/Pharmacy";
 import MobileDoctorProfile from "./pages/Customer/Mobile/MobileDoctorProfile/MobileDoctorProfile";
 import MobileHospitalProfile from "./pages/Customer/Mobile/MobileHospitalProfile/MobileHospitalProfile";
@@ -94,12 +93,11 @@ export const publicRoutes = [
   { path: "/hospital", element: <HospitalPage /> },
   { path: "/labs", element: <LabPage /> },
   { path: "/pharmacy", element: <PharmacyPage /> },
-  { path: "/customerdocmobile", element: <CustomerDoctorMobile /> },
-  { path: "/customerhospitalmobile", element: <CustomerHospitalMobile /> },
+  // { path: "/customerhospitalmobile", element: <CustomerHospitalMobile /> },
   { path: "/customerlabmobile", element: <CustomerLabMobile /> },
   { path: "/customerpharmacymobile", element: <CustomerPharamcyMobile /> },
   { path: "/search", element: <Searchpage /> },
-  { path: "/profile", element: <Profile /> },
+  // { path: "/profile", element: <Profile /> },
   { path: "/pharmacyproducts", element: <AllProductsView /> },
   { path: "/productdetails", element: <SingleProdDetails /> },
   { path: "/createcampaign", element: <CreateCampaign /> },
