@@ -218,7 +218,7 @@ function Cart() {
     HandleOnclick,
     handleKeyPress,
     getCurrentLocation,
-    fetchLocationMutation,
+    fetchLocationMutationPending :fetchLocationMutation.isPending,
     gettingLocationLoading
   };
 

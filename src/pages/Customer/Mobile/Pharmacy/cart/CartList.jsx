@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import CartItemTile from "./CartItemTIle";
 import "./cart.css";
 
@@ -22,8 +22,8 @@ export default function Cart({
   HandleOnclick,
   handleKeyPress,
   getCurrentLocation,
-  fetchLocationMutation,
-  gettingLocationLoading
+  fetchLocationMutationPending,
+  gettingLocationLoading,
 }) {
   const { cartItems, isCartLoading } = usePharmacyContext();
   const navigate = useNavigate();
@@ -69,7 +69,7 @@ export default function Cart({
   return (
     <>
       <div className="cart" style={{ overflow: "hidden" }}>
-        <CartTopbarWithBackButton hideIcon={true}  />
+        <CartTopbarWithBackButton hideIcon={true} />
         {isCartLoading && <Loader />}
         <div style={{ height: "70vh", overflow: "auto" }}>
           {cartItems &&
@@ -148,9 +148,13 @@ export default function Cart({
           <div className="checkoutmodaladdress">
             <div className="flex checkoutmodaladdressget">
               <h4>Address</h4>
-              <button onClick={getCurrentLocation} style={{width:"160px"}}>
+              <button
+                onClick={getCurrentLocation}
+                disabled={gettingLocationLoading || fetchLocationMutationPending}
+                style={{ width: "160px" }}
+              >
                 {" "}
-                {gettingLocationLoading ? (
+                {(gettingLocationLoading ||fetchLocationMutationPending) ? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>

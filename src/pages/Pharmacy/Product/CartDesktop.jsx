@@ -24,8 +24,8 @@ export default function CartDesktop({
   HandleOnclick,
   handleKeyPress,
   getCurrentLocation,
-  fetchLocationMutation,
-  gettingLocationLoading
+  fetchLocationMutationPending,
+  gettingLocationLoading,
 }) {
   const { cartItems, isCartLoading } = usePharmacyContext();
 
@@ -196,9 +196,15 @@ export default function CartDesktop({
           <div className="checkoutmodaladdress">
             <div className="flex checkoutmodaladdressget">
               <h4>Address</h4>
-              <button onClick={getCurrentLocation} style={{ width: "160px" }}>
+              <button
+                onClick={getCurrentLocation}
+                disabled={
+                  gettingLocationLoading || fetchLocationMutationPending
+                }
+                style={{ width: "160px" }}
+              >
                 {" "}
-                {gettingLocationLoading? (
+                {gettingLocationLoading || fetchLocationMutationPending ? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>
