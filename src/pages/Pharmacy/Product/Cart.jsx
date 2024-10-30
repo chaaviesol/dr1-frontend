@@ -49,7 +49,6 @@ function Cart() {
     }
   };
 
-
   const placeOrder = async (address) => {
     const payload = {
       order_type: "salesorder",
@@ -88,9 +87,6 @@ function Cart() {
       toast.error("Error in order placing");
     }
   };
-
-
-
 
   const handleOnchange = (e) => {
     const { name, value } = e.target;
@@ -173,11 +169,15 @@ function Cart() {
     mutationFn: ({ lat, lng }) => fetchLocation(lat, lng),
     onMutate: () => setGettingLocationLoading(true),
     onSuccess: (data) => {
-      console.log({data})
-      setDetails({ ...details, delivery_details: data.formattedAddress,pincode:data.postalCode });
+      console.log({ data });
+      setDetails({
+        ...details,
+        delivery_details: data.formattedAddress,
+        pincode: data.postalCode,
+      });
       setGettingLocationLoading(false);
     },
-    onError: () => setGettingLocationLoading(false), 
+    onError: () => setGettingLocationLoading(false),
   });
   // Get user's current position using the Geolocation API
   function getCurrentLocation() {
@@ -199,7 +199,6 @@ function Cart() {
     setGettingLocationLoading(false);
   }
 
-
   if (isLoading) {
     return <Loader />;
   }
@@ -218,8 +217,8 @@ function Cart() {
     HandleOnclick,
     handleKeyPress,
     getCurrentLocation,
-    fetchLocationMutationPending :fetchLocationMutation.isPending,
-    gettingLocationLoading
+    fetchLocationMutationPending: fetchLocationMutation.isPending,
+    gettingLocationLoading,
   };
 
   return (

@@ -25,7 +25,7 @@ export default function LabEdit2() {
     services: false,
   });
   const axiosPrivate=useAxiosPrivate()
-  // const isMobile = useMediaQuery({ maxWidth: 980 });
+  // const isMobile = useMediaQuery({ maxWidth: 768 });
   const services = [
     { name: "Blood Count Tests" },
     { name: "Genetic Testing" },

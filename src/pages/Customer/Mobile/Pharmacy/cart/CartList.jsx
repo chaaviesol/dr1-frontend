@@ -5,10 +5,10 @@ import "./cart.css";
 import { useNavigate } from "react-router-dom";
 import { usePharmacyContext } from "../../../../../contexts/PharmacyContext";
 import { Loader } from "../../../../../components/Loader/Loader";
-import CartTopbarWithBackButton from "../../../../../components/CartTopbarWithBackButton";
 import { CircularProgress, Modal } from "@mui/material";
+import BackButtonWithTitle from "../../../../../components/BackButtonWithTitle";
 
-export default function Cart({
+const CartList=React.memo(({
   selectedItemId,
   handleCheckout,
   totalPrice,
@@ -24,7 +24,7 @@ export default function Cart({
   getCurrentLocation,
   fetchLocationMutationPending,
   gettingLocationLoading,
-}) {
+})=> {
   const { cartItems, isCartLoading } = usePharmacyContext();
   const navigate = useNavigate();
   if (cartItems && cartItems.length === 0) {
@@ -69,7 +69,7 @@ export default function Cart({
   return (
     <>
       <div className="cart" style={{ overflow: "hidden" }}>
-        <CartTopbarWithBackButton hideIcon={true} />
+      <BackButtonWithTitle title="My cart"/>
         {isCartLoading && <Loader />}
         <div style={{ height: "70vh", overflow: "auto" }}>
           {cartItems &&
@@ -192,4 +192,5 @@ export default function Cart({
       </Modal>
     </>
   );
-}
+})
+export default CartList

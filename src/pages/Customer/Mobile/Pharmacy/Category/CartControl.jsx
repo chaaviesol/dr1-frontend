@@ -8,7 +8,7 @@ import { BASE_URL } from "../../../../../config";
 import { useMutation } from "@tanstack/react-query";
 import { debounce } from "lodash";
 
-const CartControl = ({ product, isLoading }) => {
+const CartControl = React.memo(({ product, isLoading }) => {
   const { cartItems, setCartItems, refetchCart } = usePharmacyContext();
   const productId = product.product_id;
   const axiosPrivate = useAxiosPrivate();
@@ -93,7 +93,6 @@ const CartControl = ({ product, isLoading }) => {
     debouncedUpdateCart(productId);
   };
 
-  console.log(cartItems);
 
   const decreaseCount = async (currentQuantity) => {
     if (isLoading) {
@@ -136,6 +135,6 @@ const CartControl = ({ product, isLoading }) => {
       </button>
     </div>
   );
-};
+});
 
 export default CartControl;

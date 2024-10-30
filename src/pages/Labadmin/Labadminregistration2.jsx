@@ -24,7 +24,7 @@ export default function Labadminregistration2() {
     features: false,
     services: false
   })
-  const isMobile = useMediaQuery({ maxWidth: 980 })
+  const isMobile = useMediaQuery({ maxWidth: 768 })
   const Services = Categories?.laboratoryServices
   console.log("Categories>>>>", Categories)
   const Features = Categories?.laboratoryFeatures
