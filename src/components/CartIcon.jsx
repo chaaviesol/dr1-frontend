@@ -13,9 +13,9 @@ function CartIcon() {
       onClick={() => navigate("/cart")}
       style={{
         position: "relative",
-        height: "50px",
-        width: "50px",
-        borderRadius: "50px",
+        height: "100%",
+        width: "100%",
+        borderRadius: "50%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

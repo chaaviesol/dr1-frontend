@@ -1,0 +1,77 @@
+/* Location Modal Mob */
+.setlocationmodal{
+    width:90%;
+    background-color:white;
+    border-radius: 2px;
+    position: absolute;
+    top:20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem;
+    border-radius:24px;
+  }
+
+.setlocationmodal input {
+    background-color: #EEF1FF;
+    height:45px;
+    width:100%;
+    padding:0px 15px 0px 42px;
+    font-weight:400;
+    border-radius:50px;
+    border:1px solid white;
+   
+}
+.searchmoblocation{
+    position: relative;
+}
+.searchmoblocationi{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    left:15px;
+    color:#8C8C8C;
+}
+
+.setlocationmodal input:focus{
+   border:1px solid #3A65FD;
+}
+
+.avilablelocation div{
+   height:30px;
+   align-items: center;
+   gap: 5px;
+}
+.avilablelocation{
+    margin-left:16px;
+}
+.avilablelocation div i{
+ font-weight: 100;
+ color:#3D3D3D;
+}
+
+.avilablelocation h3{
+    margin:12px 0px 6px 0px; 
+    color:#8C8C8C;
+}
+
+
+
+.setlocationmodal button{
+    margin-top:12px;
+    background-color: #EEF1FF;
+    height:45px;
+    width:100%;
+    padding:0px 15px;
+    font-weight:400;
+    border-radius:50px;
+    border:1px solid white;
+    text-align: left;
+    line-height:0px;
+    color:#8C8C8C;
+}
+.setlocationmodal button i{
+    font-size:20px;
+    margin-right:5px;
+}
+
+/*End Location Modal Mob */

@@ -69,7 +69,7 @@ export default function Cart({
   return (
     <>
       <div className="cart" style={{ overflow: "hidden" }}>
-        <CartTopbarWithBackButton />
+        <CartTopbarWithBackButton hideIcon={true}  />
         {isCartLoading && <Loader />}
         <div style={{ height: "70vh", overflow: "auto" }}>
           {cartItems &&

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import CartIcon from "./CartIcon";
 
-function CartTopbarWithBackButton() {
+function CartTopbarWithBackButton({ hideIcon }) {
   const navigate = useNavigate();
   return (
     <>
@@ -21,7 +21,11 @@ function CartTopbarWithBackButton() {
         >
           <i className="ri-arrow-left-line"></i>
         </div>
-        <CartIcon />
+        {!hideIcon && (
+          <div style={{ height: "50px", width: "50px" }}>
+            <CartIcon />{" "}
+          </div>
+        )}
       </div>
     </>
   );

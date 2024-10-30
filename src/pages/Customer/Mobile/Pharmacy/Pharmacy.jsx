@@ -13,8 +13,9 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
 import Checkbox from "@mui/material/Checkbox";
 import SearchBox from "../components/SearchBox/SearchBox";
-import RoundedCart from "./components/RoundedCart";
+
 import ClickToSearchBox from "../components/ClickToSearchBox/ClickToSearchBox";
+import CartIcon from "../../../../components/CartIcon";
 function Pharmacy() {
   const [marketplaceProducts, setMarketplaceProducts] = useState([]);
   const [isCategoryFetching, setIsCategoryFetching] = useState(false);
@@ -292,7 +293,9 @@ function Pharmacy() {
           <div style={{width:"80%"}}>
             <ClickToSearchBox />
           </div>
-          <RoundedCart />
+          <div style={{ height: "50px", width: "50px" }} onClick={() => navigate("/cart")}>
+            <CartIcon />{" "}
+          </div>
         </div>
         {isCategoryFetching && <Loader />}
         <div className="uploadprescriptionsection flex">

@@ -98,7 +98,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
         console.error("Failed to update cart:", error);
       }
     } else {
-     setIsShowLoginModal(true)
+      setIsShowLoginModal(true);
     }
   };
 
@@ -167,7 +167,9 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
           <div className="searchProdContainer-searchbox">
             <SearchBox handleProductSearch={handleProductSearchChanges} />
           </div>
-          <CartIcon />
+          <div style={{ height: "50px", width: "50px" }}>
+            <CartIcon />
+          </div>
         </div>
       </div>
       <div className="subcategory_section">

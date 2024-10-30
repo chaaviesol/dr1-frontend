@@ -13,10 +13,12 @@ import Doctors from "./Doctors/Doctors";
 import Hospitals from "./Hospitals/HospitalMob";
 import Labs from "./Labs/Labs";
 import AvatarWithLocation from "../components/AvatarWithLocation/AvatarWithLocation";
-import RoundedCart from "../Pharmacy/components/RoundedCart";
+import SearchLocationModal from "../components/SearchLocationModal/SearchLocationModal";
+import CartIcon from "../../../../components/CartIcon";
 
 function Home() {
   const [activePage, setActivePage] = useState("home");
+  const [isShowLocationModal, setShowLocationModal] = useState(false);
   const { auth } = useAuth();
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -30,8 +32,12 @@ function Home() {
     <>
       <div className={styles.margin}>
         <div className={`${styles.margin} ${styles.top}`}>
-          <AvatarWithLocation />
-          <RoundedCart/>
+          <div onClick={() => setShowLocationModal(true)}>
+            <AvatarWithLocation />
+          </div>
+          <div style={{ height: "50px", width: "50px" }} onClick={() => navigate("/cart")}>
+            <CartIcon />{" "}
+          </div>
         </div>
         <PagePicker activePage={activePage} setActivePage={setActivePage} />
         <div className={styles.page}>
@@ -41,6 +47,10 @@ function Home() {
           {activePage === "labs" && <Labs />}
         </div>
       </div>
+      <SearchLocationModal
+        isOpen={isShowLocationModal}
+        setOpen={setShowLocationModal}
+      />
     </>
   );
 }
