@@ -1,8 +1,14 @@
 import React from "react";
 import styles from "./myordermobilestyles.module.css";
 import BackButtonWithTitle from "../../../components/BackButtonWithTitle";
+import { useNavigate } from "react-router-dom";
 
 function MyOrdersMobile() {
+
+  const navigate=useNavigate();
+  const handleTrackOrder=()=>{
+    // navigate("/trackorder")
+  }
   return (
     <div>
       <div className={styles.container}>
@@ -18,7 +24,7 @@ function MyOrdersMobile() {
                 <span>Expected on Thu 22 Aug</span>
               </div>
 
-              <button className={styles.trackbtn}>Track order</button>
+              <button className={styles.trackbtn} onClick={handleTrackOrder}>Track order</button>
             </div>
             <div className={styles.productsection}>
               <div className={styles.product}>

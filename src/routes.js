@@ -85,9 +85,9 @@ import SecondOpinions from "./pages/Customer/Second Opinion/SecondOpinions";
 import DetailedOpinion from "./pages/Customer/Second Opinion/DetailedOpinion";
 import { CreateCampaign } from "./pages/Mainadmin/Campaign/CreateCampaign";
 import Careersform from "./pages/Career/Careerform";
-import MyOrders from "./pages/Customer/MyOrders/MyOrders";
 import Billing from "./pages/Mainadmin/Billing/Billing";
-import MyOrdersScreenDecider from "./pages/Customer/MyOrders/MyOrdersScreenDecider";
+import MyOrders from "./pages/Customer/MyOrders/MyOrders";
+import TrackOrder from "./pages/Customer/Mobile/TrackOrder/TrackOrder";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
@@ -161,7 +161,9 @@ export const publicRoutes = [
   { path: "/services", element: <Services /> },
   { path: "/community", element: <Community /> },
   { path: "/careers", element: <Careersform /> },
-  { path: "/myorders", element: <MyOrdersScreenDecider /> },
+  { path: "/myorders", element: <MyOrders /> },
+  // { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
+  
  
 ];
 

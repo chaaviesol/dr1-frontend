@@ -1,0 +1,9 @@
+.divider{
+    height: 10px;
+    background-color: #F2F5FF;
+}
+
+.orderid{
+    color: black;
+    font-weight: 300;
+}

@@ -12,6 +12,9 @@
   /* font-family: "Outfit", sans-serif; */
   font-family: "Satoshi-Variable", sans-serif;
 }
+.mobilescreen-container{
+  padding: 1.5rem;
+}
 
 .debug {
   border: 1px solid red;
