@@ -43,12 +43,11 @@ function TrackOrder() {
         <div className={styles.order}>
           <span className={styles.orderid}>Order #758748548</span>
           <div className={styles.tracks}>
-            <div className="listcardprogress">
+            <div className={styles.listcardprogress}>
               <div className="progresscard flex">
                 <div
-                  // className="progresscardmark isFullfilled flex"
-
-                  className={`flex ${
+                  style={{ display: "flex", flexDirection: "column" }}
+                  className={` ${
                     data.so_status === "Placed" ||
                     data.so_status === "Out for delivery" ||
                     data.so_status === "Delivered"
@@ -59,27 +58,25 @@ function TrackOrder() {
                   {data.so_status === "Placed" ||
                   data.so_status === "Out for delivery" ||
                   data.so_status === "Delivered" ? (
-                    <i className="ri-check-line"></i>
+                    <i className="ri-check-line "></i>
                   ) : null}
                   <div
-                    // className="progresscardmarkline"
-                    className={`${
-                      data.so_status === "Placed" ||
-                      data.so_status === "Out for delivery" ||
-                      data.so_status === "Delivered"
-                        ? "progresscardmarkline"
-                        : "progresscardmarklinenotfilled"
-                    }`}
+                   className={`${data.so_status === "Placed" || data.so_status === "Out for delivery" || data.so_status === "Delivered"
+                    ? styles.progressfilled
+                    : styles.progressnotfilled
+                  }`}
+      
                   ></div>
                 </div>
 
-                <div className="progresscarddate">
+                {/* <div className="progresscarddate">
                   <h2>Order Confirmed</h2>
                   <h4>{formatDate(data.created_date)}</h4>
-                </div>
+                </div> */}
               </div>
+         
 
-              <div className="progresscard flex">
+              {/* <div className="progresscard flex">
                 <div
                   className={`flex ${
                     data.so_status === "Out for delivery" ||
@@ -161,7 +158,7 @@ function TrackOrder() {
                       : "Processing"}
                   </h4>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

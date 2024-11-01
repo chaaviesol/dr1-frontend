@@ -162,7 +162,7 @@ export const publicRoutes = [
   { path: "/community", element: <Community /> },
   { path: "/careers", element: <Careersform /> },
   { path: "/myorders", element: <MyOrders /> },
-  // { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
+  { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
   
  
 ];

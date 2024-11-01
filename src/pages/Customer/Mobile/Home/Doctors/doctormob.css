@@ -1,0 +1,112 @@
+.mobsechead{
+    font-size:20px;
+    font-weight: 700;
+  }
+
+.healthconcernscard{
+    background-color: #F2F5FF;
+    min-height:200px;
+    min-width:150px;
+    max-width:150px;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding:10px;
+}
+
+.healthconcernscard h4{
+    text-align: center;
+    margin-top:12px;
+}
+
+.healthconcernscard img{
+    height:90px;
+    width:90px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.healthconcerns{
+    gap:10px;
+    overflow:scroll;
+}
+
+.Specialtyitemslist button{
+   border:1px solid  #e7e7f1;
+   width: fit-content;
+   padding:6px 10px;
+   border-radius:50px;
+   font-size:10px;
+   font-weight: 700;
+   display:flex;
+   align-items: center;
+   color: #474747;
+   background-color: white;
+}
+
+.Specialtyitemslist button i{
+    font-size:16px;
+}
+
+.Specialtyitemslist{
+    flex-wrap: wrap;
+    gap:10px;
+    padding:10px;
+    border-radius:10px;
+}
+
+.expertopiondoctor{
+    background: linear-gradient(to right, #0D9554, #042F1A);
+    border-radius:12px;
+    height:180px;
+    position: relative;
+    padding:20px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top:20px;
+}
+
+.expertopiondoctor button{
+    padding:12px 18px;
+    border-radius:50px;
+    width: fit-content;
+}
+.expertopiondoctor div h2{
+font-family: "ClashDisplay", sans-serif;
+font-size:20px;
+font-weight: 500;
+color: white;
+}
+
+
+.Specialtyitemslistsec{
+    border: 1px solid  #e7e7f1;
+    border-radius:12px;
+}
+
+.expertopiondoctor img{
+    position: absolute;
+    bottom:0px;
+    right:30px;
+    height:160px;
+}
+
+.Specialtyitemslistbtn{
+    justify-content: center;
+  
+}
+
+.Specialtyitemslistbtn button{
+    padding:8px 14px;
+    background-color: #3A65FD;
+    color: white;
+    border-radius:50px;
+    margin-bottom:10px;
+}
+
+
+
+
+
+/*End Doctor Page */

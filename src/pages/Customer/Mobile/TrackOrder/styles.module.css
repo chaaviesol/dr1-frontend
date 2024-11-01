@@ -1,9 +1,34 @@
-.divider{
-    height: 10px;
-    background-color: #F2F5FF;
+.divider {
+  height: 10px;
+  background-color: #f2f5ff;
 }
 
-.orderid{
-    color: black;
-    font-weight: 300;
+.orderid {
+  color: black;
+  font-weight: 300;
+}
+.listcardprogress{
+    gap: 10px;
+}
+.progressfilled {
+  position: absolute;
+  background-color: #3a65fd;
+  width: 2px;
+  height: 140px;
+  top: 24px;
+  z-index: -1;
+}
+.progressnotfilled {
+  position: absolute;
+  background-color: #606060;
+  width: 2px;
+  height: 140px;
+  top: 24px;
+  z-index: -1;
+}
+
+
+
+.tracks{
+    display: flex;
 }

@@ -273,7 +273,7 @@ export default function Doctoradminregistration2() {
 
       {loader ? <Loader /> : ""}
 
-      <div className="doctoradminregistration flex desktop">
+      <div className="doctoradminregistration flex doctoradminreg2desktop">
         <div>
           <h1>Doctor Registration</h1>
         </div>
