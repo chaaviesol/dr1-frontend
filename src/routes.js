@@ -161,7 +161,7 @@ export const publicRoutes = [
   { path: "/services", element: <Services /> },
   { path: "/community", element: <Community /> },
   { path: "/careers", element: <Careersform /> },
-  { path: "/myorders", element: <MyOrders /> },
+
   { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
   
  
@@ -177,6 +177,7 @@ export const protectedCustomerRoutes = [
   { path: "/mysecondopinions", element: <SecondOpinions /> },
   { path: "/mysecondopinions/detailed", element: <DetailedOpinion /> },
   { path: "/cart", element: <Cart /> },
+  { path: "/myorders", element: <MyOrders /> },
 
 ];
 export const hospitalAdminRoutes = [
