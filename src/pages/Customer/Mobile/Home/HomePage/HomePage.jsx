@@ -3,7 +3,7 @@ import "./homepage.css";
 
 function HomePage() {
   return (
-    <>
+    <div className="mobilehomemain">
       {/* Mob Home */}
 
       <section>
@@ -188,7 +188,7 @@ function HomePage() {
       </section>
 
       {/* End Mob Home */}
-    </>
+    </div>
   );
 }
 

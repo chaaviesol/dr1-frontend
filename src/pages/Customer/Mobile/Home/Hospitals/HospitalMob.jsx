@@ -6,7 +6,7 @@ import TopHospitals from "./TopHospitals/TopHospitals";
 
 function HospitalMob() {
   return (
-    <div className={styles.main}>
+    <div className={`${styles.main} avoidbottombar`}>
       <div className={styles.margin}>
         <Typography text="Medical Field" />
       </div>

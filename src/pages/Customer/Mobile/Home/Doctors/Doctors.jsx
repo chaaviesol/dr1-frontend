@@ -45,7 +45,7 @@ function Doctors() {
 };
   return (
     <>
-      <div style={{padding:".5rem"}}>
+      <div style={{padding:".5rem"}} className="avoidbottombar">
         {/* Health concerns Section */}
 
         <div className="">

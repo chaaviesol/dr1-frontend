@@ -69,8 +69,17 @@ const Profile = () => {
     );
   }
   return (
-    <div style={{ backgroundColor: "#f3f3f8" }}>
-      <div style={{ display: "flex",justifyContent:"center",alignItems:"center",height:"50px" }}>User Profile</div>
+    <div style={{ backgroundColor: "#f3f3f8" }} className="avoidbottombar">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50px",
+        }}
+      >
+        User Profile
+      </div>
       <div className="profile-container">
         <div className="profile-card">
           <img
