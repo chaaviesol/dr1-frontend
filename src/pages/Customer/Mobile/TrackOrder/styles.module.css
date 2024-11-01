@@ -40,7 +40,7 @@
 
 .tracks {
   /* display: flex; */
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .progresscarddate {
@@ -48,4 +48,55 @@
   position: absolute;
   right: -140px;
   top: -5px;
+}
+
+.productsection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  font-size: 14px;
+}
+.productimgcontainer {
+  background-color: #f2f5ff;
+  height: 70px;
+  width: 70px;
+  padding: 2rem;
+  border-radius: 9px;
+}
+
+.productimgcontainer img {
+  object-fit: cover;
+}
+
+.pricingsection {
+  background-color: #f2f5ff;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pricingdivider {
+    height: 3px;
+  background-color: #bdcbff99;
+}
+.listprice{
+    display: flex;
+    justify-content: space-between;
+}
+.totalprice{
+    display: flex;
+    justify-content: space-between;
+    /* font-weight: 800; */
+    color: black;
+}
+
+.address{
+   margin-top: 10px; 
 }

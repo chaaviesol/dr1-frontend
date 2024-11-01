@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
 
 function TrackOrder() {
-  const [s]=useState([1,2,3,4,5])
+  const [s] = useState([1, 2, 3, 4, 5]);
   const data = {
     so_status: "Delivered",
   };
@@ -45,133 +45,82 @@ function TrackOrder() {
           <span className={styles.orderid}>Order #758748548</span>
           <div className={styles.tracks}>
             <div className={styles.listcardprogress}>
-              {s.map((progress)=>(
-
-              <div className={styles.progresscard}>
-                <div
-                  style={{ display: "flex", flexDirection: "column" }}
-                  className={` ${
-                    data.so_status === "Placed" ||
-                    data.so_status === "Out for delivery" ||
-                    data.so_status === "Delivered"
-                      ? "progresscardmark"
-                      : "progresscardmarknotfilled"
-                  }`}
-                >
-                  {data.so_status === "Placed" ||
-                  data.so_status === "Out for delivery" ||
-                  data.so_status === "Delivered" ? (
-                    <i className="ri-check-line "></i>
-                  ) : null}
-                  {progress!==5&&
-                  
+              {s.map((progress) => (
+                <div className={styles.progresscard}>
                   <div
-                   className={`${data.so_status === "Placed" || data.so_status === "Out for delivery" || data.so_status === "Delivered"
-                    ? styles.progressfilled
-                    : styles.progressnotfilled
-                  }`}
-      
-                  ></div>
-                  }
-                </div>
+                    style={{ display: "flex", flexDirection: "column" }}
+                    className={` ${
+                      data.so_status === "Placed" ||
+                      data.so_status === "Out for delivery" ||
+                      data.so_status === "Delivered"
+                        ? "progresscardmark"
+                        : "progresscardmarknotfilled"
+                    }`}
+                  >
+                    {data.so_status === "Placed" ||
+                    data.so_status === "Out for delivery" ||
+                    data.so_status === "Delivered" ? (
+                      <i className="ri-check-line "></i>
+                    ) : null}
+                    {progress !== 5 && (
+                      <div
+                        className={`${
+                          data.so_status === "Placed" ||
+                          data.so_status === "Out for delivery" ||
+                          data.so_status === "Delivered"
+                            ? styles.progressfilled
+                            : styles.progressnotfilled
+                        }`}
+                      ></div>
+                    )}
+                  </div>
 
-                <div className={styles.progresscarddate}>
-                  <h2>Order Confirmed</h2>
-                  <h4>{formatDate(data.created_date)}</h4>
+                  <div className={styles.progresscarddate}>
+                    <h2>Order Confirmed</h2>
+                    <h4>{formatDate(data.created_date)}</h4>
+                  </div>
                 </div>
-              </div>
               ))}
-             
-         
-
-              {/* <div className="progresscard flex">
-                <div
-                  className={`flex ${
-                    data.so_status === "Out for delivery" ||
-                    data.so_status === "Delivered"
-                      ? "progresscardmark"
-                      : "progresscardmarknotfilled"
-                  }`}
-                >
-                  <i className="ri-check-line"></i>
-
-                  <div
-                    className={`${
-                      data.so_status === "Out for delivery" ||
-                      data.so_status === "Delivered"
-                        ? "progresscardmarkline"
-                        : "progresscardmarklinenotfilled"
-                    }`}
-                  ></div>
-                </div>
-
-                <div className="progresscarddate">
-                  <h2>Order Packed</h2>
-                  <h4>
-                    {data.so_status === "Out for delivery" ||
-                    data.so_status === "Delivered"
-                      ? formatDate(data.updated_date)
-                      : "Processing"}
-                  </h4>
-                </div>
-              </div>
-
-              <div className="progresscard flex">
-                <div
-                  className={`flex ${
-                    data.so_status === "Out for delivery" ||
-                    data.so_status === "Delivered"
-                      ? "progresscardmark"
-                      : "progresscardmarknotfilled"
-                  }`}
-                >
-                  <i class="ri-check-line"></i>
-                  <div
-                    className={`${
-                      data.so_status === "Out for delivery" ||
-                      data.so_status === "Delivered"
-                        ? "progresscardmarkline"
-                        : "progresscardmarklinenotfilled"
-                    }`}
-                  ></div>
-                </div>
-
-                <div className="progresscarddate">
-                  <h2>In Transit</h2>
-                  <h4>
-                    {data.so_status === "Out for delivery" ||
-                    data.so_status === "Delivered"
-                      ? formatDate(data.updated_date)
-                      : "Processing"}
-                  </h4>
-                </div>
-              </div>
-
-              <div className="progresscard flex">
-                <div
-                  className={`flex ${
-                    data.so_status === "Delivered"
-                      ? "progresscardmark"
-                      : "progresscardmarknotfilled"
-                  }`}
-                >
-                  <i class="ri-check-line"></i>
-                </div>
-
-                <div className="progresscarddate">
-                  <h2>Delivered</h2>
-                  <h4>
-                    {data.so_status === "Delivered"
-                      ? formatDate(data.updated_date)
-                      : "Processing"}
-                  </h4>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.divider}></div>
+      <div className={`${styles.productsection} mobilescreen-container`}>
+        <span>Order details</span>
+        <div className={styles.product}>
+          <div className={styles.productimgcontainer}>
+            <img src="" alt="" />
+          </div>
+          <div className={styles.productname}>
+            Hair Fall Rescue <br /> Shampoo
+          </div>
+        </div>
+      </div>
+      <div className="mobilescreen-container">
+        <div className={styles.pricingsection}>
+          <div className={styles.listprice}>
+            <span>List price </span> <span>3000</span>
+          </div>
+          <div className={styles.listprice}>
+            <span>List price </span> <span>3000</span>
+          </div>
+          <div className={styles.listprice}>
+            <span>List price </span> <span>3000</span>
+          </div>
+          <div className={styles.pricingdivider}></div>
+          <div className={styles.totalprice}>
+            <span>Total amount </span> <span>3000</span>
+          </div>
+        </div>
+
+        <div className={styles.address}>
+          <span style={{ marginBottom: "10px" }}>
+            Address <br />
+          </span>
+          Nadakkavu, Kottaram Cross Road
+        </div>
+      </div>
     </div>
   );
 }
