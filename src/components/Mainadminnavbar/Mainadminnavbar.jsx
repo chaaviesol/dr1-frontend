@@ -1,9 +1,12 @@
 import { Modal } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/Auth/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 export default function Mainadminnavbar({ data: { SentData, selected } }) {
   const [ProfilePopup, setProfilePopup] = useState(false);
+  const {authLogout}=useAuth()
   const FindButtonValue = (data) => {
     SentData(data);
   };
@@ -104,12 +107,9 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
               <h4 style={{ marginLeft: "10px" }}>Settings</h4>
             </div>
 
-            <div className="adminmenuprofile flex">
-              <i className="ri-edit-2-line"></i>
-              <h4 style={{ marginLeft: "10px" }}>Edit Category</h4>
-            </div>
+       
 
-            <div style={{ color: "#C45050" }} className="adminmenuprofile flex">
+            <div style={{ color: "#C45050" }} className="adminmenuprofile flex" onClick={authLogout}>
               <i className="ri-logout-box-line"></i>
               <h4 style={{ marginLeft: "10px" }}>Logout</h4>
             </div>

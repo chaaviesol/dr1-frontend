@@ -247,7 +247,7 @@ export default function Mainadminlabsdetails({ labData ,setChangeDashboards}) {
           <th>Customer Name</th>
           <th>Mobile Number</th>
           <th>Date & Time</th>
-          <th>PIN & Location</th>
+          <th>Pincode</th>
           <th>Status</th>
         </tr>
 

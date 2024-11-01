@@ -140,7 +140,7 @@ export default function Mainadmindoctorlist({
           </th>
           <th>Mobile Number</th>
           <th style={{ display: "flex", flexDirection: "column" }}>
-            PIN & Location
+            Pincode
             <input
               type="text"
               onChange={SearchData}

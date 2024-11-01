@@ -172,7 +172,7 @@ export default function Mainadminlabslist({ updateState, setLabDetails }) {
           </th>
           <th>Mobile Number</th>
           <th>
-            PIN & Location <br />
+            Pincode <br />
             <input
               type="text"
               onChange={handleFilterChange}

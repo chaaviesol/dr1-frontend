@@ -14,7 +14,7 @@ export const LabAdminViews = ({ consultAndViewData }) => {
             <th>Customer Name</th>
             {/* <th>Mobile</th> */}
             <th>Date & Time</th>
-            <th>PIN & Location</th>
+            <th>Pincode</th>
             <th>Status</th>
           </tr>
 

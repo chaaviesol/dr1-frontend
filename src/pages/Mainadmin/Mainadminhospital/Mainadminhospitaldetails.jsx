@@ -262,7 +262,7 @@ export default function Mainadminhospitaldetails({
           <th>Customer Name</th>
           <th>Mobile Number</th>
           <th>Date & Time</th>
-          <th>PIN & Location</th>
+          <th>Pincode</th>
           <th>Status</th>
         </tr>
 

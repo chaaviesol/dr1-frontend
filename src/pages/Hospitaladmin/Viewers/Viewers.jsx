@@ -11,7 +11,7 @@ function Viewers({ consultAndViewData }) {
           <th>No</th>
           <th>Customer Name</th>
           <th>Date & Time</th>
-          <th>PIN & Location</th>
+          <th>Pincode</th>
           <th>Type</th>
         </tr>
     

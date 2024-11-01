@@ -124,7 +124,7 @@ export default function Mainadmincustomer({
           </th>
           <th>Mobile Number</th>
           <th style={{ display: "flex", flexDirection: "column" }}>
-            PIN & Location
+            Pincode
             <input
               type="text"
               onChange={SearchData}
