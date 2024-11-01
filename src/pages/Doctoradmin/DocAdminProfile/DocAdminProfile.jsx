@@ -19,6 +19,8 @@ export const DocAdminProfile = () => {
   const [FormValues, setFormValues] = useState({});
   const [DoctorData, setDoctorData] = useState();
   const [EditValues, setEditValues] = useState({});
+  const [isDoctorAddHospitalModalOpen, setAddHospitalModalOpen] =
+    useState(true);
   const [deletePopup, setdeletePopUp] = useState(false);
   const [loading, setloading] = useState(false);
   const [editAboutProfile, seteditAboutProfile] = useState(false);
@@ -421,8 +423,8 @@ export const DocAdminProfile = () => {
                     background: "#2A9D8F",
                     color: "white",
                     marginLeft: "10px",
-                    display:"flex",
-                    alignItems:"center"
+                    display: "flex",
+                    alignItems: "center",
                   }}
                 >
                   {DoctorData?.sector?.slice(0, 3).toUpperCase()}
@@ -558,60 +560,62 @@ export const DocAdminProfile = () => {
             </div>
 
             <div className="mainadmindoctoravilabilityContent">
-              {currentAvailability.length > 0 ? (
-                currentAvailability?.map((ele, index) => (
-                  <div key={index} className="hospitaltime flex">
-                    <div className="hospitaltime_name">
-                      <h3>{ele?.hospital_name}</h3>
-                      <div className="availabilityDays">
-                        {ele?.days_timing.map((TimingByDay, index) => (
-                          <>
-                            <p
-                              className="availabilityDaysPtag"
-                              style={{
-                                color: TimingByDay.availableTimes[0]?.startTime
+              {currentAvailability.length > 0
+                ? currentAvailability?.map((ele, index) => (
+                    <div key={index} className="hospitaltime flex">
+                      <div className="hospitaltime_name">
+                        <h3>{ele?.hospital_name}</h3>
+                        <div className="availabilityDays">
+                          {ele?.days_timing.map((TimingByDay, index) => (
+                            <>
+                              <p
+                                className="availabilityDaysPtag"
+                                style={{
+                                  color: TimingByDay.availableTimes[0]
+                                    ?.startTime
+                                    ? ""
+                                    : "rgb(128 128 128 / 91%)",
+                                }}
+                              >
+                                {TimingByDay?.day?.slice(0, 3)}{" "}
+                              </p>
+                              <p className="availabilityDaysPtag2">
+                                {ele?.days_timing.length === index + 1
                                   ? ""
-                                  : "rgb(128 128 128 / 91%)",
-                              }}
-                            >
-                              {TimingByDay?.day?.slice(0, 3)}{" "}
-                            </p>
-                            <p className="availabilityDaysPtag2">
-                              {ele?.days_timing.length === index + 1 ? "" : ","}
-                            </p>
-                            &nbsp;
-                          </>
-                        ))}
+                                  : ","}
+                              </p>
+                              &nbsp;
+                            </>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="hospitaltimebuttongapSet">
+                        <div
+                          onClick={() =>
+                            handleOpen({ edit: true, id: ele?.hospital_id })
+                          }
+                          className="doctortimebuttonProfile"
+                        >
+                          <h4>View Details</h4>
+                        </div>
+                        <div
+                          onClick={() => {
+                            DeleteTimeConfirm({ id: ele.id, index: index });
+                          }}
+                          className="hospitaltimebuttongapSetDltBtn"
+                        >
+                          <i class="ri-delete-bin-6-line"></i>{" "}
+                        </div>
                       </div>
                     </div>
-                    <div className="hospitaltimebuttongapSet">
-                      <div
-                        onClick={() =>
-                          handleOpen({ edit: true, id: ele?.hospital_id })
-                        }
-                        className="doctortimebuttonProfile"
-                      >
-                        <h4>View Details</h4>
-                      </div>
-                      <div
-                        onClick={() => {
-                          DeleteTimeConfirm({ id: ele.id, index: index });
-                        }}
-                        className="hospitaltimebuttongapSetDltBtn"
-                      >
-                        <i class="ri-delete-bin-6-line"></i>{" "}
-                      </div>
-                    </div>
-                  </div>
-                ))
-              ) : (
-                null
-
-              )}
+                  ))
+                : null}
             </div>
 
             <div className="mainadmindoctoravilabilityAddmore">
-              <button disabled={loading} onClick={handleOpen}>Add more</button>
+              <button disabled={loading} onClick={handleOpen}>
+                Add more
+              </button>
             </div>
           </div>
         </div>
@@ -876,6 +880,54 @@ export const DocAdminProfile = () => {
               <button onClick={ConfirmDelete} className="DltPopupAlignButton2">
                 Confirm
               </button>
+            </div>
+          </div>
+        </Modal>
+
+        <Modal
+          open={isDoctorAddHospitalModalOpen}
+          onClose={() => setAddHospitalModalOpen(false)}
+        >
+          <div className="addhospitalfromdoctor">
+            <span>Add your hospital</span>
+
+            <div
+              className="addhospitalfromdoctorinput"
+              style={{ marginTop: "20px" }}
+            >
+              <h4>Hospital Name</h4>
+
+              <input type="text" placeholder="Type your hospital" />
+            </div>
+            <div className="addhospitalfromdoctorinputs flex">
+              <div className="addhospitalfromdoctorinput">
+                <h4>Phone Number</h4>
+
+                <input type="text" placeholder="Select Your Role" />
+              </div>
+              <div className="addhospitalfromdoctorinput">
+                <h4>Pincode</h4>
+                <input type="text" name="name" placeholder="Enter your name" />
+              </div>
+            </div>
+
+            <div
+              style={{
+                marginTop: "20px",
+              }}
+            >
+              <h4>Address</h4>
+
+              <textarea
+                name=""
+                id=""
+                placeholder="Enter Delivery Address"
+              ></textarea>
+            </div>
+
+            <div className="addhospitalfromdoctorbtn flex">
+              <button>Cancel</button>
+              <button>Save</button>
             </div>
           </div>
         </Modal>

@@ -7,14 +7,25 @@
   color: black;
   font-weight: 300;
 }
-.listcardprogress{
-    gap: 10px;
+.listcardprogress {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.progresscard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  width: 70px;
+  height: 70px;
+  position: relative;
 }
 .progressfilled {
   position: absolute;
   background-color: #3a65fd;
   width: 2px;
-  height: 140px;
+  height: 70px;
   top: 24px;
   z-index: -1;
 }
@@ -22,13 +33,19 @@
   position: absolute;
   background-color: #606060;
   width: 2px;
-  height: 140px;
+  height: 70px;
   top: 24px;
   z-index: -1;
 }
 
+.tracks {
+  /* display: flex; */
+  margin-top: 10px;
+}
 
-
-.tracks{
-    display: flex;
+.progresscarddate {
+  text-align: center;
+  position: absolute;
+  right: -140px;
+  top: -5px;
 }

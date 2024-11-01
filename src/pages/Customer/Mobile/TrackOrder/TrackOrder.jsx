@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./styles.module.css";
 import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
 
 function TrackOrder() {
+  const [s]=useState([1,2,3,4,5])
   const data = {
     so_status: "Delivered",
   };
@@ -44,7 +45,9 @@ function TrackOrder() {
           <span className={styles.orderid}>Order #758748548</span>
           <div className={styles.tracks}>
             <div className={styles.listcardprogress}>
-              <div className="progresscard flex">
+              {s.map((progress)=>(
+
+              <div className={styles.progresscard}>
                 <div
                   style={{ display: "flex", flexDirection: "column" }}
                   className={` ${
@@ -60,6 +63,8 @@ function TrackOrder() {
                   data.so_status === "Delivered" ? (
                     <i className="ri-check-line "></i>
                   ) : null}
+                  {progress!==5&&
+                  
                   <div
                    className={`${data.so_status === "Placed" || data.so_status === "Out for delivery" || data.so_status === "Delivered"
                     ? styles.progressfilled
@@ -67,13 +72,16 @@ function TrackOrder() {
                   }`}
       
                   ></div>
+                  }
                 </div>
 
-                {/* <div className="progresscarddate">
+                <div className={styles.progresscarddate}>
                   <h2>Order Confirmed</h2>
                   <h4>{formatDate(data.created_date)}</h4>
-                </div> */}
+                </div>
               </div>
+              ))}
+             
          
 
               {/* <div className="progresscard flex">
@@ -163,6 +171,7 @@ function TrackOrder() {
           </div>
         </div>
       </div>
+      <div className={styles.divider}></div>
     </div>
   );
 }

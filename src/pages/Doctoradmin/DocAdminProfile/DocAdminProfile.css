@@ -132,3 +132,76 @@
   letter-spacing: 1px;
   padding:.5rem 1rem
 }
+
+/* Add Hospital Popup form */
+.addhospitalfromdoctor{
+  width:600px;
+  background-color:white;
+  border-radius: 2px;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 2rem;
+  border-radius:12px;
+}
+.addhospitalfromdoctor input,
+.addhospitalfromdoctor textarea
+{
+  margin-top: 10px;
+  background-color: #EEF1FF;
+  width:100%;
+  padding:15px;
+  font-weight:400;
+  border:2px solid white;
+}
+.addhospitalfromdoctorinput{
+  flex:1;
+}
+.addhospitalfromdoctor input{
+  height:40px;
+}
+
+.addhospitalfromdoctor textarea{
+  height:100px;
+  resize: none;
+}
+
+.addhospitalfromdoctor  input:focus{
+  border:2px solid #3A65FD;
+}
+
+
+.addhospitalfromdoctorinputs {
+  gap: 20px;
+  margin-top: 20px;
+}
+
+
+
+.addhospitalfromdoctorbtn button:nth-child(1) {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.addhospitalfromdoctorbtn button:nth-child(2) {
+  background-color: #3A65FD;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.addhospitalfromdoctorbtn button {
+  flex:1;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.addhospitalfromdoctorbtn{
+  gap:20px;
+  margin-top:10px;
+}
+
+/*End Add Hospital Popup form */
