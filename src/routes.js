@@ -90,6 +90,7 @@ import MyOrders from "./pages/Customer/MyOrders/MyOrders";
 import TrackOrder from "./pages/Customer/Mobile/TrackOrder/TrackOrder";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
+  // { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
   { path: "/hospital", element: <HospitalPage /> },
   { path: "/labs", element: <LabPage /> },
