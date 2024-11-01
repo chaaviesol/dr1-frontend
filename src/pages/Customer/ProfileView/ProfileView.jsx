@@ -200,10 +200,10 @@ export const ProfileView = ({
 
           <div
             className="cpadminmenuprofile flex"
-            onClick={() => navigate("/cart")}
+            onClick={() => navigate("/myorders")}
           >
             <i class="ri-shopping-cart-2-line"></i>
-            <h4 style={{ marginLeft: "10px" }}>Cart</h4>
+            <h4 style={{ marginLeft: "10px" }}>My orders</h4>
           </div>
 
           <div
