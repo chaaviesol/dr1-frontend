@@ -88,6 +88,7 @@ import Careersform from "./pages/Career/Careerform";
 import Billing from "./pages/Mainadmin/Billing/Billing";
 import MyOrders from "./pages/Customer/MyOrders/MyOrders";
 import TrackOrder from "./pages/Customer/Mobile/TrackOrder/TrackOrder";
+import EditProfile from "./pages/Customer/Mobile/Profile/EditProfile";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   // { path: "/", element: <HomePage /> },
@@ -179,6 +180,7 @@ export const protectedCustomerRoutes = [
   { path: "/mysecondopinions/detailed", element: <DetailedOpinion /> },
   { path: "/cart", element: <Cart /> },
   { path: "/myorders", element: <MyOrders /> },
+  { path: "/editprofile", element: <EditProfile /> }, //mobile screen only
 
 ];
 export const hospitalAdminRoutes = [

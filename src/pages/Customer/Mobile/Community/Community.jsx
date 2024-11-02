@@ -7,15 +7,21 @@ import ClickableNavigationIcon from "../components/ClickableNavigationIcon";
 function Community() {
   return (
     <>
-      <div>
+      <div className={`${styles.maincontainer}avoidbottombar`} style={{WebkitTapHighlightColor:"transparent"}}>
         <div className={styles.top}>
           <div>
             <ClickToSearchBox placeholder="Search a query or blog" />
           </div>
           <div>
-
             <ClickableNavigationIcon icon="ri-questionnaire-line" />
           </div>
+        </div>
+
+        <div className={styles.blogsection}>
+          <span>Blog section coming soon</span>
+        </div>
+        <div className={styles.addquery}>
+          <button>Add query</button>
         </div>
       </div>
     </>

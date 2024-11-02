@@ -142,7 +142,7 @@ const Profile = () => {
                 className="action-icon edit-icon"
               />
             </div>
-            <div className="action-text-wrap">
+            <div className="action-text-wrap" onClick={()=>navigate("/editprofile")}>
               <span className="action-text">Edit Profile</span>
               <img
                 src="/images/mobile/musthu/Icons/arrow right.png"

@@ -15,3 +15,36 @@
   width: 50px;
   height: 100%;
 }
+
+.blogsection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.addquery {
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+.addquery button {
+    height: 100%;
+    background-color: #3A65FD;
+    border-radius: 50px;
+    color: white;
+    padding: 1rem 5rem;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+  }
+  
+  /* Add hover effect */
+  .addquery button:active {
+    background-color: #2645b6; /* Darken color slightly on hover */
+    cursor: pointer;
+  }
+  
+  /* Add active (click) effect */
+  .addquery button:active {
+    transform: scale(0.95); /* Slightly scale down on click */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow on click */
+  }

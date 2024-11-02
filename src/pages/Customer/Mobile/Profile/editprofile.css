@@ -1,0 +1,89 @@
+
+
+.editimagemob{
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.editimagemob img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius:50px;
+}
+
+.editimagemobdiv{
+    position: relative;
+}
+
+.editimagemobicon{
+    height:30px;
+    width: 30px;
+    border-radius:50%;
+    background-color: black;
+    position: absolute;
+    right:0px;
+    bottom:10px;
+    color:white;
+    align-items: center;
+    justify-content: center;
+    font-weight: 100;
+}
+
+
+.editformmob h4{
+    font-size: 16px;
+    font-weight: 700;
+    margin:12px 0px 8px 14px;
+}
+
+.editformmob input{
+    border-radius:50px;
+    background-color: #3A65FD;
+    width:100%;
+    background-color: #EEF1FF;
+    height:50px;
+    width:100%;
+    padding:0px 15px;
+    font-weight:600;
+    border:2px solid white;
+}
+
+.editformmob  select{
+    border-radius:50px;
+    background-color: #3A65FD;
+    width:100%;
+    background-color: #EEF1FF;
+    height:50px;
+    width:100%;
+    padding:0px 15px;
+    font-weight:600;
+    border:1px solid white;
+    margin-top:0px;
+}
+
+.editformmob input:focus,
+.editformmob select:focus
+{
+    border:2px solid #3A65FD;
+ }
+
+
+ .editformmob button{
+    background-color: #3A65FD; 
+    color:white;  
+    height:48px;
+    width:100%;  
+    border-radius:50px;
+    margin-top: 20px; 
+    -webkit-tap-highlight-color: transparent;
+    margin-bottom: 20px;                                                               
+ }
+
+ .editformmob button:active {
+    transform: scale(0.95); /* Slightly reduce size for a "pressed" effect */
+    background-color: #2645b6; /* Change to a lighter color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: all 0.1s ease; /* Smooth transition */
+}
