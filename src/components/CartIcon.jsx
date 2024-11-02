@@ -19,7 +19,7 @@ function CartIcon() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#f3f3f8",
+        backgroundColor: "#F2F5FF",
         cursor: "pointer",
       }}
     >

@@ -57,7 +57,7 @@
 }
 
 
-.admindetailsinput input,select{
+.admindetailsinput input,.admindetailsinput select{
     background-color: #e4eaff;
     height:35px;
     margin-top:10px;

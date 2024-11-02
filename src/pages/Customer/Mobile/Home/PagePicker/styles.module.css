@@ -35,7 +35,7 @@
 }
 .inactive {
   color: #686868;
-  background: #f3f3f8;
+  background: #F2F5FF;
   i {
     font-size: 18px;
     color: #686868;
@@ -43,8 +43,8 @@
 }
 .container span {
   font-family: "Poppins";
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 600;
 }
 .whitecolor {
   color: white;

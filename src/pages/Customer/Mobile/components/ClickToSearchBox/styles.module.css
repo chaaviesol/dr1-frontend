@@ -1,8 +1,11 @@
 .container {
+  box-sizing: border-box;
+  margin: 0;
   position: relative;
   padding: 1rem 1rem 1rem 2rem;
   display: flex;
-  height: 55px;
+  height: 100%;
+  width: 100%;
   gap: 1rem;
   background: #f2f5ff;
   border-radius: 50px;

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.css";
 import { IconButton } from "@mui/material";
 
-function ClickToSearchBox() {
+function ClickToSearchBox({placeholder}) {
   const searchIcon = `ri-search-line ${styles.searchIcon}`;
   return (
     <div className={styles.container}>
@@ -20,7 +20,7 @@ function ClickToSearchBox() {
           type="text"
           disabled
           style={{ backgroundColor: "transparent" }}
-          placeholder="Search product"
+          placeholder={placeholder || "Search"}
         />
       </div>
     </div>

@@ -282,16 +282,15 @@ function Pharmacy() {
       <div className="pharmacysection">
         <div
           style={{
-            marginTop: "1rem",
             marginBottom: "1rem",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            height: "60px",
+            height: "50px",
           }}
         >
-          <div style={{width:"80%"}}>
-            <ClickToSearchBox />
+          <div style={{width:"80%",height:"50px"}}>
+            <ClickToSearchBox placeholder="Search product" />
           </div>
           <div style={{ height: "50px", width: "50px" }} onClick={() => navigate("/cart")}>
             <CartIcon />{" "}
