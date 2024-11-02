@@ -17,10 +17,11 @@ export default function Userprofile() {
     image: "",
     ageGroup: "",
   });
+  console.log({ state });
   const [loader, setLoader] = useState(false);
- 
+
   const navigate = useNavigate();
-  // const [selectedFile, setSelectedFile] = useState(null);
+
 
   const handleFileChange = (event) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -45,24 +46,24 @@ export default function Userprofile() {
   };
 
   const gender = ["Male", "Female", "Other"];
-
-  const ageGroup = ["18-24", "25-34", "35-44", "45-54", "55-64"];
+  const today = new Date();
+  const fiveYearsAgo = new Date(today.setFullYear(today.getFullYear() - 5));
 
   const savebutton = async () => {
     const pincodeRegex = /^[1-9][0-9]{5}$/;
-    if(!state.name){
+    if (!state.name) {
       toast.error("Please enter your name");
       return;
     }
-    if(!state.gender){
+    if (!state.gender) {
       toast.error("Please select your gender");
       return;
     }
-    if(!state.ageGroup){
+    if (!state.ageGroup) {
       toast.error("Please select your age group");
       return;
     }
- 
+
     // Validate pincode
     if (!pincodeRegex.test(state.pincode)) {
       toast.error("Please enter a valid 6-digit pincode.");
@@ -112,7 +113,7 @@ export default function Userprofile() {
       try {
         const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
         const data = response?.data?.userDetails;
-        console.log({ data });
+
         setState({
           name: data?.name || "",
           gender: data?.gender || "",
@@ -153,7 +154,7 @@ export default function Userprofile() {
           <div>
             <div className="photo-section flex">
               <img
-              alt=""
+                alt=""
                 src={
                   state.image &&
                   typeof state.image === "object" &&
@@ -197,7 +198,7 @@ export default function Userprofile() {
                   onChange={handleFileChange}
                   multiple
                   style={{ display: "none" }}
-                 accept=".png, .jpg, .jpeg"
+                  accept=".png, .jpg, .jpeg"
                 />
               </div>
             </div>
@@ -233,14 +234,21 @@ export default function Userprofile() {
 
               <div className="flex editing-input-label1">
                 <div className="editing-input-label">
-                  <h4>Age group</h4>
-                  <CustomSelect
+                  <h4>DOB</h4>
+                  <input
+                    type="date"
+                    name="ageGroup"
+                    value={state.ageGroup}
+                    max={fiveYearsAgo.toISOString().split("T")[0]}
+                    onChange={inputchange}
+                  />
+                </div>
+                {/* <CustomSelect
                     options={ageGroup}
                     placeholder="Select age group "
                     value={state.ageGroup}
                     onChange={(value) => handleSelectChange("ageGroup", value)}
-                  />
-                </div>
+                  /> */}
 
                 <div className="editing-input-label">
                   <h4>Pincode</h4>
@@ -267,7 +275,7 @@ export default function Userprofile() {
                 <button
                   className="cancel-edit cancel-edit2"
                   onClick={savebutton}
-                  style={{cursor:"pointer"}}
+                  style={{ cursor: "pointer" }}
                 >
                   Save
                 </button>

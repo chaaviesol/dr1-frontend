@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
-import {
-  MenuItem,
-  Modal,
-  Select,
-  TextField,
-} from "@mui/material";
+import { MenuItem, Modal, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -22,7 +17,7 @@ function UserProfileCompleteModal({ open, onClose }) {
   // eslint-disable-next-line no-unused-vars
   const [loader, setloader] = useState(false);
   const navigate = useNavigate();
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const schema = yup.object({
     image: yup.mixed().notRequired(),
     ageGroup: yup.string().required(),
@@ -54,6 +49,10 @@ function UserProfileCompleteModal({ open, onClose }) {
 
     return response.data;
   };
+  const today = new Date();
+  const fiveYearsAgo = new Date();
+  fiveYearsAgo.setFullYear(today.getFullYear() - 5);
+  console.log("Max date:", fiveYearsAgo.toISOString().split("T")[0]);
 
   const { mutateAsync: completeUserRegistationMutation, isPending } =
     useMutation({
@@ -172,40 +171,36 @@ function UserProfileCompleteModal({ open, onClose }) {
                     </div>
                   </div>
                   <div className={styles.row}>
-                    <div className={styles.inputContainer}>
-                      <label htmlFor="">Age group</label>
-                      <Select
-                        id="ageGroup"
-                        {...register("ageGroup")}
-                        className={styles.select}
-                        required
-                        defaultValue=""
-                      >
-                        <MenuItem disabled>
-                          <em></em>
-                        </MenuItem>
-                        <MenuItem value="18-24">18-24</MenuItem>
-                        <MenuItem value="25-34">25-34</MenuItem>
-                        <MenuItem value="35-44">35-44</MenuItem>
-                        <MenuItem value="45-54">45-54</MenuItem>
-                        <MenuItem value="55-64">55-64</MenuItem>
-                        <MenuItem value="64+">64+</MenuItem>
-                      </Select>
+                    <div>
+                      <label htmlFor="">DOB</label>
+                      <div className={styles.inputContainer}>
+                        <TextField
+                          style={{ width: "100%" }}
+                          id="ageGroup"
+                          required
+                          {...register("ageGroup")}
+                          className={styles.inputBox2}
+                          type="date"
+                          placeholder="ageGroup"
+                          inputProps={{ min: "1900-01-24", max: "2019-01-24" }}
+                        />
+                      </div>
                     </div>
                     <div>
                       <div>
                         <label htmlFor="">Pincode</label>
-                      </div>
-                      <div className={styles.down}>
-                        <TextField
-                          style={{ width: "100%" }}
-                          id="pincode"
-                          required
-                          {...register("pincode")}
-                          className={styles.inputBox2}
-                          type="number"
-                          placeholder="Pincode"
-                        />
+
+                        <div className={styles.down}>
+                          <TextField
+                            style={{ width: "100%" }}
+                            id="pincode"
+                            required
+                            {...register("pincode")}
+                            className={styles.inputBox2}
+                            type="number"
+                            placeholder="Pincode"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
