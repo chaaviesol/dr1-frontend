@@ -205,3 +205,14 @@
 }
 
 /*End Add Hospital Popup form */
+
+
+/* addhospitalmodal */
+
+.addHosButton{
+  width: fit-content;
+  padding: 6px 12px;
+  background-color: #3A65FD;
+  border-radius: 50px;
+  color: white;
+}

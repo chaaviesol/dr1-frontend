@@ -9,7 +9,7 @@ import axios from "axios";
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { port } from "../../../config";
+import { BASE_URL, port } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 import useFetchViewsAndContacts from "../../../hooks/useFetchViewsAndContacts";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
@@ -20,7 +20,13 @@ export const DocAdminProfile = () => {
   const [DoctorData, setDoctorData] = useState();
   const [EditValues, setEditValues] = useState({});
   const [isDoctorAddHospitalModalOpen, setAddHospitalModalOpen] =
-    useState(true);
+    useState(false);
+  const [addhospital, SetAddhospital] = useState({
+    name: "",
+    contact_no: "",
+    address: "",
+    pincode: "",
+  });
   const [deletePopup, setdeletePopUp] = useState(false);
   const [loading, setloading] = useState(false);
   const [editAboutProfile, seteditAboutProfile] = useState(false);
@@ -101,8 +107,7 @@ export const DocAdminProfile = () => {
       setFormValues("");
     }
   };
-  console.log("FormValues>>>>", FormValues);
-  console.log("loading>>>>", loading);
+
   const changeValues = (id) => {
     const findData = currentAvailability.find((ele) => ele?.hospital_id === id);
     setEditValues(findData);
@@ -143,9 +148,6 @@ export const DocAdminProfile = () => {
     const selectedOption = e.target.options[e.target.selectedIndex];
     const hospital_id = parseInt(e.target.value);
     const hospital_name = selectedOption.getAttribute("data-name");
-
-    console.log("Selected ID:", hospital_id);
-    console.log("Selected Name:", hospital_name);
 
     setFormValues({
       ...FormValues,
@@ -213,7 +215,6 @@ export const DocAdminProfile = () => {
     setTimePickers(tempPicker);
   };
 
-  console.log("EditValues>>>>", EditValues);
   const incrementBox = (id) => {
     const find = TimePickers?.filter((ele) => ele.id === id);
     const index = TimePickers?.findIndex((ele) => ele.id === id);
@@ -245,7 +246,6 @@ export const DocAdminProfile = () => {
       setEditValues({ ...EditValues, days_timing: temp });
     }
   };
-  console.log("FormValues>>>", FormValues);
 
   const SaveData = () => {
     const data = {
@@ -349,7 +349,7 @@ export const DocAdminProfile = () => {
       setdeletePopUp({ id: check.id, condition: true, index: check.index });
     }
   };
-  console.log("deletePopup>>>>", deletePopup);
+
   const ConfirmDelete = () => {
     const data = {
       id: deletePopup?.id,
@@ -393,14 +393,112 @@ export const DocAdminProfile = () => {
     const { name, value } = e?.target;
     setDoctorData({ ...DoctorData, [name]: value });
   };
-  console.log(DoctorData);
-  console.log(currentAvailability);
 
   const isHopitalAlreadySelected = (hospitalId) => {
     const isAlreadySelected = currentAvailability.some(
       (ele) => ele.hospital_id === hospitalId
     );
     return isAlreadySelected;
+  };
+
+  //////////add hospital /////
+  const handleOnchange = (e) => {
+    const { name, value } = e.target;
+    if (name === "contact_no") {
+      const sanitizedValue = value.replace(/[.-]/g, "");
+      const truncatedValue = sanitizedValue.slice(0, 10);
+      SetAddhospital((prevFormData) => ({
+        ...prevFormData,
+        [name]: truncatedValue,
+      }));
+    } else if (name === "pincode") {
+      const sanitizedPincode = value.replace(/\D/g, "");
+      const truncatedPincode = sanitizedPincode.slice(0, 6);
+      SetAddhospital((prevFormData) => ({
+        ...prevFormData,
+        [name]: truncatedPincode,
+      }));
+    } else {
+      SetAddhospital((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      if (!addhospital.name) {
+        toast.error("Hospital Name is missing");
+        return;
+      }
+
+      const PhonePattern = /^[6-9]\d{9}$/;
+      if (
+        addhospital.contact_no &&
+        !PhonePattern.test(addhospital?.contact_no)
+      ) {
+        toast.error("Please enter a valid phone number.");
+        return;
+      }
+      const pincodeLength = addhospital.pincode.toString().length;
+      if (!addhospital.pincode) {
+        toast.error("Pincode is missing");
+        return false;
+      }
+
+      if (pincodeLength !== 6) {
+        toast.error("Pincode must be 6 digits long");
+        return false;
+      }
+      if (!addhospital.address) {
+        toast.error("Hospital Address is missing");
+        return;
+      }
+
+      const response = await axiosPrivate.post(
+        `${BASE_URL}/doctor/addhospital`,
+        addhospital
+      );
+
+      if (response.status === 200) {
+        toast.success(response.data.message, {
+          autoClose: 3000,
+        });
+        setTimeout(() => {
+          SetAddhospital({
+            name: "",
+            contact_no: "",
+            address: "",
+            pincode: "",
+          });
+
+          setAddHospitalModalOpen(false);
+        }, 3000);
+      } else if (response.status === 400) {
+        toast.error(response.data.message);
+      } else {
+        toast.error("Failed to submit details.");
+      }
+    } catch (error) {
+      console.log({ error });
+      if (error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("Failed to submit details.");
+      }
+    }
+  };
+  const handleKeyPress = (event) => {
+    if (
+      event?.key === "." ||
+      event?.key === "-" ||
+      event?.key === "e" ||
+      event?.key === "+" ||
+      event?.key === "E"
+    ) {
+      event.preventDefault();
+    }
   };
 
   if (DoctorData?.name) {
@@ -665,6 +763,10 @@ export const DocAdminProfile = () => {
                   ))}
                 </optgroup>
               </select>
+              <h4 >OR</h4>
+              <button className="addHosButton" onClick={() => setAddHospitalModalOpen(true)}>
+                Add hospital
+              </button>
             </div>
             <label style={{ fontWeight: "500" }} className="modalInputdivlabel">
               Select your Time
@@ -896,38 +998,69 @@ export const DocAdminProfile = () => {
               style={{ marginTop: "20px" }}
             >
               <h4>Hospital Name</h4>
-
-              <input type="text" placeholder="Type your hospital" />
+              <input
+                type="text"
+                name="name"
+                maxLength={30}
+                value={addhospital?.name}
+                onChange={handleOnchange}
+                placeholder="Type your hospital"
+              />
             </div>
+
             <div className="addhospitalfromdoctorinputs flex">
               <div className="addhospitalfromdoctorinput">
                 <h4>Phone Number</h4>
-
-                <input type="text" placeholder="Select Your Role" />
+                <input
+                  type="number"
+                  name="contact_no"
+                  maxLength={10}
+                  onKeyDown={handleKeyPress}
+                  value={addhospital?.contact_no}
+                  onChange={handleOnchange}
+                  placeholder="Enter phone number"
+                />
               </div>
               <div className="addhospitalfromdoctorinput">
                 <h4>Pincode</h4>
-                <input type="text" name="name" placeholder="Enter your name" />
+                <input
+                  type="number"
+                  name="pincode"
+                  maxLength={6}
+                  onKeyDown={handleKeyPress}
+                  value={addhospital?.pincode}
+                  onChange={handleOnchange}
+                  placeholder="Enter pincode"
+                />
               </div>
             </div>
 
-            <div
-              style={{
-                marginTop: "20px",
-              }}
-            >
+            <div style={{ marginTop: "20px" }}>
               <h4>Address</h4>
-
               <textarea
-                name=""
-                id=""
-                placeholder="Enter Delivery Address"
+                name="address"
+                value={addhospital?.address}
+                maxLength={50}
+                onChange={handleOnchange}
+                placeholder="Enter Hospital Address"
               ></textarea>
             </div>
 
             <div className="addhospitalfromdoctorbtn flex">
-              <button>Cancel</button>
-              <button>Save</button>
+              <button
+                onClick={() => {
+                  setAddHospitalModalOpen(false);
+                  SetAddhospital({
+                    name: "",
+                    contact_no: "",
+                    address: "",
+                    pincode: "",
+                  });
+                }}
+              >
+                Cancel
+              </button>
+              <button onClick={handleSave}>Save</button>
             </div>
           </div>
         </Modal>
