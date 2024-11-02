@@ -116,7 +116,7 @@ function Doctors() {
 
             {visibleCount < specialties.length && (
               <div className="Specialtyitemslistbtn flex">
-                <button onClick={handleLoadMore}>Load more</button>
+                <button onClick={handleLoadMore} className="btnwithclickableeffect">Load more</button>
               </div>
             )}
           </section>

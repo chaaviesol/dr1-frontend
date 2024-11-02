@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import BottomBar from "../BottomBar/BottomBar";
 import Community from "../../Community/Community";
 import Profile from "../../Profile/Profile";
-import { TabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
+import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 
 function PageWrapper() {
-  const { activeTab, setActiveTab } = useContext(TabBarContext);
+  const { activeTab, setActiveTab } = useTabBarContext();
   const navigate = useNavigate();
 
   // useEffect(() => {

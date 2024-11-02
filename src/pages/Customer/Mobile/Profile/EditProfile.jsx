@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "./editprofile.css";
 import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
+import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvider";
 
 function EditProfile() {
   const [selectedDate, setSelectedDate] = useState("");
+  const { setActiveTab } = useTabBarContext();
 
   return (
     <div className="mobilescreen-container">
-      <BackButtonWithTitle title="Edit profile" />
+      <div onClick={() => setActiveTab("profile")}>
+        <BackButtonWithTitle title="Edit profile" />
+      </div>
 
       <div className="editimagemob flex ">
         <div className="editimagemobdiv">

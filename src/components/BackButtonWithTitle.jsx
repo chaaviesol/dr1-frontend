@@ -1,3 +1,4 @@
+import { IconButton } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +27,10 @@ function BackButtonWithTitle({ title }) {
           }}
           onClick={handleNavigate}
         >
+          <IconButton>
+
           <i className="ri-arrow-left-line"></i>
+          </IconButton>
         </div>
         <div>{title || "Title"}</div>
       </div>

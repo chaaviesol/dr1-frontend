@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap");
-@import url('satoshi.css');
+@import url("satoshi.css");
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +12,7 @@
   /* font-family: "Outfit", sans-serif; */
   font-family: "Satoshi-Variable", sans-serif;
 }
-.mobilescreen-container{
+.mobilescreen-container {
   padding: 1.5rem;
 }
 
@@ -24,17 +24,16 @@
   border: 1px solid blue;
 }
 
-.continueBtn{
+.continueBtn {
   background-color: #3a65fd;
   color: white;
   cursor: pointer;
   padding: 1rem 2rem;
   border-radius: 8px;
-  }
-  .continueBtn:hover{
+}
+.continueBtn:hover {
   background-color: #1949f8;
-  
-  }
+}
 
 :root {
   --color-primary: #3a65fd;
@@ -144,10 +143,10 @@ small {
 .nav-logo {
   width: 20%;
 }
-.underlinenav{
-  color:var(--color-primary)
+.underlinenav {
+  color: var(--color-primary);
 }
-.underlinenav:hover{
+.underlinenav:hover {
   text-decoration: underline;
   text-decoration-color: #3a65fd;
 }
@@ -273,7 +272,7 @@ small {
 
 .main_btns i {
   font-weight: 100;
-  font-size:16px;
+  font-size: 16px;
 }
 
 .hero2right {
@@ -812,14 +811,9 @@ small {
 
 /* <!--End Footer --> */
 
-
-
 .color-blue {
   color: var(--color-primary);
 }
-
-
-
 
 /* Labs */
 
@@ -888,7 +882,7 @@ small {
   color: var(--color-primary);
 }
 
-.mainservicecardlist h3{
+.mainservicecardlist h3 {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
 }
@@ -933,17 +927,12 @@ small {
   }
 }
 @media screen and (max-width: 768px) {
-.container{
-  max-width: 100%;
+  .container {
+    max-width: 100%;
+  }
 }
-}
-
-
 
 /* End footer */
-
-
-
 
 /* modal for second opinion */
 
@@ -1079,3 +1068,25 @@ small {
 .consentSectionmodal label {
   font-size: 14px;
 } */
+
+/* buttons */
+
+.btnwithclickableeffect {
+  background-color: #3a65fd;
+
+  color: white;
+
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Add hover effect */
+.btnwithclickableeffect:active {
+  background-color: #2645b6; /* Darken color slightly on hover */
+  cursor: pointer;
+}
+
+/* Add active (click) effect */
+.btnwithclickableeffect:active {
+  transform: scale(0.95); /* Slightly scale down on click */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow on click */
+}

@@ -3,7 +3,7 @@ import "./homepage.css";
 
 function HomePage() {
   return (
-    <div className="mobilehomemain">
+    <div className="mobilehomemain"  style={{ WebkitTapHighlightColor: "transparent" }}>
       {/* Mob Home */}
 
       <section>
@@ -26,7 +26,7 @@ function HomePage() {
               <h3>Are Ready to </h3>
               <h3>Assist</h3>
             </div>
-            <button>Search Doctor</button>
+            <button className="btnwithclickableeffect">Search Doctor</button>
             <img src="../images/ex.png" alt="" />
           </div>
           <div className="mobhometopnew-right flex">
@@ -90,7 +90,7 @@ function HomePage() {
                 color: "transparent",
               }}
             >
-              Medical <i class="ri-bard-fill"></i> Ai Is
+              Medical <i className="ri-bard-fill"></i> Ai Is
             </h2>
             <h2
               style={{
@@ -129,7 +129,7 @@ function HomePage() {
               <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
             </div>
             <button>
-              Get Now <i class="ri-arrow-right-line"></i>
+              Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
             <img src="../images/ex.png" alt="" />
@@ -145,7 +145,7 @@ function HomePage() {
               <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
             </div>
             <button>
-              Get Now <i class="ri-arrow-right-line"></i>
+              Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
             <img src="../images/medmain.png" alt="" />
@@ -162,7 +162,7 @@ function HomePage() {
               <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
             </div>
             <button>
-              Get Now <i class="ri-arrow-right-line"></i>
+              Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
             <img src="../images/ser.png" alt="" />
@@ -179,7 +179,7 @@ function HomePage() {
               <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
             </div>
             <button>
-              Get Now <i class="ri-arrow-right-line"></i>
+              Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
             <img src="../images/job.png" alt="" />
