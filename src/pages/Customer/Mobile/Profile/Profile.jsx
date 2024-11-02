@@ -6,9 +6,11 @@ import { BASE_URL } from "../../../../config";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
 import { LoginModal } from "../../../../components/LoginModal/LoginModal";
+import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvider";
 
 const Profile = () => {
   const [signInModalOpen, setSignInModalOpen] = useState(false);
+  const {setActiveTab}=useTabBarContext()
 
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
@@ -40,6 +42,12 @@ const Profile = () => {
     authLogout();
     navigate("/");
   };
+
+  const goToEditProfile = () => {
+    setActiveTab("profile"); // Ensure activeTab stays as "profile"
+    navigate('/edit-profile');
+  };
+
   if (!userId || !userType || userType !== "customer") {
     return (
       <div
@@ -142,7 +150,7 @@ const Profile = () => {
                 className="action-icon edit-icon"
               />
             </div>
-            <div className="action-text-wrap" onClick={()=>navigate("/editprofile")}>
+            <div className="action-text-wrap" onClick={goToEditProfile}>
               <span className="action-text">Edit Profile</span>
               <img
                 src="/images/mobile/musthu/Icons/arrow right.png"

@@ -5,7 +5,7 @@ function ClickableNavigationIcon({ icon, navigateTo }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/${navigateTo}`)}
+    onClick={() => navigate(`/${navigateTo || ''}`)}
       style={{
         position: "relative",
         height: "100%",

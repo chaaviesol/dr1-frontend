@@ -180,7 +180,7 @@ export const protectedCustomerRoutes = [
   { path: "/mysecondopinions/detailed", element: <DetailedOpinion /> },
   { path: "/cart", element: <Cart /> },
   { path: "/myorders", element: <MyOrders /> },
-  { path: "/editprofile", element: <EditProfile /> }, //mobile screen only
+  { path: "/edit-profile", element: <EditProfile /> }, //mobile screen only
 
 ];
 export const hospitalAdminRoutes = [

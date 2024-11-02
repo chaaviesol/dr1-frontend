@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./editprofile.css";
 import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
 import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvider";
+import { useNavigate } from "react-router-dom";
 
 function EditProfile() {
   const [selectedDate, setSelectedDate] = useState("");
   const { setActiveTab } = useTabBarContext();
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    setActiveTab("profile"); // Ensure activeTab is set to "profile" on load
+  }, []);
   return (
     <div className="mobilescreen-container">
-      <div onClick={() => setActiveTab("profile")}>
+      <div onClick={() => navigate(-1)}>
         <BackButtonWithTitle title="Edit profile" />
       </div>
 
