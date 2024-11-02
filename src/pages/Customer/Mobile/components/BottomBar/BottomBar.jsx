@@ -15,7 +15,9 @@ function BottomBar({ activeTab, setActiveTab }) {
         }`}
       >
         <div className={styles.roundtab}>
-          <i className="ri-home-fill" />
+          <i
+            className={activeTab === "home" ? "ri-home-fill" : "ri-home-line"}
+          />
         </div>
         <div className={styles.tabtext}>Home</div>
       </div>
@@ -26,7 +28,11 @@ function BottomBar({ activeTab, setActiveTab }) {
         }`}
       >
         <div className={styles.roundtab}>
-          <i className="ri-home-fill" />
+          <i
+            className={
+              activeTab === "community" ? "ri-team-fill" : "ri-team-line"
+            }
+          ></i>
         </div>
         <div className={styles.tabtext}>Community</div>
       </div>
@@ -37,7 +43,8 @@ function BottomBar({ activeTab, setActiveTab }) {
         }`}
       >
         <div className={styles.roundtab}>
-          <i className="ri-home-fill" />
+        <i className={activeTab==="medicine" ? "ri-shopping-bag-fill"  : "ri-shopping-bag-line"}>
+        </i>
         </div>
         <div className={styles.tabtext}>Medicine</div>
       </div>
