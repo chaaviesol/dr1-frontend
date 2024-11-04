@@ -1,115 +1,110 @@
-.containercareers{
-    max-width: 70%;
-    margin-inline: auto;
+.containercareers {
+  max-width: 70%;
+  margin-inline: auto;
 }
 
-.careersheadsection span{
-    font-family: "ClashDisplay", sans-serif;
-    font-weight:600;
-    font-size:32px;
-
+.careersheadsection span {
+  font-family: "ClashDisplay", sans-serif;
+  font-weight: 600;
+  font-size: 32px;
 }
 
-.careersforminput h4{
-    font-family: "Raleway", sans-serif;
-    font-weight:500;
+.careersforminput h4 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
 }
 
-.careersheadsection h4{
-    font-family: "Raleway", sans-serif;
-    font-weight:500;
-    color:#606060;
-    /* margin-top:6px; */
+.careersheadsection h4 {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  color: #606060;
+  /* margin-top:6px; */
 }
 /* .careersheadsection{
     padding-top:30px;
 } */
 
-.careersforminput input{
-    margin-top: 10px;
-    background-color: #EEF1FF;
-    height:40px;
-    width:100%;
-    padding:0px 15px;
-    font-weight:400;
-    border:1px solid white;
+.careersforminput input {
+  margin-top: 10px;
+  background-color: #eef1ff;
+  height: 40px;
+  width: 100%;
+  padding: 0px 15px;
+  font-weight: 400;
+  border: 1px solid white;
 }
-.careersforminput input:focus{
-   border:1px solid #3A65FD;
-}
-
-.selectedlocation{
-    margin-top:10px;
-    gap: 10px;
-    width:50%;
-    flex-wrap: wrap;
-}
-.careerslocation{
-    background-color: #EEF1FF;
-    width:fit-content;
-    border-radius:50px;
-    padding:6px 10px;
-    gap:4px;
+.careersforminput input:focus {
+  border: 1px solid #3a65fd;
 }
 
-.careerslocation i{
- font-size:16px;
- font-weight: 100;
+.selectedlocation {
+  margin-top: 10px;
+  gap: 10px;
+  width: 50%;
+  flex-wrap: wrap;
+}
+.careerslocation {
+  background-color: #eef1ff;
+  width: fit-content;
+  border-radius: 50px;
+  padding: 6px 10px;
+  gap: 4px;
 }
 
-.careersforminput{
-    flex: 1;
- 
+.careerslocation i {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.careersforminput {
+  flex: 1;
 }
 .careersforminputs {
-    gap:20px;
-    margin-top:30px;
+  gap: 20px;
+  margin-top: 30px;
 }
 
-.careersformsectionbutton{
-    justify-content: flex-end;
-    margin:15px 0px 30px 0px ;
+.careersformsectionbutton {
+  justify-content: flex-end;
+  margin: 15px 0px 30px 0px;
 }
-.careersformsectionbutton button{
-   background-color: #3A65FD;
-   color: white;
-   height:40px;
-   padding:0px 30px;
-   font-family: "Raleway", sans-serif;
-   font-weight:500;
-   border-radius:4px;
+.careersformsectionbutton button {
+  background-color: #3a65fd;
+  color: white;
+  height: 40px;
+  padding: 0px 30px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  border-radius: 4px;
 }
 
-
- 
 @media (max-width: 767px) {
-    .containercareers{
-        max-width:90%;
-        margin-inline: auto;
-    }
+  .containercareers {
+    max-width: 90%;
+    margin-inline: auto;
+  }
 
-    .careersforminputs{
-        flex-direction: column;
-        margin-top: 20px;
-    }
-    .careersformsectionbutton button{
-        width:100%;
-    }
+  .careersforminputs {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .careersformsectionbutton button {
+    width: 100%;
+  }
 
-    .careersforminputs2{
-        flex-direction: column-reverse;
-    }
-    .careersheadsection span{
-        font-family: "ClashDisplay", sans-serif;
-        font-weight:600;
-        font-size:24px;
-}
+  .careersforminputs2 {
+    flex-direction: column-reverse;
+  }
+  .careersheadsection span {
+    font-family: "ClashDisplay", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+  }
 
-.selectedlocation{
-    width:100%;
-}
-.careerformnav{
+  .selectedlocation {
+    width: 100%;
+  }
+  .careerformnav {
     display: none;
-}
-
+  }
 }

@@ -437,7 +437,8 @@
 
 .homeserviceformtypecard {
   height: 120px;
-  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
   background-color: #eef1ff;
   border: 2px solid white;
 }
@@ -451,6 +452,7 @@
 .homeserviceformtype {
   gap: 10px;
   margin: 10px 0px 20px 0px;
+  overflow: scroll;
 }
 
 .homeserviceformtypecard h4 {
@@ -483,8 +485,62 @@
   font-family: "Raleway", sans-serif;
   font-weight: 500;
 }
-/* End Home Services Modal */
 
+@media (max-width: 991px) {
+  .modalhomeservices {
+    width: 80%;
+  }
+}
+
+@media (max-width: 767px) {
+  .modalhomeservices {
+    width: 90%;
+    padding: 24px;
+  }
+
+  .careersforminputs {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .careersformsectionbutton button {
+    width: 100%;
+  }
+
+  .careersforminputs2 {
+    flex-direction: column-reverse;
+  }
+  .careersheadsection span {
+    font-family: "ClashDisplay", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 575px) {
+  .homeserviceformtypecard {
+    height: 90px;
+    min-width: 90px;
+    max-width: 90px;
+  }
+
+  .homeserviceformtypecard h4 {
+    font-size: 1rem;
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  .servicesformsectionbutton button {
+    width: 100%;
+  }
+
+  .servicesheadsection span {
+    font-family: "ClashDisplay", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+
+/* End Home Services Modal */
 /* MainServices */
 
 .mainservicecard {

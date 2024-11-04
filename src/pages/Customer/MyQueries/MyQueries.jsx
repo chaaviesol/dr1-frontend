@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import { Loader } from "../../../components/Loader/Loader";
 import moment from "moment-timezone";
+import BackButtonWithTitle from "../../../components/BackButtonWithTitle";
 function MyQueries() {
   const [showAnswers, setShowAnswers] = useState(false);
   const [customerQueryData, setCustomerQueryData] = useState([]);
@@ -48,9 +49,15 @@ function MyQueries() {
   console.log("customerQueries", customerQueryData);
   return (
     <div>
+      <div className="careerformnav">
+
       <Headroom>
         <Navbar />
       </Headroom>
+      </div>
+      <div className="careerformbackbtn mobilescreen-container">
+        <BackButtonWithTitle title="My queries" />
+      </div>
 
       <div className="container Myquestions">
         {isLoading && <Loader />}

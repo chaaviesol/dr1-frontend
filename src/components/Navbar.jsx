@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { CusSigninAndSignUp } from "../pages/Customer/CusSigninAndSignUp/CusSigninAndSignUp";
 import { ProfileView } from "../pages/Customer/ProfileView/ProfileView";
 import useAuth from "../hooks/useAuth";
-import { useTabBarContext } from "../contexts/MobileScreen/TabBarProvider";
 import { BASE_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -17,7 +16,6 @@ export default function Navbar() {
   const { auth, isLoading } = useAuth();
   const { userId, userType } = auth;
   const axiosPrivate = useAxiosPrivate();
-  const { handleUpdateActiveTab } = useTabBarContext();
 
   const SelectOpen = () => {
     if (open) {
@@ -60,10 +58,7 @@ export default function Navbar() {
   const handleRoute = (route) => {
     navigate(`/${route}`);
   };
-  const handleMobileVavigation = (page) => {
-    handleUpdateActiveTab(page);
-    navigate("/");
-  };
+
   return (
     <>
       <div className="nav-background">
@@ -200,19 +195,29 @@ export default function Navbar() {
           >
             <>
               <div className="menubuttonNavModalSec flex ">
-                <buton onClick={() => handleMobileVavigation("home")}>
+                <buton 
+                // onClick={() => handleMobileVavigation("home")}
+                >
                   <h3>Home</h3>
                 </buton>
-                <buton onClick={() => handleMobileVavigation("doctor")}>
+                <buton 
+                // onClick={() => handleMobileVavigation("doctor")}
+                >
                   <h3>Doctor</h3>
                 </buton>
-                <buton onClick={() => handleMobileVavigation("laboratory")}>
+                <buton 
+                // onClick={() => handleMobileVavigation("laboratory")}
+                  >
                   <h3>Lab</h3>
                 </buton>
-                <buton onClick={() => handleMobileVavigation("hospital")}>
+                <buton 
+                // onClick={() => handleMobileVavigation("hospital")}
+                >
                   <h3>Hospital</h3>
                 </buton>
-                <buton onClick={() => handleMobileVavigation("pharmacy")}>
+                <buton 
+                // onClick={() => handleMobileVavigation("pharmacy")}
+                  >
                   <h3>Pharmacy</h3>
                 </buton>
               </div>

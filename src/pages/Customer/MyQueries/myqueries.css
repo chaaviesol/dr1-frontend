@@ -1,109 +1,120 @@
-.Myquestions{
-    margin-top:25px;
+.Myquestions {
+  margin-top: 25px;
 }
-.myquestionmaintitle{
-    margin-bottom:10px;
+.myquestionmaintitle {
+  margin-bottom: 10px;
 }
-.myquestionsection{
-    padding:1.2vw;
-    background-color: #f2f5ff;
-    margin-bottom: 0.6vw;
-    /* margin:0 */
-  }
+.myquestionsection {
+  padding: 20px;
+  background-color: #f2f5ff;
+  margin-bottom: 10px;
+  /* margin:0 */
+}
 
-  .myquestionlistboximg img {
-    width: 4vw;
-    height: 4vw;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+.myquestionlistboximg img {
+  width: 4vw;
+  height: 4vw;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
-  
 .myquestionlistboxdataname {
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  
-  .myquestionlistboxdata {
-    width: 100%;
-    margin-left: 1.5vw;
-  }
-  
-  .myquestionpara {
-    font-family: "Raleway", sans-serif;
-    font-weight: 500;
-    max-height: 400px;
-    font-size: 15px;
-    line-height: 22.5px;
-    color: #424242;
-  }
-  .myquestiontitle {
-    font-size: 16px;
-  }
-
-
-  .myquestionparasec {
-    margin-top: 0.1vw;
-  }
-  
-  .myquestiondate {
-    color: #3a65fd;
-    font-weight: 500;
-    font-size: 12px;
-  }
-
-  .myquestionlistboxdatanamebutton button {
-    background-color: #3a65fd;
-    color: white;
-    font-weight: 200;
-    font-size: 13px;
-    border-radius: 2px;
-    padding: 0.3vw 0.8vw;
-  } 
-
-.myanswerssection{
-    padding-left:4vw;
-    margin-top:20px;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.firstbuttonanswer{
-    background-color: none;
-    background:none;
-    align-items: center;
-    font-size:16px;
-    color: #3a65fd;
-    margin-top:10px;
-}
-.firstbuttonanswer i{
-    height:16px;
-}
-.firstbuttonanswer h4{
-   margin-right:3px;
-   margin-left:12px;
+.myquestionlistboxdata {
+  width: 100%;
+  margin-left: 1.5vw;
 }
 
-.bestanswerstop{
-    background-color: orange;
-    color: white;
-    width: fit-content;
-    font-size:10px;
-    border-radius:0px 50px 50px 0px;
-    padding:4px 10px 4px 6px;
-    font-weight: 300;
-    margin-bottom:6px;
+.myquestionpara {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  max-height: 400px;
+  font-size: 15px;
+  line-height: 22.5px;
+  color: #424242;
+}
+.myquestiontitle {
+  font-size: 16px;
 }
 
-.loadmoreanswers{
-    background-color: #3a65fd;
-    color: white;
-    width: fit-content;
-    font-size:12px;
-    border-radius: 50px ;
-    padding:4px 10px;
-    font-weight: 300;
-    margin-top:10px;
+.myquestionparasec {
+  margin-top: 0.1vw;
 }
 
+.myquestiondate {
+  color: #3a65fd;
+  font-weight: 500;
+  font-size: 12px;
+}
 
+.myquestionlistboxdatanamebutton button {
+  background-color: #3a65fd;
+  color: white;
+  font-weight: 200;
+  font-size: 13px;
+  border-radius: 2px;
+  padding: 0.3vw 0.8vw;
+}
 
+.myanswerssection {
+  padding-left: 4vw;
+  margin-top: 20px;
+}
 
+.firstbuttonanswer {
+  background-color: none;
+  background: none;
+  align-items: center;
+  font-size: 16px;
+  color: #3a65fd;
+  margin-top: 10px;
+}
+.firstbuttonanswer i {
+  height: 16px;
+}
+.firstbuttonanswer h4 {
+  margin-right: 3px;
+  margin-left: 12px;
+}
+
+.bestanswerstop {
+  background-color: orange;
+  color: white;
+  width: fit-content;
+  font-size: 10px;
+  border-radius: 0px 50px 50px 0px;
+  padding: 4px 10px 4px 6px;
+  font-weight: 300;
+  margin-bottom: 6px;
+}
+
+.loadmoreanswers {
+  background-color: #3a65fd;
+  color: white;
+  width: fit-content;
+  font-size: 12px;
+  border-radius: 50px;
+  padding: 4px 10px;
+  font-weight: 300;
+  margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+  .myquestionsection {
+    padding: 15px;
+  }
+  .Myquestions {
+    margin-top: 0px;
+  }
+}
+@media (max-width: 575px) {
+  .myquestionsection {
+    padding: 10px;
+  }
+  .Myquestions {
+    margin-top: 0px;
+  }
+}

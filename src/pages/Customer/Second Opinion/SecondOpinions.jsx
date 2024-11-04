@@ -8,6 +8,7 @@ import { Loader } from "../../../components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import BackButtonWithTitle from "../../../components/BackButtonWithTitle";
 
 function SecondOpinions() {
   const axiosPrivate = useAxiosPrivate();
@@ -48,15 +49,21 @@ function SecondOpinions() {
   return (
     <div>
       <div>
-        <Headroom>
-          <Navbar />
-        </Headroom>
+        <div className="careerformnav">
+          <Headroom>
+            <Navbar />
+          </Headroom>
+        </div>
+
+        <div className="careerformbackbtn mobilescreen-container">
+          <BackButtonWithTitle title="My Expert opinion queries" />
+        </div>
 
         <div className="container Myquestions">
           {isLoading && <Loader />}
-          <div className="myquestionmaintitle" style={{ marginBottom: "2rem" }}>
+          {/* <div className="myquestionmaintitle" style={{ marginBottom: "2rem" }}>
             <h3>My Expert opinion queries</h3>
-          </div>
+          </div> */}
 
           {customerSecondOpinions &&
             customerSecondOpinions.length > 0 &&
@@ -103,7 +110,7 @@ function SecondOpinions() {
                         {" "}
                         {moment
                           .utc(query?.created_date)
-                          .tz("UTC-12")
+                          .tz("Etc/GMT+12")
                           .format("DD/MM/YYYY hh:mm A")}
                       </h4>
                     </div>

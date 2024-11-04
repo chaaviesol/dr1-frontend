@@ -3,11 +3,13 @@ import { useState, createContext, useContext } from "react";
 export const TabBarContext = createContext();
 
 const TabBarProvider = ({ children }) => {
-  const [activeTab, setActiveTab] = useState("home");
- 
+  const [activeTab, setActiveTab] = useState(
+    () => sessionStorage.getItem("activeTab") || "home"
+  );
 
   const handleUpdateActiveTab = (page) => {
     setActiveTab(page.toLowerCase());
+    sessionStorage.setItem("activeTab", page);
   };
 
   return (
