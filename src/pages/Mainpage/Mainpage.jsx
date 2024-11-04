@@ -275,7 +275,7 @@ export default function Mainpage() {
               </div>
 
               <div className="main_bts flex">
-                <Link to="/doctor" className="main_btns flex">
+                <Link to="/searchdoctor" className="main_btns flex">
                   <h4>Find Doctor</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -285,7 +285,7 @@ export default function Mainpage() {
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
                 </Link>
-                <Link to="/hospital" className="main_btns flex">
+                <Link to="/hospitalfilter" className="main_btns flex">
                   <h4>Find Hospital</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -295,7 +295,7 @@ export default function Mainpage() {
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
                 </Link>
-                <Link to="/labs" className="main_btns flex">
+                <Link to="/labfiltering" className="main_btns flex">
                   <h4>Find Labs</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -305,7 +305,7 @@ export default function Mainpage() {
                     <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path>
                   </svg>
                 </Link>
-                <Link to="/pharmacy" className="main_btns flex">
+                <Link to="/pharmacyproducts" className="main_btns flex">
                   <h4>Find Medicines</h4>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
