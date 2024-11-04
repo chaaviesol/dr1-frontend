@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
 import { BASE_URL } from "../../../../config";
 import { Loader } from "../../../../components/Loader/Loader";
-import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 function Community() {
   const [isOpenQueryModal, setOpenQueryModal] = useState(false);
@@ -16,9 +15,7 @@ function Community() {
   const [formData, setFormData] = useState({ department: "", query: "" });
   const speacializationNames = Categories?.allopathySpecs;
   const [loader, setLoader] = useState(false);
-  console.log({ formData });
   const { auth } = useAuth();
-  const navigate = useNavigate();
   const handleNavigate = () => {
     if (auth.userId && auth.userType === "customer") {
       setOpenQueryModal(true);
@@ -115,12 +112,7 @@ function Community() {
                     {specialization}
                   </option>
                 ))}
-              <option value="Not Sure">Not Sure</option>
-              {speacializationNames &&
-                speacializationNames.length > 0 &&
-                speacializationNames.map((specialization) => (
-                  <option value={specialization}>{specialization}</option>
-                ))}
+              <option value="Not Sure">Not Sure</option>          
             </select>
           </div>
 
