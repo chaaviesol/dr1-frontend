@@ -27,12 +27,12 @@ function BackButtonWithTitle({ title }) {
           }}
           onClick={handleNavigate}
         >
-          <IconButton>
+          {/* <IconButton> */}
 
           <i className="ri-arrow-left-line"></i>
-          </IconButton>
+          {/* </IconButton> */}
         </div>
-        <div>{title || "Title"}</div>
+        <div>{title || ""}</div>
       </div>
     </>
   );

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import BackButtonWithTitle from "../../components/BackButtonWithTitle";
 export default function Careersform() {
   const [formData, setFormData] = useState({
     type: "",
@@ -161,9 +162,16 @@ export default function Careersform() {
   ];
   return (
     <>
-      <Headroom>
-        <Navbar />
-      </Headroom>
+      <div className="careerformnav">
+        <Headroom>
+          <Navbar />
+        </Headroom>
+      </div>
+
+      <div className="careerformbackbtn mobilescreen-container">
+        <BackButtonWithTitle title="" />
+      </div>
+      <div></div>
 
       <div className="containercareers">
         <div className="careersheadsection">
@@ -197,9 +205,9 @@ export default function Careersform() {
             </div>
           </div>
 
-          <div className="careersforminputs flex">
+          <div className="careersforminputs careersforminputs2 flex">
             <div className="careersforminput">
-              <h4>Location</h4>
+              <h4>Preferred location</h4>
               <CustomDropdown
                 options={locations}
                 placeholder="Select an option"

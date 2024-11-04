@@ -1,0 +1,104 @@
+.toptestcardsec {
+  gap: 10px;
+  /* margin-left: 20px; */
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.toptestcard {
+  max-width: 250px;
+  min-width: 250px;
+  background-color: #f2f5ff;
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.toptestcard p {
+  font-size: 14px;
+}
+
+.toptestcard h2 {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.toptestcard p {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(48, 48, 48);
+}
+
+.toptestcard button {
+  color: #3a65fd;
+  background-color: transparent;
+  height: 30px;
+  font-weight: 500;
+}
+
+.bestlabmobcard {
+  width: 100%;
+}
+
+.bestlabmobcard img {
+  height: 25vw;
+  width: 25vw;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.bestlabmobcard {
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.bestlabmobcardright {
+  flex-direction: column;
+  justify-content: center;
+  width: 60vw;
+}
+
+.bestlabmobcardright h2 {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bestlabmobcardright h4 {
+  color: #3a65fd;
+}
+.bestlabmobcardright h3 {
+  color: #0d9554;
+  font-size: 14px;
+}
+
+.bestlabmobcardrightstar {
+  gap: 4px;
+  padding: 5px 0px;
+  color: #fb923c;
+}
+
+.labtopcardmob {
+  padding: 20px;
+  height: 180px;
+  background-color: #3a65fd;
+  margin-top: 30px;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(to right, #2654a1, #708fc2);
+}
+.labtopcardmob h2 {
+  color: white;
+  font-family: "ClashDisplay", sans-serif;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.labtopcardmob img {
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+  right: 0;
+}
