@@ -478,7 +478,7 @@ function Pharmacy() {
               marketplaceProducts.map((product, index) => (
                 <div
                   key={index}
-                  style={{ marginBottom: "10px" }}
+                  style={{ marginBottom: "10px",backgroundColor:"#f2f5ff" }}
                   onClick={() => handleNavigation(product.id)}
                   className="pharmacyshopproduct flex"
                 >

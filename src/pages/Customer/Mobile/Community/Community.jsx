@@ -86,7 +86,14 @@ function Community() {
           <span>Blog section coming soon</span>
         </div>
         <div className={styles.addquery}>
+<<<<<<< HEAD
           <button onClick={handleNavigate}>Add query</button>
+=======
+          <button onClick={() => setOpenQueryModal(true)}>
+            <i className="ri-add-circle-line"></i>
+            Add query
+          </button>
+>>>>>>> 53a3d7e751f5660be64c51f9a23bca700ef66275
         </div>
       </div>
 
@@ -107,12 +114,18 @@ function Community() {
               <option value="">Select Discipline</option>
               {speacializationNames &&
                 speacializationNames.length > 0 &&
+<<<<<<< HEAD
                 speacializationNames.map((specialization, index) => (
                   <option key={index} value={specialization}>
                     {specialization}
                   </option>
                 ))}
               <option value="Not Sure">Not Sure</option>
+=======
+                speacializationNames.map((specialization) => (
+                  <option value={specialization}>{specialization}</option>
+                ))}
+>>>>>>> 53a3d7e751f5660be64c51f9a23bca700ef66275
             </select>
           </div>
 
@@ -124,6 +137,7 @@ function Community() {
             placeholder="Type your query"
           ></textarea>
           <div className={`${styles.addmobquerybtn} flex`}>
+<<<<<<< HEAD
             <button
               onClick={() => {
                 setOpenQueryModal(false);
@@ -136,6 +150,10 @@ function Community() {
               Cancel
             </button>
             <button onClick={handleSubmit}>Submit</button>
+=======
+            <button onClick={() => setOpenQueryModal(false)}>Cancel</button>
+            <button>Submit</button>
+>>>>>>> 53a3d7e751f5660be64c51f9a23bca700ef66275
           </div>
         </div>
       </Modal>

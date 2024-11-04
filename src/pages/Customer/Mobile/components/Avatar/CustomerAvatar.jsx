@@ -43,7 +43,7 @@ function CustomerAvatar({ image }) {
         }}
         src={
           isLoading === true || !userProfile?.image
-            ? "/images/avatarmale.png"
+            ? "/images/newavatar.jpg"
             : userProfile?.image
         }
         alt=""

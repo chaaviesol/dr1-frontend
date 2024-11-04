@@ -1,9 +1,14 @@
 import React from "react";
 import "./homepage.css";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const navigate = useNavigate();
   return (
-    <div className="mobilehomemain"  style={{ WebkitTapHighlightColor: "transparent" }}>
+    <div
+      className="mobilehomemain"
+      style={{ WebkitTapHighlightColor: "transparent" }}
+    >
       {/* Mob Home */}
 
       <section>
@@ -26,11 +31,17 @@ function HomePage() {
               <h3>Are Ready to </h3>
               <h3>Assist</h3>
             </div>
-            <button className="btnwithclickableeffect">Search Doctor</button>
+            <button
+              className="btnwithclickableeffect"
+              onClick={() => navigate("/searchdoctor")}
+            >
+              Search Doctor
+            </button>
             <img src="../images/ex.png" alt="" />
           </div>
           <div className="mobhometopnew-right flex">
             <div
+               onClick={() => navigate("/hospitalfilter")}
               className="mobhometopnew-rightcard flex"
               style={{ backgroundColor: "#FFDFD7" }}
             >
@@ -42,6 +53,7 @@ function HomePage() {
               </div>
             </div>
             <div
+             onClick={() => navigate("/labfiltering")}
               className="mobhometopnew-rightcard flex"
               style={{ backgroundColor: "#C4E3C5" }}
             >
