@@ -28,112 +28,111 @@
   display: flex;
   justify-content: flex-end;
 }
+.addquery i {
+  font-size: 20px;
+  font-weight: 100;
+}
 .addquery button {
-    height: 100%;
-    background-color: #3A65FD;
-    border-radius: 50px;
-    color: white;
-    padding: 1rem 5rem;
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
-  }
-  
-  /* Add hover effect */
-  .addquery button:active {
-    background-color: #2645b6; /* Darken color slightly on hover */
-    cursor: pointer;
-  }
-  
-  /* Add active (click) effect */
-  .addquery button:active {
-    transform: scale(0.95); /* Slightly scale down on click */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow on click */
-  }
-
-
-  /* add query modal mobile */
-
-
-
-
-
-
-  .addquerymobmodal{
-    width:90%;
-    background-color:white;
-    border-radius: 20px;
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 2rem;
+  height: 100%;
+  background-color: #3a65fd;
+  border-radius: 50px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  width: fit-content;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-
-  .addmobquerybtn button{
-    background-color: #3A65FD; 
-    color:white;  
-    height:48px;
-    width:100%;  
-    border-radius:50px;
-    margin-top:14px; 
-    -webkit-tap-highlight-color: transparent;                                                             
- }
- .addmobquerybtn button:active {
-    transform: scale(0.98); /* Slightly reduce size for a "pressed" effect */
-    background-color: #2645b6; /* Change to a lighter color */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    transition: all 0.1s ease; /* Smooth transition */
+/* Add hover effect */
+.addquery button:active {
+  background-color: #2645b6; /* Darken color slightly on hover */
+  cursor: pointer;
 }
 
-.addquerymobmodal h4{
-    font-size: 16px;
-    font-weight: 700;
-    margin:12px 0px 8px 14px;
+/* Add active (click) effect */
+.addquery button:active {
+  transform: scale(0.95); /* Slightly scale down on click */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow on click */
 }
 
+/* add query modal mobile */
 
-  .addquerymobmodal select{
-    border-radius:50px;
-    width:100%;
-    background-color: #EEF1FF;
-    height:50px;
-    width:100%;
-    padding:0px 15px;
-    font-weight:600;
-    border:1px solid white;
-    margin-top:10px;
-    color: rgb(73, 73, 73);
+.addquerymobmodal {
+  width: 90%;
+  background-color: white;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2rem;
 }
 
-.addquerymobmodal textarea{
-    width:100%;
-    background-color: #EEF1FF;
-    padding:15px;
-    margin-top:10px;
-    border-radius:20px;
-    height:200px;
-    color: rgb(73, 73, 73);
-    font-weight:600;
-    resize:none;
+.addmobquerybtn button {
+  background-color: #3a65fd;
+  color: white;
+  height: 48px;
+  width: 100%;
+  border-radius: 50px;
+  margin-top: 14px;
+  -webkit-tap-highlight-color: transparent;
+}
+.addmobquerybtn button:active {
+  transform: scale(0.98); /* Slightly reduce size for a "pressed" effect */
+  background-color: #2645b6; /* Change to a lighter color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: all 0.1s ease; /* Smooth transition */
 }
 
-
-  .addquerymobmodal textarea::placeholder{
-    font-weight:600;
-    color: rgb(73, 73, 73);
+.addquerymobmodal h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 12px 0px 8px 14px;
 }
 
-.addquerymobmodal h3{
-    font-weight: 700;
+.addquerymobmodal select {
+  border-radius: 50px;
+  width: 100%;
+  background-color: #eef1ff;
+  height: 50px;
+  width: 100%;
+  padding: 0px 15px;
+  font-weight: 600;
+  border: 1px solid white;
+  margin-top: 10px;
+  color: rgb(73, 73, 73);
 }
 
+.addquerymobmodal textarea {
+  width: 100%;
+  background-color: #eef1ff;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 20px;
+  height: 200px;
+  color: rgb(73, 73, 73);
+  font-weight: 600;
+  resize: none;
+}
+
+.addquerymobmodal textarea::placeholder {
+  font-weight: 600;
+  color: rgb(73, 73, 73);
+}
+
+.addquerymobmodal h3 {
+  font-weight: 700;
+}
 
 .addmobquerybtn button:first-of-type {
-    width: 100px;
-    margin-right:6px;
-    padding:0px 20px;
-    color:#dc2626;
-    background-color: white;
-    border:1px solid #dc2626; 
+  width: 100px;
+  margin-right: 6px;
+  padding: 0px 20px;
+  color: #dc2626;
+  background-color: white;
+  border: 1px solid #dc2626;
 }
-

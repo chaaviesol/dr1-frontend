@@ -16,7 +16,8 @@ function BottomBar({ activeTab, setActiveTab }) {
       >
         <div className={styles.roundtab}>
           <i
-            className={activeTab === "home" ? "ri-home-fill" : "ri-home-line"}
+       
+            className={activeTab === "home" ? "fi fi-sr-house-blank" : "fi fi-rr-house-blank"}
           />
         </div>
         <div className={styles.tabtext}>Home</div>
@@ -30,7 +31,7 @@ function BottomBar({ activeTab, setActiveTab }) {
         <div className={styles.roundtab}>
           <i
             className={
-              activeTab === "community" ? "ri-team-fill" : "ri-team-line"
+              activeTab === "community" ? "fi fi-sr-users-medical" : "fi fi-rr-users-medical"
             }
           ></i>
         </div>
@@ -43,7 +44,7 @@ function BottomBar({ activeTab, setActiveTab }) {
         }`}
       >
         <div className={styles.roundtab}>
-        <i className={activeTab==="medicine" ? "ri-shopping-bag-fill"  : "ri-shopping-bag-line"}>
+        <i className={activeTab==="medicine" ? "fi fi-sr-shop"  : "fi fi-rr-shop"}>
         </i>
         </div>
         <div className={styles.tabtext}>Medicine</div>
@@ -61,7 +62,7 @@ function BottomBar({ activeTab, setActiveTab }) {
             style={{
               width: "40px",
               height: "40px",
-              border: activeTab === "profile" ? "1px solid blue" : "",
+              border: activeTab === "profile" ? "2px solid #3a65fd" : "",
               boxSizing: "border-box",
               borderRadius: "50%",
             }}

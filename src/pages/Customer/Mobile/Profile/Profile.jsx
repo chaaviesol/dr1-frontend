@@ -10,7 +10,7 @@ import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvid
 
 const Profile = () => {
   const [signInModalOpen, setSignInModalOpen] = useState(false);
-  const {setActiveTab}=useTabBarContext()
+  const { setActiveTab } = useTabBarContext();
 
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
@@ -45,18 +45,21 @@ const Profile = () => {
 
   const goToEditProfile = () => {
     setActiveTab("profile"); // Ensure activeTab stays as "profile"
-    navigate('/edit-profile');
+    navigate("/edit-profile");
   };
 
   if (!userId || !userType || userType !== "customer") {
     return (
       <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        className="profilePageNew"
+        style={
+          {
+            // height: "100dvh",
+            // display: "flex",
+            // justifyContent: "center",
+            // alignItems: "center",
+          }
+        }
       >
         {signInModalOpen && (
           <LoginModal show={signInModalOpen} setShow={setSignInModalOpen} />
