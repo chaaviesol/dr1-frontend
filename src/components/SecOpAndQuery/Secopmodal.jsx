@@ -630,8 +630,8 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 className="pharmacypara"
                 name="query"
                 value={querydata.query}
+                maxLength={5000}
                 onChange={handlequerychange}
-                id=""
                 placeholder="Type your query here"
               ></textarea>
               <button onClick={handlequerySubmit} className="queryformbutton">
