@@ -206,7 +206,6 @@ export const MobileLabFilter = () => {
   }, [location]);
   return (
     <div className="MobileLabAlign">
-      <Navbar />
       <div className="MobileLabAlignFilter">
         <div className="MobileLabAlignFilterSearch">
           <Searchbox
@@ -316,7 +315,6 @@ export const MobileLabFilter = () => {
           </div>
         </div>
       </Modal>
-      <Footer />
     </div>
   );
 };
