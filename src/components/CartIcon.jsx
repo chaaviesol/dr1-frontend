@@ -4,13 +4,21 @@ import { useNavigate } from "react-router-dom";
 
 import { usePharmacyContext } from "../contexts/PharmacyContext";
 
-function CartIcon() {
+function CartIcon({dontNavigate}) {
   const { cartItems} = usePharmacyContext();
   const navigate = useNavigate();
 
+  const handleNavigate=()=>{
+  if(dontNavigate){
+      return;
+    }else{
+      navigate("/cart")
+    }
+  }
+
   return (
     <div
-      onClick={() => navigate("/cart")}
+      onClick={handleNavigate}
       style={{
         position: "relative",
         height: "100%",

@@ -30,7 +30,7 @@ export default function SecondOpinion() {
       <ToastContainer />
       <div className="secopmobcontainer">
         <div className="backbuttonsecondopinion" onClick={handleClose}>
-        <i class="ri-arrow-left-line" ></i>
+        <i className="ri-arrow-left-line" ></i>
         </div>
         <div className="secoptitle">
           <h2>We help you to get a second opinion</h2>
@@ -67,7 +67,7 @@ export default function SecondOpinion() {
 
           <div className="flex secopdipartmentbuttonsec">
             <button onClick={handleNext} className="secopdipartmentbutton flex">
-              <i class="ri-arrow-right-s-line"></i>
+              <i className="ri-arrow-right-s-line"></i>
             </button>
           </div>
         </div>

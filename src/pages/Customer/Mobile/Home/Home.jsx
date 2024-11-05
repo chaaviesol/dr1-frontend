@@ -15,17 +15,20 @@ import Labs from "./Labs/Labs";
 import AvatarWithLocation from "../components/AvatarWithLocation/AvatarWithLocation";
 import SearchLocationModal from "../components/SearchLocationModal/SearchLocationModal";
 import CartIcon from "../../../../components/CartIcon";
+import { LoginModal } from "../../../../components/LoginModal/LoginModal";
 
 function Home() {
   const [activePage, setActivePage] = useState("home");
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isShowLocationModal, setShowLocationModal] = useState(false);
   const { auth } = useAuth();
   const navigate = useNavigate();
   const handleNavigate = () => {
     if (auth.userId && auth.userType === "customer") {
-      navigate("/secondopinion");
+      navigate("/cart");
     } else {
-      toast.info("Please login as a customer!");
+      setIsLoginModalOpen(true);
+      // toast.info("Please log in to view your cart");
     }
   };
   return (
@@ -35,8 +38,11 @@ function Home() {
           <div onClick={() => setShowLocationModal(true)}>
             <AvatarWithLocation />
           </div>
-          <div style={{ height: "50px", width: "50px" }} onClick={() => navigate("/cart")}>
-            <CartIcon />{" "}
+          <div
+            style={{ height: "50px", width: "50px" }}
+            onClick={handleNavigate}
+          >
+            <CartIcon dontNavigate={true} />{" "}
           </div>
         </div>
         <PagePicker activePage={activePage} setActivePage={setActivePage} />
@@ -51,6 +57,9 @@ function Home() {
         isOpen={isShowLocationModal}
         setOpen={setShowLocationModal}
       />
+      {isLoginModalOpen && (
+        <LoginModal show={isLoginModalOpen} setShow={setIsLoginModalOpen} />
+      )}
     </>
   );
 }

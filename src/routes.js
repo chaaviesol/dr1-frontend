@@ -109,8 +109,7 @@ export const publicRoutes = [
   { path: "/mobiledoctorprofile", element: <MobileDoctorProfile /> },
   { path: "/mobilehospitalprofile", element: <MobileHospitalProfile /> },
   { path: "/mobilelabprofile", element: <MobileLabProfile /> },
-  { path: "/secondopinion", element: <SecondOpinion /> },
-  { path: "/secondopinion2", element: <SecondOpinion2ndpage /> },
+
 
   { path: "/unauthorized", element: <Unauthorized /> },
 
@@ -181,6 +180,8 @@ export const protectedCustomerRoutes = [
   { path: "/cart", element: <Cart /> },
   { path: "/myorders", element: <MyOrders /> },
   { path: "/edit-profile", element: <EditProfile /> }, //mobile screen only
+  { path: "/secondopinion", element: <SecondOpinion /> },//mobile screen only
+  { path: "/secondopinion2", element: <SecondOpinion2ndpage /> },//mobile screen only
 
 ];
 export const hospitalAdminRoutes = [

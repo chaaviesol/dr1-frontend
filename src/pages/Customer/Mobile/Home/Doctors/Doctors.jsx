@@ -3,8 +3,14 @@ import "./doctormob.css";
 import { SearchDocContext } from "../../../../../contexts/Doctor/SearchDoctorProvider";
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../../../../contexts/Contexts";
+import { toast } from "react-toastify";
+import useAuth from "../../../../../hooks/useAuth";
+import { LoginModal } from "../../../../../components/LoginModal/LoginModal";
 
 function Doctors() {
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const { auth } = useAuth();
   const { Categories } = useContext(MyContext);
   const { setFilters, setDocsBySearch, setAllDocsBySearch } =
     useContext(SearchDocContext);
@@ -39,9 +45,20 @@ function Doctors() {
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 6);
   };
+
+  const handleRoute = () => {
+    if (auth.userId && auth.userType === "customer") {
+      navigate("/secondopinion");
+    } else {
+      setIsLoginModalOpen(true);
+    }
+  };
   return (
     <>
-      <div style={{ padding: ".5rem" }} className="avoidbottombar">
+      <div
+        style={{ padding: ".5rem", WebkitTapHighlightColor: "transparent" }}
+        className="avoidbottombar"
+      >
         {/* Health concerns Section */}
 
         <div className="">
@@ -161,7 +178,9 @@ function Doctors() {
               <h2>opinion</h2>
               <h2>from our experts</h2>
             </div>
-            <button>Get now</button>
+            <button className="" onClick={handleRoute}>
+              Get now
+            </button>
             <img src="../images/ex.png" alt="" />
           </div>
         </section>
@@ -185,6 +204,9 @@ function Doctors() {
           </h3>
         </div>
       </div>
+      {isLoginModalOpen && (
+        <LoginModal show={isLoginModalOpen} setShow={setIsLoginModalOpen} />
+      )}
     </>
   );
 }

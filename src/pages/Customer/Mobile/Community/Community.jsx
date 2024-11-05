@@ -20,7 +20,7 @@ function Community() {
     if (auth.userId && auth.userType === "customer") {
       setOpenQueryModal(true);
     } else {
-      toast.info("Please login as a customer!");
+      toast.info("login to continue");
     }
   };
   const handleSubmit = async () => {
