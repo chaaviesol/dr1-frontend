@@ -3,7 +3,7 @@ import "./homepage.css";
 import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   return (
     <div
       className="mobilehomemain"
@@ -65,6 +65,7 @@ function HomePage() {
               </div>
             </div>
             <div
+              onClick={() => navigate("/pharmacyproducts")}
               className="mobhometopnew-rightcard flex"
               style={{ backgroundColor: "#D6D8FF" }}
             >

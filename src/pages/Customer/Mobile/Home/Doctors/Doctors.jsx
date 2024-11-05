@@ -1,7 +1,38 @@
-import React, { useState } from "react";
-import './doctormob.css'
+import React, { useContext, useEffect, useState } from "react";
+import "./doctormob.css";
+import { SearchDocContext } from "../../../../../contexts/Doctor/SearchDoctorProvider";
+import { useNavigate } from "react-router-dom";
 
 function Doctors() {
+  const {
+    setFilters,
+    setFilteredDoctors,
+    setDocsBySearch,
+    setAllDocsBySearch,
+  } = useContext(SearchDocContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    setFilters({
+      type: "",
+      specializations: [],
+      gender: "",
+      experience: 0,
+      name: "",
+    });
+    setAllDocsBySearch([]);
+    setDocsBySearch([]);
+  }, []);
+
+  const handleSelectSpecialization = (type, specialization) => {
+    setFilters({
+      type: type,
+      specializations: [specialization],
+      gender: "",
+      experience: 0,
+      name: "",
+    });
+    navigate("/searchdoctor", { state: "hi" });
+  };
   const specialties = [
     "Allergy and Immunology",
     "Anesthesiology",
@@ -35,17 +66,17 @@ function Doctors() {
     "Surgery",
     "Thoracic Surgery",
     "Urology",
-    "Vascular Surgery"
+    "Vascular Surgery",
   ];
 
   const [visibleCount, setVisibleCount] = useState(12);
 
   const handleLoadMore = () => {
-    setVisibleCount(prevCount => prevCount+6);
-};
+    setVisibleCount((prevCount) => prevCount + 6);
+  };
   return (
     <>
-      <div style={{padding:".5rem"}} className="avoidbottombar">
+      <div style={{ padding: ".5rem" }} className="avoidbottombar">
         {/* Health concerns Section */}
 
         <div className="">
@@ -69,24 +100,35 @@ function Doctors() {
 
         <section className="">
           <div className="healthconcerns flex">
-            <div className="healthconcernscard flex">
-              <img src="./images/man.jpg" alt="" />
+            <div
+              className="healthconcernscard flex"
+              onClick={() =>
+                handleSelectSpecialization("Allopathy", "gynecology")
+              }
+            >
+              <img src="/images/1 (2).jpg" alt="" />
               <h4>Period doubts or Pregnancy</h4>
             </div>
 
-            <div className="healthconcernscard flex">
-              <img src="./images/man.jpg" alt="" />
-              <h4>Period doubts or Pregnancy</h4>
+            <div
+              className="healthconcernscard flex"
+              onClick={() => handleSelectSpecialization("Allopathy","dermatology")}
+            >
+              <img src="/images/1 (6).jpg" alt="" />
+              <h4>Acne, pimple or skin issues</h4>
             </div>
 
-            <div className="healthconcernscard flex">
-              <img src="./images/man.jpg" alt="" />
-              <h4>Period doubts or Pregnancy</h4>
+            <div className="healthconcernscard flex"      
+             onClick={() => handleSelectSpecialization("Allopathy","general medicine")}
+             >
+              <img src="/images/banner-web-01.png" alt="" />
+              <h4>Cold, Cough or Fever</h4>
             </div>
 
-            <div className="healthconcernscard flex">
-              <img src="./images/man.jpg" alt="" />
-              <h4>Period doubts or Pregnancy</h4>
+            <div className="healthconcernscard flex"              onClick={() => handleSelectSpecialization("Allopathy","psychiatry")}
+            >
+              <img src="/images/1 (4).jpg" alt="" />
+              <h4>Depression or Anxiety</h4>
             </div>
           </div>
         </section>
@@ -116,7 +158,12 @@ function Doctors() {
 
             {visibleCount < specialties.length && (
               <div className="Specialtyitemslistbtn flex">
-                <button onClick={handleLoadMore} className="btnwithclickableeffect">Load more</button>
+                <button
+                  onClick={handleLoadMore}
+                  className="btnwithclickableeffect"
+                >
+                  Load more
+                </button>
               </div>
             )}
           </section>
@@ -155,8 +202,6 @@ function Doctors() {
           >
             Best doctor’s near you
           </h3>
-
-          
         </div>
       </div>
     </>
