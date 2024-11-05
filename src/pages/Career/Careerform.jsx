@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./careerform.css";
 import Headroom from "react-headroom";
 import CustomDropdown from "./CustomDropdown/CustomDropdown";
@@ -9,6 +9,7 @@ import { BASE_URL } from "../../config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BackButtonWithTitle from "../../components/BackButtonWithTitle";
+import { Loader } from "../../components/Loader/Loader";
 export default function Careersform() {
   const [formData, setFormData] = useState({
     type: "",
@@ -22,15 +23,44 @@ export default function Careersform() {
     department: "",
     specialization: "",
   });
-  console.log({ formData });
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+
+  const [categoriesMap, setCategoriesMap] = useState(new Map());
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/career/getcategory`);
+        const categoriesData = response.data.data;
+
+        const map = new Map();
+
+        categoriesData.forEach(({ type, department, speciality }) => {
+          const normalizedType = type.toLowerCase(); // Normalize type
+          const normalizedDepartment = department.toLowerCase(); // Normalize department
+
+          if (!map.has(normalizedType)) {
+            map.set(normalizedType, { departments: new Map() });
+          }
+          if (!map.get(normalizedType).departments.has(normalizedDepartment)) {
+            map.get(normalizedType).departments.set(normalizedDepartment, {
+              specializations: speciality,
+            });
+          }
+        });
+
+        setCategoriesMap(map);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleDropdownChange = (name, selectedValue) => {
     setFormData((prevData) => {
@@ -53,67 +83,92 @@ export default function Careersform() {
     });
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    handleDropdownChange(name, value);
+
+    if (name === "type") {
+      setFormData((prevData) => ({
+        ...prevData,
+        department: "",
+        specialization: "",
+      }));
+    } else if (name === "department") {
+      setFormData((prevData) => ({
+        ...prevData,
+        specialization: "",
+      }));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.type || formData.type === "") {
+      toast.error("Select your role!");
+      return;
+    }
+    if (!formData.name || formData.name === "") {
+      toast.error("Enter your name!");
+      return;
+    }
+    if (
+      !formData.preferred_location ||
+      formData.preferred_location.length === 0
+    ) {
+      toast.error("Select your preferred location!");
+      return;
+    }
+    if (!formData.phone_no || formData.phone_no.trim() === "") {
+      toast.error("Enter your phone number!");
+      return;
+    }
+    const phoneRegex = /^[789]\d{9}$/;
+    if (!phoneRegex.test(formData.phone_no)) {
+      toast.error("Enter a valid phone number!");
+      return;
+    }
+    if (!formData.experience || formData.experience === "") {
+      toast.error("Enter your experience!");
+      return;
+    }
+    if (!formData.qualification || formData.qualification === "") {
+      toast.error("Enter your qualification!");
+      return;
+    }
+    if (!formData.gender || formData.gender === "") {
+      toast.error("Select your gender!");
+      return;
+    }
+
+    if (!formData.year_of_passout || formData.year_of_passout.trim() === "") {
+      toast.error("Enter your pass out year!");
+      return;
+    }
+    if (!formData.specialization || formData.specialization.length === 0) {
+      toast.error("Select your specialization !");
+      return;
+    }
+    const currentYear = new Date().getFullYear();
+    const yearRegex = /^(19|20)\d{2}$/;
+
+    if (
+      !yearRegex.test(formData.year_of_passout) ||
+      formData.year_of_passout < 1900 ||
+      formData.year_of_passout > currentYear
+    ) {
+      toast.error("Enter a valid year !");
+      return;
+    }
     try {
-      if (!formData.type || formData.type === "") {
-        toast.error("Select your role!");
-        return;
-      }
-      if (!formData.name || formData.name === "") {
-        toast.error("Enter your name!");
-        return;
-      }
-      if (
-        !formData.preferred_location ||
-        formData.preferred_location.length === 0
-      ) {
-        toast.error("Select your preferred location!");
-        return;
-      }
-      if (!formData.phone_no || formData.phone_no.trim() === "") {
-        toast.error("Enter your phone number!");
-        return;
-      }
-      const phoneRegex = /^[789]\d{9}$/;
-      if (!phoneRegex.test(formData.phone_no)) {
-        toast.error("Enter a valid phone number!");
-        return;
-      }
-      if (!formData.experience || formData.experience === "") {
-        toast.error("Enter your experience!");
-        return;
-      }
-      if (!formData.qualification || formData.qualification === "") {
-        toast.error("Enter your qualification!");
-        return;
-      }
-      if (!formData.gender || formData.gender === "") {
-        toast.error("Select your gender!");
-        return;
-      }
-
-      if (!formData.year_of_passout || formData.year_of_passout.trim() === "") {
-        toast.error("Enter your pass out year!");
-        return;
-      }
-      const currentYear = new Date().getFullYear();
-      const yearRegex = /^(19|20)\d{2}$/;
-
-      if (
-        !yearRegex.test(formData.year_of_passout) ||
-        formData.year_of_passout < 1900 ||
-        formData.year_of_passout > currentYear
-      ) {
-        toast.error("Enter a valid year !");
-        return;
-      }
-
+      setLoading(true);
       const response = await axios.post(
         `${BASE_URL}/career/careerupload`,
         formData
       );
       if (response.status === 200) {
+        setLoading(false);
         toast.success("Details submitted successfully!", {
           autoClose: 3000,
         });
@@ -135,31 +190,52 @@ export default function Careersform() {
       } else if (response.status === 400) {
         toast.error(response.data.message);
       } else {
+        setLoading(false);
         toast.error("Failed to submit details.");
       }
-      console.log("Form submitted successfully:", response.data);
     } catch (error) {
-      console.error("Error submitting form:", error);
+      setLoading(false);
+      toast.error(error.response.data.message);
+      setTimeout(() => {
+        setFormData({
+          type: "",
+          name: "",
+          preferred_location: [],
+          phone_no: "",
+          experience: "",
+          qualification: "",
+          gender: "",
+          year_of_passout: "",
+          department: "",
+          specialization: "",
+        });
+        navigate("/services");
+      }, 3000);
     }
   };
   const options = ["Doctor", "Nurse", "Pharmacist", "Technician"];
   const genderop = ["Female", "Male", "Prefer not to say"];
-  const locations = [
-    "Thiruvananthapuram",
-    "Kollam",
-    "Pathanamthitta",
-    "Alappuzha",
-    "Kottayam",
-    "Idukki",
-    "Ernakulam",
-    "Thrissur",
-    "Palakkad",
-    "Malappuram",
-    "Kozhikode",
-    "Wayanad",
-    "Kannur",
-    "Kasargod",
-  ];
+  const locations = ["Kerala", "India", "Europe", "US", "GCC", "Australia"];
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  useEffect(() => {
+    setFormData((prevData) => ({
+      ...prevData,
+      department: "",
+      specialization: "",
+    }));
+  }, [formData.type]);
+
+  const handleRemoveLocation = (locationToRemove) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      preferred_location: prevState.preferred_location.filter(
+        (location) => location !== locationToRemove
+      ),
+    }));
+  };
+
   return (
     <>
       <div className="careerformnav">
@@ -174,6 +250,7 @@ export default function Careersform() {
       <div></div>
 
       <div className="containercareers">
+        {loading ? <Loader /> : ""}
         <div className="careersheadsection">
           <span style={{ color: "#F43F5E" }}>Register</span>{" "}
           <span style={{ fontWeight: "400" }}> Your Details </span>
@@ -189,9 +266,15 @@ export default function Careersform() {
                 options={options}
                 placeholder="Select an option"
                 name="type"
-                onChange={(value) => handleDropdownChange("type", value)}
+                onChange={(value) => {
+                  handleDropdownChange("type", value);
+                  setFormData((prevData) => ({
+                    ...prevData,
+                    department: "",
+                    specialization: "",
+                  }));
+                }}
               />
-              {/* <input type="text" placeholder='Select Your Role' /> */}
             </div>
             <div className="careersforminput">
               <h4>Name</h4>
@@ -215,6 +298,7 @@ export default function Careersform() {
                 onChange={(value) =>
                   handleDropdownChange("preferred_location", value)
                 }
+                selectedValues={formData?.preferred_location}
               />
             </div>
             <div className="careersforminput">
@@ -234,6 +318,13 @@ export default function Careersform() {
               <div key={index} className="careerslocation flex">
                 <i className="ri-map-pin-line"></i>
                 <h4>{location}</h4>
+                <button
+                  className="remove-button"
+                  onClick={() => handleRemoveLocation(location)}
+                >
+                  {" "}
+                  <i class="ri-close-circle-fill"></i>
+                </button>
               </div>
             ))}
           </div>
@@ -269,7 +360,6 @@ export default function Careersform() {
                 onChange={(value) => handleDropdownChange("gender", value)}
                 selectedValues={formData.preferred_location}
               />
-              {/* <input type="text" placeholder="Enter Your Name" /> */}
             </div>
             <div className="careersforminput">
               <h4>Year of passout</h4>
@@ -282,28 +372,61 @@ export default function Careersform() {
               />
             </div>
           </div>
-
-          <div className="careersforminputs flex">
-            <div className="careersforminput">
-              <h4>Department</h4>
-              <input
-                name="department"
-                type="text"
-                placeholder="Enter Your department"
-              />
+          {formData.type && (
+            <div className="careersforminputs flex">
+              <div className="careersforminput">
+                <h4>Department</h4>
+                <CustomDropdown
+                  options={[
+                    ...Array.from(
+                      categoriesMap
+                        .get(formData.type.toLowerCase())
+                        ?.departments.keys()
+                    )
+                      .sort((a, b) => a.localeCompare(b))
+                      .map((department) => capitalizeFirstLetter(department)),
+                  ]}
+                  name="department"
+                  value={formData.department}
+                  onChange={(value) => {
+                    const normalizedValue = value.toLowerCase();
+                    handleDropdownChange("department", normalizedValue);
+                    setFormData((prevData) => ({
+                      ...prevData,
+                      specialization: "",
+                    }));
+                  }}
+                  placeholder="Select department"
+                />
+              </div>
+              <div className="careersforminput">
+                <h4>Specialization</h4>
+                <CustomDropdown
+                  options={
+                    (formData.department &&
+                      categoriesMap
+                        .get(formData.type.toLowerCase())
+                        ?.departments.get(formData.department.toLowerCase())
+                        ?.specializations?.sort((a, b) =>
+                          a.localeCompare(b)
+                        )) ||
+                    []
+                  }
+                  placeholder="Select specialization"
+                  name="specialization"
+                  value={formData.specialization}
+                  onChange={(value) => {
+                    handleDropdownChange("specialization", value.toLowerCase());
+                  }}
+                />
+              </div>
             </div>
-            <div className="careersforminput">
-              <h4>Specialization</h4>
-              <input
-                name="specialization"
-                type="text"
-                placeholder="Enter Your specialization"
-              />
-            </div>
-          </div>
+          )}
 
           <div className="careersformsectionbutton flex">
-            <button onClick={handleSubmit}>Submit</button>
+            <button disabled={loading} onClick={handleSubmit}>
+              Submit
+            </button>
           </div>
         </div>
       </div>

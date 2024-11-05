@@ -48,6 +48,12 @@ const CustomDropdown = ({ options, placeholder,onChange ,selectedValues }) => {
               onClick={() => handleOptionClick(option)}
             >
               {option}
+              {selectedValues?.includes(option) && (
+                <span style={{marginLeft:"10px",color:"green"}}><i class="ri-check-double-line"></i></span> 
+              )}
+              {/* {selected === option && (
+                <span style={{marginLeft:"10px",color:"green"}}><i class="ri-check-double-line"></i></span> 
+              )} */}
             </li>
           ))}
         </ul>
