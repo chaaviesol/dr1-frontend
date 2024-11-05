@@ -9,9 +9,8 @@ import Profile from "../../Profile/Profile";
 import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 
 function PageWrapper() {
-  const { activeTab, setActiveTab } = useTabBarContext();
-  const navigate = useNavigate();
 
+const {activeTab}=useTabBarContext()
   // useEffect(() => {
   //   // Push a new state into the history stack when the tab changes
   //   if (activeTab !== "home") {
@@ -46,7 +45,7 @@ function PageWrapper() {
   return (
     <>
       <MainContainer>{tabComponents[activeTab]}</MainContainer>
-      <BottomBar activeTab={activeTab} setActiveTab={setActiveTab} />
+      <BottomBar />
     </>
   );
 }

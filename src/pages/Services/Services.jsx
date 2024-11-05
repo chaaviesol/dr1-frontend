@@ -293,7 +293,7 @@ export default function Services() {
               </div>
             </div>
 
-            <button className="drone_red services_button" type="button">
+            <button onClick={()=>navigate("/careers")} className="drone_red services_button" type="button">
               Apply Now <i className="ri-arrow-right-up-line"></i>
             </button>
           </div>

@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./bottombar.module.css";
 import CustomerAvatar from "../Avatar/CustomerAvatar";
+import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 
-function BottomBar({ activeTab, setActiveTab }) {
+function BottomBar() {
+  const { activeTab, setActiveTab,handleUpdateActiveTab } = useTabBarContext();
   const updateActiveTab = (tab) => {
-    setActiveTab(tab);
+    handleUpdateActiveTab(tab);
   };
   return (
     <div className={styles.main}>

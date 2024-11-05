@@ -89,6 +89,7 @@ import Billing from "./pages/Mainadmin/Billing/Billing";
 import MyOrders from "./pages/Customer/MyOrders/MyOrders";
 import TrackOrder from "./pages/Customer/Mobile/TrackOrder/TrackOrder";
 import EditProfile from "./pages/Customer/Mobile/Profile/EditProfile";
+import Homeservices from "./components/HomeServices/Homeservices";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   // { path: "/", element: <HomePage /> },
@@ -164,7 +165,7 @@ export const publicRoutes = [
   { path: "/careers", element: <Careersform /> },
 
   { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
-  
+  { path: "/homeservice", element: <Homeservices/> }
  
 ];
 
