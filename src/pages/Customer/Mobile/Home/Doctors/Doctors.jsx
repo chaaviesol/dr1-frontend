@@ -202,6 +202,46 @@ function Doctors() {
           >
             Best doctor’s near you
           </h3>
+
+          <div className="mobiletopdoctor">
+            <div className="doctorcardfirst">
+              <img
+                src="/images/mobile/musthu/images/user.png"
+                alt="Dr. Brooklyn Simmons"
+                className="doctor-image"
+              />
+              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+              <p className="doctor-specialty">Dentist, Cosmetic</p>
+            </div>
+
+            <div className="doctorcardfirst">
+              <img
+                src="/images/mobile/musthu/images/user.png"
+                alt="Dr. Brooklyn Simmons"
+                className="doctor-image"
+              />
+              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+              <p className="doctor-specialty">Dentist, Cosmetic</p>
+            </div>
+            <div className="doctorcardfirst">
+              <img
+                src="/images/mobile/musthu/images/user.png"
+                alt="Dr. Brooklyn Simmons"
+                className="doctor-image"
+              />
+              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+              <p className="doctor-specialty">Dentist, Cosmetic</p>
+            </div>
+            <div className="doctorcardfirst">
+              <img
+                src="/images/mobile/musthu/images/user.png"
+                alt="Dr. Brooklyn Simmons"
+                className="doctor-image"
+              />
+              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
+              <p className="doctor-specialty">Dentist, Cosmetic</p>
+            </div>
+          </div>
         </div>
       </div>
       {isLoginModalOpen && (

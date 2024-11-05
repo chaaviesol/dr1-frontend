@@ -108,5 +108,22 @@ color: white;
 
 
 
+.mobiletopdoctor{
+    margin-top: 2vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+    width: 100%;
+    margin-top:20px;
+}
 
+.doctorcardfirst{
+    width:100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    
+}
 /*End Doctor Page */
