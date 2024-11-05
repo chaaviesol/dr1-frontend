@@ -185,7 +185,7 @@ export default function Careersform() {
             department: "",
             specialization: "",
           });
-          navigate("/services");
+          navigate("/");
         }, 3000);
       } else if (response.status === 400) {
         toast.error(response.data.message);

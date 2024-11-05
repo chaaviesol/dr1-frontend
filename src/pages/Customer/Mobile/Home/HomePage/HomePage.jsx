@@ -141,7 +141,7 @@ function HomePage() {
               <h4 style={{ marginTop: "15px" }}>Question & Answer</h4>
               <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
             </div>
-            <button>
+            <button onClick={()=>navigate("/secondopinion")}>
               Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
@@ -154,10 +154,10 @@ function HomePage() {
             <div className="featurescard1mobtitle">
               <h2 style={{ fontWeight: "400" }}>Medicine at</h2>
               <h2> Your Doorstep</h2>
-              <h4 style={{ marginTop: "15px" }}>Question & Answer</h4>
-              <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
+              <h4 style={{ marginTop: "15px" }}>Get your Medicines</h4>
+              <h4 style={{ marginTop: "2px" }}>Pharmacy</h4>
             </div>
-            <button>
+            <button onClick={()=>navigate("/pharmacyproducts")}>
               Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
@@ -171,10 +171,10 @@ function HomePage() {
             <div className="featurescard1mobtitle">
               <h2 style={{ fontWeight: "400" }}>Your Smile,</h2>
               <h2>Our Priority</h2>
-              <h4 style={{ marginTop: "15px" }}>Question & Answer</h4>
-              <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
+              <h4 style={{ marginTop: "15px" }}>Home Nurse, Technician &More</h4>
+              <h4 style={{ marginTop: "2px" }}>Home Services</h4>
             </div>
-            <button>
+            <button onClick={()=>navigate("/homeservice")}>
               Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
@@ -188,10 +188,10 @@ function HomePage() {
             <div className="featurescard1mobtitle">
               <h2 style={{ fontWeight: "400" }}>Opportunities Towards</h2>
               <h2>Your Dream</h2>
-              <h4 style={{ marginTop: "15px" }}>Question & Answer</h4>
-              <h4 style={{ marginTop: "2px" }}>Second Opinion</h4>
+              <h4 style={{ marginTop: "15px" }}>Doctor ,Home Nurse &More</h4>
+              <h4 style={{ marginTop: "2px" }}>Careers</h4>
             </div>
-            <button>
+            <button onClick={()=>navigate("/careers")}>
               Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
