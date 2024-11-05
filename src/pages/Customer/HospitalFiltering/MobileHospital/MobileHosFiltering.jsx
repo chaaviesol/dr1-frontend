@@ -22,6 +22,7 @@ export const MobileHosFiltering = () => {
     speciality: "",
     type: "",
     features: "",
+    focusArea: "",
   });
   const [notFound, setnotFound] = useState(false);
   const [hospitals, sethospitals] = useState([]);
@@ -71,7 +72,12 @@ export const MobileHosFiltering = () => {
         hospital.name
           .toLowerCase()
           .includes(filters.CheckingName.toLowerCase());
-      return typeMatch && speciality && nameMatch && features;
+      const focusArea =
+        filters?.focusArea?.length === 0 ||
+        filters?.focusArea?.some((area) => {
+          return hospital?.focusarea && hospital?.focusarea?.includes(area);
+        });
+      return typeMatch && speciality && nameMatch && features && focusArea;
     });
 
     if (hospitalsFilter.length > 0) {
@@ -96,39 +102,6 @@ export const MobileHosFiltering = () => {
   const handleDocNameSearch = (value) => {
     const query = value.toLowerCase();
     setFilters({ ...filters, CheckingName: query });
-    // if (hospitalsFilter?.length > 0) {
-    //     const filteredData = hospitalsFilter.filter((data) => {
-    //         const lowerCaseName = data?.name?.toLowerCase();
-    //         return lowerCaseName?.startsWith(query[0]) &&
-    //             lowerCaseName.includes(query);
-    //     });
-    //     if (filteredData?.length > 0) {
-    //         setnotFound(false)
-    //     } else {
-    //         if (!query) {
-    //             sethospitalsFilter(hospitals);
-    //         } else {
-    //             setnotFound(true)
-    //         }
-    //     }
-    //     sethospitalsFilter(filteredData);
-    // } else {
-    //     const filteredData = hospitals?.filter((data) => {
-    //         const lowerCaseName = data?.name?.toLowerCase();
-    //         return lowerCaseName?.startsWith(query[0]) &&
-    //             lowerCaseName?.includes(query);
-    //     });
-    //     if (filteredData?.length > 0) {
-    //         setnotFound(false)
-    //     } else {
-    //         if (!query) {
-    //             sethospitalsFilter(hospitals);
-    //         } else {
-    //             setnotFound(true)
-    //         }
-    //     }
-    //     sethospitalsFilter(filteredData);
-    // }
   };
   useEffect(() => {
     setloading(true);
@@ -202,11 +175,18 @@ export const MobileHosFiltering = () => {
   }, [filters]);
   useEffect(() => {
     // Set initial filters based on location state
-    if (location?.state?.type || location?.state?.speciality) {
+    if (
+      location?.state?.type ||
+      location?.state?.speciality ||
+      location?.state?.focusArea
+    ) {
       setFilters({
         type: location?.state?.type,
         speciality: location?.state?.speciality
           ? [location?.state?.speciality]
+          : [],
+        focusArea: location?.state?.focusArea
+          ? [location?.state?.focusArea]
           : [],
         features: [], // You might want to set other properties here too
       });
@@ -230,7 +210,7 @@ export const MobileHosFiltering = () => {
               value={filters.type ?? ""}
               id=""
             >
-              <option selected disabled>
+              <option value="" disabled selected>
                 Type
               </option>
               {type?.map((name) => (
@@ -263,7 +243,8 @@ export const MobileHosFiltering = () => {
               value={"features"}
               disabled={
                 !filters.type ||
-                (!hospitalsFilter.length > 0 && !filters.features.length > 0) ||
+                (!hospitalsFilter.length > 0 &&
+                  !filters.speciality.length > 0) ||
                 filters.type === "Others"
                   ? true
                   : false
@@ -289,7 +270,7 @@ export const MobileHosFiltering = () => {
             hospitalsFilter?.length > 0 && !notFound ? (
               hospitalsFilter?.map((details, index) => (
                 <HospitalCard
-                screen="/mobilehospitalprofile"
+                  screen="/mobilehospitalprofile"
                   key={index}
                   data={{ details: details, hospital: true }}
                 />
@@ -367,7 +348,9 @@ export const MobileHosFiltering = () => {
                 </FormGroup>
               </div>
               <div className="MobileLabAlignModalSecBtnApply">
-                <button onClick={()=>setOpenModals({speciality:false})}>Apply</button>
+                <button onClick={() => setOpenModals({ speciality: false })}>
+                  Apply
+                </button>
               </div>
             </div>
           </>

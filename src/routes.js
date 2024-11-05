@@ -119,7 +119,7 @@ export const publicRoutes = [
   { path: "/about", element: <About /> },
   { path: "/pharmacydetails", element: <Pharmacydetails /> },
 
-  { path: "/hosPitalfilter", element: <Hosconnect /> },
+  { path: "/hospitalfilter", element: <Hosconnect /> },
   {
     path: "/hospitaladminnotification",
     element: <Hospitaladminnotification />,

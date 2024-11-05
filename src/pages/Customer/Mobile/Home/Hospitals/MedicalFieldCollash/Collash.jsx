@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import Item from "./items/Item";
-import { SearchDocContext } from "../../../../../../contexts/Doctor/SearchDoctorProvider";
 import { useNavigate } from "react-router-dom";
 const img1 = "./images/mobile/field4.jpg";
 const img2 = "./images/mobile/field2.jpg";
@@ -9,9 +8,7 @@ const img3 = "./images/mobile/field3.jpg";
 const img4 = "./images/mobile/field1.jpg";
 
 function Collash() {
-  const {
-    setFilters,
-  } = useContext(SearchDocContext);
+
 
   const navigate = useNavigate();
 

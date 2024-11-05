@@ -46,7 +46,7 @@ export const HospitalFiltering = () => {
       sethospitalsFilter([]);
     }
   };
-  console.log("hospitalsFilter>>>>>", hospitalsFilter);
+  // console.log("hospitalsFilter>>>>>", hospitalsFilter);
   useEffect(() => {
     if (hospitals.length === 0) {
       return;
@@ -72,7 +72,7 @@ export const HospitalFiltering = () => {
           .toLowerCase()
           .includes(filters.CheckingName.toLowerCase());
       const focusArea =
-        filters?.focusArea.length === 0 ||
+        filters?.focusArea?.length === 0 ||
         filters?.focusArea?.some((area) => {
           return hospital?.focusarea && hospital?.focusarea?.includes(area);
         });
@@ -112,7 +112,7 @@ export const HospitalFiltering = () => {
       setloading(false);
     });
   };
-  console.log("hospitals>>>", hospitals);
+  // console.log("hospitals>>>", hospitals);
   useEffect(() => {
     if (filters?.type === "Allopathy") {
       setspeciality(speacializationNames);
@@ -299,7 +299,7 @@ export const HospitalFiltering = () => {
                 )
               ) : (
                 <>
-                  {hospitals.length > 0 && !notFound ? (
+                  {hospitals?.length > 0 && !notFound ? (
                     hospitals.map((details, index) => (
                       <HospitalCard
                         key={index}
