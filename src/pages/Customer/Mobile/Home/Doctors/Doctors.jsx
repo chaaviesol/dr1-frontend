@@ -2,14 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import "./doctormob.css";
 import { SearchDocContext } from "../../../../../contexts/Doctor/SearchDoctorProvider";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../../../../../contexts/Contexts";
 
 function Doctors() {
-  const {
-    setFilters,
-    setFilteredDoctors,
-    setDocsBySearch,
-    setAllDocsBySearch,
-  } = useContext(SearchDocContext);
+  const { Categories } = useContext(MyContext);
+  const { setFilters, setDocsBySearch, setAllDocsBySearch } =
+    useContext(SearchDocContext);
   const navigate = useNavigate();
   useEffect(() => {
     setFilters({
@@ -23,51 +21,18 @@ function Doctors() {
     setDocsBySearch([]);
   }, []);
 
-  const handleSelectSpecialization = (type, specialization) => {
+  const handleSelectSpecialization = (type, speciality) => {
+    const lowerCasedSpecialization = speciality.toLowerCase();
     setFilters({
       type: type,
-      specializations: [specialization],
+      specializations: [lowerCasedSpecialization],
       gender: "",
       experience: 0,
       name: "",
     });
     navigate("/searchdoctor", { state: "hi" });
   };
-  const specialties = [
-    "Allergy and Immunology",
-    "Anesthesiology",
-    "Cardiology",
-    "Critical Care Medicine",
-    "Dermatology",
-    "Emergency Medicine",
-    "Endocrinology",
-    "Family Medicine",
-    "Gastroenterology",
-    "Geriatrics",
-    "Hematology",
-    "Infectious Disease",
-    "Internal Medicine",
-    "Medical Genetics",
-    "Nephrology",
-    "Neurology",
-    "Obstetrics and Gynecology",
-    "Oncology",
-    "Ophthalmology",
-    "Orthopedics",
-    "Otolaryngology (ENT)",
-    "Pathology",
-    "Pediatrics",
-    "Physical Medicine and Rehabilitation",
-    "Psychiatry",
-    "Pulmonology",
-    "Radiology",
-    "Rheumatology",
-    "Sports Medicine",
-    "Surgery",
-    "Thoracic Surgery",
-    "Urology",
-    "Vascular Surgery",
-  ];
+  const specialities = Categories?.allopathySpecs;
 
   const [visibleCount, setVisibleCount] = useState(12);
 
@@ -112,20 +77,29 @@ function Doctors() {
 
             <div
               className="healthconcernscard flex"
-              onClick={() => handleSelectSpecialization("Allopathy","dermatology")}
+              onClick={() =>
+                handleSelectSpecialization("Allopathy", "dermatology")
+              }
             >
               <img src="/images/1 (6).jpg" alt="" />
               <h4>Acne, pimple or skin issues</h4>
             </div>
 
-            <div className="healthconcernscard flex"      
-             onClick={() => handleSelectSpecialization("Allopathy","general medicine")}
-             >
+            <div
+              className="healthconcernscard flex"
+              onClick={() =>
+                handleSelectSpecialization("Allopathy", "general medicine")
+              }
+            >
               <img src="/images/banner-web-01.png" alt="" />
               <h4>Cold, Cough or Fever</h4>
             </div>
 
-            <div className="healthconcernscard flex"              onClick={() => handleSelectSpecialization("Allopathy","psychiatry")}
+            <div
+              className="healthconcernscard flex"
+              onClick={() =>
+                handleSelectSpecialization("Allopathy", "psychiatry")
+              }
             >
               <img src="/images/1 (4).jpg" alt="" />
               <h4>Depression or Anxiety</h4>
@@ -149,14 +123,21 @@ function Doctors() {
 
           <section className="Specialtyitemslistsec">
             <div className="Specialtyitemslist flex">
-              {specialties.slice(0, visibleCount).map((specialty, index) => (
-                <button key={index}>
-                  {specialty} <i className="ri-arrow-right-s-line"></i>
-                </button>
-              ))}
+              {specialities &&
+                specialities.length > 0 &&
+                specialities.slice(0, visibleCount).map((speciality, index) => (
+                  <button
+                    key={index}
+                    onClick={() =>
+                      handleSelectSpecialization("Allopathy", speciality)
+                    }
+                  >
+                    {speciality} <i className="ri-arrow-right-s-line"></i>
+                  </button>
+                ))}
             </div>
 
-            {visibleCount < specialties.length && (
+            {visibleCount < specialities?.length && (
               <div className="Specialtyitemslistbtn flex">
                 <button
                   onClick={handleLoadMore}

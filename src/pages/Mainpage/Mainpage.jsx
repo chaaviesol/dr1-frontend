@@ -18,15 +18,8 @@ import ChatBotAfterLogin from "../../components/ChatBotAfterLogin/ChatBotAfterLo
 import { MyContext } from "../../contexts/Contexts";
 import { InnerLoader } from "../../components/Loader/InnerLoader";
 import useAuth from "../../hooks/useAuth";
-// import { Loader } from "../../components/Loader/Loader";
-// import { BASE_URL, port } from "../../config";
-
-// import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import SecondopinionBanner from "./SecondopinionBanner/SecondopinionBanner";
 export default function Mainpage() {
-  // const [latitude, setLatitude] = useState(null);
-  // const [longitude, setLongitude] = useState(null);
-  // const [error, setError] = useState(null);
   const { Categories } = useContext(MyContext);
 
   const navigate = useNavigate();
@@ -40,15 +33,11 @@ export default function Mainpage() {
     setAllDocsBySearch,
   } = useContext(SearchDocContext);
 
-  // const [loader, setLoader] = useState(false);
-
   const { auth } = useAuth();
   const speacializationNames = Categories?.allopathySpecs;
   const homeoDept = Categories?.homeopathySpecs;
   const ayurSpec = Categories?.ayurvedicSpecs;
   const types = Categories?.types;
-  const missingImg = "./images/mainImgForLandingpage.jpg";
-  // const Features = Categories?.hospitalFeatures
 
   useEffect(() => {
     AOS.init({
@@ -133,22 +122,6 @@ export default function Mainpage() {
       }
     }
   }, [selectTypes]);
-  // const renderHosFilteringBYSpeciality = (Value) => {
-  //   if (speacializationNames.includes(Value?.speciality)) {
-  //     navigate("/hospitalfilter", {
-  //       state: { speciality: Value?.speciality, type: "Allopathy" },
-  //     });
-  //   } else if (ayurSpec.includes(Value?.speciality)) {
-  //     navigate("/hospitalfilter", {
-  //       state: { speciality: Value?.speciality, type: "Ayurvedic" },
-  //     });
-  //   } else if (homeoDept.includes(Value?.speciality)) {
-  //     navigate("/hospitalfilter", {
-  //       state: { speciality: Value?.speciality, type: "Homeopathy" },
-  //     });
-  //   }
-  // };
-  // console.log("SpecialisationBatch>>>>>", SpecialisationBatch);
 
   // Measure page render time
   useEffect(() => {
@@ -165,40 +138,6 @@ export default function Mainpage() {
       window.removeEventListener("load", handleLoad);
     };
   }, []);
-
-  // Get geolocation
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         setLatitude(position.coords.latitude);
-  //         setLongitude(position.coords.longitude);
-  //         setError(null);
-  //       },
-  //       (err) => {
-  //         setError(err.message);
-  //       }
-  //     );
-  //   } else {
-  //     setError("Geolocation is not supported by this browser.");
-  //   }
-  // }, []);
-
-  // Fetch address from coordinates
-  // useEffect(() => {
-  //   if (latitude !== null && longitude !== null) {
-  //     axios
-  //       .get(
-  //         `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-  //       )
-  //       .then((res) => {
-  //         console.log(res);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching address:", error);
-  //       });
-  //   }
-  // }, [latitude, longitude]);
 
   useEffect(() => {
     setFilters({
@@ -390,32 +329,6 @@ export default function Mainpage() {
               <h4 className="servicecardtitle4 servicecardtitle">Medicine</h4>
             </div>
           </div>
-
-          {/* <div className="hero_images wrapper">
-            <div class="track">
-              <div className="logo">
-                <img src="images/main (1).jpg" alt="" />
-              </div>
-              <div className="logo">
-                <img src="images/main (2).jpg" alt="" />
-              </div>
-              <div className="logo">
-                <img src="images/main (4).jpg" alt="" />
-              </div>
-              <div className="logo">
-                <img src="images/main (3).jpg" alt="" />
-              </div>
-              <div className="logo">
-                <img src="images/main (5).jpg" alt="" />
-              </div>
-              <div className="logo">
-                <img src="images/main (6).jpg" alt="" />
-              </div>
-              <div className="logo">
-                <img src="images/ph1 (1).jpg" alt="" />
-              </div>
-            </div>
-          </div> */}
 
           <div className=" container-second Specialties">
             <div className="second-main-head second-main-head2 flex">

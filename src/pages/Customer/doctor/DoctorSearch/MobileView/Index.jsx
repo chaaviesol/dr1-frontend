@@ -22,7 +22,7 @@ import { Add, Remove } from "@mui/icons-material";
 import { MyContext } from "../../../../../contexts/Contexts";
 
 const SearchDocMobileScreen = () => {
-const { Categories } = useContext(MyContext);
+  const { Categories } = useContext(MyContext);
   const speacializationNames = Categories?.allopathySpecs;
   const homeoDept = Categories?.homeopathySpecs;
   const ayurSpec = Categories?.ayurvedicSpecs;
@@ -52,6 +52,12 @@ const { Categories } = useContext(MyContext);
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    if (filters.specializations.length > 0) {
+
+    }
+  }, [filters]);
+
   const handleTempSelectedSpecs = (event) => {
     const { checked, name } = event.target;
     const specialization = name.toLowerCase();
@@ -74,7 +80,7 @@ const { Categories } = useContext(MyContext);
   //return true or false..manage checkbox is checked or not
   const handleCheckBoxChecked = (specialization) => {
     const lowerCasedSpec = specialization.toLowerCase();
-    if (selectedSpecs.includes(lowerCasedSpec)) {
+    if (selectedSpecs.includes(lowerCasedSpec)|| filters.specializations.includes(lowerCasedSpec)) {
       return true;
     }
     return false;
@@ -211,7 +217,9 @@ const { Categories } = useContext(MyContext);
                   onChange={handleExpChange}
                   min={0}
                   max={50}
-                  valueLabelFormat={(value) => `${value} year${value !== 1 ? 's' : ''}`}
+                  valueLabelFormat={(value) =>
+                    `${value} year${value !== 1 ? "s" : ""}`
+                  }
                 />
                 <IconButton onClick={() => handleExpChangeBtn("add")}>
                   <Add />
