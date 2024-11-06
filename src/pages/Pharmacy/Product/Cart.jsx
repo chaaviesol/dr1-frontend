@@ -41,13 +41,14 @@ function Cart() {
   const totalPrice = () => {
     if (cartItems && cartItems.length > 0) {
       const totalMRP = cartItems.reduce((accumulator, product) => {
-        return (accumulator + product.mrp) * product.quantity;
+        return accumulator + (product.mrp * product.quantity);
       }, 0);
       return totalMRP;
     } else {
       return 0;
     }
   };
+  
 
   const placeOrder = async (address) => {
     const payload = {
