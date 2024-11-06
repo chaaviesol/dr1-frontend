@@ -4,10 +4,22 @@ import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
 import { useLocation } from "react-router-dom";
 
 function TrackOrder() {
-  const [s]=useState([1,2,3,4,5])
+  const [progressSteps] = useState([
+    "Confirmed",
+    "Packed",
+    "In Transist",
+    "Delivered",
+  ]);
   const location = useLocation();
-  const order = location.state
-
+  const order = location.state;
+  console.log(order);
+  const isStepComplete = (step) => {
+    const statuses = ["Placed", "Out for delivery", "Delivered"];
+    return (
+      statuses.includes(order.so_status) &&
+      step <= statuses.indexOf(order.so_status) + 1
+    );
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -46,29 +58,23 @@ function TrackOrder() {
           <span className={styles.orderid}>Order #{order.so_number}</span>
           <div className={styles.tracks}>
             <div className={styles.listcardprogress}>
-              {s.map((progress) => (
+              {progressSteps.map((progress, index) => (
                 <div key={progress} className={styles.progresscard}>
                   <div
                     style={{ display: "flex", flexDirection: "column" }}
                     className={` ${
-                      order.so_status === "Placed" ||
-                      order.so_status === "Out for delivery" ||
-                      order.so_status === "Delivered"
+                      isStepComplete(index + 1)
                         ? "progresscardmark"
                         : "progresscardmarknotfilled"
                     }`}
                   >
-                    {order.so_status === "Placed" ||
-                    order.so_status === "Out for delivery" ||
-                    order.so_status === "Delivered" ? (
+                    {isStepComplete(index + 1) ? (
                       <i className="ri-check-line "></i>
                     ) : null}
-                    {progress !== 5 && (
+                    {index + 1 !== 4 && (
                       <div
                         className={`${
-                          order.so_status === "Placed" ||
-                          order.so_status === "Out for delivery" ||
-                          order.so_status === "Delivered"
+                          isStepComplete(progress)
                             ? styles.progressfilled
                             : styles.progressnotfilled
                         }`}
@@ -77,7 +83,7 @@ function TrackOrder() {
                   </div>
 
                   <div className={styles.progresscarddate}>
-                    <h2>Order Confirmed</h2>
+                    <h2> Order is {progress}</h2>
                     <h4>{formatDate(order.created_date)}</h4>
                   </div>
                 </div>
@@ -89,13 +95,20 @@ function TrackOrder() {
       <div className={styles.divider}></div>
       <div className={`${styles.productsection} mobilescreen-container`}>
         <span>Order details</span>
-        <div className={styles.product}>
-          <div className={styles.productimgcontainer}>
-            <img src="" alt="" />
-          </div>
-          <div className={styles.productname}>
-            Hair Fall Rescue <br /> Shampoo
-          </div>
+        <div>
+
+        {order.sales_list &&
+          order.sales_list.length > 0 &&
+          order.sales_list.map((product, productIndex) => (
+            <div className={styles.product} key={productIndex}>
+              <div className={styles.productimgcontainer}>
+                <img src={product?.generic_prodid?.images?.image1} alt="" />
+              </div>
+              <div className={styles.productname}>
+                {product?.generic_prodid?.name}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
       <div className="mobilescreen-container">
@@ -104,22 +117,20 @@ function TrackOrder() {
             <span>List price </span> <span>3000</span>
           </div>
           <div className={styles.listprice}>
-            <span>List price </span> <span>3000</span>
+            <span>Selling price </span> <span>3000</span>
           </div>
           <div className={styles.listprice}>
-            <span>List price </span> <span>3000</span>
+            <span>Delivery charge </span> <span>60</span>
           </div>
           <div className={styles.pricingdivider}></div>
           <div className={styles.totalprice}>
-            <span>Total amount </span> <span>3000</span>
+            <span>Total amount </span> <span>{order?.total_amount}</span>
           </div>
         </div>
 
         <div className={styles.address}>
-          <span style={{ marginBottom: "10px" }}>
-            Address <br />
-          </span>
-          Nadakkavu, Kottaram Cross Road
+          <span>Address</span>
+          <span>{order?.delivery_address}</span>
         </div>
       </div>
     </div>

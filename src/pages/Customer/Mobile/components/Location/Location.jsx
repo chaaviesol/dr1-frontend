@@ -1,8 +1,10 @@
 import { MyLocation } from "@mui/icons-material";
 import React from "react";
 import styles from "./styles.module.css";
+import { useLocationContext } from "../../../../../contexts/LocationContext";
 
 function Location() {
+  const {location}=useLocationContext()
   return (
     <>
       <div className={styles.mainContainer}>
@@ -11,7 +13,7 @@ function Location() {
         </div>
         <div className={styles.location}>
           <span>Select Your Location</span>
-          <span>Kozhikode</span>
+          <span>{location?.city}</span>
         </div>
       </div>
     </>

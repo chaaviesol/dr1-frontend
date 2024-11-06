@@ -6,14 +6,12 @@ import reportWebVitals from "./reportWebVitals";
 import Contexts from "./contexts/Contexts";
 import SearchDoctorProvider from "./contexts/Doctor/SearchDoctorProvider";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AuthProvider from "./contexts/Auth/AuthProvider";
 import TabBarProvider from "./contexts/MobileScreen/TabBarProvider";
 import PharmacyProvider from "./contexts/PharmacyContext";
+import  LocationProvider  from "./contexts/LocationContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -23,13 +21,15 @@ root.render(
       <GoogleOAuthProvider clientId="953927151453-fk1lv5f5gk7c72ll8npeekj0qi60430h.apps.googleusercontent.com">
         <React.StrictMode>
           <Contexts>
-            <SearchDoctorProvider>
-              <PharmacyProvider>
-                <TabBarProvider>
-                  <App />
-                </TabBarProvider>
-              </PharmacyProvider>
-            </SearchDoctorProvider>
+            <LocationProvider>
+              <SearchDoctorProvider>
+                <PharmacyProvider>
+                  <TabBarProvider>
+                    <App />
+                  </TabBarProvider>
+                </PharmacyProvider>
+              </SearchDoctorProvider>
+            </LocationProvider>
           </Contexts>
         </React.StrictMode>
       </GoogleOAuthProvider>

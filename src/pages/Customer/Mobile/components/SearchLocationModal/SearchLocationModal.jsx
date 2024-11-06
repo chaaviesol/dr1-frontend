@@ -1,17 +1,26 @@
 import React from "react";
 import "./searchlocationmodal.css";
 import { Modal } from "@mui/material";
+import { useLocationContext } from "../../../../../contexts/LocationContext";
 
-function SearchLocationModal({isOpen,setOpen}) {
+function SearchLocationModal({ isOpen, setOpen }) {
+  const { location, getCurrentLocation, fetchingLocationPending } =useLocationContext();
   return (
     <>
       <Modal open={isOpen} onClose={() => setOpen(false)}>
         <div className="setlocationmodal">
           <div className="searchmoblocation">
-            <input type="text" placeholder="Search Location" maxLength={40}></input>
+            <input
+              type="text"
+              placeholder="Search Location"
+              maxLength={40}
+            ></input>
             <i className="ri-search-2-line searchmoblocationi"></i>
           </div>
-          <button>
+          <button
+            onClick={getCurrentLocation}
+            disabled={fetchingLocationPending}
+          >
             <i className="ri-focus-3-line"></i> Auto Detect location
           </button>
 
