@@ -1,0 +1,39 @@
+/*error page */
+.errorpageui {
+  height: 100dvh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.errorpageui img {
+  width: 250px;
+}
+
+.errorpageui button {
+  background-color: black;
+  color: white;
+  padding: 10px 26px;
+  border-radius: 6px;
+  margin-top: 20px;
+}
+
+.errorpageui h4 {
+  color: #777777;
+  width: 300px;
+  margin-top: 4px;
+}
+
+.errorpageui h1 {
+  font-weight: 700;
+}
+.errorpageuibacktohome {
+  color: #3a65fd;
+  cursor: pointer;
+}
+.errorpageuibacktohome :hover{
+    text-decoration: underline;
+}
+
+/*End error page */

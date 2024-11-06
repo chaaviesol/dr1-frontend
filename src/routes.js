@@ -91,6 +91,7 @@ import TrackOrder from "./pages/Customer/Mobile/TrackOrder/TrackOrder";
 import EditProfile from "./pages/Customer/Mobile/Profile/EditProfile";
 import Homeservices from "./components/HomeServices/Homeservices";
 import Chatbot from "./pages/Customer/Mobile/Home/HomePage/ChatBot/Chatbot";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   // { path: "/", element: <HomePage /> },
@@ -107,11 +108,9 @@ export const publicRoutes = [
   { path: "/productdetails", element: <SingleProdDetails /> },
   { path: "/createcampaign", element: <CreateCampaign /> },
 
-
   { path: "/mobiledoctorprofile", element: <MobileDoctorProfile /> },
   { path: "/mobilehospitalprofile", element: <MobileHospitalProfile /> },
   { path: "/mobilelabprofile", element: <MobileLabProfile /> },
-
 
   { path: "/unauthorized", element: <Unauthorized /> },
 
@@ -166,8 +165,8 @@ export const publicRoutes = [
   { path: "/careers", element: <Careersform /> },
 
   { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
-  { path: "/homeservice", element: <Homeservices/> }
- 
+  { path: "/homeservice", element: <Homeservices /> },
+  { path: "*", element: <ErrorPage /> },
 ];
 
 export const doctorAdminRoutes = [
@@ -182,10 +181,9 @@ export const protectedCustomerRoutes = [
   { path: "/cart", element: <Cart /> },
   { path: "/myorders", element: <MyOrders /> },
   { path: "/edit-profile", element: <EditProfile /> }, //mobile screen only
-  { path: "/secondopinion", element: <SecondOpinion /> },//mobile screen only
-  { path: "/secondopinion2", element: <SecondOpinion2ndpage /> },//mobile screen only
-  { path: "/bot", element: <Chatbot /> },//mobile screen only
-
+  { path: "/secondopinion", element: <SecondOpinion /> }, //mobile screen only
+  { path: "/secondopinion2", element: <SecondOpinion2ndpage /> }, //mobile screen only
+  { path: "/bot", element: <Chatbot /> }, //mobile screen only
 ];
 export const hospitalAdminRoutes = [
   {
@@ -202,7 +200,7 @@ export const labAdminRoutes = [
   { path: "/labprofile", element: <LabProfileMainSec /> },
 ];
 export const superAdminRoutes = [
-{ path: "/mainadmin", element: <Mainadmin /> },
+  { path: "/mainadmin", element: <Mainadmin /> },
   { path: "/addadmin", element: <Addadmins /> },
   { path: "/adminlist", element: <Adminlist /> },
   { path: "/mainadmindoctordetails", element: <Mainadmindoctordetails /> },

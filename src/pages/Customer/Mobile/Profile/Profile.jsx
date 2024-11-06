@@ -191,10 +191,23 @@ const Profile = () => {
           </div>
           <div className="action-item" onClick={()=>handleNavigate("/mysecondopinions")}>
             <div className="action-icon-wrap">
-              <i className="ri-chat-quote-line"></i>
+              <i className="ri-settings-line"></i>
             </div>
             <div className="action-text-wrap">
               <span className="action-text">Expert opinions</span>
+              <img
+                src="/images/mobile/musthu/Icons/arrow right.png"
+                alt="arrow icon"
+                className="arrow-icon"
+              />
+            </div>
+          </div>
+          <div className="action-item" onClick={()=>handleNavigate("/myorders")}>
+            <div className="action-icon-wrap">
+              <i className="ri-shopping-cart-2-line"></i>
+            </div>
+            <div className="action-text-wrap">
+              <span className="action-text">My orders</span>
               <img
                 src="/images/mobile/musthu/Icons/arrow right.png"
                 alt="arrow icon"
