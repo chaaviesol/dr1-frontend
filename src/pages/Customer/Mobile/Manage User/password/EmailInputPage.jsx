@@ -24,13 +24,14 @@ const EmailInputPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setLoader(true);
+   
     if (!form?.email) {
       setError("Email is required");
     } else {
       const emailid = form?.email;
 
       try {
+        setLoader(true);
         const response = await axios.post(`${BASE_URL}/user/userforgotpwd`, {
           emailid,
         });
@@ -82,7 +83,7 @@ const EmailInputPage = () => {
           className="email_input-field"
         />
         {error && <div className="email_error-message">{error}</div>}
-        <button type="submit" className="email_page_submit-button">
+        <button disabled={loader} type="submit" className="email_page_submit-button">
           Continue
         </button>
       </form>

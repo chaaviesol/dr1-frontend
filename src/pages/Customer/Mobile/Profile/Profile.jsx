@@ -27,7 +27,7 @@ const Profile = () => {
       subtitle: "Reset your password",
       iconClass: "ri-calendar-check-line",
       arrowClass: "ri-arrow-right-line",
-      link: "/appointments",
+      link: "/forgotpwd",
     },
     {
       id: 3,
