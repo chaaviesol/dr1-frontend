@@ -71,7 +71,7 @@ function Community() {
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
         <div className={styles.top}>
-          <div>
+          <div className={styles.topsearchbox}>
             <ClickToSearchBox placeholder="Search a query or blog" />
           </div>
           <div>

@@ -1,6 +1,7 @@
 .profile-container {
   background-color: #f3f3f8;
-  max-width: 360px;
+  /* max-width: 360px; */
+  height: 100dvh;
   margin: 0 auto;
   padding: 20px;
 }

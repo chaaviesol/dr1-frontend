@@ -24,7 +24,14 @@
 .images {
   margin-top: 1rem;
   height: 300px;
-  border: 1px solid blue;
+  display: flex;
+  overflow: auto;
+  /* border: 1px solid blue; */
+}
+.images img{
+object-fit: contain;
+height: 100%;
+width: 100%;
 }
 
 .download button {
@@ -46,6 +53,6 @@
 }
 
 .remarkdata {
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-weight: 400;
 }

@@ -161,12 +161,12 @@ function MyQueries() {
                             </div>
 
                             {/* {answer} */}
-                            {query.doctor_remarks.length - 1 ===
+                            {/* {query.doctor_remarks.length - 1 ===
                               answerIndex && (
                               <button className="loadmoreanswers">
                                 More Answers
                               </button>
-                            )}
+                            )} */}
                           </div>
                         )
                     )}

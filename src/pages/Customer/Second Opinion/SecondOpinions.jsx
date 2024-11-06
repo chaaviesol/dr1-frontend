@@ -7,7 +7,7 @@ import { BASE_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BackButtonWithTitle from "../../../components/BackButtonWithTitle";
 
 function SecondOpinions() {
@@ -28,15 +28,6 @@ function SecondOpinions() {
     queryFn: fetchCustomerSecondOpinions,
     enabled: !!userId && userType === "customer",
   });
-
-  const toggleAnswers = (id) => {
-    // setShowAnswers(!showAnswers);
-    // setCustomerQueryData((prevItems) =>
-    //   prevItems.map((item) =>
-    //     item.id === id ? { ...item, isShowAnswers: !item.isShowAnswers } : item
-    //   )
-    // );
-  };
 
   const handleNavigate = (id) => {
     navigate("/mysecondopinions/detailed", {

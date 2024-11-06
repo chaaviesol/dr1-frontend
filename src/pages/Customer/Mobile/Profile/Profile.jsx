@@ -48,19 +48,13 @@ const Profile = () => {
     navigate("/edit-profile");
   };
 
+  const handleNavigate = (link) => {
+    navigate(link);
+  };
+
   if (!userId || !userType || userType !== "customer") {
     return (
-      <div
-        className="profilePageNew"
-        style={
-          {
-            // height: "100dvh",
-            // display: "flex",
-            // justifyContent: "center",
-            // alignItems: "center",
-          }
-        }
-      >
+      <div className="profilePageNew">
         {signInModalOpen && (
           <LoginModal show={signInModalOpen} setShow={setSignInModalOpen} />
         )}
@@ -89,7 +83,7 @@ const Profile = () => {
           height: "50px",
         }}
       >
-        User Profile
+         Profile
       </div>
       <div className="profile-container">
         <div className="profile-card">
@@ -179,12 +173,28 @@ const Profile = () => {
               />
             </div>
           </div>
-          <div className="action-item">
+          <div
+            className="action-item"
+            onClick={() => handleNavigate("/myqueries")}
+          >
             <div className="action-icon-wrap">
               <i className="ri-chat-quote-line"></i>
             </div>
             <div className="action-text-wrap">
               <span className="action-text">My queries</span>
+              <img
+                src="/images/mobile/musthu/Icons/arrow right.png"
+                alt="arrow icon"
+                className="arrow-icon"
+              />
+            </div>
+          </div>
+          <div className="action-item" onClick={()=>handleNavigate("/mysecondopinions")}>
+            <div className="action-icon-wrap">
+              <i className="ri-chat-quote-line"></i>
+            </div>
+            <div className="action-text-wrap">
+              <span className="action-text">Expert opinions</span>
               <img
                 src="/images/mobile/musthu/Icons/arrow right.png"
                 alt="arrow icon"

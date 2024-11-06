@@ -6,8 +6,8 @@
   height: 50px;
 }
 
-.top div:first-of-type {
-  width: 90%;
+.topsearchbox {
+  width: 83%;
 }
 
 .top div:nth-of-type(2) {

@@ -289,7 +289,7 @@ function Pharmacy() {
             height: "50px",
           }}
         >
-          <div style={{width:"80%",height:"50px"}}>
+          <div style={{width:"83%",height:"50px"}}>
             <ClickToSearchBox placeholder="Search product" />
           </div>
           <div style={{ height: "50px", width: "50px" }} onClick={() => navigate("/cart")}>
