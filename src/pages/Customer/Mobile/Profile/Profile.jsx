@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Profile.css";
 import useAuth from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import NavItem from "./Navitem";
 import { BASE_URL } from "../../../../config";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
@@ -9,10 +10,43 @@ import { LoginModal } from "../../../../components/LoginModal/LoginModal";
 import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvider";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const navItems = [
+    {
+      id: 1,
+      title: "My Queries",
+      subtitle: "Queries, Answers",
+      iconClass: "ri-phone-fill",
+      arrowClass: "ri-arrow-right-line",
+      link: "/myqueries",
+    },
+    {
+      id: 2,
+      title: "Change Password",
+      subtitle: "Reset your password",
+      iconClass: "ri-calendar-check-line",
+      arrowClass: "ri-arrow-right-line",
+      link: "/appointments",
+    },
+    {
+      id: 3,
+      title: "Help",
+      subtitle: "Doctor one helpline",
+      iconClass: "ri-user-fill",
+      arrowClass: "ri-arrow-right-line",
+      link: "/profile",
+    },
+  ];
+
+  const handleClick = (link) => {
+    navigate(link);
+  };
+
+  //////////////////////old belowww/////////////////////
+
   const [signInModalOpen, setSignInModalOpen] = useState(false);
   const { setActiveTab } = useTabBarContext();
-
-  const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
 
   const { auth, authLogout } = useAuth();
@@ -44,7 +78,7 @@ const Profile = () => {
   };
 
   const goToEditProfile = () => {
-    setActiveTab("profile"); // Ensure activeTab stays as "profile"
+    setActiveTab("profile");
     navigate("/edit-profile");
   };
 
@@ -74,168 +108,93 @@ const Profile = () => {
     );
   }
   return (
-    <div style={{ backgroundColor: "#f3f3f8" }} className="avoidbottombar">
+    <div>
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "50px",
+          textAlign: "center",
         }}
+        className="container"
       >
-         Profile
+        <h3 className="mobsechead" style={{ margin: "12px 0px 12px 0px" }}>
+          User Profile
+        </h3>
       </div>
-      <div className="profile-container">
-        <div className="profile-card">
-          <img
-            className="profile-img"
-            src={userProfile?.image || "/images/avatarmale.png"}
-            alt="Profile"
-          />
-          <h2>{userProfile?.name}</h2>
-          <div className="info">
-            <div className="info-row">
-              <div className="info-item male-icon-wrap">
-                <img
-                  src="/images/mobile/musthu/Icons/man-head 1.png"
-                  alt="man head"
-                  className="male-icon"
-                />
-                <span>{userProfile?.gender}</span>
-              </div>
-              <div className="info-item age-icon-wrap">
-                <img
-                  src="/images/mobile/musthu/Icons/age.png"
-                  alt="age icon"
-                  className="age-icon"
-                />
-                <span className="info-text">{userProfile?.ageGroup} Years</span>
-              </div>
-            </div>
-            <div className="info-item">
-              <img
-                src="/images/mobile/musthu/Icons/phone-fill.png"
-                alt="phone icon"
-                className="phone-icon"
-              />
-              <span className="info-text">+91 {userProfile?.phone_no}</span>
-            </div>
-            <div className="info-item">
-              <img
-                src="/images/mobile/musthu/Icons/mail-fill 1.png"
-                alt="email icon"
-                className="email-icon"
-              />
-              <span className="info-text">{userProfile?.email}</span>
-            </div>
-            <div className="info-row">
-              <div className="info-item id-icon">
-                <span>PIN CODE</span>
-              </div>
-              <div className="profile-pincode info-item">
-                <span>{userProfile?.pincode}</span>
-              </div>
+
+      <div className="container mob_profile_section">
+        <div className="mob_top_section flex">
+          <div className="mob_top_section_left">
+            <img
+              src={userProfile?.image || "/images/avatarmale.png"}
+              alt="User profile"
+            />
+          </div>
+          <div className="mob_top_section_right">
+            <h2>{userProfile?.name}</h2>
+            <div>
+              <span>{userProfile?.ageGroup}</span>{" "}
+              <span>/ {userProfile?.gender}</span>
             </div>
           </div>
         </div>
-        <div className="actions">
-          <div className="action-item">
-            <div className="action-icon-wrap">
-              <img
-                src="/images/mobile/musthu/Icons/user-pen.png"
-                alt="user icon"
-                className="action-icon edit-icon"
-              />
-            </div>
-            <div className="action-text-wrap" onClick={goToEditProfile}>
-              <span className="action-text">Edit Profile</span>
-              <img
-                src="/images/mobile/musthu/Icons/arrow right.png"
-                alt="arrow icon"
-                className="arrow-icon"
-              />
-            </div>
-          </div>
-          <div className="action-item">
-            <div className="action-icon-wrap">
-              <img
-                src="/images/mobile/musthu/Icons/productivity.png"
-                alt="settings icon"
-                className="action-icon settings-icon"
-              />
-            </div>
-            <div className="action-text-wrap">
-              <span className="action-text">Settings</span>
-              <img
-                src="/images/mobile/musthu/Icons/arrow right.png"
-                alt="arrow icon"
-                className="arrow-icon"
-              />
-            </div>
-          </div>
-          <div
-            className="action-item"
-            onClick={() => handleNavigate("/myqueries")}
+
+        <div
+          className="mob-profile-details"
+          style={{
+            marginBottom: "20px",
+            marginLeft: "20px",
+          }}
+        >
+          <h4>
+            <i className="ri-phone-fill"></i> +91 {userProfile?.phone_no}
+          </h4>
+          <h4>
+            <i class="ri-mail-fill"></i> {userProfile?.email}
+          </h4>
+          <h4>
+            <i class="ri-map-pin-fill"></i> {userProfile?.pincode}
+          </h4>
+        </div>
+
+        <button onClick={goToEditProfile}>Edit Profile</button>
+
+        <div className="flex mob_profile_section_btns">
+          <button
+            onClick={() => handleNavigate("/myorders")}
+            style={{ color: "#7E83FF", backgroundColor: "#D6D8FF" }}
           >
-            <div className="action-icon-wrap">
-              <i className="ri-chat-quote-line"></i>
-            </div>
-            <div className="action-text-wrap">
-              <span className="action-text">My queries</span>
-              <img
-                src="/images/mobile/musthu/Icons/arrow right.png"
-                alt="arrow icon"
-                className="arrow-icon"
-              />
-            </div>
-          </div>
-          <div className="action-item" onClick={()=>handleNavigate("/mysecondopinions")}>
-            <div className="action-icon-wrap">
-              <i className="ri-settings-line"></i>
-            </div>
-            <div className="action-text-wrap">
-              <span className="action-text">Expert opinions</span>
-              <img
-                src="/images/mobile/musthu/Icons/arrow right.png"
-                alt="arrow icon"
-                className="arrow-icon"
-              />
-            </div>
-          </div>
-          <div className="action-item" onClick={()=>handleNavigate("/myorders")}>
-            <div className="action-icon-wrap">
-              <i className="ri-shopping-cart-2-line"></i>
-            </div>
-            <div className="action-text-wrap">
-              <span className="action-text">My orders</span>
-              <img
-                src="/images/mobile/musthu/Icons/arrow right.png"
-                alt="arrow icon"
-                className="arrow-icon"
-              />
-            </div>
-          </div>
-          <div className="action-item">
-            <div className="action-icon-wrap">
-              <i class="ri-shut-down-line" style={{ color: "red" }}></i>
-              {/* <img src="/images/mobile/musthu/Icons/power.png" alt="power icon" className='action-icon logout-icon' /> */}
-            </div>
-            <div className="action-text-wrap">
-              <span
-                onClick={handleLogout}
-                className="action-text"
-                style={{ color: "red" }}
-              >
-                Log out
-              </span>
-              <img
-                src="/images/mobile/musthu/Icons/arrow right.png"
-                alt="arrow icon"
-                className="arrow-icon"
-              />
-            </div>
-          </div>
+            <i className="ri-phone-fill"></i> My Orders
+          </button>
+          <button
+            onClick={() => handleNavigate("/mysecondopinions")}
+            style={{ color: "#0D9554", backgroundColor: "#C4E3C5" }}
+          >
+            <i className="ri-phone-fill"></i> Second Opinion
+          </button>
         </div>
+
+        <div className="flex mob-profile-navs">
+          {navItems.map((item) => (
+            <NavItem
+              key={item.id}
+              title={item.title}
+              subtitle={item.subtitle}
+              iconClass={item.iconClass}
+              arrowClass={item.arrowClass}
+              onClick={() => handleClick(item.link)}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={handleLogout}
+          style={{
+            backgroundColor: "white",
+            color: "#E63333",
+            border: "1px solid #E63333",
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

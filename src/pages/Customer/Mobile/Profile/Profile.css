@@ -172,3 +172,91 @@
   width: 7.78px;
   height: 12.73px;
 }
+
+
+/* profile section */
+.mob_top_section{
+  align-items: center;
+  gap:20px;
+  margin:20px 0px;
+}
+.mob_top_section_left img{
+  height:80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius:50%;
+}
+.mob_top_section_right h2{
+  font-weight: 700;
+  font-size:18px;
+}
+.mob_top_section_right span{
+  color: #0D9554;
+  font-size:13px;
+}
+
+
+
+.mob_profile_section button{
+  background-color: #3A65FD;
+  height: 50px;
+  width:100%;
+  border-radius: 50px;
+  color: white;
+}
+
+.mob_profile_section_btns{
+  margin-top: 10px;
+  gap: 10px;
+}
+
+.mob-profile-nav{
+  align-items: center;
+  justify-content:space-between;
+}
+
+.mob-profile-nav-icon{
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  color:#6688FE;
+  background-color:#F2F5FF;
+  border-radius:50px;
+}
+
+.mob-profile-nav-icon-data{
+  align-items: center;
+  gap:10px;
+}
+
+.mob-profile-nav-icon2{
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  color: #6A6E83;
+}
+
+.mob-profile-navs{
+  flex-direction: column;
+  gap:20px;
+  margin:20px 0px;
+}
+
+.mob-profile-details h4{
+  margin-bottom:10px;
+  font-size:13px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);;
+  
+}
+
+.mob-profile-details h4 i{
+  font-size: 16px;
+  color: #6688FE;
+  margin-right:7px;
+}
+
+
+/*End Profile */
