@@ -94,15 +94,18 @@ function MyOrdersMobile() {
         <BackButtonWithTitle title="My orders" />
       </div>
       <div className={styles.orderlist}>
-        <div className={styles.divider}></div>
-        <div className={styles.container}>
+        
+        <div>
           {isOrdersLoading && <Loader />}
           {myOrder &&
             myOrder.map((data, index) => (
-              <div className={styles.order}>
+              <>
+              
+              <div className={styles.divider}></div>
+              <div className={`${styles.order} ${styles.container}`}>
                 <div className={styles.ordercardtop}>
                   <div className={styles.orderdetailes}>
-                    <span>Order #758748548</span>
+                    <span>Order # {data.so_number}</span>
                     <span>Expected on Thu 22 Aug</span>
                   </div>
 
@@ -114,16 +117,21 @@ function MyOrdersMobile() {
                   </button>
                 </div>
                 <div className={styles.productsection}>
-                  <div className={styles.product}>
-                    <div className={styles.productimgcontainer}>
-                      <img src="" alt="" />
-                    </div>
-                    <div className={styles.productname}>
-                      Hair Fall Rescue <br /> Shampoo
-                    </div>
-                  </div>
+                  {data.sales_list &&
+                    data.sales_list.length > 0 &&
+                    data.sales_list.map((products, productIndex) => (
+                      <div className={styles.product}>
+                        <div className={styles.productimgcontainer}>
+                          <img src={products?.generic_prodid?.images?.image1} alt="" />
+                        </div>
+                        <div className={styles.productname}>
+                          Hair Fall Rescue <br /> Shampoo
+                        </div>
+                      </div>
+                    ))}
                 </div>
               </div>
+              </>
             ))}
         </div>
         <div className={styles.divider}></div>

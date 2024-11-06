@@ -21,9 +21,10 @@
   flex-direction: column;
   gap: 5px;
 }
+
 .ordercardtop span:first-child {
   color: black;
-  font-weight: 300;
+  font-weight: 500;
 }
 .ordercardtop span:nth-of-type(2) {
   /* styles for the second span */
@@ -40,6 +41,9 @@
 }
 
 .productsection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .product {
@@ -58,7 +62,9 @@
 }
 
 .productimgcontainer img {
-  object-fit: cover;
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 .divider{
     height: 10px;
