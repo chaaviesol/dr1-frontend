@@ -90,6 +90,7 @@ import MyOrders from "./pages/Customer/MyOrders/MyOrders";
 import TrackOrder from "./pages/Customer/Mobile/TrackOrder/TrackOrder";
 import EditProfile from "./pages/Customer/Mobile/Profile/EditProfile";
 import Homeservices from "./components/HomeServices/Homeservices";
+import Chatbot from "./pages/Customer/Mobile/Home/HomePage/ChatBot/Chatbot";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   // { path: "/", element: <HomePage /> },
@@ -183,6 +184,7 @@ export const protectedCustomerRoutes = [
   { path: "/edit-profile", element: <EditProfile /> }, //mobile screen only
   { path: "/secondopinion", element: <SecondOpinion /> },//mobile screen only
   { path: "/secondopinion2", element: <SecondOpinion2ndpage /> },//mobile screen only
+  { path: "/bot", element: <Chatbot /> },//mobile screen only
 
 ];
 export const hospitalAdminRoutes = [

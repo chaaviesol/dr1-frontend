@@ -1,9 +1,19 @@
 import React from "react";
 import "./homepage.css";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../../../../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 function HomePage() {
   const navigate = useNavigate(); 
+  const { auth } = useAuth();
+  const OnchatBot=()=>{
+    if (auth.userId && auth.userType === "customer") {
+      navigate("/bot")
+    } else {
+      toast.info("Please login as a customer!");
+    }
+  }
   return (
     <div
       className="mobilehomemain"
@@ -116,7 +126,7 @@ function HomePage() {
             </h2>
           </div>
           <div className="botintro-right flex">
-            <button>
+            <button onClick={OnchatBot}>
               <span>Chat Now</span>
             </button>
           </div>
