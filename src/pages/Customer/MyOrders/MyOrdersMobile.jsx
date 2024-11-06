@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, Fragment } from "react";
 import styles from "./myordermobilestyles.module.css";
 import BackButtonWithTitle from "../../../components/BackButtonWithTitle";
 import { useNavigate } from "react-router-dom";
@@ -85,8 +85,8 @@ function MyOrdersMobile() {
 
     return `${weekday} ${day} ${month}`;
   };
-  const handleTrackOrder = () => {
-    navigate("/trackorder");
+  const handleTrackOrder = (order) => {
+    navigate("/trackorder", { state: order});
   };
   return (
     <div>
@@ -94,44 +94,45 @@ function MyOrdersMobile() {
         <BackButtonWithTitle title="My orders" />
       </div>
       <div className={styles.orderlist}>
-        
         <div>
           {isOrdersLoading && <Loader />}
           {myOrder &&
             myOrder.map((data, index) => (
-              <>
-              
-              <div className={styles.divider}></div>
-              <div className={`${styles.order} ${styles.container}`}>
-                <div className={styles.ordercardtop}>
-                  <div className={styles.orderdetailes}>
-                    <span>Order # {data.so_number}</span>
-                    <span>Expected on Thu 22 Aug</span>
-                  </div>
+              <Fragment key={index}>
+                <div className={styles.divider}></div>
+                <div className={`${styles.order} ${styles.container}`}>
+                  <div className={styles.ordercardtop}>
+                    <div className={styles.orderdetailes}>
+                      <span>Order # {data.so_number}</span>
+                      <span>Expected on Thu 22 Aug</span>
+                    </div>
 
-                  <button
-                    className={styles.trackbtn}
-                    onClick={handleTrackOrder}
-                  >
-                    Track order
-                  </button>
-                </div>
-                <div className={styles.productsection}>
-                  {data.sales_list &&
-                    data.sales_list.length > 0 &&
-                    data.sales_list.map((products, productIndex) => (
-                      <div className={styles.product}>
-                        <div className={styles.productimgcontainer}>
-                          <img src={products?.generic_prodid?.images?.image1} alt="" />
+                    <button
+                      className={styles.trackbtn}
+                      onClick={() => handleTrackOrder(data)}
+                    >
+                      Track order
+                    </button>
+                  </div>
+                  <div className={styles.productsection}>
+                    {data.sales_list &&
+                      data.sales_list.length > 0 &&
+                      data.sales_list.map((products, productIndex) => (
+                        <div key={productIndex} className={styles.product}>
+                          <div className={styles.productimgcontainer}>
+                            <img
+                              src={products?.generic_prodid?.images?.image1}
+                              alt=""
+                            />
+                          </div>
+                          <div className={styles.productname}>
+                            Hair Fall Rescue <br /> Shampoo
+                          </div>
                         </div>
-                        <div className={styles.productname}>
-                          Hair Fall Rescue <br /> Shampoo
-                        </div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
-              </>
+              </Fragment>
             ))}
         </div>
         <div className={styles.divider}></div>

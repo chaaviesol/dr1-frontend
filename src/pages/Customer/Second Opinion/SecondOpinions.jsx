@@ -20,7 +20,7 @@ function SecondOpinions() {
     const response = await axiosPrivate.get(
       `${BASE_URL}/secondop/getcussecondop`
     );
-    return response.data.data;
+    return response.data.data || [];
   };
 
   const { data: customerSecondOpinions, isLoading } = useQuery({

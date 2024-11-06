@@ -28,7 +28,7 @@ function MyQueries() {
 
   const fetchCustomerQueries = async () => {
     const response = await axiosPrivate.get(`${BASE_URL}/secondop/getcusquery`);
-    return response.data.data;
+    return response.data.data || [];
   };
 
   const {

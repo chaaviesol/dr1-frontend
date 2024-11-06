@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
 import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
+import { useLocation } from "react-router-dom";
 
 function TrackOrder() {
-  const [s] = useState([1, 2, 3, 4, 5]);
-  const data = {
-    so_status: "Delivered",
-  };
+  const [s]=useState([1,2,3,4,5])
+  const location = useLocation();
+  const order = location.state
+
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -42,32 +43,32 @@ function TrackOrder() {
 
       <div className="mobilescreen-container">
         <div className={styles.order}>
-          <span className={styles.orderid}>Order #758748548</span>
+          <span className={styles.orderid}>Order #{order.so_number}</span>
           <div className={styles.tracks}>
             <div className={styles.listcardprogress}>
               {s.map((progress) => (
-                <div className={styles.progresscard}>
+                <div key={progress} className={styles.progresscard}>
                   <div
                     style={{ display: "flex", flexDirection: "column" }}
                     className={` ${
-                      data.so_status === "Placed" ||
-                      data.so_status === "Out for delivery" ||
-                      data.so_status === "Delivered"
+                      order.so_status === "Placed" ||
+                      order.so_status === "Out for delivery" ||
+                      order.so_status === "Delivered"
                         ? "progresscardmark"
                         : "progresscardmarknotfilled"
                     }`}
                   >
-                    {data.so_status === "Placed" ||
-                    data.so_status === "Out for delivery" ||
-                    data.so_status === "Delivered" ? (
+                    {order.so_status === "Placed" ||
+                    order.so_status === "Out for delivery" ||
+                    order.so_status === "Delivered" ? (
                       <i className="ri-check-line "></i>
                     ) : null}
                     {progress !== 5 && (
                       <div
                         className={`${
-                          data.so_status === "Placed" ||
-                          data.so_status === "Out for delivery" ||
-                          data.so_status === "Delivered"
+                          order.so_status === "Placed" ||
+                          order.so_status === "Out for delivery" ||
+                          order.so_status === "Delivered"
                             ? styles.progressfilled
                             : styles.progressnotfilled
                         }`}
@@ -77,7 +78,7 @@ function TrackOrder() {
 
                   <div className={styles.progresscarddate}>
                     <h2>Order Confirmed</h2>
-                    <h4>{formatDate(data.created_date)}</h4>
+                    <h4>{formatDate(order.created_date)}</h4>
                   </div>
                 </div>
               ))}
