@@ -201,7 +201,12 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                     textAlign: "center",
                   }}
                 >
-                  {ele.categoryName}
+                  {/* {ele.categoryName} */}
+                  {ele?.categoryName
+                    ?.toLowerCase()
+                    .split(" ")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}
                 </span>
               </div>
             ))}

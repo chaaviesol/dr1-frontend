@@ -24,7 +24,7 @@ export default function SecondOpinion2ndpage() {
     contact_no: "",
     image: [],
     department: department,
-    remarks:""
+    remarks: "",
   });
 
   const handleFileChange = (e) => {
@@ -66,6 +66,9 @@ export default function SecondOpinion2ndpage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "contact_no" && value.length > 10) {
+      return;
+    }
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
@@ -190,7 +193,17 @@ export default function SecondOpinion2ndpage() {
     });
     navigate(-1);
   };
-  console.log(";;;;;;;;;;;;;;;;;;;;;;;;;", formData);
+  const handleKeyPress = (event) => {
+    if (
+      event?.key === "." ||
+      event?.key === "-" ||
+      event?.key === "e" ||
+      event?.key === "+" ||
+      event?.key === "E"
+    ) {
+      event.preventDefault();
+    }
+  };
   return (
     <div className="secop2">
       {loader ? <Loader /> : ""}
@@ -253,6 +266,7 @@ export default function SecondOpinion2ndpage() {
         <div className="secopinput">
           <h4>Contact Number</h4>
           <input
+            onKeyDown={handleKeyPress}
             type="number"
             name="contact_no"
             value={formData?.contact_no}

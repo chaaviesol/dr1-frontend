@@ -452,7 +452,16 @@ export default function Pharmacy() {
                       <img src={category?.image} alt="" />
                     </div>
                     <div className="webpharmacyshopproducttitle flex">
-                      <h4>{category?.category}</h4>
+                      <h4>
+                        {category?.category
+                          ?.toLowerCase()
+                          .split(" ")
+                          .map(
+                            (word) =>
+                              word.charAt(0).toUpperCase() + word.slice(1)
+                          )
+                          .join(" ")}
+                      </h4>
                     </div>
 
                     <button class="iconboxnew">

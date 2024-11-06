@@ -97,10 +97,6 @@ function Pharmacy() {
         const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
         const pincode = parseInt(response?.data?.userDetails?.pincode);
-        console.log({ contact_no });
-        // const data = {
-        //   user_id: 7,
-        // };
 
         setFormData({
           contact_no: contact_no,
@@ -182,7 +178,6 @@ function Pharmacy() {
       setLoader(true);
       const submissionData = new FormData();
       const orderType = "prescription";
-      const user_id = 7;
       const so_status = "Placed";
       submissionData.append("name", formData.name);
       submissionData.append("remarks", formData.remarks);
@@ -237,7 +232,7 @@ function Pharmacy() {
       setLoader(false);
     }
   };
-  console.log({ formData });
+
   const handleOpen = () => {
     console.log({ auth });
     if (auth.userId && auth.userType === "customer") {
@@ -289,10 +284,13 @@ function Pharmacy() {
             height: "50px",
           }}
         >
-          <div style={{width:"83%",height:"50px"}}>
+          <div style={{ width: "83%", height: "50px" }}>
             <ClickToSearchBox placeholder="Search product" />
           </div>
-          <div style={{ height: "50px", width: "50px" }} onClick={() => navigate("/cart")}>
+          <div
+            style={{ height: "50px", width: "50px" }}
+            onClick={() => navigate("/cart")}
+          >
             <CartIcon />{" "}
           </div>
         </div>
@@ -478,7 +476,7 @@ function Pharmacy() {
               marketplaceProducts.map((product, index) => (
                 <div
                   key={index}
-                  style={{ marginBottom: "10px",backgroundColor:"#f2f5ff" }}
+                  style={{ marginBottom: "10px", backgroundColor: "#f2f5ff" }}
                   onClick={() => handleNavigation(product.id)}
                   className="pharmacyshopproduct flex"
                 >
@@ -486,7 +484,15 @@ function Pharmacy() {
                     <img src={product?.image} alt="" />
                   </div>
                   <div className="pharmacyshopproducttitle flex">
-                    <h4>{product?.category}</h4>
+                    <h4>
+                      {product?.category
+                        ?.toLowerCase()
+                        .split(" ")
+                        .map(
+                          (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                        )
+                        .join(" ")}
+                    </h4>
                   </div>
                 </div>
               ))}

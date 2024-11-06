@@ -62,6 +62,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     const updateFormData = (newValue) => {
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -295,6 +296,17 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     } catch (error) {
       toast.error("An error occurred while submitting the details.");
       setLoader(false);
+    }
+  };
+  const handleKeyPress = (event) => {
+    if (
+      event?.key === "." ||
+      event?.key === "-" ||
+      event?.key === "e" ||
+      event?.key === "+" ||
+      event?.key === "E"
+    ) {
+      event.preventDefault();
     }
   };
 
@@ -536,6 +548,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                   <div className="secopforminpt">
                     <h4>Contact Number</h4>
                     <input
+                      onKeyDown={handleKeyPress}
                       type="number"
                       name="contact_no"
                       value={formData.contact_no}
