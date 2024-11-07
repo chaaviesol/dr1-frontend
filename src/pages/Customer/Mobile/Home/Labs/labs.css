@@ -66,10 +66,16 @@
 }
 .bestlabmobcardright h4 {
   color: #3a65fd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .bestlabmobcardright h3 {
   color: #0d9554;
   font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .bestlabmobcardrightstar {
