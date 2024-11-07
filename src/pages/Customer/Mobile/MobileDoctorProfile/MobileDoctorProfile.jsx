@@ -167,7 +167,7 @@ export default function MobileDoctorProfile() {
         i <= rating ? (
           <i
             className="ri-star-fill"
-            style={{ marginRight: "5px", fontSize: "20px", color: "#FA8D0D" }}
+            style={{ marginRight: "5px", fontSize: "20px", color: "#f59e0b" }}
           />
         ) : (
           <i

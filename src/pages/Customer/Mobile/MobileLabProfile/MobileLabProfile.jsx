@@ -31,9 +31,8 @@ export default function MobileLabProfile() {
     id: labDetails?.id,
   });
   useEffect(() => {
-   window.scrollTo({top:0,behavior:"smooth"})
-  }, [])
-  
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const updateViewCount = async (payload) => {
     const response = await axiosPrivate.post(
@@ -85,7 +84,7 @@ export default function MobileLabProfile() {
     }
     const completionStatus = await refetchCustomerProfileCompletionStatus();
     const newCustomerProfileCompletionStatus = completionStatus.data;
-   
+
     if (newCustomerProfileCompletionStatus === false) {
       setIsShowCompleteUsrProfileModal(true); //for enterting user remaining profile details
     } else if (newCustomerProfileCompletionStatus === true) {
@@ -99,9 +98,8 @@ export default function MobileLabProfile() {
     }
   };
   const markConsult = async (data) => {
-    
     const response = await axiosPrivate.post(`${port}/user/consultcount`, data);
-   
+
     return response;
   };
   const { mutateAsync: markConsultMutation } = useMutation({
@@ -125,7 +123,7 @@ export default function MobileLabProfile() {
         i <= rating ? (
           <i
             className="ri-star-fill"
-            style={{ marginRight: "5px", fontSize: "20px", color: "#FFDE4D" }}
+            style={{ marginRight: "5px", fontSize: "20px", color: "#f59e0b" }}
           />
         ) : (
           <i
@@ -146,10 +144,7 @@ export default function MobileLabProfile() {
           title: "Check out this amazing site!",
           url: window.location.href,
         });
-       
-      } catch (error) {
-        
-      }
+      } catch (error) {}
     } else {
       console.warn("Web Share API is not supported in this browser.");
     }
@@ -275,18 +270,7 @@ export default function MobileLabProfile() {
           </div>
         </div>
 
-        <div style={{marginTop:"20px"}}>
-          {/* <div className="flex">
-            <i className="ri-bard-fill"></i> <h3>Review Summary</h3>
-          </div>
-
-          <h4 style={{ marginTop: "10px" }}>
-            A doctor is a medical professional who diagnoses, treats, and
-            prevents illnesses and injuries. They work in various settings like
-            hospitals, clinics, and private practices. Doctors perform exams,
-            order tests,
-          </h4> */}
-        </div>
+        <div style={{ marginTop: "20px" }}></div>
         {feedbacks &&
           feedbacks.data &&
           feedbacks.data.map((ele, index) => (
@@ -296,6 +280,9 @@ export default function MobileLabProfile() {
                   <img src="images/man.jpg" alt="" />
 
                   <div>
+                    <div className="mobiledoctorprofilefeedbackname flex">
+                      <h3>{ele?.userid?.name}</h3>
+                    </div>
                     <div className="mobilestartsection2 flex">
                       <StarRating rating={feedbacks?.averageRating} />
                     </div>
@@ -310,10 +297,6 @@ export default function MobileLabProfile() {
                   <h4 style={{ marginTop: "10px", marginBottom: "10px" }}>
                     {ele?.message}
                   </h4>
-                </div>
-                <div className="mobiledoctorprofilefeedbackname flex">
-                  <i className="ri-arrow-right-circle-fill"></i>
-                  <h3>{ele?.userid?.name}</h3>
                 </div>
               </Fragment>
             </div>

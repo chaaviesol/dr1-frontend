@@ -15,7 +15,7 @@ export default function DocCard({ data }) {
         i <= rating ? (
           <i
             className="ri-star-fill"
-            style={{ marginRight: "5px", fontSize: "20px", color: "#FFDE4D" }}
+            style={{ marginRight: "5px", fontSize: "20px", color: "#f59e0b" }}
           />
         ) : (
           <i
