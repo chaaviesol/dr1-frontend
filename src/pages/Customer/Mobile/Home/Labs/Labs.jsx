@@ -10,6 +10,28 @@ function Labs() {
   // LabCard Component to display lab details
   const navigate = useNavigate();
   const LabCard = ({ image, name, location, services, rating,screen,data }) => {
+    const StarRating = () => {
+      const maxRating = 5;
+      const stars = [];
+  
+      for (let i = 1; i <= maxRating; i++) {
+        stars.push(
+          i <= rating ? (
+            <i
+              className="ri-star-fill"
+              style={{ marginRight: "5px", fontSize: "20px", color: "#FFDE4D" }}
+            />
+          ) : (
+            <i
+              className="ri-star-fill"
+              style={{ color: "gray", marginRight: "5px", fontSize: "20px" }}
+            />
+          )
+        );
+      }
+  
+      return <div>{stars}</div>;
+    };
     return (
       <div className="bestlabmobcard flex" 
         onClick={() => navigate(screen, { state: { data: data?.details } })}
@@ -18,12 +40,13 @@ function Labs() {
         <div className="bestlabmobcardright flex">
           <h2>{name}</h2>
           <div className="bestlabmobcardrightstar flex">
-            {[...Array(5)].map((_, index) => (
+            {/* {[...Array(5)].map((_, index) => (
               <i
                 key={index}
                 className={index < rating ? "ri-star-s-fill" : "ri-star-s-line"}
               ></i>
-            ))}
+            ))} */}
+            <StarRating/>
           </div>
           <h4>{location}</h4>
           <h3>{services}</h3>

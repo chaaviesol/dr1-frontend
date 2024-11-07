@@ -30,7 +30,10 @@ export default function MobileLabProfile() {
     type: "lab",
     id: labDetails?.id,
   });
-  console.log("labDetails>>>>", labDetails);
+  useEffect(() => {
+   window.scrollTo({top:0,behavior:"smooth"})
+  }, [])
+  
 
   const updateViewCount = async (payload) => {
     const response = await axiosPrivate.post(
