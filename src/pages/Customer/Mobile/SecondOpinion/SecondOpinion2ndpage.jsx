@@ -98,14 +98,15 @@ export default function SecondOpinion2ndpage() {
       toast.error("Please attach at least one report");
       return;
     }
+    if (!formData.remarks) {
+      toast.error("Please enter your query");
+      return;
+    }
+
     if (!checked) {
       toast.error("Please provide your consent to be contacted.");
       return;
     }
-    // if (!formData.remarks) {
-    //   toast.error("Please enter your query");
-    //   return;
-    // }
 
     try {
       setLoader(true);
@@ -114,14 +115,12 @@ export default function SecondOpinion2ndpage() {
       submissionData.append("doctor_name", formData.doctor_name);
       submissionData.append("contact_no", formData.contact_no);
       submissionData.append("department", formData.department);
+      submissionData.append("remarks", formData.remarks);
 
-      // formData.image.forEach((image, index) => {
-      //   submissionData.append(`image${index + 1}`, image);
-      // });
       formData.image.forEach((image, index) => {
         submissionData.append("images", image);
       });
-      // submissionData.append("data", JSON.stringify(formData));
+
       console.log("FormData entries:");
       for (let pair of submissionData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
@@ -142,7 +141,7 @@ export default function SecondOpinion2ndpage() {
             contact_no: "",
             image: [],
             department: "",
-            // remarks:""
+            remarks: "",
           });
           setLoader(false);
           navigate("/");
@@ -273,6 +272,17 @@ export default function SecondOpinion2ndpage() {
             onChange={handleChange}
             maxLength={10}
           />
+        </div>
+        <div className="secopinput">
+          <textarea
+            name="remarks"
+            placeholder="Enter your queries"
+            value={formData?.remarks}
+            id=""
+            style={{ maxHeight: "200px" }}
+            onChange={handleChange}
+            maxLength={1000}
+          ></textarea>
         </div>
 
         <div className="consentSectionmodal">

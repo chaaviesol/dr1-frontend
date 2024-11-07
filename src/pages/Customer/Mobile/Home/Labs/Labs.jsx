@@ -1,8 +1,10 @@
 import React from "react";
 import './labs.css'
+import { useNavigate } from "react-router-dom";
 
 function Labs() {
   // LabCard Component to display lab details
+  const navigate=useNavigate()
   const LabCard = ({ image, name, location, services, rating }) => {
     return (
       <div className="bestlabmobcard flex">
@@ -79,7 +81,7 @@ function Labs() {
             A doctor is a medical professional who diagnoses, treats, and
             prevents illnesses and injuries. They work in various{" "}
           </p>
-          <button>
+          <button onClick={()=>navigate("/labfiltering")}>
             Find Lab <i className="ri-arrow-right-up-line"></i>
           </button>
         </div>
@@ -90,7 +92,7 @@ function Labs() {
             A doctor is a medical professional who diagnoses, treats, and
             prevents illnesses and injuries. They work in various{" "}
           </p>
-          <button>
+          <button onClick={()=>navigate("/labfiltering")}>
             Find Lab <i className="ri-arrow-right-up-line"></i>
           </button>
         </div>
@@ -101,7 +103,7 @@ function Labs() {
             A doctor is a medical professional who diagnoses, treats, and
             prevents illnesses and injuries. They work in various{" "}
           </p>
-          <button>
+          <button onClick={()=>navigate("/labfiltering")}>
             Find Lab <i className="ri-arrow-right-up-line"></i>
           </button>
         </div>
@@ -111,7 +113,7 @@ function Labs() {
             A doctor is a medical professional who diagnoses, treats, and
             prevents illnesses and injuries. They work in various{" "}
           </p>
-          <button>
+          <button onClick={()=>navigate("/labfiltering")}>
             Find Lab <i className="ri-arrow-right-up-line"></i>
           </button>
         </div>
