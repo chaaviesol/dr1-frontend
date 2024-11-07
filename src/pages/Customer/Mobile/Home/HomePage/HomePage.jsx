@@ -3,15 +3,18 @@ import "./homepage.css";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../../hooks/useAuth";
 import { toast } from "react-toastify";
+import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 
 function HomePage() {
   const navigate = useNavigate(); 
+  const { handleUpdateActiveTab } = useTabBarContext();
+
   const { auth } = useAuth();
   const OnchatBot=()=>{
     if (auth.userId && auth.userType === "customer") {
       navigate("/bot")
     } else {
-      toast.info("Please login as a customer!");
+      handleUpdateActiveTab("profile")
     }
   }
   return (
