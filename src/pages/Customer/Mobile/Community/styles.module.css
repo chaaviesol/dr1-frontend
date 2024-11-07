@@ -22,11 +22,17 @@
   align-items: center;
   height: 70vh;
 }
-
+.container{
+  position: fixed;
+  bottom: 90px;
+  right: 0px;
+  padding: 0rem 1.5rem;
+}
 .addquery {
   height: 50px;
   display: flex;
   justify-content: flex-end;
+
 }
 .addquery i {
   font-size: 20px;

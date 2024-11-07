@@ -67,7 +67,7 @@ function Community() {
   return (
     <>
       <div
-        className={`${styles.maincontainer}avoidbottombar`}
+        className={styles.maincontainer}
         style={{ WebkitTapHighlightColor: "transparent" }}
       >
         <div className={styles.top}>
@@ -82,11 +82,13 @@ function Community() {
         <div className={styles.blogsection}>
           <span>Blog section coming soon</span>
         </div>
-        <div className={styles.addquery}>
-          <button onClick={handleNavigate}>
-            <i className="ri-add-circle-line"></i>
-            Add query
-          </button>
+        <div className={styles.container}>
+          <div className={styles.addquery}>
+            <button onClick={handleNavigate}>
+              <i className="ri-add-circle-line"></i>
+              Add query
+            </button>
+          </div>
         </div>
       </div>
 
@@ -112,7 +114,7 @@ function Community() {
                     {specialization}
                   </option>
                 ))}
-              <option value="Not Sure">Not Sure</option>          
+              <option value="Not Sure">Not Sure</option>
             </select>
           </div>
 
