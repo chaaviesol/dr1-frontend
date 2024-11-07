@@ -28,7 +28,9 @@ export default function Careersform() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   useEffect(() => {
     const fetchCategories = async () => {
       try {

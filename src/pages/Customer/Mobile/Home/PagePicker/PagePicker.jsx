@@ -15,7 +15,7 @@ function PagePicker({ activePage, setActivePage }) {
         }`}
         type="button"
       >
-        <i className="ri-home-fill"></i>
+        <i className="fi fi-sr-house-blank"></i>
       </button>
       <button
         style={{ WebkitTapHighlightColor: "transparent" }}
