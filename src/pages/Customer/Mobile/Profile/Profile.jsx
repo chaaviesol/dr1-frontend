@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import useAuth from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -52,6 +52,10 @@ const Profile = () => {
 
   const { auth, authLogout } = useAuth();
   const { userId, userType } = auth;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const fetchUserProfileDetails = async (userId) => {
     const payload = { id: userId };
@@ -138,11 +142,7 @@ const Profile = () => {
           textAlign: "center",
         }}
         className="container"
-      >
-        <h3 className="mobsechead" style={{ margin: "12px 0px 12px 0px" }}>
-          User Profile
-        </h3>
-      </div>
+      ></div>
 
       <div className="container mob_profile_section">
         <div className="mob_top_section flex">
@@ -219,6 +219,7 @@ const Profile = () => {
         >
           Logout
         </button>
+        <div style={{ height: "100px" }}></div>
       </div>
     </div>
   );
