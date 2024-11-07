@@ -13,7 +13,7 @@ function Location() {
         </div>
         <div className={styles.location}>
           <span>Select Your Location</span>
-          <span>{location?.city}</span>
+          <span>{location?.city || "Kozhikode"}</span>
         </div>
       </div>
     </>
