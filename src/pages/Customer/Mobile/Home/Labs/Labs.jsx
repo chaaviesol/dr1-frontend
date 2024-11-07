@@ -6,14 +6,22 @@ import { BASE_URL } from "../../../../../config";
 
 function Labs() {
   const [labdata, SetLabdata] = useState([]);
- 
+
   // LabCard Component to display lab details
   const navigate = useNavigate();
-  const LabCard = ({ image, name, location, services, rating,screen,data }) => {
+  const LabCard = ({
+    image,
+    name,
+    location,
+    services,
+    rating,
+    screen,
+    data,
+  }) => {
     const StarRating = () => {
       const maxRating = 5;
       const stars = [];
-  
+
       for (let i = 1; i <= maxRating; i++) {
         stars.push(
           i <= rating ? (
@@ -29,24 +37,19 @@ function Labs() {
           )
         );
       }
-  
+
       return <div>{stars}</div>;
     };
     return (
-      <div className="bestlabmobcard flex" 
+      <div
+        className="bestlabmobcard flex"
         onClick={() => navigate(screen, { state: { data: data?.details } })}
-      >      
+      >
         <img src={image} alt={name} className="lab-image" />
         <div className="bestlabmobcardright flex">
           <h2>{name}</h2>
           <div className="bestlabmobcardrightstar flex">
-            {/* {[...Array(5)].map((_, index) => (
-              <i
-                key={index}
-                className={index < rating ? "ri-star-s-fill" : "ri-star-s-line"}
-              ></i>
-            ))} */}
-            <StarRating/>
+            <StarRating />
           </div>
           <h4>{location}</h4>
           <h3>{services}</h3>
