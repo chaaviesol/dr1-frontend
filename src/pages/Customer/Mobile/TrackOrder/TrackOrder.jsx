@@ -114,10 +114,7 @@ function TrackOrder() {
       <div className="mobilescreen-container">
         <div className={styles.pricingsection}>
           <div className={styles.listprice}>
-            <span>List price </span> <span>3000</span>
-          </div>
-          <div className={styles.listprice}>
-            <span>Selling price </span> <span>3000</span>
+            <span>List price </span> <span>{order?.total_amount}</span>
           </div>
           <div className={styles.listprice}>
             <span>Delivery charge </span> <span>60</span>

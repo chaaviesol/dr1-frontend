@@ -135,6 +135,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
   const handleUpdateSelectedCategory = (index) => {
     setCurrentActiveCategoryIndex(index);
     setFilteredProducts(products);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {

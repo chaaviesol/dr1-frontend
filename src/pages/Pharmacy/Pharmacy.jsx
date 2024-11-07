@@ -31,7 +31,8 @@ export default function Pharmacy() {
   const [isShowLoginModal, setIsShowLoginModal] = useState(false);
 
   const [marketplaceCategories, setMarketplaceCategories] = useState([]);
-  // console.log(loader);
+  const navigate = useNavigate();
+
   const fetchCategories = async () => {
     try {
       setIsCategoryFetching(true);
@@ -47,6 +48,7 @@ export default function Pharmacy() {
   useEffect(() => {
     fetchCategories();
   }, []);
+
   const openmodalbutton = () => {
     if (auth.userId && auth.userType === "customer") {
       setIsModalOpen(!isModalOpen);
@@ -54,7 +56,7 @@ export default function Pharmacy() {
       setIsShowLoginModal(true);
     }
   };
-  const navigate = useNavigate();
+
   const handleFileChange = (e) => {
     const newFiles = Array.from(e.target.files);
     const maxSizeInMB = 10;
@@ -110,9 +112,6 @@ export default function Pharmacy() {
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
         const pincode = parseInt(response?.data?.userDetails?.pincode);
         console.log(pincode?.length);
-        // const data = {
-        //   user_id: 7,
-        // };
 
         setFormData({
           contact_no: contact_no,
@@ -125,20 +124,8 @@ export default function Pharmacy() {
         console.error("Error fetching contact number:", err);
       }
     };
-    // const fetchAddress = async () => {
-    //   try {
-    //     const deliveryAddressResponse = await axios.post(
-    //       `${BASE_URL}/pharmacy/checkaddress`
-    //     );
-    //     const addressArray = deliveryAddressResponse?.data?.data || [];
-    //     setAddressArray(addressArray);
-    //   } catch (error) {
-    //     console.error("Error fetching addresses", error);
-    //   }
-    // };
 
     fetchContactNumber();
-    // fetchAddress();
   }, []);
 
   const handleCrossClose = () => {

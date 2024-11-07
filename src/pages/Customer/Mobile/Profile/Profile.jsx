@@ -11,6 +11,7 @@ import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvid
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { handleUpdateActiveTab } = useTabBarContext();
 
   const navItems = [
     {
@@ -88,22 +89,45 @@ const Profile = () => {
 
   if (!userId || !userType || userType !== "customer") {
     return (
-      <div className="profilePageNew">
+      <div className="container unloginpage flex">
         {signInModalOpen && (
           <LoginModal show={signInModalOpen} setShow={setSignInModalOpen} />
         )}
+        <img src="/images/nolog.jpg" alt="" />
+        {/* <h4 style={{ color: "green" }}>Profile</h4> */}
+        <h1>Login for full potential</h1>
+        <h4>
+          Your health journey starts here, Log in for quick access to your
+          healthcare services and records.
+        </h4>
         <button
-          onClick={toggleSignInModal}
           style={{
-            background: "#3a65fd",
-            borderRadius: "18px",
-            color: "white",
-            padding: "1rem 3rem",
-            WebkitTapHighlightColor: "transparent",
+            backgroundColor: "#3A65FD",
           }}
+          onClick={toggleSignInModal}
         >
           Login
         </button>
+        <button
+          style={{
+            color: "#3A65FD",
+            backgroundColor: "#F2F5FF",
+            marginTop: "10px",
+          }}
+        >
+          Create new account
+        </button>
+        <h4 style={{ marginTop: "40px" }}>
+          Explore with out account ?{" "}
+          <span
+            style={{
+              color: "#3A65FD",
+            }}
+            onClick={() => handleUpdateActiveTab("home")}
+          >
+            Back to Home
+          </span>
+        </h4>
       </div>
     );
   }

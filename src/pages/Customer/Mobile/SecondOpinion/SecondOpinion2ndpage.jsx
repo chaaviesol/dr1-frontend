@@ -1,14 +1,11 @@
-import { FormControlLabel, Modal } from "@mui/material";
+import { FormControlLabel } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Loader } from "../../../../components/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import "./secondopinion.css";
-import { BASE_URL, port } from "../../../../config";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import { BASE_URL } from "../../../../config";
 
 import Checkbox from "@mui/material/Checkbox";
 import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
@@ -45,10 +42,6 @@ export default function SecondOpinion2ndpage() {
         // File size greater than 10MB
         invalidFiles.push(`${file.name} exceeds ${maxSizeInMB}MB.`);
       }
-      //  else if (file.type === 'application/zip') {
-      // //   // ZIP file format
-      //   invalidFiles.push(`${file.name} is not a supported format.`);
-      // }
       else {
         validFiles.push(file);
       }
@@ -278,8 +271,7 @@ export default function SecondOpinion2ndpage() {
             name="remarks"
             placeholder="Enter your queries"
             value={formData?.remarks}
-            id=""
-            style={{ maxHeight: "200px" }}
+            style={{ maxHeight: "200px", backgroundColor: "#F3f3f8" }}
             onChange={handleChange}
             maxLength={1000}
           ></textarea>

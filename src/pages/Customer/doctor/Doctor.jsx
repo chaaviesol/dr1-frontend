@@ -517,6 +517,7 @@ export default function Doctor() {
                     <SearchIcon />
                   </span>
                   <input
+                  maxLength={50}
                     onChange={SearchSpeciality}
                     type="text"
                     placeholder="Search your specialities"

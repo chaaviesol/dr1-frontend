@@ -260,3 +260,42 @@
 
 
 /*End Profile */
+
+
+
+
+
+/* unlogin */
+   
+.unloginpage{
+  height:calc(100dvh - 82px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.unloginpage img{
+  width:250px;
+}
+
+.unloginpage button{
+    background-color:black;
+    color: white;
+    padding:12px 26px;
+    border-radius: 6px;
+    margin-top:20px;
+    width:300px;
+}
+
+.unloginpage h4{
+  color:#777777;
+  width:300px;
+  margin-top: 4px;
+}
+
+.unloginpage h1{
+ font-weight: 700;
+ font-size:2.2rem;
+ cursor:pointer;
+}

@@ -334,10 +334,11 @@
   padding: 0.6vw;
   text-align: center;
   width: 100%;
+  cursor: pointer;
 }
 
 .featured-doctor-card-button h4:hover {
-  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 1px;
+  box-shadow: rgba(16, 123, 244, 0.9) 0px 0px 0px .6px;
 }
 
 .featured-doctor-card-datas {

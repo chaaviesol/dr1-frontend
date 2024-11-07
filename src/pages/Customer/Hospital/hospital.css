@@ -250,7 +250,9 @@
 .search-input-wrapper input {
     padding-left: 30px;
     height: 35px;
-    border-bottom: 1px solid;
+    width: 300px;
+    background-color: #f3f3f5;
+    /* border-bottom: 1px solid; */
     /* border: 1px solid #3A65FD; */
     border-radius: 4px;
     font-size: 15px;
