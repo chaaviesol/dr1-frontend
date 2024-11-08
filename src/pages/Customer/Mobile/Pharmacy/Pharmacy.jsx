@@ -1,18 +1,11 @@
-import { FormControlLabel, Modal } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import HeaderSection from "../components/HeaderSection/HeaderSection";
-import MainContainer from "../components/MainContainer/MainContainer";
+
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import useAuth from "../../../../hooks/useAuth";
-import { BASE_URL, port } from "../../../../config";
+import { BASE_URL } from "../../../../config";
 import { Loader } from "../../../../components/Loader/Loader";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
-import Checkbox from "@mui/material/Checkbox";
-import SearchBox from "../components/SearchBox/SearchBox";
 
 import ClickToSearchBox from "../components/ClickToSearchBox/ClickToSearchBox";
 import CartIcon from "../../../../components/CartIcon";

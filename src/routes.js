@@ -63,7 +63,6 @@ import MobileHospitalProfile from "./pages/Customer/Mobile/MobileHospitalProfile
 import MobileLabProfile from "./pages/Customer/Mobile/MobileLabProfile/MobileLabProfile";
 import SecondOpinion from "./pages/Customer/Mobile/SecondOpinion/SecondOpinion";
 import SecondOpinion2ndpage from "./pages/Customer/Mobile/SecondOpinion/SecondOpinion2ndpage";
-import Searchpage from "./pages/Customer/Mobile/Search/Searchpage";
 import Profile from "./pages/Customer/Mobile/Profile/Profile";
 
 import ResetPassword from "./pages/Customer/Mobile/Manage User/password/resetpassword1";
@@ -100,11 +99,8 @@ export const publicRoutes = [
   { path: "/hospital", element: <HospitalPage /> },
   { path: "/labs", element: <LabPage /> },
   { path: "/pharmacy", element: <PharmacyPage /> },
-  // { path: "/customerhospitalmobile", element: <CustomerHospitalMobile /> },
   { path: "/customerlabmobile", element: <CustomerLabMobile /> },
   { path: "/customerpharmacymobile", element: <CustomerPharamcyMobile /> },
-  { path: "/search", element: <Searchpage /> },
-  // { path: "/profile", element: <Profile /> },
   { path: "/pharmacyproducts", element: <AllProductsView /> },
   { path: "/productdetails", element: <SingleProdDetails /> },
   { path: "/createcampaign", element: <CreateCampaign /> },

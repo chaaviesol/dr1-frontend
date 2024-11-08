@@ -12,7 +12,7 @@ function Location() {
           <MyLocation className={styles.icon} sx={{ fontSize: 32,fontWeight:100 }} />
         </div>
         <div className={styles.location}>
-          <span>Select Your Location</span>
+          <span>Choose Your Location</span>
           <span>{location?.city || "Kozhikode"}</span>
         </div>
       </div>
