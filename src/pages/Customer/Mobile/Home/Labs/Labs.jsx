@@ -26,11 +26,13 @@ function Labs() {
         stars.push(
           i <= rating ? (
             <i
+              key={i}
               className="ri-star-fill"
               style={{ marginRight: "5px", fontSize: "20px", color: "#f59e0b" }}
             />
           ) : (
             <i
+              key={i}
               className="ri-star-fill"
               style={{ color: "gray", marginRight: "5px", fontSize: "20px" }}
             />
