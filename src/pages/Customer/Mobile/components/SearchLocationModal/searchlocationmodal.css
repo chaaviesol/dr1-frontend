@@ -74,4 +74,10 @@
     margin-right:5px;
 }
 
+.use-currentlocation-btn{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 /*End Location Modal Mob */

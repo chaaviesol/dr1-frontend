@@ -4,7 +4,8 @@ import { Modal } from "@mui/material";
 import { useLocationContext } from "../../../../../contexts/LocationContext";
 
 function SearchLocationModal({ isOpen, setOpen }) {
-  const { location, getCurrentLocation, fetchingLocationPending } =useLocationContext();
+  const { location, getCurrentLocation, fetchingLocationPending } =
+    useLocationContext();
   return (
     <>
       <Modal open={isOpen} onClose={() => setOpen(false)}>
@@ -18,10 +19,13 @@ function SearchLocationModal({ isOpen, setOpen }) {
             <i className="ri-search-2-line searchmoblocationi"></i>
           </div>
           <button
+          className="use-currentlocation-btn"
             onClick={getCurrentLocation}
             disabled={fetchingLocationPending}
           >
-            <i className="ri-focus-3-line"></i> Auto Detect location
+            <i className="ri-focus-3-line"></i>
+            {fetchingLocationPending ? "Fetching location" : "Use Current location"}
+             
           </button>
 
           <div className="avilablelocation">
