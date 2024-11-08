@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import styles from "./styles.module.css";
-
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
-import { toast } from "react-toastify";
-import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvider";
-import ChatBotAfterLogin from "../../../../components/ChatBotAfterLogin/ChatBotAfterLogin";
-import ChatBot from "../../../../components/ChatBot/ChatBot";
 import PagePicker from "./PagePicker/PagePicker";
 import HomePage from "./HomePage/HomePage";
 import Doctors from "./Doctors/Doctors";
 import Hospitals from "./Hospitals/HospitalMob";
 import Labs from "./Labs/Labs";
-import AvatarWithLocation from "../components/AvatarWithLocation/AvatarWithLocation";
 import SearchLocationModal from "../components/SearchLocationModal/SearchLocationModal";
 import CartIcon from "../../../../components/CartIcon";
 import { LoginModal } from "../../../../components/LoginModal/LoginModal";
+import Location from "../components/Location/Location";
 
 function Home() {
   const [activePage, setActivePage] = useState("home");
@@ -36,7 +31,7 @@ function Home() {
       <div className={styles.margin}>
         <div className={`${styles.margin} ${styles.top}`}>
           <div onClick={() => setShowLocationModal(true)}>
-            <AvatarWithLocation />
+            <Location />
           </div>
           <div
             style={{ height: "50px", width: "50px" }}
