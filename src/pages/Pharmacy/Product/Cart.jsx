@@ -41,14 +41,13 @@ function Cart() {
   const totalPrice = () => {
     if (cartItems && cartItems.length > 0) {
       const totalMRP = cartItems.reduce((accumulator, product) => {
-        return accumulator + (product.mrp * product.quantity);
+        return accumulator + product.mrp * product.quantity;
       }, 0);
       return totalMRP;
     } else {
       return 0;
     }
   };
-  
 
   const placeOrder = async (address) => {
     const payload = {
@@ -182,10 +181,12 @@ function Cart() {
   });
   // Get user's current position using the Geolocation API
   function getCurrentLocation() {
+    setGettingLocationLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
       alert("Geolocation is not supported by this browser.");
+      setGettingLocationLoading(false);
     }
   }
 

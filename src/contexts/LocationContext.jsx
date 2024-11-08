@@ -5,7 +5,7 @@ import { BASE_URL } from "../config";
 
 const LocationContext = createContext();
 
- const LocationProvider = ({ children }) => {
+const LocationProvider = ({ children }) => {
   const [location, setLocation] = useState(null);
 
   const [gettingLocationLoading, setGettingLocationLoading] = useState(false);
@@ -33,10 +33,12 @@ const LocationContext = createContext();
   });
   // Get user's current position using the Geolocation API
   function getCurrentLocation() {
+    setGettingLocationLoading(true);
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
       alert("Geolocation is not supported by this browser.");
+      setGettingLocationLoading(false);
     }
   }
 
@@ -52,7 +54,8 @@ const LocationContext = createContext();
   }
   const values = {
     location,
-    fetchingLocationPending: gettingLocationLoading || fetchLocationMutation.isPending,
+    fetchingLocationPending:
+      gettingLocationLoading || fetchLocationMutation.isPending,
     getCurrentLocation,
   };
   return (
