@@ -9,7 +9,7 @@ function SearchLocationModal({ isOpen, setOpen }) {
   return (
     <>
       <Modal open={isOpen} onClose={() => setOpen(false)}>
-        <div className="setlocationmodal">
+        <div className="setlocationmodal" style={{ WebkitTapHighlightColor: "transparent" }}>
           <div className="searchmoblocation">
             <input
               type="text"
