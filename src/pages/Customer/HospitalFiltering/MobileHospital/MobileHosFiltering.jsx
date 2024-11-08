@@ -84,7 +84,7 @@ export const MobileHosFiltering = () => {
       if (filteredDocs.length === 0) {
         setnotFound(true);
       } else {
-        console.log({ filteredDocs });
+        // console.log({ filteredDocs });
         sethospitalsFilter(filteredDocs);
         setnotFound(false);
       }
