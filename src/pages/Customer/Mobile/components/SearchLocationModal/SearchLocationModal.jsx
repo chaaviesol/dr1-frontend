@@ -19,13 +19,18 @@ function SearchLocationModal({ isOpen, setOpen }) {
             <i className="ri-search-2-line searchmoblocationi"></i>
           </div>
           <button
-          className="use-currentlocation-btn"
+            className="use-currentlocation-btn"
             onClick={getCurrentLocation}
             disabled={fetchingLocationPending}
           >
-            <i className="ri-focus-3-line"></i>
-            {fetchingLocationPending ? "Fetching location" : "Use Current location"}
-             
+            <i
+              className={`ri-focus-3-line ${
+                fetchingLocationPending ? "blinking" : ""
+              }`}
+            ></i>
+            {fetchingLocationPending
+              ? "Fetching location..."
+              : "Use Current Location"}
           </button>
 
           <div className="avilablelocation">
