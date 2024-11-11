@@ -1,23 +1,37 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styles from "./styles.module.css";
 import Typography from "../../components/Typography/Typography";
 import Collash from "./MedicalFieldCollash/Collash";
 import TopHospitals from "./TopHospitals/TopHospitals";
 import { MyContext } from "../../../../../contexts/Contexts";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BASE_URL } from "../../../../../config";
 
 function HospitalMob() {
   const [visibleCount, setVisibleCount] = useState(12);
   const navigate = useNavigate();
-
+  const [hospitaldata, SetHospitaldata] = useState([]);
   const { Categories } = useContext(MyContext);
   const specialities = Categories?.allopathySpecs;
+  const fetch = async () => {
+    try {
+      // const pincode=====??
+      const response = await axios.post(`${BASE_URL}/hospital/nearesthospital`);
+      SetHospitaldata(response.data.data);
+    } catch (error) {
+      console.error("Error fetching lab data:", error);
+    }
+  };
+  useEffect(() => {
+    fetch();
+  }, []);
 
   const HospitalCard = ({
     image,
     name,
     location,
-    services,
+    features,
     rating,
     screen,
     data,
@@ -48,9 +62,9 @@ function HospitalMob() {
     };
     return (
       <div
-    
         className="bestlabmobcard flex"
-        onClick={() => navigate(screen, { state: { data: data?.details } })}
+        onClick={() => navigate(screen, { state: { details: data?.details } })}
+      
       >
         <img src={image} alt={name} className="lab-image" />
         <div className="bestlabmobcardright flex">
@@ -59,7 +73,7 @@ function HospitalMob() {
             <StarRating />
           </div>
           <h4>{location}</h4>
-          <h3>{services}</h3>
+          <h3>{features}</h3>
         </div>
       </div>
     );
@@ -117,18 +131,27 @@ function HospitalMob() {
       <div className={styles.margin}>
         <Typography text="Top Hospitals" />
       </div>
-      <div className={styles.margin}>
-        <HospitalCard
-          screen="/hospitalfilter"
-          key={0}
-          // data={{ details: lab, lab: true }}
-          image="https://images.unsplash.com/photo-1596541223130-5d31a73fb6c6?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          name="Abate eye hospital"
-          location="kozhikode"
-          services={"Casuality, Op"}
-          rating={2}
-        />
-      </div>
+      {hospitaldata.map((hospital, index) => (
+        <div className={styles.margin}>
+          <HospitalCard
+            screen="/mobilehospitalprofile"
+            key={index}
+            data={{ details: hospital, hospitals: true }}
+            image={
+              hospital?.photo?.image1 ||
+              "./images/hos.jpeg"
+            }
+            name={hospital?.name}
+            location={hospital?.address}
+            features={
+              hospital?.feature?.length > 0
+                ? hospital?.feature.join(", ")
+                : "No features available"
+            }
+            rating={hospital.rating}
+          />
+        </div>
+      ))}
     </div>
   );
 }

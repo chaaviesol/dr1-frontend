@@ -180,7 +180,9 @@ export default function MobileDoctorProfile() {
 
     return <div>{stars}</div>;
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>

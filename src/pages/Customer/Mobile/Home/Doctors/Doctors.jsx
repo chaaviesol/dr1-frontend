@@ -6,10 +6,12 @@ import { MyContext } from "../../../../../contexts/Contexts";
 import { toast } from "react-toastify";
 import useAuth from "../../../../../hooks/useAuth";
 import { LoginModal } from "../../../../../components/LoginModal/LoginModal";
+import axios from "axios";
+import { BASE_URL } from "../../../../../config";
 
 function Doctors() {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-
+  const [doctordata, SetDoctordata] = useState([]);
   const { auth } = useAuth();
   const { Categories } = useContext(MyContext);
   const { setFilters, setDocsBySearch, setAllDocsBySearch } =
@@ -53,6 +55,19 @@ function Doctors() {
       setIsLoginModalOpen(true);
     }
   };
+
+  const fetch = async () => {
+    try {
+      // const pincode=====??
+      const response = await axios.post(`${BASE_URL}/doctor/nearestdoctor`);
+      SetDoctordata(response.data.data);
+    } catch (error) {
+      console.error("Error fetching lab data:", error);
+    }
+  };
+  useEffect(() => {
+    fetch();
+  }, []);
   return (
     <>
       <div
@@ -204,43 +219,35 @@ function Doctors() {
           </h3>
 
           <div className="mobiletopdoctor">
-            <div className="doctorcardfirst">
-              <img
-                src="/images/mobile/musthu/images/user.png"
-                alt="Dr. Brooklyn Simmons"
-                className="doctor-image"
-              />
-              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
-              <p className="doctor-specialty">Dentist, Cosmetic</p>
-            </div>
-
-            <div className="doctorcardfirst">
-              <img
-                src="/images/mobile/musthu/images/user.png"
-                alt="Dr. Brooklyn Simmons"
-                className="doctor-image"
-              />
-              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
-              <p className="doctor-specialty">Dentist, Cosmetic</p>
-            </div>
-            <div className="doctorcardfirst">
-              <img
-                src="/images/mobile/musthu/images/user.png"
-                alt="Dr. Brooklyn Simmons"
-                className="doctor-image"
-              />
-              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
-              <p className="doctor-specialty">Dentist, Cosmetic</p>
-            </div>
-            <div className="doctorcardfirst">
-              <img
-                src="/images/mobile/musthu/images/user.png"
-                alt="Dr. Brooklyn Simmons"
-                className="doctor-image"
-              />
-              <h3 className="doctor-name">Dr. Brooklyn Simmons</h3>
-              <p className="doctor-specialty">Dentist, Cosmetic</p>
-            </div>
+            {doctordata.map((details, index) => (
+              <div
+                className="doctorcardfirst"
+                key={index}
+                onClick={() =>
+                  navigate(`/mobiledoctorprofile`, {
+                    state: details,
+                  })
+                }
+              >
+                <img
+                  src={
+                    details?.image || "/images/mobile/musthu/images/user.png"
+                  }
+                  alt="Dr. Brooklyn Simmons"
+                  className="doctor-image"
+                />
+                <h3 className="doctor-name">
+                  {details?.name}
+                  {details?.second_name ? ` ${details?.second_name}` : ""}
+                </h3>
+                <p className="doctor-specialty">
+                  {details?.specialization}{" "}
+                  {details?.additional_speciality
+                    ? `, ${details.additional_speciality}`
+                    : ""}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

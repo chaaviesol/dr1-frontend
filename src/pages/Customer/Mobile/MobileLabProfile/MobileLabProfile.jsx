@@ -149,6 +149,9 @@ export default function MobileLabProfile() {
       console.warn("Web Share API is not supported in this browser.");
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>

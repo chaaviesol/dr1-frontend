@@ -154,7 +154,9 @@ export default function MobileHospitalProfile() {
       console.warn("Web Share API is not supported in this browser.");
     }
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <div className="mobcontainer mobilehospitaldiv">
@@ -276,7 +278,7 @@ export default function MobileHospitalProfile() {
           </div>
         </div>
 
-        <div style={{marginTop:"20px"}}>
+        <div style={{ marginTop: "20px" }}>
           {/* <div className="flex">
             <i className="ri-bard-fill"></i> <h3>Review Summary</h3>
           </div>
