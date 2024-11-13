@@ -29,7 +29,7 @@ export default function Pharmacy() {
   const [loader, setLoader] = useState(false);
   const [isCategoryFetching, setIsCategoryFetching] = useState(false);
   const [isShowLoginModal, setIsShowLoginModal] = useState(false);
-
+  const [errors, setErrors] = useState({});
   const [marketplaceCategories, setMarketplaceCategories] = useState([]);
   const navigate = useNavigate();
 
@@ -52,9 +52,12 @@ export default function Pharmacy() {
   const openmodalbutton = () => {
     if (auth.userId && auth.userType === "customer") {
       setIsModalOpen(!isModalOpen);
+      setErrors("");
     } else {
       setIsShowLoginModal(true);
+      setErrors("");
     }
+    setErrors("");
   };
 
   const handleFileChange = (e) => {
@@ -62,21 +65,26 @@ export default function Pharmacy() {
     const maxSizeInMB = 10;
     const maxFiles = 5;
     const validFiles = [];
-
+    const newErrors = {};
     // Check if the total number of files exceeds the limit
     if (formData.image.length + newFiles.length > maxFiles) {
-      toast.error(`You can upload a maximum of ${maxFiles} files.`);
-      return;
+      newErrors.image = `You can upload a maximum of ${maxFiles} files.`;
     }
 
     newFiles.forEach((file) => {
       if (file.size > maxSizeInMB * 1024 * 1024) {
-        toast.error("Max file size is 10Mb");
+        newErrors.image = `Max file size is 10Mb`;
       } else {
         validFiles.push(file);
       }
     });
-
+    if (Object.keys(newErrors).length > 0) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        ...newErrors,
+      }));
+      return;
+    }
     setFormData((prevFormData) => ({
       ...prevFormData,
       image: [...prevFormData.image, ...validFiles],
@@ -141,48 +149,40 @@ export default function Pharmacy() {
   };
 
   const handleSubmit = async () => {
+    const newErrors = {};
     if (!formData.name || formData.name === "") {
-      toast.info(" Name is missing");
-      return;
+      newErrors.name = "Name is missing";
     }
     if (formData.image.length === 0) {
-      toast.error("Please attach at least one report");
-      return;
+      newErrors.imagelength = "Please attach at least one report";
     }
     if (!formData.delivery_address || formData.delivery_address === "") {
-      toast.info(" Delivery details is missing");
-      return;
+      newErrors.delivery_address = "Delivery details is missing";
     }
-    if (!formData.contact_no) {
-      toast.error("Contact Number is missing");
-      return;
+    if (!formData.contact_no || formData.contact_no === "") {
+      newErrors.contact_no = "Contact Number is missing";
+    }
+
+    if (!formData.pincode || formData.pincode === "") {
+      newErrors.pincode = "Pincode is missing";
     }
     const pincodeLength = formData.pincode.toString().length;
-    if (!formData.pincode) {
-      toast.error("Pincode is missing");
-      return false;
-    }
-
-    // Example: Ensure the pincode is exactly 6 digits long
     if (pincodeLength !== 6) {
-      toast.error("Pincode must be 6 digits long");
-      return false;
+      newErrors.pincode = "Invalid Pincode";
     }
 
-    // Example: Ensure the pincode contains only numbers
-    if (!/^\d+$/.test(formData.pincode)) {
-      toast.error("Pincode must contain only numbers");
-      return false;
-    }
     if (!/^[6-9]\d{9}$/.test(formData.contact_no)) {
-      toast.error(
-        "Invalid Contact Number. It should be a valid 10-digit Indian mobile number."
-      );
-      return;
+      newErrors.contact_no = "Invalid Contact Number";
+    }
+    if (!formData.remarks || formData.remarks === "") {
+      newErrors.remarks = "Remarks is missing";
     }
 
     if (!checked) {
-      toast.error("Please provide your consent to be contacted.");
+      newErrors.checked = "Please provide your consent to be contacted.";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -190,7 +190,6 @@ export default function Pharmacy() {
       setLoader(true);
       const submissionData = new FormData();
       const orderType = "prescription";
-      // const user_id = 7;
       const so_status = "Placed";
       submissionData.append("name", formData.name);
       submissionData.append("remarks", formData.remarks);
@@ -203,7 +202,6 @@ export default function Pharmacy() {
       formData.image.forEach((image, index) => {
         submissionData.append("images", image);
       });
-      // submissionData.append("data", JSON.stringify(formData));
       console.log("FormData entries:");
       for (let pair of submissionData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
@@ -276,11 +274,7 @@ export default function Pharmacy() {
                 patient care. The field continually evolves with medical
                 advancements, making it essential to modern healthcare.
               </span>
-              <button
-                // onClick={() => setIsModalOpen(!isModalOpen)}
-                onClick={openmodalbutton}
-                className="pharmacynewupload"
-              >
+              <button onClick={openmodalbutton} className="pharmacynewupload">
                 Upload now
               </button>
             </div>
@@ -309,10 +303,17 @@ export default function Pharmacy() {
                     maxLength={40}
                     placeholder="Name"
                   />
+                  {errors.name && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
 
                 <div className="secopinput">
-                  {/* <h4>Contact Number</h4> */}
                   <input
                     type="number"
                     name="contact_no"
@@ -322,6 +323,14 @@ export default function Pharmacy() {
                     onChange={handleChange}
                     maxLength={10}
                   />
+                  {errors.contact_no && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.contact_no}
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="secopinput">
@@ -336,19 +345,27 @@ export default function Pharmacy() {
                   style={{ display: "none" }}
                 />
                 <div className="file-names">
-                  {formData?.image?.length > 0 ? (
-                    formData.image.map((report, index) => (
-                      <h4 key={index}>{report?.name}</h4>
-                    ))
-                  ) : (
-                    <h4 className="AttachAnyFile">Please Attach Any File</h4>
+                  {formData?.image?.length > 0
+                    ? formData.image.map((report, index) => (
+                        <h4 key={index}>{report?.name}</h4>
+                      ))
+                    : errors.imagelength && (
+                        <p
+                          style={{ color: "red", fontSize: "0.9rem" }}
+                          className="error-message"
+                        >
+                          {errors.imagelength}
+                        </p>
+                      )}
+                  {errors.image && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.image}
+                    </p>
                   )}
                 </div>
-
-                {/* <button>
-                  <h4>Upload(Max 5 File)</h4>
-                </button>
-                <h4 className="AttachAnyFile">Please Attach Any File</h4> */}
               </div>
 
               <div className="secopinput">
@@ -361,6 +378,14 @@ export default function Pharmacy() {
                   onChange={handleChange}
                   maxLength={300}
                 ></textarea>
+                {errors.delivery_address && (
+                  <p
+                    style={{ color: "red", fontSize: "0.9rem" }}
+                    className="error-message"
+                  >
+                    {errors.delivery_address}
+                  </p>
+                )}
               </div>
               <div className="secopinput">
                 {/* <h4>Pincode</h4> */}
@@ -373,6 +398,14 @@ export default function Pharmacy() {
                   onChange={handleChange}
                   maxLength={6}
                 />
+                {errors.pincode && (
+                  <p
+                    style={{ color: "red", fontSize: "0.9rem" }}
+                    className="error-message"
+                  >
+                    {errors.pincode}
+                  </p>
+                )}
               </div>
 
               <div className="secopinput">
@@ -385,6 +418,14 @@ export default function Pharmacy() {
                   onChange={handleChange}
                   maxLength={1000}
                 ></textarea>
+                {errors.remarks && (
+                  <p
+                    style={{ color: "red", fontSize: "0.9rem" }}
+                    className="error-message"
+                  >
+                    {errors.remarks}
+                  </p>
+                )}
               </div>
               <div
                 className="consentSectionmodal"
@@ -409,6 +450,14 @@ export default function Pharmacy() {
                   label="I consent to be contacted regarding my submission."
                 />
               </div>
+              {errors.checked && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.checked}
+                </p>
+              )}
 
               <div className="secopsubbutton">
                 <button onClick={handleSubmit}>
