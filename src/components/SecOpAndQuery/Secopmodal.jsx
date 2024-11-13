@@ -40,7 +40,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     department: "",
     query: "",
   });
-  console.log("querydataquerydata", querydata);
+  const [errors, setErrors] = useState({});
   const [checked, setChecked] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -51,7 +51,11 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
 
   const handleNext = () => {
     if (!selectedDepartment || selectedDepartment === "") {
-      toast.error("Select a department!");
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        department: "Select a department!",
+      }));
+      // toast.error("Select a department!");
       return;
     }
     if (selectedDepartment) {
@@ -112,34 +116,46 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   };
 
   const handleSubmit = async () => {
+    const newErrors = {};
     if (!formData.patient_name || formData.patient_name === "") {
-      toast.info("Patient Name is missing");
-      return;
+      newErrors.patient_name = "Patient Name is missing";
+      // toast.info("Patient Name is missing");
+      // return;
     }
     if (!formData.doctor_name) {
-      toast.error("Doctor Name is missing");
-      return;
+      newErrors.doctor_name = "Doctor Name is missing";
+      // toast.error("Doctor Name is missing");
+      // return;
     }
     if (!formData.contact_no) {
-      toast.error("Contact Number is missing");
-      return;
+      newErrors.contact_no = "Contact Number is missing";
+      // toast.error("Contact Number is missing");
+      // return;
     }
     if (!/^[6-9]\d{9}$/.test(formData.contact_no)) {
-      toast.error(
-        "Invalid Contact Number. It should be a valid 10-digit Indian mobile number."
-      );
-      return;
+      newErrors.contact_no = "Invalid Contact Number.";
+      // toast.error(
+      //   "Invalid Contact Number. It should be a valid 10-digit Indian mobile number."
+      // );
+      // return;
     }
     if (formData.image.length === 0) {
-      toast.error("Please attach at least one report");
-      return;
+      newErrors.image = "Please attach at least one report.";
+      // toast.error("Please attach at least one report");
+      // return;
     }
     if (!formData.remarks) {
-      toast.error("Please enter your query");
-      return;
+      newErrors.remarks = "Please enter your query";
+      // toast.error("Please enter your query");
+      // return;
     }
     if (!checked) {
-      toast.error("Please provide your consent to be contacted.");
+      newErrors.checked = "Please provide your consent to be contacted.";
+      // toast.error("Please provide your consent to be contacted.");
+      // return;
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -251,12 +267,19 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   }, []);
 
   const handlequerySubmit = async () => {
+    const newErrors = {};
     if (!querydata.department || querydata.department === "") {
-      toast.info("Discipline is missing");
-      return;
+      newErrors.department = "Discipline is missing";
+      // toast.info("Discipline is missing");
+      // return;
     }
     if (!querydata.query) {
-      toast.error("Please enter your queries.");
+      newErrors.query = "Please enter your queries.";
+      // toast.error("Please enter your queries.");
+      // return;
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -465,6 +488,15 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                   >
                     <h4>Pediatrician</h4>
                   </div>
+
+                  {errors.department && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.department}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -517,8 +549,17 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                         multiple
                         style={{ display: "none" }}
                       />
+
                       {/* // <button>Upload</button> */}
                     </div>
+                    {errors.image && (
+                      <p
+                        style={{ color: "red", fontSize: "0.9rem" }}
+                        className="error-message"
+                      >
+                        {errors.image}
+                      </p>
+                    )}
                   </div>
 
                   <div className="secopforminpt">
@@ -530,6 +571,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       onChange={handleChange}
                       maxLength={40}
                     />
+                    {errors.patient_name && (
+                      <p
+                        style={{ color: "red", fontSize: "0.9rem" }}
+                        className="error-message"
+                      >
+                        {errors.patient_name}
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -543,6 +592,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       onChange={handleChange}
                       maxLength={40}
                     />
+                    {errors.doctor_name && (
+                      <p
+                        style={{ color: "red", fontSize: "0.9rem" }}
+                        className="error-message"
+                      >
+                        {errors.doctor_name}
+                      </p>
+                    )}
                   </div>
 
                   <div className="secopforminpt">
@@ -555,6 +612,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       onChange={handleChange}
                       maxLength={10}
                     />
+                    {errors.contact_no && (
+                      <p
+                        style={{ color: "red", fontSize: "0.9rem" }}
+                        className="error-message"
+                      >
+                        {errors.contact_no}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="secopform1">
@@ -568,6 +633,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       onChange={handleChange}
                       maxLength={1000}
                     ></textarea>
+                    {errors.remarks && (
+                      <p
+                        style={{ color: "red", fontSize: "0.9rem" }}
+                        className="error-message"
+                      >
+                        {errors.remarks}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -594,6 +667,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                   label="I consent to be contacted regarding my submission."
                 />
               </div>
+              {errors.checked && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.checked}
+                </p>
+              )}
 
               <div className="flex secopdipartmentbuttonsec">
                 <button className="secopformbutton flex" onClick={handleSubmit}>
@@ -638,6 +719,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 ))}
                 <option value="Not Sure">Not Sure</option>
               </select>
+              {errors.department && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.department}
+                </p>
+              )}
               <h4 style={{ marginTop: "1vw" }}>What is Your Query</h4>
               <textarea
                 className="pharmacypara"
@@ -647,6 +736,14 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                 onChange={handlequerychange}
                 placeholder="Type your query here"
               ></textarea>
+              {errors.query && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.query}
+                </p>
+              )}
               <button onClick={handlequerySubmit} className="queryformbutton">
                 {loader ? (
                   <CircularProgress sx={{ color: "white" }} size="1.5rem" />
