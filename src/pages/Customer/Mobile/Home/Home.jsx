@@ -7,7 +7,6 @@ import HomePage from "./HomePage/HomePage";
 import Doctors from "./Doctors/Doctors";
 import Hospitals from "./Hospitals/HospitalMob";
 import Labs from "./Labs/Labs";
-import SearchLocationModal from "../components/SearchLocationModal/SearchLocationModal";
 import CartIcon from "../../../../components/CartIcon";
 import { LoginModal } from "../../../../components/LoginModal/LoginModal";
 import Location from "../components/Location/Location";
@@ -16,6 +15,7 @@ function Home() {
   const [activePage, setActivePage] = useState("home");
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isShowLocationModal, setShowLocationModal] = useState(false);
+
   const { auth } = useAuth();
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -23,15 +23,15 @@ function Home() {
       navigate("/cart");
     } else {
       setIsLoginModalOpen(true);
-      // toast.info("Please log in to view your cart");
     }
   };
+  // console.log(isShowLocationModal)
   return (
     <>
       <div className={styles.margin}>
         <div className={`${styles.margin} ${styles.top}`}>
-          <div onClick={() => setShowLocationModal(true)}>
-            <Location />
+          <div>
+            <Location isShowLocationModal={isShowLocationModal} setShowLocationModal={setShowLocationModal}  />
           </div>
           <div
             style={{ height: "50px", width: "50px" }}
@@ -48,10 +48,6 @@ function Home() {
           {activePage === "labs" && <Labs />}
         </div>
       </div>
-      <SearchLocationModal
-        isOpen={isShowLocationModal}
-        setOpen={setShowLocationModal}
-      />
       {isLoginModalOpen && (
         <LoginModal show={isLoginModalOpen} setShow={setIsLoginModalOpen} />
       )}

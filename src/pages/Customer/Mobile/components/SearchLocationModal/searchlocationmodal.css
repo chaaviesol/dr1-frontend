@@ -46,6 +46,25 @@
   left: 15px;
   color: #8c8c8c;
 }
+.searchmoblocationicross {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  cursor: pointer;
+  color: #8c8c8c;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+
+
+.searchmoblocationicross:hover {
+  color: #8c8c8c; /* Changes color on hover */
+}
+
+.searchmoblocationicross:active {
+  transform: scale(0.9); /* Adds a "pressed" effect on click */
+}
 
 .setlocationmodal input:focus {
   border: 1px solid #3a65fd;
@@ -91,6 +110,34 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.searchlocationsuggestionscontainer{
+
+  max-height: 250px;
+  overflow: auto;
+}
+.searchlocationsuggestionplaces{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: 300px; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  margin: 20px 0px 6px 0px;
+
+}
+.searchlocationsuggestionplaces i{
+  font-weight: 100;
+  color: #3d3d3d;
+}
+.searchlocationsuggestionplaces h3{
+  color: #8c8c8c;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+
 }
 
 /*End Location Modal Mob */

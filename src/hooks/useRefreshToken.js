@@ -16,8 +16,6 @@ const useRefreshToken = () => {
     const accessToken = response.data.accessToken;
     sessionStorage.setItem("accessToken", accessToken);
     setAuth((prev) => {
-      console.log(JSON.stringify(prev));
-      console.log(response.data.accessToken);
       return { ...prev, accessToken: response.data.accessToken };
     });
     return response.data.accessToken;

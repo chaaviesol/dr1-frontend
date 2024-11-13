@@ -67,11 +67,11 @@ export default function SearchDoctorProvider({ children }) {
   };
 
   useEffect(() => {
-    if (allDocData.length === 0) {
+    if (allDocData?.length === 0) {
       return;
     }
     const targetArray =
-      allDocsBySearch.length > 0 ? [...allDocsBySearch] : [...allDocData];
+      allDocsBySearch?.length > 0 ? [...allDocsBySearch] : [...allDocData];
 
     const filteredDocs = targetArray.filter((doctor) => {
       const typeMatch =

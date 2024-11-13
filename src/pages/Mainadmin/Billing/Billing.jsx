@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import "./billingStyles.css";
+import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+import { BASE_URL } from "../../../config";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 export default function Billing() {
   const [width, setWidth] = useState("50%"); // Initial width state
@@ -22,6 +26,41 @@ export default function Billing() {
       },
     ],
   });
+  const axiosPrivate = useAxiosPrivate();
+  //fetch billDetails
+
+  const fetchBillDetails = async (sales_id) => {
+    const id = {
+      sales_id,
+    };
+    const response = await axios.post(`${BASE_URL}/pharmacy/getasalesorder`, {
+      sales_id,
+    });
+    console.log(response);
+    return response || [];
+  };
+
+  const {
+    data: billDetails,
+    isLoading: isFetchingBillDetailsLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["FetchBillDetails", 1],
+    queryFn: async ({ queryKey }) => {
+      try {
+        const response = await fetchBillDetails(113);
+        return response || [];
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          return [];
+        }
+        throw error;
+      }
+    },
+    enabled: true,
+  });
+
+  console.log(billDetails);
 
   const changeWidth = () => {
     setWidth((prevWidth) => (prevWidth === "50%" ? "150px" : "50%"));
@@ -38,6 +77,20 @@ export default function Billing() {
     "MRP",
     "Price",
   ]; // Custom column names
+
+  const rows = Array.from({ length: 6 }, (_, rowIndex) => (
+    <tr key={rowIndex}>
+      {Array.from({ length: 9 }, (_, colIndex) => (
+        <td key={colIndex}>
+          <input
+            type="text"
+            className="billing-input"
+            placeholder={`Row ${rowIndex + 1}, Col ${colIndex + 1}`}
+          />
+        </td>
+      ))}
+    </tr>
+  ));
 
   const getWidth = (index) => {
     const widths = [
@@ -113,7 +166,7 @@ export default function Billing() {
                   ))}
                 </tr>
               </thead>
-              <tbody></tbody>
+              <tbody>{rows}</tbody>
             </table>
           </div>
 
