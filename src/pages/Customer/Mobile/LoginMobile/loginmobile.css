@@ -1,0 +1,281 @@
+
+/* mob login */
+
+.containerlog{
+    width:80%;
+    margin-inline:auto;
+ }
+
+ .loginmobpage {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+ }
+
+ 
+ .loginmobpageimg{
+    height: 58px;
+    width:58px;
+    object-fit: cover;
+    border-radius:50%;
+    margin-top:60px;
+    margin-bottom: 20px;
+ }
+
+ .loginmobpage h2{
+    font-weight: 800;
+    margin-bottom:30px;
+ }
+
+ /* .loginmobpage button{
+    height: 50px;
+    border-radius:6px;
+ } */
+ .loginmobpageinput{
+    height: 50px;
+    background-color: #f2f5ff;
+    border-radius:6px;
+    padding:15px;
+    margin-top:15px;
+ }
+
+ .loginmobpageinputdiv{
+    height:50px;
+    margin-top:20px;
+ }
+
+ .loginmobpage input:focus {
+    border:2px solid #91a9ff;
+}
+ .password-input {
+    background-color: #f2f5ff;
+    border-radius:6px;
+    height: 50px;
+    padding:15px;
+    width:100%;
+    border:2px solid #f2f5ff;
+    font-weight: 500;
+ }
+
+
+/* Error state for input when empty and button is clicked */
+
+
+
+.input-error{
+    border: 2px solid red;
+  }
+  
+  .input-error::placeholder {
+    color: red;
+  }
+  
+  /* Focus state styling */
+  .loginmobpageinputdiv input:focus {
+    border: 2px solid #91a9ff;
+}
+
+
+.orline{
+    height:1px;
+    width:100%;
+    background-color: #ccc;
+    position: relative;
+    margin:40px 0px;
+}
+
+.orlinetext{
+    padding:12px;
+    background-color:white;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.googleimg{
+    position: absolute;
+    top:50%;
+    left:22px;
+    transform: translateY(-50%);
+}
+
+
+
+.input-fieldsmob{
+    background-color: #f2f5ff;
+    border-radius:6px;
+    height: 50px;
+    padding:15px;
+    width:100%;
+    border:2px solid #f2f5ff;
+    font-weight: 500;
+}
+
+.input-error2{
+    border: 2px solid red;
+  }
+  
+  .input-error2::placeholder {
+    color: red;
+  }
+
+  .login-buttonmob{
+    background-color: #3A65FD;
+    color:white;
+    margin-top:30px;
+    height: 50px;
+    border-radius:6px;
+    width:100%;
+  }
+
+  .loginmobpageinputdiv{
+    position: relative;
+    width:100%;
+  }
+
+.createaccountbutton2{
+    position: absolute;
+    height:24px;
+    font-size:18px;
+    right:15px;
+    top: '50%';
+    transform: 'translateY(-50%)';
+    background: 'none';
+    border: 'none';
+    cursor: 'pointer';
+    background-color:transparent;
+}
+  
+.googleregi{
+        background-color:#f2f5ff;
+        color: black;
+        position:relative;
+        border: none;
+        cursor: pointer;
+        font-weight:500;
+        height: 50px;
+        border-radius:6px;  
+}
+
+.createaccountmobsec{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.loginmobpageimg2{
+    height: 58px;
+    width:58px;
+    object-fit: cover;
+    border-radius:50%;
+    margin-top:40px;
+    margin-bottom: 20px;
+ }
+
+ .createaccountmobsec h2{
+    font-weight: 800;
+ }
+ .createaccountmobsec input:focus {
+    border: 2px solid #91a9ff;
+}
+  /* end create account mob */
+/* Complete account mob */
+
+
+
+ .completeaccountmobsec{
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+ }
+
+ .completeprofileimg{
+    position: relative;
+    width: 80px;
+    height: 80px;
+ }
+ .completeprofileimg img{
+    height: 80px;
+    width: 80px;
+    border-radius:50%;
+    object-fit: cover;
+ }
+
+ .completeprofileimgicon{
+    position:absolute;
+    background-color:black;
+    color: white;
+    height:30px;
+    width: 30px;
+    border-radius:50px;
+    bottom:0px;
+    right: 0px;
+
+ }
+ .completeprofileimgicon i{
+    font-size:18px;
+    font-weight: 100;
+    height: 18px;
+ }
+
+ .completeaccountmobsec h2{
+    font-weight: 800;
+    margin-top:40px;
+    margin-bottom:20px;
+ }
+
+ .completeaccountmobsec i{
+    font-size: 16px;
+    font-weight: 100;
+    height: 16px;
+ }
+
+
+  .completeprofile-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top:20px;
+    width: 100%;
+  }
+  
+  .completeprofile-input-fieldsmob {
+    width: 100%;
+    padding-right: 2rem;
+  }
+  
+  /* Hide default date picker icon */
+  .completeprofile-date-input {
+    appearance: none;
+    -webkit-appearance: none; /* For Safari */
+    padding-right: 2rem;
+  }
+  
+  .completeprofile-icon {
+    position: absolute;
+    right: 10px;
+    font-size: 1.2rem;
+    color: #888; /* Adjust color as needed */
+    pointer-events: none; /* Prevent icon from blocking input clicks */
+  }
+
+  .completeprofile-date-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; /* Firefox */
+    padding-right: 2rem;
+  }
+  
+  /* Hide the calendar icon */
+  .completeprofile-date-input::-webkit-calendar-picker-indicator {
+    display: none !important;
+    -webkit-appearance: none;
+  }
+  
+  .completeprofile-date-input::-ms-expand {
+    display: none; /* This may hide dropdown arrow in IE/Edge */
+  }
+
+/* end complete account mob */

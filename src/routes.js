@@ -92,6 +92,7 @@ import Homeservices from "./components/HomeServices/Homeservices";
 import Chatbot from "./pages/Customer/Mobile/Home/HomePage/ChatBot/Chatbot";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import UploadPresMobile from "./pages/Pharmacy/UploadPresMobile";
+import LoginMobile from "./pages/Customer/Mobile/LoginMobile/LoginMobile";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   // { path: "/", element: <HomePage /> },
@@ -162,6 +163,7 @@ export const publicRoutes = [
   { path: "/careers", element: <Careersform /> },
 
   { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
+  { path: "/loginmobile", element: <LoginMobile /> }, //mobile screen only
   { path: "/homeservice", element: <Homeservices /> },
   { path: "*", element: <ErrorPage /> },
 ];
