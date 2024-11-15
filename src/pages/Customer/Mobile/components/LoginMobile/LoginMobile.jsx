@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./loginmobile.css";
+import '../../../../../pages/Login&register/login.css'
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BASE_URL } from "../../../../../config";

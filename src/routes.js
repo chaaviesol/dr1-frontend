@@ -89,7 +89,7 @@ import Chatbot from "./pages/Customer/Mobile/Home/HomePage/ChatBot/Chatbot";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import UploadPresMobile from "./pages/Pharmacy/UploadPresMobile";
 import LoginMobile from "./pages/Customer/Mobile/components/LoginMobile/LoginMobile";
-import SignupMobile from "./pages/Customer/Mobile/components/Signupmobile/SignupMobile";
+// import SignupMobile from "./pages/Customer/Mobile/components/Signupmobile/";
 export const publicRoutes = [
   { path: "/", element: <HomePage /> },
   // { path: "/", element: <HomePage /> },
@@ -158,7 +158,7 @@ export const publicRoutes = [
 
   { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
   { path: "/login", element: <LoginMobile /> }, //mobile screen only
-  { path: "/signup", element: <SignupMobile /> }, //mobile screen only
+  // { path: "/signup", element: <SignupMobile /> }, //mobile screen only
   { path: "/homeservice", element: <Homeservices /> },
   { path: "*", element: <ErrorPage /> },
 ];
