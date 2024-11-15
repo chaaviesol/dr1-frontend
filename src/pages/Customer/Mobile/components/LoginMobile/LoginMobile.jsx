@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./loginmobile.css";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { BASE_URL } from "../../../../config";
-import useAuth from "../../../../hooks/useAuth";
+import { BASE_URL } from "../../../../../config";
+import useAuth from "../../../../../hooks/useAuth";
 import { CircularProgress } from "@mui/material";
 
 export default function LoginMobile() {
