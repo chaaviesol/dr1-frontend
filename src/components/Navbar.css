@@ -61,6 +61,9 @@
   color: white;
   display: flex;
   align-items: center;
+  &&:hover{
+    background-color: #2a57f8;
+  }
 }
 
 .nav-button1 {

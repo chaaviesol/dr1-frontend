@@ -1,5 +1,4 @@
 import HomePage from "./pages/Home/Home";
-import { LoginSignin } from "./pages/Login&register/LoginSignin";
 import DoctorProfile from "./pages/Customer/doctor/DoctorProfile";
 import Labdetails from "./pages/Labs/Labdetails";
 import About from "./pages/Aboutus/About";
@@ -46,7 +45,6 @@ import { DocProfileMainSec } from "./pages/Doctoradmin/Dashboard/DocProfileMainS
 import HospitalDetailed from "./pages/Customer/Hospital/HospitalDetailed/HospitalDetailed";
 import HospitalAdminProvider from "./contexts/Doctor/HospitalAdminProvider";
 import { DoctorFeedbackList } from "./pages/Mainadmin/Mainadmindoctor/DoctorFeedBacklist/DoctorFeedbackList";
-// import MainAdminDoctorEditBasic from "./pages/Mainadmin/Mainadmindoctor/MainAdminDoctorEdit/MainAdminDoctorEditBasic";
 import { MainAdminDoctorEditFinal } from "./pages/Mainadmin/Mainadmindoctor/MainAdminDoctorEdit/MainAdminDoctorEditFinal";
 import Mainadminlabeditlab1 from "./pages/Mainadmin/Mainadminlabs/edit data/LabEdit1";
 import Mainadminlabeditlab2 from "./pages/Mainadmin/Mainadminlabs/edit data/LabEdit2";
@@ -56,14 +54,12 @@ import Addadmins from "./pages/Mainadmin/ManageAdmin/Addadmins";
 import Adminlist from "./pages/Mainadmin/ManageAdmin/Adminlist";
 import Unauthorized from "./components/Routing/UnAuthorized/UnAuthorized";
 import CustomerLabMobile from "./pages/Customer/Mobile/Lab/Lab";
-// import CustomerHospitalMobile from "./pages/Customer/Mobile/Hospital/HospitalMob";
 import CustomerPharamcyMobile from "./pages/Customer/Mobile/Pharmacy/Pharmacy";
 import MobileDoctorProfile from "./pages/Customer/Mobile/MobileDoctorProfile/MobileDoctorProfile";
 import MobileHospitalProfile from "./pages/Customer/Mobile/MobileHospitalProfile/MobileHospitalProfile";
 import MobileLabProfile from "./pages/Customer/Mobile/MobileLabProfile/MobileLabProfile";
 import SecondOpinion from "./pages/Customer/Mobile/SecondOpinion/SecondOpinion";
 import SecondOpinion2ndpage from "./pages/Customer/Mobile/SecondOpinion/SecondOpinion2ndpage";
-import Profile from "./pages/Customer/Mobile/Profile/Profile";
 
 import ResetPassword from "./pages/Customer/Mobile/Manage User/password/resetpassword1";
 import EmailInputPage from "./pages/Customer/Mobile/Manage User/password/EmailInputPage";
@@ -112,7 +108,6 @@ export const publicRoutes = [
 
   { path: "/unauthorized", element: <Unauthorized /> },
 
-  { path: "/login", element: <LoginSignin /> },
   { path: "/doctorprofile", element: <DoctorProfile /> },
   { path: "/labdetails", element: <Labdetails /> },
   { path: "/about", element: <About /> },
@@ -150,8 +145,6 @@ export const publicRoutes = [
   { path: "/labfiltering", element: <Connect /> },
   { path: "/registration", element: <Registerlanding /> },
 
-  // { path: "/analyzelab", element: <AnalyzeLabAdmin /> },
-  // { path: "/editLaboratory", element: <EditLaboratory /> },
   { path: "/hospitaldetailed", element: <HospitalDetailed /> },
 
   { path: "/forgotpwd", element: <EmailInputPage /> },
@@ -163,7 +156,7 @@ export const publicRoutes = [
   { path: "/careers", element: <Careersform /> },
 
   { path: "/trackorder", element: <TrackOrder /> }, //mobile screen only
-  { path: "/loginmobile", element: <LoginMobile /> }, //mobile screen only
+  { path: "/login", element: <LoginMobile /> }, //mobile screen only
   { path: "/homeservice", element: <Homeservices /> },
   { path: "*", element: <ErrorPage /> },
 ];

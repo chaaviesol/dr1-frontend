@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import './loginmobile.css'
+import "./loginmobile.css";
+import { toast } from "react-toastify";
+import axios from "axios";
+import { BASE_URL } from "../../../../config";
+import useAuth from "../../../../hooks/useAuth";
+import { CircularProgress } from "@mui/material";
 
 export default function LoginMobile() {
   const [showPassword, setShowPassword] = useState(false);
@@ -7,6 +12,9 @@ export default function LoginMobile() {
   const [password, setPassword] = useState("");
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
+  const [isLoginPending, setIsLoginPending] = useState(false);
+
+  const { setAuth } = useAuth();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -14,15 +22,18 @@ export default function LoginMobile() {
 
   const handleLogin = () => {
     // Check for empty email and password fields
-    if (email === "") {
-      setIsEmailEmpty(true);
-    } else {
-      setIsEmailEmpty(false);
-    }
-    if (password === "") {
-      setIsPasswordEmpty(true);
-    } else {
-      setIsPasswordEmpty(false);
+    const isEmailEmpty = email === "";
+    const isPasswordEmpty = password === "";
+
+    setIsEmailEmpty(isEmailEmpty);
+    setIsPasswordEmpty(isPasswordEmpty);
+
+    // Proceed with API call if both fields are valid
+    if (!isEmailEmpty && !isPasswordEmpty) {
+      customerLogin({
+        email,
+        password,
+      });
     }
   };
 
@@ -32,6 +43,30 @@ export default function LoginMobile() {
 
   const handleFocusPassword = () => {
     setIsPasswordEmpty(false);
+  };
+
+  //call login api
+
+  const customerLogin = async (payload) => {
+    setIsLoginPending(true);
+    try {
+      const response = await axios.post(`${BASE_URL}/user/userlogin`, payload);
+      console.log(response);
+      const data = response.data;
+      const { message, userId, userType, accessToken, refreshToken } = data;
+      toast.success(message);
+      sessionStorage.setItem("accessToken", accessToken);
+      sessionStorage.setItem("refreshToken", refreshToken);
+      setAuth({
+        userId,
+        userType,
+      });
+    } catch (err) {
+      toast.error(err.response.data.message);
+      console.log(err);
+    } finally {
+      setIsLoginPending(false);
+    }
   };
 
   return (
@@ -86,8 +121,16 @@ export default function LoginMobile() {
           </button>
         </div>
 
-        <button onClick={handleLogin} className="login-buttonmob">
-          Login
+        <button
+          onClick={handleLogin}
+          disabled={isLoginPending}
+          className="login-buttonmob"
+        >
+          {isLoginPending ? (
+            <CircularProgress sx={{ color: "white" }} size="1.5rem" />
+          ) : (
+            "Login"
+          )}
         </button>
 
         <h4
