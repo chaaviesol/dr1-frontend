@@ -21,10 +21,13 @@ function Cart() {
     delivery_details: "",
     contact_no: "",
     pincode: "",
+    city: "",
+    district: "",
   });
   const isMobile = useIsMobileScreen();
   const { cartItems, refetchCart } = usePharmacyContext();
   const { auth } = useAuth();
+  const [errors, setErrors] = useState({});
   const { userId, userType } = auth;
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
@@ -57,10 +60,12 @@ function Cart() {
       delivery_address: address.delivery_details,
       contact_no: address?.contact_no,
       pincode: address?.pincode,
+      city: address?.city,
+      district: address?.district,
     };
 
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy//salesorder`,
+      `${BASE_URL}/pharmacy/salesorder`,
       payload
     );
     return response;
@@ -107,33 +112,33 @@ function Cart() {
   };
 
   const HandleOnclick = async (e) => {
+    const newErrors = {};
     if (!details.contact_no) {
-      toast.error("Contact Number is missing");
-      return;
+      newErrors.contact_norequired = "Contact Number is required";
     }
     if (!/^[6-9]\d{9}$/.test(details.contact_no)) {
-      toast.error(
-        "Invalid Contact Number. It should be a valid 10-digit number."
-      );
-      return;
+      newErrors.contact_no = "Invalid Contact Number.";
     }
     if (!details.delivery_details || details.delivery_details === "") {
-      toast.error("Delivery details is missing");
-      return;
+      newErrors.delivery_details = "Delivery details is required";
+    }
+    if (!details.city || details.city === "") {
+      newErrors.city = "City name is required";
+    }
+    if (!details.district || details.district === "") {
+      newErrors.district = "District name is required";
     }
     if (!details.pincode) {
-      toast.error("Pincode is missing");
-      return false;
+      newErrors.pincoderequired = "Pincode is required";
     }
 
     const pincodeLength = details.pincode.toString().length;
-    if (!details.pincode) {
-      toast.error("Pincode is missing");
-      return false;
-    }
     if (pincodeLength !== 6) {
-      toast.error("Pincode must be 6 digits long");
-      return false;
+      newErrors.pincode = "Invalid pincode";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
     }
 
     handleCheckout(details);
@@ -173,6 +178,8 @@ function Cart() {
       setDetails({
         ...details,
         delivery_details: data.formattedAddress,
+        city: data.streetAddress,
+        district: data.city,
         pincode: data.postalCode,
       });
       setGettingLocationLoading(false);
@@ -221,6 +228,8 @@ function Cart() {
     getCurrentLocation,
     fetchLocationMutationPending: fetchLocationMutation.isPending,
     gettingLocationLoading,
+    errors,
+    setErrors
   };
 
   return (

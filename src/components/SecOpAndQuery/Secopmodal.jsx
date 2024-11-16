@@ -94,20 +94,26 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     const maxSizeInMB = 10;
     const maxFiles = 5;
     const validFiles = [];
-
+    const newErrors = {};
     // Check if the total number of files exceeds the limit
     if (formData.image.length + newFiles.length > maxFiles) {
-      toast.error(`You can upload a maximum of ${maxFiles} files.`);
-      return;
+      newErrors.image = `You can upload a maximum of ${maxFiles} files.`;
     }
 
     newFiles.forEach((file) => {
       if (file.size > maxSizeInMB * 1024 * 1024) {
-        toast.error("Max file size is 10Mb");
+        newErrors.image = `Max file size is 10Mb`;
       } else {
         validFiles.push(file);
       }
     });
+    if (Object.keys(newErrors).length > 0) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        ...newErrors,
+      }));
+      return;
+    }
 
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -119,40 +125,24 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     const newErrors = {};
     if (!formData.patient_name || formData.patient_name === "") {
       newErrors.patient_name = "Patient Name is missing";
-      // toast.info("Patient Name is missing");
-      // return;
     }
     if (!formData.doctor_name) {
       newErrors.doctor_name = "Doctor Name is missing";
-      // toast.error("Doctor Name is missing");
-      // return;
     }
     if (!formData.contact_no) {
       newErrors.contact_no = "Contact Number is missing";
-      // toast.error("Contact Number is missing");
-      // return;
     }
     if (!/^[6-9]\d{9}$/.test(formData.contact_no)) {
       newErrors.contact_no = "Invalid Contact Number.";
-      // toast.error(
-      //   "Invalid Contact Number. It should be a valid 10-digit Indian mobile number."
-      // );
-      // return;
     }
     if (formData.image.length === 0) {
-      newErrors.image = "Please attach at least one report.";
-      // toast.error("Please attach at least one report");
-      // return;
+      newErrors.imagelength = "Please attach at least one report.";
     }
     if (!formData.remarks) {
       newErrors.remarks = "Please enter your query";
-      // toast.error("Please enter your query");
-      // return;
     }
     if (!checked) {
       newErrors.checked = "Please provide your consent to be contacted.";
-      // toast.error("Please provide your consent to be contacted.");
-      // return;
     }
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -360,6 +350,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                     options: false,
                     secop: false,
                   });
+                  setErrors("");
                 }}
               >
                 <div className="askaquestionlogosection flex">
@@ -396,6 +387,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
                       options: false,
                       query: false,
                     });
+                    setErrors("");
                   }}
                 >
                   <h3 style={{ color: "white" }}>Get a Second Opinion</h3>
@@ -552,14 +544,23 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
 
                       {/* // <button>Upload</button> */}
                     </div>
-                    {errors.image && (
-                      <p
-                        style={{ color: "red", fontSize: "0.9rem" }}
-                        className="error-message"
-                      >
-                        {errors.image}
-                      </p>
-                    )}
+                    {formData?.image?.length > 0
+                      ? errors.image && (
+                          <p
+                            style={{ color: "red", fontSize: "0.9rem" }}
+                            className="error-message"
+                          >
+                            {errors.image}
+                          </p>
+                        )
+                      : errors.imagelength && (
+                          <p
+                            style={{ color: "red", fontSize: "0.9rem" }}
+                            className="error-message"
+                          >
+                            {errors.imagelength}
+                          </p>
+                        )}
                   </div>
 
                   <div className="secopforminpt">

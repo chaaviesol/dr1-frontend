@@ -6,9 +6,11 @@ import { port } from "../../config";
 import "./ShowFeedBackPopup.css";
 import { useAuth } from "../../contexts/Auth/AuthProvider";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { Loader } from "../../components/Loader/Loader";
 export const ShowFeedBackPopup = () => {
   const { isPopupVisible, hidePopup, ContactData } = useContext(PopupContext);
   const [ConstantData, setConstantData] = useState(null);
+  const [loader, setLoader] = useState(false);
   const [FinalData, setFinalData] = useState({
     rating: 0,
     message: "",
@@ -33,6 +35,7 @@ export const ShowFeedBackPopup = () => {
   };
 
   const submitData = () => {
+    setLoader(true)
     if (ConstantData?.type === "Doctor") {
       const sentData = {
         ...FinalData,
@@ -46,6 +49,7 @@ export const ShowFeedBackPopup = () => {
         axiosPrivate.post(`${port}/doctor/doctor_feedback`, sentData).then((res) => {
           // console.log(res);
           if (res?.data) {
+            setLoader(false)
             toast.success(res?.data?.message);
             setFinalData((prevData) => ({ ...prevData, status: "success" }));
           }
@@ -163,6 +167,7 @@ export const ShowFeedBackPopup = () => {
   // console.log("ContactData>>>", ContactData);
   return (
     <>
+    {loader ? <Loader /> : ""}
       <Modal
         open={isPopupVisible}
         aria-labelledby="feedback-popup"
