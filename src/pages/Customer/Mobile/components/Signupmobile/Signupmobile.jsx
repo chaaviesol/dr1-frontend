@@ -139,14 +139,14 @@ export default function Signupmobile() {
               }`}
               style={{ marginTop: "20px" }}
             />
-            {formErrors[field] && (
+            {/* {formErrors[field] && (
               <p
                 style={{ color: "red", fontSize: "0.9rem" }}
                 className="error-message"
               >
                 {formErrors[field]}
               </p>
-            )}
+            )} */}
           </div>
         ))}
 
@@ -172,14 +172,14 @@ export default function Signupmobile() {
           >
             <i className={showPassword ? "ri-eye-line" : "ri-eye-off-line"} />
           </button>
-          {formErrors.password && (
+          {/* {formErrors.password && (
             <p
               style={{ color: "red", fontSize: "0.9rem" }}
               className="error-message"
             >
               {formErrors.password}
             </p>
-          )}
+          )} */}
         </div>
 
         <div className="loginmobpageinputdiv">
@@ -204,14 +204,14 @@ export default function Signupmobile() {
           >
             <i className={showPassword ? "ri-eye-line" : "ri-eye-off-line"} />
           </button>
-          {formErrors.confirmPassword && (
+          {/* {formErrors.confirmPassword && (
             <p
               style={{ color: "red", fontSize: "0.9rem" }}
               className="error-message"
             >
               {formErrors.confirmPassword}
             </p>
-          )}
+          )} */}
         </div>
 
         <button onClick={handleLogin} className="login-buttonmob">

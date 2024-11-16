@@ -100,14 +100,14 @@ export default function LoginMobile() {
           onFocus={handleFocusEmail}
           className={`password-input ${isEmailEmpty ? "input-error" : ""}`}
         />
-        {errors.email && (
+        {/* {errors.email && (
           <p
             style={{ color: "red", fontSize: "0.9rem" }}
             className="error-message"
           >
             {errors.email}
           </p>
-        )}
+        )} */}
 
         <div
           className="loginmobpageinputdiv"
