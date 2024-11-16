@@ -83,7 +83,7 @@ export default function LoginMobile() {
   return (
     <>
       <div className="containerlog loginmobpage flex">
-        <div>
+      <div onClick={() => navigate("/")}>
           <img
             className="loginmobpageimg"
             src="./images/doconelogo.jpg"

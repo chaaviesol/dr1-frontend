@@ -108,11 +108,12 @@ const Profile = () => {
           style={{
             backgroundColor: "#3A65FD",
           }}
-          onClick={toggleSignInModal}
+          // onClick={toggleSignInModal}
+          onClick={() => navigate("/login")}
         >
           Login
         </button>
-        <button
+        <button  onClick={() => navigate("/signup")}
           style={{
             color: "#3A65FD",
             backgroundColor: "#F2F5FF",

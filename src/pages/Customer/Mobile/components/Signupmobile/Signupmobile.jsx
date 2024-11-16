@@ -113,7 +113,7 @@ export default function Signupmobile() {
     <div>
       {loader ? <Loader /> : ""}
       <div className="containerlog createaccountmobsec flex">
-        <div>
+        <div onClick={() => navigate("/")}>
           <img
             className="loginmobpageimg2"
             src="./images/doconelogo.jpg"
