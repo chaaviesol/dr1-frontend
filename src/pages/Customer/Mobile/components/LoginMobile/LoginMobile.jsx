@@ -62,7 +62,6 @@ export default function LoginMobile() {
       }
 
       const response = await axios.post(`${BASE_URL}/user/userlogin`, payload);
-      console.log(response);
       const data = response.data;
       const { message, userId, userType, accessToken, refreshToken } = data;
       toast.success(message);
@@ -72,6 +71,7 @@ export default function LoginMobile() {
         userId,
         userType,
       });
+      navigate("/");
     } catch (err) {
       toast.error(err.response.data.message);
       console.log(err);
@@ -83,7 +83,7 @@ export default function LoginMobile() {
   return (
     <>
       <div className="containerlog loginmobpage flex">
-      <div onClick={() => navigate("/")}>
+        <div onClick={() => navigate("/")}>
           <img
             className="loginmobpageimg"
             src="./images/doconelogo.jpg"
@@ -152,7 +152,8 @@ export default function LoginMobile() {
           )}
         </button>
 
-        <h4  onClick={() => navigate("/forgotpwd")}
+        <h4
+          onClick={() => navigate("/forgotpwd")}
           style={{
             color: "#6688FE",
             marginTop: "10px",
@@ -161,7 +162,8 @@ export default function LoginMobile() {
           Forgot Password?
         </h4>
 
-        <h4 onClick={() => navigate("/signup")}
+        <h4
+          onClick={() => navigate("/signup")}
           style={{
             color: "#6688FE",
             marginTop: "10px",
