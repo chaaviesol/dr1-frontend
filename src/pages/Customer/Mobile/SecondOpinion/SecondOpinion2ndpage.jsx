@@ -23,39 +23,52 @@ export default function SecondOpinion2ndpage() {
     department: department,
     remarks: "",
   });
-
+  const [errors, setErrors] = useState({});
   const handleFileChange = (e) => {
-    const newFiles = Array.from(e.target.files);
+    const newFiles = Array.from(e.target?.files || []);
     const maxSizeInMB = 10;
     const maxFiles = 5;
     const validFiles = [];
     const invalidFiles = [];
-
+    const newErrors = {};
+  
+    // Safely check existing files
+    const existingFiles = formData?.image || [];
+  
     // Check if the total number of files exceeds the limit
-    if (formData?.image?.length + newFiles?.length > maxFiles) {
-      toast.error(`You can upload a maximum of ${maxFiles} files.`);
-      return;
+    if (existingFiles.length + newFiles.length > maxFiles) {
+      newErrors.image = `You can upload a maximum of ${maxFiles} files.`;
     }
-
+  
     newFiles.forEach((file) => {
       if (file.size > maxSizeInMB * 1024 * 1024) {
-        // File size greater than 10MB
+
         invalidFiles.push(`${file.name} exceeds ${maxSizeInMB}MB.`);
-      }
-      else {
+      } else {
         validFiles.push(file);
       }
     });
-
-    if (invalidFiles?.length > 0) {
+ 
+    if (Object.keys(newErrors).length > 0) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        ...newErrors,
+      }));
+      return;
+    }
+  
+    if (invalidFiles.length > 0) {
       toast.error(`Error: ${invalidFiles.join(" ")}`);
-    } else {
+    }
+  
+    if (validFiles.length > 0) {
       setFormData((prevFormData) => ({
         ...prevFormData,
-        image: [...prevFormData.image, ...validFiles],
+        image: [...existingFiles, ...validFiles],
       }));
     }
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,35 +82,30 @@ export default function SecondOpinion2ndpage() {
   };
 
   const handleSubmit = async () => {
+    const newErrors = {};
     if (!formData.patient_name || formData.patient_name === "") {
-      toast.error("Patient Name is missing");
-      return;
+      newErrors.patient_name = "Patient Name is missing";
     }
     if (!formData.doctor_name) {
-      toast.error("Doctor Name is missing");
-      return;
+      newErrors.doctor_name = "Doctor Name is missing";
     }
     if (!formData.contact_no) {
-      toast.error("Contact Number is missing");
-      return;
+      newErrors.contact_no = "Contact Number is missing";
     }
     if (!/^[6-9]\d{9}$/.test(formData.contact_no)) {
-      toast.error(
-        "Invalid Contact Number. It should be a valid 10-digit Indian mobile number."
-      );
-      return;
+      newErrors.contact_no = "Invalid Contact Number.";
     }
-    if (formData.image?.length === 0) {
-      toast.error("Please attach at least one report");
-      return;
+    if (formData.image.length === 0) {
+      newErrors.imagelength = "Please attach at least one report.";
     }
     if (!formData.remarks) {
-      toast.error("Please enter your query");
-      return;
+      newErrors.remarks = "Please enter your query";
     }
-
     if (!checked) {
-      toast.error("Please provide your consent to be contacted.");
+      newErrors.checked = "Please provide your consent to be contacted.";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -227,6 +235,23 @@ export default function SecondOpinion2ndpage() {
             multiple
             style={{ display: "none" }}
           />
+          {formData?.image?.length > 0
+            ? errors.image && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.image}
+                </p>
+              )
+            : errors.imagelength && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.imagelength}
+                </p>
+              )}
           <div className="file-names">
             {formData?.image?.map((report, index) => (
               <h4 key={index}>{report?.name}</h4>
@@ -242,6 +267,14 @@ export default function SecondOpinion2ndpage() {
             onChange={handleChange}
             maxLength={40}
           />
+          {errors.patient_name && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.patient_name}
+            </p>
+          )}
         </div>
 
         <div className="secopinput">
@@ -253,6 +286,14 @@ export default function SecondOpinion2ndpage() {
             onChange={handleChange}
             maxLength={40}
           />
+          {errors.doctor_name && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.doctor_name}
+            </p>
+          )}
         </div>
 
         <div className="secopinput">
@@ -265,6 +306,14 @@ export default function SecondOpinion2ndpage() {
             onChange={handleChange}
             maxLength={10}
           />
+          {errors.contact_no && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.contact_no}
+            </p>
+          )}
         </div>
         <div className="secopinput">
           <textarea
@@ -275,6 +324,14 @@ export default function SecondOpinion2ndpage() {
             onChange={handleChange}
             maxLength={1000}
           ></textarea>
+          {errors.remarks && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.remarks}
+            </p>
+          )}
         </div>
 
         <div className="consentSectionmodal">
@@ -297,6 +354,14 @@ export default function SecondOpinion2ndpage() {
             label="I consent to be contacted regarding my submission."
           />
         </div>
+        {errors.checked && (
+          <p
+            style={{ color: "red", fontSize: "0.9rem" }}
+            className="error-message"
+          >
+            {errors.checked}
+          </p>
+        )}
 
         <div className="secopsubbutton">
           <button onClick={handleSubmit}>

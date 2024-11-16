@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./loginmobile.css";
-import '../../../../../pages/Login&register/login.css'
+import "../../../../../pages/Login&register/login.css";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { BASE_URL } from "../../../../../config";
 import useAuth from "../../../../../hooks/useAuth";
 import { CircularProgress } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginMobile() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,9 +15,9 @@ export default function LoginMobile() {
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
   const [isLoginPending, setIsLoginPending] = useState(false);
-
+  const [errors, setErrors] = useState({});
   const { setAuth } = useAuth();
-
+  const navigate = useNavigate();
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -49,8 +50,17 @@ export default function LoginMobile() {
   //call login api
 
   const customerLogin = async (payload) => {
+    const newErrors = {};
     setIsLoginPending(true);
     try {
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        newErrors.email = `Invalid email address.`;
+      }
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+      }
+
       const response = await axios.post(`${BASE_URL}/user/userlogin`, payload);
       console.log(response);
       const data = response.data;
@@ -90,6 +100,14 @@ export default function LoginMobile() {
           onFocus={handleFocusEmail}
           className={`password-input ${isEmailEmpty ? "input-error" : ""}`}
         />
+        {errors.email && (
+          <p
+            style={{ color: "red", fontSize: "0.9rem" }}
+            className="error-message"
+          >
+            {errors.email}
+          </p>
+        )}
 
         <div
           className="loginmobpageinputdiv"
@@ -134,7 +152,7 @@ export default function LoginMobile() {
           )}
         </button>
 
-        <h4
+        <h4  onClick={() => navigate("/forgotpwd")}
           style={{
             color: "#6688FE",
             marginTop: "10px",
@@ -143,7 +161,7 @@ export default function LoginMobile() {
           Forgot Password?
         </h4>
 
-        <h4
+        <h4 onClick={() => navigate("/signup")}
           style={{
             color: "#6688FE",
             marginTop: "10px",

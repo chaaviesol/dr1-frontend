@@ -24,8 +24,6 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
     secop2: false,
   });
   const { Categories } = useContext(MyContext);
-  console.log("allopathySpecs", Categories.allopathySpecs);
-  const navigate = useNavigate();
   const { auth } = useAuth();
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [formData, setFormData] = useState({
@@ -55,7 +53,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
         ...prevErrors,
         department: "Select a department!",
       }));
-      // toast.error("Select a department!");
+    
       return;
     }
     if (selectedDepartment) {
