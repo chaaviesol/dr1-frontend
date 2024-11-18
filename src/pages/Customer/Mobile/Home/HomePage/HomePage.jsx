@@ -14,7 +14,7 @@ function HomePage() {
     if (auth.userId && auth.userType === "customer") {
       navigate("/bot")
     } else {
-      handleUpdateActiveTab("profile")
+      navigate("/login")
     }
   }
   return (

@@ -132,7 +132,7 @@ function HospitalMob() {
         <Typography text="Top Hospitals" />
       </div>
       {hospitaldata.map((hospital, index) => (
-        <div className={styles.margin}>
+        <div key={index} className={styles.margin}>
           <HospitalCard
             screen="/mobilehospitalprofile"
             key={index}
