@@ -7,8 +7,8 @@ import { Loader } from "../../../../../components/Loader/Loader";
 
 export default function Signupmobile() {
   const [showPassword, setShowPassword] = useState({
-    password:false,
-    confirmPassword:false
+    password: false,
+    confirmPassword: false,
   });
   const [formValues, setFormValues] = useState({
     email: "",
@@ -23,7 +23,7 @@ export default function Signupmobile() {
   const togglePasswordVisibility = (field) => {
     setShowPassword({
       ...showPassword,
-      [field]:!showPassword[field]
+      [field]: !showPassword[field],
     });
   };
   const [loader, setLoader] = useState(false);
@@ -88,7 +88,7 @@ export default function Signupmobile() {
     }
     if (!Passwordpattern.test(formValues.password)) {
       newErrors.password =
-        "Password must be 6+ characters with an uppercase letter, digit, and special character.";
+        "inavlid password";
     }
 
     setFormErrors(newErrors);
@@ -128,7 +128,7 @@ export default function Signupmobile() {
         </div>
         <h2>Create Account</h2>
 
-        {["name", "phone_no", "email"].map((field,index) => (
+        {["name", "phone_no", "email"].map((field, index) => (
           <div>
             <input
               key={index}
@@ -168,7 +168,7 @@ export default function Signupmobile() {
             }`}
           />
           <button
-            onClick={()=>togglePasswordVisibility("password")}
+            onClick={() => togglePasswordVisibility("password")}
             type="button"
             style={{
               top: "50%",
@@ -176,7 +176,11 @@ export default function Signupmobile() {
             }}
             className="createaccountbutton2"
           >
-            <i className={showPassword.password  ? "ri-eye-line" : "ri-eye-off-line"} />
+            <i
+              className={
+                showPassword.password ? "ri-eye-line" : "ri-eye-off-line"
+              }
+            />
           </button>
           {/* {formErrors.password && (
             <p
@@ -200,7 +204,7 @@ export default function Signupmobile() {
             }`}
           />
           <button
-               onClick={()=>togglePasswordVisibility("confirmPassword")}
+            onClick={() => togglePasswordVisibility("confirmPassword")}
             type="button"
             className="createaccountbutton2"
             style={{
@@ -208,7 +212,11 @@ export default function Signupmobile() {
               transform: "translateY(-50%)",
             }}
           >
-            <i className={showPassword.confirmPassword ? "ri-eye-line" : "ri-eye-off-line"} />
+            <i
+              className={
+                showPassword.confirmPassword ? "ri-eye-line" : "ri-eye-off-line"
+              }
+            />
           </button>
           {/* {formErrors.confirmPassword && (
             <p
@@ -219,6 +227,11 @@ export default function Signupmobile() {
             </p>
           )} */}
         </div>
+
+        <h4 style={{marginTop:"10px",textAlign:"left"}}>
+          Password must be 6+ characters with an uppercase letter, digit, and
+          special character.
+        </h4>
 
         <button onClick={handleLogin} className="login-buttonmob">
           Create Account
