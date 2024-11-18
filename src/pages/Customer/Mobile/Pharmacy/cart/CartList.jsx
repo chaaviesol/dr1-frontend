@@ -24,6 +24,8 @@ const CartList=React.memo(({
   getCurrentLocation,
   fetchLocationMutationPending,
   gettingLocationLoading,
+  errors,
+  setErrors,
 })=> {
   const { cartItems, isCartLoading } = usePharmacyContext();
   const navigate = useNavigate();
@@ -130,6 +132,23 @@ const CartList=React.memo(({
                 maxLength={10}
                 placeholder="Enter Your Contact Number "
               />
+               {errors.contact_norequired
+                ? errors.contact_norequired && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.contact_norequired}
+                    </p>
+                  )
+                : errors.contact_no && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.contact_no}
+                    </p>
+                  )}
             </div>
             <div className="checkoutmodalcontact">
               <h4>Pincode</h4>
@@ -142,6 +161,68 @@ const CartList=React.memo(({
                 maxLength={6}
                 placeholder="Enter Your Pincode "
               />
+               {errors.pincoderequired
+                ? errors.pincoderequired && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.pincoderequired}
+                    </p>
+                  )
+                : errors.pincode && (
+                    <p
+                      style={{ color: "red", fontSize: "0.9rem" }}
+                      className="error-message"
+                    >
+                      {errors.pincode}
+                    </p>
+                  )}
+            </div>
+          </div>
+          <div
+            className="flex"
+            style={{ justifyContent: "space-between", gap: "10px" }}
+          >
+            <div className="checkoutmodalcontact">
+            <h4>City</h4>
+              <input
+                onChange={handleOnchange}
+                type="text"
+                name="city"
+                value={details?.city}
+                onKeyDown={handleKeyPress}
+                maxLength={40}
+                placeholder="Enter Your City "
+              />
+              {errors.city && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.city}
+                </p>
+              )}
+            </div>
+            <div className="checkoutmodalcontact">
+              <h4>District</h4>
+              <input
+                onChange={handleOnchange}
+                onKeyDown={handleKeyPress}
+                type="text"
+                name="district"
+                value={details?.district}
+                maxLength={30}
+                placeholder="Enter Your district "
+              />
+              {errors.district && (
+                <p
+                  style={{ color: "red", fontSize: "0.9rem" }}
+                  className="error-message"
+                >
+                  {errors.district}
+                </p>
+              )}
             </div>
           </div>
 
@@ -170,12 +251,21 @@ const CartList=React.memo(({
               maxLength={100}
               placeholder="Enter Delivery Address"
             ></textarea>
+             {errors.delivery_details && (
+              <p
+                style={{ color: "red", fontSize: "0.9rem" }}
+                className="error-message"
+              >
+                {errors.delivery_details}
+              </p>
+            )}
             <p className="codcheckout">Cash On Delivery Only</p>
           </div>
 
           <div className="checkoutmodalbutton flex">
             <button
               onClick={() => {
+                setErrors("")
                 setIsModalOpen2(false);
                 setDetails({
                   contact_no: "",

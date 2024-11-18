@@ -16,13 +16,13 @@ export default function Homeservices() {
     name: "",
     phone_no: "",
   });
-  console.log({ formData });
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "phone_no" && value.length > 10) {
-        return;
-      }
+      return;
+    }
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -35,21 +35,30 @@ export default function Homeservices() {
     }));
   };
   const handleServiceSubmit = async () => {
+    const newErrors = {};
     if (!formData.name || formData.type === "") {
-      toast.error("Enter your name!");
-      return;
+      newErrors.name = "Enter your name!";
+      // toast.error("Enter your name!");
+      // return;
     }
     if (!formData.selectedService || formData.selectedService === "") {
-      toast.error("Select your role!");
-      return;
+      newErrors.selectedService = "Select your service!";
+      // toast.error("Select your role!");
+      // return;
     }
     if (!formData.phone_no || formData.phone_no.trim() === "") {
-      toast.error("Enter your phone number!");
-      return;
+      newErrors.phone_no = "Enter your phone number!";
+      // toast.error("Enter your phone number!");
+      // return;
     }
     const phoneRegex = /^[789]\d{9}$/;
     if (!phoneRegex.test(formData.phone_no)) {
-      toast.error("Enter a valid phone number!");
+      newErrors.phone_no = "Enter a valid phone number!";
+      // toast.error("Enter a valid phone number!");
+      // return;
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
     try {
@@ -65,6 +74,7 @@ export default function Homeservices() {
       );
       if (response.status === 200) {
         setLoader(false);
+        setErrors("");
         toast.success("Details submitted successfully!", {
           autoClose: 3000,
         });
@@ -188,7 +198,14 @@ export default function Homeservices() {
                 <h4>Other</h4>
               </div>
             </div>
-
+            {errors.selectedService && (
+              <p
+                style={{ color: "red", fontSize: "0.9rem" }}
+                className="error-message"
+              >
+                {errors.selectedService}
+              </p>
+            )}
             <div className="careersforminputs flex">
               <div className="careersforminput">
                 <h4>Name</h4>
@@ -200,6 +217,14 @@ export default function Homeservices() {
                   onChange={handleInputChange}
                   maxLength={40}
                 />
+                {errors.name && (
+                  <p
+                    style={{ color: "red", fontSize: "0.9rem" }}
+                    className="error-message"
+                  >
+                    {errors.name}
+                  </p>
+                )}
               </div>
               <div className="careersforminput">
                 <h4>Phone Number</h4>
@@ -212,6 +237,14 @@ export default function Homeservices() {
                   value={formData.phone_no}
                   onChange={handleInputChange}
                 />
+                {errors.phone_no && (
+                  <p
+                    style={{ color: "red", fontSize: "0.9rem" }}
+                    className="error-message"
+                  >
+                    {errors.phone_no}
+                  </p>
+                )}
               </div>
             </div>
 
