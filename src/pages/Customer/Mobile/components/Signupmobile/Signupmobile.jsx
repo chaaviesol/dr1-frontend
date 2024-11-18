@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../../../components/Loader/Loader";
 
 export default function Signupmobile() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState({
+    password:false,
+    confirmPassword:false
+  });
   const [formValues, setFormValues] = useState({
     email: "",
     name: "",
@@ -17,8 +20,11 @@ export default function Signupmobile() {
   const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+  const togglePasswordVisibility = (field) => {
+    setShowPassword({
+      ...showPassword,
+      [field]:!showPassword[field]
+    });
   };
   const [loader, setLoader] = useState(false);
   const handleKeyPress = (event) => {
@@ -122,10 +128,10 @@ export default function Signupmobile() {
         </div>
         <h2>Create Account</h2>
 
-        {["name", "phone_no", "email"].map((field) => (
+        {["name", "phone_no", "email"].map((field,index) => (
           <div>
             <input
-              key={field}
+              key={index}
               type={field === "phone_no" ? "number" : "text"}
               name={field}
               placeholder={formErrors[field] || `Enter your ${field}`}
@@ -152,7 +158,7 @@ export default function Signupmobile() {
 
         <div className="loginmobpageinputdiv">
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword.password ? "text" : "password"}
             name="password"
             placeholder={formErrors.password || "Enter your password"}
             value={formValues.password}
@@ -162,7 +168,7 @@ export default function Signupmobile() {
             }`}
           />
           <button
-            onClick={togglePasswordVisibility}
+            onClick={()=>togglePasswordVisibility("password")}
             type="button"
             style={{
               top: "50%",
@@ -170,7 +176,7 @@ export default function Signupmobile() {
             }}
             className="createaccountbutton2"
           >
-            <i className={showPassword ? "ri-eye-line" : "ri-eye-off-line"} />
+            <i className={showPassword.password  ? "ri-eye-line" : "ri-eye-off-line"} />
           </button>
           {/* {formErrors.password && (
             <p
@@ -184,7 +190,7 @@ export default function Signupmobile() {
 
         <div className="loginmobpageinputdiv">
           <input
-            type={showPassword ? "text" : "password"}
+            type={showPassword.confirmPassword ? "text" : "password"}
             name="confirmPassword"
             placeholder={formErrors.confirmPassword || "Confirm password"}
             value={formValues.confirmPassword}
@@ -194,7 +200,7 @@ export default function Signupmobile() {
             }`}
           />
           <button
-            onClick={togglePasswordVisibility}
+               onClick={()=>togglePasswordVisibility("confirmPassword")}
             type="button"
             className="createaccountbutton2"
             style={{
@@ -202,7 +208,7 @@ export default function Signupmobile() {
               transform: "translateY(-50%)",
             }}
           >
-            <i className={showPassword ? "ri-eye-line" : "ri-eye-off-line"} />
+            <i className={showPassword.confirmPassword ? "ri-eye-line" : "ri-eye-off-line"} />
           </button>
           {/* {formErrors.confirmPassword && (
             <p
