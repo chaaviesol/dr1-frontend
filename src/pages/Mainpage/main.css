@@ -182,7 +182,10 @@ small {
   border-radius: 50px;
   color: white;
 }
-
+.required {
+  color: red;
+  margin-left: 3px; /* Optional spacing */
+}
 .nav-button1 {
   font-family: "Outfit", sans-serif;
   font-size: 1.6rem;

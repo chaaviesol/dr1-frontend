@@ -69,6 +69,7 @@ export default function Addproduct({
       !product.category ||
       !product.brand ||
       !product.mrp ||
+      !product.hsn ||
       !product.description;
     const isAnyImageMissing = images.some((image) => image === null);
 
@@ -168,7 +169,7 @@ export default function Addproduct({
       <div className="addproductadmin">
         <div className="addproductadmin-input">
           <div className="addproductadmin-input-box">
-            <h4>Name</h4>
+            <h4>Name <span className="required">*</span></h4>
             <input
               type="text"
               name="name"
@@ -179,7 +180,7 @@ export default function Addproduct({
           </div>
 
           <div className="addproductadmin-input-box">
-            <h4>Category</h4>
+            <h4>Category <span className="required">*</span></h4>
             <div className="multiselector">
               <FormControl sx={{ m: 1, width: 300 }}>
                 <Select
@@ -217,7 +218,7 @@ export default function Addproduct({
           </div>
 
           <div className="addproductadmin-input-box">
-            <h4>Brand</h4>
+            <h4>Brand <span className="required">*</span></h4>
             <input
               type="text"
               maxLength={40}
@@ -228,7 +229,7 @@ export default function Addproduct({
           </div>
 
           <div className="addproductadmin-input-box">
-            <h4>Price</h4>
+            <h4>Price <span className="required">*</span> </h4>
             <input
               type="number"
               name="mrp"
@@ -237,11 +238,23 @@ export default function Addproduct({
               onChange={handlechange}
             />
           </div>
+          <div className="addproductadmin-input-box">
+            <h4>
+              Hsn<span className="required">*</span>
+            </h4>
+            <input
+              type="string"
+              name="hsn"
+              maxLength={30}
+              value={product?.hsn}
+              onChange={handlechange}
+            />
+          </div>
         </div>
 
         <div className="addimagediscription flex">
           <div className="newdtwt">
-            <h4>Add Images</h4>
+            <h4>Add Images <span className="required">*</span></h4>
 
             {Details ? (
               <div className="addimage-images-new">
@@ -324,7 +337,7 @@ export default function Addproduct({
           </div>
 
           <div className="addimage-discription-new">
-            <h4>Description</h4>
+            <h4>Description <span className="required">*</span></h4>
             <textarea
               name="description"
               maxLength={400}

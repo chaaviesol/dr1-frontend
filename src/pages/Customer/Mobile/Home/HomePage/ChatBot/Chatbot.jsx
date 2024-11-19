@@ -38,7 +38,7 @@ export default function Chatbot() {
     };
     const response = await axiosPrivate.post(`${port}/bot/chatbot`, payload);
 
-    return response.data;
+    return response.data || [];
   };
   const fetchBotCallResultMutation = useMutation({
     mutationKey: ["fetchBotCallResultMutation"],
@@ -47,7 +47,7 @@ export default function Chatbot() {
       BotRes(data.message);
     },
     onError: (error) => {
-      // console.log("popo")
+      console.log(error)
     },
   });
 
@@ -121,15 +121,17 @@ export default function Chatbot() {
           value={TempUserInput}
           name="UserInput"
           id=""
+          maxLength={1000}
         />
         <button
           type="button"
           onClick={ConfirmInput}
           disabled={!TempUserInput || fetchBotCallResultMutation.isPending}
           value="confirm"
+          style={{display:"flex",justifyContent:"center",alignItems:"center"}}
         >
           {fetchBotCallResultMutation.isPending ? (
-            <CircularProgress size="1.5rem" sx={{ color: "white" }} />
+            <CircularProgress size="2rem" sx={{ color: "white" }} />
           ) : (
             <i class="ri-send-plane-fill"></i>
           )}
