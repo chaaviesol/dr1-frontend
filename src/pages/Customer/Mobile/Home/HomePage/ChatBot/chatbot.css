@@ -1,0 +1,108 @@
+.botmobhead img{
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+    object-fit: cover;
+    margin-right:10px;
+  }
+
+.botmobhead {
+    justify-content: space-between;
+    align-items: center;
+    height:60px;
+    position:fixed;
+    width:100%;
+    background-color: white;
+}
+
+.mobmessagesdata{
+    top:60px;
+    position: fixed;
+    height:calc(100% - 140px);
+    overflow:scroll;
+}
+
+.botmobhead h2{
+    color:transparent;
+    font-weight: 700;
+    background: linear-gradient(130deg , #EF2A50, #562E96, #3CBAF4) padding-box text;
+    }
+
+.botmobhead button{
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+}
+
+.botinputboxsec{
+  justify-content:space-between;
+  align-items: center;
+  height:80px;
+  position:fixed;
+  bottom:0px;
+  width:100%;
+  background-color:white;
+}
+
+.botinputboxsec button{
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+    background-color:black;
+    color: white;
+}
+
+.botinputboxsec button i{
+    font-size:24px;
+    height:24px;
+    color:transparent;
+    background: linear-gradient(130deg , #EF2A50, #562E96, #3CBAF4) padding-box text;
+}
+
+.botinputboxsec input{
+    height: 50px;
+    background-color: #F2F5FF;
+    width:calc(100% - 60px);
+    border-radius:50px;
+    padding:0px 20px;
+}
+.mobmessagesdata{
+  padding-top:20px;
+}
+
+
+
+.userdatadivsec{
+  justify-content:end;
+}
+
+.userdatadiv{
+    background-color: black;
+    color:white;
+    border-radius:50px;
+    max-width:50%;
+    padding:10px 15px;
+}
+
+.ai-profile{
+    width: 40px;
+    height: 40px;
+
+    border-radius:50%;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+.aidatadiv{
+    padding:20px 0;
+}
+.aidatadiv h4{
+    width:70%;
+    margin-left:10px;
+}
+.aidatadiv h2{
+color:transparent;
+font-weight: 700;
+background: linear-gradient(130deg , #EF2A50, #562E96, #3CBAF4) padding-box text;
+}
