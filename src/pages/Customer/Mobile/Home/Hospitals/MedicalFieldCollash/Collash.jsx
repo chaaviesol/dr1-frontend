@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import styles from "./styles.module.css";
 import Item from "./items/Item";
 import { useNavigate } from "react-router-dom";
-const img1 = "./images/mobile/field4.jpg";
-const img2 = "./images/mobile/field2.jpg";
-const img3 = "./images/mobile/field3.jpg";
-const img4 = "./images/mobile/field1.jpg";
+const img1 = "./images/mobile/field4.webp";
+const img2 = "./images/mobile/field2.webp";
+const img3 = "./images/mobile/field3.webp";
+const img4 = "./images/mobile/field1.webp";
 
 function Collash() {
 

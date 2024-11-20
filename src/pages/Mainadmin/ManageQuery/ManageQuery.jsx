@@ -124,7 +124,7 @@ function ManageQuery({ queryId, setChangeDashboards }) {
           <div key={remark.id} className="questionlistbox flex">
             <div className="questionlistboximg">
               <img
-                src={remark?.doctorid?.image || "/images/dr (3).jpg"}
+                src={remark?.doctorid?.image || "/images/dr (3).webp"}
                 alt=""
               />
             </div>

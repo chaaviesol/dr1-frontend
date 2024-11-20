@@ -570,7 +570,7 @@ export default function Doctor() {
 
             <div className="featured-doctor-card flex">
               <div className="featured-doctor-card-photo">
-                <img src="images/dr (3).jpg" alt="" />
+                <img src="images/dr (3).webp" alt="" />
               </div>
 
               <div className="featured-doctor-card-datas flex">
