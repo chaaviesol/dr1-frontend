@@ -3,7 +3,7 @@ import "./billingStyles.css";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { BASE_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { billingReducer, INITIAL_STATE, ACTIONS } from "./billingReducer";
 import {
@@ -38,7 +38,7 @@ export default function Billing() {
     const response = await axios.post(`${BASE_URL}/pharmacy/getinvsalesorder`, {
       sales_id,
     });
-    console.log(response);
+    // console.log(response);
     return response.data.data || [];
   };
 
@@ -119,7 +119,6 @@ export default function Billing() {
   const handleProductChange = (event, id) => {
     const { value } = event.target;
     const field = event.target.name;
-   
 
     dispatch({
       type: field === "timing" ? ACTIONS.SELECT_TIMING : ACTIONS.UPDATE_PRODUCT,
@@ -128,10 +127,29 @@ export default function Billing() {
   };
 
   //submit
+  const confirmInvoice = async () => {
+    const response = await axiosPrivate.post(
+      `${BASE_URL}/pharmacy/createinvoice`,
+      {
+        ...state,
+        sold_by: "Pharamcy 1",
+      }
+    );
+    return response.data;
+  };
+
+  const confirmInvoiceMutation = useMutation({
+    mutationKey: ["confirmInvoice"],
+    mutationFn: () => confirmInvoice(),
+    onSuccess: (data) => {
+      console.log({ data });
+    },
+    onError: (err) => console.log(err),
+  });
+  //submit button
 
   const handleSubmit = () => {
-    alert("submited");
-    console.log(state);
+    confirmInvoiceMutation.mutateAsync();
   };
 
   return (
@@ -300,14 +318,14 @@ export default function Billing() {
                         className="billing-input"
                       >
                         <Select
-                              MenuProps={{
-                                PaperProps: {
-                                  style: {
-                                    maxHeight: 100, // Adjust the dropdown height here
-                                  },
-                                },
-                              }}
-                          sx={{ height: 42,width:110 }}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                maxHeight: 100, // Adjust the dropdown height here
+                              },
+                            },
+                          }}
+                          sx={{ height: 42, width: "100%" ,border:"none"}}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           labelId="demo-simple-select-label"
@@ -320,7 +338,6 @@ export default function Billing() {
                           <MenuItem value="Before food">Before food</MenuItem>
                         </Select>
                       </FormControl>
-               
                     </td>
                     <td>
                       <input
@@ -392,6 +409,7 @@ export default function Billing() {
             </button>
             <button
               type="submit"
+              disabled={confirmInvoiceMutation.isPending}
               style={{ backgroundColor: "Green" }}
               onClick={handleSubmit}
             >
