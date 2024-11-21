@@ -2,17 +2,35 @@ import React, { useEffect, useReducer, useRef, useState } from "react";
 import "./billingStyles.css";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 import { BASE_URL } from "../../../config";
-import { Loader } from '../../../components/Loader/Loader';
+import { Loader } from "../../../components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { billingReducer, INITIAL_STATE, ACTIONS } from "./billingReducer";
+import {
+  Checkbox,
+  FormControl,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+} from "@mui/material";
 
 export default function Billing() {
-
   const [state, dispatch] = useReducer(billingReducer, INITIAL_STATE);
   const [width, setWidth] = useState("50%"); // Initial width state
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
+
+  const ITEM_HEIGHT = 100;
+  const ITEM_PADDING_TOP = 0;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 200,
+      },
+    },
+  };
   //fetch billDetails
 
   const fetchBillDetails = async (sales_id) => {
@@ -100,11 +118,18 @@ export default function Billing() {
   const handleProductChange = (event, id) => {
     const { value } = event.target;
     const field = event.target.name;
-
+ 
     dispatch({
-      type: ACTIONS.UPDATE_PRODUCT,
+      type: field === "timing" ? ACTIONS.SELECT_TIMING : ACTIONS.UPDATE_PRODUCT,
       payload: { field, value, id },
     });
+  };
+
+  //submit
+
+  const handleSubmit = () => {
+    alert("submited");
+    console.log(state);
   };
 
   return (
@@ -112,10 +137,7 @@ export default function Billing() {
       <h1>Dr1 Billing</h1>
 
       <div className="billingsection flex">
-        {isFetchingBillDetailsLoading&&
-        
-        <Loader/>
-        }
+        {isFetchingBillDetailsLoading && <Loader />}
         <div className="billingleft flex" style={{ width }}>
           <img
             src="https://www.rbcinsurance.com/group-benefits/_assets-custom/images/prescription-drug-sample-receipt-en.jpg"
@@ -143,7 +165,7 @@ export default function Billing() {
               <input
                 type="text"
                 name="user_name"
-                value={state?.user_name || ''}
+                value={state?.user_name || ""}
                 placeholder="Enter Patient Name"
                 onChange={handleFormChange}
                 maxLength={30}
@@ -154,7 +176,7 @@ export default function Billing() {
               <input
                 type="number"
                 name="contact_no"
-                value={state?.contact_no || ''}
+                value={state?.contact_no || ""}
                 placeholder="Enter Contact Number"
               />
             </div>
@@ -163,7 +185,7 @@ export default function Billing() {
               <input
                 type="text"
                 name="doctor_name"
-                value={state?.doctor_name ||''}
+                value={state?.doctor_name || ""}
                 placeholder="Enter Doctor Name"
                 onChange={handleFormChange}
                 maxLength={30}
@@ -176,7 +198,7 @@ export default function Billing() {
             <input
               type="text"
               name="delivery_address"
-              value={state?.delivery_address || ''}
+              value={state?.delivery_address || ""}
               id="delivery_address"
               placeholder="Enter Address"
             />
@@ -202,51 +224,100 @@ export default function Billing() {
                       <input
                         type="text"
                         name="name"
-                        value={medicine?.name ||''}
+                        value={medicine?.name || ""}
                         className="billing-input"
                         readOnly
-                        // onChange={(e) => handleProductChange(e, medicine.id)}
                       />
+                      {/* <select
+                        name="name"
+                        id=""
+                        value={medicine?.name || ""}
+                        className="billing-input"
+                      >
+                        <option value="1">product 1</option>
+                        <option value="2"> product 2</option>
+                        <option value="3">product 3</option>
+                      </select> */}
                     </td>
                     <td>
                       <input
                         type="text"
                         name="batch_no"
-                        value={medicine?.batch_no ||''}
+                        value={medicine?.batch_no || ""}
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, medicine.id)}
                       />
                     </td>
                     <td>
-                      <input
-                        type="text"
-                        name="timing"
-                        value={medicine?.timing || ''}
-                        className="billing-input"
-                      />
+                      <div className="multiselector">
+                        <FormControl sx={{ m: 1, width: 200 }}>
+                          <Select
+                            labelId="demo-multiple-checkbox-label"
+                            id="demo-multiple-checkboxx"
+                            // multiple
+                            name="timing"
+                            value={medicine?.timing}
+                            onChange={(e) =>
+                              handleProductChange(e, medicine.id)
+                            }
+                            input={
+                              <OutlinedInput
+                                sx={{
+                                  height: "40px",
+                                  marginTop: "2px",
+                                  borderRadius: "6px",
+                                }}
+                              />
+                            }
+                            renderValue={(selected) => selected.join(", ")}
+                            MenuProps={MenuProps}
+                          >
+                            {["morning", "lunch", "dinner"].map((time) => (
+                              <MenuItem key={time} value={time}>
+                                <Checkbox
+                                  checked={
+                                    Array.isArray(medicine.timing) &&
+                                    medicine.timing.includes(time)
+                                  }
+                                />
+                                <ListItemText primary={time} />
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </div>
                     </td>
                     <td>
-                      <input
-                        type="text"
+                      <select
+                        id="afterFd_beforeFd123"
                         name="afterFd_beforeFd"
-                        value={medicine?.afterFd_beforeFd ||''}
+                        value={medicine.afterFd_beforeFd}
+                        onChange={(e) => handleProductChange(e, medicine.id)}
                         className="billing-input"
-                      />
+                      >
+                        <option value="" disabled>
+                          Select
+                        </option>
+                        <option value="After food">After food</option>
+                        <option value="Before food">Before food</option>
+                      </select>
                     </td>
                     <td>
                       <input
                         type="number"
                         name="takingQuantity"
-                        value={medicine?.takingQuantity ||''}
+                        value={medicine?.takingQuantity || ""}
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, medicine.id)}
+                        max={20}
+                        min={1}
                       />
                     </td>
                     <td>
                       <input
                         type="number"
                         name="totalQuantity"
-                        value={medicine?.totalQuantity ||''}
+                        value={medicine?.totalQuantity || ""}
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, medicine.id)}
                         min={0}
@@ -256,7 +327,7 @@ export default function Billing() {
                       <input
                         type="number"
                         name="hsn"
-                        value={medicine?.hsn ||''}
+                        value={medicine?.hsn || ""}
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, medicine.id)}
                         min={0}
@@ -266,7 +337,7 @@ export default function Billing() {
                       <input
                         type="text"
                         name="mrp"
-                        value={medicine?.mrp ||''}
+                        value={medicine?.mrp || ""}
                         className="billing-input"
                         readOnly
                       />
@@ -275,7 +346,7 @@ export default function Billing() {
                       <input
                         type="number"
                         name="selling_price"
-                        value={medicine?.selling_price ||''}
+                        value={medicine?.selling_price || ""}
                         className="billing-input"
                         readOnly
                       />
@@ -298,6 +369,13 @@ export default function Billing() {
               }
             >
               Add new row
+            </button>
+            <button
+              type="submit"
+              style={{ backgroundColor: "Green" }}
+              onClick={handleSubmit}
+            >
+              Confirm
             </button>
             <button>Print Now</button>
           </div>

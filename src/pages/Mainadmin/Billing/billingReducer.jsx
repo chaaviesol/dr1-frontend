@@ -10,7 +10,7 @@ export const INITIAL_STATE = {
       name: "",
       batch_no: "",
       category: [],
-      timing: "",
+      timing: [],
       afterFd_beforeFd: "",
       takingQuantity: "",
       totalQuantity: "",
@@ -45,6 +45,26 @@ export const billingReducer = (state, action) => {
         ),
       };
     }
+
+    case ACTIONS.SELECT_TIMING: {
+      const { field, value, id } = action.payload;
+      console.log(action.payload);
+
+      return {
+        ...state,
+        medicine_details: state.medicine_details.map((item) =>
+          item.id === id
+            ? {
+                ...item,
+                [field]: item[field].includes(value)
+                  ? item[field].filter((v) => v !== value) // Remove the value
+                  : [...item[field], value], // Add the value
+              }
+            : item
+        ),
+      };
+    }
+
     case ACTIONS.ADD_NEW_ROW: {
       return {
         ...state,
@@ -65,4 +85,5 @@ export const ACTIONS = {
   UPDATE_FIELD: "UPDATE_FIELD",
   ADD_NEW_ROW: "ADD_NEW_ROW",
   UPDATE_PRODUCT: "UPDATE_PRODUCT",
+  SELECT_TIMING: "SELECT_TIMING",
 };
