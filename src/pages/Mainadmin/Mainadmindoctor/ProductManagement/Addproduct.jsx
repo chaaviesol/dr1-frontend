@@ -26,8 +26,8 @@ export default function Addproduct({
   Details,
 }) {
   const [product, setproduct] = useState(() => Details || {});
+  const [errors, setErrors] = useState({});
 
-  console.log(product);
   const [images, setImages] = useState(() => {
     return Details?.images
       ? [
@@ -38,14 +38,13 @@ export default function Addproduct({
         ]
       : [null, null, null, null];
   });
-  console.log({ images });
+
   const [selectedCategory, setSelectedCategory] = useState(() => {
     return Details?.category ? [Details.category] : [];
   });
-  console.log(selectedCategory);
+
   const fileInputRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false);
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -63,6 +62,7 @@ export default function Addproduct({
   };
 
   const navigateFn = () => {
+    const newErrors = {};
     // Check if any field or image is missing
     const isAnyFieldMissing =
       !product.name ||
@@ -74,7 +74,12 @@ export default function Addproduct({
     const isAnyImageMissing = images.some((image) => image === null);
 
     if (isAnyFieldMissing || isAnyImageMissing) {
-      toast.error("All fields are mandatory, fill them all");
+      newErrors.all = `All fields are mandatory, fill them all.`;
+      // toast.error("All fields are mandatory, fill them all");
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+      }
     } else {
       setDetailData({ ...product, images, mode: "view" });
       setChangeDashboards({ productmanagementOrderDetail: true });
@@ -83,14 +88,14 @@ export default function Addproduct({
 
   const handleFileChange = (event, index) => {
     const file = event.target.files[0];
-    console.log({ selectedIndex });
+    const newErrors = {};
     if (!file) return;
     if (file.type !== "image/png") {
-      toast.error("Only PNG files are allowed.");
-      return;
+      newErrors.image = `Only PNG files are allowed.`;
+      // toast.error("Only PNG files are allowed.");
+      // return;
     }
     const fileAlreadyExists = images.some((image, i) => {
-      console.log(i);
       if (image?.file?.name) {
         console.log(file?.name);
         return image.file.name === file.name;
@@ -99,20 +104,24 @@ export default function Addproduct({
     });
 
     if (fileAlreadyExists) {
-      toast.error(
-        "Each image must be unique. This image has already been uploaded."
-      );
-      return;
+      newErrors.image = `Each image must be unique. This image has already been uploaded.`;
+      // toast.error(
+      //   "Each image must be unique. This image has already been uploaded."
+      // );
+      // return;
     }
 
     if (file.size > 10 * 1024 * 1024) {
-      toast.error("Image size must not exceed 10MB.");
+      newErrors.image = `Image size must not exceed 10MB.`;
+      // toast.error("Image size must not exceed 10MB.");
+      // return;
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
-    console.log(file);
 
     const newImageUrl = URL.createObjectURL(file);
-    console.log("New Image URL:", newImageUrl);
 
     const newImages = [...images];
     newImages[selectedIndex] = { file, url: newImageUrl };
@@ -169,7 +178,9 @@ export default function Addproduct({
       <div className="addproductadmin">
         <div className="addproductadmin-input">
           <div className="addproductadmin-input-box">
-            <h4>Name <span className="required">*</span></h4>
+            <h4>
+              Name <span className="required">*</span>
+            </h4>
             <input
               type="text"
               name="name"
@@ -180,7 +191,9 @@ export default function Addproduct({
           </div>
 
           <div className="addproductadmin-input-box">
-            <h4>Category <span className="required">*</span></h4>
+            <h4>
+              Category <span className="required">*</span>
+            </h4>
             <div className="multiselector">
               <FormControl sx={{ m: 1, width: 300 }}>
                 <Select
@@ -218,7 +231,9 @@ export default function Addproduct({
           </div>
 
           <div className="addproductadmin-input-box">
-            <h4>Brand <span className="required">*</span></h4>
+            <h4>
+              Brand <span className="required">*</span>
+            </h4>
             <input
               type="text"
               maxLength={40}
@@ -229,7 +244,9 @@ export default function Addproduct({
           </div>
 
           <div className="addproductadmin-input-box">
-            <h4>Price <span className="required">*</span> </h4>
+            <h4>
+              Price <span className="required">*</span>{" "}
+            </h4>
             <input
               type="number"
               name="mrp"
@@ -254,7 +271,9 @@ export default function Addproduct({
 
         <div className="addimagediscription flex">
           <div className="newdtwt">
-            <h4>Add Images <span className="required">*</span></h4>
+            <h4>
+              Add Images <span className="required">*</span>
+            </h4>
 
             {Details ? (
               <div className="addimage-images-new">
@@ -334,10 +353,20 @@ export default function Addproduct({
             <h4 style={{ marginTop: "10px" }}>
               Image must be a PNG with a transparent background
             </h4>
+            {errors.image && (
+              <p
+                style={{ color: "red", fontSize: "0.9rem" }}
+                className="error-message"
+              >
+                {errors.image}
+              </p>
+            )}
           </div>
 
           <div className="addimage-discription-new">
-            <h4>Description <span className="required">*</span></h4>
+            <h4>
+              Description <span className="required">*</span>
+            </h4>
             <textarea
               name="description"
               maxLength={400}
@@ -349,6 +378,15 @@ export default function Addproduct({
         </div>
 
         <div className="addproductbutton flex">
+          {errors.all && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.all}
+            </p>
+          )}
+
           <button onClick={navigateFn}>Continue</button>
         </div>
       </div>

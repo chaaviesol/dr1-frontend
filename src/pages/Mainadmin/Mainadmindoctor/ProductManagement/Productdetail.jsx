@@ -47,6 +47,7 @@ export default function Productdetail({
           mrp: datastate.mrp,
           name: datastate.name,
           images: datastate?.images,
+          hsn:datastate?.hsn
         })
       );
 
@@ -292,10 +293,12 @@ export default function Productdetail({
         <div className="detailssectionproright">
           <h4>{datastate?.brand}</h4>
           <h3>{datastate?.name}</h3>
+          <h3>{datastate?.hsn}</h3>
           <h3 style={{ color: "#4f4f4f", fontSize: "24px", marginTop: "10px" }}>
             ₹ {datastate?.mrp}
           </h3>
           <div className="categoryadmin_show">{datastate?.category}</div>
+          <h6 style={{  fontSize: "14px", marginTop: "10px" }}>HSN:{datastate?.hsn}</h6>
           <div className="detailssectionprorightdis">
             <h4>Description</h4>
             <span className="priscriptionpara">{datastate?.description}</span>
