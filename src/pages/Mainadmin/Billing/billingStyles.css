@@ -128,7 +128,7 @@
   font-weight: 700;
   font-size: 0px;
   align-items: start;
-  height: fit-content;
+  height: 30px;
   border: 1px solid #a4b7fc;
 }
 
@@ -136,6 +136,7 @@
 .billing-input {
   width: 100%;
   padding: 5px;
+  height:100%;
   box-sizing: border-box; /* Ensure input fills the cell without overflowing */
   border: 2px solid white;
   font-size: 15px;

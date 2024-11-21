@@ -9,6 +9,7 @@ import { billingReducer, INITIAL_STATE, ACTIONS } from "./billingReducer";
 import {
   Checkbox,
   FormControl,
+  InputLabel,
   ListItemText,
   MenuItem,
   OutlinedInput,
@@ -21,7 +22,7 @@ export default function Billing() {
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
 
-  const ITEM_HEIGHT = 100;
+  const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 0;
   const MenuProps = {
     PaperProps: {
@@ -118,7 +119,8 @@ export default function Billing() {
   const handleProductChange = (event, id) => {
     const { value } = event.target;
     const field = event.target.name;
- 
+   
+
     dispatch({
       type: field === "timing" ? ACTIONS.SELECT_TIMING : ACTIONS.UPDATE_PRODUCT,
       payload: { field, value, id },
@@ -249,58 +251,76 @@ export default function Billing() {
                       />
                     </td>
                     <td>
-                      <div className="multiselector">
-                        <FormControl sx={{ m: 1, width: 200 }}>
-                          <Select
-                            labelId="demo-multiple-checkbox-label"
-                            id="demo-multiple-checkboxx"
-                            // multiple
-                            name="timing"
-                            value={medicine?.timing}
-                            onChange={(e) =>
-                              handleProductChange(e, medicine.id)
-                            }
-                            input={
-                              <OutlinedInput
-                                sx={{
-                                  height: "40px",
-                                  marginTop: "2px",
-                                  borderRadius: "6px",
-                                }}
-                              />
-                            }
-                            renderValue={(selected) => selected.join(", ")}
-                            MenuProps={MenuProps}
-                          >
-                            {["morning", "lunch", "dinner"].map((time) => (
-                              <MenuItem key={time} value={time}>
-                                <Checkbox
-                                  checked={
-                                    Array.isArray(medicine.timing) &&
-                                    medicine.timing.includes(time)
-                                  }
-                                />
-                                <ListItemText primary={time} />
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </div>
-                    </td>
-                    <td>
-                      <select
-                        id="afterFd_beforeFd123"
-                        name="afterFd_beforeFd"
-                        value={medicine.afterFd_beforeFd}
-                        onChange={(e) => handleProductChange(e, medicine.id)}
+                      <FormControl
+                        sx={{ width: 200, m: 0 }}
+                        fullWidth
                         className="billing-input"
                       >
-                        <option value="" disabled>
-                          Select
-                        </option>
-                        <option value="After food">After food</option>
-                        <option value="Before food">Before food</option>
-                      </select>
+                        <Select
+                          sx={{ height: 42 }}
+                          labelId="demo-multiple-checkbox-label"
+                          id="demo-multiple-checkboxx"
+                          multiple
+                          renderValue={(selected) => selected.join(", ")}
+                          name="timing"
+                          value={medicine?.timing ?? []}
+                          onChange={(e) => handleProductChange(e, medicine.id)}
+                          input={
+                            <OutlinedInput
+                              sx={{
+                                height: "40px",
+                                marginTop: "2px",
+                                borderRadius: "6px",
+                              }}
+                            />
+                          }
+                          MenuProps={MenuProps}
+                        >
+                          {["morning", "lunch", "dinner"].map((time) => (
+                            <MenuItem key={time} value={time}>
+                              <Checkbox
+                                checked={
+                                  Array.isArray(medicine.timing) &&
+                                  medicine.timing.includes(time)
+                                }
+                              />
+                              <ListItemText
+                                sx={{ textTransform: "capitalize" }}
+                                primary={time}
+                              />
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </td>
+                    <td>
+                      <FormControl
+                        fullWidth
+                        sx={{ m: 0 }}
+                        className="billing-input"
+                      >
+                        <Select
+                              MenuProps={{
+                                PaperProps: {
+                                  style: {
+                                    maxHeight: 100, // Adjust the dropdown height here
+                                  },
+                                },
+                              }}
+                          sx={{ height: 42,width:110 }}
+                          displayEmpty
+                          inputProps={{ "aria-label": "Without label" }}
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-selectasas"
+                          name="afterFd_beforeFd"
+                          value={medicine.afterFd_beforeFd}
+                          onChange={(e) => handleProductChange(e, medicine.id)}
+                        >
+                          <MenuItem value="After food">After food</MenuItem>
+                          <MenuItem value="Before food">Before food</MenuItem>
+                        </Select>
+                      </FormControl>
+               
                     </td>
                     <td>
                       <input

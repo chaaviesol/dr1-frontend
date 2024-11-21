@@ -56,9 +56,7 @@ export const billingReducer = (state, action) => {
           item.id === id
             ? {
                 ...item,
-                [field]: item[field].includes(value)
-                  ? item[field].filter((v) => v !== value) // Remove the value
-                  : [...item[field], value], // Add the value
+                [field]:value
               }
             : item
         ),
