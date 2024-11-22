@@ -240,8 +240,9 @@
 }
 
 .pharmacyshopcatemobile {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* flex-wrap: wrap; */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 10px;
   width: 100%;
   box-sizing: border-box;

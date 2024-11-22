@@ -101,12 +101,13 @@
 }
 
 .product_list_scroll {
-  width: 100% ;/* Adjust width considering padding and border */
+  width: 100% ;
   padding-left: 10px;
   padding-bottom: 100px;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
+  justify-content: flex-start;
+  align-content: flex-start; 
   gap: 1rem;
 }
 
