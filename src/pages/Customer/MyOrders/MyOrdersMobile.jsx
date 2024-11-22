@@ -40,9 +40,6 @@ function MyOrdersMobile() {
     element.scrollLeft = scrollLeft - walk;
   };
 
-  //   const toggleDropdown = () => {
-  //     setIsExpanded(!isExpanded);
-  //   };
   useEffect(() => {
     setIsOrdersLoading(true);
     const fetchOrders = async () => {
@@ -103,7 +100,7 @@ function MyOrdersMobile() {
                 <div className={`${styles.order} ${styles.container}`}>
                   <div className={styles.ordercardtop}>
                     <div className={styles.orderdetailes}>
-                      <span>Order # {data.so_number}</span>
+                      <span>Order # {data?.so_number}</span>
                       <span>Expected on Thu 22 Aug</span>
                     </div>
 
@@ -126,7 +123,7 @@ function MyOrdersMobile() {
                             />
                           </div>
                           <div className={styles.productname}>
-                            Hair Fall Rescue <br /> Shampoo
+                            {products?.generic_prodid?.name}
                           </div>
                         </div>
                       ))}
