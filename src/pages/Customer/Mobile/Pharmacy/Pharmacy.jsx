@@ -48,7 +48,7 @@ function Pharmacy() {
   }, []);
   return (
     <>
-      <div className="pharmacysection">
+      <div className="pharmacysection avoidbottombar">
         <div
           style={{
             marginBottom: "1rem",
@@ -110,7 +110,7 @@ function Pharmacy() {
               marketplaceProducts.map((product, index) => (
                 <div
                   key={index}
-                  style={{ marginBottom: "10px", backgroundColor: "#f2f5ff" }}
+                  style={{ backgroundColor: "#f2f5ff" }}
                   onClick={() => handleNavigation(product.id)}
                   className="pharmacyshopproduct flex"
                 >
