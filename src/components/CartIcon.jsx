@@ -10,7 +10,7 @@ function CartIcon({dontNavigate}) {
 
   const handleNavigate=()=>{
   if(dontNavigate){
-      return;
+      navigate("/login")
     }else{
       navigate("/cart")
     }
