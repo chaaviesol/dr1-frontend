@@ -211,7 +211,7 @@
   flex-direction: row-reverse;
   background-color: white;
   /* width: 180px; */
-  padding: 12px;
+  padding: 10px;
   border-radius: 8px;
   justify-content: center;
   align-items: center;
@@ -231,7 +231,7 @@
   object-fit: contain;
 }
 .pharmacyshopproducttitle {
-  justify-content: center;
+  justify-content: flex-start;
   text-align: left;
   align-items: center;
   height: 70%;

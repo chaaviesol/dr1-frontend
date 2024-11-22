@@ -58,7 +58,7 @@ function Pharmacy() {
             height: "50px",
           }}
         >
-          <div style={{ width: "83%", height: "50px" }}>
+          <div style={{ width: "83%", height: "50px" }} onClick={()=>navigate("/pharmacyproducts")}>
             <ClickToSearchBox placeholder="Search product" />
           </div>
           <div

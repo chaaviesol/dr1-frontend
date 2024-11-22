@@ -18,7 +18,6 @@ function ClickToSearchBox({placeholder}) {
       >
         <input
           type="text"
-          disabled
           style={{ backgroundColor: "transparent" }}
           placeholder={placeholder || "Search"}
         />
