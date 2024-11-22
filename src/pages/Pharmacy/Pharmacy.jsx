@@ -256,7 +256,7 @@ export default function Pharmacy() {
         <div className="container">
           <div className="pharmacy-hero flex">
             <div className="pharmacy-image flex">
-              <img src="images/med2.jpg" alt="" />
+              <img src="images/med2.webp" alt="" />
             </div>
             <div className="pharmacy-upload-section flex">
               <h1>

@@ -437,7 +437,7 @@ export default function Doctor() {
 
                 <div className="home-specialties-card home-specialties-card2 flex">
                   <div className="home-specialties-image">
-                    <img src="/images/ENT.jpg" alt="" />
+                    <img src="/images/ENT.webp" alt="" />
                   </div>
                   <div className="home-specialties-titile">
                     <h4>Hearing Loss,</h4>
