@@ -28,8 +28,9 @@ const CartList=React.memo(({
   setErrors,
 })=> {
   const { cartItems, isCartLoading } = usePharmacyContext();
+
   const navigate = useNavigate();
-  if (cartItems && cartItems.length === 0) {
+  if (!cartItems || cartItems.length === 0 || cartItems === undefined) {
     return (
       <div
         style={{

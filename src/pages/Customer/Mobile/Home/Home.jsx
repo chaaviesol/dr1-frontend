@@ -8,12 +8,10 @@ import Doctors from "./Doctors/Doctors";
 import Hospitals from "./Hospitals/HospitalMob";
 import Labs from "./Labs/Labs";
 import CartIcon from "../../../../components/CartIcon";
-import { LoginModal } from "../../../../components/LoginModal/LoginModal";
 import Location from "../components/Location/Location";
 
 function Home() {
   const [activePage, setActivePage] = useState("home");
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isShowLocationModal, setShowLocationModal] = useState(false);
 
   const { auth } = useAuth();
@@ -22,10 +20,10 @@ function Home() {
     if (auth.userId && auth.userType === "customer") {
       navigate("/cart");
     } else {
-      setIsLoginModalOpen(true);
+      navigate("/login");
     }
   };
-  // console.log(isShowLocationModal)
+  
   return (
     <>
       <div className={styles.margin}>
@@ -48,9 +46,7 @@ function Home() {
           {activePage === "labs" && <Labs />}
         </div>
       </div>
-      {isLoginModalOpen && (
-        <LoginModal show={isLoginModalOpen} setShow={setIsLoginModalOpen} />
-      )}
+   
     </>
   );
 }
