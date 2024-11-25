@@ -202,7 +202,6 @@ export default function Pharmacy() {
       formData.image.forEach((image, index) => {
         submissionData.append("images", image);
       });
-      console.log("FormData entries:");
       for (let pair of submissionData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
@@ -213,6 +212,7 @@ export default function Pharmacy() {
       );
       console.log({ response });
       if (response.status === 200) {
+        setErrors("");
         setLoader(false);
         toast.success("Details submitted successfully!", {
           autoClose: 3000,
@@ -228,7 +228,6 @@ export default function Pharmacy() {
           });
 
           setIsModalOpen(false);
-
           navigate("/pharmacy");
         }, 3000);
       } else if (response.status === 400) {
@@ -281,7 +280,9 @@ export default function Pharmacy() {
           </div>
 
           <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        
             <div className="modalContainernew">
+            {loader && <Loader />}
               <div style={{ display: "flex", alignItems: "center" }}>
                 <h3>Upload Prescription</h3>
                 <div className="closeButtoncross2" onClick={handleCrossClose}>

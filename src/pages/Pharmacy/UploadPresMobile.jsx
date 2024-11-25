@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { Checkbox, FormControlLabel, Modal } from "@mui/material";
 import BackButtonWithTitle from "../../components/BackButtonWithTitle";
+import { Loader } from "../../components/Loader/Loader";
 
 function UploadPresMobile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,7 +18,7 @@ function UploadPresMobile() {
     pincode: "",
     image: [],
   });
-
+  const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(false);
   const { auth } = useAuth();
@@ -26,10 +27,20 @@ function UploadPresMobile() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+    if (name === "contact_no") {
+      //making mobile num limited to 10
+      const sanitizedValue = value.replace(/[.-]/g, "");
+      const truncatedValue = sanitizedValue.slice(0, 10);
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: truncatedValue,
+      }));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
   };
 
   const handleFileChange = (e) => {
@@ -37,21 +48,26 @@ function UploadPresMobile() {
     const maxSizeInMB = 10;
     const maxFiles = 5;
     const validFiles = [];
-
+    const newErrors = {};
     // Check if the total number of files exceeds the limit
     if (formData.image.length + newFiles.length > maxFiles) {
-      toast.error(`You can upload a maximum of ${maxFiles} files.`);
-      return;
+      newErrors.image = `You can upload a maximum of ${maxFiles} files.`;
     }
 
     newFiles.forEach((file) => {
       if (file.size > maxSizeInMB * 1024 * 1024) {
-        toast.error("Max file size is 10Mb");
+        newErrors.image = `Max file size is 10Mb`;
       } else {
         validFiles.push(file);
       }
     });
-
+    if (Object.keys(newErrors).length > 0) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        ...newErrors,
+      }));
+      return;
+    }
     setFormData((prevFormData) => ({
       ...prevFormData,
       image: [...prevFormData.image, ...validFiles],
@@ -85,51 +101,40 @@ function UploadPresMobile() {
   }, []);
 
   const handleSubmit = async () => {
+    const newErrors = {};
     if (!formData.name || formData.name === "") {
-      toast.info(" Name is missing");
-      return;
-    }
-    if (!formData.delivery_address || formData.delivery_address === "") {
-      toast.info(" Delivery details is missing");
-      return;
-    }
-    if (!formData.contact_no) {
-      toast.error("Contact Number is missing");
-      return;
-    }
-    if (!formData.pincode) {
-      toast.error("Pincode is missing");
-      return false;
-    }
-
-    // Example: Ensure the pincode is exactly 6 digits long
-    const pincodeLength = formData.pincode.toString().length;
-    if (!formData.pincode) {
-      toast.error("Pincode is missing");
-      return false;
-    }
-    if (pincodeLength !== 6) {
-      toast.error("Pincode must be 6 digits long");
-      return false;
-    }
-
-    // Example: Ensure the pincode contains only numbers
-    if (!/^\d+$/.test(formData.pincode)) {
-      toast.error("Pincode must contain only numbers");
-      return false;
-    }
-    if (!/^[6-9]\d{9}$/.test(formData.contact_no)) {
-      toast.error(
-        "Invalid Contact Number. It should be a valid 10-digit Indian mobile number."
-      );
-      return;
+      newErrors.name = "Name is missing";
     }
     if (formData.image.length === 0) {
-      toast.error("Please attach at least one report");
-      return;
+      newErrors.imagelength = "Please attach at least one report";
     }
+    if (!formData.delivery_address || formData.delivery_address === "") {
+      newErrors.delivery_address = "Delivery details is missing";
+    }
+    if (!formData.contact_no || formData.contact_no === "") {
+      newErrors.contact_no = "Contact Number is missing";
+    }
+
+    if (!formData.pincode || formData.pincode === "") {
+      newErrors.pincode = "Pincode is missing";
+    }
+    const pincodeLength = formData.pincode.toString().length;
+    if (pincodeLength !== 6) {
+      newErrors.pincode = "Invalid Pincode";
+    }
+
+    if (!/^[6-9]\d{9}$/.test(formData.contact_no)) {
+      newErrors.contact_no = "Invalid Contact Number";
+    }
+    if (!formData.remarks || formData.remarks === "") {
+      newErrors.remarks = "Remarks is missing";
+    }
+
     if (!checked) {
-      toast.error("Please provide your consent to be contacted.");
+      newErrors.checked = "Please provide your consent to be contacted.";
+    }
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -159,8 +164,9 @@ function UploadPresMobile() {
         `${BASE_URL}/pharmacy/salesorder`,
         submissionData
       );
-      console.log({ response });
+
       if (response.status === 200) {
+        setErrors("");
         setLoader(false);
         toast.success("Details submitted successfully!", {
           autoClose: 3000,
@@ -176,7 +182,6 @@ function UploadPresMobile() {
           });
 
           setIsModalOpen(false);
-
           navigate("/");
         }, 3000);
       } else if (response.status === 400) {
@@ -206,6 +211,7 @@ function UploadPresMobile() {
 
   return (
     <>
+     {loader && <Loader />}
       <div className="modalContainer">
         <div onClick={handleBackButton} style={{ marginBottom: "10px" }}>
           <BackButtonWithTitle title="Upload Prescription" />
@@ -220,6 +226,14 @@ function UploadPresMobile() {
             onChange={handleChange}
             maxLength={40}
           />
+          {errors.name && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.name}
+            </p>
+          )}
         </div>
 
         <div className="secopinputprescription">
@@ -231,6 +245,14 @@ function UploadPresMobile() {
             onChange={handleChange}
             maxLength={10}
           />
+          {errors.contact_no && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.contact_no}
+            </p>
+          )}
         </div>
 
         <div className="secopinputprescription">
@@ -245,12 +267,32 @@ function UploadPresMobile() {
             style={{ display: "none" }}
           />
           <div className="file-names">
-            {formData?.image?.length > 0 ? (
+            {/* {formData?.image?.length > 0 ? (
               formData.image.map((report, index) => (
                 <h4 key={index}>{report?.name}</h4>
               ))
             ) : (
               <h4 className="AttachAnyFile">Please Attach Any File</h4>
+            )} */}
+            {formData?.image?.length > 0
+              ? formData.image.map((report, index) => (
+                  <h4 key={index}>{report?.name}</h4>
+                ))
+              : errors.imagelength && (
+                  <p
+                    style={{ color: "red", fontSize: "0.9rem" }}
+                    className="error-message"
+                  >
+                    {errors.imagelength}
+                  </p>
+                )}
+            {errors.image && (
+              <p
+                style={{ color: "red", fontSize: "0.9rem" }}
+                className="error-message"
+              >
+                {errors.image}
+              </p>
             )}
           </div>
         </div>
@@ -263,6 +305,14 @@ function UploadPresMobile() {
             id=""
             onChange={handleChange}
           ></textarea>
+          {errors.delivery_address && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.delivery_address}
+            </p>
+          )}
         </div>
         <div className="secopinputprescription">
           <input
@@ -273,6 +323,14 @@ function UploadPresMobile() {
             onChange={handleChange}
             maxLength={6}
           />
+          {errors.pincode && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.pincode}
+            </p>
+          )}
         </div>
         <div className="secopinputprescription">
           <textarea
@@ -282,6 +340,14 @@ function UploadPresMobile() {
             id=""
             onChange={handleChange}
           ></textarea>
+          {errors.remarks && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.remarks}
+            </p>
+          )}
         </div>
 
         <div className="consentSectionmodal">
@@ -304,6 +370,14 @@ function UploadPresMobile() {
             label="I consent to be contacted regarding my submission."
           />
         </div>
+        {errors.checked && (
+          <p
+            style={{ color: "red", fontSize: "0.9rem" }}
+            className="error-message"
+          >
+            {errors.checked}
+          </p>
+        )}
 
         <div className="secopsubbutton">
           <button onClick={handleSubmit}>
