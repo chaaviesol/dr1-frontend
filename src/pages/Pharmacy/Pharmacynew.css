@@ -158,6 +158,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2rem;
+   max-height: 90vh; 
+  overflow-y: auto; 
+  box-sizing: border-box; 
   h3{
       letter-spacing: 1px;
   }

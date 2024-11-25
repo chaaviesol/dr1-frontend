@@ -21,7 +21,8 @@ function Pharmacy() {
     if (auth.userId && auth.userType === "customer") {
       navigate("/uploadprescription");
     } else {
-      toast.info("Please login as a customer!");
+      navigate("/login");
+      
     }
   };
 
