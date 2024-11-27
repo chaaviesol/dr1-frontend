@@ -51,7 +51,7 @@ export default function Pharmacydetails() {
                <div className="pharmacy-details-imges wrapper">
                <div class="track">
                  <div className="logo"><img src="images/ph1 (1).jpg" alt="" /></div>
-                 <div className="logo"><img src="images/ph1 (2).jpg" alt="" /></div>
+                 <div className="logo"><img src="images/ph1 (2).webp" alt="" /></div>
                  <div className="logo"><img src="images/ph1 (4).jpg" alt="" /></div>
                  <div className="logo"><img src="images/ph1 (5).jpg" alt="" /></div>
                  <div className="logo"><img src="images/ph1 (5).jpg" alt="" /></div>
@@ -150,7 +150,7 @@ export default function Pharmacydetails() {
 </div>
 
 <div className="Pha_Mob_img">
-<img src="images/ph1 (2).jpg" alt="" />
+<img src="images/ph1 (2).webp" alt="" />
 </div>
 
 <div className="Pha_Mob_img">

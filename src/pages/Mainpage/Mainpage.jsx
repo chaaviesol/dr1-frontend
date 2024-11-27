@@ -367,7 +367,7 @@ export default function Mainpage() {
 
               <div className="home-specialties-card flex">
                 <div className="home-specialties-image" data-aos="zoom-out">
-                  <img src="/images/1 (2).jpg" alt="" />
+                  <img src="/images/1 (2).webp" alt="" />
                 </div>
                 <div className="home-specialties-titile">
                   <h4>Period doubts or</h4>

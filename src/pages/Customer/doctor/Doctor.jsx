@@ -269,7 +269,7 @@ export default function Doctor() {
               <div className="home-specialties-cards2" id="style-2">
                 <div className="home-specialties-card home-specialties-card2 flex">
                   <div className="home-specialties-image">
-                    <img src="/images/1 (2).jpg" alt="" />
+                    <img src="/images/1 (2).webp" alt="" />
                   </div>
                   <div className="home-specialties-titile">
                     <h4>Periods doubts or</h4>

@@ -103,7 +103,7 @@ function Doctors() {
                 handleSelectSpecialization("Allopathy", "gynecology")
               }
             >
-              <img src="/images/1 (2).jpg" alt="" />
+              <img src="/images/1 (2).webp" alt="" />
               <h4>Period doubts or Pregnancy</h4>
             </div>
 

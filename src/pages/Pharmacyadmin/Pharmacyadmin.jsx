@@ -69,7 +69,7 @@ export default function Pharmacyadmin() {
 
 <img src="images/hos.jpeg" alt="" />
 <img src="images/hosptal1 (1).jpg" alt="" />
-<img src="images/hosptal1 (2).jpg" alt="" />
+<img src="images/hosptal1 (2).webp" alt="" />
 <img src="images/hosptal1 (3).jpg" alt="" />
 </div>
 

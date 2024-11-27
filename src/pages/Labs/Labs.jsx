@@ -138,7 +138,7 @@ export default function Labs() {
               className="home-specialties-card flex"
             >
               <div className="home-specialties-image">
-                <img src="/images/1 (2).jpg" alt="" />
+                <img src="/images/1 (2).webp" alt="" />
               </div>
               <div className="home-specialties-titile">
                 <h4>Fever</h4>
@@ -194,7 +194,7 @@ export default function Labs() {
               className="home-specialties-card flex"
             >
               <div className="home-specialties-image">
-                <img src="/images/1 (2).jpg" alt="" />
+                <img src="/images/1 (2).webp" alt="" />
               </div>
               <div className="home-specialties-titile">
                 <h4>Digestion</h4>
