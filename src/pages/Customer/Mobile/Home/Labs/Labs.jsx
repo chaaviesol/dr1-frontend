@@ -81,7 +81,7 @@ function Labs() {
           <h2>Trusted Labs</h2>
           <h2>Near You</h2>
 
-          <img src="images/lat.png" alt="" />
+          <img src="images/lat.webp" alt="" />
         </div>
       </div>
 

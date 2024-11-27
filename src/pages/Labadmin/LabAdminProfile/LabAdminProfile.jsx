@@ -115,7 +115,7 @@ console.log(consultAndViewData)
         <div className="LabAdminProMainSec">
           <div className="LabAdminProMainSecImgOther">
             <img
-              src={labDetails?.photo?.image1 || "/images/lab2.jpg"}
+              src={labDetails?.photo?.image1 || "/images/lab.jpg"}
               className="LabAdminProMainSecImg"
               alt=""
             />

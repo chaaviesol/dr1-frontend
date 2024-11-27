@@ -313,7 +313,7 @@ const ChatBot = () => {
             <div className="ChatBotChatHeader">
               <img
                 className="ChatBotChatHeaderImg"
-                src="./images/TempDocImg.jpg"
+                src="./images/TempDocImg.webp"
                 alt=""
               />
               <div className="ChatBotChatHeaderText">

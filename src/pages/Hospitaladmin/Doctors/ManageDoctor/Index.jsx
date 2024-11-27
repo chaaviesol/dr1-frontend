@@ -32,7 +32,7 @@ const Index = ({ setChangeDashboards }) => {
   const { selectedDoc } = useContext(HospitalAdminContext);
   const axiosPrivate = useAxiosPrivate();
   const doctor_id = selectedDoc?.id;
-  const tempImg = "./images/TempDocImg.jpg";
+  const tempImg = "./images/TempDocImg.webp";
 
   const ResetTimePicker = () => {
     setTimePickers([

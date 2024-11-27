@@ -193,7 +193,7 @@
   position: relative;
 
   border-radius: 2vw;
-  background-image: url(../../../../public/images/one.jpg);
+  background-image: url(../../../../public/images/one.webp);
   background-size: cover;
   z-index: -999;
   opacity: 23;

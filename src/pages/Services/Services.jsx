@@ -248,7 +248,7 @@ export default function Services() {
           {/* Second Column */}
           <div className="services_image services_image_top flex">
             <div className="toplevel-sr-img">
-              <img src="../images/homeser.jpg" alt="" />
+              <img src="../images/homeser.webp" alt="" />
               <div className="toplevel-sr-img2"></div>
             </div>
           </div>

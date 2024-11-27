@@ -181,7 +181,7 @@ export const ShowFeedBackPopup = () => {
                 <p>Leave a review</p>
               </div>
               <div className="ShowFeedBackPopupReview">
-                <img src="./images/TempDocImg.jpg" alt="" />
+                <img src="./images/TempDocImg.webp" alt="" />
                 <div className="ShowFeedBackPopupRevieName">
                   <h5>
                     {ConstantData?.doctor_name ||
@@ -241,7 +241,7 @@ export const ShowFeedBackPopup = () => {
           ) : (
             <>
               <div className="ShowFeedBackPopupInImg">
-                <img src="./images/TempDocImg.jpg" alt="" />
+                <img src="./images/TempDocImg.webp" alt="" />
               </div>
               <div className="ShowFeedBackPopupText">
                 <p>

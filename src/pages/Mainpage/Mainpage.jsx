@@ -325,7 +325,7 @@ export default function Mainpage() {
                 <h3>Medical Products Through Market</h3>
               </div>
 
-              <img src="../images/medmain.png" alt="" />
+              <img src="../images/medmain.webp" alt="" />
               <h4 className="servicecardtitle4 servicecardtitle">Medicine</h4>
             </div>
           </div>

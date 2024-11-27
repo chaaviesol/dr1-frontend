@@ -174,7 +174,7 @@ function HomePage() {
               Get Now <i className="ri-arrow-right-line"></i>
             </button>
 
-            <img src="../images/medmain.png" alt="" />
+            <img src="../images/medmain.webp" alt="" />
           </div>
 
           <div

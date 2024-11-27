@@ -303,7 +303,7 @@ const HospitalDetailed = () => {
                 <div className="doc_profileSecFeedBItem">
                   <Fragment key={index}>
                     <div className="doc_profileSecFeedBItemImgSec">
-                      <img src="./images/TempDocImg.jpg" alt="" />
+                      <img src="./images/TempDocImg.webp" alt="" />
                     </div>
                     <div className="doc_profileSecFeedBItemImgSec">
                       <div className="doc_profileSecFeedBItemImgSecFlex">

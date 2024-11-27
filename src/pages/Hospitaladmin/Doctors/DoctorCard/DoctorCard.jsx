@@ -7,7 +7,7 @@ import { HospitalAdminContext } from "../../../../contexts/Doctor/HospitalAdminP
 export const DoctorCard = ({ data, setChangeDashboards }) => {
   console.log({ data });
   const{setSelectedDoc}=useContext(HospitalAdminContext)
-  const tempImage = "./images/TempDocImg.jpg";
+  const tempImage = "./images/TempDocImg.webp";
   const handleClick = () => {
     setSelectedDoc(data)
     setChangeDashboards({

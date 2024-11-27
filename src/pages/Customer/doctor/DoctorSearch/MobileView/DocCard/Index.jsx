@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function DocCard({ data }) {
   const details = data?.details;
   const navigate = useNavigate();
-  const tempImg = "./images/TempDocImg.jpg";
+  const tempImg = "./images/TempDocImg.webp";
 
   const StarRating = ({ rating }) => {
     const maxRating = 5;
