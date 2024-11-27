@@ -51,7 +51,7 @@ export default function SecondopinionBanner() {
         <div className="expert-column2">
           <img
             className="expert-image"
-            src="/images/secondopbannerimage.png"
+            src="/images/secondopbannerimage.webp"
             alt=""
           />
         </div>

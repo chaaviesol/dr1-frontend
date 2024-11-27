@@ -15,7 +15,7 @@ import { debounce } from "lodash";
 import { Loader } from "../../../../../components/Loader/Loader";
 import useAxiosPrivate from "../../../../../hooks/useAxiosPrivate";
 import CartTopbarWithBackButton from "../../../../../components/CartTopbarWithBackButton";
-import { LoginModal } from "../../../../../components/LoginModal/LoginModal";
+// import { LoginModal } from "../../../../../components/LoginModal/LoginModal";
 
 export default function SelectCategory({ isMobile, passedCategoryId }) {
   const [currentActiveCategoryIndex, setCurrentActiveCategoryIndex] =
@@ -98,7 +98,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
         console.error("Failed to update cart:", error);
       }
     } else {
-      setIsShowLoginModal(true);
+      navigate("/login")
     }
   };
 
@@ -295,9 +295,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
             )}
         </div>
       </div>
-      {isShowLoginModal && (
-        <LoginModal show={isShowLoginModal} setShow={setIsShowLoginModal} />
-      )}
+   
     </div>
   );
 }
