@@ -15,7 +15,7 @@ export default function MobileHospitalProfile() {
   const location = useLocation();
   const navigate = useNavigate();
   const HospitalData = location?.state?.details;
-  const TemPImg = HospitalData?.photo?.image1 || "./images/TempHosImg.jpg";
+  const TemPImg = HospitalData?.photo?.image1 || "./images/TempHosImg.webp";
   const TemPImg2 = HospitalData?.photo?.image2 || "./images/hos.jpeg";
   const TemPImg3 = HospitalData?.photo?.image3 || "./images/hospital.jpg";
   console.log(".....>>>>>>>>>>", HospitalData);

@@ -37,14 +37,6 @@ export default function Registerlanding() {
             <h2>Laboratory</h2>
           </div>
         </div>
-        {/* <div onClick={() => navigate("/doctoradmin")} className="registerlanding_left">
-          <div className="registerlanding_image flex">
-            <img src="/images/DrProfile.jpg" alt="" />
-          </div>
-          <div className="registerlanding_button flex">
-            <h2>Doctor Profile</h2>
-          </div>
-        </div> */}
       </div>
     </div>
   );

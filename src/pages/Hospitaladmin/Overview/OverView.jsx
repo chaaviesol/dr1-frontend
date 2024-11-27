@@ -13,7 +13,7 @@ function Overview({ hospital, consultAndViewData }) {
     about: hospital.about,
   });
   const axiosPrivate = useAxiosPrivate();
-  const TemPImg = "./images/TempHosImg.jpg";
+  const TemPImg = "./images/TempHosImg.webp";
   const TemPImg2 = "./images/hos.jpeg";
   const TemPImg3 = "./images/hos3.jpg";
   const toastConfig = {

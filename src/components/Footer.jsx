@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer">
           <div className="container footer-container flex">
             <div className="footer-logo flex">
-              <h2 style={{ color: "white" }}>DOCTOR ONE</h2>
+              <h2 style={{ color: "white" }}>Dr ONE</h2>
             </div>
             <div className="footer-nav flex">
               <div>

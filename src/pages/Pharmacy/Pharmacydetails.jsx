@@ -20,7 +20,7 @@ export default function Pharmacydetails() {
     <div className="container-third">
              <div className="pharmacy-details-about flex">
                <div className="pharmacy-deatials-left">
-                 <img src="images/ph1 (3).jpg" alt="" />
+                 <img src="images/ph1 (3).webp" alt="" />
                </div>
                <div className="pharmacy-deatials-right flex">
                  <h2>New Emprire Pharmacy</h2>
@@ -106,7 +106,7 @@ export default function Pharmacydetails() {
 
 {/* Hero */}
 <div className="Pha_Mob_img">
-<img src="images/ph1 (3).jpg" alt="" />
+<img src="images/ph1 (3).webp" alt="" />
 </div>
 
 {/*End Hero */}
@@ -154,7 +154,7 @@ export default function Pharmacydetails() {
 </div>
 
 <div className="Pha_Mob_img">
-<img src="images/ph1 (3).jpg" alt="" />
+<img src="images/ph1 (3).webp" alt="" />
 </div>
 
 

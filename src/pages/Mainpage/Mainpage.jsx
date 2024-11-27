@@ -501,7 +501,7 @@ export default function Mainpage() {
 
               <div className="MainPageTypeAndSpecialityImgSecAlign">
                 <img
-                  src="/images/backgroundSpeciality.png"
+                  src="/images/backgroundSpeciality.webp"
                   className="MainPageTypeAndSpecialityImg"
                   alt=""
                 />

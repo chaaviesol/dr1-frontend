@@ -29,7 +29,7 @@ const HospitalDetailed = () => {
     type: "hospital",
     id: HospitalData.id,
   });
-  const TemPImg = "./images/TempHosImg.jpg";
+  const TemPImg = "./images/TempHosImg.webp";
   const TemPImg2 = "./images/hos.jpeg";
   const TemPImg3 = "./images/hos3.jpg";
   const updateViewCount = async (payload) => {

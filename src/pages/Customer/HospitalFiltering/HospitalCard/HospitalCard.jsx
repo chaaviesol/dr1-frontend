@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export const HospitalCard = ({ data, screen }) => {
   const navigate = useNavigate();
   const details = data?.details;
-  const TemPImg = "./images/TempHosImg.jpg";
+  const TemPImg = "./images/TempHosImg.webp";
   return (
     <>
       <div

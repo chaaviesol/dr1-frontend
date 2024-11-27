@@ -39,7 +39,7 @@ function HospitalTopbar({ data: { HospitalData } }) {
             <img
               onClick={openPopups}
               style={{ marginLeft: "18px" }}
-              src={HospitalData?.image || "/images/TempHosImg.jpg"}
+              src={HospitalData?.image || "/images/TempHosImg.webp"}
               alt=""
             />
           </div>
@@ -50,7 +50,7 @@ function HospitalTopbar({ data: { HospitalData } }) {
           <div className="customerprofilenamecard flex">
             <div className="customerprofilenamecardleft flex">
               <img
-                src={HospitalData?.photo?.image1 || "/images/TempHosImg.jpg"}
+                src={HospitalData?.photo?.image1 || "/images/TempHosImg.webp"}
                 alt=""
               />
               <div style={{ marginLeft: "20px" }}>

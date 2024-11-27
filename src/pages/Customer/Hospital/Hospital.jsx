@@ -48,7 +48,7 @@ export default function Hospital() {
   const speacializationNames = Categories?.allopathySpecs;
   const homeoDept = Categories?.homeopathySpecs;
   const ayurSpec = Categories?.ayurvedicSpecs;
-  const TemPImg = "./images/TempHosImg.jpg";
+  const TemPImg = "./images/TempHosImg.webp";
   useEffect(() => {
     const Data = [
       ...(speacializationNames || []),
