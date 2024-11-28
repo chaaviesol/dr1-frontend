@@ -82,7 +82,7 @@ export const billingReducer = (state, action) => {
         id: item.id,
         name: item.name,
         batch_no: "",
-        category: [],
+        category: item.category,
         timing: [],
         afterFd_beforeFd: "",
         takingQuantity: "",
