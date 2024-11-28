@@ -19,6 +19,13 @@ import {
 export default function Billing() {
   const [state, dispatch] = useReducer(billingReducer, INITIAL_STATE);
   const [width, setWidth] = useState("50%"); // Initial width state
+  const [products, setProducts] = useState([]);
+
+  const [query, setQuery] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const [hoveredIndex, setHoveredIndex] = useState(null);
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
 
@@ -38,7 +45,7 @@ export default function Billing() {
     const response = await axios.post(`${BASE_URL}/pharmacy/getinvsalesorder`, {
       sales_id,
     });
-    // console.log(response);
+    console.log(response);
     return response.data.data || [];
   };
 
@@ -50,7 +57,8 @@ export default function Billing() {
     queryKey: ["FetchBillDetails", 1],
     queryFn: async ({ queryKey }) => {
       try {
-        const response = await fetchBillDetails(113);
+        //113 153
+        const response = await fetchBillDetails(153);
         return response || [];
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -128,11 +136,21 @@ export default function Billing() {
 
   //submit
   const confirmInvoice = async () => {
+    const total_amount = state.medicine_details.reduce(
+      (acc, currItem) => acc + currItem.selling_price * currItem.totalQuantity,
+      0 // Initial value of the accumulator
+    );
+    const endPoint =
+      state.order_type === "prescription"
+        ? "prescriptioninvoice"
+        : "createinvoice";
+    console.log(endPoint);
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/createinvoice`,
+      `${BASE_URL}/pharmacy/${endPoint}`,
       {
         ...state,
         sold_by: "Pharamcy 1",
+        total_amount
       }
     );
     return response.data;
@@ -152,31 +170,128 @@ export default function Billing() {
     confirmInvoiceMutation.mutateAsync();
   };
 
+  //fetch products
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/pharmacy/getproducts`);
+      console.log(response);
+      setProducts(response.data.data);
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  //dropdown product
+
+  const styles = {
+    container: {
+      position: "relative",
+      width: "300px",
+      border: "none",
+    },
+    input: {
+      width: "100%",
+      padding: "10px",
+      fontSize: "16px",
+      borderRadius: "4px",
+      height: "100%",
+    },
+    dropdown: {
+      position: "absolute",
+      top: "105%",
+      left: "0",
+      right: "0",
+      maxHeight: "200px",
+      overflowY: "auto",
+      border: "1px solid #ccc",
+      backgroundColor: "#fff",
+      zIndex: "10",
+      borderRadius: "4px",
+      display: showDropdown ? "block" : "none",
+    },
+    dropdownItem: {
+      padding: "10px",
+      cursor: "pointer",
+      whitespace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      color: "black",
+    },
+    dropdownItemHover: {
+      backgroundColor: "#f0f0f0",
+    },
+  };
+
+  const handleInputChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setQuery(value);
+    if (value) {
+      const filtered = products.filter((item) =>
+        item.name.toLowerCase().includes(value)
+      );
+
+      setFilteredData(filtered);
+      setShowDropdown(true);
+    } else {
+      setFilteredData([]);
+      setShowDropdown(false);
+    }
+  };
+
+  const handleItemClick = (item, rowIndex) => {
+    setQuery(item.name);
+    console.log("handleItemClick triggered", item, rowIndex); // Debug
+    setShowDropdown(false);
+    console.log(item);
+    dispatch({
+      type: ACTIONS.CLICK_A_PRODUCT,
+      payload: { item, rowIndex },
+    });
+  };
+
+  const handleOutsideClick = (e) => {
+    if (!e.target.closest(".search-container")) {
+      setShowDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, []);
+
+  console.log("filteredData", filteredData);
+
   return (
     <div className="billing-container">
       <h1>Dr1 Billing</h1>
 
       <div className="billingsection flex">
         {isFetchingBillDetailsLoading && <Loader />}
-        <div className="billingleft flex" style={{ width }}>
-          <img
-            src="https://www.rbcinsurance.com/group-benefits/_assets-custom/images/prescription-drug-sample-receipt-en.jpg"
-            alt=""
-          />
-          <div className="billingimagenumber flex">
-            <button>
-              <i className="ri-arrow-left-s-line"></i>
-            </button>
-            <div className="billingimagenumberdata flex">1/2</div>
-            <button>
-              <i className="ri-arrow-right-s-line"></i>
+        {state && state.order_type === "prescription" && (
+          <div className="billingleft flex" style={{ width }}>
+            <img
+              src="https://www.rbcinsurance.com/group-benefits/_assets-custom/images/prescription-drug-sample-receipt-en.jpg"
+              alt=""
+            />
+            <div className="billingimagenumber flex">
+              <button>
+                <i className="ri-arrow-left-s-line"></i>
+              </button>
+              <div className="billingimagenumberdata flex">1/2</div>
+              <button>
+                <i className="ri-arrow-right-s-line"></i>
+              </button>
+            </div>
+
+            <button className="medmini" onClick={changeWidth}>
+              <i className="ri-fullscreen-exit-line"></i>
             </button>
           </div>
-
-          <button className="medmini" onClick={changeWidth}>
-            <i className="ri-fullscreen-exit-line"></i>
-          </button>
-        </div>
+        )}
 
         <div className="billingright">
           <div className="billingrighttop flex">
@@ -241,23 +356,48 @@ export default function Billing() {
                 {state?.medicine_details.map((medicine, rowIndex) => (
                   <tr key={medicine.id}>
                     <td>
-                      <input
-                        type="text"
-                        name="name"
-                        value={medicine?.name || ""}
-                        className="billing-input"
-                        readOnly
-                      />
-                      {/* <select
-                        name="name"
-                        id=""
-                        value={medicine?.name || ""}
-                        className="billing-input"
-                      >
-                        <option value="1">product 1</option>
-                        <option value="2"> product 2</option>
-                        <option value="3">product 3</option>
-                      </select> */}
+                      {state && state.order_type !== "prescription" ? (
+                        <input
+                          type="text"
+                          name="name"
+                          value={medicine?.name || ""}
+                          className="billing-input"
+                          readOnly
+                        />
+                      ) : (
+                        <div
+                          className="search-container"
+                          style={styles.container}
+                        >
+                          <input
+                            type="text"
+                            value={query || ""}
+                            onChange={handleInputChange}
+                            placeholder="Search..."
+                            style={styles.input}
+                          />
+                          <div style={styles.dropdown}>
+                            {filteredData.map((item, index) => (
+                              <div
+                                key={index}
+                                style={{
+                                  ...styles.dropdownItem,
+                                  ...(hoveredIndex === index
+                                    ? styles.dropdownItemHover
+                                    : {}),
+                                }}
+                                onMouseEnter={() => setHoveredIndex(index)}
+                                onMouseLeave={() => setHoveredIndex(null)}
+                                onClick={() => handleItemClick(item, rowIndex)}
+                              >
+                                <h4 style={{ backgroundColor: "transparent" }}>
+                                  {item.name}
+                                </h4>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </td>
                     <td>
                       <input
@@ -325,7 +465,7 @@ export default function Billing() {
                               },
                             },
                           }}
-                          sx={{ height: 42, width: "100%" ,border:"none"}}
+                          sx={{ height: 42, width: "100%", border: "none" }}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           labelId="demo-simple-select-label"
@@ -385,7 +525,8 @@ export default function Billing() {
                         name="selling_price"
                         value={medicine?.selling_price || ""}
                         className="billing-input"
-                        readOnly
+                        onChange={(e) => handleProductChange(e, medicine.id)}
+                        min={0}
                       />
                     </td>
                   </tr>

@@ -1,5 +1,6 @@
 export const INITIAL_STATE = {
   sales_id: "",
+  order_type: "",
   contact_no: "",
   doctor_name: "",
   delivery_address: "",
@@ -56,7 +57,7 @@ export const billingReducer = (state, action) => {
           item.id === id
             ? {
                 ...item,
-                [field]:value
+                [field]: value,
               }
             : item
         ),
@@ -72,6 +73,32 @@ export const billingReducer = (state, action) => {
         ],
       };
     }
+    case ACTIONS.CLICK_A_PRODUCT: {
+      console.log("CLICK_A_PRODUCT action triggered"); // Debug
+      const { item, rowIndex } = action.payload;
+      console.log("Payload item:", item); // Debug
+
+      const payload = {
+        id: item.id,
+        name: item.name,
+        batch_no: "",
+        category: [],
+        timing: [],
+        afterFd_beforeFd: "",
+        takingQuantity: "",
+        totalQuantity: "",
+        hsn: item.hsn,
+        mrp: item.mrp,
+        selling_price: "",
+      };
+
+      return {
+        ...state,
+        medicine_details: state.medicine_details.map((currItem, index) =>
+          index === rowIndex ? payload : currItem
+        ),
+      };
+    }
     default: {
       return state;
     }
@@ -84,4 +111,5 @@ export const ACTIONS = {
   ADD_NEW_ROW: "ADD_NEW_ROW",
   UPDATE_PRODUCT: "UPDATE_PRODUCT",
   SELECT_TIMING: "SELECT_TIMING",
+  CLICK_A_PRODUCT: "LICK_A_PRODUCT",
 };
