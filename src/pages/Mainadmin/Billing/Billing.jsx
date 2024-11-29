@@ -264,6 +264,13 @@ export default function Billing() {
     }
   };
 
+  const deleteRow=(rowIndex)=>{
+    dispatch({
+      type: ACTIONS.CLICK_A_PRODUCT,
+      payload: { item, rowIndex },
+    });
+  }
+
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick);
     return () => document.removeEventListener("click", handleOutsideClick);

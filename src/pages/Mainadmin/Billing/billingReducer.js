@@ -41,7 +41,7 @@ export const billingReducer = (state, action) => {
       console.log(action.payload);
       return {
         ...state,
-        medicine_details: state.medicine_details.map((item,index) =>
+        medicine_details: state.medicine_details.map((item, index) =>
           index === rowIndex ? { ...item, [field]: value } : item
         ),
       };
@@ -53,8 +53,8 @@ export const billingReducer = (state, action) => {
 
       return {
         ...state,
-        medicine_details: state.medicine_details.map((item,itemIndex) =>
-          rowIndex=== itemIndex
+        medicine_details: state.medicine_details.map((item, itemIndex) =>
+          rowIndex === itemIndex
             ? {
                 ...item,
                 [field]: value,
@@ -99,6 +99,15 @@ export const billingReducer = (state, action) => {
         ),
       };
     }
+    case ACTIONS.DELETE_A_PRODUCT: {
+      const { rowIndex } = action.payload;
+      return {
+        ...state,
+        medicine_details: state.medicine_details.filter(
+          (currItem, index) => index !== rowIndex
+        ),
+      };
+    }
     default: {
       return state;
     }
@@ -111,5 +120,6 @@ export const ACTIONS = {
   ADD_NEW_ROW: "ADD_NEW_ROW",
   UPDATE_PRODUCT: "UPDATE_PRODUCT",
   SELECT_TIMING: "SELECT_TIMING",
-  CLICK_A_PRODUCT: "LICK_A_PRODUCT",
+  CLICK_A_PRODUCT: "CLICK_A_PRODUCT",
+  DELETE_A_PRODUCT: "DELETE_A_PRODUCT",
 };
