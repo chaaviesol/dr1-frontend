@@ -15,6 +15,7 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
+import { toast } from "react-toastify";
 
 export default function Billing() {
   const [state, dispatch] = useReducer(billingReducer, INITIAL_STATE);
@@ -161,6 +162,7 @@ export default function Billing() {
     mutationFn: () => confirmInvoice(),
     onSuccess: (data) => {
       console.log({ data });
+      toast.success(data.message)
     },
     onError: (err) => console.log(err),
   });
@@ -260,16 +262,16 @@ export default function Billing() {
 
   const handleOutsideClick = (e) => {
     if (!e.target.closest(".search-container")) {
-      setDropdownIndex(null)
+      setDropdownIndex(null);
     }
   };
 
-  const deleteRow=(rowIndex)=>{
+  const deleteRow = (rowIndex) => {
     dispatch({
-      type: ACTIONS.CLICK_A_PRODUCT,
-      payload: { item, rowIndex },
+      type: ACTIONS.DELETE_A_PRODUCT,
+      payload: { rowIndex },
     });
-  }
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick);
@@ -426,9 +428,7 @@ export default function Billing() {
                         name="batch_no"
                         value={medicine?.batch_no || ""}
                         className="billing-input"
-                        onChange={(e) =>
-                          handleProductChange(e, rowIndex)
-                        }
+                        onChange={(e) => handleProductChange(e, rowIndex)}
                       />
                     </td>
                     <td>
@@ -445,9 +445,7 @@ export default function Billing() {
                           renderValue={(selected) => selected.join(", ")}
                           name="timing"
                           value={medicine?.timing ?? []}
-                          onChange={(e) =>
-                            handleProductChange(e, rowIndex)
-                          }
+                          onChange={(e) => handleProductChange(e, rowIndex)}
                           input={
                             <OutlinedInput
                               sx={{
@@ -497,9 +495,7 @@ export default function Billing() {
                           id="demo-simple-selectasas"
                           name="afterFd_beforeFd"
                           value={medicine.afterFd_beforeFd}
-                          onChange={(e) =>
-                            handleProductChange(e, rowIndex)
-                          }
+                          onChange={(e) => handleProductChange(e, rowIndex)}
                         >
                           <MenuItem value="After food">After food</MenuItem>
                           <MenuItem value="Before food">Before food</MenuItem>
@@ -512,9 +508,7 @@ export default function Billing() {
                         name="takingQuantity"
                         value={medicine?.takingQuantity || ""}
                         className="billing-input"
-                        onChange={(e) =>
-                          handleProductChange(e, rowIndex)
-                        }
+                        onChange={(e) => handleProductChange(e, rowIndex)}
                         max={20}
                         min={1}
                       />
@@ -525,9 +519,7 @@ export default function Billing() {
                         name="totalQuantity"
                         value={medicine?.totalQuantity || ""}
                         className="billing-input"
-                        onChange={(e) =>
-                          handleProductChange(e, rowIndex)
-                        }
+                        onChange={(e) => handleProductChange(e, rowIndex)}
                         min={0}
                       />
                     </td>
@@ -537,9 +529,7 @@ export default function Billing() {
                         name="hsn"
                         value={medicine?.hsn || ""}
                         className="billing-input"
-                        onChange={(e) =>
-                          handleProductChange(e, rowIndex)
-                        }
+                        onChange={(e) => handleProductChange(e, rowIndex)}
                         min={0}
                       />
                     </td>
@@ -558,9 +548,7 @@ export default function Billing() {
                         name="selling_price"
                         value={medicine?.selling_price || ""}
                         className="billing-input"
-                        onChange={(e) =>
-                          handleProductChange(e, rowIndex)
-                        }
+                        onChange={(e) => handleProductChange(e, rowIndex)}
                         min={0}
                       />
                     </td>
