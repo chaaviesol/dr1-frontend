@@ -37,24 +37,24 @@ export const billingReducer = (state, action) => {
       };
     }
     case ACTIONS.UPDATE_PRODUCT: {
-      const { field, value, id } = action.payload;
+      const { field, value, rowIndex } = action.payload;
       console.log(action.payload);
       return {
         ...state,
-        medicine_details: state.medicine_details.map((item) =>
-          item.id === id ? { ...item, [field]: value } : item
+        medicine_details: state.medicine_details.map((item,index) =>
+          index === rowIndex ? { ...item, [field]: value } : item
         ),
       };
     }
 
     case ACTIONS.SELECT_TIMING: {
-      const { field, value, id } = action.payload;
+      const { field, value, rowIndex } = action.payload;
       console.log(action.payload);
 
       return {
         ...state,
-        medicine_details: state.medicine_details.map((item) =>
-          item.id === id
+        medicine_details: state.medicine_details.map((item,itemIndex) =>
+          rowIndex=== itemIndex
             ? {
                 ...item,
                 [field]: value,

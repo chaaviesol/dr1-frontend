@@ -23,8 +23,8 @@ export default function Billing() {
 
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
-  const [showDropdown, setShowDropdown] = useState(false);
 
+  const [dropdownIndex, setDropdownIndex] = useState(null);
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
@@ -124,13 +124,13 @@ export default function Billing() {
       payload: { field, value },
     });
   };
-  const handleProductChange = (event, id) => {
-    const { value } = event.target;
-    const field = event.target.name;
+  const handleProductChange = (e, rowIndex) => {
+    const { value } = e.target;
+    const field = e.target.name;
 
     dispatch({
       type: field === "timing" ? ACTIONS.SELECT_TIMING : ACTIONS.UPDATE_PRODUCT,
-      payload: { field, value, id },
+      payload: { field, value, rowIndex },
     });
   };
 
@@ -150,7 +150,7 @@ export default function Billing() {
       {
         ...state,
         sold_by: "Pharamcy 1",
-        total_amount
+        total_amount,
       }
     );
     return response.data;
@@ -210,7 +210,7 @@ export default function Billing() {
       backgroundColor: "#fff",
       zIndex: "10",
       borderRadius: "4px",
-      display: showDropdown ? "block" : "none",
+      // display: showDropdown ? "block" : "none",
     },
     dropdownItem: {
       padding: "10px",
@@ -225,36 +225,42 @@ export default function Billing() {
     },
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e, rowIndex) => {
     const value = e.target.value.toLowerCase();
-    setQuery(value);
+    const field = e.target.name;
+
+    dispatch({
+      type: ACTIONS.UPDATE_PRODUCT,
+      payload: { field, value, rowIndex },
+    });
     if (value) {
       const filtered = products.filter((item) =>
         item.name.toLowerCase().includes(value)
       );
 
       setFilteredData(filtered);
-      setShowDropdown(true);
+      setDropdownIndex(rowIndex);
     } else {
       setFilteredData([]);
-      setShowDropdown(false);
+      setDropdownIndex(null);
     }
   };
 
   const handleItemClick = (item, rowIndex) => {
     setQuery(item.name);
     console.log("handleItemClick triggered", item, rowIndex); // Debug
-    setShowDropdown(false);
+
     console.log(item);
     dispatch({
       type: ACTIONS.CLICK_A_PRODUCT,
       payload: { item, rowIndex },
     });
+    setDropdownIndex(null);
   };
 
   const handleOutsideClick = (e) => {
     if (!e.target.closest(".search-container")) {
-      setShowDropdown(false);
+      setDropdownIndex(null)
     }
   };
 
@@ -371,31 +377,39 @@ export default function Billing() {
                         >
                           <input
                             type="text"
-                            value={query || ""}
-                            onChange={handleInputChange}
+                            value={medicine.name || ""}
+                            name="name"
+                            onChange={(e) => handleInputChange(e, rowIndex)}
                             placeholder="Search..."
                             style={styles.input}
                           />
-                          <div style={styles.dropdown}>
-                            {filteredData.map((item, index) => (
-                              <div
-                                key={index}
-                                style={{
-                                  ...styles.dropdownItem,
-                                  ...(hoveredIndex === index
-                                    ? styles.dropdownItemHover
-                                    : {}),
-                                }}
-                                onMouseEnter={() => setHoveredIndex(index)}
-                                onMouseLeave={() => setHoveredIndex(null)}
-                                onClick={() => handleItemClick(item, rowIndex)}
-                              >
-                                <h4 style={{ backgroundColor: "transparent" }}>
-                                  {item.name}
-                                </h4>
+                          {dropdownIndex === rowIndex &&
+                            filteredData.length > 0 && (
+                              <div style={styles.dropdown}>
+                                {filteredData.map((item, index) => (
+                                  <div
+                                    key={index}
+                                    style={{
+                                      ...styles.dropdownItem,
+                                      ...(hoveredIndex === index
+                                        ? styles.dropdownItemHover
+                                        : {}),
+                                    }}
+                                    onMouseEnter={() => setHoveredIndex(index)}
+                                    onMouseLeave={() => setHoveredIndex(null)}
+                                    onClick={() =>
+                                      handleItemClick(item, rowIndex)
+                                    }
+                                  >
+                                    <h4
+                                      style={{ backgroundColor: "transparent" }}
+                                    >
+                                      {item.name}
+                                    </h4>
+                                  </div>
+                                ))}
                               </div>
-                            ))}
-                          </div>
+                            )}
                         </div>
                       )}
                     </td>
@@ -405,7 +419,9 @@ export default function Billing() {
                         name="batch_no"
                         value={medicine?.batch_no || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, medicine.id)}
+                        onChange={(e) =>
+                          handleProductChange(e, rowIndex)
+                        }
                       />
                     </td>
                     <td>
@@ -422,7 +438,9 @@ export default function Billing() {
                           renderValue={(selected) => selected.join(", ")}
                           name="timing"
                           value={medicine?.timing ?? []}
-                          onChange={(e) => handleProductChange(e, medicine.id)}
+                          onChange={(e) =>
+                            handleProductChange(e, rowIndex)
+                          }
                           input={
                             <OutlinedInput
                               sx={{
@@ -465,14 +483,16 @@ export default function Billing() {
                               },
                             },
                           }}
-                          sx={{ height: 42, width: "100%", border: "none" }}
+                          sx={{ height: 42, width: 130, border: "none" }}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           labelId="demo-simple-select-label"
                           id="demo-simple-selectasas"
                           name="afterFd_beforeFd"
                           value={medicine.afterFd_beforeFd}
-                          onChange={(e) => handleProductChange(e, medicine.id)}
+                          onChange={(e) =>
+                            handleProductChange(e, rowIndex)
+                          }
                         >
                           <MenuItem value="After food">After food</MenuItem>
                           <MenuItem value="Before food">Before food</MenuItem>
@@ -485,7 +505,9 @@ export default function Billing() {
                         name="takingQuantity"
                         value={medicine?.takingQuantity || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, medicine.id)}
+                        onChange={(e) =>
+                          handleProductChange(e, rowIndex)
+                        }
                         max={20}
                         min={1}
                       />
@@ -496,7 +518,9 @@ export default function Billing() {
                         name="totalQuantity"
                         value={medicine?.totalQuantity || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, medicine.id)}
+                        onChange={(e) =>
+                          handleProductChange(e, rowIndex)
+                        }
                         min={0}
                       />
                     </td>
@@ -506,7 +530,9 @@ export default function Billing() {
                         name="hsn"
                         value={medicine?.hsn || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, medicine.id)}
+                        onChange={(e) =>
+                          handleProductChange(e, rowIndex)
+                        }
                         min={0}
                       />
                     </td>
@@ -525,7 +551,9 @@ export default function Billing() {
                         name="selling_price"
                         value={medicine?.selling_price || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, medicine.id)}
+                        onChange={(e) =>
+                          handleProductChange(e, rowIndex)
+                        }
                         min={0}
                       />
                     </td>
