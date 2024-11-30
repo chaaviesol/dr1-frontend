@@ -65,13 +65,17 @@ export const billingReducer = (state, action) => {
     }
 
     case ACTIONS.ADD_NEW_ROW: {
-      return {
-        ...state,
-        medicine_details: [
-          ...state.medicine_details,
-          INITIAL_STATE.medicine_details[0],
-        ],
-      };
+      const isEmpty = state.medicine_details.some((ele) => !ele || !ele.name);
+      if (!isEmpty) {
+        return {
+          ...state,
+          medicine_details: [
+            ...state.medicine_details,
+            INITIAL_STATE.medicine_details[0],
+          ],
+        };
+      }
+      return state
     }
     case ACTIONS.CLICK_A_PRODUCT: {
       console.log("CLICK_A_PRODUCT action triggered"); // Debug

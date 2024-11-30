@@ -155,9 +155,37 @@
   justify-content: flex-end;
   margin-top: 20px;
 }
-.billingbutton button {
+.billingbutton button:first-of-type {
   background-color: #3a65fd;
   color: white;
   padding: 8px 20px;
   border-radius: 4px;
+}
+.billingbutton button:last-of-type {
+  background-color: #3a65fd;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+}
+
+
+.billing-confirm-btn {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.billing-confirm-btn:hover {
+  background-color: darkgreen; /* Slightly darker shade on hover */
+}
+
+.billing-confirm-btn:active {
+  transform: scale(0.95); /* Slightly shrink the button when clicked */
+  background-color: limegreen; /* Brighter green when pressed */
 }

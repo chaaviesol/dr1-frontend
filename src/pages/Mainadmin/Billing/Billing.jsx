@@ -574,7 +574,7 @@ export default function Billing() {
             <button
               type="submit"
               disabled={confirmInvoiceMutation.isPending}
-              style={{ backgroundColor: "Green" }}
+              className="billing-confirm-btn"
               onClick={handleSubmit}
             >
               Confirm
