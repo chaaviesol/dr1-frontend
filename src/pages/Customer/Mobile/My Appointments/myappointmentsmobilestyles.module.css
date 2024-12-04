@@ -1,0 +1,130 @@
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+}
+.upcoming {
+  margin-top: 30px;
+}
+.upcoming span {
+  font-weight: 400;
+}
+.completed span {
+  font-weight: 400;
+}
+
+.singleappointment {
+  margin-top: 10px;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+.appointmentInfo {
+  height: 60%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.personimg {
+  height: 100px;
+  width: 100px;
+  justify-content: center;
+  object-fit: cover;
+}
+.personinfo {
+  font-size: 14px;
+  height: 100px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.buttons {
+  display: flex;
+  width: 200px;
+  gap: 20px;
+  height: 40%;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttonscompleted {
+  display: flex;
+  width: 250px;
+  height: 40%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons button:nth-child(1) {
+  background-color: #fd3a3a; /* Cancel button */
+  color: white;
+  border-radius: 37px;
+  padding: 0.7rem 2rem;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for effects */
+}
+
+.buttons button:nth-child(2) {
+  background-color: #14b467; /* Reschedule button */
+  color: white;
+  border-radius: 37px;
+  padding: 0.7rem 2rem;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for effects */
+}
+
+/* Hover effect for the Cancel button */
+.buttons button:nth-child(1):active {
+  background-color: #e74c3c; /* Darker shade on active */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Active effect for the Reschedule button */
+.buttons button:nth-child(2):active {
+  background-color: #138a53; /* Darker shade on active */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.completed {
+  margin-top: 10px;
+}
+
+.old {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+
+.buttonscompleted button:nth-child(1) {
+    background-color: #3A65FD; /* Cancel button */
+    color: white;
+    border-radius: 37px;
+    width: fit-content;
+    padding: 0.7rem 2rem;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for effects */
+  }
+  
+  .buttonscompleted button:nth-child(2) {
+    background-color: #14b467; /* Reschedule button */
+    color: white;
+    border-radius: 37px;
+    width: fit-content;
+    padding: 0.7rem 2rem;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for effects */
+  }
+  
+  /* Hover effect for the Cancel button */
+  .buttonscompleted button:nth-child(1):active {
+    background-color: #2554fe; /* Darker shade on active */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
+  
+  /* Active effect for the Reschedule button */
+  .buttonscompleted button:nth-child(2):active {
+    background-color: #138a53; /* Darker shade on active */
+    transform: scale(1.05); /* Slight zoom effect */
+  }
