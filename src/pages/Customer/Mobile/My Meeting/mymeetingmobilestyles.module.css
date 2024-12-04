@@ -1,0 +1,119 @@
+.container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+  height: 100vh;
+}
+.heading {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.appointmentInfo {
+  margin-top: 20px;
+  height: 120px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.personimg {
+  height: 100px;
+  width: 100px;
+  justify-content: center;
+  object-fit: cover;
+}
+.personinfo {
+  font-size: 14px;
+  height: 100px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.buttons {
+}
+
+.buttons button:nth-child(1) {
+  background-color: #14b467; /* Reschedule button */
+  color: white;
+  border-radius: 37px;
+  padding: 0.7rem 2rem;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for effects */
+}
+
+/* Active effect for the Reschedule button */
+.buttons button:nth-child(1):active {
+  background-color: #138a53; /* Darker shade on active */
+}
+
+.timebox {
+  margin-top: 30px;
+  background-color: #f2f5ff;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.time span:nth-child(1) {
+  font-size: 32px;
+  font-weight: 500;
+}
+.time span:nth-child(2) {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.texts {
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 23px;
+height: 30%;
+  overflow-y: auto;   /* Enable vertical scrolling */
+  padding-right: 10px; /* Optional: Adds space for scroll bar */
+}
+
+.bottombuttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: absolute;
+  width: 100%;
+  bottom: 2rem;
+  font-size: 14px;
+}
+
+.joinbtn {
+  background-color: #3a65fd; /* Cancel button */
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+  padding:1rem 2rem;
+  text-align: center;
+  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for effects */
+}
+.joinbtn:active{
+  background-color: #2554fe; /* Darker shade on active */
+}
+.cancelbtn {
+  background-color: #ffe0e0; /* Cancel button */
+  color: #ff3131;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  padding:1rem 2rem;
+  transition: background-color 0.3s, transform 600ms ease-in-out; /* Smooth transition for effects */
+}
+.cancelbtn:active{
+  background-color: #f7cece; /* Darker shade on active */
+ 
+}

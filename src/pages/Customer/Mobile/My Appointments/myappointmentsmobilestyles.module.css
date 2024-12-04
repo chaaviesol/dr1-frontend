@@ -78,13 +78,11 @@
 /* Hover effect for the Cancel button */
 .buttons button:nth-child(1):active {
   background-color: #e74c3c; /* Darker shade on active */
-  transform: scale(1.05); /* Slight zoom effect */
 }
 
 /* Active effect for the Reschedule button */
 .buttons button:nth-child(2):active {
   background-color: #138a53; /* Darker shade on active */
-  transform: scale(1.05); /* Slight zoom effect */
 }
 
 .completed {
@@ -120,11 +118,9 @@
   /* Hover effect for the Cancel button */
   .buttonscompleted button:nth-child(1):active {
     background-color: #2554fe; /* Darker shade on active */
-    transform: scale(1.05); /* Slight zoom effect */
   }
   
   /* Active effect for the Reschedule button */
   .buttonscompleted button:nth-child(2):active {
     background-color: #138a53; /* Darker shade on active */
-    transform: scale(1.05); /* Slight zoom effect */
   }
