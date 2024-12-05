@@ -4,7 +4,7 @@ import axios from "axios";
 import { BASE_URL, PHARMACY_URL } from "../../../config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import moment from "moment";
 
 function Prescriptions({ Details, setChangeDashboards }) {
@@ -58,7 +58,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
   const fetchPharmacyDetails = async (sales_id) => {
     const response = await axios.post(
-      `${PHARMACY_URL}/pharmacyquotation/getorderdetails`,
+      `${PHARMACY_URL}/pharmacyquotation/getpharmacies`,
       {
         sales_id,
       }
@@ -84,19 +84,41 @@ function Prescriptions({ Details, setChangeDashboards }) {
         throw error;
       }
     },
-    enabled: false,
+    enabled: !!sales_id,
   });
 
-  const assignPharmacy = async (sales_id) => {
-    const response = await axios.post(
-      `${PHARMACY_URL}/pharmacyquotation/getorderdetails`,
-      {
-        sales_id,
-      }
-    );
-    console.log(response);
-    return response.data.data || [];
+  const handleAssignPharamcy = async (sales_id, pharmacy_id, status) => {
+    console.log(sales_id, pharmacy_id, status)
+    try {
+      const response = await axios.post(
+        `${PHARMACY_URL}/pharmacyquotation/assignpharmacy`,
+        {
+          sales_id,
+          pharmacy_id,
+          status,
+        }
+      );
+      console.log(response);
+      refetchPharamcy();
+    } catch (error) {
+      console.error("Error assigning pharmacy:", error);
+    }finally{
+      
+    }
   };
+
+  // const { mutateAsync: assignPharamcyMutation } = useMutation({
+  //   mutationKey: ["assignPharmacy"],
+  //   mutationFn: (sales_id, pharmacy_id, status) =>
+  //     assignPharmacy(sales_id, pharmacy_id, status),
+  //   onSuccess: () => {
+  //     refetchPharamcy(); // Refetch after success
+  //   },
+  //   onError: (error) => {
+  //     console.log(error);
+  //     toast.error(error.message || "Something went wrong");
+  //   },
+  // });
 
   return (
     <div
@@ -212,29 +234,46 @@ function Prescriptions({ Details, setChangeDashboards }) {
             <div className="assignpharmacy maincolorpadding">
               <h4 className="secondtitleparma">Assign Pharmacy</h4>
 
-              <div className="assignpharmacydata flex">
-                <div>
-                  <h3>Health Point Medicals Pharmacy</h3>
-                  <h4 className="lablo"> Kozhikode, Eranhipaalam , 682028</h4>
+              {pharamcyDetails?.length > 0 &&
+                pharamcyDetails.map((pharmacy) => (
+                  <div
+                    key={pharmacy?.pharm_id?.id}
+                    className="assignpharmacydata flex"
+                  >
+                    <div>
+                      <h3>{pharmacy?.pharm_id?.name}</h3>
+                      <h4 className="lablo">
+                        {pharmacy?.pharm_id?.address[0]?.address},{" "}
+                        {pharmacy?.pharm_id?.pincode}
+                      </h4>
+                    </div>
+
+                    {pharamcyDetails?.length === 1 ? (
+                      <button className="afterassignbutton assignbutton">
+                        Assigned
+                      </button>
+                    ) : (
+                      <button
+                        className="assignbutton"
+                        onClick={() =>
+                          handleAssignPharamcy(
+                            sales_id,
+                            pharmacy?.pharm_id?.id,
+                            "requested"
+                          )
+                        }
+                      >
+                        Assign
+                      </button>
+                    )}
+                  </div>
+                ))}
+
+              {pharamcyDetails?.length !== 1 && (
+                <div className="noassign flex">
+                  <span>Pharmacy not Assigned</span>
                 </div>
-
-                <button className="assignbutton">Assign</button>
-              </div>
-
-              <div className="assignpharmacydata flex">
-                <div>
-                  <h3>Health Point Medicals Pharmacy</h3>
-                  <h4 className="lablo"> Kozhikode, Eranhipaalam , 682028</h4>
-                </div>
-
-                <button className="afterassignbutton assignbutton">
-                  Assigned
-                </button>
-              </div>
-
-              <div className="noassign flex">
-                <span>Pharmacy not Assigned</span>
-              </div>
+              )}
             </div>
 
             <div className="assigndelivery maincolorpadding">
@@ -299,7 +338,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                       <td>{med?.afterFd_beforeFd}</td>
                       <td>
                         {" "}
-                        {med.timing.length > 0 &&
+                        {med.timing?.length > 0 &&
                           med.timing.map((entry, index) => (
                             <div
                               key={index}
