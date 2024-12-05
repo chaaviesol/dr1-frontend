@@ -4,7 +4,7 @@ import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarPro
 import { Add, Remove } from "@mui/icons-material";
 import { usePharmacyContext } from "../../../../../contexts/PharmacyContext";
 import useAxiosPrivate from "../../../../../hooks/useAxiosPrivate";
-import { BASE_URL } from "../../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../../config";
 import { useMutation } from "@tanstack/react-query";
 import { debounce } from "lodash";
 
@@ -19,7 +19,7 @@ const CartControl = React.memo(({ product, isLoading }) => {
       prod_id: id,
     };
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/addToCart`,
+      `${PHARMACY_URL}/pharmacy/addToCart`,
       finalPayload
     );
     return response.data.data;
@@ -40,7 +40,7 @@ const CartControl = React.memo(({ product, isLoading }) => {
     const payload = { prod_id: id };
 
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/removeFromCart`,
+      `${PHARMACY_URL}/pharmacy/removeFromCart`,
       payload
     );
     return response.data.data;

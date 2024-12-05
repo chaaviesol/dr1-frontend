@@ -4,7 +4,7 @@ export const INITIAL_STATE = {
   contact_no: "",
   doctor_name: "",
   delivery_address: "",
-  user_name: "",
+  username: "",
   medicine_details: [
     {
       id: "",

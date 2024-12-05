@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { BASE_URL } from "../../config";
+import { BASE_URL, PHARMACY_URL } from "../../config";
 import { toast } from "react-toastify";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { Checkbox, FormControlLabel, Modal } from "@mui/material";
@@ -161,7 +161,7 @@ function UploadPresMobile() {
       }
 
       const response = await axiosPrivate.post(
-        `${BASE_URL}/pharmacy/salesorder`,
+        `${PHARMACY_URL}/pharmacy/salesorder`,
         submissionData
       );
 

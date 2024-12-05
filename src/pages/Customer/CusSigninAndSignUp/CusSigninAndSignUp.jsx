@@ -3,7 +3,7 @@ import "./CusSigninAndSignUp.css";
 import { CircularProgress, IconButton, Modal } from "@mui/material";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { BASE_URL, port } from "../../../config";
+import { BASE_URL, PHARMACY_URL, port } from "../../../config";
 import ErrorIcon from "@mui/icons-material/Error";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -122,7 +122,7 @@ export const CusSigninAndSignUp = ({
   const customerLogin = async (payload) => {
     setIsLoginPending(true);
     try {
-      const response = await axios.post(`${BASE_URL}/user/userlogin`, payload);
+      const response = await axios.post(`${PHARMACY_URL}/user/userlogin`, payload);
       console.log(response);
       const data = response.data;
       const { message, userId, userType, accessToken, refreshToken } = data;

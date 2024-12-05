@@ -12,6 +12,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import TextFieldOut from "./TextField";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
+import { PHARMACY_URL } from "../../../config";
 
 
 
@@ -45,7 +46,7 @@ export const CreateCampaign = () => {
   const getAllProducts = async () => {
     try {
       setLoading(true);
-      const response = await axiosPrivate.get(`/pharmacy/getproducts`);
+      const response = await axiosPrivate.get(`${PHARMACY_URL}/pharmacy/getproducts`);
       if (response.data) {
         console.log(response);
         setProdData(response.data.data);

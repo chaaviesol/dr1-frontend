@@ -1,6 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
-import { BASE_URL } from "../config";
+import { BASE_URL, PHARMACY_URL } from "../config";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
@@ -12,7 +12,7 @@ const PharmacyProvider = ({ children }) => {
   const { auth } = useAuth();
   const { userId, userType } = auth;
   const fetchUserCart = async (id) => {
-    const response = await axiosPrivate.get(`${BASE_URL}/pharmacy/getcart`);
+    const response = await axiosPrivate.get(`${PHARMACY_URL}/pharmacy/getcart`);
     return response.data.data;
   };
 

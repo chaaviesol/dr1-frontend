@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { port } from "../../../config";
+import { PHARMACY_URL, port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 import "./listtablestyle.css";
@@ -17,7 +17,7 @@ export default function Prescriptionlist({
   const fetchPrescriptionList = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${port}/pharmacy/prescriptionlist`);
+      const response = await axios.get(`${PHARMACY_URL}/pharmacy/prescriptionlist`);
       setdatalist(response?.data?.data);
       setcompleted(response?.data);
       setinitialData(response?.data?.data);

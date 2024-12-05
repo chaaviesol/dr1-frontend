@@ -34,7 +34,7 @@ root.render(
         </React.StrictMode>
       </GoogleOAuthProvider>
     </AuthProvider>
-    {/* <ReactQueryDevtools initialIsOpen={true} position="bottom" /> */}
+    <ReactQueryDevtools initialIsOpen={true} position="bottom" />
   </QueryClientProvider>
 );
 

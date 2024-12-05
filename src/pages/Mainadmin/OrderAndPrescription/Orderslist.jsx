@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BASE_URL, port } from "../../../config";
+import { BASE_URL, PHARMACY_URL, port } from "../../../config";
 import axios from "axios";
 import moment from "moment";
 // import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ export default function Orderslist({
   const [completed, setcompleted] = useState([]);
 
   const fetchSalesList = async () => {
-    const response = await axios.get(`${BASE_URL}/pharmacy/allsalelist`);
+    const response = await axios.get(`${PHARMACY_URL}/pharmacy/allsalelist`);
     return response.data;
   };
 

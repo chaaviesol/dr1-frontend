@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import "./billingStyles.css";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -31,7 +31,7 @@ export default function Billing() {
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
   const location = useLocation();
-const sales_id=location.state.sales_id
+  const sales_id = location.state.sales_id;
   const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 0;
   const MenuProps = {
@@ -45,9 +45,12 @@ const sales_id=location.state.sales_id
   //fetch billDetails
 
   const fetchBillDetails = async (sales_id) => {
-    const response = await axios.post(`${BASE_URL}/pharmacy/getinvsalesorder`, {
-      sales_id,
-    });
+    const response = await axios.post(
+      `${PHARMACY_URL}/pharmacy/getinvsalesorder`,
+      {
+        sales_id,
+      }
+    );
     console.log(response);
     return response.data.data || [];
   };
@@ -57,7 +60,7 @@ const sales_id=location.state.sales_id
     isLoading: isFetchingBillDetailsLoading,
     refetch,
   } = useQuery({
-    queryKey: ["FetchBillDetails", ],
+    queryKey: ["FetchBillDetails"],
     queryFn: async ({ queryKey }) => {
       try {
         const response = await fetchBillDetails(sales_id);
@@ -148,7 +151,7 @@ const sales_id=location.state.sales_id
         : "createinvoice";
     console.log(endPoint);
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/${endPoint}`,
+      `${PHARMACY_URL}/pharmacy/${endPoint}`,
       {
         ...state,
         sold_by: "Pharamcy 1",
@@ -163,7 +166,7 @@ const sales_id=location.state.sales_id
     mutationFn: () => confirmInvoice(),
     onSuccess: (data) => {
       console.log({ data });
-      toast.success(data.message)
+      toast.success(data.message);
     },
     onError: (err) => console.log(err),
   });
@@ -177,7 +180,7 @@ const sales_id=location.state.sales_id
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/pharmacy/getproducts`);
+      const response = await axios.get(`${PHARMACY_URL}/pharmacy/getproducts`);
       console.log(response);
       setProducts(response.data.data);
     } catch (err) {}
@@ -315,8 +318,8 @@ const sales_id=location.state.sales_id
               <h4>Patient Name</h4>
               <input
                 type="text"
-                name="user_name"
-                value={state?.user_name || ""}
+                name="username"
+                value={state?.username || ""}
                 placeholder="Enter Patient Name"
                 onChange={handleFormChange}
                 maxLength={30}
@@ -439,6 +442,7 @@ const sales_id=location.state.sales_id
                         className="billing-input"
                       >
                         <Select
+                          disabled={!medicine.category.includes("MEDICINES")}
                           sx={{ height: 42 }}
                           labelId="demo-multiple-checkbox-label"
                           id="demo-multiple-checkboxx"
@@ -482,6 +486,7 @@ const sales_id=location.state.sales_id
                         className="billing-input"
                       >
                         <Select
+                         disabled={!medicine.category.includes("MEDICINES")}
                           MenuProps={{
                             PaperProps: {
                               style: {
@@ -489,7 +494,7 @@ const sales_id=location.state.sales_id
                               },
                             },
                           }}
-                          sx={{ height: 42, width: 130, border: "none" }}
+                          sx={{ height: 42, width: 150, border: "none" }}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           labelId="demo-simple-select-label"
@@ -580,7 +585,6 @@ const sales_id=location.state.sales_id
             >
               Continue
             </button>
-      
           </div>
         </div>
       </div>

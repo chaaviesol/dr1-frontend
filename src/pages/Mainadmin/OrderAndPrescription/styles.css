@@ -392,6 +392,7 @@ margin-bottom:15px;
 
 .orderdetails-data-attachment {
   text-align: left;
+  cursor: pointer;
 }
 
 /* Custom width for Order ID column */

@@ -1,61 +1,102 @@
 import React, { useState } from "react";
 import "./styles.css";
 import axios from "axios";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
 
 function Prescriptions({ Details, setChangeDashboards }) {
   const [isLoading, setIsLoading] = useState(false);
-
-  
+  const sales_id = Details.sales_id;
+  console.log(Details);
   const navigate = useNavigate();
-  const data = [
-    {
-      id: "#GGJK1001",
-      attachment: "mypriscription.jpg",
-      confirmed: "2024-12-01",
-      packed: "2024-12-02",
-      dispatched: "2024-12-03",
-      delivered: "2024-12-05",
-    },
-  ];
+  // const data = [
+  //   {
+  //     id: "#GGJK1001",
+  //     attachment: "mypriscription.jpg",
+  //     confirmed: "2024-12-01",
+  //     packed: "2024-12-02",
+  //     dispatched: "2024-12-03",
+  //     delivered: "2024-12-05",
+  //   },
+  // ];
 
-  const medicines = [
-    {
-      name: "Paracetamol",
-      frequency: "2x daily",
-      time: "BF",
-      qty: 10,
-      dose: "500mg",
-      hsn: "3004",
-      mrp: 50,
-      discount: 5,
-      price: 45,
+  const fetchOrderDetails = async (sales_id) => {
+    const response = await axios.post(
+      `${PHARMACY_URL}/pharmacyquotation/getorderdetails`,
+      {
+        sales_id,
+      }
+    );
+    console.log(response);
+    return response.data.data || [];
+  };
+
+  const {
+    data: orderDetails,
+    isLoading: isFetchingOrderDetailsLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["fetchOrderDetails"],
+    queryFn: async ({ queryKey }) => {
+      try {
+        const response = await fetchOrderDetails(sales_id);
+        return response || [];
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          return [];
+        }
+        throw error;
+      }
     },
-    {
-      name: "Ibuprofen",
-      frequency: "3x daily",
-      time: "AF",
-      qty: 15,
-      dose: "200mg",
-      hsn: "3005",
-      mrp: 75,
-      discount: 10,
-      price: 67.5,
+    enabled: !!sales_id,
+  });
+
+  //fetch pharamcy data
+
+  const fetchPharmacyDetails = async (sales_id) => {
+    const response = await axios.post(
+      `${PHARMACY_URL}/pharmacyquotation/getorderdetails`,
+      {
+        sales_id,
+      }
+    );
+    console.log(response);
+    return response.data.data || [];
+  };
+
+  const {
+    data: pharamcyDetails,
+    isLoading: isFetchingpharamcyDetailsLoading,
+    refetch: refetchPharamcy,
+  } = useQuery({
+    queryKey: ["pharamcyDetails"],
+    queryFn: async ({ queryKey }) => {
+      try {
+        const response = await fetchPharmacyDetails(sales_id);
+        return response || [];
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          return [];
+        }
+        throw error;
+      }
     },
-    {
-      name: "Amoxicillin",
-      frequency: "1x daily",
-      time: "AF",
-      qty: 20,
-      dose: "250mg",
-      hsn: "3006",
-      mrp: 100,
-      discount: 15,
-      price: 85,
-    },
-  ];
+    enabled: false,
+  });
+
+  const assignPharmacy = async (sales_id) => {
+    const response = await axios.post(
+      `${PHARMACY_URL}/pharmacyquotation/getorderdetails`,
+      {
+        sales_id,
+      }
+    );
+    console.log(response);
+    return response.data.data || [];
+  };
 
   return (
     <div
@@ -84,7 +125,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
           <h2>Order Details</h2>
 
           <button
-            onClick={() => navigate("/billing", { state: { sales_id: Details.sales_id } })}
+            onClick={() =>
+              navigate("/billing", { state: { sales_id: Details.sales_id } })
+            }
           >
             Start Shipping
           </button>
@@ -93,7 +136,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
         <div className="toporderditems maincolorpadding">
           <div className="toporderditemstit flex">
             <h4 className="secondtitleparma">Ordered items</h4>
-            <h3 className="statusmain">Order confiremd</h3>
+            <h3 className="statusmain">Order confirmed</h3>
           </div>
 
           <table className="orderdetails-table">
@@ -107,25 +150,29 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 </th>
                 <th className="orderdetails-header">Confirmed Date</th>
                 <th className="orderdetails-header">Packed Date</th>
-                <th className="orderdetails-header">Trasist Date</th>
+                <th className="orderdetails-header">Transist Date</th>
                 <th className="orderdetails-header">Delivered Date</th>
               </tr>
             </thead>
             <tbody className="orderdetails-tbody">
-              {data.map((item) => (
-                <tr key={item.id} className="orderdetails-row">
-                  <td className="orderdetails-id-column orderdetails-data">
-                    {item.id}
-                  </td>
-                  <td className="orderdetails-data orderdetails-data-attachment">
-                    {item.attachment} <a href="">view</a>{" "}
-                  </td>
-                  <td className="orderdetails-data">{item.confirmed}</td>
-                  <td className="orderdetails-data">{item.packed}</td>
-                  <td className="orderdetails-data">{item.dispatched}</td>
-                  <td className="orderdetails-data">{item.delivered}</td>
-                </tr>
-              ))}
+              <tr className="orderdetails-row">
+                <td className="orderdetails-id-column orderdetails-data">
+                  {orderDetails?.so_number}
+                </td>
+                <td className="orderdetails-data orderdetails-data-attachment">
+                  {orderDetails?.attachment}{" "}
+                  <h4 title="View prescription">view</h4>{" "}
+                </td>
+                <td className="orderdetails-data">
+                  {" "}
+                  {moment(orderDetails?.created_date).format("DD/MM/YYYY")}
+                </td>
+                <td className="orderdetails-data">{orderDetails?.packed}</td>
+                <td className="orderdetails-data">
+                  {orderDetails?.dispatched}
+                </td>
+                <td className="orderdetails-data">{orderDetails?.delivered}</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -136,34 +183,28 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
             <div className="customerdatas flex">
               <h3>Name:</h3>
-              <h3>Aswanth Up</h3>
+              <h3> {orderDetails?.user_name}</h3>
             </div>
             <div className="customerdatas flex">
               <h3>Doctor Name:</h3>
-              <h3>Arun Manoj</h3>
+              <h3>{orderDetails?.doctor_name}</h3>
             </div>
 
             <div className="customerdatas flex">
               <h3>Contact Number:</h3>
-              <h3>+91 9898899989</h3>
+              <h3>{orderDetails?.contact_no}</h3>
             </div>
 
             <div className="customerdataremark">
               <h3>Address</h3>
               <h4 className="customerdataspara">
-                Door No. 48, 1541, Ponnurunni-Chalikkavattom Rd, Ponnurunni
-                East, Ponnurunni, Vyttila, Kochi, Ernakulam, Kerala 682028
+                {orderDetails?.delivery_address}
               </h4>
             </div>
 
             <div className="customerdataremark">
               <h3>Remarks</h3>
-              <h4 className="customerdataspara">
-                A doctor is a medical professional who diagnoses, treats, and
-                prevents illnesses, injuries, and various medical conditions in
-                individuals. Doctors play a crucial role in maintaining and
-                improving the health and well-being of their patients.{" "}
-              </h4>
+              <h4 className="customerdataspara">{orderDetails?.remarks}</h4>
             </div>
           </div>
 
@@ -233,42 +274,67 @@ function Prescriptions({ Details, setChangeDashboards }) {
         </div>
 
         <div className="billeditems maincolorpadding">
-          <h4 className="secondtitleparma">Billed items</h4>
+          {orderDetails?.sales_invoice?.length > 0 ? (
+            <>
+              <h4 className="secondtitleparma">Billed items</h4>
 
-          <table className="billeddetails-table">
-            <thead className="billeddetails-table-head">
-              <tr>
-                <th>Medicine Name</th>
-                <th>Frequency</th>
-                <th>BF/AF</th>
-                <th>QTY</th>
-                <th>Dose</th>
-                <th>HSN</th>
-                <th>MRP</th>
-                <th>Discount (%)</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody className="billeddetails-table-body">
-              {medicines.map((med, index) => (
-                <tr key={index}>
-                  <td>{med.name}</td>
-                  <td>{med.frequency}</td>
-                  <td>{med.time}</td>
-                  <td>{med.qty}</td>
-                  <td>{med.dose}</td>
-                  <td>{med.hsn}</td>
-                  <td>₹{med.mrp.toFixed(2)}</td>
-                  <td>{med.discount}%</td>
-                  <td>₹{med.price.toFixed(2)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          <div className="noassign flex">
-            <span>Not billed yet</span>
-          </div>
+              <table className="billeddetails-table">
+                <thead className="billeddetails-table-head">
+                  <tr>
+                    <th>Medicine Name</th>
+                    <th>Frequency</th>
+                    <th>BF/AF</th>
+                    <th>QTY</th>
+                    <th>Dose</th>
+                    <th>hsn</th>
+                    <th>MRP</th>
+                    <th>Discount (%)</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody className="billeddetails-table-body">
+                  {orderDetails?.sales_invoice?.map((med, index) => (
+                    <tr key={index}>
+                      <td>{med?.medicine[0].name}</td>
+                      <td>{med?.afterFd_beforeFd}</td>
+                      <td>
+                        {" "}
+                        {med.timing.length > 0 &&
+                          med.timing.map((entry, index) => (
+                            <div
+                              key={index}
+                              style={{
+                                display: "inline-block",
+                                marginRight: "10px",
+                              }}
+                            >
+                              {Object.values(entry).map(
+                                (value, subIndex, array) => (
+                                  <span key={subIndex}>
+                                    {value}
+                                    {subIndex !== array.length - 1 && ", "}
+                                  </span>
+                                )
+                              )}
+                            </div>
+                          ))}
+                      </td>
+                      <td>{med?.totalQuantity}</td>
+                      <td>{med?.takingQuantity}</td>
+                      <td>{med?.medicine[0].details?.generic_prodid?.hsn}</td>
+                      <td>{med?.medicine[0].details?.generic_prodid?.mrp}</td>
+                      <td>{med?.discount}</td>
+                      <td>{med?.medicine[0].details?.selling_price}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </>
+          ) : (
+            <div className="noassign flex">
+              <span>Not billed yet</span>
+            </div>
+          )}
         </div>
       </div>
     </div>

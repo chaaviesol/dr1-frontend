@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./addproduct.css";
 import axios from "axios";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import { toast } from "react-toastify";
 import { Loader } from "../../../../components/Loader/Loader";
 export default function Productdetail({
@@ -58,7 +58,7 @@ export default function Productdetail({
       }
 
       const response = await axios.post(
-        `${BASE_URL}/pharmacy/productadd`,
+        `${PHARMACY_URL}/pharmacy/productadd`,
         formData,
         {
           headers: {
@@ -101,7 +101,7 @@ export default function Productdetail({
         id: datastate?.id,
       };
       const response = await axios.post(
-        `${BASE_URL}/pharmacy/disableproduct`,
+        `${PHARMACY_URL}/pharmacy/disableproduct`,
         data
       );
       if (response.status === 200) {

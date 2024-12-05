@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./productlist.css";
 import CustomSelect from "../../../../components/EditProfile/Editps";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import axios from "axios";
 import { Loader } from "../../../../components/Loader/Loader";
 
@@ -17,7 +17,7 @@ export default function Productlist({
   console.log({ state });
   useEffect(() => {
     setIsLoading(true);
-    axios.get(`${BASE_URL}/pharmacy/getproducts`).then((res) => {
+    axios.get(`${PHARMACY_URL}/pharmacy/getproducts`).then((res) => {
       if (res?.status === 200) {
         setIsLoading(false);
         setState(res?.data?.data);

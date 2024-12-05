@@ -4,7 +4,7 @@ import Headroom from "react-headroom";
 import "./myorders.css";
 import Footer from "../../../components/Footer";
 import { axiosPrivate } from "../../../api/PrivateAxios/axios";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 
 function MyOrdersDesktop() {
@@ -48,7 +48,7 @@ function MyOrdersDesktop() {
     const fetchOrders = async () => {
       try {
         const response = await axiosPrivate.get(
-          `${BASE_URL}/pharmacy/myorders`
+          `${PHARMACY_URL}/pharmacy/myorders`
         );
         setMyOrder(response.data.data);
       } catch (error) {

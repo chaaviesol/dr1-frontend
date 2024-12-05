@@ -4,7 +4,7 @@ import { Loader } from "../../../components/Loader/Loader";
 import ProductPage from "../../Customer/Mobile/Pharmacy/Product/ProductPage";
 import SingleProductDetailsPC from "./SingleProdPc";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import { useMutation } from "@tanstack/react-query";
 import { usePharmacyContext } from "../../../contexts/PharmacyContext";
 import useAuth from "../../../hooks/useAuth";
@@ -33,7 +33,7 @@ function SingleProdDetails() {
       prod_id: payload.prodId,
     };
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/addToCart`,
+      `${PHARMACY_URL}/pharmacy/addToCart`,
       finalPayload
     );
     return response.data.data;

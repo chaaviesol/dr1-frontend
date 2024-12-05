@@ -3,7 +3,7 @@ import { useIsMobileScreen } from "../../../hooks/useIsMobileScreen";
 import CartList from "../../../pages/Customer/Mobile/Pharmacy/cart/CartList";
 import { Loader } from "../../../components/Loader/Loader";
 import CartDesktop from "./CartDesktop";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { usePharmacyContext } from "../../../contexts/PharmacyContext";
@@ -65,7 +65,7 @@ function Cart() {
     };
 
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/salesorder`,
+      `${PHARMACY_URL}/pharmacy/salesorder`,
       payload
     );
     return response;

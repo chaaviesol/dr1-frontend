@@ -3,7 +3,7 @@ import styles from "./myordermobilestyles.module.css";
 import BackButtonWithTitle from "../../../components/BackButtonWithTitle";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../../components/Loader/Loader";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
 
 function MyOrdersMobile() {
@@ -45,7 +45,7 @@ function MyOrdersMobile() {
     const fetchOrders = async () => {
       try {
         const response = await axiosPrivate.get(
-          `${BASE_URL}/pharmacy/myorders`
+          `${PHARMACY_URL}/pharmacy/myorders`
         );
         setMyOrder(response.data.data);
       } catch (error) {

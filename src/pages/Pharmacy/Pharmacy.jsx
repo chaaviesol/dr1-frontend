@@ -10,7 +10,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import { BASE_URL } from "../../config";
+import { BASE_URL, PHARMACY_URL } from "../../config";
 import { Close } from "@mui/icons-material";
 import { Loader } from "../../components/Loader/Loader";
 import { LoginModal } from "../../components/LoginModal/LoginModal";
@@ -207,7 +207,7 @@ export default function Pharmacy() {
       }
 
       const response = await axiosPrivate.post(
-        `${BASE_URL}/pharmacy/salesorder`,
+        `${PHARMACY_URL}/pharmacy/salesorder`,
         submissionData
       );
       console.log({ response });

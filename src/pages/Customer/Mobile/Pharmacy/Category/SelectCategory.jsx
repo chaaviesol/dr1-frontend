@@ -7,7 +7,7 @@ import useAuth from "../../../../../hooks/useAuth";
 import { toast } from "react-toastify";
 import SearchBox from "../../../../Pharmacy/Product/SearchBox";
 import axios from "axios";
-import { BASE_URL } from "../../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../../config";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import CartIcon from "../../../../../components/CartIcon";
 import { usePharmacyContext } from "../../../../../contexts/PharmacyContext";
@@ -59,7 +59,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
       prod_id: payload.prodId,
     };
     const response = await axiosPrivate.post(
-      `${BASE_URL}/pharmacy/addToCart`,
+      `${PHARMACY_URL}/pharmacy/addToCart`,
       finalPayload
     );
     return response.data.data;

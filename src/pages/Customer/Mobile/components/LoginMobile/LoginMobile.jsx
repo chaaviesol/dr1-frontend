@@ -3,7 +3,7 @@ import "./loginmobile.css";
 import "../../../../../pages/Login&register/login.css";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { BASE_URL } from "../../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../../config";
 import useAuth from "../../../../../hooks/useAuth";
 import { CircularProgress } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -61,7 +61,7 @@ export default function LoginMobile() {
         return;
       }
 
-      const response = await axios.post(`${BASE_URL}/user/userlogin`, payload);
+      const response = await axios.post(`${PHARMACY_URL}/user/userlogin`, payload);
       const data = response.data;
       const { message, userId, userType, accessToken, refreshToken } = data;
       toast.success(message);
