@@ -16,6 +16,7 @@ import {
   Select,
 } from "@mui/material";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 export default function Billing() {
   const [state, dispatch] = useReducer(billingReducer, INITIAL_STATE);
@@ -29,7 +30,8 @@ export default function Billing() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
-
+  const location = useLocation();
+const sales_id=location.state.sales_id
   const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 0;
   const MenuProps = {
@@ -55,11 +57,10 @@ export default function Billing() {
     isLoading: isFetchingBillDetailsLoading,
     refetch,
   } = useQuery({
-    queryKey: ["FetchBillDetails", 1],
+    queryKey: ["FetchBillDetails", ],
     queryFn: async ({ queryKey }) => {
       try {
-        //113 153
-        const response = await fetchBillDetails(153);
+        const response = await fetchBillDetails(sales_id);
         return response || [];
       } catch (error) {
         if (error.response && error.response.status === 404) {
@@ -68,7 +69,7 @@ export default function Billing() {
         throw error;
       }
     },
-    enabled: true,
+    enabled: !!sales_id,
   });
 
   useEffect(() => {
@@ -577,9 +578,9 @@ export default function Billing() {
               className="billing-confirm-btn"
               onClick={handleSubmit}
             >
-              Confirm
+              Continue
             </button>
-            <button>Print Now</button>
+      
           </div>
         </div>
       </div>

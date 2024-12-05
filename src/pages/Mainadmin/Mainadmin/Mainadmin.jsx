@@ -10,18 +10,15 @@ import Mainadminlabslist from "../Mainadminlabs/Mainadminlabslist";
 import Mainadmincustomer from "../Mainadmincustomer/Mainadmincustomer";
 import Mainadminfeedback from "../Mainadminfeedback/Mainadminfeedback";
 import Mainadminonboarding from "../Mainadminonboarding/Mainadminonboarding";
-import Mainadminoverview from "../Mainadminoverview/Mainadminoverview";
 import Mainadmincustomerdetails from "../Mainadmincustomer/Mainadmincustomerdetails";
 import { MainAdminCategoryEdit } from "../MainAdminCategoryEdit/MainAdminCategoryEdit";
 import Adminlist from "../ManageAdmin/Adminlist";
 import Addadmins from "../ManageAdmin/Addadmins";
 import Prescriptions from "../OrderAndPrescription/Prescriptions";
-import Orders from "../OrderAndPrescription/Orders";
 import Orderslist from "../OrderAndPrescription/Orderslist";
 import Prescriptionlist from "../OrderAndPrescription/Prescriptionlist";
 import Addproduct from "../Mainadmindoctor/ProductManagement/Addproduct";
 import Productdetail from "../Mainadmindoctor/ProductManagement/Productdetail";
-import SecondOpinion from "../../Customer/Mobile/SecondOpinion/SecondOpinion";
 import Secondoplist from "../Mainadmindoctor/SecondOpinion/Secondoplist";
 import Secondopdetailed from "../Mainadmindoctor/SecondOpinion/Secondopdetailed";
 import Productlist from "../Mainadmindoctor/ProductManagement/Productlist";
@@ -195,14 +192,7 @@ export default function Mainadmin() {
                 />
               </>
             )}
-            {ChangeDashboards?.salesOrderDetail && (
-              <>
-                <Orders
-                  Details={DetailData}
-                  setChangeDashboards={setChangeDashboards}
-                />
-              </>
-            )}
+         
             {ChangeDashboards?.prescriptions && (
               <>
                 <Prescriptionlist

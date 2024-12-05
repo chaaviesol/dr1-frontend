@@ -40,7 +40,7 @@ export default function Orderslist({
   const navigateFn = (data) => {
     // navigate("/orderdetail", { state: data });
     setDetailData(data);
-    setChangeDashboards({ salesOrderDetail: true });
+    setChangeDashboards({ prescriptionOrderDetail: true });
   };
 
   const SearchData = (e) => {

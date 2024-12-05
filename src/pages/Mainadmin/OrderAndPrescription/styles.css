@@ -177,3 +177,253 @@ margin-bottom:15px;
 .second-opiniondt-save-button:hover, .second-opiniondt-save-button:hover {
   background-color: #0056b3;
 }
+
+
+
+
+/* Buttons */
+
+.assignbutton {
+  padding: 10px 20px;
+  background-color: #7e83ff;
+  color: white;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.afterassignbutton {
+  background-color: #dfdfdf;
+  color: rgb(88, 88, 88);
+}
+
+/*End Buttons */
+
+.toptitlepharmacy {
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.toptitlepharmacy button {
+  background-color: #3a974c;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.secondtitleparma {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.toporderditems {
+  min-height: 100px;
+  margin-bottom: 20px;
+}
+
+.mainorderdetails {
+  padding: 20px;
+  background-color: rgb(248, 249, 254);
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.maincolorpadding {
+  background-color: #f8f9fd;
+  border: 0.5px solid rgb(226, 239, 255);
+  border-radius: 16px;
+  padding: 16px 26px;
+
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  box-shadow: rgba(99, 92, 143, 0.1) 0px 48px 100px 0px;
+
+  border: 1px solid #e7e7f1;
+
+  background-color: white;
+  box-shadow: 0 6px 12px rgba(30, 10, 58, 0.04);
+}
+
+.statusmain {
+  background-color: #e6efe9;
+  color: #3a974c;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 50px;
+}
+
+.noassign {
+  background-color: rgb(248, 249, 254);
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.noassign span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #9b9b9b;
+}
+
+.toporderditemstit {
+  justify-content: space-between;
+}
+
+.toporderditemstitle {
+  justify-content: space-between;
+}
+
+.ordersecondsec {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.ordersecondsecleft {
+  min-height: 400px;
+}
+
+.ordersecondsecright {
+}
+
+.assignpharmacy {
+  min-height: 140px;
+  margin-bottom: 20px;
+}
+
+.assigndelivery {
+  min-height: 140px;
+}
+
+.billeditems {
+  min-height: 100px;
+}
+
+/* Assign Pharmacy */
+
+.assignpharmacydata {
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.lablo {
+  color: #3a974c;
+}
+
+/* Assign Pharmacy */
+
+/* delivery recomentation */
+
+.deliverymanrec {
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.deliverymanrecleft {
+  align-items: center;
+}
+
+.deliverymanrecleft img {
+  height: 60px;
+  width: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+/*End delivery recomentation */
+
+/* Customer Details */
+
+.customerdatas {
+  justify-content: space-between;
+  margin: 16px 0px;
+}
+
+.customerdatas h3 {
+  font-size: 17px;
+}
+
+.customerdataspara {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px 0px;
+  color: #474747;
+}
+
+/* Table */
+
+/* Table Styles */
+.orderdetails-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.orderdetails-thead,
+.orderdetails-tbody {
+  text-align: center;
+}
+
+.orderdetails-header,
+.orderdetails-data,
+.orderdetails-id-column {
+  font-size: 16px;
+  font-weight: 500;
+
+  padding: 8px;
+}
+
+.orderdetails-data {
+  color: #474747;
+}
+
+.orderdetails-header {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.orderdetails-data-attachment {
+  text-align: left;
+}
+
+/* Custom width for Order ID column */
+.orderdetails-id-column {
+  width: 15%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.deliverymob {
+  margin-top: 5px;
+  color: #474747;
+}
+
+.billeddetails-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.billeddetails-table-head {
+  font-size: 16px;
+  text-align: left;
+}
+
+.billeddetails-table-body {
+  font-size: 16px;
+  color: #474747;
+  font-weight: 500;
+}
+
+.billeddetails-table-body td {
+  padding:10px 0px;
+}
