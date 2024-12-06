@@ -7,9 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import { Loader } from "../../../components/Loader/Loader";
+import { Modal } from "@mui/material";
 
 function Prescriptions({ Details, setChangeDashboards }) {
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [isShowImgModal, setIsShowImgModal] = useState(false);
+
   const sales_id = Details.sales_id;
+  const [width, setWidth] = useState("100%");
   const navigate = useNavigate();
 
   const fetchOrderDetails = async (sales_id) => {
@@ -122,6 +127,26 @@ function Prescriptions({ Details, setChangeDashboards }) {
       refetchPharamcy();
     }
   }, [sales_id, refetch, refetchPharamcy]);
+
+  //image
+
+  const imageKeys = Object.keys(orderDetails?.prescription_image || {});
+
+  // Handle the next and previous buttons
+  const handleNext = () => {
+    if (currentIndex < imageKeys.length) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex > 1) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  // Get the current image key
+  const currentImageKey = imageKeys[currentIndex - 1];
   return (
     <div
       style={{
@@ -192,17 +217,20 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   {orderDetails?.so_number}
                 </td>
                 <td className="orderdetails-data orderdetails-data-attachment">
-                  {orderDetails?.attachment}{" "}
-                  <button
-                    style={{
-                      border: "1px solid blue",
-                      borderRadius: "20px",
-                      padding: "5px 16px",
-                      backgroundColor: "white",
-                    }}
-                  >
-                    View File
-                  </button>{" "}
+                  {orderDetails?.order_type === "prescription" && (
+                    <button
+                      disabled={orderDetails?.order_type !== "prescription"}
+                      onClick={() => setIsShowImgModal(true)}
+                      style={{
+                        border: "1px solid blue",
+                        borderRadius: "20px",
+                        padding: "5px 16px",
+                        backgroundColor: "white",
+                      }}
+                    >
+                      View Files
+                    </button>
+                  )}
                 </td>
                 <td className="orderdetails-data">
                   {" "}
@@ -421,6 +449,46 @@ function Prescriptions({ Details, setChangeDashboards }) {
           )}
         </div>
       </div>
+
+      <Modal
+        open={isShowImgModal}
+        onClose={() => {
+          setIsShowImgModal(false);
+          // setSelectedSpecs([])
+        }}
+      >
+        <div className="modalContainerbilling">
+          {orderDetails && orderDetails.order_type === "prescription" && (
+            <div className="billingleft flex" style={{ width }}>
+              {orderDetails?.prescription_image[currentImageKey] && (
+                <img
+                  src={orderDetails?.prescription_image[currentImageKey]}
+                  alt={`Image ${currentIndex}`}
+                />
+              )}
+              <div className="billingimagenumber flex">
+                <button onClick={handlePrevious} disabled={currentIndex === 1}>
+                  <i className="ri-arrow-left-s-line"></i>
+                </button>
+                <div className="billingimagenumberdata flex">
+                  {" "}
+                  {currentIndex}/{imageKeys.length}
+                </div>
+                <button
+                  onClick={handleNext}
+                  disabled={currentIndex === imageKeys.length}
+                >
+                  <i className="ri-arrow-right-s-line"></i>
+                </button>
+              </div>
+
+              <button className="medmini">
+                <i className="ri-fullscreen-exit-line"></i>
+              </button>
+            </div>
+          )}
+        </div>
+      </Modal>
     </div>
   );
 }
