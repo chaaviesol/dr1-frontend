@@ -4,7 +4,7 @@ import { MenuItem, Modal, Select, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { BASE_URL } from "../../../config";
+import { BASE_URL,PHARMACY_URL } from "../../../config";
 import { ToastContainer, toast } from "react-toastify";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Loader } from "../../../components/Loader/Loader";
@@ -43,7 +43,7 @@ function UserProfileCompleteModal({ open, onClose }) {
   }, [imageFile]);
   const completeUserRegistration = async (payload) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/completeRegistration`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       payload
     );
 

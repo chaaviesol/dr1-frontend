@@ -4,7 +4,7 @@ import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
 import { useTabBarContext } from "../../../../contexts/MobileScreen/TabBarProvider";
 import { useNavigate } from "react-router-dom";
 import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import { toast } from "react-toastify";
 
 function EditProfile() {
@@ -14,7 +14,7 @@ function EditProfile() {
   console.log({ userdata });
   const navigate = useNavigate();
   const fetch = async () => {
-    const getaxios = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
+    const getaxios = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
     setUserdata(getaxios.data.data);
   };
   const today = new Date();

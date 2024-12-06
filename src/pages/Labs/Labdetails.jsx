@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import { useLocation, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 // import axios from "axios";
-import { BASE_URL, port } from "../../config";
+import { BASE_URL, port,PHARMACY_URL } from "../../config";
 import useFetchFeedbacksAndRating from "../../hooks/useFetchFeedbacksAndRating";
 // import moment from "moment";
 import useAuth from "../../hooks/useAuth";
@@ -59,7 +59,7 @@ export default function Labdetails() {
 
   const fetchCustomerProfileStatus = async (customerId) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/profilecompleted`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       {
         id: customerId,
       }

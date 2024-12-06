@@ -34,7 +34,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
         <i className="fi fi-sr-users-alt"></i>
         <h4>Customer</h4>
       </div>
-
+      {/* 
       <div
         onClick={() => {
           FindButtonValue("doctor");
@@ -90,7 +90,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
         <i className="fi fi-sr-feedback-review"></i>
 
         <h4>Feedback</h4>
-      </div>
+      </div> */}
 
       <div
         onClick={() => {
@@ -131,7 +131,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
         <i className="ri-edit-line"></i>
         <h4>Product Management</h4>
       </div>
-      <div
+      {/* <div
         onClick={() => {
           FindButtonValue("secondopinion");
         }}
@@ -143,7 +143,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       >
         <i className="ri-edit-line"></i>
         <h4>Second Opinion</h4>
-      </div>
+      </div> */}
       <div
         onClick={() => {
           FindButtonValue("category");
@@ -157,7 +157,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
         <i className="ri-edit-line"></i>
         <h4>Edit category</h4>
       </div>
-      <div
+      {/* <div
         onClick={() => {
           FindButtonValue("viewQuery");
         }}
@@ -169,8 +169,8 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       >
         <i className="fi fi-sr-feedback-review"></i>
         <h4>Manage query</h4>
-      </div>
-      <div
+      </div> */}
+      {/* <div
         onClick={() => {
           FindButtonValue("createCampaign");
         }}
@@ -182,8 +182,8 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       >
         <i className="ri-discount-percent-fill"></i>
         <h4>Campaign</h4>
-      </div>
-      <div
+      </div> */}
+      {/* <div
         onClick={() => {
           FindButtonValue("homeservicelist");
         }}
@@ -195,8 +195,8 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       >
         <i className="ri-service-fill"></i>
         <h4>Home Services</h4>
-      </div>
-      <div
+      </div> */}
+      {/* <div
         onClick={() => {
           FindButtonValue("careerlist");
         }}
@@ -221,7 +221,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       >
       <i class="ri-shake-hands-fill"></i>
         <h4>Health Partners </h4>
-      </div>
+      </div> */}
     </div>
   );
 }

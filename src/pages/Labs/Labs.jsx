@@ -11,7 +11,7 @@ import Navbar from "../../components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { services } from "./LabFIltering/constatnts/Filter";
 import axios from "axios";
-import { port } from "../../config";
+import { PHARMACY_URL, port } from "../../config";
 import useAuth from "../../hooks/useAuth";
 
 export default function Labs() {
@@ -68,7 +68,7 @@ export default function Labs() {
   const [marketplaceProducts, setMarketplaceProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(`${port}/product/getcategory`).then((res) => {
+    axios.get(`${PHARMACY_URL}/product/getcategory`).then((res) => {
       console.log(res?.data);
       if (res?.status === 200) {
         // setIsLoading(false);

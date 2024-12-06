@@ -56,19 +56,7 @@ export default function Mainadmin() {
         />
         <div className="mainadmindoctordetails mainadmincontainer">
           <div className="scroll">
-            {ChangeDashboards?.overview && (
-              <>
-                {/* <Mainadminoverview />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br /> */}
-              </>
-            )}
+            {/* {ChangeDashboards?.overview && <></>}
 
             {ChangeDashboards?.doctor && (
               <>
@@ -118,21 +106,7 @@ export default function Mainadmin() {
                 />
               </>
             )}
-            {ChangeDashboards?.customer && (
-              <>
-                <Mainadmincustomer
-                  updateState={{ setChangeDashboards, setDetailData }}
-                />
-              </>
-            )}
-            {ChangeDashboards?.customerDetail && (
-              <>
-                <Mainadmincustomerdetails
-                  Details={DetailData}
-                  setChangeDashboards={setChangeDashboards}
-                />
-              </>
-            )}
+        
             {ChangeDashboards?.feedback && (
               <>
                 <Mainadminfeedback />
@@ -168,6 +142,22 @@ export default function Mainadmin() {
                   setChangeDashboards={setChangeDashboards}
                 />
               </>
+            )} */}
+
+{ChangeDashboards?.customer && (
+              <>
+                <Mainadmincustomer
+                  updateState={{ setChangeDashboards, setDetailData }}
+                />
+              </>
+            )}
+            {ChangeDashboards?.customerDetail && (
+              <>
+                <Mainadmincustomerdetails
+                  Details={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
+              </>
             )}
             {ChangeDashboards?.category && (
               <>
@@ -192,7 +182,7 @@ export default function Mainadmin() {
                 />
               </>
             )}
-         
+
             {ChangeDashboards?.prescriptions && (
               <>
                 <Prescriptionlist
@@ -238,7 +228,7 @@ export default function Mainadmin() {
               </>
             )}
 
-            {ChangeDashboards?.secondopinion && (
+            {/* {ChangeDashboards?.secondopinion && (
               <>
                 <Secondoplist
                   updateState={{ setChangeDashboards, setDetailData }}
@@ -288,7 +278,7 @@ export default function Mainadmin() {
               <>
                 <HealthPartners setChangeDashboards={setChangeDashboards} />
               </>
-            )}
+            )} */}
           </div>
         </div>
       </div>

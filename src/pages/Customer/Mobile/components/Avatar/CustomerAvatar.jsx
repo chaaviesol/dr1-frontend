@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useAxiosPrivate from "../../../../../hooks/useAxiosPrivate";
-import { BASE_URL } from "../../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../../config";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../../hooks/useAuth";
 import { CircularProgress } from "@mui/material";
@@ -16,7 +16,7 @@ function CustomerAvatar({ image }) {
   const fetchUserProfileDetails = async (userId) => {
     const payload = { id: userId };
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/getprofile`,
+      `${PHARMACY_URL}/user/getprofile`,
       payload
     );
     return response.data;

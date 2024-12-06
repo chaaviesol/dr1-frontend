@@ -81,7 +81,7 @@ function UploadPresMobile() {
   useEffect(() => {
     const fetchContactNumber = async () => {
       try {
-        const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
+        const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
         const pincode = parseInt(response?.data?.userDetails?.pincode);
 

@@ -29,7 +29,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const fetchProducts = async (id) => {
-    const response = await axios.get(`${BASE_URL}/product/products`);
+    const response = await axios.get(`${PHARMACY_URL}/product/products`);
     return response.data.data;
   };
 

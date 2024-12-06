@@ -4,7 +4,7 @@ import Headroom from "react-headroom";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import CustomSelect from "../../components/EditProfile/Editps";
-import { BASE_URL } from "../../config";
+import { BASE_URL, PHARMACY_URL } from "../../config";
 import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
@@ -111,7 +111,7 @@ export default function Userprofile() {
     const fetchUserProfile = async () => {
       setLoader(true);
       try {
-        const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
+        const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
         const data = response?.data?.userDetails;
 
         setState({

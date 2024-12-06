@@ -3,7 +3,7 @@ import "./Profile.css";
 import useAuth from "../../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import NavItem from "./Navitem";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import { useQuery } from "@tanstack/react-query";
 import { LoginModal } from "../../../../components/LoginModal/LoginModal";
@@ -60,7 +60,7 @@ const Profile = () => {
   const fetchUserProfileDetails = async (userId) => {
     const payload = { id: userId };
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/getprofile`,
+      `${PHARMACY_URL}/user/getprofile`,
       payload
     );
     return response.data;

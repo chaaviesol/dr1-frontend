@@ -8,7 +8,7 @@ import TransgenderIcon from "@mui/icons-material/Transgender";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-import { BASE_URL } from "../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../config";
 import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
@@ -30,7 +30,7 @@ export const ProfileView = ({
   const fetchUserProfileDetails = async (userId) => {
     const payload = { id: userId };
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/getprofile`,
+      `${PHARMACY_URL}/user/getprofile`,
       payload
     );
     return response.data;

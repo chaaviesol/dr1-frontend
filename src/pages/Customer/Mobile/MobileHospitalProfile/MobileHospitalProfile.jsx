@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import "../MobileHospitalProfile/mobilehospitalprofile.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetchFeedbacks from "../../../../hooks/useFetchFeedbacksAndRating";
-import { BASE_URL, port } from "../../../../config";
+import { BASE_URL, port,PHARMACY_URL } from "../../../../config";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
@@ -50,7 +50,7 @@ export default function MobileHospitalProfile() {
   }, []);
   const fetchCustomerProfileStatus = async (customerId) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/profilecompleted`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       {
         id: customerId,
       }

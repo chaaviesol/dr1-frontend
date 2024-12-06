@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./HospitalDetailed.css";
 import { useEffect } from "react";
-import { BASE_URL, port } from "../../../../config";
+import { BASE_URL, port,PHARMACY_URL } from "../../../../config";
 import { useLocation, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 import Navbar from "../../../../components/Navbar";
@@ -72,7 +72,7 @@ const HospitalDetailed = () => {
   }, []);
   const fetchCustomerProfileStatus = async (customerId) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/profilecompleted`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       {
         id: customerId,
       }

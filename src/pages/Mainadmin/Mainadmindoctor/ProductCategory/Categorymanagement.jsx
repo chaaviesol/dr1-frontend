@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Modal } from "@mui/material";
 import "./categorymanagement.css";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Loader } from "../../../../components/Loader/Loader";
@@ -60,7 +60,7 @@ export default function Categorymanagement({
 
   const getCategories = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/product/getcategory`);
+      const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
       if (response?.status === 200) {
         setcategorylist(response?.data?.data);
       }
@@ -90,7 +90,7 @@ export default function Categorymanagement({
       };
       setIsLoading(true);
       const response = await axios.post(
-        `${BASE_URL}/product/deletecategory`,
+        `${PHARMACY_URL}/product/deletecategory`,
         data
       );
 
@@ -145,7 +145,7 @@ export default function Categorymanagement({
     try {
       setIsLoading(true);
       const response = await axios.post(
-        `${BASE_URL}/product/addcategory`,
+        `${PHARMACY_URL}/product/addcategory`,
         formData,
         {
           headers: {

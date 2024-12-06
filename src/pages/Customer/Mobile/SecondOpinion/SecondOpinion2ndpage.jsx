@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { Loader } from "../../../../components/Loader/Loader";
 import "react-toastify/dist/ReactToastify.css";
 import "./secondopinion.css";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 
 import Checkbox from "@mui/material/Checkbox";
 import { axiosPrivate } from "../../../../api/PrivateAxios/axios";
@@ -165,7 +165,7 @@ export default function SecondOpinion2ndpage() {
   useEffect(() => {
     const fetchContactNumber = async () => {
       try {
-        const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
+        const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
 
         setFormData({

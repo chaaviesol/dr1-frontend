@@ -6,22 +6,11 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import moment from "moment";
+import { Loader } from "../../../components/Loader/Loader";
 
 function Prescriptions({ Details, setChangeDashboards }) {
-  const [isLoading, setIsLoading] = useState(false);
   const sales_id = Details.sales_id;
-  console.log(Details);
   const navigate = useNavigate();
-  // const data = [
-  //   {
-  //     id: "#GGJK1001",
-  //     attachment: "mypriscription.jpg",
-  //     confirmed: "2024-12-01",
-  //     packed: "2024-12-02",
-  //     dispatched: "2024-12-03",
-  //     delivered: "2024-12-05",
-  //   },
-  // ];
 
   const fetchOrderDetails = async (sales_id) => {
     const response = await axios.post(
@@ -88,7 +77,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
   });
 
   const handleAssignPharamcy = async (sales_id, pharmacy_id, status) => {
-    console.log(sales_id, pharmacy_id, status)
+    console.log(sales_id, pharmacy_id, status);
     try {
       const response = await axios.post(
         `${PHARMACY_URL}/pharmacyquotation/assignpharmacy`,
@@ -102,8 +91,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
       refetchPharamcy();
     } catch (error) {
       console.error("Error assigning pharmacy:", error);
-    }finally{
-      
+    } finally {
     }
   };
 
@@ -120,6 +108,13 @@ function Prescriptions({ Details, setChangeDashboards }) {
   //   },
   // });
 
+  const goBack = (order_type) => {
+    if (order_type === "salesorder") {
+      setChangeDashboards({ orders: true });
+    } else if (order_type === "prescription") {
+      setChangeDashboards({ prescriptions: true });
+    }
+  };
   return (
     <div
       style={{
@@ -128,17 +123,24 @@ function Prescriptions({ Details, setChangeDashboards }) {
         paddingBottom: "1rem",
       }}
     >
-      <div class="adpha-topcontainer">
-        <div class="adpha-left">
+      {(isFetchingpharamcyDetailsLoading || isFetchingOrderDetailsLoading) && (
+        <Loader />
+      )}
+      <div className="adpha-topcontainer">
+        <div className="adpha-left">
           <button
-            onClick={() => {
-              setChangeDashboards({ prescriptions: true });
-            }}
-            class="adpha-back-button"
+            onClick={() => goBack(orderDetails.order_type)}
+            className="adpha-back-button"
           >
-            <i class="ri-arrow-left-line"></i>
+            <i className="ri-arrow-left-line"></i>
           </button>
-          <span class="adpha-title">Prescription Orders</span>
+          <span className="adpha-title">
+            {orderDetails &&
+              orderDetails.order_type === "salesorder" &&
+              "Sales order list"}
+            {orderDetails?.order_type === "prescription" &&
+              "Prescription order list"}
+          </span>
         </div>
       </div>
 

@@ -3,12 +3,12 @@ import "./searchlocationmodal.css";
 import { Modal } from "@mui/material";
 import { useLocationContext } from "../../../../../contexts/LocationContext";
 import axios from "axios";
-import { BASE_URL } from "../../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../../config";
 import { useQuery } from "@tanstack/react-query";
 import { debounce } from "lodash";
 
 const fetchPlaces = async (searchTerm) => {
-  const response = await axios.post(`${BASE_URL}/googlemap/searchlocation`, {
+  const response = await axios.post(`${PHARMACY_URL}/googlemap/searchlocation`, {
     query: searchTerm,
   });
   return response.data || [];

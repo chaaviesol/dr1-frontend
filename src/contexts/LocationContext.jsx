@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { BASE_URL } from "../config";
+import { BASE_URL, PHARMACY_URL } from "../config";
 
 const LocationContext = createContext();
 
@@ -11,7 +11,7 @@ const LocationProvider = ({ children }) => {
   const [gettingLocationLoading, setGettingLocationLoading] = useState(false);
   const fetchLocation = async (lat, lng) => {
     const response = await axios.post(
-      `${BASE_URL}/googlemap/getcurrentlocation`,
+      `${PHARMACY_URL}/googlemap/getcurrentlocation`,
       {
         lat,
         lng,

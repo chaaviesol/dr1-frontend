@@ -3,7 +3,7 @@ import Headroom from "react-headroom";
 import { useLocation, useNavigate } from "react-router-dom";
 import CallIcon from "@mui/icons-material/Call";
 import axios from "axios";
-import { BASE_URL, port } from "../../../../config";
+import { BASE_URL, PHARMACY_URL, port } from "../../../../config";
 import useFetchFeedbacksAndRating from "../../../../hooks/useFetchFeedbacksAndRating";
 import moment from "moment";
 import useAuth from "../../../../hooks/useAuth";
@@ -59,7 +59,7 @@ export default function MobileLabProfile() {
 
   const fetchCustomerProfileStatus = async (customerId) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/profilecompleted`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       {
         id: customerId,
       }

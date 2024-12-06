@@ -53,7 +53,7 @@ export default function Productlist({
         return categoryMatch && searchMatch;
       });
 
-      setFilteredState(filtered); 
+      setFilteredState(filtered);
     }
   };
 
@@ -96,7 +96,7 @@ export default function Productlist({
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get(`${BASE_URL}/product/getcategory`).then((res) => {
+    axios.get(`${PHARMACY_URL}/product/getcategory`).then((res) => {
       console.log(res?.data?.data);
       if (res?.status === 200) {
         setIsLoading(false);

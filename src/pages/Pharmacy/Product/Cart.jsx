@@ -160,7 +160,7 @@ function Cart() {
 
   const fetchLocation = async (lat, lng) => {
     const response = await axios.post(
-      `${BASE_URL}/googlemap/getcurrentlocation`,
+      `${PHARMACY_URL}/googlemap/getcurrentlocation`,
       {
         lat,
         lng,

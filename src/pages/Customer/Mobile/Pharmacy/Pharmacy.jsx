@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import useAuth from "../../../../hooks/useAuth";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import { Loader } from "../../../../components/Loader/Loader";
 
 import ClickToSearchBox from "../components/ClickToSearchBox/ClickToSearchBox";
@@ -35,7 +35,7 @@ function Pharmacy() {
   const fetchCategories = async () => {
     try {
       setIsCategoryFetching(true);
-      const response = await axios.get(`${BASE_URL}/product/getcategory`);
+      const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
       setMarketplaceProducts(response?.data?.data);
     } catch (err) {
       console.log(err);

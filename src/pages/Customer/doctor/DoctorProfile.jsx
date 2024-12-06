@@ -7,7 +7,7 @@ import { CircularProgress, Modal } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import CallIcon from "@mui/icons-material/Call";
 import axios from "axios";
-import { BASE_URL, port } from "../../../config";
+import { BASE_URL, PHARMACY_URL, port } from "../../../config";
 import moment from "moment/moment";
 import UserProfileCompleteModal from "../HaveUComProfile/UserProfileCompleteModal";
 import useFetchFeedbacksAndRating from "../../../hooks/useFetchFeedbacksAndRating";
@@ -90,7 +90,7 @@ export default function DoctorProfile() {
   };
   const fetchCustomerProfileStatus = async (customerId) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/profilecompleted`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       {
         id: customerId,
       }

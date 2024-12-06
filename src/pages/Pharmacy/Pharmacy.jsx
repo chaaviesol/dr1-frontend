@@ -36,7 +36,7 @@ export default function Pharmacy() {
   const fetchCategories = async () => {
     try {
       setIsCategoryFetching(true);
-      const response = await axios.get(`${BASE_URL}/product/getcategory`);
+      const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
       setMarketplaceCategories(response?.data?.data);
     } catch (err) {
       console.log(err);
@@ -116,7 +116,7 @@ export default function Pharmacy() {
   useEffect(() => {
     const fetchContactNumber = async () => {
       try {
-        const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
+        const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
         const pincode = parseInt(response?.data?.userDetails?.pincode);
         console.log(pincode?.length);

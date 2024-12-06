@@ -5,7 +5,7 @@ import moment from "moment/moment";
 import { toast } from "react-toastify";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchDoctorAvailability } from "../../../../api/hospitalApi";
-import { BASE_URL, port } from "../../../../config";
+import { BASE_URL, port,PHARMACY_URL } from "../../../../config";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosPrivate from "../../../../hooks/useAxiosPrivate";
 import useFetchFeedbacksAndRating from "../../../../hooks/useFetchFeedbacksAndRating";
@@ -110,7 +110,7 @@ export default function MobileDoctorProfile() {
   });
   const fetchCustomerProfileStatus = async (customerId) => {
     const response = await axiosPrivate.post(
-      `${BASE_URL}/user/profilecompleted`,
+      `${PHARMACY_URL}/user/profilecompleted`,
       {
         id: customerId,
       }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./addproduct.css";
 import axios from "axios";
-import { BASE_URL } from "../../../../config";
+import { BASE_URL, PHARMACY_URL } from "../../../../config";
 import { toast } from "react-toastify";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
@@ -130,7 +130,7 @@ export default function Addproduct({
 
   useEffect(() => {
     // setIsLoading(true);
-    axios.get(`${BASE_URL}/product/getcategory`).then((res) => {
+    axios.get(`${PHARMACY_URL}/product/getcategory`).then((res) => {
       console.log(res?.data);
       if (res?.status === 200) {
         // setIsLoading(false);

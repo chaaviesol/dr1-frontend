@@ -5,7 +5,7 @@ import Checkbox from "@mui/material/Checkbox";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Loader } from "../../components/Loader/Loader";
-import { BASE_URL } from "../../config";
+import { BASE_URL, PHARMACY_URL } from "../../config";
 import { axiosPrivate } from "../../api/PrivateAxios/axios";
 import { MyContext } from "../../contexts/Contexts";
 import {
@@ -234,7 +234,7 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
 
   const fetchContactNumber = async () => {
     try {
-      const response = await axiosPrivate.post(`${BASE_URL}/user/getprofile`);
+      const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
       console.log("resp", response.data);
       const contact_no = parseInt(response?.data?.userDetails?.phone_no);
       setFormData({
