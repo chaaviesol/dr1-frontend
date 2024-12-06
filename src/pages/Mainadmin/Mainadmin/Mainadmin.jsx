@@ -32,7 +32,7 @@ import HealthPartners from "../HealthPartnerReg/HealthPartners";
 import Mainadminhospitalapprove from "../Mainadminhospital/Mainadminhospitalapprove";
 import Mainadminlabsapprove from "../Mainadminlabs/Mainadminlabsapprove";
 import Mainadmindoctorapprove from "../Mainadmindoctor/Mainadmindoctorapprove";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Mainadmin() {
   const [ChangeDashboards, setChangeDashboards] = useState({
@@ -44,10 +44,12 @@ export default function Mainadmin() {
   };
   const location = useLocation(); // Access location state
   const sales_id = location.state?.sales_id; // Extract sales_id from state
-
+  const navigate = useNavigate();
   useEffect(() => {
-    setDetailData({ sales_id: sales_id });
-    setChangeDashboards({ prescriptionOrderDetail: true });
+    if (sales_id) {
+      setDetailData({ sales_id: sales_id });
+      setChangeDashboards({ prescriptionOrderDetail: true });
+    }
   }, [sales_id]);
 
   console.log("ChangeDashboards>>>>", ChangeDashboards);

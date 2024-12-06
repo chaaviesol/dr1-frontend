@@ -22,7 +22,7 @@ export default function Billing() {
   const [state, dispatch] = useReducer(billingReducer, INITIAL_STATE);
   const [width, setWidth] = useState("50%"); // Initial width state
   const [products, setProducts] = useState([]);
-
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [query, setQuery] = useState("");
   const [filteredData, setFilteredData] = useState([]);
 
@@ -31,7 +31,7 @@ export default function Billing() {
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
   const location = useLocation();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const sales_id = location.state.sales_id;
   const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 0;
@@ -168,7 +168,7 @@ export default function Billing() {
     onSuccess: (data) => {
       console.log({ data });
       toast.success(data.message);
-      navigate("/mainadmin", { state: { "sales_id": sales_id } });
+      navigate("/mainadmin", { state: { sales_id: sales_id } });
     },
     onError: (err) => console.log(err),
   });
@@ -286,6 +286,24 @@ export default function Billing() {
 
   console.log("filteredData", filteredData);
 
+  const imageKeys = Object.keys(billDetails?.prescription_image || {});
+
+  // Handle the next and previous buttons
+  const handleNext = () => {
+    if (currentIndex < imageKeys.length) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex > 1) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  // Get the current image key
+  const currentImageKey = imageKeys[currentIndex - 1];
+
   return (
     <div className="billing-container">
       <h1>Dr1 Billing</h1>
@@ -294,16 +312,24 @@ export default function Billing() {
         {isFetchingBillDetailsLoading && <Loader />}
         {state && state.order_type === "prescription" && (
           <div className="billingleft flex" style={{ width }}>
-            <img
-              src="https://www.rbcinsurance.com/group-benefits/_assets-custom/images/prescription-drug-sample-receipt-en.jpg"
-              alt=""
-            />
+            {billDetails?.prescription_image[currentImageKey] && (
+              <img
+                src={billDetails?.prescription_image[currentImageKey]}
+                alt={`Image ${currentIndex}`}
+              />
+            )}
             <div className="billingimagenumber flex">
-              <button>
+              <button onClick={handlePrevious} disabled={currentIndex === 1}>
                 <i className="ri-arrow-left-s-line"></i>
               </button>
-              <div className="billingimagenumberdata flex">1/2</div>
-              <button>
+              <div className="billingimagenumberdata flex">
+                {" "}
+                {currentIndex}/{imageKeys.length}
+              </div>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex === imageKeys.length}
+              >
                 <i className="ri-arrow-right-s-line"></i>
               </button>
             </div>

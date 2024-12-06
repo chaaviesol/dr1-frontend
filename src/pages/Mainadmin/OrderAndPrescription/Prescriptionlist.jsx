@@ -177,6 +177,7 @@ export default function Prescriptionlist({
           datalist.length > 0 &&
           datalist.map((ele, index) => (
             <tr
+            key={index}
               onClick={() => {
                 navigateFn(ele);
               }}
