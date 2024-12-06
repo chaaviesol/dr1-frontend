@@ -100,6 +100,7 @@ export default function Billing() {
     "Frequency",
     "BF/AF",
     "Dose",
+    "No Of Days",
     "Qty",
     "HSN",
     "MRP",
@@ -545,6 +546,18 @@ export default function Billing() {
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, rowIndex)}
                         max={20}
+                        min={1}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        disabled={!medicine.category.includes("MEDICINES")}
+                        type="number"
+                        name="no_of_days"
+                        value={medicine?.no_of_days || ""}
+                        className="billing-input"
+                        onChange={(e) => handleProductChange(e, rowIndex)}
+                        max={100}
                         min={1}
                       />
                     </td>

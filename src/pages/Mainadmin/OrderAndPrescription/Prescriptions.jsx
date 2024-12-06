@@ -208,7 +208,10 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   {" "}
                   {moment(orderDetails?.created_date).format("DD/MM/YYYY")}
                 </td>
-                <td className="orderdetails-data">{orderDetails?.packedDate!==""&&moment(orderDetails?.packedDate).format("DD/MM/YYYY")}</td>
+                <td className="orderdetails-data">
+                  {orderDetails?.packedDate !== "" &&
+                    moment(orderDetails?.packedDate).format("DD/MM/YYYY")}
+                </td>
                 <td className="orderdetails-data">
                   {orderDetails?.dispatched}
                 </td>
@@ -344,11 +347,12 @@ function Prescriptions({ Details, setChangeDashboards }) {
               <table className="billeddetails-table">
                 <thead className="billeddetails-table-head">
                   <tr>
-                    <th>Medicine Name</th>
+                    <th>Product Name</th>
                     <th>BF/AF</th>
                     <th>Frequency</th>
                     <th>QTY</th>
                     <th>Dose</th>
+                    <th>No Of Days</th>
                     <th>hsn</th>
                     <th>MRP</th>
                     <th>Discount (%)</th>
@@ -396,6 +400,10 @@ function Prescriptions({ Details, setChangeDashboards }) {
                           med?.generic_prodid?.medicine_timetable
                             ?.takingQuantity
                         }
+                      </td>
+                      <td>
+                        {" "}
+                        {med?.generic_prodid?.medicine_timetable?.no_of_days}
                       </td>
                       <td>{med?.generic_prodid?.hsn}</td>
                       <td>{med?.generic_prodid?.mrp}</td>
