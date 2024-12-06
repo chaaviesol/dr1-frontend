@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import axios from "axios";
 import { BASE_URL, PHARMACY_URL } from "../../../config";
@@ -53,7 +53,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
       }
     );
     console.log(response);
-    return response.data.data || [];
+    return response.data || [];
   };
 
   const {
@@ -115,6 +115,13 @@ function Prescriptions({ Details, setChangeDashboards }) {
       setChangeDashboards({ prescriptions: true });
     }
   };
+
+  useEffect(() => {
+    if (sales_id) {
+      refetch();
+      refetchPharamcy();
+    }
+  }, [sales_id, refetch, refetchPharamcy]);
   return (
     <div
       style={{
@@ -152,6 +159,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
             onClick={() =>
               navigate("/billing", { state: { sales_id: Details.sales_id } })
             }
+            disabled={orderDetails?.so_status !== "Placed"}
           >
             Start Shipping
           </button>
@@ -160,7 +168,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
         <div className="toporderditems maincolorpadding">
           <div className="toporderditemstit flex">
             <h4 className="secondtitleparma">Ordered items</h4>
-            <h3 className="statusmain">Order confirmed</h3>
+            <h3 className="statusmain">{orderDetails?.so_status}</h3>
           </div>
 
           <table className="orderdetails-table">
@@ -174,7 +182,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 </th>
                 <th className="orderdetails-header">Confirmed Date</th>
                 <th className="orderdetails-header">Packed Date</th>
-                <th className="orderdetails-header">Transist Date</th>
+                <th className="orderdetails-header">Shipping Date</th>
                 <th className="orderdetails-header">Delivered Date</th>
               </tr>
             </thead>
@@ -185,13 +193,22 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 </td>
                 <td className="orderdetails-data orderdetails-data-attachment">
                   {orderDetails?.attachment}{" "}
-                  <h4 title="View prescription">view</h4>{" "}
+                  <button
+                    style={{
+                      border: "1px solid blue",
+                      borderRadius: "20px",
+                      padding: "5px 16px",
+                      backgroundColor: "white",
+                    }}
+                  >
+                    View File
+                  </button>{" "}
                 </td>
                 <td className="orderdetails-data">
                   {" "}
                   {moment(orderDetails?.created_date).format("DD/MM/YYYY")}
                 </td>
-                <td className="orderdetails-data">{orderDetails?.packed}</td>
+                <td className="orderdetails-data">{orderDetails?.updatedddd_date}</td>
                 <td className="orderdetails-data">
                   {orderDetails?.dispatched}
                 </td>
@@ -236,8 +253,11 @@ function Prescriptions({ Details, setChangeDashboards }) {
             <div className="assignpharmacy maincolorpadding">
               <h4 className="secondtitleparma">Assign Pharmacy</h4>
 
-              {pharamcyDetails?.length > 0 &&
-                pharamcyDetails.map((pharmacy) => (
+              {orderDetails?.so_status !== "Placed" &&
+                pharamcyDetails &&
+                pharamcyDetails?.data &&
+                pharamcyDetails?.data.length > 0 &&
+                pharamcyDetails?.data.map((pharmacy) => (
                   <div
                     key={pharmacy?.pharm_id?.id}
                     className="assignpharmacydata flex"
@@ -250,7 +270,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                       </h4>
                     </div>
 
-                    {pharamcyDetails?.length === 1 ? (
+                    {pharamcyDetails?.data?.length === 1 ? (
                       <button className="afterassignbutton assignbutton">
                         Assigned
                       </button>
@@ -271,7 +291,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   </div>
                 ))}
 
-              {pharamcyDetails?.length !== 1 && (
+              {orderDetails?.so_status === "Placed" && (
                 <div className="noassign flex">
                   <span>Pharmacy not Assigned</span>
                 </div>
@@ -315,7 +335,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
         </div>
 
         <div className="billeditems maincolorpadding">
-          {orderDetails?.sales_invoice?.length > 0 ? (
+          {orderDetails?.so_status !== "Placed" &&
+          orderDetails?.products &&
+          orderDetails?.products?.length > 0 ? (
             <>
               <h4 className="secondtitleparma">Billed items</h4>
 
@@ -323,8 +345,8 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 <thead className="billeddetails-table-head">
                   <tr>
                     <th>Medicine Name</th>
-                    <th>Frequency</th>
                     <th>BF/AF</th>
+                    <th>Frequency</th>
                     <th>QTY</th>
                     <th>Dose</th>
                     <th>hsn</th>
@@ -334,38 +356,51 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   </tr>
                 </thead>
                 <tbody className="billeddetails-table-body">
-                  {orderDetails?.sales_invoice?.map((med, index) => (
-                    <tr key={index}>
-                      <td>{med?.medicine[0].name}</td>
-                      <td>{med?.afterFd_beforeFd}</td>
+                  {orderDetails?.products?.map((med, index) => (
+                    <tr key={med.product_id}>
+                      <td>{med?.generic_prodid?.name}</td>
+                      <td>
+                        {
+                          med?.generic_prodid?.medicine_timetable
+                            ?.afterFd_beforeFd
+                        }
+                      </td>
                       <td>
                         {" "}
-                        {med.timing?.length > 0 &&
-                          med.timing.map((entry, index) => (
-                            <div
-                              key={index}
-                              style={{
-                                display: "inline-block",
-                                marginRight: "10px",
-                              }}
-                            >
-                              {Object.values(entry).map(
-                                (value, subIndex, array) => (
-                                  <span key={subIndex}>
-                                    {value}
-                                    {subIndex !== array.length - 1 && ", "}
-                                  </span>
-                                )
-                              )}
-                            </div>
-                          ))}
+                        {med?.generic_prodid?.medicine_timetable?.timing
+                          ?.length > 0 &&
+                          med?.generic_prodid?.medicine_timetable?.timing?.map(
+                            (entry, index) => (
+                              <div
+                                key={index}
+                                style={{
+                                  display: "inline-block",
+                                  marginRight: "10px",
+                                }}
+                              >
+                                {Object.values(entry).map(
+                                  (value, subIndex, array) => (
+                                    <span key={subIndex}>
+                                      {value}
+                                      {subIndex !== array.length - 1 && ", "}
+                                    </span>
+                                  )
+                                )}
+                              </div>
+                            )
+                          )}
                       </td>
-                      <td>{med?.totalQuantity}</td>
-                      <td>{med?.takingQuantity}</td>
-                      <td>{med?.medicine[0].details?.generic_prodid?.hsn}</td>
-                      <td>{med?.medicine[0].details?.generic_prodid?.mrp}</td>
+                      <td>{med?.order_qty}</td>
+                      <td>
+                        {
+                          med?.generic_prodid?.medicine_timetable
+                            ?.takingQuantity
+                        }
+                      </td>
+                      <td>{med?.generic_prodid?.hsn}</td>
+                      <td>{med?.generic_prodid?.mrp}</td>
                       <td>{med?.discount}</td>
-                      <td>{med?.medicine[0].details?.selling_price}</td>
+                      <td>{med?.selling_price}</td>
                     </tr>
                   ))}
                 </tbody>

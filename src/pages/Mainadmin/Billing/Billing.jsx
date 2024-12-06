@@ -16,7 +16,7 @@ import {
   Select,
 } from "@mui/material";
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Billing() {
   const [state, dispatch] = useReducer(billingReducer, INITIAL_STATE);
@@ -31,6 +31,7 @@ export default function Billing() {
   const axiosPrivate = useAxiosPrivate();
   const previousSalesId = useRef(null);
   const location = useLocation();
+  const navigate=useNavigate();
   const sales_id = location.state.sales_id;
   const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 0;
@@ -154,7 +155,7 @@ export default function Billing() {
       `${PHARMACY_URL}/pharmacy/${endPoint}`,
       {
         ...state,
-        sold_by: "Pharamcy 1",
+        sold_by: "Dr1",
         total_amount,
       }
     );
@@ -167,6 +168,7 @@ export default function Billing() {
     onSuccess: (data) => {
       console.log({ data });
       toast.success(data.message);
+      navigate("/mainadmin", { state: { "sales_id": sales_id } });
     },
     onError: (err) => console.log(err),
   });
@@ -486,7 +488,7 @@ export default function Billing() {
                         className="billing-input"
                       >
                         <Select
-                         disabled={!medicine.category.includes("MEDICINES")}
+                          disabled={!medicine.category.includes("MEDICINES")}
                           MenuProps={{
                             PaperProps: {
                               style: {
@@ -510,6 +512,7 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        disabled={!medicine.category.includes("MEDICINES")}
                         type="number"
                         name="takingQuantity"
                         value={medicine?.takingQuantity || ""}

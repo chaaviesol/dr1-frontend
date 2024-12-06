@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Mainadminsidebar from "../../../components/Mainadminsidebar/Mainadminsidebar";
 import Mainadminnavbar from "../../../components/Mainadminnavbar/Mainadminnavbar";
 import Mainadmindoctordetails from "../Mainadmindoctor/Mainadmindoctordetails";
@@ -32,17 +32,23 @@ import HealthPartners from "../HealthPartnerReg/HealthPartners";
 import Mainadminhospitalapprove from "../Mainadminhospital/Mainadminhospitalapprove";
 import Mainadminlabsapprove from "../Mainadminlabs/Mainadminlabsapprove";
 import Mainadmindoctorapprove from "../Mainadmindoctor/Mainadmindoctorapprove";
+import { useLocation } from "react-router-dom";
 
 export default function Mainadmin() {
   const [ChangeDashboards, setChangeDashboards] = useState({
     doctor: true,
   });
   const [DetailData, setDetailData] = useState();
-  const [passingIdToQueryDetails, setPassingIdToQueryDetails] = useState(null);
   const SentData = (data) => {
     setChangeDashboards({ [data]: true });
   };
-  const [changeproduct, setchangeproduct] = useState({});
+  const location = useLocation(); // Access location state
+  const sales_id = location.state?.sales_id; // Extract sales_id from state
+
+  useEffect(() => {
+    setDetailData({ sales_id: sales_id });
+    setChangeDashboards({ prescriptionOrderDetail: true });
+  }, [sales_id]);
 
   console.log("ChangeDashboards>>>>", ChangeDashboards);
   return (
@@ -144,7 +150,7 @@ export default function Mainadmin() {
               </>
             )} */}
 
-{ChangeDashboards?.customer && (
+            {ChangeDashboards?.customer && (
               <>
                 <Mainadmincustomer
                   updateState={{ setChangeDashboards, setDetailData }}
