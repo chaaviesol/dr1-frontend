@@ -190,7 +190,7 @@ export default function Pharmacy() {
       setLoader(true);
       const submissionData = new FormData();
       const orderType = "prescription";
-      const so_status = "Placed";
+      const so_status = "placed";
       submissionData.append("name", formData.name);
       submissionData.append("remarks", formData.remarks);
       submissionData.append("contact_no", formData.contact_no);

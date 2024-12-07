@@ -131,24 +131,24 @@ function MyOrdersDesktop() {
                         // className="progresscardmark isFullfilled flex"
 
                         className={`flex ${
-                          data.so_status === "Placed" ||
-                          data.so_status === "Out for delivery" ||
-                          data.so_status === "Delivered"
+                          data.so_status === "placed" ||
+                          data.so_status === "packed" ||
+                          data.so_status === "delivered"
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
                       >
-                        {data.so_status === "Placed" ||
-                        data.so_status === "Out for delivery" ||
-                        data.so_status === "Delivered" ? (
+                        {data.so_status === "placed" ||
+                        data.so_status === "packed" ||
+                        data.so_status === "delivered" ? (
                           <i className="ri-check-line"></i>
                         ) : null}
                         <div
                           // className="progresscardmarkline"
                           className={`${
-                            data.so_status === "Placed" ||
-                            data.so_status === "Out for delivery" ||
-                            data.so_status === "Delivered"
+                            data.so_status === "placed" ||
+                            data.so_status === "packed" ||
+                            data.so_status === "delivered"
                               ? "progresscardmarkline"
                               : "progresscardmarklinenotfilled"
                           }`}
@@ -164,8 +164,8 @@ function MyOrdersDesktop() {
                     <div className="progresscard flex">
                       <div
                         className={`flex ${
-                          data.so_status === "Out for delivery" ||
-                          data.so_status === "Delivered"
+                          data.so_status === "packed" ||
+                          data.so_status === "delivered"
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
@@ -174,8 +174,8 @@ function MyOrdersDesktop() {
 
                         <div
                           className={`${
-                            data.so_status === "Out for delivery" ||
-                            data.so_status === "Delivered"
+                            data.so_status === "packed" ||
+                            data.so_status === "delivered"
                               ? "progresscardmarkline"
                               : "progresscardmarklinenotfilled"
                           }`}
@@ -185,8 +185,8 @@ function MyOrdersDesktop() {
                       <div className="progresscarddate">
                         <h2>Order Packed</h2>
                         <h4>
-                          {data.so_status === "Out for delivery" ||
-                          data.so_status === "Delivered"
+                          {data.so_status === "packed" ||
+                          data.so_status === "delivered"
                             ? formatDate(data.updated_date)
                             : "Processing"}
                         </h4>
@@ -196,8 +196,8 @@ function MyOrdersDesktop() {
                     <div className="progresscard flex">
                       <div
                         className={`flex ${
-                          data.so_status === "Out for delivery" ||
-                          data.so_status === "Delivered"
+                          data.so_status === "packed" ||
+                          data.so_status === "delivered"
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
@@ -205,8 +205,8 @@ function MyOrdersDesktop() {
                         <i class="ri-check-line"></i>
                         <div
                           className={`${
-                            data.so_status === "Out for delivery" ||
-                            data.so_status === "Delivered"
+                            data.so_status === "packed" ||
+                            data.so_status === "delivered"
                               ? "progresscardmarkline"
                               : "progresscardmarklinenotfilled"
                           }`}
@@ -214,10 +214,11 @@ function MyOrdersDesktop() {
                       </div>
 
                       <div className="progresscarddate">
-                        <h2>In Transit</h2>
+                        <h2>Shipped</h2>
                         <h4>
-                          {data.so_status === "Out for delivery" ||
-                          data.so_status === "Delivered"
+                          {data.so_status === "packed" ||
+                          data.so_status === "delivered" ||
+                          data.so_status === "shipped" 
                             ? formatDate(data.updated_date)
                             : "Processing"}
                         </h4>
@@ -227,7 +228,7 @@ function MyOrdersDesktop() {
                     <div className="progresscard flex">
                       <div
                         className={`flex ${
-                          data.so_status === "Delivered"
+                          data.so_status === "delivered"
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
@@ -238,7 +239,7 @@ function MyOrdersDesktop() {
                       <div className="progresscarddate">
                         <h2>Delivered</h2>
                         <h4>
-                          {data.so_status === "Delivered"
+                          {data.so_status === "delivered"
                             ? formatDate(data.updated_date)
                             : "Processing"}
                         </h4>

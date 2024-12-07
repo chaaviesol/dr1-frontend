@@ -184,7 +184,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
             onClick={() =>
               navigate("/billing", { state: { sales_id: Details.sales_id } })
             }
-            disabled={orderDetails?.so_status !== "Placed"}
+            disabled={orderDetails?.so_status !== "placed"}
           >
             Start Shipping
           </button>
@@ -284,7 +284,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
             <div className="assignpharmacy maincolorpadding">
               <h4 className="secondtitleparma">Assign Pharmacy</h4>
 
-              {orderDetails?.so_status !== "Placed" &&
+              {orderDetails?.so_status !== "placed" &&
                 pharamcyDetails &&
                 pharamcyDetails?.data &&
                 pharamcyDetails?.data.length > 0 &&
@@ -322,7 +322,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   </div>
                 ))}
 
-              {orderDetails?.so_status === "Placed" && (
+              {orderDetails?.so_status === "placed" && (
                 <div className="noassign flex">
                   <span>Pharmacy not Assigned</span>
                 </div>
@@ -366,7 +366,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
         </div>
 
         <div className="billeditems maincolorpadding">
-          {orderDetails?.so_status !== "Placed" &&
+          {orderDetails?.so_status !== "placed" &&
           orderDetails?.products &&
           orderDetails?.products?.length > 0 ? (
             <>

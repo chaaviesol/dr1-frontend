@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import BackButtonWithTitle from "../../../../components/BackButtonWithTitle";
 import { useLocation } from "react-router-dom";
+import { Loader } from "../../../../components/Loader/Loader";
 
 function TrackOrder() {
   const [progressSteps] = useState([
     "Confirmed",
     "Packed",
-    "In Transist",
+    "Shipped",
     "Delivered",
   ]);
   const location = useLocation();
   const order = location.state;
   console.log(order);
   const isStepComplete = (step) => {
-    const statuses = ["Placed", "Out for delivery", "Delivered"];
+    const statuses = ["placed", "Out for delivery", "Delivered"];
     return (
       statuses.includes(order.so_status) &&
       step <= statuses.indexOf(order.so_status) + 1
@@ -52,7 +53,7 @@ function TrackOrder() {
         <BackButtonWithTitle title="Track order" />
       </div>
       <div className={styles.divider}></div>
-
+{!order && <Loader/>}
       <div className="mobilescreen-container">
         <div className={styles.order}>
           <span className={styles.orderid}>Order #{order.so_number}</span>
