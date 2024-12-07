@@ -25,19 +25,19 @@ function BottomBar() {
         <div className={styles.tabtext}>Home</div>
       </div>
       <div
-        onClick={() => updateActiveTab("community")}
+        onClick={() => updateActiveTab("lab")}
         className={`${styles.tab} ${
-          activeTab === "community" ? styles.active : styles.inactive
+          activeTab === "lab" ? styles.active : styles.inactive
         }`}
       >
         <div className={styles.roundtab}>
           <i
             className={
-              activeTab === "community" ? "fi fi-sr-users-medical" : "fi fi-rr-users-medical"
+              activeTab === "Lab" ? "fi fi-sr-users-medical" : "fi fi-rr-users-medical"
             }
           ></i>
         </div>
-        <div className={styles.tabtext}>Community</div>
+        <div className={styles.tabtext}>Lab</div>
       </div>
       <div
         onClick={() => updateActiveTab("medicine")}

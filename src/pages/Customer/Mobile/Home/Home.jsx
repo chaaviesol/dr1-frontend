@@ -5,8 +5,6 @@ import useAuth from "../../../../hooks/useAuth";
 import PagePicker from "./PagePicker/PagePicker";
 import HomePage from "./HomePage/HomePage";
 import Doctors from "./Doctors/Doctors";
-import Hospitals from "./Hospitals/HospitalMob";
-import Labs from "./Labs/Labs";
 import CartIcon from "../../../../components/CartIcon";
 import Location from "../components/Location/Location";
 
@@ -23,13 +21,16 @@ function Home() {
       navigate("/login");
     }
   };
-  
+
   return (
     <>
       <div className={styles.margin}>
         <div className={`${styles.margin} ${styles.top}`}>
           <div>
-            <Location isShowLocationModal={isShowLocationModal} setShowLocationModal={setShowLocationModal}  />
+            <Location
+              isShowLocationModal={isShowLocationModal}
+              setShowLocationModal={setShowLocationModal}
+            />
           </div>
           <div
             style={{ height: "50px", width: "50px" }}
@@ -42,11 +43,8 @@ function Home() {
         <div className={styles.page}>
           {activePage === "home" && <HomePage />}
           {activePage === "doctors" && <Doctors />}
-          {activePage === "hospitals" && <Hospitals />}
-          {activePage === "labs" && <Labs />}
         </div>
       </div>
-   
     </>
   );
 }

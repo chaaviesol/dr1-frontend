@@ -53,7 +53,7 @@ import { MainAdminHospitalEditFinal } from "./pages/Mainadmin/Mainadminhospital/
 import Addadmins from "./pages/Mainadmin/ManageAdmin/Addadmins";
 import Adminlist from "./pages/Mainadmin/ManageAdmin/Adminlist";
 import Unauthorized from "./components/Routing/UnAuthorized/UnAuthorized";
-import CustomerLabMobile from "./pages/Customer/Mobile/Lab/Lab";
+// import CustomerLabMobile from "./pages/Customer/Mobile/Lab/Lab";
 import CustomerPharamcyMobile from "./pages/Customer/Mobile/Pharmacy/Pharmacy";
 import MobileDoctorProfile from "./pages/Customer/Mobile/MobileDoctorProfile/MobileDoctorProfile";
 import MobileHospitalProfile from "./pages/Customer/Mobile/MobileHospitalProfile/MobileHospitalProfile";
@@ -97,7 +97,7 @@ export const publicRoutes = [
   { path: "/hospital", element: <HospitalPage /> },
   { path: "/labs", element: <LabPage /> },
   { path: "/pharmacy", element: <PharmacyPage /> },
-  { path: "/customerlabmobile", element: <CustomerLabMobile /> },
+  // { path: "/customerlabmobile", element: <CustomerLabMobile /> },
   { path: "/customerpharmacymobile", element: <CustomerPharamcyMobile /> },
   { path: "/pharmacyproducts", element: <AllProductsView /> },
   { path: "/productdetails", element: <SingleProdDetails /> },

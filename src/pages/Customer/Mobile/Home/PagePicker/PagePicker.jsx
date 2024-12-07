@@ -27,26 +27,6 @@ function PagePicker({ activePage, setActivePage }) {
       >
         <span className={styles.white}>Doctors</span>
       </button>
-      <button
-        style={{ WebkitTapHighlightColor: "transparent" }}
-        onClick={() => updateActivePage("hospitals")}
-        className={`${styles.container} ${
-          activePage === "hospitals" ? styles.active : styles.inactive
-        }`}
-        type="button"
-      >
-        <span className={styles.white}>Hospitals</span>
-      </button>
-      <button
-        style={{ WebkitTapHighlightColor: "transparent" }}
-        onClick={() => updateActivePage("labs")}
-        className={`${styles.container} ${
-          activePage === "labs" ? styles.active : styles.inactive
-        }`}
-        type="button"
-      >
-        <span className={styles.white}>Labs</span>
-      </button>
     </div>
   );
 }

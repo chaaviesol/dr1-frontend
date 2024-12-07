@@ -1,8 +1,0 @@
-.healthConcernSlider {
-  margin: 2rem 0;
-  display: flex;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  gap: 1.5rem;
-  white-space: nowrap;
-}
