@@ -14,15 +14,18 @@ export default function LoginMobile() {
   const [password, setPassword] = useState("");
   const [isEmailEmpty, setIsEmailEmpty] = useState(false);
   const [isPasswordEmpty, setIsPasswordEmpty] = useState(false);
+  const [emailError, setEmailError] = useState("");  // State for email error message
   const [isLoginPending, setIsLoginPending] = useState(false);
   const [errors, setErrors] = useState({});
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     // Check for empty email and password fields
     const isEmailEmpty = email === "";
     const isPasswordEmpty = password === "";
@@ -30,8 +33,15 @@ export default function LoginMobile() {
     setIsEmailEmpty(isEmailEmpty);
     setIsPasswordEmpty(isPasswordEmpty);
 
+    // Check email format
+    if (!isEmailEmpty && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError("Invalid email address.");
+    } else {
+      setEmailError("");
+    }
+
     // Proceed with API call if both fields are valid
-    if (!isEmailEmpty && !isPasswordEmpty) {
+    if (!isEmailEmpty && !isPasswordEmpty && !emailError) {
       customerLogin({
         email,
         password,
@@ -39,16 +49,19 @@ export default function LoginMobile() {
     }
   };
 
-  const handleFocusEmail = () => {
-    setIsEmailEmpty(false);
+  const handleBlurEmail = () => {
+    setIsEmailEmpty(email === "");
+    // Check for invalid email format when the field loses focus
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setEmailError("Invalid email address.");
+    }
   };
 
-  const handleFocusPassword = () => {
-    setIsPasswordEmpty(false);
+  const handleBlurPassword = () => {
+    setIsPasswordEmpty(password === "");
   };
 
-  //call login api
-
+  // Call login api
   const customerLogin = async (payload) => {
     const newErrors = {};
     setIsLoginPending(true);
@@ -61,7 +74,10 @@ export default function LoginMobile() {
         return;
       }
 
-      const response = await axios.post(`${PHARMACY_URL}/user/userlogin`, payload);
+      const response = await axios.post(
+        `${PHARMACY_URL}/user/userlogin`,
+        payload
+      );
       const data = response.data;
       const { message, userId, userType, accessToken, refreshToken } = data;
       toast.success(message);
@@ -81,7 +97,7 @@ export default function LoginMobile() {
   };
 
   return (
-    <>
+    <form onSubmit={handleLogin}>
       <div className="containerlog loginmobpage flex">
         <div onClick={() => navigate("/")}>
           <img
@@ -97,17 +113,10 @@ export default function LoginMobile() {
           placeholder={isEmailEmpty ? "Email is required" : "Enter your Email"}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          onFocus={handleFocusEmail}
-          className={`password-input ${isEmailEmpty ? "input-error" : ""}`}
+          onBlur={handleBlurEmail}  // Validate email on blur
+          className={`password-input ${isEmailEmpty || emailError ? "input-error" : ""}`}
         />
-        {/* {errors.email && (
-          <p
-            style={{ color: "red", fontSize: "0.9rem" }}
-            className="error-message"
-          >
-            {errors.email}
-          </p>
-        )} */}
+      
 
         <div
           className="loginmobpageinputdiv"
@@ -124,7 +133,7 @@ export default function LoginMobile() {
             }
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            onFocus={handleFocusPassword}
+            onBlur={handleBlurPassword} // Validate password on blur
             className={`password-input ${isPasswordEmpty ? "input-error" : ""}`}
           />
           <button
@@ -140,8 +149,20 @@ export default function LoginMobile() {
           </button>
         </div>
 
+        <div className="loginmobilerror">
+            {/* Display email error if it exists */}
+        {emailError && (
+          <p
+            style={{ color: "red", fontSize: "12px" }}
+            className="error-message"
+          >
+            {emailError}
+          </p>
+        )}
+        </div>
+
         <button
-          onClick={handleLogin}
+          type="submit"
           disabled={isLoginPending}
           className="login-buttonmob"
         >
@@ -188,6 +209,6 @@ export default function LoginMobile() {
           Continue with Google
         </button>
       </div>
-    </>
+    </form>
   );
 }
