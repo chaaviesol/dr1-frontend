@@ -4,7 +4,7 @@ import CustomerAvatar from "../Avatar/CustomerAvatar";
 import { useTabBarContext } from "../../../../../contexts/MobileScreen/TabBarProvider";
 
 function BottomBar() {
-  const { activeTab, setActiveTab,handleUpdateActiveTab } = useTabBarContext();
+  const { activeTab, setActiveTab, handleUpdateActiveTab } = useTabBarContext();
   const updateActiveTab = (tab) => {
     handleUpdateActiveTab(tab);
   };
@@ -18,8 +18,11 @@ function BottomBar() {
       >
         <div className={styles.roundtab}>
           <i
-       
-            className={activeTab === "home" ? "fi fi-sr-house-blank" : "fi fi-rr-house-blank"}
+            className={
+              activeTab === "home"
+                ? "fi fi-sr-house-blank"
+                : "fi fi-rr-house-blank"
+            }
           />
         </div>
         <div className={styles.tabtext}>Home</div>
@@ -33,11 +36,13 @@ function BottomBar() {
         <div className={styles.roundtab}>
           <i
             className={
-              activeTab === "Lab" ? "fi fi-sr-users-medical" : "fi fi-rr-users-medical"
+              activeTab === "lab"
+                ? "fi fi-ss-flask-gear"
+                : "fi fi-rr-flask-gear"
             }
           ></i>
         </div>
-        <div className={styles.tabtext}>Lab</div>
+        <div className={styles.tabtext}>Labs</div>
       </div>
       <div
         onClick={() => updateActiveTab("medicine")}
@@ -46,8 +51,11 @@ function BottomBar() {
         }`}
       >
         <div className={styles.roundtab}>
-        <i className={activeTab==="medicine" ? "fi fi-sr-shop"  : "fi fi-rr-shop"}>
-        </i>
+          <i
+            className={
+              activeTab === "medicine" ? "fi fi-sr-shop" : "fi fi-rr-shop"
+            }
+          ></i>
         </div>
         <div className={styles.tabtext}>Medicine</div>
       </div>

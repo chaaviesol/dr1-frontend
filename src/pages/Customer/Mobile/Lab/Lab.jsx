@@ -3,9 +3,13 @@ import "./labs.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../../../config";
+import Location from "../components/Location/Location";
+import CartIcon from "../../../../components/CartIcon";
+import ClickToSearchBox from "../components/ClickToSearchBox/ClickToSearchBox";
 
 function Labs() {
   const [labdata, SetLabdata] = useState([]);
+  const [isShowLocationModal, setShowLocationModal] = useState(false);
 
   // LabCard Component to display lab details
   const navigate = useNavigate();
@@ -75,6 +79,20 @@ function Labs() {
 
   return (
     <div className="avoidbottombar">
+      <div className="lablocationtop">
+        <Location
+          isShowLocationModal={isShowLocationModal}
+          setShowLocationModal={setShowLocationModal}
+        />
+        <div style={{ height: "50px", width: "50px" }}>
+          <CartIcon dontNavigate={true} />{" "}
+        </div>
+      </div>
+
+      <div style={{ width: "100%", height: "50px",marginTop:"10px" }}>
+        <ClickToSearchBox placeholder="Find tests" />
+      </div>
+
       <div className="labcategory">
         <div className="labcategory__item">
           <img src="../images/flask.png" className="labcategory__image" />

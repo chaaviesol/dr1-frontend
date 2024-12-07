@@ -183,7 +183,7 @@ const CartList=React.memo(({
           </div>
           <div
             className="flex"
-            style={{ justifyContent: "space-between", gap: "10px" }}
+            style={{ justifyContent: "space-between", gap: "10px",marginTop:"10px" }}
           >
             <div className="checkoutmodalcontact">
             <h4>City</h4>
