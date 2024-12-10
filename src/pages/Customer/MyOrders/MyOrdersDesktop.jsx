@@ -131,24 +131,18 @@ function MyOrdersDesktop() {
                         // className="progresscardmark isFullfilled flex"
 
                         className={`flex ${
-                          data.so_status === "placed" ||
-                          data.so_status === "packed" ||
-                          data.so_status === "delivered"
+                          data.statusDetails.placed === true
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
                       >
-                        {data.so_status === "placed" ||
-                        data.so_status === "packed" ||
-                        data.so_status === "delivered" ? (
+                        {data.statusDetails.placed === true ? (
                           <i className="ri-check-line"></i>
                         ) : null}
                         <div
                           // className="progresscardmarkline"
                           className={`${
-                            data.so_status === "placed" ||
-                            data.so_status === "packed" ||
-                            data.so_status === "delivered"
+                            data.statusDetails.placed === true
                               ? "progresscardmarkline"
                               : "progresscardmarklinenotfilled"
                           }`}
@@ -157,15 +151,14 @@ function MyOrdersDesktop() {
 
                       <div className="progresscarddate">
                         <h2>Order Confirmed</h2>
-                        <h4>{formatDate(data.created_date)}</h4>
+                        <h4>{formatDate(data.statusDetails.placedDate)}</h4>
                       </div>
                     </div>
 
                     <div className="progresscard flex">
                       <div
                         className={`flex ${
-                          data.so_status === "packed" ||
-                          data.so_status === "delivered"
+                          data.statusDetails.packed === true
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
@@ -174,8 +167,7 @@ function MyOrdersDesktop() {
 
                         <div
                           className={`${
-                            data.so_status === "packed" ||
-                            data.so_status === "delivered"
+                            data.statusDetails.packed === true
                               ? "progresscardmarkline"
                               : "progresscardmarklinenotfilled"
                           }`}
@@ -185,9 +177,8 @@ function MyOrdersDesktop() {
                       <div className="progresscarddate">
                         <h2>Order Packed</h2>
                         <h4>
-                          {data.so_status === "packed" ||
-                          data.so_status === "delivered"
-                            ? formatDate(data.updated_date)
+                          {data.statusDetails.packed === true
+                            ? formatDate(data.statusDetails.packedDate)
                             : "Processing"}
                         </h4>
                       </div>
@@ -196,8 +187,8 @@ function MyOrdersDesktop() {
                     <div className="progresscard flex">
                       <div
                         className={`flex ${
-                          data.so_status === "packed" ||
-                          data.so_status === "delivered"
+                          data.statusDetails.shipped === true
+                        
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
@@ -205,8 +196,8 @@ function MyOrdersDesktop() {
                         <i class="ri-check-line"></i>
                         <div
                           className={`${
-                            data.so_status === "packed" ||
-                            data.so_status === "delivered"
+                            data.statusDetails.shipped === true
+                           
                               ? "progresscardmarkline"
                               : "progresscardmarklinenotfilled"
                           }`}
@@ -216,10 +207,8 @@ function MyOrdersDesktop() {
                       <div className="progresscarddate">
                         <h2>Shipped</h2>
                         <h4>
-                          {data.so_status === "packed" ||
-                          data.so_status === "delivered" ||
-                          data.so_status === "shipped" 
-                            ? formatDate(data.updated_date)
+                          {data.statusDetails.shipped === true
+                            ? formatDate(data.shippedDate)
                             : "Processing"}
                         </h4>
                       </div>
@@ -228,7 +217,7 @@ function MyOrdersDesktop() {
                     <div className="progresscard flex">
                       <div
                         className={`flex ${
-                          data.so_status === "delivered"
+                          data.statusDetails.delivered === true
                             ? "progresscardmark"
                             : "progresscardmarknotfilled"
                         }`}
@@ -239,8 +228,8 @@ function MyOrdersDesktop() {
                       <div className="progresscarddate">
                         <h2>Delivered</h2>
                         <h4>
-                          {data.so_status === "delivered"
-                            ? formatDate(data.updated_date)
+                          {data.statusDetails.delivered === true
+                            ? formatDate(data.statusDetails.deliveryDate)
                             : "Processing"}
                         </h4>
                       </div>
