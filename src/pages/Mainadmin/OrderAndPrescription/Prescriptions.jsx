@@ -85,7 +85,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
     console.log(sales_id, pharmacy_id, status);
     try {
       const response = await axios.post(
-        `${PHARMACY_URL}/pharmacyquotation/assignpharmacy`,
+        `${PHARMACY_URL}/chemist/assignpharmacy`,
         {
           sales_id,
           pharmacy_id,
@@ -202,9 +202,12 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 <th className="orderdetails-id-column orderdetails-header">
                   Order ID
                 </th>
+                {orderDetails?.order_type === "prescription" && 
+                
                 <th className="orderdetails-header orderdetails-data-attachment">
                   Attachment
                 </th>
+                }
                 <th className="orderdetails-header">Confirmed Date</th>
                 <th className="orderdetails-header">Packed Date</th>
                 <th className="orderdetails-header">Shipping Date</th>

@@ -14,6 +14,13 @@ export default function Orderslist({
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
 
+  //clear details data 
+
+  useEffect(() => {
+  setDetailData(null)
+  }, [])
+  
+
   const fetchSalesList = async () => {
     const response = await axios.get(`${PHARMACY_URL}/pharmacy/allsalelist`);
     return response.data;

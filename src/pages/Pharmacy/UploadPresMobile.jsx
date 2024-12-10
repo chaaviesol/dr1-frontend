@@ -47,20 +47,44 @@ function UploadPresMobile() {
     const newFiles = Array.from(e.target.files);
     const maxSizeInMB = 10;
     const maxFiles = 5;
+    const validFileTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "image/webp",
+      "application/pdf",
+    ];
     const validFiles = [];
     const newErrors = {};
+
     // Check if the total number of files exceeds the limit
     if (formData.image.length + newFiles.length > maxFiles) {
       newErrors.image = `You can upload a maximum of ${maxFiles} files.`;
     }
 
     newFiles.forEach((file) => {
+      const maxFileNameLength = 10;
+      const trimmedFileName =
+        file.name.length > maxFileNameLength
+          ? file.name.substring(0, 10) + "..." + file.name.substring(file.name.length - 10)
+          : file.name;
+      // Check for invalid file types
+      if (!validFileTypes.includes(file.type)) {
+        newErrors.image =
+          (newErrors.image || "") +
+          `Invalid file type: ${trimmedFileName}. Only images (JPEG, PNG,JPG,WEBP) or PDFs are allowed. `;
+      }
+      // Check if file size exceeds the limit
       if (file.size > maxSizeInMB * 1024 * 1024) {
-        newErrors.image = `Max file size is 10Mb`;
+        newErrors.image =
+          (newErrors.image || "") +
+          `Max file size is 10MB for file ${trimmedFileName}. `;
       } else {
         validFiles.push(file);
       }
     });
+
+    // If there are any errors, set them and prevent further processing
     if (Object.keys(newErrors).length > 0) {
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -68,6 +92,8 @@ function UploadPresMobile() {
       }));
       return;
     }
+
+    // If there are valid files, update the form data
     setFormData((prevFormData) => ({
       ...prevFormData,
       image: [...prevFormData.image, ...validFiles],
@@ -81,7 +107,9 @@ function UploadPresMobile() {
   useEffect(() => {
     const fetchContactNumber = async () => {
       try {
-        const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
+        const response = await axiosPrivate.post(
+          `${PHARMACY_URL}/user/getprofile`
+        );
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
         const pincode = parseInt(response?.data?.userDetails?.pincode);
 
@@ -211,7 +239,7 @@ function UploadPresMobile() {
 
   return (
     <>
-     {loader && <Loader />}
+      {loader && <Loader />}
       <div className="modalContainer">
         <div onClick={handleBackButton} style={{ marginBottom: "10px" }}>
           <BackButtonWithTitle title="Upload Prescription" />
@@ -264,6 +292,7 @@ function UploadPresMobile() {
             id="fileInput"
             onChange={handleFileChange}
             multiple
+            accept=".jpg, .jpeg, .png,webp, application/pdf"
             style={{ display: "none" }}
           />
           <div className="file-names">
