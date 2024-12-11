@@ -12,6 +12,7 @@ import { Modal } from "@mui/material";
 function Prescriptions({ Details, setChangeDashboards }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isShowImgModal, setIsShowImgModal] = useState(false);
+  const [isAssignPharmacyLoading, setIsAssignPharmacyLoading] = useState(false);
 
   const sales_id = Details.sales_id;
   const [width, setWidth] = useState("100%");
@@ -66,7 +67,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
     isLoading: isFetchingpharamcyDetailsLoading,
     refetch: refetchPharamcy,
   } = useQuery({
-    queryKey: ["pharamcyDetails"],
+    queryKey: ["pharamcyDetails", sales_id],
     queryFn: async ({ queryKey }) => {
       try {
         const response = await fetchPharmacyDetails(sales_id);
@@ -81,9 +82,11 @@ function Prescriptions({ Details, setChangeDashboards }) {
     enabled: !!sales_id,
   });
 
+  //asign pharmacy
   const handleAssignPharamcy = async (sales_id, pharmacy_id, status) => {
     console.log(sales_id, pharmacy_id, status);
     try {
+      setIsAssignPharmacyLoading(true);
       const response = await axios.post(
         `${PHARMACY_URL}/chemist/assignpharmacy`,
         {
@@ -94,24 +97,86 @@ function Prescriptions({ Details, setChangeDashboards }) {
       );
       console.log(response);
       refetchPharamcy();
+      refetchDeliveryAgent();
     } catch (error) {
       console.error("Error assigning pharmacy:", error);
     } finally {
+      setIsAssignPharmacyLoading(false);
     }
   };
 
-  // const { mutateAsync: assignPharamcyMutation } = useMutation({
-  //   mutationKey: ["assignPharmacy"],
-  //   mutationFn: (sales_id, pharmacy_id, status) =>
-  //     assignPharmacy(sales_id, pharmacy_id, status),
-  //   onSuccess: () => {
-  //     refetchPharamcy(); // Refetch after success
-  //   },
-  //   onError: (error) => {
-  //     console.log(error);
-  //     toast.error(error.message || "Something went wrong");
-  //   },
-  // });
+  // fetch deleivery agent data
+
+  //fetch pharamcy data
+
+  const fetchDeleiveryAgentDetails = async (sales_id) => {
+    const response = await axios.post(
+      `${PHARMACY_URL}/pharmacyquotation/viewdeliverypartners`,
+      {
+        sales_id,
+      }
+    );
+    console.log(response);
+    return response.data || [];
+  };
+
+  const {
+    data: delieveryAgentDetails,
+    isLoading: isdelieveryAgentDetailsLoading,
+    refetch: refetchDeliveryAgent,
+  } = useQuery({
+    queryKey: ["delieveryAgentDetails", sales_id],
+    queryFn: async ({ queryKey }) => {
+      try {
+        const response = await fetchDeleiveryAgentDetails(sales_id);
+        return response.data || [];
+      } catch (error) {
+        console.error(error);
+        if (error.response && error.response.status === 400) {
+          return [error];
+        }
+        throw error;
+      }
+    },
+    enabled: !!sales_id,
+  });
+
+  // Define the mutation function
+  const assignAgent = async (deliverypartner_id) => {
+    const response = await axios.post(
+      `${PHARMACY_URL}/pharmacyquotation/assigndeliverypartner`,
+      {
+        sales_id,
+        deliverypartner_id,
+        status: "assigned",
+      }
+    );
+    return response.data; // Return the data from the response
+  };
+  const AssignAgentmutation = useMutation({
+    mutationKey: ["fetchBotCallResultMutation"],
+    mutationFn: (query) => assignAgent(query),
+    onSuccess: (response) => {
+      console.log(response);
+      console.log("Delivery partner assigned successfully!");
+      refetchPharamcy();
+      refetchDeliveryAgent();
+    },
+    onError: (error) => {
+      console.error(
+        "Error assigning delivery partner:",
+        error.response ? error.response.data : error.message
+      );
+    },
+    onSettled: () => {
+      // You can refetch or trigger any action here when the mutation is completed
+    },
+  });
+
+  // Trigger the mutation (for example, onClick)
+  const handleAssignAgent = (deliverypartner_id) => {
+    AssignAgentmutation.mutateAsync(deliverypartner_id); // Trigger mutation
+  };
 
   const goBack = (order_type) => {
     if (order_type === "salesorder") {
@@ -121,12 +186,12 @@ function Prescriptions({ Details, setChangeDashboards }) {
     }
   };
 
-  useEffect(() => {
-    if (sales_id) {
-      refetch();
-      refetchPharamcy();
-    }
-  }, [sales_id, refetch, refetchPharamcy]);
+  // useEffect(() => {
+  //   if (sales_id) {
+  //     refetch();
+  //     refetchPharamcy();
+  //   }
+  // }, [sales_id, refetch, refetchPharamcy]);
 
   //image
 
@@ -147,6 +212,8 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
   // Get the current image key
   const currentImageKey = imageKeys[currentIndex - 1];
+
+  console.log("delieveryAgentDetails", delieveryAgentDetails);
   return (
     <div
       style={{
@@ -202,12 +269,11 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 <th className="orderdetails-id-column orderdetails-header">
                   Order ID
                 </th>
-                {orderDetails?.order_type === "prescription" && 
-                
-                <th className="orderdetails-header orderdetails-data-attachment">
-                  Attachment
-                </th>
-                }
+                {orderDetails?.order_type === "prescription" && (
+                  <th className="orderdetails-header orderdetails-data-attachment">
+                    Attachment
+                  </th>
+                )}
                 <th className="orderdetails-header">Confirmed Date</th>
                 <th className="orderdetails-header">Packed Date</th>
                 <th className="orderdetails-header">Shipping Date</th>
@@ -310,6 +376,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                       </button>
                     ) : (
                       <button
+                        disabled={isAssignPharmacyLoading}
                         className="assignbutton"
                         onClick={() =>
                           handleAssignPharamcy(
@@ -334,36 +401,43 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
             <div className="assigndelivery maincolorpadding">
               <h4 className="secondtitleparma">Assign Delivery Agent</h4>
-
-              <div className="deliverymanrec flex">
-                <div className="deliverymanrecleft flex">
-                  <img src="../images/man.jpg" alt="" />
-
-                  <div>
-                    <h3>Manu Madhav</h3>
-                    <h4 className="deliverymob">98742 48787</h4>
-                  </div>
+              {delieveryAgentDetails?.[0]?.response?.data?.message ? (
+                <div className="noassign flex">
+                  <span>Assign pharmacy first to assign delivery agent</span>
                 </div>
-
-                <button className="assignbutton">Assign</button>
-              </div>
-
-              <div className="deliverymanrec flex">
-                <div className="deliverymanrecleft flex">
-                  <img src="../images/man.jpg" alt="" />
-
-                  <div>
-                    <h3>Manu Madhav</h3>
-                    <h4 className="deliverymob">98742 48787</h4>
+              ) : delieveryAgentDetails ? (
+                <div className="deliverymanrec flex">
+                  <div className="deliverymanrecleft flex">
+                    <img src="../images/man.jpg" alt="Delivery Agent" />
+                    <div>
+                      <h3>{delieveryAgentDetails.name || "Manu Madhav"}</h3>{" "}
+                      {/* Assuming agent has a name property */}
+                      <h4 className="deliverymob">
+                        {delieveryAgentDetails.phone || "98742 48787"}
+                      </h4>{" "}
+                      {/* Assuming agent has a phone property */}
+                    </div>
                   </div>
+                  <button
+                    disabled={
+                      AssignAgentmutation.isPending ||
+                      delieveryAgentDetails.is_assigned
+                    }
+                    className={
+                      delieveryAgentDetails.is_assigned
+                        ? "afterassignbutton assignbutton"
+                        : "assignbutton"
+                    }
+                    onClick={() => handleAssignAgent(delieveryAgentDetails.id)}
+                  >
+                    {delieveryAgentDetails.is_assigned ? "Assigned" : "Assign"}
+                  </button>
                 </div>
-
-                <button className="assignbutton">Assign</button>
-              </div>
-
-              <div className="noassign flex">
-                <span>Delivery not Assigned</span>
-              </div>
+              ) : (
+                <div className="noassign flex">
+                  <span>No delivery agent available.</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -463,12 +537,28 @@ function Prescriptions({ Details, setChangeDashboards }) {
         <div className="modalContainerbilling">
           {orderDetails && orderDetails.order_type === "prescription" && (
             <div className="billingleft flex" style={{ width }}>
-              {orderDetails?.prescription_image[currentImageKey] && (
-                <img
-                  src={orderDetails?.prescription_image[currentImageKey]}
-                  alt={`Image ${currentIndex}`}
-                />
-              )}
+              {orderDetails?.prescription_image[currentImageKey] &&
+                (/\.(jpg|jpeg|png|gif|webp)$/i.test(
+                  orderDetails?.prescription_image[currentImageKey]
+                ) ? (
+                  <img
+                    src={orderDetails?.prescription_image[currentImageKey]}
+                    alt={`Image ${currentIndex}`}
+                    style={{ maxWidth: "100%", maxHeight: "500px" }}
+                  />
+                ) : /\.(pdf)$/i.test(
+                    orderDetails?.prescription_image[currentImageKey]
+                  ) ? (
+                  <object
+                    data={orderDetails?.prescription_image[currentImageKey]}
+                    type="application/pdf"
+                    width="100%"
+                    height="600px"
+                  >
+                    <p>Your browser does not support PDFs.</p>
+                  </object>
+                ) : null)}
+
               <div className="billingimagenumber flex">
                 <button onClick={handlePrevious} disabled={currentIndex === 1}>
                   <i className="ri-arrow-left-s-line"></i>

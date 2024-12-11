@@ -177,6 +177,7 @@ export default function Orderslist({
         </tr>
         {datalist.map((ele, index) => (
           <tr
+          key={index}
             onClick={() => {
               navigateFn(ele);
             }}
