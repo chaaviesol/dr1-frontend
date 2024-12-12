@@ -120,7 +120,7 @@ function Cart() {
       newErrors.contact_no = "Invalid contact number.";
     }
     if (!details.delivery_details || details.delivery_details === "") {
-      newErrors.delivery_details = "Delivery details is required";
+      newErrors.delivery_details = "Delivery address is required";
     }
     if (!details.city || details.city === "") {
       newErrors.city = "City name is required";
