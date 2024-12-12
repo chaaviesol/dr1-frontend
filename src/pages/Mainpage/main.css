@@ -12,6 +12,11 @@
   /* font-family: "Outfit", sans-serif; */
   font-family: "Satoshi-Variable", sans-serif;
 }
+.error-message{
+  margin: 5px 0 0 12px;
+  color: #ff6161;
+  font-size: 12px;
+}
 .mobilescreen-container {
   padding: 1.5rem;
 }

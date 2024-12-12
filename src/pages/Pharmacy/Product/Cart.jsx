@@ -114,10 +114,10 @@ function Cart() {
   const HandleOnclick = async (e) => {
     const newErrors = {};
     if (!details.contact_no) {
-      newErrors.contact_norequired = "Contact Number is required";
+      newErrors.contact_norequired = "Contact number is required";
     }
     if (!/^[6-9]\d{9}$/.test(details.contact_no)) {
-      newErrors.contact_no = "Invalid Contact Number.";
+      newErrors.contact_no = "Invalid contact number.";
     }
     if (!details.delivery_details || details.delivery_details === "") {
       newErrors.delivery_details = "Delivery details is required";

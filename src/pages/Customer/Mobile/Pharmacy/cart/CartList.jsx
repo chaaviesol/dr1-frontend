@@ -233,14 +233,14 @@ const CartList=React.memo(({
               <button
                 onClick={getCurrentLocation}
                 disabled={gettingLocationLoading || fetchLocationMutationPending}
-                style={{ width: "160px" }}
+                style={{ width: "180px" }}
               >
                 {" "}
                 {(gettingLocationLoading ||fetchLocationMutationPending) ? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>
-                    <i className="ri-map-pin-line"></i> Get current location
+                    <i className="ri-map-pin-line"></i> Use my current location
                   </>
                 )}
               </button>

@@ -181,12 +181,11 @@ export default function CartDesktop({
                 value={details?.contact_no}
                 onKeyDown={handleKeyPress}
                 maxLength={10}
-                placeholder="Enter Your Contact Number "
+                placeholder="Enter your contact number "
               />
               {errors.contact_norequired
                 ? errors.contact_norequired && (
                     <p
-                      style={{ color: "red", fontSize: "0.9rem" }}
                       className="error-message"
                     >
                       {errors.contact_norequired}
@@ -194,7 +193,6 @@ export default function CartDesktop({
                   )
                 : errors.contact_no && (
                     <p
-                      style={{ color: "red", fontSize: "0.9rem" }}
                       className="error-message"
                     >
                       {errors.contact_no}
@@ -215,7 +213,7 @@ export default function CartDesktop({
               {errors.pincoderequired
                 ? errors.pincoderequired && (
                     <p
-                      style={{ color: "red", fontSize: "0.9rem" }}
+                      
                       className="error-message"
                     >
                       {errors.pincoderequired}
@@ -223,7 +221,7 @@ export default function CartDesktop({
                   )
                 : errors.pincode && (
                     <p
-                      style={{ color: "red", fontSize: "0.9rem" }}
+                      
                       className="error-message"
                     >
                       {errors.pincode}
@@ -253,7 +251,6 @@ export default function CartDesktop({
               />
               {errors.city && (
                 <p
-                  style={{ color: "red", fontSize: "0.9rem" }}
                   className="error-message"
                 >
                   {errors.city}
@@ -273,7 +270,6 @@ export default function CartDesktop({
               />
               {errors.district && (
                 <p
-                  style={{ color: "red", fontSize: "0.9rem" }}
                   className="error-message"
                 >
                   {errors.district}
@@ -290,14 +286,14 @@ export default function CartDesktop({
                 disabled={
                   gettingLocationLoading || fetchLocationMutationPending
                 }
-                style={{ width: "160px" }}
+                style={{ width: "180px" }}
               >
                 {" "}
                 {gettingLocationLoading || fetchLocationMutationPending ? (
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>
-                    <i className="ri-map-pin-line"></i> Get current location
+                    <i className="ri-map-pin-line"></i> Use my current location
                   </>
                 )}
               </button>
@@ -311,7 +307,6 @@ export default function CartDesktop({
             ></textarea>
             {errors.delivery_details && (
               <p
-                style={{ color: "red", fontSize: "0.9rem" }}
                 className="error-message"
               >
                 {errors.delivery_details}
