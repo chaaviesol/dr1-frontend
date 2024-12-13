@@ -186,7 +186,7 @@ const CartList=React.memo(({
             style={{ justifyContent: "space-between", gap: "10px",marginTop:"10px" }}
           >
             <div className="checkoutmodalcontact">
-            <h4>City</h4>
+            <h4>City/Town</h4>
               <input
                 onChange={handleOnchange}
                 type="text"

@@ -239,7 +239,7 @@ export default function CartDesktop({
             }}
           >
             <div className="checkoutmodalcontact">
-              <h4>City</h4>
+              <h4>City/Town</h4>
               <input
                 onChange={handleOnchange}
                 type="text"

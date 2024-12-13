@@ -84,6 +84,7 @@ function Cart() {
       pincode: address?.pincode,
       city: address?.city,
       district: address?.district,
+      delivery_location: address?.delivery_location,
     };
 
     const response = await axiosPrivate.post(
@@ -103,6 +104,7 @@ function Cart() {
     },
   });
   const handleCheckout = async (address) => {
+    console.log(address);
     if (!userId && userType !== "customer") {
       toast.info("Please login as a customer!");
       return;
@@ -201,8 +203,9 @@ function Cart() {
         ...details,
         delivery_details: data.formattedAddress,
         city: data.streetAddress,
-        district: data.city,
+        district: data.district,
         pincode: data.postalCode,
+        delivery_location: data.location,
       });
       setGettingLocationLoading(false);
     },
