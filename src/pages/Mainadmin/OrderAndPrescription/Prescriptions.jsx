@@ -7,12 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import { Loader } from "../../../components/Loader/Loader";
-import { Modal } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
 
 function Prescriptions({ Details, setChangeDashboards }) {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isShowImgModal, setIsShowImgModal] = useState(false);
-  const [isAssignPharmacyLoading, setIsAssignPharmacyLoading] = useState(false);
+  const [assigningPharmacyId, setAssigningPharmacyId] = useState(null);
 
   const sales_id = Details.sales_id;
   const [width, setWidth] = useState("100%");
@@ -86,7 +86,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
   const handleAssignPharamcy = async (sales_id, pharmacy_id, status) => {
     console.log(sales_id, pharmacy_id, status);
     try {
-      setIsAssignPharmacyLoading(true);
+      setAssigningPharmacyId(pharmacy_id);
       const response = await axios.post(
         `${PHARMACY_URL}/chemist/assignpharmacy`,
         {
@@ -101,7 +101,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
     } catch (error) {
       console.error("Error assigning pharmacy:", error);
     } finally {
-      setIsAssignPharmacyLoading(false);
+      setAssigningPharmacyId(null);
     }
   };
 
@@ -153,7 +153,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
     );
     return response.data; // Return the data from the response
   };
-  const AssignAgentmutation = useMutation({
+  const assignAgentmutation = useMutation({
     mutationKey: ["fetchBotCallResultMutation"],
     mutationFn: (query) => assignAgent(query),
     onSuccess: (response) => {
@@ -175,7 +175,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
   // Trigger the mutation (for example, onClick)
   const handleAssignAgent = (deliverypartner_id) => {
-    AssignAgentmutation.mutateAsync(deliverypartner_id); // Trigger mutation
+    assignAgentmutation.mutateAsync(deliverypartner_id); // Trigger mutation
   };
 
   const goBack = (order_type) => {
@@ -376,7 +376,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
                       </button>
                     ) : (
                       <button
-                        disabled={isAssignPharmacyLoading}
+                        disabled={
+                          assigningPharmacyId === pharmacy?.pharm_id?.id
+                        }
                         className="assignbutton"
                         onClick={() =>
                           handleAssignPharamcy(
@@ -386,7 +388,14 @@ function Prescriptions({ Details, setChangeDashboards }) {
                           )
                         }
                       >
-                        Assign
+                        {assigningPharmacyId === pharmacy?.pharm_id?.id ? (
+                          <CircularProgress
+                            size="1.5rem"
+                            sx={{ color: "white" }}
+                          />
+                        ) : (
+                          "Assign"
+                        )}
                       </button>
                     )}
                   </div>
@@ -394,7 +403,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
               {orderDetails?.so_status === "placed" && (
                 <div className="noassign flex">
-                  <span>Pharmacy not Assigned</span>
+                  <span>Pharmacy not assigned bill first</span>
                 </div>
               )}
             </div>
@@ -420,7 +429,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   </div>
                   <button
                     disabled={
-                      AssignAgentmutation.isPending ||
+                      assignAgentmutation.isPending ||
                       delieveryAgentDetails.is_assigned
                     }
                     className={
@@ -430,7 +439,13 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     }
                     onClick={() => handleAssignAgent(delieveryAgentDetails.id)}
                   >
-                    {delieveryAgentDetails.is_assigned ? "Assigned" : "Assign"}
+                    {delieveryAgentDetails.is_assigned ? (
+                      "Assigned"
+                    ) : assignAgentmutation.isPending ? (
+                      <CircularProgress size="1.5rem" sx={{ color: "white" }} />
+                    ) : (
+                      "Assign"
+                    )}
                   </button>
                 </div>
               ) : (

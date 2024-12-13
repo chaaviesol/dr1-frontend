@@ -147,10 +147,10 @@ function Cart() {
       newErrors.delivery_details = "Delivery address is required";
     }
     if (!details.city || details.city === "") {
-      newErrors.city = "City name is required";
+      newErrors.city = "City/Town is required";
     }
     if (!details.district || details.district === "") {
-      newErrors.district = "District name is required";
+      newErrors.district = "District is required";
     }
     if (!details.pincode) {
       newErrors.pincoderequired = "Pincode is required";

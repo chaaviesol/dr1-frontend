@@ -184,11 +184,15 @@ margin-bottom:15px;
 /* Buttons */
 
 .assignbutton {
-  padding: 10px 20px;
+  height: 40px;
   background-color: #7e83ff;
   color: white;
   border-radius: 50px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:120px
 }
 
 .afterassignbutton {
