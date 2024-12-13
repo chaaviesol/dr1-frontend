@@ -138,7 +138,7 @@ export default function SearchDoctorProvider({ children }) {
     }
   };
   useEffect(() => {
-    getAllDoctorsData();
+    // getAllDoctorsData();  //commented for new db
   }, [passedSpecialization]);
 
   const handlePassedSpecialization = (DoctorsDetails) => {

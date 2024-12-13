@@ -51,7 +51,7 @@ export default function Contexts({ children }) {
     }
   };
   useEffect(() => {
-    fetchAllMedicalCategories();
+    // fetchAllMedicalCategories(); //commented for new db
   }, []);
 
 
