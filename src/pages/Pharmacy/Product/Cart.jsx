@@ -41,6 +41,28 @@ function Cart() {
     setSelectedItemId(id);
   };
 
+  useEffect(() => {
+    const fetchContactNumber = async () => {
+      try {
+        const response = await axiosPrivate.post(
+          `${PHARMACY_URL}/user/getprofile`
+        );
+        const contact_no = parseInt(response?.data?.userDetails?.phone_no);
+        const pincode = parseInt(response?.data?.userDetails?.pincode);
+
+        setDetails({
+          ...details,
+          contact_no: contact_no,
+          pincode: pincode,
+        });
+      } catch (err) {
+        console.error("Error fetching contact number:", err);
+      }
+    };
+
+    fetchContactNumber();
+  }, []);
+
   const totalPrice = () => {
     if (cartItems && cartItems.length > 0) {
       const totalMRP = cartItems.reduce((accumulator, product) => {
@@ -229,7 +251,7 @@ function Cart() {
     fetchLocationMutationPending: fetchLocationMutation.isPending,
     gettingLocationLoading,
     errors,
-    setErrors
+    setErrors,
   };
 
   return (

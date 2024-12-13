@@ -285,7 +285,7 @@ function UploadPresMobile() {
 
         <div className="secopinputprescription">
           <label htmlFor="fileInput" className="upload-buttonsecond">
-            <h4>Upload Prescription (Max 5 Files)</h4>
+            <h4>Upload Prescription(Max 5 Files)</h4>
           </label>
           <input
             type="file"
