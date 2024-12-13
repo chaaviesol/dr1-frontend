@@ -38,7 +38,8 @@ export const ShowFeedBackPopupContext = ({ children }) => {
       }
     },
 
-    enabled: !!userId && userType === "customer",
+    // enabled: !!userId && userType === "customer",
+    enabled: false,
   });
   useEffect(() => {
     if (docData?.length) {

@@ -58,10 +58,10 @@ export default function Chatbot() {
     setTempUserInput("");
   };
 
-  useEffect(() => {
-    const intialMessage = "Hi";
-    fetchBotCallResultMutation.mutateAsync(intialMessage);
-  }, []);
+  // useEffect(() => {
+  //   const intialMessage = "Hi";  //commented for new db
+  //   fetchBotCallResultMutation.mutateAsync(intialMessage);
+  // }, []);
 
   const handleClick = (event) => {
     if (event.key === "Enter") {

@@ -71,10 +71,10 @@ const ChatBotAfterLogin = () => {
     setTempUserInput("");
   };
 
-  useEffect(() => {
-    const intialMessage = "Hi";
-    fetchBotCallResultMutation.mutateAsync(intialMessage);
-  }, []);
+  // useEffect(() => { //commented for new db
+  //   const intialMessage = "Hi";
+  //   fetchBotCallResultMutation.mutateAsync(intialMessage);
+  // }, []);
 
   const handleClick = (event) => {
     if (event.key === "Enter") {
