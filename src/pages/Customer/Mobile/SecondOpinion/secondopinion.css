@@ -358,4 +358,12 @@
   textarea:focus {
     border: 2px solid #91a9ff;
   }
+
 }
+.locationGetContainer{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+

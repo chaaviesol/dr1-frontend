@@ -1,0 +1,12 @@
+.container {
+  color: white;
+  background-color: #7e83ff;
+  height: 35px;
+  padding: 0px 15px;
+  border-radius: 50px;
+  font-size: 12px;
+}
+
+.container  i {
+  margin-right: 6px;
+}

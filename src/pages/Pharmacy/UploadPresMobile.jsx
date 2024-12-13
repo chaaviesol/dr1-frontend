@@ -7,6 +7,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { Checkbox, FormControlLabel, Modal } from "@mui/material";
 import BackButtonWithTitle from "../../components/BackButtonWithTitle";
 import { Loader } from "../../components/Loader/Loader";
+import UseCurrentLocationButton from "../../components/UseCurrentLocationButton";
 
 function UploadPresMobile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,9 +22,19 @@ function UploadPresMobile() {
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [location, setLocation] = useState(null); // State to hold the location data
   const { auth } = useAuth();
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
+
+  // Callback function to receive the location data
+  const handleLocationFetched = (location) => {
+    setLocation(location); // Store the fetched location in the state;
+    setFormData({
+      ...formData,
+      delivery_address: location.formattedAddress,
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -66,7 +77,9 @@ function UploadPresMobile() {
       const maxFileNameLength = 10;
       const trimmedFileName =
         file.name.length > maxFileNameLength
-          ? file.name.substring(0, 10) + "..." + file.name.substring(file.name.length - 10)
+          ? file.name.substring(0, 10) +
+            "..." +
+            file.name.substring(file.name.length - 10)
           : file.name;
       // Check for invalid file types
       if (!validFileTypes.includes(file.type)) {
@@ -127,6 +140,8 @@ function UploadPresMobile() {
 
     fetchContactNumber();
   }, []);
+
+  console.log(location);
 
   const handleSubmit = async () => {
     const newErrors = {};
@@ -325,12 +340,15 @@ function UploadPresMobile() {
             )}
           </div>
         </div>
+        <div className="locationGetContainer">
+          <UseCurrentLocationButton onLocationFetched={handleLocationFetched} />
+        </div>
 
         <div className="secopinputprescription">
           <textarea
             name="delivery_address"
             placeholder="Delivery address"
-            value={formData?.delivery_address}
+            value={formData?.delivery_address || ""}
             id=""
             onChange={handleChange}
           ></textarea>
