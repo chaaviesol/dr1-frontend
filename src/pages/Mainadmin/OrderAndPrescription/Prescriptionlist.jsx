@@ -119,37 +119,42 @@ export default function Prescriptionlist({
         Sales Orders
       </h3>
       <table className="orderlisttable">
+      <tbody>
+
         <tr className="orderlisttableTr">
           <th className="orderlisttableTh">No</th>
-
+          <th className="orderlisttableTh">
+              <h4> Order no</h4>
+              <input type="text" onChange={SearchData} name="so_number" placeholder="Search" />
+            </th>
           <th className="orderlisttableTh">
             {" "}
-            <h4>Patient Name</h4>
+            <h4>Customer name</h4>
             <input
               type="text"
               onChange={SearchData}
               name="patient_name"
-              placeholder="Search Customer"
+              placeholder="Search"
             />
           </th>
 
           <th className="">
-            <h4>Mobile Number</h4>
+            <h4>Mobile number</h4>
             <input
               type="number"
               onChange={SearchData}
               name="contact_no"
-              placeholder="Search contact number"
+              placeholder="Search"
             />
           </th>
 
           <th className="">
-            <h4>PINCODE</h4>
+            <h4>Pincode</h4>
             <input
               type="text"
               onChange={SearchData}
               name="pincode"
-              placeholder="Search pincode"
+              placeholder="Search"
             />
           </th>
 
@@ -160,7 +165,7 @@ export default function Prescriptionlist({
               type="date"
               onChange={filterDate}
               name="created_date"
-              placeholder="Search by date"
+             
             />
           </th>
           <th className="">
@@ -183,6 +188,7 @@ export default function Prescriptionlist({
               }}
             >
               <td>{index + 1}</td>
+              <td>{ele?.so_number}</td>
               <td>{ele?.patient_name}</td>
               <td>{ele?.contact_no}</td>
               <td>{ele?.pincode}</td>
@@ -192,6 +198,7 @@ export default function Prescriptionlist({
               <td>{ele?.so_status}</td>
             </tr>
           ))}
+      </tbody>
       </table>
     </div>
   );

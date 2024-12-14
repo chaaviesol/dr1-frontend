@@ -14,16 +14,23 @@ export default function Orderslist({
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
 
-  //clear details data 
+  //clear details data
 
   useEffect(() => {
-  setDetailData(null)
-  }, [])
-  
+    setDetailData(null);
+  }, []);
 
   const fetchSalesList = async () => {
-    const response = await axios.get(`${PHARMACY_URL}/pharmacy/allsalelist`);
-    return response.data;
+    try {
+      const response = await axios.get(`${PHARMACY_URL}/pharmacy/allsalelist`);
+      return response.data;
+    } catch (error) {
+      // Handling API error in a single place
+      throw new Error(
+        error?.response?.data?.message ||
+          "An error occurred while fetching sales data"
+      );
+    }
   };
 
   const { data, isLoading } = useQuery({
@@ -127,69 +134,75 @@ export default function Orderslist({
         Sales Orders
       </h3>
       <table className="orderlisttable">
-        <tr className="orderlisttableTr">
-          <th className="orderlisttableTh">No</th>
+        <tbody>
+          <tr className="orderlisttableTr">
+            <th className="orderlisttableTh">No</th>
+            <th className="orderlisttableTh">
+              <h4> Order no</h4>
+              <input type="text" onChange={SearchData} name="so_number" placeholder="Search" />
+            </th>
 
-          <th className="orderlisttableTh">
-            {" "}
-            <h4>Name</h4>
-            <input
-              type="text"
-              onChange={SearchData}
-              name="users"
-              placeholder="Search Customer"
-            />
-          </th>
+            <th className="orderlisttableTh">
+              {" "}
+              <h4>Customer name</h4>
+              <input
+                type="text"
+                onChange={SearchData}
+                name="users"
+                placeholder="Search"
+              />
+            </th>
 
-          <th className="">
-            <h4>Mobile Number</h4>
-            <input
-              type="number"
-              onChange={SearchData}
-              name="contact_no"
-              placeholder="Search contact number"
-            />
-          </th>
+            <th className="">
+              <h4>Mobile number</h4>
+              <input
+                type="number"
+                onChange={SearchData}
+                name="contact_no"
+                placeholder="Search"
+              />
+            </th>
 
-          <th className="">
-            <h4>Pincode</h4>
-            <input
-              type="text"
-              onChange={SearchData}
-              name="pincode"
-              placeholder="Search pincode"
-            />
-          </th>
+            <th className="">
+              <h4>Pincode</h4>
+              <input
+                type="text"
+                onChange={SearchData}
+                name="pincode"
+                placeholder="Search"
+              />
+            </th>
 
-          <th className="">
-            <h4>Date</h4>
-            <input
-              type="date"
-              max={new Date().toISOString().split("T")[0]}
-              onChange={filterDate}
-              name="created_date"
-              placeholder="Search by date"
-            />
-          </th>
-          <th className="">
-            <h4>Status</h4>
-          </th>
-        </tr>
-        {datalist.map((ele, index) => (
-          <tr
-          key={index}
-            onClick={() => {
-              navigateFn(ele);
-            }}
-          >
-            <td>{index + 1}</td>
-            <td>{ele?.users}</td>
-            <td>{ele?.contact_no}</td>
-            <td>{ele?.pincode}</td>
-            <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
-            <td>{ele?.so_status}</td>
+            <th className="">
+              <h4>Date</h4>
+              <input
+                type="date"
+                max={new Date().toISOString().split("T")[0]}
+                onChange={filterDate}
+                name="created_date"
+              />
+            </th>
+            <th className="">
+              <h4>Status</h4>
+            </th>
           </tr>
-        ))}
+          {datalist.map((ele, index) => (
+            <tr
+              key={index}
+              onClick={() => {
+                navigateFn(ele);
+              }}
+            >
+              <td>{index + 1}</td>
+              <td>{ele?.so_number}</td>
+              <td>{ele?.users}</td>
+              <td>{ele?.contact_no}</td>
+              <td>{ele?.pincode}</td>
+              <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
+              <td>{ele?.so_status}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
