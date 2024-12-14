@@ -13,11 +13,18 @@ export default function Prescriptionlist({
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const [filters, setFilters] = useState({
+    so_number: "",
+    patient_name: "",
+    contact_no: "",
+    pincode: "",
+  });
   const fetchPrescriptionList = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.get(`${PHARMACY_URL}/pharmacy/prescriptionlist`);
+      const response = await axios.get(
+        `${PHARMACY_URL}/pharmacy/prescriptionlist`
+      );
       setdatalist(response?.data?.data);
       setcompleted(response?.data);
       setinitialData(response?.data?.data);
@@ -40,29 +47,41 @@ export default function Prescriptionlist({
 
   const SearchData = (e) => {
     const { name, value } = e?.target;
-    let tempData = initialData;
-    console.log(value, name);
-    if (!value) {
-      setdatalist(initialData);
-      return;
-    }
-
-    tempData = tempData.filter((item) => {
-      let itemValue = item?.[name];
-      if (name === "patient_name") {
-        itemValue = item?.prescription_data[0][name];
-      }
-      // alert(itemValue)
-      if (itemValue !== undefined && itemValue !== null) {
-        // Convert itemValue to string for comparison
-        itemValue = itemValue.toString().toLowerCase();
-        return itemValue.includes(value.toLowerCase());
-      }
-      return false;
+    setFilters({
+      ...filters,
+      [name]: value,
     });
-
-    setdatalist(tempData);
   };
+
+  //filtering
+  useEffect(() => {
+    const filtering = () => {
+      const filteredData = initialData.filter((data) => {
+        const so_number_match =
+          !filters?.so_number ||
+          data.so_number
+            .toLowerCase()
+            .includes(filters?.so_number?.toLowerCase());
+        const name_match =
+          !filters?.patient_name ||
+          data.patient_name
+            .toLowerCase()
+            .includes(filters?.patient_name?.toLowerCase());
+        const contactMatch =
+          !filters?.contact_no || data.contact_no.includes(filters?.contact_no);
+        const pincode = String(data?.pincode || ""); 
+        const pincodeMatch =
+          !filters.pincode || pincode.includes(filters.pincode);
+
+        return so_number_match && name_match && contactMatch && pincodeMatch;
+      });
+      console.log(filteredData);
+      setdatalist(filteredData);
+    };
+
+    filtering();
+  }, [filters]);
+
   const reformatDate = (dateString) => {
     return moment(dateString).format("DD-MM-YYYY");
   };
@@ -119,86 +138,89 @@ export default function Prescriptionlist({
         Sales Orders
       </h3>
       <table className="orderlisttable">
-      <tbody>
-
-        <tr className="orderlisttableTr">
-          <th className="orderlisttableTh">No</th>
-          <th className="orderlisttableTh">
+        <tbody>
+          <tr className="orderlisttableTr">
+            <th className="orderlisttableTh">No</th>
+            <th className="orderlisttableTh">
               <h4> Order no</h4>
-              <input type="text" onChange={SearchData} name="so_number" placeholder="Search" />
+              <input
+                type="text"
+                onChange={SearchData}
+                name="so_number"
+                placeholder="Search"
+              />
             </th>
-          <th className="orderlisttableTh">
-            {" "}
-            <h4>Customer name</h4>
-            <input
-              type="text"
-              onChange={SearchData}
-              name="patient_name"
-              placeholder="Search"
-            />
-          </th>
+            <th className="orderlisttableTh">
+              {" "}
+              <h4>Customer name</h4>
+              <input
+                type="text"
+                onChange={SearchData}
+                name="patient_name"
+                placeholder="Search"
+              />
+            </th>
 
-          <th className="">
-            <h4>Mobile number</h4>
-            <input
-              type="number"
-              onChange={SearchData}
-              name="contact_no"
-              placeholder="Search"
-            />
-          </th>
+            <th className="">
+              <h4>Mobile number</h4>
+              <input
+                type="number"
+                onChange={SearchData}
+                name="contact_no"
+                placeholder="Search"
+              />
+            </th>
 
-          <th className="">
-            <h4>Pincode</h4>
-            <input
-              type="text"
-              onChange={SearchData}
-              name="pincode"
-              placeholder="Search"
-            />
-          </th>
+            <th className="">
+              <h4>Pincode</h4>
+              <input
+                type="text"
+                onChange={SearchData}
+                name="pincode"
+                placeholder="Search"
+              />
+            </th>
 
-          <th className="">
-            <h4>Date</h4>
-            <input
-              max={new Date().toISOString().split("T")[0]}
-              type="date"
-              onChange={filterDate}
-              name="created_date"
-             
-            />
-          </th>
-          <th className="">
-            <h4>Status</h4>
-            {/* <input
+            <th className="">
+              <h4>Date</h4>
+              <input
+                max={new Date().toISOString().split("T")[0]}
+                type="date"
+                onChange={filterDate}
+                name="created_date"
+              />
+            </th>
+            <th className="">
+              <h4>Status</h4>
+              {/* <input
               type="text"
               onChange={SearchData}
               name="so_status"
               placeholder="Search by status"
             /> */}
-          </th>
-        </tr>
-        {datalist &&
-          datalist.length > 0 &&
-          datalist.map((ele, index) => (
-            <tr
-            key={index}
-              onClick={() => {
-                navigateFn(ele);
-              }}
-            >
-              <td>{index + 1}</td>
-              <td>{ele?.so_number}</td>
-              <td>{ele?.patient_name}</td>
-              <td>{ele?.contact_no}</td>
-              <td>{ele?.pincode}</td>
+            </th>
+          </tr>
+          {datalist &&
+            datalist.length > 0 &&
+            datalist.map((ele, index) => (
+              <tr
+                key={index}
+                onClick={() => {
+                  navigateFn(ele);
+                }}
+              >
+                <td>{index + 1}</td>
+                <td>{ele?.so_number}</td>
+                <td>{ele?.patient_name}</td>
+                <td>{ele?.contact_no}</td>
+                <td>{ele?.pincode}</td>
 
-              <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
+                <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
 
-              <td>{ele?.so_status}</td>
-            </tr>
-          ))}
-      </tbody>
+                <td>{ele?.so_status}</td>
+              </tr>
+            ))}
+        </tbody>
       </table>
     </div>
   );

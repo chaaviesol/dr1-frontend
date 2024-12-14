@@ -13,6 +13,12 @@ export default function Orderslist({
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
+   const [filters, setFilters] = useState({
+      so_number: "",
+      users: "",
+      contact_no: "",
+      pincode: "",
+    });
 
   //clear details data
 
@@ -56,28 +62,42 @@ export default function Orderslist({
     setDetailData(data);
     setChangeDashboards({ prescriptionOrderDetail: true });
   };
-
   const SearchData = (e) => {
     const { name, value } = e?.target;
-    let tempData = initialData;
-    console.log(value);
-    if (!value) {
-      setdatalist(initialData);
-      return;
-    }
-
-    tempData = tempData.filter((item) => {
-      let itemValue = item?.[name];
-      if (itemValue !== undefined && itemValue !== null) {
-        // Convert itemValue to string for comparison
-        itemValue = itemValue.toString().toLowerCase();
-        return itemValue.includes(value.toLowerCase());
-      }
-      return false;
+    setFilters({
+      ...filters,
+      [name]: value,
     });
-
-    setdatalist(tempData);
   };
+
+    //filtering
+    useEffect(() => {
+      const filtering = () => {
+        const filteredData = initialData.filter((data) => {
+          const so_number_match =
+            !filters?.so_number ||
+            data.so_number
+              .toLowerCase()
+              .includes(filters?.so_number?.toLowerCase());
+          const name_match =
+            !filters?.users ||
+            data.users
+              .toLowerCase()
+              .includes(filters?.users?.toLowerCase());
+          const contactMatch =
+            !filters?.contact_no || data.contact_no.includes(filters?.contact_no);
+          const pincode = String(data?.pincode || ""); 
+          const pincodeMatch =
+            !filters.pincode || pincode.includes(filters.pincode);
+  
+          return so_number_match && name_match && contactMatch && pincodeMatch;
+        });
+        console.log(filteredData);
+        setdatalist(filteredData);
+      };
+  
+      filtering();
+    }, [filters]);
 
   const reformatDate = (dateString) => {
     return moment(dateString).format("DD-MM-YYYY");
