@@ -109,7 +109,7 @@ function SearchLocationModal({ isOpen, setOpen }) {
               ></i>
               {fetchingLocationPending
                 ? "Fetching location..."
-                : "Use Current Location"}
+                : "Use my location"}
             </button>
 
             <div className="avilablelocation">

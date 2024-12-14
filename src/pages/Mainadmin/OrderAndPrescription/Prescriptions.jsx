@@ -252,6 +252,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
               navigate("/billing", { state: { sales_id: Details.sales_id } })
             }
             disabled={orderDetails?.so_status !== "placed"}
+            style={{backgroundColor:orderDetails?.so_status !== "placed" &&"#dfdfdf",color:orderDetails?.so_status !== "placed" &&"#585858"}}
           >
             Start Shipping
           </button>
@@ -473,7 +474,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     <th>QTY</th>
                     <th>Dose</th>
                     <th>No Of Days</th>
-                    <th>hsn</th>
+                    <th>HSN</th>
                     <th>MRP</th>
                     <th>Discount (%)</th>
                     <th>Price</th>

@@ -189,3 +189,14 @@
   transform: scale(0.95); /* Slightly shrink the button when clicked */
   background-color: limegreen; /* Brighter green when pressed */
 }
+
+.billingtotalamtcontainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end; /* Aligns the content to the right */
+  flex-direction: row;
+}
+
+.billingtotalamtcontainer span {
+  font-weight: 400;
+}

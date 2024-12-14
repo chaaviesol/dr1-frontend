@@ -110,14 +110,15 @@ export default function Billing() {
   const getWidth = (index) => {
     const widths = [
       "20%",
-      "15%",
       "10%",
+      "8%",
       "10%",
-      "10%",
+      "7%",
       "6%",
+      "5%",
       "10%",
       "10%",
-      "15%",
+      "10%",
     ];
     return widths[index];
   };
@@ -141,17 +142,17 @@ export default function Billing() {
     });
   };
 
+  //cal total billamount
+  const total_amount = state.medicine_details.reduce(
+    (acc, currItem) => acc + currItem.selling_price * currItem.totalQuantity,
+    0 // Initial value of the accumulator
+  );
   //submit
   const confirmInvoice = async () => {
-    const total_amount = state.medicine_details.reduce(
-      (acc, currItem) => acc + currItem.selling_price * currItem.totalQuantity,
-      0 // Initial value of the accumulator
-    );
     const endPoint =
       state.order_type === "prescription"
         ? "prescriptioninvoice"
         : "createinvoice";
-    console.log(endPoint);
     const response = await axiosPrivate.post(
       `${PHARMACY_URL}/pharmacy/${endPoint}`,
       {
@@ -313,12 +314,13 @@ export default function Billing() {
         {isFetchingBillDetailsLoading && <Loader />}
         {state && state.order_type === "prescription" && (
           <div className="billingleft flex" style={{ width }}>
-            {billDetails?.prescription_image[currentImageKey] && (
-              <img
-                src={billDetails?.prescription_image[currentImageKey]}
-                alt={`Image ${currentIndex}`}
-              />
-            )}
+            {billDetails?.prescription_image &&
+              billDetails.prescription_image[currentImageKey] && (
+                <img
+                  src={billDetails.prescription_image[currentImageKey]}
+                  alt={`Image ${currentIndex}`}
+                />
+              )}
             <div className="billingimagenumber flex">
               <button onClick={handlePrevious} disabled={currentIndex === 1}>
                 <i className="ri-arrow-left-s-line"></i>
@@ -573,16 +575,18 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        style={{ textAlign: "center" }}
                         type="number"
                         name="hsn"
                         value={medicine?.hsn || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, rowIndex)}
+                        readOnly
                         min={0}
                       />
                     </td>
                     <td>
                       <input
+                        style={{ textAlign: "right" }}
                         type="text"
                         name="mrp"
                         value={medicine?.mrp || ""}
@@ -592,12 +596,12 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        style={{ textAlign: "right" }}
                         type="number"
                         name="selling_price"
-                        value={medicine?.selling_price || ""}
+                        value={medicine?.mrp - medicine?.mrp / 10 || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, rowIndex)}
-                        min={0}
+                        readOnly
                       />
                     </td>
                   </tr>
@@ -605,7 +609,9 @@ export default function Billing() {
               </tbody>
             </table>
           </div>
-
+          <div className="billingtotalamtcontainer">
+            <span>Total amount : {total_amount}</span>
+          </div>
           <div
             className="billingbutton flex"
             style={{ display: "flex", gap: "15px" }}

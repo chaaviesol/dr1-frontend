@@ -147,7 +147,7 @@ function Cart() {
       newErrors.delivery_details = "Delivery address is required";
     }
     if (!details.city || details.city === "") {
-      newErrors.city = "City/Town is required";
+      newErrors.city = "Locality is required";
     }
     if (!details.district || details.district === "") {
       newErrors.district = "District is required";

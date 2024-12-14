@@ -186,7 +186,7 @@ const CartList=React.memo(({
             style={{ justifyContent: "space-between", gap: "10px",marginTop:"10px" }}
           >
             <div className="checkoutmodalcontact">
-            <h4>City/Town</h4>
+            <h4>Locality</h4>
               <input
                 onChange={handleOnchange}
                 type="text"
@@ -240,7 +240,7 @@ const CartList=React.memo(({
                   <CircularProgress size="1.5rem" sx={{ color: "white" }} />
                 ) : (
                   <>
-                    <i className="ri-map-pin-line"></i> Use my current location
+                    <i className="ri-map-pin-line"></i> Use my location
                   </>
                 )}
               </button>

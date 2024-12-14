@@ -27,7 +27,7 @@ function UseCurrentLocationButton({ onLocationFetched }) {
           <CircularProgress size="1.5rem" sx={{ color: "white" }} />
         ) : (
           <>
-            <i className="ri-map-pin-line"></i> Use my current location
+            <i className="ri-map-pin-line"></i> Use my location
           </>
         )}
       </button>
