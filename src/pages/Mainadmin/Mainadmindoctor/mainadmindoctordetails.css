@@ -468,6 +468,7 @@
   border: 1px solid #a4b7fc;
   text-align: left;
   padding: 8px;
+  flex: 1;
 }
 
 /* Header row background color */

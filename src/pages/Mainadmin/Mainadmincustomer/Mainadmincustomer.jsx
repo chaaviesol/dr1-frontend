@@ -64,7 +64,6 @@ export default function Mainadmincustomer({
     return moment(dateString).format("DD-MM-YYYY");
   };
 
-
   const filterDate = (e) => {
     const { value } = e.target;
     // console.log("initialData", initialData);
@@ -107,71 +106,70 @@ export default function Mainadmincustomer({
 
       <h3 style={{ marginBottom: "1.3vw", marginTop: "1.3vw" }}>Customers</h3>
       <table className="doctortable">
-        <tr className="doctortableTr">
-          <th>No</th>
-          <th
-            className="doctortableTh"
-            style={{ display: "flex", flexDirection: "column" }}
-          >
-            {" "}
-            Name
-            <input
+        <tbody>
+          <tr className="doctortableTr">
+            <th>No</th>
+            <th className="doctortableTh">
+              {" "}
+              Name
+              {/* <input
               type="text"
               onChange={SearchData}
               name="name"
               placeholder="Search Customer"
-            />
-          </th>
-          <th>Mobile Number</th>
-          <th style={{ display: "flex", flexDirection: "column" }}>
-            Pincode
-            <input
+            /> */}
+            </th>
+            <th>Mobile Number</th>
+            <th>
+              Pincode
+              {/* <input
               type="text"
               onChange={SearchData}
               name="pincode"
               placeholder="Search pincode"
-            />
-          </th>
+            /> */}
+            </th>
 
-          <th>Age group</th>
-          <th style={{ display: "flex", flexDirection: "column" }}>
-            Join Date
-            <input
-              type="date"
-              onChange={filterDate}
-              name="datetime"
-              max={new Date().toISOString().split("T")[0]}
-              placeholder="dd/mm/yyyy"
-            />
-          </th>
-          <th>
-            Status
-            {/* <input
+            <th>Age group</th>
+            <th style={{ display: "flex", flexDirection: "column" }}>
+              Join Date
+              <input
+                type="date"
+                onChange={filterDate}
+                name="datetime"
+                max={new Date().toISOString().split("T")[0]}
+                placeholder="dd/mm/yyyy"
+              />
+            </th>
+            <th>
+              Status
+              {/* <input
               type="text"
               onChange={SearchData}
               name="status"
               placeholder="Search by status"
             /> */}
-          </th>
-        </tr>
-        {!isUserListFetching &&
-          Customer &&
-          Customer.length > 0 &&
-          Customer.map((ele, index) => (
-            <tr
-              onClick={() => {
-                navigateFn(ele);
-              }}
-            >
-              <td>{index + 1}</td>
-              <td style={{ textTransform: "capitalize" }}>{ele?.name}</td>
-              <td>{ele?.phone_no}</td>
-              <td>{ele?.pincode}</td>
-              <td>{ele?.ageGroup}</td>
-              <td>{moment(ele?.datetime).format("DD-MM-YYYY")}</td>
-              <td>{ele?.status === "Y" ? "Active" : "inActive"}</td>
-            </tr>
-          ))}
+            </th>
+          </tr>
+          {!isUserListFetching &&
+            Customer &&
+            Customer.length > 0 &&
+            Customer.map((ele, index) => (
+              <tr
+                onClick={() => {
+                  navigateFn(ele);
+                }}
+              >
+                <td>{index + 1}</td>
+                <td style={{ textTransform: "capitalize" }}>{ele?.name}</td>
+                <td>{ele?.phone_no}</td>
+                <td>{ele?.pincode}</td>
+                <td>{ele?.ageGroup}</td>
+                <td>{moment(ele?.datetime).format("DD-MM-YYYY")}</td>
+                <td>{ele?.status === "Y" ? "Active" : "inActive"}</td>
+              </tr>
+            ))}
+        </tbody>
       </table>
     </div>
   );
