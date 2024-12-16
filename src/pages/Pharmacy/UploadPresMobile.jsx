@@ -38,7 +38,8 @@ function UploadPresMobile() {
       ...formData,
       delivery_address: location.formattedAddress,
       location:location.location,
-      district:location.district
+      district:location.district,
+      pincode:location.postalCode
     });
   };
 
