@@ -8,8 +8,10 @@ import { Checkbox, FormControlLabel, Modal } from "@mui/material";
 import BackButtonWithTitle from "../../components/BackButtonWithTitle";
 import { Loader } from "../../components/Loader/Loader";
 import UseCurrentLocationButton from "../../components/UseCurrentLocationButton";
+import Location from "../Customer/Mobile/components/Location/Location";
 
 function UploadPresMobile() {
+  // const [isShowLocationModal, setShowLocationModal] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -18,12 +20,13 @@ function UploadPresMobile() {
     delivery_address: "",
     pincode: "",
     image: [],
+    district:"",
+    location:""
   });
   const [errors, setErrors] = useState({});
   const [loader, setLoader] = useState(false);
   const [checked, setChecked] = useState(false);
   const [location, setLocation] = useState(null); // State to hold the location data
-  const { auth } = useAuth();
   const navigate = useNavigate();
   const axiosPrivate = useAxiosPrivate();
 
@@ -34,7 +37,8 @@ function UploadPresMobile() {
     setFormData({
       ...formData,
       delivery_address: location.formattedAddress,
-      location:location.location
+      location:location.location,
+      district:location.district
     });
   };
 
@@ -198,6 +202,8 @@ function UploadPresMobile() {
       submissionData.append("pincode", formData.pincode);
       submissionData.append("so_status", so_status);
       submissionData.append("delivery_address", formData.delivery_address);
+      submissionData.append("location", formData.location);
+      submissionData.append("district", formData.district);
 
       formData.image.forEach((image, index) => {
         submissionData.append("images", image);
@@ -207,7 +213,7 @@ function UploadPresMobile() {
       for (let pair of submissionData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
-
+console.log(submissionData)
       const response = await axiosPrivate.post(
         `${PHARMACY_URL}/pharmacy/salesorder`,
         submissionData
@@ -366,6 +372,30 @@ function UploadPresMobile() {
             </p>
           )}
         </div>
+        {/* <div>
+            <Location
+              isShowLocationModal={isShowLocationModal}
+              setShowLocationModal={setShowLocationModal}
+            />
+          </div>
+
+        <div className="secopinputprescription">
+          <input
+            type="text"
+            name="city"
+            placeholder="locality"
+            value={formData.locality ?? ""}
+            onChange={handleChange}
+          />
+          {errors.pincode && (
+            <p
+              style={{ color: "red", fontSize: "0.9rem" }}
+              className="error-message"
+            >
+              {errors.pincode}
+            </p>
+          )}
+        </div> */}
         <div className="secopinputprescription">
           <input
             type="text"
