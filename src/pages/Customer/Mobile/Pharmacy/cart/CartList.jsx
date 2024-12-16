@@ -10,14 +10,12 @@ import BackButtonWithTitle from "../../../../../components/BackButtonWithTitle";
 
 const CartList=React.memo(({
   selectedItemId,
-  handleCheckout,
   totalPrice,
   handleSelect,
   orderPending,
   isModalOpen2,
   setIsModalOpen2,
   details,
-  setDetails,
   handleOnchange,
   HandleOnclick,
   handleKeyPress,
@@ -28,7 +26,6 @@ const CartList=React.memo(({
   setErrors,
 })=> {
   const { cartItems, isCartLoading } = usePharmacyContext();
-
   const navigate = useNavigate();
   if (!cartItems || cartItems.length === 0 || cartItems === undefined) {
     return (
@@ -268,11 +265,6 @@ const CartList=React.memo(({
               onClick={() => {
                 setErrors("")
                 setIsModalOpen2(false);
-                setDetails({
-                  contact_no: "",
-                  delivery_details: "",
-                  pincode: "",
-                });
               }}
             >
               Cancel
