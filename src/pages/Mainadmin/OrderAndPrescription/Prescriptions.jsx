@@ -318,7 +318,8 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     moment(orderDetails?.packedDate).format("DD/MM/YYYY")}
                 </td>
                 <td className="orderdetails-data">
-                  {orderDetails?.dispatched}
+                {/* {orderDetails?.dispatcheddate !== "" &&
+                    moment(orderDetails?.dispatcheddate).format("DD/MM/YYYY")} */}
                 </td>
                 <td className="orderdetails-data">{orderDetails?.delivered}</td>
               </tr>
