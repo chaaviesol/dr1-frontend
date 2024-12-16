@@ -95,7 +95,7 @@ export const billingReducer = (state, action) => {
         no_of_days:"",
         hsn: item.hsn,
         mrp: item.mrp,
-        selling_price: "",
+        selling_price: item.selling_price,
       };
 
       return {

@@ -33,6 +33,7 @@ export default function Billing() {
   const location = useLocation();
   const navigate = useNavigate();
   const sales_id = location.state.sales_id;
+
   const ITEM_HEIGHT = 35;
   const ITEM_PADDING_TOP = 0;
   const MenuProps = {
@@ -184,8 +185,8 @@ export default function Billing() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(`${PHARMACY_URL}/pharmacy/getproducts`);
-      console.log(response);
+      const response = await axios.get(`${PHARMACY_URL}/pharmacy/getprods`);
+      console.log("responseeprodssssss",response.data.data);
       setProducts(response.data.data);
     } catch (err) {}
   };
@@ -597,7 +598,7 @@ export default function Billing() {
                     <td>
                       <input
                         style={{ textAlign: "right" }}
-                        type="number"
+                        type="text"
                         name="selling_price"
                         value={medicine?.selling_price}
                         className="billing-input"
