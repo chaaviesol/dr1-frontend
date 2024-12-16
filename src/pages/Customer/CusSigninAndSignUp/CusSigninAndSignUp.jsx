@@ -8,6 +8,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useUserDetails } from "../../../contexts/userDetailsProvider";
 export const CusSigninAndSignUp = ({
   Caller: { toggleSignInModal, OpenModal },
 }) => {
@@ -27,6 +28,7 @@ export const CusSigninAndSignUp = ({
       confirmPwd: false,
     },
   });
+  const {fetchCustomerDetails}=useUserDetails()
   const navigate = useNavigate();
   const { setAuth } = useAuth();
   useEffect(() => {
@@ -123,7 +125,6 @@ export const CusSigninAndSignUp = ({
     setIsLoginPending(true);
     try {
       const response = await axios.post(`${PHARMACY_URL}/user/userlogin`, payload);
-      console.log(response);
       const data = response.data;
       const { message, userId, userType, accessToken, refreshToken } = data;
       toast.success(message);
@@ -133,6 +134,7 @@ export const CusSigninAndSignUp = ({
         userId,
         userType,
       });
+      fetchCustomerDetails()
       setOpenModal(false);
     } catch (err) {
       toast.error(err.response.data.message);
@@ -227,7 +229,7 @@ export const CusSigninAndSignUp = ({
 
                 <div className="toplogindatainput flex">
                   <h3 className="smallh3" style={{marginBottom:".5rem"}}>Welcome Back</h3>
-                  <h4 className="smallh4">Login your account</h4>
+                  <h4 className="smallh4">Login to your account</h4>
                   <h4 className="toplogindatatext" style={{marginTop:"1rem"}}>Email</h4>
                   <input onChange={handlechanges} name="email" type="text"  />
 

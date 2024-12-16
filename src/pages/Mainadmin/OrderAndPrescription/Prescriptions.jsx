@@ -270,11 +270,15 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 <th className="orderdetails-id-column orderdetails-header">
                   Order ID
                 </th>
-                {orderDetails?.order_type === "prescription" && (
+                {orderDetails?.order_type === "prescription" ? (
                   <th className="orderdetails-header orderdetails-data-attachment">
                     Attachment
                   </th>
-                )}
+                )
+              
+              :
+              <th></th>
+              }
                 <th className="orderdetails-header">Confirmed Date</th>
                 <th className="orderdetails-header">Packed Date</th>
                 <th className="orderdetails-header">Shipping Date</th>
@@ -304,7 +308,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 </td>
                 <td className="orderdetails-data">
                   {" "}
-                  {moment(orderDetails?.created_date).format("DD/MM/YYYY")}
+                  {moment(orderDetails?.updated_date).format("DD/MM/YYYY")}
                 </td>
                 <td className="orderdetails-data">
                   {orderDetails?.packedDate !== "" &&

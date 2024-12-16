@@ -123,8 +123,10 @@ function UploadPresMobile() {
         const response = await axiosPrivate.post(
           `${PHARMACY_URL}/user/getprofile`
         );
+        console.log(response)
         const contact_no = parseInt(response?.data?.userDetails?.phone_no);
         const pincode = parseInt(response?.data?.userDetails?.pincode);
+        const name = response?.data?.userDetails?.name
 
         setFormData({
           contact_no: contact_no,
@@ -132,6 +134,7 @@ function UploadPresMobile() {
           remarks: "",
           doctor_name: "",
           image: [],
+          name,
         });
       } catch (err) {
         console.error("Error fetching contact number:", err);

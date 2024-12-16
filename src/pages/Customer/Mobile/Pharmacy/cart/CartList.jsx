@@ -194,7 +194,7 @@ const CartList=React.memo(({
                 value={details?.city}
                 onKeyDown={handleKeyPress}
                 maxLength={40}
-                placeholder="Enter Your City "
+                placeholder="Locality "
               />
               {errors.city && (
                 <p

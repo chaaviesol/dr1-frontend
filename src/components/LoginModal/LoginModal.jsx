@@ -9,6 +9,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useUserDetails } from "../../contexts/userDetailsProvider";
 
 export const LoginModal = ({ show, setShow }) => {
   const [isLoginPending, setIsLoginPending] = useState(false);
@@ -26,6 +27,7 @@ export const LoginModal = ({ show, setShow }) => {
       confirmPwd: false,
     },
   });
+  const { fetchCustomerDetails } = useUserDetails();
   const navigate = useNavigate();
   const { setAuth } = useAuth();
 
@@ -118,8 +120,10 @@ export const LoginModal = ({ show, setShow }) => {
   const customerLogin = async (payload) => {
     setIsLoginPending(true);
     try {
-      const response = await axios.post(`${PHARMACY_URL}/user/userlogin`, payload);
-      console.log(response);
+      const response = await axios.post(
+        `${PHARMACY_URL}/user/userlogin`,
+        payload
+      );
       const data = response.data;
       const { message, userId, userType, accessToken, refreshToken } = data;
       toast.success(message);
@@ -131,6 +135,7 @@ export const LoginModal = ({ show, setShow }) => {
         userId,
         userType,
       });
+      fetchCustomerDetails();
     } catch (err) {
       toast.error(err.response.data.message);
       console.log(err);
@@ -231,7 +236,6 @@ export const LoginModal = ({ show, setShow }) => {
                   <h3 className="smallh3" style={{ marginBottom: ".5rem" }}>
                     Login to Continue
                   </h3>
-                  {/* <h4 className="smallh4">Login your account</h4> */}
                   <h4
                     className="toplogindatatext"
                     style={{ marginTop: "1rem" }}

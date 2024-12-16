@@ -235,7 +235,6 @@ export default function Secopmodal({ isModalOpen, setIsModalOpen }) {
   const fetchContactNumber = async () => {
     try {
       const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
-      console.log("resp", response.data);
       const contact_no = parseInt(response?.data?.userDetails?.phone_no);
       setFormData({
         contact_no: contact_no,

@@ -11,7 +11,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import AuthProvider from "./contexts/Auth/AuthProvider";
 import TabBarProvider from "./contexts/MobileScreen/TabBarProvider";
 import PharmacyProvider from "./contexts/PharmacyContext";
-import  LocationProvider  from "./contexts/LocationContext";
+import LocationProvider from "./contexts/LocationContext";
+import UserDetailsProvider from "./contexts/userDetailsProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const queryClient = new QueryClient();
@@ -20,17 +21,19 @@ root.render(
     <AuthProvider>
       <GoogleOAuthProvider clientId="953927151453-fk1lv5f5gk7c72ll8npeekj0qi60430h.apps.googleusercontent.com">
         <React.StrictMode>
-          <Contexts>
-            <LocationProvider>
-              <SearchDoctorProvider>
-                <PharmacyProvider>
-                  <TabBarProvider>
-                    <App />
-                  </TabBarProvider>
-                </PharmacyProvider>
-              </SearchDoctorProvider>
-            </LocationProvider>
-          </Contexts>
+          <UserDetailsProvider>
+            <Contexts>
+              <LocationProvider>
+                <SearchDoctorProvider>
+                  <PharmacyProvider>
+                    <TabBarProvider>
+                      <App />
+                    </TabBarProvider>
+                  </PharmacyProvider>
+                </SearchDoctorProvider>
+              </LocationProvider>
+            </Contexts>
+          </UserDetailsProvider>
         </React.StrictMode>
       </GoogleOAuthProvider>
     </AuthProvider>

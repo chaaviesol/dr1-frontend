@@ -28,10 +28,8 @@ export const ProfileView = ({
   };
 
   const fetchUserProfileDetails = async (userId) => {
-    const payload = { id: userId };
     const response = await axiosPrivate.post(
       `${PHARMACY_URL}/user/getprofile`,
-      payload
     );
     return response.data;
   };

@@ -1,5 +1,6 @@
 import { React, createContext, useContext, useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { toast } from "react-toastify";
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
@@ -19,7 +20,7 @@ export default function AuthProvider({ children }) {
       });
     } catch (err) {
       authLogout(); // Log out if there's an error validating the token
-      alert("Session expired");
+      toast.error("Session expired please login")
     } finally {
       setIsLoading(false);
     }

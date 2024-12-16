@@ -144,7 +144,7 @@ export default function Billing() {
 
   //cal total billamount
   const total_amount = state.medicine_details.reduce(
-    (acc, currItem) => acc + currItem.selling_price * currItem.totalQuantity,
+    (acc, currItem) => acc + currItem.mrp * currItem.totalQuantity,
     0 // Initial value of the accumulator
   );
   //submit
@@ -599,7 +599,7 @@ export default function Billing() {
                         style={{ textAlign: "right" }}
                         type="number"
                         name="selling_price"
-                        value={medicine?.mrp - medicine?.mrp / 10 || ""}
+                        value={medicine?.selling_price}
                         className="billing-input"
                         readOnly
                       />

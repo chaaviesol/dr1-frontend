@@ -13,12 +13,12 @@ export default function Orderslist({
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
   const [completed, setcompleted] = useState([]);
-   const [filters, setFilters] = useState({
-      so_number: "",
-      users: "",
-      contact_no: "",
-      pincode: "",
-    });
+  const [filters, setFilters] = useState({
+    so_number: "",
+    users: "",
+    contact_no: "",
+    pincode: "",
+  });
 
   //clear details data
 
@@ -51,6 +51,7 @@ export default function Orderslist({
 
   useEffect(() => {
     if (data) {
+      console.log(data?.data);
       setdatalist(data?.data);
       setcompleted(data);
       setinitialData(data?.data);
@@ -70,34 +71,33 @@ export default function Orderslist({
     });
   };
 
-    //filtering
-    useEffect(() => {
-      const filtering = () => {
-        const filteredData = initialData.filter((data) => {
-          const so_number_match =
-            !filters?.so_number ||
-            data.so_number
-              .toLowerCase()
-              .includes(filters?.so_number?.toLowerCase());
-          const name_match =
-            !filters?.users ||
-            data.users
-              .toLowerCase()
-              .includes(filters?.users?.toLowerCase());
-          const contactMatch =
-            !filters?.contact_no || data.contact_no.includes(filters?.contact_no);
-          const pincode = String(data?.pincode || ""); 
-          const pincodeMatch =
-            !filters.pincode || pincode.includes(filters.pincode);
-  
-          return so_number_match && name_match && contactMatch && pincodeMatch;
-        });
-        console.log(filteredData);
-        setdatalist(filteredData);
-      };
-  
+  //filtering
+  useEffect(() => {
+    const filtering = () => {
+      const filteredData = initialData.filter((data) => {
+        const so_number_match =
+          !filters?.so_number ||
+          data.so_number
+            .toLowerCase()
+            .includes(filters?.so_number?.toLowerCase());
+        const name_match =
+          !filters?.users ||
+          data.users.toLowerCase().includes(filters?.users?.toLowerCase());
+        const contactMatch =
+          !filters?.contact_no || data.contact_no.includes(filters?.contact_no);
+        const pincode = String(data?.pincode || "");
+        const pincodeMatch =
+          !filters.pincode || pincode.includes(filters.pincode);
+
+        return so_number_match && name_match && contactMatch && pincodeMatch;
+      });
+      console.log(filteredData);
+      setdatalist(filteredData);
+    };
+    if (initialData.length > 0) {
       filtering();
-    }, [filters]);
+    }
+  }, [filters]);
 
   const reformatDate = (dateString) => {
     return moment(dateString).format("DD-MM-YYYY");
@@ -113,6 +113,7 @@ export default function Orderslist({
     setdatalist(filteredData);
   };
 
+  console.log({ datalist });
   return (
     <div>
       {isLoading && <Loader />}
@@ -159,7 +160,12 @@ export default function Orderslist({
             <th className="orderlisttableTh">No</th>
             <th className="orderlisttableTh">
               <h4> Order no</h4>
-              <input type="text" onChange={SearchData} name="so_number" placeholder="Search" />
+              <input
+                type="text"
+                onChange={SearchData}
+                name="so_number"
+                placeholder="Search"
+              />
             </th>
 
             <th className="orderlisttableTh">

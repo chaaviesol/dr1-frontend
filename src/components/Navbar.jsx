@@ -29,10 +29,8 @@ export default function Navbar() {
   const path = location?.pathname;
 
   const fetchUserProfileDetails = async (userId) => {
-    const payload = { id: userId };
     const response = await axiosPrivate.post(
-      `${PHARMACY_URL}/user/getprofile`,
-      payload
+      `${PHARMACY_URL}/user/getprofile`,     
     );
     return response.data;
   };
