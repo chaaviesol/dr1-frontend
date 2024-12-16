@@ -120,7 +120,7 @@
   border: 1px solid #ccd5fa;
   border: 1px solid #a4b7fc;
   text-align: center;
-  padding:10px 0px;
+  padding: 10px 0px;
 }
 
 .billing-table td {
@@ -136,7 +136,7 @@
 .billing-input {
   width: 100%;
   padding: 5px;
-  height:100%;
+  height: 100%;
   box-sizing: border-box; /* Ensure input fills the cell without overflowing */
   border: 2px solid white;
   font-size: 15px;
@@ -168,14 +168,14 @@
   border-radius: 4px;
 }
 
-
 .billing-confirm-btn {
   background-color: green;
   color: white;
   border: none;
   padding: 8px 20px;
   border-radius: 4px;
-
+  width: 120px;
+  height:40px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }

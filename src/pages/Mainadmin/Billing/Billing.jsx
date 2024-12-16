@@ -8,6 +8,7 @@ import axios from "axios";
 import { billingReducer, INITIAL_STATE, ACTIONS } from "./billingReducer";
 import {
   Checkbox,
+  CircularProgress,
   FormControl,
   InputLabel,
   ListItemText,
@@ -96,12 +97,12 @@ export default function Billing() {
   };
 
   const headings = [
-    "Medicine Name",
-    "Batch Number",
+    "Medicine name",
+    "Batch number",
     "Frequency",
     "BF/AF",
     "Dose",
-    "No Of Days",
+    "No of days",
     "Qty",
     "HSN",
     "MRP",
@@ -142,10 +143,9 @@ export default function Billing() {
       payload: { field, value, rowIndex },
     });
   };
-
   //cal total billamount
   const total_amount = state.medicine_details.reduce(
-    (acc, currItem) => acc + currItem.mrp * currItem.totalQuantity,
+    (acc, currItem) => acc + currItem.selling_price * currItem.totalQuantity,
     0 // Initial value of the accumulator
   );
   //submit
@@ -186,7 +186,6 @@ export default function Billing() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(`${PHARMACY_URL}/pharmacy/getprods`);
-      console.log("responseeprodssssss",response.data.data);
       setProducts(response.data.data);
     } catch (err) {}
   };
@@ -617,22 +616,30 @@ export default function Billing() {
             className="billingbutton flex"
             style={{ display: "flex", gap: "15px" }}
           >
-            <button
-              onClick={() =>
-                dispatch({
-                  type: ACTIONS.ADD_NEW_ROW,
-                })
-              }
-            >
-              Add new row
-            </button>
+            {state && state.order_type === "prescription" && (
+              <button
+                onClick={() =>
+                  dispatch({
+                    type: ACTIONS.ADD_NEW_ROW,
+                  })
+                }
+                style={{height:"40px"}}
+              >
+                Add new row
+              </button>
+            )}
+
             <button
               type="submit"
               disabled={confirmInvoiceMutation.isPending}
               className="billing-confirm-btn"
               onClick={handleSubmit}
             >
-              Continue
+              {confirmInvoiceMutation.isPending ? (
+                <CircularProgress size="1.5rem" sx={{ color: "white" }} />
+              ) : (
+                "Continue"
+              )}
             </button>
           </div>
         </div>
