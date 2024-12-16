@@ -202,7 +202,7 @@ function UploadPresMobile() {
       submissionData.append("pincode", formData.pincode);
       submissionData.append("so_status", so_status);
       submissionData.append("delivery_address", formData.delivery_address);
-      submissionData.append("delivery_location", formData.location);
+      submissionData.append("delivery_location",JSON.stringify(formData.location));
       submissionData.append("district", formData.district);
 
       formData.image.forEach((image, index) => {
@@ -213,7 +213,7 @@ function UploadPresMobile() {
       for (let pair of submissionData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
-console.log(submissionData)
+
       const response = await axiosPrivate.post(
         `${PHARMACY_URL}/pharmacy/salesorder`,
         submissionData
