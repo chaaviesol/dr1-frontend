@@ -205,7 +205,7 @@ function Cart() {
       setDetails({
         ...details,
         delivery_details: data.formattedAddress,
-        city: data.streetAddress,
+        city: data.streetAddress || data.city,
         district: data.district,
         pincode: data.postalCode,
         delivery_location: data.location,

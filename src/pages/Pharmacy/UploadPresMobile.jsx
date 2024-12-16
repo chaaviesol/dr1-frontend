@@ -29,10 +29,12 @@ function UploadPresMobile() {
 
   // Callback function to receive the location data
   const handleLocationFetched = (location) => {
+    console.log(location)
     setLocation(location); // Store the fetched location in the state;
     setFormData({
       ...formData,
       delivery_address: location.formattedAddress,
+      location:location.location
     });
   };
 
