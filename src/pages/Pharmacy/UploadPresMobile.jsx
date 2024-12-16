@@ -202,7 +202,7 @@ function UploadPresMobile() {
       submissionData.append("pincode", formData.pincode);
       submissionData.append("so_status", so_status);
       submissionData.append("delivery_address", formData.delivery_address);
-      submissionData.append("location", formData.location);
+      submissionData.append("delivery_location", formData.location);
       submissionData.append("district", formData.district);
 
       formData.image.forEach((image, index) => {

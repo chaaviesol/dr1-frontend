@@ -252,7 +252,11 @@ function Prescriptions({ Details, setChangeDashboards }) {
               navigate("/billing", { state: { sales_id: Details.sales_id } })
             }
             disabled={orderDetails?.so_status !== "placed"}
-            style={{backgroundColor:orderDetails?.so_status !== "placed" &&"#dfdfdf",color:orderDetails?.so_status !== "placed" &&"#585858"}}
+            style={{
+              backgroundColor:
+                orderDetails?.so_status !== "placed" && "#dfdfdf",
+              color: orderDetails?.so_status !== "placed" && "#585858",
+            }}
           >
             Start Shipping
           </button>
@@ -274,11 +278,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   <th className="orderdetails-header orderdetails-data-attachment">
                     Attachment
                   </th>
-                )
-              
-              :
-              <th></th>
-              }
+                ) : (
+                  <th></th>
+                )}
                 <th className="orderdetails-header">Confirmed Date</th>
                 <th className="orderdetails-header">Packed Date</th>
                 <th className="orderdetails-header">Shipping Date</th>
@@ -307,8 +309,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
                   )}
                 </td>
                 <td className="orderdetails-data">
-                  {" "}
-                  {moment(orderDetails?.updated_date).format("DD/MM/YYYY")}
+                  {orderDetails?.updated_date
+                    ? moment(orderDetails?.updated_date).format("DD/MM/YYYY")
+                    : ""}
                 </td>
                 <td className="orderdetails-data">
                   {orderDetails?.packedDate !== "" &&
