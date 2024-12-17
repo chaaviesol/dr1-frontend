@@ -69,7 +69,7 @@ export default function Prescriptionlist({
             .includes(filters?.patient_name?.toLowerCase());
         const contactMatch =
           !filters?.contact_no || data.contact_no.includes(filters?.contact_no);
-        const pincode = String(data?.pincode || ""); 
+        const pincode = String(data?.pincode || "");
         const pincodeMatch =
           !filters.pincode || pincode.includes(filters.pincode);
 
@@ -110,17 +110,6 @@ export default function Prescriptionlist({
             <h4>Placed</h4>
           </div>
         </div>
-
-        {/* <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart2 mainadmindoctordatas_chart11  flex">
-        <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon11 flex">
-          <i class="ri-user-follow-line"></i>
-        </div>
-
-        <div style={{ marginLeft: "18px" }}>
-          <h2>{completed?.outfordelivery}</h2>
-          <h4>Out for delivery</h4>
-        </div>
-      </div> */}
 
         <div className="mainadmindoctordatas_chart1 mainadmindoctordatas_chart2 mainadmindoctordatas_chart11  flex">
           <div className="mainadmindoctordatas_chart_icon mainadmindoctordatas_chart_icon11 flex">
@@ -217,7 +206,32 @@ export default function Prescriptionlist({
 
                 <td>{moment.utc(ele?.created_date).format("DD-MM-YYYY")}</td>
 
-                <td>{ele?.so_status}</td>
+                <td>
+                  <div
+                    style={{
+                      backgroundColor:
+                        ele?.so_status === "placed"
+                          ? "#6b8cfe"
+                          : ele?.so_status === "confirmed"
+                          ? "#ffc107"
+                          : ele?.so_status === "packed"
+                          ? "#ff5722"
+                          : ele?.so_status === "delivered"
+                          ? "#4caf50"
+                          : "gray", // Default to gray if status is not found
+                      borderRadius: "50px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      padding: "5px 10px",
+                      textTransform:"capitalize"
+
+                    }}
+                  >
+                    {ele?.so_status}
+                  </div>
+                </td>
               </tr>
             ))}
         </tbody>

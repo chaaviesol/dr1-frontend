@@ -258,7 +258,10 @@ function Prescriptions({ Details, setChangeDashboards }) {
               color: orderDetails?.so_status !== "placed" && "#585858",
             }}
           >
-            Start Shipping
+            {orderDetails?.so_status === "placed" ? "  Start Shipping"  : "Billed"
+          
+          }
+          
           </button>
         </div>
 
@@ -363,7 +366,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
             <div className="customerdatas flex">
               <h3>Contact Number:</h3>
-              <h3>{orderDetails?.contact_no}</h3>
+              <h3 style={{userSelect:"text"}}>{orderDetails?.contact_no}</h3>
             </div>
 
             <div className="customerdataremark">

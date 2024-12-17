@@ -225,7 +225,32 @@ export default function Orderslist({
               <td>{ele?.contact_no}</td>
               <td>{ele?.pincode}</td>
               <td>{moment.utc(ele?.created_date).format("DD-MM-YYYY")}</td>
-              <td>{ele?.so_status}</td>
+              <td>
+                {" "}
+                <div
+                  style={{
+                    backgroundColor:
+                      ele?.so_status === "placed"
+                        ? "#6b8cfe"
+                        : ele?.so_status === "confirmed"
+                        ? "#ffc107"
+                        : ele?.so_status === "packed"
+                        ? "#ff5722"
+                        : ele?.so_status === "delivered"
+                        ? "#4caf50"
+                        : "gray",
+                    borderRadius: "50px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "white",
+                    padding: "5px 10px",
+                    textTransform:"capitalize"
+                  }}
+                >
+                  {ele?.so_status}
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

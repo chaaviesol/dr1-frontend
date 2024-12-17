@@ -409,6 +409,7 @@ margin-bottom:15px;
 .deliverymob {
   margin-top: 5px;
   color: #474747;
+  user-select: text;
 }
 
 .billeddetails-table {
