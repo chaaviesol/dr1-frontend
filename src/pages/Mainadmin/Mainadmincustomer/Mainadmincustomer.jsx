@@ -165,7 +165,7 @@ export default function Mainadmincustomer({
                 <td>{ele?.phone_no}</td>
                 <td>{ele?.pincode}</td>
                 <td>{ele?.ageGroup}</td>
-                <td>{moment(ele?.datetime).format("DD-MM-YYYY")}</td>
+                <td>{moment.utc(ele?.datetime).format("DD-MM-YYYY")}</td>
                 <td>{ele?.status === "Y" ? "Active" : "inActive"}</td>
               </tr>
             ))}

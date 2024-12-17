@@ -25,7 +25,7 @@ export const DoctorAdminViews = ({ consultAndViewData }) => {
                 <td>{index + 1}</td>
                 <td>{ele?.userid?.name}</td>
                 {/* <td>{ele?.userid?.phone_no}</td> */}
-                <td> {moment(ele?.created_date).format("DD/MM/YYYY")}</td>
+                <td> {moment.utc(ele?.created_date).format("DD/MM/YYYY")}</td>
                 <td>{ele?.userid?.pincode}</td>
                 <td>{ele.consultcount === 1 ? "Contacted" : "Viewed"}</td>
               </tr>

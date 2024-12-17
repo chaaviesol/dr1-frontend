@@ -50,7 +50,7 @@ function DetailedOpinionDesktop({
           <div className="adpha-seccontainer-datas">
             <h4>Date</h4>
             <h2>
-              {moment(secondOpinionData?.created_date).format("DD/MM/YY")}
+              {moment.utc(secondOpinionData?.created_date).format("DD/MM/YY")}
             </h2>
           </div>
 

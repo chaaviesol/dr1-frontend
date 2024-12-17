@@ -141,7 +141,7 @@ export default function Mainadmincustomerdetails({
           <div style={{ marginLeft: "1.3vw" }}>
             <h2>Date of join</h2>
             <h4>
-              {moment(customerDetails?.datetime)
+              {moment.utc(customerDetails?.datetime)
                 .subtract(10, "days")
                 .calendar()}
             </h4>
@@ -150,7 +150,7 @@ export default function Mainadmincustomerdetails({
           <div style={{ marginLeft: "1.5vw" }}>
             <h2>Last Active</h2>
             <h4>
-              {moment(customerDetails?.last_active)
+              {moment.utc(customerDetails?.last_active)
                 .subtract(10, "days")
                 .calendar()}
             </h4>
