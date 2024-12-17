@@ -541,6 +541,7 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        style={{ textAlign: "center" }}
                         disabled={!medicine.category.includes("MEDICINES")}
                         type="number"
                         name="takingQuantity"
@@ -553,6 +554,7 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        style={{ textAlign: "center" }}
                         disabled={!medicine.category.includes("MEDICINES")}
                         type="number"
                         name="no_of_days"
@@ -565,6 +567,7 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        style={{ textAlign: "center" }}
                         type="number"
                         name="totalQuantity"
                         value={medicine?.totalQuantity || ""}
@@ -623,7 +626,7 @@ export default function Billing() {
                     type: ACTIONS.ADD_NEW_ROW,
                   })
                 }
-                style={{height:"40px"}}
+                style={{ height: "40px" }}
               >
                 Add new row
               </button>

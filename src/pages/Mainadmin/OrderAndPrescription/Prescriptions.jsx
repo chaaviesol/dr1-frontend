@@ -310,18 +310,23 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 </td>
                 <td className="orderdetails-data">
                   {orderDetails?.updated_date
-                    ? moment(orderDetails?.updated_date).format("DD/MM/YYYY")
+                    ? moment(orderDetails?.updated_date).format("DD/MM/YYYY hh:mm A")
                     : ""}
                 </td>
                 <td className="orderdetails-data">
                   {orderDetails?.packedDate !== "" &&
-                    moment(orderDetails?.packedDate).format("DD/MM/YYYY")}
+                    moment(orderDetails?.packedDate).format("DD/MM/YYYY hh:mm A")}
                 </td>
                 <td className="orderdetails-data">
-                {/* {orderDetails?.dispatcheddate !== "" &&
-                    moment(orderDetails?.dispatcheddate).format("DD/MM/YYYY")} */}
+                  {orderDetails?.dispatcheddate !== "" &&
+                    moment(orderDetails?.dispatcheddate).format("DD/MM/YYYY hh:mm A")}
                 </td>
-                <td className="orderdetails-data">{orderDetails?.delivered}</td>
+                <td className="orderdetails-data">
+                  {" "}
+                  {orderDetails?.delivereddate !== "" && 
+    moment(orderDetails?.delivereddate).format("DD/MM/YYYY hh:mm A")}
+
+                </td>
               </tr>
             </tbody>
           </table>
