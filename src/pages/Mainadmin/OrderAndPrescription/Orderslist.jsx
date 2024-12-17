@@ -224,7 +224,7 @@ export default function Orderslist({
               <td>{ele?.users}</td>
               <td>{ele?.contact_no}</td>
               <td>{ele?.pincode}</td>
-              <td>{moment(ele?.created_date).format("DD-MM-YYYY")}</td>
+              <td>{moment.utc(ele?.created_date).format("DD-MM-YYYY")}</td>
               <td>{ele?.so_status}</td>
             </tr>
           ))}

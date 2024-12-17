@@ -23,7 +23,7 @@ function Cart() {
     pincode: "",
     city: "",
     district: "",
-    patient_name: "",
+    name: "",
   });
   const isMobile = useIsMobileScreen();
   const { cartItems, refetchCart } = usePharmacyContext();
@@ -56,7 +56,7 @@ function Cart() {
           ...details,
           contact_no: contact_no,
           pincode: pincode,
-          patient_name: name,
+          name: name,
         });
       } catch (err) {
         console.error("Error fetching contact number:", err);
@@ -88,7 +88,7 @@ function Cart() {
       city: address?.city,
       district: address?.district,
       delivery_location: address?.delivery_location,
-      patient_name: address?.patient_name,
+      name: address?.name,
     };
     const response = await axiosPrivate.post(
       `${PHARMACY_URL}/pharmacy/salesorder`,

@@ -289,7 +289,10 @@ function Prescriptions({ Details, setChangeDashboards }) {
             </thead>
             <tbody className="orderdetails-tbody">
               <tr className="orderdetails-row">
-                <td className="orderdetails-id-column orderdetails-data">
+                <td
+                  className="orderdetails-id-column orderdetails-data"
+                  style={{ userSelect: "text" }}
+                >
                   {orderDetails?.so_number}
                 </td>
                 <td className="orderdetails-data orderdetails-data-attachment">
@@ -308,24 +311,37 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     </button>
                   )}
                 </td>
-                <td className="orderdetails-data">
+                <td
+                  className="orderdetails-data"
+                  style={{ userSelect: "text" }}
+                >
                   {orderDetails?.updated_date
-                    ? moment(orderDetails?.updated_date).format("DD/MM/YYYY hh:mm A")
+                    ? moment
+                        .utc(orderDetails.updated_date)
+                        .format("DD/MM/YYYY hh:mm A")
                     : ""}
                 </td>
                 <td className="orderdetails-data">
-                  {orderDetails?.packedDate !== "" &&
-                    moment(orderDetails?.packedDate).format("DD/MM/YYYY hh:mm A")}
+                  {orderDetails?.packedDate
+                    ? moment
+                        .utc(orderDetails?.packedDate)
+                        .format("DD/MM/YYYY hh:mm A")
+                    : ""}
                 </td>
                 <td className="orderdetails-data">
-                  {orderDetails?.dispatcheddate !== "" &&
-                    moment(orderDetails?.dispatcheddate).format("DD/MM/YYYY hh:mm A")}
+                  {orderDetails?.dispatcheddate
+                    ? moment
+                        .utc(orderDetails?.dispatcheddate)
+                        .format("DD/MM/YYYY hh:mm A")
+                    : ""}
                 </td>
                 <td className="orderdetails-data">
                   {" "}
-                  {orderDetails?.delivereddate !== "" && 
-    moment(orderDetails?.delivereddate).format("DD/MM/YYYY hh:mm A")}
-
+                  {orderDetails?.delivereddate
+                    ? moment
+                        .utc(orderDetails?.delivereddate)
+                        .format("DD/MM/YYYY hh:mm A")
+                    : ""}
                 </td>
               </tr>
             </tbody>
@@ -489,7 +505,6 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     <th>No Of Days</th>
                     <th>HSN</th>
                     <th>MRP</th>
-                    <th>Discount (%)</th>
                     <th>Price</th>
                   </tr>
                 </thead>
@@ -541,7 +556,6 @@ function Prescriptions({ Details, setChangeDashboards }) {
                       </td>
                       <td>{med?.generic_prodid?.hsn}</td>
                       <td>{med?.generic_prodid?.mrp}</td>
-                      <td>{med?.discount}</td>
                       <td>{med?.selling_price}</td>
                     </tr>
                   ))}
