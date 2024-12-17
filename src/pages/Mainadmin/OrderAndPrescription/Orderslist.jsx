@@ -233,11 +233,11 @@ export default function Orderslist({
                       ele?.so_status === "placed"
                         ? "#6b8cfe"
                         : ele?.so_status === "confirmed"
-                        ? "#ffc107"
+                        ? "#FB8500"
                         : ele?.so_status === "packed"
                         ? "#ff5722"
                         : ele?.so_status === "delivered"
-                        ? "#4caf50"
+                        ? "#2A9D8F"
                         : "gray",
                     borderRadius: "50px",
                     display: "flex",
