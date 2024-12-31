@@ -161,6 +161,19 @@ export default function Addproduct({
       category: value,
     }));
   };
+  const handleChangeMedicineType = (event) => {
+    const {
+      target: { value },
+    } = event;
+
+    setproduct((prevdata) => ({
+      ...prevdata,
+      product_type: value,
+    }));
+  };
+
+
+  console.log("product",product)
   return (
     <div
       className="productlistInput"
@@ -195,7 +208,7 @@ export default function Addproduct({
               Category <span className="required">*</span>
             </h4>
             <div className="multiselector">
-              <FormControl sx={{ m: 1, width: 300 }}>
+              <FormControl sx={{ m: 1, width: 300, border: "none" }}>
                 <Select
                   labelId="demo-multiple-checkbox-label"
                   id="demo-multiple-checkbox"
@@ -207,24 +220,31 @@ export default function Addproduct({
                       sx={{
                         height: "40px",
                         marginTop: "2px",
+                        border: "none",
                         borderRadius: "6px",
+                        backgroundColor: "#DADCFF",
                       }}
                     />
                   }
                   renderValue={(selected) => selected.join(", ")}
                   MenuProps={MenuProps}
                 >
-                  {selectedCategory.map((category) => (
-                    <MenuItem key={category.category} value={category.category}>
-                      <Checkbox
-                        checked={
-                          Array.isArray(product?.category) &&
-                          product.category.includes(category.category)
-                        }
-                      />
-                      <ListItemText primary={category.category} />
-                    </MenuItem>
-                  ))}
+                  {selectedCategory &&
+                    selectedCategory.length > 0 &&
+                    selectedCategory.map((category) => (
+                      <MenuItem
+                        key={category.category}
+                        value={category.category}
+                      >
+                        <Checkbox
+                          checked={
+                            Array.isArray(product?.category) &&
+                            product.category.includes(category.category)
+                          }
+                        />
+                        <ListItemText primary={category.category} />
+                      </MenuItem>
+                    ))}
                 </Select>
               </FormControl>
             </div>
@@ -267,6 +287,44 @@ export default function Addproduct({
               onChange={handlechange}
             />
           </div>
+          {Array.isArray(product?.category) &&
+            product.category.includes("MEDICINES") && (
+              <div className="addproductadmin-input-box">
+                <h4>
+                  Medicine type <span className="required">*</span>
+                </h4>
+                <div className="multiselector">
+                  <FormControl sx={{ m: 1, width: 300, border: "none" }}>
+                    <Select
+                      labelId="demo-multiple-checkbox-label"
+                      id="demo-multiple-checkbox"
+                      value={product?.type || ""}
+                      onChange={handleChangeMedicineType}
+                      input={
+                        <OutlinedInput
+                          sx={{
+                            height: "40px",
+                            marginTop: "2px",
+                            border: "none",
+                            borderRadius: "6px",
+                            backgroundColor: "#DADCFF",
+                          }}
+                        />
+                      }
+                      MenuProps={MenuProps}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="tablet">Tablet</MenuItem>
+                      <MenuItem value="capsule">Capsule</MenuItem>
+                      <MenuItem value="syrup">Syrup</MenuItem>
+                      <MenuItem value="injection">Injection</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+              </div>
+            )}
         </div>
 
         <div className="addimagediscription flex">
@@ -277,68 +335,70 @@ export default function Addproduct({
 
             {Details ? (
               <div className="addimage-images-new">
-                {images.map((image, index) => (
-                  <div style={{ position: "relative" }}>
-                    {image && (
-                      <button
-                        onClick={() => handleDelete(index)}
-                        className="delete-product-img"
+                {images &&
+                  images.map((image, index) => (
+                    <div style={{ position: "relative" }}>
+                      {image && (
+                        <button
+                          onClick={() => handleDelete(index)}
+                          className="delete-product-img"
+                        >
+                          <i className="ri-delete-bin-6-fill"></i>
+                        </button>
+                      )}
+                      <div
+                        key={index}
+                        className="addimage-ima flex"
+                        onClick={() => handleUploadClick(index)}
+                        style={{
+                          backgroundImage: image?.file
+                            ? `url(${image.url})`
+                            : `url(${image})`,
+                          backgroundSize: "contain",
+                          backgroundPosition: "center",
+                        }}
                       >
-                        <i className="ri-delete-bin-6-fill"></i>
-                      </button>
-                    )}
+                        {!image && <i className="ri-add-circle-line"></i>}
+
+                        {!image && <h4>Click To Upload</h4>}
+                      </div>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                        onChange={(e) => handleFileChange(e, index)}
+                        accept=".png"
+                      />
+                    </div>
+                  ))}
+              </div>
+            ) : (
+              <div className="addimage-images-new">
+                {images &&
+                  images.map((image, index) => (
                     <div
                       key={index}
                       className="addimage-ima flex"
                       onClick={() => handleUploadClick(index)}
                       style={{
-                        backgroundImage: image?.file
-                          ? `url(${image.url})`
-                          : `url(${image})`,
+                        backgroundImage: image ? `url(${image.url})` : "none",
                         backgroundSize: "contain",
                         backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
                       }}
                     >
                       {!image && <i className="ri-add-circle-line"></i>}
-
                       {!image && <h4>Click To Upload</h4>}
+                      {image && (
+                        <button
+                          onClick={() => handleDelete(index)}
+                          className="delete-product-img"
+                        >
+                          <i className="ri-delete-bin-6-fill"></i>
+                        </button>
+                      )}
                     </div>
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      style={{ display: "none" }}
-                      onChange={(e) => handleFileChange(e, index)}
-                      accept=".png"
-                    />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="addimage-images-new">
-                {images.map((image, index) => (
-                  <div
-                    key={index}
-                    className="addimage-ima flex"
-                    onClick={() => handleUploadClick(index)}
-                    style={{
-                      backgroundImage: image ? `url(${image.url})` : "none",
-                      backgroundSize: "contain",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
-                    {!image && <i className="ri-add-circle-line"></i>}
-                    {!image && <h4>Click To Upload</h4>}
-                    {image && (
-                      <button
-                        onClick={() => handleDelete(index)}
-                        className="delete-product-img"
-                      >
-                        <i className="ri-delete-bin-6-fill"></i>
-                      </button>
-                    )}
-                  </div>
-                ))}
+                  ))}
 
                 <input
                   type="file"
