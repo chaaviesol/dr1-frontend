@@ -231,7 +231,7 @@ function Doctors() {
               >
                 <img
                   src={
-                    details?.image || "/images/mobile/musthu/images/user.png"
+                    details?.image || "/images/mobile/files/images/user.png"
                   }
                   alt="Dr. Brooklyn Simmons"
                   className="doctor-image"

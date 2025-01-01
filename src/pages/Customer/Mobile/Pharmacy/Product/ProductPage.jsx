@@ -150,7 +150,7 @@ const ProductPage = ({
         </div>
         <div className="desc_points align-items-center">
           <img
-            src="/images/mobile/musthu/Icons/hexagon-check.png"
+            src="/images/mobile/files/Icons/hexagon-check.png"
             alt=""
             className="bullet_icon"
           />
@@ -158,7 +158,7 @@ const ProductPage = ({
         </div>
         <div className="desc_points align-items-center">
           <img
-            src="/images/mobile/musthu/Icons/hexagon-check.png"
+            src="/images/mobile/files/Icons/hexagon-check.png"
             alt=""
             className="bullet_icon"
           />
@@ -166,7 +166,7 @@ const ProductPage = ({
         </div>
         <div className="desc_points align-items-center">
           <img
-            src="/images/mobile/musthu/Icons/hexagon-check.png"
+            src="/images/mobile/files/Icons/hexagon-check.png"
             alt=""
             className="bullet_icon"
           />
