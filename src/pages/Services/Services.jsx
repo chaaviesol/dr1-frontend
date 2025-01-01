@@ -258,7 +258,7 @@ export default function Services() {
           <div className="services_image services_image_careers flex">
             <img src="../images/sp4.jpg" alt="" />
             <img src="../images/dr20.webp" alt="" />
-            <img src="../images/car1.jpg" alt="" />
+            <img src="../images/ser.png" alt="" />
           </div>
 
           <div className="services_content services_content2 ">
