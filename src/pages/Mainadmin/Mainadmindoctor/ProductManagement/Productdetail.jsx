@@ -47,7 +47,8 @@ export default function Productdetail({
           mrp: datastate.mrp,
           name: datastate.name,
           images: datastate?.images,
-          hsn:datastate?.hsn
+          hsn: datastate?.hsn,
+          product_type:datastate?.product_type
         })
       );
 
@@ -72,7 +73,7 @@ export default function Productdetail({
         setIsLoading(false);
         toast.success(response?.data?.message, {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -298,7 +299,14 @@ export default function Productdetail({
             ₹ {datastate?.mrp}
           </h3>
           <div className="categoryadmin_show">{datastate?.category}</div>
-          <h6 style={{  fontSize: "14px", marginTop: "10px" }}>HSN:{datastate?.hsn}</h6>
+          <h6 style={{ fontSize: "14px", marginTop: "10px" }}>
+            HSN:{datastate?.hsn}
+          </h6>
+          {datastate?.product_type && (
+            <h6 style={{ fontSize: "14px", marginTop: "10px" }}>
+              Medicine type: {datastate?.product_type}
+            </h6>
+          )}
           <div className="detailssectionprorightdis">
             <h4>Description</h4>
             <span className="priscriptionpara">{datastate?.description}</span>

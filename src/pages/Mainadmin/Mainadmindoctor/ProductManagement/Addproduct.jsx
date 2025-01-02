@@ -298,7 +298,7 @@ export default function Addproduct({
                     <Select
                       labelId="demo-multiple-checkbox-label"
                       id="demo-multiple-checkbox"
-                      value={product?.type || ""}
+                      value={product?.product_type || ""}
                       onChange={handleChangeMedicineType}
                       input={
                         <OutlinedInput
