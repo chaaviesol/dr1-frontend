@@ -90,8 +90,9 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import UploadPresMobile from "./pages/Pharmacy/UploadPresMobile";
 import LoginMobile from "./pages/Customer/Mobile/components/LoginMobile/LoginMobile";
 import SignupMobile from "./pages/Customer/Mobile/components/Signupmobile/Signupmobile";
+import Zoom from "./pages/Zoom/Zoom";
 export const publicRoutes = [
-  { path: "/", element: <HomePage /> },
+  { path: "/", element: <Zoom /> },
   // { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
   { path: "/hospital", element: <HospitalPage /> },
