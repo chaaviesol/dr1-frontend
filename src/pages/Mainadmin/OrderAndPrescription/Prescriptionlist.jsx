@@ -225,7 +225,8 @@ export default function Prescriptionlist({
                       justifyContent: "center",
                       color: "white",
                       padding: "5px 10px",
-                      textTransform:"capitalize"
+                      textTransform:"capitalize",
+                      cursor:"pointer"
 
                     }}
                   >

@@ -90,7 +90,7 @@ export default function Billing() {
       });
     }
   }, [billDetails]);
-  console.log(state);
+  console.log("state", state);
 
   const changeWidth = () => {
     setWidth((prevWidth) => (prevWidth === "50%" ? "150px" : "50%"));
@@ -98,29 +98,31 @@ export default function Billing() {
 
   const headings = [
     "Medicine name",
-    "Batch number",
+    "Medicine Type",
+    "Every",
+    "Interval",
     "Frequency",
     "BF/AF",
     "Dose",
     "No of days",
     "Qty",
     "HSN",
-    "MRP",
     "Price",
   ]; // Custom column names
 
   const getWidth = (index) => {
     const widths = [
-      "20%",
-      "10%",
-      "8%",
-      "10%",
-      "7%",
-      "6%",
-      "5%",
-      "10%",
-      "10%",
-      "10%",
+      "16.35%",  // no change
+      "12.35%",  // no change
+      "8.35%",   // no change
+      "8.35%",   // no change
+      "11.35%",  // no change
+      "8.35%",   // no change
+      "8.35%",   // no change
+      "9.06%",   // 9.48% - 0.424%
+      "9.06%",   // 9.48% - 0.424%
+      "9.06%",   // 9.48% - 0.424%
+      "9.06%",   // 9.48% - 0.424%
     ];
     return widths[index];
   };
@@ -406,6 +408,7 @@ export default function Billing() {
                 {state?.medicine_details.map((medicine, rowIndex) => (
                   <tr key={medicine.id}>
                     <td>
+                      {/* //if order type is prescription no need to edit this field so readonly input field */}
                       {state && state.order_type !== "prescription" ? (
                         <input
                           type="text"
@@ -460,15 +463,65 @@ export default function Billing() {
                     <td>
                       <input
                         type="text"
+                        style={{ textTransform: "capitalize" }}
+                        value={medicine?.product_type || ""}
+                        className="billing-input"
+                        readOnly
+                      />
+                    </td>
+                    <td>
+                      <FormControl
+                        fullWidth
+                        sx={{ m: 0 }}
+                        className="billing-input"
+                      >
+                        <Select
+                          disabled={!medicine.category.includes("MEDICINES")}
+                          MenuProps={{
+                            PaperProps: {
+                              style: {
+                                maxHeight: 100, // Adjust the dropdown height here
+                              },
+                            },
+                          }}
+                          sx={{ height: 42,border: "none" }}
+                          displayEmpty
+                          inputProps={{ "aria-label": "Without label" }}
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-selectasas"
+                          name="every"
+                          value={medicine.every || ""}
+                          onChange={(e) => handleProductChange(e, rowIndex)}
+                        >
+                          <MenuItem value="hours">Hours</MenuItem>
+                          <MenuItem value="days">Days</MenuItem>
+                          <MenuItem value="weeks">Weeks</MenuItem>
+                        </Select>
+                      </FormControl>
+                    </td>
+                    <td>
+                      <input
+                        style={{ textAlign: "center" }}
+                        type="number"
+                        name="interval"
+                        value={medicine?.interval || ""}
+                        className="billing-input"
+                        onChange={(e) => handleProductChange(e, rowIndex)}
+                        min={0}
+                      />
+                    </td>
+                    {/* <td>
+                      <input
+                        type="text"
                         name="batch_no"
                         value={medicine?.batch_no || ""}
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, rowIndex)}
                       />
-                    </td>
+                    </td> */}
                     <td>
                       <FormControl
-                        sx={{ width: 200, m: 0 }}
+                        sx={{  m: 0 }}
                         fullWidth
                         className="billing-input"
                       >
@@ -525,7 +578,7 @@ export default function Billing() {
                               },
                             },
                           }}
-                          sx={{ height: 42, width: 150, border: "none" }}
+                          sx={{ height: 42, border: "none" }}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           labelId="demo-simple-select-label"
@@ -585,16 +638,6 @@ export default function Billing() {
                         className="billing-input"
                         readOnly
                         min={0}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        style={{ textAlign: "right" }}
-                        type="text"
-                        name="mrp"
-                        value={medicine?.mrp || ""}
-                        className="billing-input"
-                        readOnly
                       />
                     </td>
                     <td>

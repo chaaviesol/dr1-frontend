@@ -14,11 +14,14 @@ export const INITIAL_STATE = {
       timing: [],
       afterFd_beforeFd: "",
       takingQuantity: "",
-      no_of_days:"",
+      no_of_days: "",
       totalQuantity: "",
       hsn: "",
       mrp: "",
       selling_price: "",
+      product_type: "",
+      every: "",
+      interval:""
     },
   ],
   total: "",
@@ -76,7 +79,7 @@ export const billingReducer = (state, action) => {
           ],
         };
       }
-      return state
+      return state;
     }
     case ACTIONS.CLICK_A_PRODUCT: {
       console.log("CLICK_A_PRODUCT action triggered"); // Debug
@@ -92,10 +95,13 @@ export const billingReducer = (state, action) => {
         afterFd_beforeFd: "",
         takingQuantity: "",
         totalQuantity: "",
-        no_of_days:"",
+        no_of_days: "",
         hsn: item.hsn,
         mrp: item.mrp,
         selling_price: item.selling_price,
+        product_type: item?.product_type,
+        every: "",
+        interval:""
       };
 
       return {

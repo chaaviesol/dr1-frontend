@@ -245,7 +245,9 @@ export default function Orderslist({
                     justifyContent: "center",
                     color: "white",
                     padding: "5px 10px",
-                    textTransform:"capitalize"
+                    textTransform:"capitalize",
+                    cursor:"pointer"
+
                   }}
                 >
                   {ele?.so_status}
