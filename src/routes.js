@@ -92,7 +92,8 @@ import LoginMobile from "./pages/Customer/Mobile/components/LoginMobile/LoginMob
 import SignupMobile from "./pages/Customer/Mobile/components/Signupmobile/Signupmobile";
 import Zoom from "./pages/Zoom/Zoom";
 export const publicRoutes = [
-  { path: "/", element: <Zoom /> },
+  { path: "/", element: <HomePage /> },
+  { path: "/zoom", element: <Zoom /> },
   // { path: "/", element: <HomePage /> },
   { path: "/doctor", element: <DoctorPage /> },
   { path: "/hospital", element: <HospitalPage /> },
