@@ -258,10 +258,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
               color: orderDetails?.so_status !== "placed" && "#585858",
             }}
           >
-            {orderDetails?.so_status === "placed" ? "  Start Shipping"  : "Billed"
-          
-          }
-          
+            {orderDetails?.so_status === "placed"
+              ? "  Start Shipping"
+              : "Billed"}
           </button>
         </div>
 
@@ -366,7 +365,7 @@ function Prescriptions({ Details, setChangeDashboards }) {
 
             <div className="customerdatas flex">
               <h3>Contact Number:</h3>
-              <h3 style={{userSelect:"text"}}>{orderDetails?.contact_no}</h3>
+              <h3 style={{ userSelect: "text" }}>{orderDetails?.contact_no}</h3>
             </div>
 
             <div className="customerdataremark">
@@ -581,51 +580,54 @@ function Prescriptions({ Details, setChangeDashboards }) {
         }}
       >
         <div className="modalContainerbilling">
-          {orderDetails && orderDetails.order_type === "prescription" && (
-            <div className="billingleft flex" style={{ width }}>
-              {orderDetails?.prescription_image[currentImageKey] &&
-                (/\.(jpg|jpeg|png|gif|webp)$/i.test(
-                  orderDetails?.prescription_image[currentImageKey]
-                ) ? (
-                  <img
-                    src={orderDetails?.prescription_image[currentImageKey]}
-                    alt={`Image ${currentIndex}`}
-                    style={{ maxWidth: "100%", maxHeight: "500px" }}
-                  />
-                ) : /\.(pdf)$/i.test(
-                    orderDetails?.prescription_image[currentImageKey]
+          {orderDetails?.order_type === "prescription" &&
+            orderDetails?.prescription_image && (
+              <div className="billingleft flex" style={{ width }}>
+                {orderDetails.prescription_image[currentImageKey] &&
+                  (/\.(jpg|jpeg|png|gif|webp)$/i.test(
+                    orderDetails.prescription_image[currentImageKey]
                   ) ? (
-                  <object
-                    data={orderDetails?.prescription_image[currentImageKey]}
-                    type="application/pdf"
-                    width="100%"
-                    height="600px"
-                  >
-                    <p>Your browser does not support PDFs.</p>
-                  </object>
-                ) : null)}
+                    <img
+                      src={orderDetails.prescription_image[currentImageKey]}
+                      alt={`Image ${currentIndex}`}
+                      style={{ maxWidth: "100%", maxHeight: "500px" }}
+                    />
+                  ) : /\.(pdf)$/i.test(
+                      orderDetails.prescription_image[currentImageKey]
+                    ) ? (
+                    <object
+                      data={orderDetails.prescription_image[currentImageKey]}
+                      type="application/pdf"
+                      width="100%"
+                      height="600px"
+                    >
+                      <p>Your browser does not support PDFs.</p>
+                    </object>
+                  ) : null)}
 
-              <div className="billingimagenumber flex">
-                <button onClick={handlePrevious} disabled={currentIndex === 1}>
-                  <i className="ri-arrow-left-s-line"></i>
-                </button>
-                <div className="billingimagenumberdata flex">
-                  {" "}
-                  {currentIndex}/{imageKeys.length}
+                <div className="billingimagenumber flex">
+                  <button
+                    onClick={handlePrevious}
+                    disabled={currentIndex === 1}
+                  >
+                    <i className="ri-arrow-left-s-line"></i>
+                  </button>
+                  <div className="billingimagenumberdata flex">
+                    {currentIndex}/{imageKeys.length}
+                  </div>
+                  <button
+                    onClick={handleNext}
+                    disabled={currentIndex === imageKeys.length}
+                  >
+                    <i className="ri-arrow-right-s-line"></i>
+                  </button>
                 </div>
-                <button
-                  onClick={handleNext}
-                  disabled={currentIndex === imageKeys.length}
-                >
-                  <i className="ri-arrow-right-s-line"></i>
+
+                <button className="medmini">
+                  <i className="ri-fullscreen-exit-line"></i>
                 </button>
               </div>
-
-              <button className="medmini">
-                <i className="ri-fullscreen-exit-line"></i>
-              </button>
-            </div>
-          )}
+            )}
         </div>
       </Modal>
     </div>
