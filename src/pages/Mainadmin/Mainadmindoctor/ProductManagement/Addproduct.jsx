@@ -171,9 +171,18 @@ export default function Addproduct({
       product_type: value,
     }));
   };
+  const handleChangeUnitMeasure = (event) => {
+    const {
+      target: { value },
+    } = event;
 
+    setproduct((prevdata) => ({
+      ...prevdata,
+      unit_of_measurement: value,
+    }));
+  };
 
-  console.log("product",product)
+  console.log("product", product);
   return (
     <div
       className="productlistInput"
@@ -323,6 +332,58 @@ export default function Addproduct({
                     </Select>
                   </FormControl>
                 </div>
+              </div>
+            )}
+
+          {Array.isArray(product?.category) &&
+            product.category.includes("MEDICINES") && (
+              <div className="addproductadmin-input-box">
+                <h4>
+                  Unit Of Measurement <span className="required">*</span>
+                </h4>
+                <div className="multiselector">
+                  <FormControl sx={{ m: 1, width: 300, border: "none" }}>
+                    <Select
+                      labelId="demo-multiple-checkbox-label"
+                      id="demo-multiple-checkbox"
+                      value={product?.unit_of_measurement || ""}
+                      onChange={handleChangeUnitMeasure}
+                      input={
+                        <OutlinedInput
+                          sx={{
+                            height: "40px",
+                            marginTop: "2px",
+                            border: "none",
+                            borderRadius: "6px",
+                            backgroundColor: "#DADCFF",
+                          }}
+                        />
+                      }
+                      MenuProps={MenuProps}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value="strip">Strip</MenuItem>
+                      <MenuItem value="piece">Piece</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
+              </div>
+            )}
+          {Array.isArray(product?.category) &&
+            product.category.includes("MEDICINES") && (
+              <div className="addproductadmin-input-box">
+                <h4>
+                  Unit <span className="required">*</span>{" "}
+                </h4>
+                <input
+                  type="number"
+                  name="medicine_unit"
+                  maxLength={5}
+                  value={product?.medicine_unit}
+                  onChange={handlechange}
+                />
               </div>
             )}
         </div>
