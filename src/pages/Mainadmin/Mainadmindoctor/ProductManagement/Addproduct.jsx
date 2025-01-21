@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./addproduct.css";
 import axios from "axios";
-import { BASE_URL, PHARMACY_URL } from "../../../../config";
-import { toast } from "react-toastify";
+import { PHARMACY_URL } from "../../../../config";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -70,17 +69,20 @@ export default function Addproduct({
       !product.brand ||
       !product.mrp ||
       !product.hsn ||
-      !product.description;
+      !product.description ||
+      (isMedicineIncludedInCategory() &&
+        (!product.product_type ||
+          !product.unit_of_measurement ||
+          (product.unit_of_measurement === "strip" && !product.medicine_unit)));
     const isAnyImageMissing = images.some((image) => image === null);
-
     if (isAnyFieldMissing || isAnyImageMissing) {
-      newErrors.all = `All fields are mandatory, fill them all.`;
-      // toast.error("All fields are mandatory, fill them all");
+      newErrors.all = `All fields are mandatory, Fill them all`;
       if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors);
         return;
       }
     } else {
+      setErrors("newErrors");
       setDetailData({ ...product, images, mode: "view" });
       setChangeDashboards({ productmanagementOrderDetail: true });
     }
@@ -150,7 +152,11 @@ export default function Addproduct({
       productmanagementOrderDetail: Details.id ? true : false,
     });
   };
-
+  const isMedicineIncludedInCategory = () => {
+    return (
+      Array.isArray(product?.category) && product.category.includes("MEDICINES")
+    );
+  };
   const handleChangeCategory = (event) => {
     const {
       target: { value },
@@ -274,7 +280,7 @@ export default function Addproduct({
 
           <div className="addproductadmin-input-box">
             <h4>
-              Price <span className="required">*</span>{" "}
+              MRP <span className="required">*</span>{" "}
             </h4>
             <input
               type="number"
@@ -296,83 +302,81 @@ export default function Addproduct({
               onChange={handlechange}
             />
           </div>
-          {Array.isArray(product?.category) &&
-            product.category.includes("MEDICINES") && (
-              <div className="addproductadmin-input-box">
-                <h4>
-                  Medicine type <span className="required">*</span>
-                </h4>
-                <div className="multiselector">
-                  <FormControl sx={{ m: 1, width: 300, border: "none" }}>
-                    <Select
-                      labelId="demo-multiple-checkbox-label"
-                      id="demo-multiple-checkbox"
-                      value={product?.product_type || ""}
-                      onChange={handleChangeMedicineType}
-                      input={
-                        <OutlinedInput
-                          sx={{
-                            height: "40px",
-                            marginTop: "2px",
-                            border: "none",
-                            borderRadius: "6px",
-                            backgroundColor: "#DADCFF",
-                          }}
-                        />
-                      }
-                      MenuProps={MenuProps}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value="tablet">Tablet</MenuItem>
-                      <MenuItem value="capsule">Capsule</MenuItem>
-                      <MenuItem value="syrup">Syrup</MenuItem>
-                      <MenuItem value="injection">Injection</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
+          {isMedicineIncludedInCategory() && (
+            <div className="addproductadmin-input-box">
+              <h4>
+                Medicine type <span className="required">*</span>
+              </h4>
+              <div className="multiselector">
+                <FormControl sx={{ m: 1, width: 300, border: "none" }}>
+                  <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    value={product?.product_type || ""}
+                    onChange={handleChangeMedicineType}
+                    input={
+                      <OutlinedInput
+                        sx={{
+                          height: "40px",
+                          marginTop: "2px",
+                          border: "none",
+                          borderRadius: "6px",
+                          backgroundColor: "#DADCFF",
+                        }}
+                      />
+                    }
+                    MenuProps={MenuProps}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="tablet">Tablet</MenuItem>
+                    <MenuItem value="capsule">Capsule</MenuItem>
+                    <MenuItem value="syrup">Syrup</MenuItem>
+                    <MenuItem value="injection">Injection</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
-            )}
+            </div>
+          )}
 
-          {Array.isArray(product?.category) &&
-            product.category.includes("MEDICINES") && (
-              <div className="addproductadmin-input-box">
-                <h4>
-                  Unit Of Measurement <span className="required">*</span>
-                </h4>
-                <div className="multiselector">
-                  <FormControl sx={{ m: 1, width: 300, border: "none" }}>
-                    <Select
-                      labelId="demo-multiple-checkbox-label"
-                      id="demo-multiple-checkbox"
-                      value={product?.unit_of_measurement || ""}
-                      onChange={handleChangeUnitMeasure}
-                      input={
-                        <OutlinedInput
-                          sx={{
-                            height: "40px",
-                            marginTop: "2px",
-                            border: "none",
-                            borderRadius: "6px",
-                            backgroundColor: "#DADCFF",
-                          }}
-                        />
-                      }
-                      MenuProps={MenuProps}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value="strip">Strip</MenuItem>
-                      <MenuItem value="piece">Piece</MenuItem>
-                    </Select>
-                  </FormControl>
-                </div>
+          {isMedicineIncludedInCategory() && (
+            <div className="addproductadmin-input-box">
+              <h4>
+                Unit Of Measurement <span className="required">*</span>
+              </h4>
+              <div className="multiselector">
+                <FormControl sx={{ m: 1, width: 300, border: "none" }}>
+                  <Select
+                    labelId="demo-multiple-checkbox-label"
+                    id="demo-multiple-checkbox"
+                    value={product?.unit_of_measurement || ""}
+                    onChange={handleChangeUnitMeasure}
+                    input={
+                      <OutlinedInput
+                        sx={{
+                          height: "40px",
+                          marginTop: "2px",
+                          border: "none",
+                          borderRadius: "6px",
+                          backgroundColor: "#DADCFF",
+                        }}
+                      />
+                    }
+                    MenuProps={MenuProps}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value="strip">Strip</MenuItem>
+                    <MenuItem value="piece">Piece</MenuItem>
+                  </Select>
+                </FormControl>
               </div>
-            )}
+            </div>
+          )}
           {Array.isArray(product?.category) &&
-            product.category.includes("MEDICINES") && (
+            product.unit_of_measurement === "strip" && (
               <div className="addproductadmin-input-box">
                 <h4>
                   Unit <span className="required">*</span>{" "}
@@ -381,7 +385,7 @@ export default function Addproduct({
                   type="number"
                   name="medicine_unit"
                   maxLength={5}
-                  value={product?.medicine_unit}
+                  value={product?.medicine_unit || ""}
                   onChange={handlechange}
                 />
               </div>
@@ -413,7 +417,7 @@ export default function Addproduct({
                         onClick={() => handleUploadClick(index)}
                         style={{
                           backgroundImage: image?.file
-                            ? `url(${image.url})`
+                            ? `url(${image?.url})`
                             : `url(${image})`,
                           backgroundSize: "contain",
                           backgroundPosition: "center",
@@ -442,7 +446,7 @@ export default function Addproduct({
                       className="addimage-ima flex"
                       onClick={() => handleUploadClick(index)}
                       style={{
-                        backgroundImage: image ? `url(${image.url})` : "none",
+                        backgroundImage: image ? `url(${image?.url})` : "none",
                         backgroundSize: "contain",
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
@@ -498,10 +502,10 @@ export default function Addproduct({
           </div>
         </div>
 
-        <div className="addproductbutton flex">
+        <div className="addproductbutton flex" style={{ gap: "10px" }}>
           {errors.all && (
             <p
-              style={{ color: "red", fontSize: "0.9rem" }}
+              style={{ color: "red", fontSize: "1.1rem" }}
               className="error-message"
             >
               {errors.all}

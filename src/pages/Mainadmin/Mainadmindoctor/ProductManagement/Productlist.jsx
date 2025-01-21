@@ -164,7 +164,7 @@ export default function Productlist({
 
               <div className="flex price-section-pro">
                 <h2>₹ {key?.mrp}</h2>
-                <button onClick={() => navigateAddP(key)}>view</button>
+                <button onClick={() => navigateAddP(key)}>View</button>
               </div>
             </div>
           ))}

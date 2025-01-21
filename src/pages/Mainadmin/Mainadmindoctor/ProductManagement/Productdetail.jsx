@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./addproduct.css";
 import axios from "axios";
-import { BASE_URL, PHARMACY_URL } from "../../../../config";
+import { PHARMACY_URL } from "../../../../config";
 import { toast } from "react-toastify";
 import { Loader } from "../../../../components/Loader/Loader";
 export default function Productdetail({
@@ -48,7 +48,10 @@ export default function Productdetail({
           name: datastate.name,
           images: datastate?.images,
           hsn: datastate?.hsn,
-          product_type:datastate?.product_type
+          product_type: datastate?.product_type,
+          medicine_type: datastate?.medicine_type||"",
+          unit_of_measurement: datastate?.unit_of_measurement,
+          medicine_unit: datastate?.medicine_unit,
         })
       );
 
@@ -294,19 +297,49 @@ export default function Productdetail({
         <div className="detailssectionproright">
           <h4>{datastate?.brand}</h4>
           <h3>{datastate?.name}</h3>
-          <h3>{datastate?.hsn}</h3>
+
           <h3 style={{ color: "#4f4f4f", fontSize: "24px", marginTop: "10px" }}>
             ₹ {datastate?.mrp}
           </h3>
           <div className="categoryadmin_show">{datastate?.category}</div>
-          <h6 style={{ fontSize: "14px", marginTop: "10px" }}>
-            HSN:{datastate?.hsn}
-          </h6>
           {datastate?.product_type && (
-            <h6 style={{ fontSize: "14px", marginTop: "10px" }}>
+            <h6
+              style={{
+                fontSize: "14px",
+                marginTop: "10px",
+                textTransform: "capitalize",
+              }}
+            >
               Medicine type: {datastate?.product_type}
             </h6>
           )}
+          <h6 style={{ fontSize: "14px", marginTop: "10px" }}>
+            HSN:{datastate?.hsn}
+          </h6>
+          {datastate?.unit_of_measurement && (
+            <h6
+              style={{
+                fontSize: "14px",
+                marginTop: "10px",
+                textTransform: "capitalize",
+              }}
+            >
+              Unit of Measurement: {datastate.unit_of_measurement}
+            </h6>
+          )}
+
+          {datastate?.medicine_unit && (
+            <h6
+              style={{
+                fontSize: "14px",
+                marginTop: "10px",
+                textTransform: "capitalize",
+              }}
+            >
+              Unit: {datastate?.medicine_unit}
+            </h6>
+          )}
+
           <div className="detailssectionprorightdis">
             <h4>Description</h4>
             <span className="priscriptionpara">{datastate?.description}</span>
