@@ -93,36 +93,38 @@ export default function Billing() {
   console.log("state", state);
 
   const changeWidth = () => {
-    setWidth((prevWidth) => (prevWidth === "50%" ? "150px" : "50%"));
+    setWidth((prevWidth) => (prevWidth === "50%" ? "100px" : "50%"));
   };
 
   const headings = [
-    "Medicine name",
-    "Medicine Type",
+    "Name",
+    "Type",
     "Every",
     "Interval",
     "Frequency",
     "BF/AF",
     "Dose",
-    "No of days",
     "Qty",
+    "MRP",
     "HSN",
     "Price",
+    "Discount",
   ]; // Custom column names
 
   const getWidth = (index) => {
     const widths = [
-      "16.35%",  // no change
-      "12.35%",  // no change
-      "8.35%",   // no change
-      "8.35%",   // no change
-      "11.35%",  // no change
-      "8.35%",   // no change
-      "8.35%",   // no change
-      "9.06%",   // 9.48% - 0.424%
-      "9.06%",   // 9.48% - 0.424%
-      "9.06%",   // 9.48% - 0.424%
-      "9.06%",   // 9.48% - 0.424%
+      "15%",
+      "10%",
+      "10%",
+      "9%",
+      "10%",
+      "10%",
+      "6%",
+      "6%",
+      "6%",
+      "6%",
+      "6%",
+      "6%",
     ];
     return widths[index];
   };
@@ -484,7 +486,7 @@ export default function Billing() {
                               },
                             },
                           }}
-                          sx={{ height: 42,border: "none" }}
+                          sx={{ height: 42, border: "none" }}
                           displayEmpty
                           inputProps={{ "aria-label": "Without label" }}
                           labelId="demo-simple-select-label"
@@ -521,7 +523,7 @@ export default function Billing() {
                     </td> */}
                     <td>
                       <FormControl
-                        sx={{  m: 0 }}
+                        sx={{ m: 0 }}
                         fullWidth
                         className="billing-input"
                       >
@@ -608,25 +610,22 @@ export default function Billing() {
                     <td>
                       <input
                         style={{ textAlign: "center" }}
-                        disabled={!medicine.category.includes("MEDICINES")}
-                        type="number"
-                        name="no_of_days"
-                        value={medicine?.no_of_days || ""}
-                        className="billing-input"
-                        onChange={(e) => handleProductChange(e, rowIndex)}
-                        max={100}
-                        min={1}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        style={{ textAlign: "center" }}
                         type="number"
                         name="totalQuantity"
                         value={medicine?.totalQuantity || ""}
                         className="billing-input"
                         onChange={(e) => handleProductChange(e, rowIndex)}
                         min={0}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        style={{ textAlign: "right" }}
+                        type="text"
+                        name="mrp"
+                        value={medicine?.mrp}
+                        className="billing-input"
+                        readOnly
                       />
                     </td>
                     <td>
@@ -648,6 +647,15 @@ export default function Billing() {
                         value={medicine?.selling_price}
                         className="billing-input"
                         readOnly
+                      />
+                    </td>
+                    <td>
+                      <input
+                        style={{ textAlign: "right" }}
+                        type="text"
+                        name="discount"
+                        value={medicine?.discount}
+                        className="billing-input"
                       />
                     </td>
                   </tr>
