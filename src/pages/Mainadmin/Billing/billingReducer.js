@@ -29,11 +29,8 @@ export const INITIAL_STATE = {
   total: "",
 };
 
-// Helper function to calculate total
+//  function to calculate total while typing on quantity field
 const calculateTotalWhileQty = (item, value) => {
-  console.log(item.unit_of_measurement);
-  console.log(item.selling_price);
-  console.log(item.medicine_unit);
   let baseTotal =
     item?.unit_of_measurement !== null
       ? item?.unit_of_measurement === "strip"
@@ -47,6 +44,7 @@ const calculateTotalWhileQty = (item, value) => {
 
   return baseTotal;
 };
+//call when typing on discount field
 const calculateTotalWhileDiscount = (item, value) => {
   let baseTotal =
     item?.unit_of_measurement !== null
@@ -63,17 +61,20 @@ const calculateTotalWhileDiscount = (item, value) => {
 
 export const billingReducer = (state, action) => {
   switch (action.type) {
+    //setting the payload as state
     case ACTIONS.SET_STATE: {
       return {
         ...action.payload,
       };
     }
+    //update fields,not the table
     case ACTIONS.UPDATE_FIELD: {
       return {
         ...state,
         [action.payload.field]: action.payload.value,
       };
     }
+    //update all table columns except frquency,qty,discount
     case ACTIONS.UPDATE_PRODUCT: {
       const { field, value, rowIndex } = action.payload;
       return {
@@ -88,6 +89,7 @@ export const billingReducer = (state, action) => {
         ),
       };
     }
+    //it will only call when typing on quantity or discount
     case ACTIONS.UPDATE_PRODUCT_QTY_OR_DISCOUNT: {
       const { field, value, rowIndex } = action.payload;
       return {
@@ -99,14 +101,14 @@ export const billingReducer = (state, action) => {
                 [field]: value,
                 total:
                   field === "totalQuantity"
-                    ? calculateTotalWhileQty(item, value)
-                    : calculateTotalWhileDiscount(item, value),
+                    ? calculateTotalWhileQty(item, value) //value will be typing quantity
+                    : calculateTotalWhileDiscount(item, value), //value will be typing discount
               }
             : item
         ),
       };
     }
-
+    //update Frequency column
     case ACTIONS.SELECT_TIMING: {
       const { field, value, rowIndex } = action.payload;
       console.log(action.payload);
@@ -137,6 +139,7 @@ export const billingReducer = (state, action) => {
       }
       return state;
     }
+    //call when clicking a product from the products list box
     case ACTIONS.CLICK_A_PRODUCT: {
       console.log("CLICK_A_PRODUCT action triggered"); // Debug
       const { item, rowIndex } = action.payload;
