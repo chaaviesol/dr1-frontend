@@ -107,18 +107,20 @@ export default function Billing() {
     "Qty",
     "MRP",
     "HSN",
-    "Price",
+    "Selling Price",
     "Discount",
+    "Total",
   ]; // Custom column names
 
   const getWidth = (index) => {
     const widths = [
-      "15%",
-      "10%",
-      "10%",
+      "13%",
       "9%",
-      "10%",
-      "10%",
+      "9%",
+      "9%",
+      "9%",
+      "9%",
+      "6%",
       "6%",
       "6%",
       "6%",
@@ -415,6 +417,7 @@ export default function Billing() {
                         <input
                           type="text"
                           name="name"
+                          title={medicine?.name || ""}
                           value={medicine?.name || ""}
                           className="billing-input"
                           readOnly
@@ -427,6 +430,7 @@ export default function Billing() {
                           <input
                             type="text"
                             value={medicine.name || ""}
+                            title={medicine?.name || ""}
                             name="name"
                             onChange={(e) => handleInputChange(e, rowIndex)}
                             placeholder="Search..."
@@ -503,6 +507,7 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
+                        disabled={!medicine.category.includes("MEDICINES")}
                         style={{ textAlign: "center" }}
                         type="number"
                         name="interval"
@@ -644,17 +649,28 @@ export default function Billing() {
                         style={{ textAlign: "right" }}
                         type="text"
                         name="selling_price"
-                        value={medicine?.selling_price}
+                        value={medicine?.selling_price || medicine?.mrp}
                         className="billing-input"
                         readOnly
                       />
                     </td>
                     <td>
                       <input
-                        style={{ textAlign: "right" }}
+                        style={{ textAlign: "center" }}
                         type="text"
                         name="discount"
                         value={medicine?.discount}
+                        className="billing-input"
+                        max={100}
+                        min={0}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        style={{ textAlign: "right" }}
+                        type="text"
+                        name="total"
+                        value={medicine?.total}
                         className="billing-input"
                       />
                     </td>

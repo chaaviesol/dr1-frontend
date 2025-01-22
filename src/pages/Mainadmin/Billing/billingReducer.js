@@ -14,14 +14,15 @@ export const INITIAL_STATE = {
       timing: [],
       afterFd_beforeFd: "",
       takingQuantity: "",
-      no_of_days: "",
       totalQuantity: "",
       hsn: "",
       mrp: "",
       selling_price: "",
       product_type: "",
       every: "",
-      interval:""
+      interval:"",
+      discount:"",
+      total:"",
     },
   ],
   total: "",
@@ -95,13 +96,14 @@ export const billingReducer = (state, action) => {
         afterFd_beforeFd: "",
         takingQuantity: "",
         totalQuantity: "",
-        no_of_days: "",
         hsn: item.hsn,
         mrp: item.mrp,
         selling_price: item.selling_price,
         product_type: item?.product_type,
         every: "",
-        interval:""
+        interval:"",
+        discount:"",
+        total:"",
       };
 
       return {
