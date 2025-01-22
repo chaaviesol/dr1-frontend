@@ -113,7 +113,7 @@ export default function Billing() {
 
   const getWidth = (index) => {
     const widths = [
-      "13%",
+      "10%",
       "9%",
       "9%",
       "9%",
@@ -122,7 +122,7 @@ export default function Billing() {
       "6%",
       "6%",
       "6%",
-      "6%",
+      "9%",
       "6%",
       "6%",
       "6%",
@@ -676,7 +676,7 @@ export default function Billing() {
                     </td>
                     <td>
                       <input
-                        style={{ textAlign: "center" }}
+                        style={{ textAlign: "right" }}
                         type="number"
                         name="discount"
                         value={medicine?.discount}

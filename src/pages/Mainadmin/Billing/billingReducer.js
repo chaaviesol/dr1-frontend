@@ -22,6 +22,7 @@ export const INITIAL_STATE = {
       every: "",
       interval: "",
       discount: 0,
+      medicine_unit: "",
       total: 0,
     },
   ],
@@ -30,12 +31,16 @@ export const INITIAL_STATE = {
 
 // Helper function to calculate total
 const calculateTotalWhileQty = (item, value) => {
+  console.log(item.unit_of_measurement);
+  console.log(item.selling_price);
+  console.log(item.medicine_unit);
   let baseTotal =
     item?.unit_of_measurement !== null
       ? item?.unit_of_measurement === "strip"
         ? (value * item.selling_price) / item.medicine_unit
         : value * item.selling_price
       : value * item.selling_price;
+  console.log(baseTotal);
   if (item.discount) {
     baseTotal = baseTotal - (baseTotal * item.discount) / 100; // Apply percentage discount
   }
@@ -152,6 +157,8 @@ export const billingReducer = (state, action) => {
         product_type: item?.product_type,
         every: "",
         interval: "",
+        medicine_unit: item?.medicine_unit,
+        unit_of_measurement: item?.unit_of_measurement,
         discount: 0,
         total:
           item?.unit_of_measurement !== null
