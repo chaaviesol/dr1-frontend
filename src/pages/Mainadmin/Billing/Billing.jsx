@@ -180,7 +180,7 @@ export default function Billing() {
       {
         ...state,
         sold_by: "Dr1",
-        total_amount: roundedTotalAmount,
+        net_amount: roundedTotalAmount,
       }
     );
     return response.data;
