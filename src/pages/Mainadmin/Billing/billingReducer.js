@@ -20,12 +20,40 @@ export const INITIAL_STATE = {
       selling_price: "",
       product_type: "",
       every: "",
-      interval:"",
-      discount:"",
-      total:"",
+      interval: "",
+      discount: 0,
+      total: 0,
     },
   ],
   total: "",
+};
+
+// Helper function to calculate total
+const calculateTotalWhileQty = (item, value) => {
+  let baseTotal =
+    item?.unit_of_measurement !== null
+      ? item?.unit_of_measurement === "strip"
+        ? (value * item.selling_price) / item.medicine_unit
+        : value * item.selling_price
+      : value * item.selling_price;
+  if (item.discount) {
+    baseTotal = baseTotal - (baseTotal * item.discount) / 100; // Apply percentage discount
+  }
+
+  return baseTotal;
+};
+const calculateTotalWhileDiscount = (item, value) => {
+  let baseTotal =
+    item?.unit_of_measurement !== null
+      ? item?.unit_of_measurement === "strip"
+        ? (item.totalQuantity * item.selling_price) / item.medicine_unit
+        : item.totalQuantity * item.selling_price
+      : item.totalQuantity * item.selling_price;
+  if (value) {
+    baseTotal = baseTotal - (baseTotal * value) / 100; // Apply percentage discount
+  }
+
+  return baseTotal;
 };
 
 export const billingReducer = (state, action) => {
@@ -43,11 +71,33 @@ export const billingReducer = (state, action) => {
     }
     case ACTIONS.UPDATE_PRODUCT: {
       const { field, value, rowIndex } = action.payload;
-      console.log(action.payload);
       return {
         ...state,
         medicine_details: state.medicine_details.map((item, index) =>
-          index === rowIndex ? { ...item, [field]: value } : item
+          index === rowIndex
+            ? {
+                ...item,
+                [field]: value,
+              }
+            : item
+        ),
+      };
+    }
+    case ACTIONS.UPDATE_PRODUCT_QTY_OR_DISCOUNT: {
+      const { field, value, rowIndex } = action.payload;
+      return {
+        ...state,
+        medicine_details: state.medicine_details.map((item, index) =>
+          index === rowIndex
+            ? {
+                ...item,
+                [field]: value,
+                total:
+                  field === "totalQuantity"
+                    ? calculateTotalWhileQty(item, value)
+                    : calculateTotalWhileDiscount(item, value),
+              }
+            : item
         ),
       };
     }
@@ -95,15 +145,20 @@ export const billingReducer = (state, action) => {
         timing: [],
         afterFd_beforeFd: "",
         takingQuantity: "",
-        totalQuantity: "",
+        totalQuantity: 1,
         hsn: item.hsn,
         mrp: item.mrp,
         selling_price: item.selling_price,
         product_type: item?.product_type,
         every: "",
-        interval:"",
-        discount:"",
-        total:"",
+        interval: "",
+        discount: 0,
+        total:
+          item?.unit_of_measurement !== null
+            ? item?.unit_of_measurement === "strip"
+              ? (1 * item.selling_price) / item.medicine_unit
+              : 1 * item.selling_price
+            : 1 * item.selling_price,
       };
 
       return {
@@ -133,6 +188,7 @@ export const ACTIONS = {
   UPDATE_FIELD: "UPDATE_FIELD",
   ADD_NEW_ROW: "ADD_NEW_ROW",
   UPDATE_PRODUCT: "UPDATE_PRODUCT",
+  UPDATE_PRODUCT_QTY_OR_DISCOUNT: "UPDATE_PRODUCT_QTY_OR_DISCOUNT",
   SELECT_TIMING: "SELECT_TIMING",
   CLICK_A_PRODUCT: "CLICK_A_PRODUCT",
   DELETE_A_PRODUCT: "DELETE_A_PRODUCT",

@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from "react";
 import "./billingStyles.css";
 import useAxiosPrivate from "../../../hooks/useAxiosPrivate";
-import { BASE_URL, PHARMACY_URL } from "../../../config";
+import { PHARMACY_URL } from "../../../config";
 import { Loader } from "../../../components/Loader/Loader";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
@@ -10,7 +10,6 @@ import {
   Checkbox,
   CircularProgress,
   FormControl,
-  InputLabel,
   ListItemText,
   MenuItem,
   OutlinedInput,
@@ -149,11 +148,27 @@ export default function Billing() {
       payload: { field, value, rowIndex },
     });
   };
+
+  //seperated this function becouse of calculating total of that product
+  const handleProductChangeQtyOrDiscount = (e, rowIndex) => {
+    const { value } = e.target;
+    const field = e.target.name;
+
+    dispatch({
+      type: ACTIONS.UPDATE_PRODUCT_QTY_OR_DISCOUNT,
+      payload: { field, value, rowIndex },
+    });
+  };
   //cal total billamount
   const total_amount = state.medicine_details.reduce(
-    (acc, currItem) => acc + currItem.selling_price * currItem.totalQuantity,
+    (acc, currItem) => acc + currItem.total,
     0 // Initial value of the accumulator
   );
+
+  const roundedTotalAmount = total_amount
+    ? parseFloat(total_amount.toFixed(2))
+    : 0;
+
   //submit
   const confirmInvoice = async () => {
     const endPoint =
@@ -165,7 +180,7 @@ export default function Billing() {
       {
         ...state,
         sold_by: "Dr1",
-        total_amount,
+        total_amount: roundedTotalAmount,
       }
     );
     return response.data;
@@ -192,8 +207,11 @@ export default function Billing() {
   const fetchProducts = async () => {
     try {
       const response = await axios.get(`${PHARMACY_URL}/pharmacy/getprods`);
+      console.log(response.data.data);
       setProducts(response.data.data);
-    } catch (err) {}
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -619,8 +637,10 @@ export default function Billing() {
                         name="totalQuantity"
                         value={medicine?.totalQuantity || ""}
                         className="billing-input"
-                        onChange={(e) => handleProductChange(e, rowIndex)}
-                        min={0}
+                        onChange={(e) =>
+                          handleProductChangeQtyOrDiscount(e, rowIndex)
+                        }
+                        min={1}
                       />
                     </td>
                     <td>
@@ -647,9 +667,9 @@ export default function Billing() {
                     <td>
                       <input
                         style={{ textAlign: "right" }}
-                        type="text"
+                        type="number"
                         name="selling_price"
-                        value={medicine?.selling_price || medicine?.mrp}
+                        value={medicine?.selling_price}
                         className="billing-input"
                         readOnly
                       />
@@ -657,10 +677,13 @@ export default function Billing() {
                     <td>
                       <input
                         style={{ textAlign: "center" }}
-                        type="text"
+                        type="number"
                         name="discount"
                         value={medicine?.discount}
                         className="billing-input"
+                        onChange={(e) =>
+                          handleProductChangeQtyOrDiscount(e, rowIndex)
+                        }
                         max={100}
                         min={0}
                       />
@@ -668,10 +691,11 @@ export default function Billing() {
                     <td>
                       <input
                         style={{ textAlign: "right" }}
-                        type="text"
+                        type="number"
                         name="total"
                         value={medicine?.total}
                         className="billing-input"
+                        readOnly
                       />
                     </td>
                   </tr>
@@ -680,7 +704,7 @@ export default function Billing() {
             </table>
           </div>
           <div className="billingtotalamtcontainer">
-            <span>Total amount : {total_amount}</span>
+            <span>Total amount : {roundedTotalAmount}</span>
           </div>
           <div
             className="billingbutton flex"
