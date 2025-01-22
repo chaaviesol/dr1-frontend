@@ -180,7 +180,7 @@ export default function Billing() {
       {
         ...state,
         sold_by: "Dr1",
-        net_amount: roundedTotalAmount,
+        total_amount: roundedTotalAmount,
       }
     );
     return response.data;
@@ -571,7 +571,7 @@ export default function Billing() {
                           }
                           MenuProps={MenuProps}
                         >
-                          {["morning", "lunch", "dinner"].map((time) => (
+                          {["Morning", "lunch", "dinner"].map((time) => (
                             <MenuItem key={time} value={time}>
                               <Checkbox
                                 checked={

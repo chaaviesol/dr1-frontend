@@ -504,10 +504,12 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     <th>Frequency</th>
                     <th>QTY</th>
                     <th>Dose</th>
-                    <th>No Of Days</th>
+
                     <th>HSN</th>
                     <th>MRP</th>
-                    <th>Price</th>
+                    <th>Selling Price</th>
+                    <th>Discount</th>
+                    <th>Total</th>
                   </tr>
                 </thead>
                 <tbody className="billeddetails-table-body">
@@ -552,13 +554,12 @@ function Prescriptions({ Details, setChangeDashboards }) {
                             ?.takingQuantity
                         }
                       </td>
-                      <td>
-                        {" "}
-                        {med?.generic_prodid?.medicine_timetable?.no_of_days}
-                      </td>
+
                       <td>{med?.generic_prodid?.hsn}</td>
                       <td>{med?.generic_prodid?.mrp}</td>
                       <td>{med?.selling_price}</td>
+                      <td> {med?.discount} %</td>
+                      <td> {med?.net_amount}</td>
                     </tr>
                   ))}
                 </tbody>
