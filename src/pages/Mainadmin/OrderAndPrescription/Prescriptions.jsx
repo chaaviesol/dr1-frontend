@@ -331,17 +331,17 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     : ""}
                 </td>
                 <td className="orderdetails-data">
-                  {orderDetails?.dispatcheddate
+                  {orderDetails?.deliveryassigned_date
                     ? moment
-                        .utc(orderDetails?.dispatcheddate)
+                        .utc(orderDetails?.deliveryassigned_date)
                         .format("DD/MM/YYYY hh:mm A")
                     : ""}
                 </td>
                 <td className="orderdetails-data">
                   {" "}
-                  {orderDetails?.delivereddate
+                  {orderDetails?.deliveryassigned_date
                     ? moment
-                        .utc(orderDetails?.delivereddate)
+                        .utc(orderDetails?.deliveryassigned_date)
                         .format("DD/MM/YYYY hh:mm A")
                     : ""}
                 </td>
