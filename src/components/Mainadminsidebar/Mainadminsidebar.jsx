@@ -120,6 +120,19 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       </div>
       <div
         onClick={() => {
+          FindButtonValue("deliverypartners");
+        }}
+        className={
+          selected?.deliverypartners
+            ? "admimmenuicon admimmenuicon2 flex"
+            : "admimmenuicon flex"
+        }
+      >
+        <i className="ri-edit-line"></i>
+        <h4>Delivery Partners</h4>
+      </div>
+      <div
+        onClick={() => {
           FindButtonValue("productmanagement");
         }}
         className={

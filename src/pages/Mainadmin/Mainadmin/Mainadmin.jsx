@@ -33,6 +33,7 @@ import Mainadminhospitalapprove from "../Mainadminhospital/Mainadminhospitalappr
 import Mainadminlabsapprove from "../Mainadminlabs/Mainadminlabsapprove";
 import Mainadmindoctorapprove from "../Mainadmindoctor/Mainadmindoctorapprove";
 import { useLocation, useNavigate } from "react-router-dom";
+import Deliverypartnerlist from "../DeliveryPartner/Deliverypartnerlist";
 
 export default function Mainadmin() {
   const [ChangeDashboards, setChangeDashboards] = useState({
@@ -198,9 +199,9 @@ export default function Mainadmin() {
                 />
               </>
             )}
-            {ChangeDashboards?.prescriptionOrderDetail && (
+            {ChangeDashboards?.deliverypartners && (
               <>
-                <Prescriptions
+                <Deliverypartnerlist
                   Details={DetailData}
                   setChangeDashboards={setChangeDashboards}
                 />

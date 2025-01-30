@@ -75,7 +75,8 @@ function App() {
                   ))}
                 </Route>
                 {/* //protected super admin routes */}
-                <Route element={<RequireAuth allowedRoles={["customer"]} />}>
+                {/* <Route element={<RequireAuth allowedRoles={["customer"]} />}> */}
+                <Route >
                   {superAdminRoutes.map((route) => (
                     <Route
                       key={route.path}
