@@ -199,6 +199,14 @@ export default function Mainadmin() {
                 />
               </>
             )}
+            {ChangeDashboards?.prescriptionOrderDetail && (
+              <>
+                <Prescriptions
+                  Details={DetailData}
+                  setChangeDashboards={setChangeDashboards}
+                />
+              </>
+            )}
             {ChangeDashboards?.deliverypartners && (
               <>
                 <Deliverypartnerlist
