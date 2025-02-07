@@ -336,7 +336,7 @@ export default function Billing() {
 
       <div className="billingsection flex">
         {isFetchingBillDetailsLoading && <Loader />}
-        {state && state.order_type === "prescription" && (
+        {/* {state && state.order_type === "prescription" && (
           <div className="billingleft flex" style={{ width }}>
             {billDetails?.prescription_image &&
               billDetails.prescription_image[currentImageKey] && (
@@ -351,6 +351,49 @@ export default function Billing() {
               </button>
               <div className="billingimagenumberdata flex">
                 {" "}
+                {currentIndex}/{imageKeys.length}
+              </div>
+              <button
+                onClick={handleNext}
+                disabled={currentIndex === imageKeys.length}
+              >
+                <i className="ri-arrow-right-s-line"></i>
+              </button>
+            </div>
+
+            <button className="medmini" onClick={changeWidth}>
+              <i className="ri-fullscreen-exit-line"></i>
+            </button>
+          </div>
+        )} */}
+        {state && state.order_type === "prescription" && (
+          <div className="billingleft flex" style={{ width }}>
+            {billDetails?.prescription_image &&
+              billDetails.prescription_image[currentImageKey] &&
+              (/\.(jpg|jpeg|png|gif|webp)$/i.test(
+                billDetails.prescription_image[currentImageKey]
+              ) ? (
+                <img
+                  src={billDetails.prescription_image[currentImageKey]}
+                  alt={`Image ${currentIndex}`}
+                  // style={{ maxWidth: "100%", maxHeight: "700px" }}
+                />
+              ) : /\.(pdf)$/i.test(
+                  billDetails.prescription_image[currentImageKey]
+                ) ? (
+                <iframe
+                  src={`https://docs.google.com/gview?url=${billDetails.prescription_image[currentImageKey]}&embedded=true`}
+                  width="100%"
+                  height="600px"
+                  style={{ border: "none" }}
+                ></iframe>
+              ) : null)}
+
+            <div className="billingimagenumber flex">
+              <button onClick={handlePrevious} disabled={currentIndex === 1}>
+                <i className="ri-arrow-left-s-line"></i>
+              </button>
+              <div className="billingimagenumberdata flex">
                 {currentIndex}/{imageKeys.length}
               </div>
               <button

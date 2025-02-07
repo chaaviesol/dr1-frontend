@@ -339,9 +339,9 @@ function Prescriptions({ Details, setChangeDashboards }) {
                 </td>
                 <td className="orderdetails-data">
                   {" "}
-                  {orderDetails?.deliveryassigned_date
+                  {orderDetails?.delivered_date
                     ? moment
-                        .utc(orderDetails?.deliveryassigned_date)
+                        .utc(orderDetails?.delivered_date)
                         .format("DD/MM/YYYY hh:mm A")
                     : ""}
                 </td>
@@ -591,19 +591,15 @@ function Prescriptions({ Details, setChangeDashboards }) {
                     <img
                       src={orderDetails.prescription_image[currentImageKey]}
                       alt={`Image ${currentIndex}`}
-                      style={{ maxWidth: "100%", maxHeight: "500px" }}
+                      style={{ maxWidth: "100%", maxHeight: "700px" }}
                     />
-                  ) : /\.(pdf)$/i.test(
-                      orderDetails.prescription_image[currentImageKey]
-                    ) ? (
-                    <object
-                      data={orderDetails.prescription_image[currentImageKey]}
-                      type="application/pdf"
+                  ) : /\.(pdf)$/i.test(orderDetails.prescription_image[currentImageKey]) ? (
+                    <iframe
+                      src={`https://docs.google.com/gview?url=${orderDetails.prescription_image[currentImageKey]}&embedded=true`}
                       width="100%"
                       height="600px"
-                    >
-                      <p>Your browser does not support PDFs.</p>
-                    </object>
+                      style={{ border: "none" }}
+                    ></iframe>
                   ) : null)}
 
                 <div className="billingimagenumber flex">
