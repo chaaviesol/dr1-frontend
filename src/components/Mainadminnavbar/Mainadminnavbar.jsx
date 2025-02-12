@@ -22,13 +22,13 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
             to="/"
             style={{ display: "flex", alignItems: "center", gap: "10px" }}
           >
-            <img src="/images/doconelogo.jpg" className="dr_one_logo" alt="" />
+            <img src="/images/newlogo.jpg" className="dr_one_logo" alt="" />
             <h2>Dr ONE</h2>
           </Link>
         </div>
 
         <div className="adminlogodiv flex">
-          <div
+          {/* <div
             onClick={() => {
               FindButtonValue("onboarding");
             }}
@@ -41,20 +41,20 @@ export default function Mainadminnavbar({ data: { SentData, selected } }) {
           >
             <i className="fi fi-sr-introduction-handshake"></i>
             <h4 style={{ marginLeft: "10px" }}>Onboarding</h4>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             style={{ marginLeft: "18px" }}
             className="adminnotification flex"
           >
             <i className="ri-notification-2-line"></i>
-          </div>
+          </div> */}
 
-          <img
+          {/* <img
             onClick={OpenPopup}
             style={{ marginLeft: "18px" }}
             src="/images/doc.jpg"
             alt=""
-          />
+          /> */}
         </div>
 
         <Modal

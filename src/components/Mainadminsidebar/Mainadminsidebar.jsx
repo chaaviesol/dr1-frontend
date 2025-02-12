@@ -157,7 +157,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
         <i className="ri-edit-line"></i>
         <h4>Second Opinion</h4>
       </div> */}
-      <div
+      {/* <div
         onClick={() => {
           FindButtonValue("category");
         }}
@@ -169,7 +169,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
       >
         <i className="ri-edit-line"></i>
         <h4>Edit category</h4>
-      </div>
+      </div> */}
       {/* <div
         onClick={() => {
           FindButtonValue("viewQuery");

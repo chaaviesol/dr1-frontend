@@ -168,11 +168,11 @@ export default function Mainadmin() {
                 />
               </>
             )}
-            {ChangeDashboards?.category && (
+            {/* {ChangeDashboards?.category && (
               <>
                 <MainAdminCategoryEdit />
               </>
-            )}
+            )} */}
 
             {ChangeDashboards?.manageadmin && (
               <>
