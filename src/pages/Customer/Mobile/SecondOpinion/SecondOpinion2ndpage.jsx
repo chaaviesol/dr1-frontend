@@ -162,27 +162,27 @@ export default function SecondOpinion2ndpage() {
   const handleCheckboxChange = (event) => {
     setChecked(event.target.checked);
   };
-  useEffect(() => {
-    const fetchContactNumber = async () => {
-      try {
-        const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
-        const contact_no = parseInt(response?.data?.userDetails?.phone_no);
+  // useEffect(() => {
+  //   const fetchContactNumber = async () => {
+  //     try {
+  //       const response = await axiosPrivate.post(`${PHARMACY_URL}/user/getprofile`);
+  //       const contact_no = parseInt(response?.data?.userDetails?.phone_no);
 
-        setFormData({
-          contact_no: contact_no,
-          patient_name: "",
-          doctor_name: "",
-          image: [],
-          department: department,
-          // remarks:""
-        });
-      } catch (err) {
-        console.error("Error fetching contact number:", err);
-      }
-    };
+  //       setFormData({
+  //         contact_no: contact_no,
+  //         patient_name: "",
+  //         doctor_name: "",
+  //         image: [],
+  //         department: department,
+         
+  //       });
+  //     } catch (err) {
+  //       console.error("Error fetching contact number:", err);
+  //     }
+  //   };
 
-    fetchContactNumber();
-  }, []);
+  //   fetchContactNumber();
+  // }, []);
   const handleClose = () => {
     setFormData({
       patient_name: "",

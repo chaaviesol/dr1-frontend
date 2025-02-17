@@ -43,23 +43,24 @@ function MyOrdersDesktop() {
   //   const toggleDropdown = () => {
   //     setIsExpanded(!isExpanded);
   //   };
-  useEffect(() => {
-    setIsOrdersLoading(true);
-    const fetchOrders = async () => {
-      try {
-        const response = await axiosPrivate.get(
-          `${PHARMACY_URL}/pharmacy/myorders`
-        );
-        setMyOrder(response.data.data);
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-      } finally {
-        setIsOrdersLoading(false);
-      }
-    };
 
-    fetchOrders();
-  }, []);
+  // useEffect(() => {
+  //   setIsOrdersLoading(true);
+  //   const fetchOrders = async () => {
+  //     try {
+  //       const response = await axiosPrivate.get(
+  //         `${PHARMACY_URL}/pharmacy/myorders`
+  //       );
+  //       setMyOrder(response.data.data);
+  //     } catch (error) {
+  //       console.error("Error fetching orders:", error);
+  //     } finally {
+  //       setIsOrdersLoading(false);
+  //     }
+  //   };
+
+  //   fetchOrders();
+  // }, []);
   const formatDate = (dateString) => {
     const date = new Date(dateString);
 

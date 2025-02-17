@@ -28,55 +28,53 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
   const navigate = useNavigate();
   const { auth } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  const fetchProducts = async (id) => {
-    const response = await axios.get(`${PHARMACY_URL}/product/products`);
-    return response.data.data;
-  };
+  // const fetchProducts = async (id) => {
+  //   const response = await axios.get(`${PHARMACY_URL}/product/products`);
+  //   return response.data.data;
+  // };
 
-  const {
-    data: products,
-    isLoading: isFetchingProducts,
-    refetch: refetchProducts,
-  } = useQuery({
-    queryKey: ["fetchProducts"],
-    queryFn: () => fetchProducts(),
-  });
-  useEffect(() => {
-    if (products) {
-      setFilteredProducts(products);
-    }
-  }, [products]);
-  useEffect(() => {
-    if (auth.userId) {
-      refetchProducts();
-    }
-  }, [auth.userId]);
+  // const {
+  //   data: products,
+  //   isLoading: isFetchingProducts,
+  //   refetch: refetchProducts,
+  // } = useQuery({
+  //   queryKey: ["fetchProducts"],
+  //   queryFn: () => fetchProducts(),
+  // });
+  // useEffect(() => {
+  //   if (products) {
+  //     setFilteredProducts(products);
+  //   }
+  // }, [products]);
+  // useEffect(() => {
+  //   if (auth.userId) {
+  //     refetchProducts();
+  //   }
+  // }, [auth.userId]);
 
-  const addTocart = async (payload) => {
-    console.log(payload);
-    const finalPayload = {
-      ...payload,
-      prod_id: payload.prodId,
-    };
-    const response = await axiosPrivate.post(
-      `${PHARMACY_URL}/pharmacy/addToCart`,
-      finalPayload
-    );
-    return response.data.data;
-  };
+  // const addTocart = async (payload) => {
+  //   console.log(payload);
+  //   const finalPayload = {
+  //     ...payload,
+  //     prod_id: payload.prodId,
+  //   };
+  //   const response = await axiosPrivate.post(
+  //     `${PHARMACY_URL}/pharmacy/addToCart`,
+  //     finalPayload
+  //   );
+  //   return response.data.data;
+  // };
 
-  const addTocartMutation = useMutation({
-    mutationKey: ["fetchBotCallResultMutation"],
-    mutationFn: (data) => addTocart(data),
-    onSuccess: () => {
-      refetchCart();
-    },
-    onError: (error) => {
-      console.log("popo");
-    },
-  });
-
-  console.log(products);
+  // const addTocartMutation = useMutation({
+  //   mutationKey: ["fetchBotCallResultMutation"],
+  //   mutationFn: (data) => addTocart(data),
+  //   onSuccess: () => {
+  //     refetchCart();
+  //   },
+  //   onError: (error) => {
+  //     console.log("popo");
+  //   },
+  // });
 
   const handleAddToCart = async (event, prodId) => {
     event.stopPropagation();
@@ -93,70 +91,69 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
         )
       );
       try {
-        await addTocartMutation.mutateAsync(data);
+        // await addTocartMutation.mutateAsync(data);
       } catch (error) {
         console.error("Failed to update cart:", error);
       }
     } else {
-      navigate("/login")
+      navigate("/login");
     }
   };
 
   const handleViewProductInfo = (product) => {
     navigate("/productdetails", { state: { clickedProductDetails: product } });
   };
-  const filterProducts = () => {
-    const activeProductArray =
-      products?.[currentActiveCategoryIndex]?.products || [];
+  // const filterProducts = () => {
+  //   const activeProductArray =
+  //     products?.[currentActiveCategoryIndex]?.products || [];
 
-    const filteredProductsArray = activeProductArray.filter((product) => {
-      const nameMatch = product.name
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      const brandMatch = product.brand
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-      return nameMatch || brandMatch;
-    });
-    const prodData = products.map((category, index) => {
-      if (index === currentActiveCategoryIndex) {
-        return { ...category, products: filteredProductsArray };
-      }
-      return category; // Keep other categories untouched
-    });
+  //   const filteredProductsArray = activeProductArray.filter((product) => {
+  //     const nameMatch = product.name
+  //       .toLowerCase()
+  //       .includes(searchQuery.toLowerCase());
+  //     const brandMatch = product.brand
+  //       .toLowerCase()
+  //       .includes(searchQuery.toLowerCase());
+  //     return nameMatch || brandMatch;
+  //   });
+  //   const prodData = products.map((category, index) => {
+  //     if (index === currentActiveCategoryIndex) {
+  //       return { ...category, products: filteredProductsArray };
+  //     }
+  //     return category;
+  //   });
 
-    // Set the filtered products
-    setFilteredProducts(prodData);
-  };
+  //   setFilteredProducts(prodData);
+  // };
   const handleProductSearchChanges = debounce((e) => {
     setSearchQuery(e.target.value);
   }, 500);
-  //update vcurrent showing category and products
-  const handleUpdateSelectedCategory = (index) => {
-    setCurrentActiveCategoryIndex(index);
-    setFilteredProducts(products);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
-  useEffect(() => {
-    if (products) {
-      filterProducts();
-    }
-  }, [searchQuery, products]);
-  useEffect(() => {
-    if (passedCategoryId && products && products.length > 0) {
-      const categoryIndex = products.findIndex(
-        (ele) => ele.id === passedCategoryId
-      );
-      // alert(categoryIndex);
-      handleUpdateSelectedCategory(categoryIndex);
-    }
-  }, [passedCategoryId, products]);
-  console.log("cartItems =>", cartItems);
+  // const handleUpdateSelectedCategory = (index) => {
+  //   setCurrentActiveCategoryIndex(index);
+  //   setFilteredProducts(products);
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // };
+
+  // useEffect(() => {
+  //   if (products) {
+  //     filterProducts();
+  //   }
+  // }, [searchQuery, products]);
+  // useEffect(() => {
+  //   if (passedCategoryId && products && products.length > 0) {
+  //     const categoryIndex = products.findIndex(
+  //       (ele) => ele.id === passedCategoryId
+  //     );
+
+  //     handleUpdateSelectedCategory(categoryIndex);
+  //   }
+  // }, [passedCategoryId, products]);
+
 
   return (
     <div className="category_page">
-      {isFetchingProducts && <Loader />}
+      {/* {isFetchingProducts && <Loader />} */}
       <div className="scsb">
         <CartTopbarWithBackButton />
       </div>
@@ -174,7 +171,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
         </div>
       </div>
       <div className="subcategory_section">
-        <div className="subcategory_list">
+        {/* <div className="subcategory_list">
           {products &&
             products.length > 0 &&
             products.map((ele, index) => (
@@ -202,7 +199,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                     textAlign: "center",
                   }}
                 >
-                  {/* {ele.categoryName} */}
+                
                   {ele?.categoryName
                     ?.toLowerCase()
                     .split(" ")
@@ -211,7 +208,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                 </span>
               </div>
             ))}
-        </div>
+        </div> */}
 
         <div
           className="product_list_scroll"
@@ -252,10 +249,10 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                           ? `${product.name.slice(0, 18)}...`
                           : product.name}
                       </h2>
-                      {/* <h2 className="product_qlty">{product?.quantity}</h2> */}
+
                     </div>
 
-                    {/* Product Price and Cart Control */}
+                   
                     <div
                       style={{
                         display: "flex",
@@ -268,7 +265,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                       <span className="product_price">₹ {product?.mrp}</span>
 
                       {/* Conditionally render CartControl or Add Button */}
-                      {productInCart ? (
+                      {/* {productInCart ? (
                         <CartControl product={productInCart} />
                       ) : (
                         <button
@@ -287,7 +284,7 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
                         >
                           Add
                         </button>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 );
@@ -295,7 +292,6 @@ export default function SelectCategory({ isMobile, passedCategoryId }) {
             )}
         </div>
       </div>
-   
     </div>
   );
 }

@@ -42,28 +42,28 @@ export default function MobileDoctorProfile() {
     type: "doctor",
     id: doctor?.id,
   });
-  const updateViewCount = async (payload) => {
-    const response = await axiosPrivate.post(
-      `${BASE_URL}/user/viewcount`,
-      payload
-    );
+  // const updateViewCount = async (payload) => {
+  //   const response = await axiosPrivate.post(
+  //     `${BASE_URL}/user/viewcount`,
+  //     payload
+  //   );
 
-    return response.data;
-  };
-  const updateViewCountMutation = useMutation({
-    mutationKey: ["updateViewCountMutation", auth.userId, doctor?.id],
-    mutationFn: (payload) => updateViewCount(payload),
-  });
-  useEffect(() => {
-    if (doctor?.id && auth.userId) {
-      const payload = {
-        userid: auth.userId,
-        id: doctor?.id,
-        type: "Doctor",
-      };
-      updateViewCountMutation.mutateAsync(payload);
-    }
-  }, []);
+  //   return response.data;
+  // };
+  // const updateViewCountMutation = useMutation({
+  //   mutationKey: ["updateViewCountMutation", auth.userId, doctor?.id],
+  //   mutationFn: (payload) => updateViewCount(payload),
+  // });
+  // useEffect(() => {
+  //   if (doctor?.id && auth.userId) {
+  //     const payload = {
+  //       userid: auth.userId,
+  //       id: doctor?.id,
+  //       type: "Doctor",
+  //     };
+  //     updateViewCountMutation.mutateAsync(payload);
+  //   }
+  // }, []);
   const currentAvailability = doctorAvailability?.data;
 
   const handleShare = async () => {
@@ -83,41 +83,30 @@ export default function MobileDoctorProfile() {
     }
   };
 
-  // const handleShare = () => {
-  //   const shareUrl = encodeURIComponent(window.location.href);
-  //   const shareTitle = encodeURIComponent("Check out this amazing site!");
 
-  //   const facebookShare = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
-  //   const twitterShare = `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`;
-  //   const whatsappShare = `https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}`;
-  //   const emailShare = `mailto:?subject=${shareTitle}&body=${shareUrl}`;
-
-  //   // You can display these as links or open them directly
-  //   window.open(facebookShare, "_blank");
-  // };
   const modalopen = () => {
     setIsModalOpen(!isModalOpen);
   };
-  const {
-    data: customerProfileCompletionStatus,
-    refetch: refetchCustomerProfileCompletionStatus,
-    isError,
-    isLoading: isCustomerProfileCheckLoading,
-  } = useQuery({
-    queryKey: ["fetchCustomerProfileStatus", auth.userId],
-    queryFn: () => fetchCustomerProfileStatus(auth.userId),
-    enabled: false,
-  });
-  const fetchCustomerProfileStatus = async (customerId) => {
-    const response = await axiosPrivate.post(
-      `${PHARMACY_URL}/user/profilecompleted`,
-      {
-        id: customerId,
-      }
-    );
+  // const {
+  //   data: customerProfileCompletionStatus,
+  //   refetch: refetchCustomerProfileCompletionStatus,
+  //   isError,
+  //   isLoading: isCustomerProfileCheckLoading,
+  // } = useQuery({
+  //   queryKey: ["fetchCustomerProfileStatus", auth.userId],
+  //   queryFn: () => fetchCustomerProfileStatus(auth.userId),
+  //   enabled: false,
+  // });
+  // const fetchCustomerProfileStatus = async (customerId) => {
+  //   const response = await axiosPrivate.post(
+  //     `${PHARMACY_URL}/user/profilecompleted`,
+  //     {
+  //       id: customerId,
+  //     }
+  //   );
 
-    return response.data.profilecompleted;
-  };
+  //   return response.data.profilecompleted;
+  // };
 
   const contactnowbutton = async () => {
     if (!auth.userId || !auth.userType === "customer") {
@@ -125,19 +114,19 @@ export default function MobileDoctorProfile() {
       return;
     }
 
-    const completionStatus = await refetchCustomerProfileCompletionStatus();
-    const newCustomerProfileCompletionStatus = completionStatus.data;
-    if (newCustomerProfileCompletionStatus === false) {
-      // setIsShowCompleteUsrProfileModal(true); //for enterting user remaining profile details
-    } else if (newCustomerProfileCompletionStatus === true) {
-      const data = {
-        userid: auth.userId,
-        id: doctor?.id,
-        type: "Doctor",
-        status: "P",
-      };
-      markConsultMutation(data);
-    }
+    // const completionStatus = await refetchCustomerProfileCompletionStatus();
+    // const newCustomerProfileCompletionStatus = completionStatus.data;
+    // if (newCustomerProfileCompletionStatus === false) {
+     
+    // } else if (newCustomerProfileCompletionStatus === true) {
+    //   const data = {
+    //     userid: auth.userId,
+    //     id: doctor?.id,
+    //     type: "Doctor",
+    //     status: "P",
+    //   };
+    //   markConsultMutation(data);
+    // }
   };
   const markConsult = async (data) => {
     const response = await axiosPrivate.post(`${port}/user/consultcount`, data);

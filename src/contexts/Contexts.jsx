@@ -35,21 +35,21 @@ export default function Contexts({ children }) {
     setCategories,
   };
 
-  const fetchAllMedicalCategories = async () => {
-    const startTime = Date.now();
-    try {
-      const response = await axios.get(`${port}/admin/getallcategories`);
-      const endTime = Date.now();
-      const timeTaken = endTime - startTime;
-      setSpeed(timeTaken);
-      const fullCategories = response?.data;
-      setCategories(fullCategories);
-    } catch (err) {
-      toast.error(err.message);
-      console.error(err);
-    } finally {
-    }
-  };
+  // const fetchAllMedicalCategories = async () => {
+  //   const startTime = Date.now();
+  //   try {
+  //     const response = await axios.get(`${port}/admin/getallcategories`);
+  //     const endTime = Date.now();
+  //     const timeTaken = endTime - startTime;
+  //     setSpeed(timeTaken);
+  //     const fullCategories = response?.data;
+  //     setCategories(fullCategories);
+  //   } catch (err) {
+  //     toast.error(err.message);
+  //     console.error(err);
+  //   } finally {
+  //   }
+  // };
   useEffect(() => {
     // fetchAllMedicalCategories(); //commented for new db
   }, []);

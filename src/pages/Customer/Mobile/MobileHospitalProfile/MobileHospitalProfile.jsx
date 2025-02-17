@@ -25,85 +25,85 @@ export default function MobileHospitalProfile() {
     type: "hospital",
     id: HospitalData.id,
   });
-  const updateViewCount = async (payload) => {
-    const response = await axiosPrivate.post(
-      `${BASE_URL}/user/viewcount`,
-      payload
-    );
-    console.log("objectobjectobjectobjectobject", response);
-    return response.data;
-  };
-  const updateViewCountMutation = useMutation({
-    mutationKey: ["updateViewCountMutation", auth.userId, HospitalData.id],
-    mutationFn: (payload) => updateViewCount(payload),
-  });
+  // const updateViewCount = async (payload) => {
+  //   const response = await axiosPrivate.post(
+  //     `${BASE_URL}/user/viewcount`,
+  //     payload
+  //   );
+  //   console.log("objectobjectobjectobjectobject", response);
+  //   return response.data;
+  // };
+  // const updateViewCountMutation = useMutation({
+  //   mutationKey: ["updateViewCountMutation", auth.userId, HospitalData.id],
+  //   mutationFn: (payload) => updateViewCount(payload),
+  // });
 
-  useEffect(() => {
-    if (HospitalData?.id && auth.userId) {
-      const payload = {
-        userid: auth.id,
-        id: HospitalData?.id,
-        type: "Hospital",
-      };
-      updateViewCountMutation.mutateAsync(payload);
-    }
-  }, []);
-  const fetchCustomerProfileStatus = async (customerId) => {
-    const response = await axiosPrivate.post(
-      `${PHARMACY_URL}/user/profilecompleted`,
-      {
-        id: customerId,
-      }
-    );
-    return response.data.profilecompleted;
-  };
-  const {
-    data: customerProfileCompletionStatus,
-    refetch: refetchCustomerProfileCompletionStatus,
-    isLoading: isCustomerProfileCheckLoading,
-  } = useQuery({
-    queryKey: ["fetchCustomerProfileStatus", auth.userId],
-    queryFn: () => fetchCustomerProfileStatus(auth.userId),
-    enabled: false,
-  });
-  const consultNow = async () => {
-    if (!auth.userId) {
-      toast.info("please login to view contact number");
-      return;
-    }
+  // useEffect(() => {
+  //   if (HospitalData?.id && auth.userId) {
+  //     const payload = {
+  //       userid: auth.id,
+  //       id: HospitalData?.id,
+  //       type: "Hospital",
+  //     };
+  //     updateViewCountMutation.mutateAsync(payload);
+  //   }
+  // }, []);
+  // const fetchCustomerProfileStatus = async (customerId) => {
+  //   const response = await axiosPrivate.post(
+  //     `${PHARMACY_URL}/user/profilecompleted`,
+  //     {
+  //       id: customerId,
+  //     }
+  //   );
+  //   return response.data.profilecompleted;
+  // };
+  // const {
+  //   data: customerProfileCompletionStatus,
+  //   refetch: refetchCustomerProfileCompletionStatus,
+  //   isLoading: isCustomerProfileCheckLoading,
+  // } = useQuery({
+  //   queryKey: ["fetchCustomerProfileStatus", auth.userId],
+  //   queryFn: () => fetchCustomerProfileStatus(auth.userId),
+  //   enabled: false,
+  // });
+  // const consultNow = async () => {
+  //   if (!auth.userId) {
+  //     toast.info("please login to view contact number");
+  //     return;
+  //   }
 
-    const completionStatus = await refetchCustomerProfileCompletionStatus();
-    const newCustomerProfileCompletionStatus = completionStatus.data;
-    if (newCustomerProfileCompletionStatus === false) {
-      setIsShowCompleteUsrProfileModal(true); //for enterting user remaining details
-    } else if (newCustomerProfileCompletionStatus === true) {
-      const payload = {
-        userid: auth.userId,
-        id: HospitalData?.id,
-        type: "Hospital",
-        status: "P",
-      };
-      markConsultMutation.mutateAsync(payload);
-    }
-  };
+  //   const completionStatus = await refetchCustomerProfileCompletionStatus();
+  //   const newCustomerProfileCompletionStatus = completionStatus.data;
+  //   if (newCustomerProfileCompletionStatus === false) {
+  //     setIsShowCompleteUsrProfileModal(true); //for enterting user remaining details
+  //   } else if (newCustomerProfileCompletionStatus === true) {
+  //     const payload = {
+  //       userid: auth.userId,
+  //       id: HospitalData?.id,
+  //       type: "Hospital",
+  //       status: "P",
+  //     };
+  //     markConsultMutation.mutateAsync(payload);
+  //   }
+  // };
 
-  const markConsult = async (data) => {
-    console.log(data);
-    const response = await axiosPrivate.post(`${port}/user/consultcount`, data);
-    console.log(response);
-    return response;
-  };
-  const markConsultMutation = useMutation({
-    mutationKey: ["markConsult", auth.userId, HospitalData.id],
-    mutationFn: markConsult,
-    onSuccess: () => {
-      window.location.href = `tel:91${HospitalData?.contact_no}`;
-    },
-    onError: (error) => {
-      console.log(error.response.data.message);
-      // alert(error.response.data.message);
-    },
-  });
+  // const markConsult = async (data) => {
+  //   console.log(data);
+  //   const response = await axiosPrivate.post(`${port}/user/consultcount`, data);
+  //   console.log(response);
+  //   return response;
+  // };
+  // const markConsultMutation = useMutation({
+  //   mutationKey: ["markConsult", auth.userId, HospitalData.id],
+  //   mutationFn: markConsult,
+  //   onSuccess: () => {
+  //     window.location.href = `tel:91${HospitalData?.contact_no}`;
+  //   },
+  //   onError: (error) => {
+  //     console.log(error.response.data.message);
+    
+  //   },
+  // });
 
   // const handleClick = () => {
   //   if (!auth.userId) {
@@ -203,8 +203,8 @@ export default function MobileHospitalProfile() {
 
             <button
               className="flex"
-              onClick={consultNow}
-              disable={isCustomerProfileCheckLoading}
+              // onClick={consultNow}
+              // disable={isCustomerProfileCheckLoading}
             >
               <i className="ri-phone-fill"></i>
             </button>
@@ -322,10 +322,10 @@ export default function MobileHospitalProfile() {
             </div>
           ))}
       </div>
-      <UserProfileCompleteModal
+      {/* <UserProfileCompleteModal
         open={isShowCompleteUsrProfileModal}
         onClose={setIsShowCompleteUsrProfileModal}
-      />
+      /> */}
     </div>
   );
 }

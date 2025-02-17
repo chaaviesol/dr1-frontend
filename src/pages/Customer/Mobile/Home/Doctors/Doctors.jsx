@@ -56,18 +56,18 @@ function Doctors() {
     }
   };
 
-  const fetch = async () => {
-    try {
-      // const pincode=====??
-      const response = await axios.post(`${BASE_URL}/doctor/nearestdoctor`);
-      SetDoctordata(response.data.data);
-    } catch (error) {
-      console.error("Error fetching lab data:", error);
-    }
-  };
-  useEffect(() => {
-    fetch();
-  }, []);
+  // const fetch = async () => {
+  //   try {
+  //     // const pincode=====??
+  //     const response = await axios.post(`${BASE_URL}/doctor/nearestdoctor`);
+  //     SetDoctordata(response.data.data);
+  //   } catch (error) {
+  //     console.error("Error fetching lab data:", error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetch();
+  // }, []);
   return (
     <>
       <div

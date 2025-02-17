@@ -36,9 +36,10 @@ export default function Chatbot() {
     const payload = {
       message: query,
     };
-    const response = await axiosPrivate.post(`${port}/bot/chatbot`, payload);
+    // const response = await axiosPrivate.post(`${port}/bot/chatbot`, payload);
+    const response = null
 
-    return response.data || [];
+    // return response.data || [];
   };
   const fetchBotCallResultMutation = useMutation({
     mutationKey: ["fetchBotCallResultMutation"],

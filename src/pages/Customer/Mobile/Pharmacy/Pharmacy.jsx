@@ -16,37 +16,37 @@ function Pharmacy() {
   const { auth } = useAuth();
   const navigate = useNavigate();
 
-  const handleOpen = () => {
-    console.log({ auth });
-    if (auth.userId && auth.userType === "customer") {
-      navigate("/uploadprescription");
-    } else {
-      navigate("/login");
+  // const handleOpen = () => {
+  //   console.log({ auth });
+  //   if (auth.userId && auth.userType === "customer") {
+  //     navigate("/uploadprescription");
+  //   } else {
+  //     navigate("/login");
       
-    }
-  };
+  //   }
+  // };
 
-  const handleNavigation = (categoryId) => {
-    navigate("/pharmacyproducts", {
-      state: { passedCategoryId: categoryId },
-    });
-  };
+  // const handleNavigation = (categoryId) => {
+  //   navigate("/pharmacyproducts", {
+  //     state: { passedCategoryId: categoryId },
+  //   });
+  // };
 
-  const fetchCategories = async () => {
-    try {
-      setIsCategoryFetching(true);
-      const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
-      setMarketplaceProducts(response?.data?.data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsCategoryFetching(false);
-    }
-  };
+  // const fetchCategories = async () => {
+  //   try {
+  //     setIsCategoryFetching(true);
+  //     const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
+  //     setMarketplaceProducts(response?.data?.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   } finally {
+  //     setIsCategoryFetching(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+  // useEffect(() => {
+  //   fetchCategories();
+  // }, []);
   return (
     <>
       <div className="pharmacysection avoidbottombar">
@@ -90,7 +90,7 @@ function Pharmacy() {
 
             <button
               style={{ padding: "1rem 2rem" }}
-              onClick={handleOpen}
+              // onClick={handleOpen}
               className="uploadprescriptionbutton flex"
             >
               <h4>Upload Prescription</h4>
@@ -112,7 +112,7 @@ function Pharmacy() {
                 <div
                   key={index}
                   style={{ backgroundColor: "#f2f5ff" }}
-                  onClick={() => handleNavigation(product.id)}
+                  // onClick={() => handleNavigation(product.id)}
                   className="pharmacyshopproduct flex"
                 >
                   <div className="pharmacyshopproductimg flex">
