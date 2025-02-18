@@ -33,21 +33,21 @@ export default function Pharmacy() {
   const [marketplaceCategories, setMarketplaceCategories] = useState([]);
   const navigate = useNavigate();
 
-  const fetchCategories = async () => {
-    try {
-      setIsCategoryFetching(true);
-      const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
-      setMarketplaceCategories(response?.data?.data);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsCategoryFetching(false);
-    }
-  };
+  // const fetchCategories = async () => {
+  //   try {
+  //     setIsCategoryFetching(true);
+  //     const response = await axios.get(`${PHARMACY_URL}/product/getcategory`);
+  //     setMarketplaceCategories(response?.data?.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   } finally {
+  //     setIsCategoryFetching(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
+  // useEffect(() => {
+  //   fetchCategories();
+  // }, []);
 
   const openmodalbutton = () => {
     if (auth.userId && auth.userType === "customer") {

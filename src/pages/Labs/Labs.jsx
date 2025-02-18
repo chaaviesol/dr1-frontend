@@ -67,15 +67,15 @@ export default function Labs() {
   };
   const [marketplaceProducts, setMarketplaceProducts] = useState([]);
 
-  useEffect(() => {
-    axios.get(`${PHARMACY_URL}/product/getcategory`).then((res) => {
-      console.log(res?.data);
-      if (res?.status === 200) {
-        // setIsLoading(false);
-        setMarketplaceProducts(res?.data?.data);
-      }
-    });
-  }, [marketplaceProducts]);
+  // useEffect(() => {
+  //   axios.get(`${PHARMACY_URL}/product/getcategory`).then((res) => {
+  //     console.log(res?.data);
+  //     if (res?.status === 200) {
+  //       // setIsLoading(false);
+  //       setMarketplaceProducts(res?.data?.data);
+  //     }
+  //   });
+  // }, [marketplaceProducts]);
 
   return (
     <div>
